@@ -1,6 +1,6 @@
 // src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent'
+import { fromEvent } from 'rxjs'
 import { debounceTime } from 'rxjs/operators';
 
 @Component({

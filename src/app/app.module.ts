@@ -12,6 +12,7 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { GamificationModule } from 'angular-gamification';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
+//import { YouTubePlayerModule } from '@angular/youtube-player';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -42,6 +43,7 @@ const GamificationConfig = {
     BrowserModule,
     AppRoutingModule,
     YoutubePlayerModule,
+    //YouTubePlayerModule,
     GamificationModule.forRoot(GamificationConfig)
   ],
   providers: [Title],

@@ -8,11 +8,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
-import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { GamificationModule } from 'angular-gamification';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
-//import { YouTubePlayerModule } from '@angular/youtube-player';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -42,8 +41,7 @@ const GamificationConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    YoutubePlayerModule,
-    //YouTubePlayerModule,
+    YouTubePlayerModule,
     GamificationModule.forRoot(GamificationConfig)
   ],
   providers: [Title],

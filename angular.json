@@ -22,9 +22,14 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/assets/scss/styles.scss"
+              "src/assets/scss/styles.scss",
+              "node_modules/video.js/dist/video-js.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/flv.js/dist/flv.min.js",
+              "node_modules/video.js/dist/video.min.js",
+              "node_modules/videojs-youtube/dist/Youtube.min.js"
+            ]
           },
           "configurations": {
             "production": {

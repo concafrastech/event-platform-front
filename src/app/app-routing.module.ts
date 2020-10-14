@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
 import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HubComponent } from './pages/hub/hub.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomeComponent
+  },
+  {
+    path: 'hub',
+    component: HubComponent
   }
 ];
 

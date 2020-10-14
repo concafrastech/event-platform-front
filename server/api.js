@@ -25,7 +25,7 @@ module.exports = function(app, config) {
     }),
     audience: config.AUTH0_API_AUDIENCE,
     issuer: `https://${config.AUTH0_DOMAIN}/`,
-    algorithm: 'RS256'
+    algorithms: ['sha1', 'RS256', 'HS256']
   });
 
 /*

@@ -19,6 +19,7 @@
       "dom"
     ],
     "skipLibCheck": true,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "allowJs": true
   }
 }

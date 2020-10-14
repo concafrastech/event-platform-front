@@ -21,6 +21,7 @@ export class YoutubeComponent implements OnInit {
   id: string = 'qDuKsiwS5xw';
 
   playerVars: YT.PlayerVars = {
+    rel: 0,
     controls: 0,
     autoplay: 1,
     showinfo: YT.ShowInfo.Hide,
@@ -28,7 +29,7 @@ export class YoutubeComponent implements OnInit {
   }
 
   sizes: any = {
-    width: 800,
+    width: 1080,
     height: 600
   }
 

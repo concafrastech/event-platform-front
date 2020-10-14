@@ -12,6 +12,13 @@ import { GamificationModule } from 'angular-gamification';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
+import { VideojsComponent } from './pages/channels/videojs/videojs.component';
+import { HubComponent } from './pages/hub/hub.component';
+import { DraggablemodalComponent } from './components/draggablemodal/draggablemodal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -36,13 +43,20 @@ const GamificationConfig = {
     FooterComponent,
     YoutubeComponent,
     WelcomeComponent,
-    AudithoriumComponent
+    AudithoriumComponent,
+    FlvplayerComponent,
+    VideojsComponent,
+    HubComponent,
+    DraggablemodalComponent,
+    DialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     YouTubePlayerModule,
-    GamificationModule.forRoot(GamificationConfig)
+    GamificationModule.forRoot(GamificationConfig),
+    NgbModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

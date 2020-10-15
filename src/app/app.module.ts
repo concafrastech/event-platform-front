@@ -5,20 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
-import { GamificationModule } from 'angular-gamification';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
 import { VideojsComponent } from './pages/channels/videojs/videojs.component';
 import { HubComponent } from './pages/hub/hub.component';
-import { DraggablemodalComponent } from './components/draggablemodal/draggablemodal.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DialogComponent } from './components/dialog/dialog.component';
 import { LoginComponent } from './pages/login/login.component';
+
+import { FooterComponent } from './layout/footer/footer.component';
+import { HeaderComponent } from './layout/header/header.component';
+
+import { DraggablemodalComponent } from './components/draggablemodal/draggablemodal.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GamificationModule } from 'angular-gamification';
+import { NavComponent } from './layout/nav/nav.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -49,7 +53,8 @@ const GamificationConfig = {
     HubComponent,
     DraggablemodalComponent,
     DialogComponent,
-    LoginComponent
+    LoginComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

@@ -3,23 +3,25 @@
        HEADER
 --------------------*/
 
-@import '../../assets/scss/partials/layout.vars';
+@import '../../../assets/scss/partials/layout.vars';
 
 /*-- Navigation --*/
 
 .nav {
-  background: #eee;
+  background: rgb(0, 128, 237);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  box-shadow: inset -8px 0 8px -6px rgba(0,0,0,0.2);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px; 
+  box-shadow: 1px 0 1px 1px rgba(0,0,0,0.2);
   display: none; /* deal with FOUC */
   height: 100%;
   overflow-y: auto;
   padding: $padding-screen-small;
   position: absolute;
     top: 0;
-  transform: translate3d(-100%,0,0);
-  width: 270px;
+  width: 220px;
+  z-index: 200;
 
   :host-context(.nav-closed) &,
   :host-context(.nav-open) & {
@@ -51,11 +53,11 @@
 .toggle-offcanvas {
   border-right: 1px solid rgba(255,255,255,.5);
   display: inline-block;
-  height: 50px;
+  height: 120px;
   padding: 23.5px 13px;
   position: relative;
   text-align: center;
-  width: 50px;
+  width: 100px;
   z-index: 100;
 
   span,
@@ -100,15 +102,16 @@
 
 .header-page {
   color: #fff;
-  height: 50px;
+  height: 120px;
   margin-bottom: 10px;
   position: relative;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
 
   &-siteTitle {
     font-size: 30px;
-    line-height: 50px;
+    line-height: 100px;
     margin: 0;
-    padding: 0 0 0 60px;
+    padding: 0 0 0 110px;
     position: absolute;
       top: 0;
     width: 100%;

@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
     // If nav is open after routing, close it
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationStart && this.navOpen)
+        filter(event => event instanceof NavigationStart && !this.navOpen)
       )
       .subscribe(event => this.toggleNav());
   }

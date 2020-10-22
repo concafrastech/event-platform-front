@@ -5,9 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
-import { MomentModule } from 'angular2-moment';
-
-import { HttpModule } from '@angular/http';
+import { MomentModule } from 'ngx-moment';
 
 // Module Custom
 import { MessagesModule} from './messages/messages.module';
@@ -27,16 +25,15 @@ import { FollowingComponent } from './components/following/following.component';
 import { FollowedComponent } from './components/followed/followed.component';
 
 // Services
-import {UserService} from './services/user.service';
-import {UserGuard} from './services/user.guard';
-import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
-import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
-import { VideojsComponent } from './pages/channels/videojs/videojs.component';
-import { HubComponent } from './pages/hub/hub.component';
+import { UserService } from './services/user.service';
+import { UserGuard } from './services/user.guard';
+//import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
+//import { WelcomeComponent } from './pages/welcome/welcome.component';
+//import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
+//import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
+//import { VideojsComponent } from './pages/channels/videojs/videojs.component';
+//import { HubComponent } from './pages/hub/hub.component';
 import { GamificationModule } from 'angular-gamification';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 const levels = [
@@ -61,12 +58,12 @@ const GamificationConfig = {
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    YoutubeComponent,
-    WelcomeComponent,
-    AudithoriumComponent,
-    FlvplayerComponent,
-    VideojsComponent,
-    HubComponent,
+    //YoutubeComponent,
+    //WelcomeComponent,
+    //AudithoriumComponent,
+    //FlvplayerComponent,
+    //VideojsComponent,
+    //HubComponent,
     UserEditComponent,
     UsersComponent,
     SidebarComponent,
@@ -83,8 +80,6 @@ const GamificationConfig = {
     HttpClientModule,
     MomentModule,
     MessagesModule,
-    HttpModule,
-    YouTubePlayerModule,
     GamificationModule.forRoot(GamificationConfig),
   ],
   providers: [

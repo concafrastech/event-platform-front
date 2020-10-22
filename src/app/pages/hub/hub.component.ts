@@ -4,7 +4,7 @@ import * as SvgPanZoom from 'svg-pan-zoom';
 @Component({
   selector: 'app-hub',
   templateUrl: './hub.component.html',
-  styleUrls: ['./hub.component.scss']
+  styleUrls: ['./hub.component.css']
 })
 export class HubComponent implements OnInit, AfterViewInit {
 

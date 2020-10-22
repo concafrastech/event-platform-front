@@ -1,0 +1,39 @@
+<div class="col-lg-5">
+    <h1 class="h1-strong">{{title}}</h1>
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        Se han actualizado tus datos correctamente!
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Error al actualizar datos.
+    </div>
+    <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+        <p>
+            <label>Nome</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required />
+            <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
+        </p>
+        <p>
+            <label>Sobrenome</label>
+            <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required />
+            <span *ngIf="!surname.value && surname.touched" >O sobrenome é obrigatório!</span>
+        </p>
+        <p>
+            <label>Apelido (Nome do Crachá)</label>
+            <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required />
+            <span *ngIf="!nick.value && nick.touched" >O apelido é obrigatório!</span>
+        </p>
+        <p>
+            <label>E-mail (Esse é seu login)</label>
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
+            <span *ngIf="!email.value && email.touched" >Email inválido!</span>
+        </p>
+        <div class="user-image-for-edit" *ngIf="user.image">
+            <img src="{{ url + 'get-image-user/' + user.image}}" />
+        </div>
+        <p>
+            <label>Foto do Perfil</label>
+            <input type="file" placeholder="Upload image" (change)="fileChangeEvent($event)" />
+        </p>
+        <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!userEditForm.form.valid" />
+    </form>
+</div>

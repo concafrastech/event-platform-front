@@ -1,37 +1,39 @@
-// src/app/app.component.ts
-import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs'
-import { debounceTime } from 'rxjs/operators';
+import {Component, OnInit, DoCheck} from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import {UserService} from './services/user.service';
+import {GLOBAL} from './services/global';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    providers: [UserService]
 })
-export class AppComponent implements OnInit {
-  navOpen: boolean;
-  minHeight: string;
-  private _initWinHeight = 0;
+export class AppComponent implements OnInit, DoCheck {
+    public title: string;
+    public identity;
+    public url: string;
 
-  constructor() {}
+    constructor(
+        private _route: ActivatedRoute,
+        private _router: Router,
+        private _userService: UserService
+    ) {
+        this.title = 'EVENTO';
+        this.url = GLOBAL.url;
+    }
 
-  ngOnInit() {
-    fromEvent(window, 'resize')
-      .pipe(
-        debounceTime(200)
-      )
-      .subscribe((event) => this._resizeFn(event));
+    ngOnInit() {
+        this.identity = this._userService.getIdentity();
+    }
 
-    this._initWinHeight = window.innerHeight;
-    this._resizeFn(null);
-  }
+    ngDoCheck() {
+        this.identity = this._userService.getIdentity();
+    }
 
-  navToggledHandler(e: boolean) {
-    this.navOpen = e;
-  }
-
-  private _resizeFn(e) {
-    const winHeight: number = e ? e.target.innerHeight : this._initWinHeight;
-    this.minHeight = `${winHeight}px`;
-  }
+    logout() {
+        localStorage.clear();
+        this.identity = null;
+        this._router.navigate(['/']);
+    }
 }

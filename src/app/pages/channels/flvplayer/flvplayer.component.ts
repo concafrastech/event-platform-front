@@ -5,7 +5,7 @@ import FlvJs from 'flv.js';
 @Component({
   selector: 'app-flvplayer',
   templateUrl: './flvplayer.component.html',
-  styleUrls: ['./flvplayer.component.scss']
+  styleUrls: ['./flvplayer.component.css']
 })
 export class FlvplayerComponent implements OnInit {
 

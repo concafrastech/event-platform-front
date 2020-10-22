@@ -6,7 +6,7 @@ declare let videojs: any;
 @Component({
   selector: 'app-videojs',
   templateUrl: './videojs.component.html',
-  styleUrls: ['./videojs.component.scss']
+  styleUrls: ['./videojs.component.css']
 })
 export class VideojsComponent implements AfterViewInit {
 

@@ -1,28 +1,43 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
+// Modules
+import * as $ from 'jquery';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { routing, appRoutingProviders } from './app.routing';
+import { MomentModule } from 'angular2-moment';
 
-import { AppRoutingModule } from './app-routing.module';
+import { HttpModule } from '@angular/http';
 
+// Module Custom
+import { MessagesModule} from './messages/messages.module';
+
+// Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { UsersComponent } from './components/users/users.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { PublicationsComponent } from './components/publications/publications.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { FollowingComponent } from './components/following/following.component';
+import { FollowedComponent } from './components/followed/followed.component';
+
+// Services
+import {UserService} from './services/user.service';
+import {UserGuard} from './services/user.guard';
 import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AudithoriumComponent } from './pages/audithorium/audithorium.component';
 import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
 import { VideojsComponent } from './pages/channels/videojs/videojs.component';
 import { HubComponent } from './pages/hub/hub.component';
-import { LoginComponent } from './pages/login/login.component';
-
-import { FooterComponent } from './layout/footer/footer.component';
-import { HeaderComponent } from './layout/header/header.component';
-
-import { DraggablemodalComponent } from './components/draggablemodal/draggablemodal.component';
-import { DialogComponent } from './components/dialog/dialog.component';
-
-import { YouTubePlayerModule } from '@angular/youtube-player';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GamificationModule } from 'angular-gamification';
-import { NavComponent } from './layout/nav/nav.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -39,31 +54,44 @@ const levels = [
 const GamificationConfig = {
   levels: levels
 };
+
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
     HomeComponent,
-    HeaderComponent,
-    FooterComponent,
     YoutubeComponent,
     WelcomeComponent,
     AudithoriumComponent,
     FlvplayerComponent,
     VideojsComponent,
     HubComponent,
-    DraggablemodalComponent,
-    DialogComponent,
-    LoginComponent,
-    NavComponent
+    UserEditComponent,
+    UsersComponent,
+    SidebarComponent,
+    TimelineComponent,
+    PublicationsComponent,
+    ProfileComponent,
+    FollowingComponent,
+    FollowedComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    FormsModule,
+    routing,
+    HttpClientModule,
+    MomentModule,
+    MessagesModule,
+    HttpModule,
     YouTubePlayerModule,
     GamificationModule.forRoot(GamificationConfig),
-    NgbModule
   ],
-  providers: [Title],
+  providers: [
+      appRoutingProviders,
+      UserService,
+      UserGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

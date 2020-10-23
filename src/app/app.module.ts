@@ -34,6 +34,7 @@ import { UserGuard } from './services/user.guard';
 //import { VideojsComponent } from './pages/channels/videojs/videojs.component';
 //import { HubComponent } from './pages/hub/hub.component';
 import { GamificationModule } from 'angular-gamification';
+import { HeroesModule } from './heroes/heroes.module';
 
 
 const levels = [
@@ -81,6 +82,7 @@ const GamificationConfig = {
     MomentModule,
     MessagesModule,
     GamificationModule.forRoot(GamificationConfig),
+    HeroesModule
   ],
   providers: [
       appRoutingProviders,

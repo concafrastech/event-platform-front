@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "git push origin master && git push dokku master"
+    "deploy": "git push origin main && git push dokku main:master"
   },
   "engines": {
     "node": "14.12.0",

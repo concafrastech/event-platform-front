@@ -13,8 +13,8 @@
     "deploy": "git push origin master && git push dokku master"
   },
   "engines": {
-    "node": "9.5.0",
-    "npm": "6.0.0"
+    "node": "14.12.0",
+    "npm": "6.14.8"
   },
   "private": true,
   "dependencies": {

@@ -5,6 +5,7 @@ import { HeroesService } from '../../services/heroes.service';
 import { GamificationService } from 'angular-gamification';
 
 import { Hero } from '../../models/hero';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -15,6 +16,8 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
 
   constructor(
+    private _route: ActivatedRoute,
+    private _router: Router,
     private heroesService: HeroesService,
     public gamification: GamificationService
   ) { }

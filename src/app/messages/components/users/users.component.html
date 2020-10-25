@@ -12,7 +12,7 @@
                     </div>
                     <div class="username pull-left">
                         <p class="name-surname">
-                            <a [routerLink]="['/mensajes/conversation', user._id]">
+                            <a [routerLink]="['/mensages/conversation', user._id]">
                                 {{user.name + ' ' + user.surname}}
                             </a>
                         </p>
@@ -24,8 +24,8 @@
             </div>
         </div>
 <!--        <ul class="pagination pull-right">
-            <li *ngIf="page > 1"><a [routerLink]="['/mensajes/gente', prev_page]">Anterior</a></li>
-            <li *ngIf="pages != page"><a [routerLink]="['/mensajes/gente', next_page]">Siguiente</a></li>
+            <li *ngIf="page > 1"><a [routerLink]="['/mensages/gente', prev_page]">Anterior</a></li>
+            <li *ngIf="pages != page"><a [routerLink]="['/mensages/gente', next_page]">Siguiente</a></li>
         </ul>-->
     </div>
 </div>

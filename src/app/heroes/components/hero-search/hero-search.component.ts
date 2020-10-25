@@ -11,6 +11,7 @@ import {
 import { HeroesService } from '../../services/heroes.service';
 
 import { Hero } from '../../models/hero';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-hero-search',
@@ -21,7 +22,11 @@ export class HeroSearchComponent implements OnInit {
   heroes$: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroesService: HeroesService) {}
+  constructor(
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private heroesService: HeroesService
+  ) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {

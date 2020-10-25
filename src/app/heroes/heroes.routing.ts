@@ -5,6 +5,7 @@ import { DashboardComponent }   from './components/dashboard/dashboard.component
 import { HeroesComponent }      from './components/heroes/heroes.component';
 import { HeroDetailComponent }  from './components/hero-detail/hero-detail.component';
 import { HeroMainComponent } from './components/main/hero-main.component';
+
 import { UserGuard } from '../services/user.guard';
 
 const heroRoutes: Routes = [
@@ -14,6 +15,8 @@ const heroRoutes: Routes = [
       children: [
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
           { path: 'dashboard', component: DashboardComponent, canActivate:[UserGuard] },
+          { path: 'dashboard/detail/:id', component: HeroDetailComponent, canActivate:[UserGuard] },
+          { path: 'dashboard/list', component: HeroDetailComponent, canActivate:[UserGuard] },
           { path: 'detail/:id', component: HeroDetailComponent, canActivate:[UserGuard] },
           { path: 'list', component: HeroesComponent, canActivate:[UserGuard] }
       ]
@@ -21,12 +24,12 @@ const heroRoutes: Routes = [
 ];
 
 @NgModule({
-imports: [
-  RouterModule.forChild(heroRoutes)
-],
-exports: [
-  RouterModule
-],
-providers: []
+  imports: [
+    RouterModule.forChild(heroRoutes)
+  ],
+  exports: [
+    RouterModule
+  ],
+  providers: []
 })
 export class HeroesRoutingModule { }

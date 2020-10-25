@@ -15,7 +15,10 @@
                     <a [routerLink]="['/gente']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-user"></span> Pessoas</a>
                 </li>
                 <li>
-                    <a [routerLink]="['/mensajes']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-envelope"></span> Mensagens</a>
+                    <a [routerLink]="['/mensages']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-envelope"></span> Mensagens</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/heroes']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-time"></span> Heroes</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
@@ -43,7 +46,7 @@
                             <a [routerLink]="['/perfil', identity._id]"><span class="glyphicon glyphicon-user"></span> Meu perfil</a>
                         </li>
                         <li>
-                            <a [routerLink]="['/mis-datos']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-cog"></span> Meus dados</a>
+                            <a [routerLink]="['/meus-dados']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-cog"></span> Meus dados</a>
                         </li>
                         <li>
                             <a class="pointer" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Encerrar sessão</a>

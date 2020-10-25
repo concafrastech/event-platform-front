@@ -63,7 +63,7 @@
         </div>
 <!--        <div class="alert alert-success" *ngIf="status == 'success'">
             Mensaje Enviado!
-            Ver en <a [routerLink]="['/mensajes/enviados']">mensajes enviados</a>
+            Ver en <a [routerLink]="['/mensages/enviados']">mensages enviados</a>
         </div>
         <div class="alert alert-danger" *ngIf="status == 'error'">
             Error al enviar mensaje.
@@ -85,8 +85,8 @@
             <input type="submit" value="{{title}}" class="btn btn-success" />
         </form>-->
         <ul class="pagination pull-right">
-            <li *ngIf="page > 1 && total > 0"><a [routerLink]="['/mensajes/conversation', prev_page]">Anterior</a></li>
-            <li *ngIf="pages != page && total > 0"><a [routerLink]="['/mensajes/conversation', next_page]">Próximo</a></li>
+            <li *ngIf="page > 1 && total > 0"><a [routerLink]="['/mensages/conversation', prev_page]">Anterior</a></li>
+            <li *ngIf="pages != page && total > 0"><a [routerLink]="['/mensages/conversation', next_page]">Próximo</a></li>
         </ul>
     </div>
 </div>

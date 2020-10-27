@@ -4,6 +4,7 @@ import {Publication} from '../../models/publication';
 import {GLOBAL} from '../../services/global';
 import {UserService} from '../../services/user.service';
 import {PublicationService} from '../../services/publication.service';
+import { GamificationService } from 'angular-gamification';
 
 @Component({
     selector: 'timeline',
@@ -27,7 +28,8 @@ export class TimelineComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _userService: UserService,
-        private _publicationService: PublicationService
+        private _publicationService: PublicationService,
+        private _gamificationService: GamificationService
     ) {
         this.title = 'Timeline';
         this.identity = this._userService.getIdentity();
@@ -39,6 +41,7 @@ export class TimelineComponent implements OnInit {
     ngOnInit() {
         console.log('[OK] Component: timeline.');
         this.getPublications(this.page);
+        this._gamificationService.achieveMission('timeline');
     }
 
     getPublications(page, adding = false) {

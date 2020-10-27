@@ -5,6 +5,7 @@ import {Follow} from '../../models/follow';
 import {UserService} from '../../services/user.service';
 import {FollowService} from '../../services/follow.service';
 import {GLOBAL} from '../../services/global';
+import { GamificationService } from 'angular-gamification';
 
 @Component({
     selector: 'users',
@@ -30,7 +31,8 @@ export class UsersComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _userService: UserService,
-        private _followService: FollowService
+        private _followService: FollowService,
+        private _gamificationService: GamificationService
     ) {
         this.title = 'Gente';
         this.url = GLOBAL.url;
@@ -42,6 +44,7 @@ export class UsersComponent implements OnInit {
     ngOnInit() {
         console.log('[OK] Component: users.');
         this.actualPage();
+        this._gamificationService.achieveMission('pessoas');
     }
 
     actualPage() {

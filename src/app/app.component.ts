@@ -54,6 +54,7 @@ export class AppComponent implements OnInit, DoCheck {
 
     initGamefication() {
         console.log('gamification: ', this._gamificationService);
+
         this._gamificationService.addBreakpoint(100, () => {
           console.log('breakpoint 100 callback: ', this._gamificationService.getPoints());
         });
@@ -63,7 +64,7 @@ export class AppComponent implements OnInit, DoCheck {
         this._gamificationService.addBreakpoint(300, () => {
           console.log('breakpoint 300 callback: ', this._gamificationService.getPoints());
         });
-        this._gamificationService.addBreakpoint(300, () => {
+        this._gamificationService.addBreakpoint(400, () => {
           console.log('breakpoint 400 callback: ', this._gamificationService.getPoints());
         });
     
@@ -76,23 +77,49 @@ export class AppComponent implements OnInit, DoCheck {
           this.progress.value = points;
         }, () => {
           console.log('component 400 start callback');
-          this.progress.max = 400;
+          this.progress.max = 3000;
           this.user.level = this._gamificationService.getLevel();
         });
+
+
         this._gamificationService.addMission('add', 50, '', () => {
           console.log('add mission start');
         }, () => {
           console.log('add mission achieve: ', this._gamificationService.getPoints());
         });
+
+        this._gamificationService.addMission('timeline', 10, '', () => {
+          console.log('add mission start');
+        }, () => {
+          console.log('add mission achieve: ', this._gamificationService.getPoints());
+        });
+
+        this._gamificationService.addMission('pessoas', 10, '', () => {
+          console.log('add mission start');
+        }, () => {
+          console.log('add mission achieve: ', this._gamificationService.getPoints());
+        });
+
+        this._gamificationService.addMission('mensagens', 10, '', () => {
+          console.log('add mission start');
+        }, () => {
+          console.log('add mission achieve: ', this._gamificationService.getPoints());
+        });
+
         this._gamificationService.addMission('save', 30, '', () => {
           console.log('save mission start');
         }, () => {
           console.log('save mission achieve: ', this._gamificationService.getPoints());
         });
+
         this._gamificationService.addMission('delete', 10, '', () => {
           console.log('delete mission start');
         }, () => {
           console.log('delete mission achieve: ', this._gamificationService.getPoints());
         });
+
+        console.log(this.user.level);
+        console.log(this.identity);
+
       }
 }

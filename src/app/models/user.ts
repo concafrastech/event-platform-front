@@ -9,6 +9,7 @@ export class User {
         public role: string,
         public image: string,
         public points: number,
+        public firstlogin: boolean,
         public level: {}
     ) {}
 }

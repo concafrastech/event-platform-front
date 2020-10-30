@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
         private _userService: UserService
     ) {
         this.title = 'Seja bem vindo';
-        this.user = new User("", "", "", "", "", "", "ROLE_USER", "", 0, {});
+        this.user = new User("", "", "", "", "", "", "ROLE_USER", "", 0, false, {});
     }
 
     ngOnInit() {

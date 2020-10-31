@@ -7,7 +7,7 @@ import {FollowService} from '../../../services/follow.service';
 import {GLOBAL} from '../../../services/global';
 
 @Component({
-    selector: 'users',
+    selector: 'message-users',
     templateUrl: './users.component.html',
     providers: [UserService, FollowService]
 })

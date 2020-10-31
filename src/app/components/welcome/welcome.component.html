@@ -5,10 +5,17 @@
   </button>
 </div>
 <div class="modal-body">
-  
-  <ul *ngIf="list.length">
-    <li *ngFor="let item of list">{{item}}</li>
-  </ul>
+  <div class="row">
+    <div class="col text-center">
+      <video #welcomevideo 
+        id="my-video" 
+        class="video-js vjs-big-play-centered mini-play"
+        width="680" 
+        height="480"
+        style="margin: auto;">
+      </video>
+    </div>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>

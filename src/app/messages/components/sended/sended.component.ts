@@ -9,7 +9,7 @@ import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 
 @Component({
-    selector: 'sended',
+    selector: 'message-sended',
     templateUrl: './sended.component.html',
     providers: [FollowService, MessageService]
 })

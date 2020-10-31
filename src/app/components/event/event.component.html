@@ -1,0 +1,134 @@
+<div id="navbar-wrapper" class="navigation">
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header" *ngIf="identity">
+                    <a [routerLink]="['/home']" [routerLinkActive]="['active']" class="navbar-brand">{{title}}</a>
+                </div>
+                <ul class="nav navbar-nav" *ngIf="false">
+                    <li>
+                        <a [routerLink]="['/home']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/timeline']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-th-list"></span> Timeline</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/gente']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-user"></span> Pessoas</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/mensages']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-envelope"></span> Mensagens</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
+                    <li>
+                        <a [routerLink]="['/login']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/register']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-user"></span> Cadastrar-se</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" *ngIf="identity">
+                    <li>
+                        <div>
+                            <h6>{{user.level.badge}} - {{user.points}} Pts</h6>
+                            <progress max="{{progress.max}}" value="{{progress.value}}"></progress>
+                        </div>
+                    </li>
+                    <li class="avatar">
+                        <img src="{{ url + 'get-image-user/' + identity.image }}" *ngIf="identity && identity.image" />
+                    </li>
+                    <li class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" href="#">{{identity.name}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a [routerLink]="['/perfil', identity._id]"><span class="glyphicon glyphicon-user"></span> Meu perfil</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/meus-dados']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-cog"></span> Meus dados</a>
+                            </li>
+                            <li>
+                                <a class="pointer" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Encerrar sessão</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <aside id="sidebar">
+            <ul id="sidemenu" class="sidebar-nav">
+                <li>
+                    <a [routerLink]="['/home']" [routerLinkActive]="['active']">
+                        <div class="row text-center"> 
+                            <span class="fa fa-home fa-4x text-center"> </span>
+                            <span class="sidebar-title">Página Inicial</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="row text-center"> 
+                            <span class="fa fa-graduation-cap fa-4x text-center"> </span>
+                            <span class="sidebar-title">Como usar a plataforma</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="row text-center"> 
+                            <span class="fa fa-cloud-download fa-4x text-center"> </span>
+                            <span class="sidebar-title">Área de Download</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="row text-center"> 
+                            <span class="fa fa-star fa-4x text-center"> </span>
+                            <span class="sidebar-title">Avalie a Palestra</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="row text-center"> 
+                            <span class="fa fa-terminal fa-4x text-center"> </span>
+                            <span class="sidebar-title">Conhecimento Espírita</span>
+                        </div>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+                        <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+                        <span class="sidebar-title">Management</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
+                        <li><a href="#"><i class="fa fa-caret-right"></i>Users</a></li>
+                        <li><a href="#"><i class="fa fa-caret-right"></i>Roles</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
+                        <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
+                        <span class="sidebar-title">Blog</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul id="submenu-3" class="panel-collapse collapse panel-switch" role="menu">
+                        <li><a href="#"><i class="fa fa-caret-right"></i>Posts</a></li>
+                        <li><a href="#"><i class="fa fa-caret-right"></i>Comments</a></li>
+                    </ul>
+                </li> -->
+            </ul>
+        </aside>            
+    </div>
+    <main id="page-content-wrapper" role="main">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    TESTE
+</footer>

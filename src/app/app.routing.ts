@@ -12,23 +12,33 @@ import { FollowingComponent } from './components/following/following.component';
 import { FollowedComponent } from './components/followed/followed.component';
 
 import {UserGuard} from './services/user.guard';
-import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HubComponent } from './components/hub/hub.component';
+import { AudithoriumComponent } from './components/audithorium/audithorium.component';
+import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
+import { EventComponent } from './components/event/event.component';
 
 const appRoutes: Routes = [
-    {path: '',  redirectTo: 'home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
-    {path: 'meus-dados', component: UserEditComponent, canActivate:[UserGuard]},
-    {path: 'gente', component: UsersComponent, canActivate:[UserGuard]},
-    {path: 'gente/:page', component: UsersComponent, canActivate:[UserGuard]},
-    {path: 'timeline', component: TimelineComponent, canActivate:[UserGuard]},
-    {path: 'perfil/:id', component: ProfileComponent, canActivate:[UserGuard]},
-    {path: 'seguindo/:id/:page', component: FollowingComponent, canActivate:[UserGuard]},
-    {path: 'seguidores/:id/:page', component: FollowedComponent, canActivate:[UserGuard]},
-    {path: '**', component: HomeComponent},
+    {
+        path: '',
+        component: EventComponent,
+        children: [
+            {path: '',  redirectTo: 'home', pathMatch: 'full'},
+            {path: 'home', component: HomeComponent, canActivate:[UserGuard]},
+            {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
+            {path: 'audithorium', component: AudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
+            {path: 'meus-dados', component: UserEditComponent, canActivate:[UserGuard]},
+            {path: 'gente', component: UsersComponent, canActivate:[UserGuard]},
+            {path: 'gente/:page', component: UsersComponent, canActivate:[UserGuard]},
+            {path: 'timeline', component: TimelineComponent, canActivate:[UserGuard]},
+            {path: 'perfil/:id', component: ProfileComponent, canActivate:[UserGuard]},
+            {path: 'seguindo/:id/:page', component: FollowingComponent, canActivate:[UserGuard]},
+            {path: 'seguidores/:id/:page', component: FollowedComponent, canActivate:[UserGuard]},
+        ],
+    },
+    {path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 export const appRoutingProviders: any[] = [];

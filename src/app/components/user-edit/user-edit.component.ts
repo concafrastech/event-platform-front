@@ -4,6 +4,10 @@ import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
 import {UploadService} from '../../services/upload.service';
 import {GLOBAL} from '../../services/global';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+defineLocale('pt-br', ptBrLocale);
 
 @Component({
     selector: 'user-edit',
@@ -22,13 +26,15 @@ export class UserEditComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _userService: UserService,
-        private _uploadService: UploadService
+        private _uploadService: UploadService,
+        private _bsLocaleService: BsLocaleService
     ) {
-        this.title = 'Atuaizar dados';
+        this.title = 'Atualizar Perfil';
         this.user = this._userService.getIdentity();
         this.token = this._userService.getToken();
         this.identity = this.user;
         this.url = GLOBAL.url;
+        this._bsLocaleService.use("pt-br");
     }
 
     ngOnInit() {

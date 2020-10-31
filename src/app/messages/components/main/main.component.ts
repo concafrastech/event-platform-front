@@ -1,7 +1,7 @@
 import {Component, OnInit, DoCheck} from '@angular/core';
 
 @Component({
-    selector: 'main',
+    selector: 'message-main',
     templateUrl: './main.component.html',
 })
 export class MainComponent implements OnInit {

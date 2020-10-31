@@ -29,8 +29,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(){
-        if(this.identity){
-            this.openWelcomeComponent();
+        var welcome = localStorage.getItem("welcome");
+        if(this.identity && !this.identity.firstlogin){
+            if( welcome != "true" ){ 
+                this.openWelcomeComponent();
+            } else {
+                var tutorial = localStorage.getItem("tutorial");
+                if(tutorial != "true") {
+                    this.openTutorialComponent();
+                }
+            }
         }
     }
 
@@ -39,22 +47,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     openWelcomeComponent() {
         const initialState = {
-          list: [
-            'Open a modal with component',
-            'Pass your data',
-            'Do something else',
-            '...'
-          ],
           title: 'Seja bem vindo'
         };
         this.bsModalRef = this.modalService.show(WelcomeComponent, {initialState, class: 'modal-lg'});
         this.bsModalRef.content.closeBtnName = 'Próximo';
         this.bsModalRef.onHide.subscribe((e) => {
-            this.openModalWithComponent();
+            localStorage.setItem("welcome", "true");
+            this.openTutorialComponent();
         });
     }
 
-    openModalWithComponent() {
+    openTutorialComponent() {
         const initialState = {
           list: [
             'Open a modal with component',
@@ -66,5 +69,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
         };
         this.bsModalRef2 = this.modalService.show(TutorialComponent, {initialState, class: 'modal-lg'});
         this.bsModalRef2.content.closeBtnName = 'Próximo';
+        this.bsModalRef2.onHide.subscribe((e) => {
+            localStorage.setItem("tutorial", "true");
+        });
     }
 }

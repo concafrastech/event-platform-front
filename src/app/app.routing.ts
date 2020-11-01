@@ -5,11 +5,11 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
-import { UsersComponent } from './components/users/users.component';
-import { TimelineComponent } from './components/timeline/timeline.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { FollowingComponent } from './components/following/following.component';
-import { FollowedComponent } from './components/followed/followed.component';
+import { UsersComponent } from './social-network/users/users.component';
+import { TimelineComponent } from './social-network/timeline/timeline.component';
+import { ProfileComponent } from './social-network/profile/profile.component';
+import { FollowingComponent } from './social-network/following/following.component';
+import { FollowedComponent } from './social-network/followed/followed.component';
 
 import {UserGuard} from './services/user.guard';
 import { HubComponent } from './components/hub/hub.component';

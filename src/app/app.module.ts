@@ -22,13 +22,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
-import { UsersComponent } from './components/users/users.component';
+import { UsersComponent } from './social-network/users/users.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { TimelineComponent } from './components/timeline/timeline.component';
-import { PublicationsComponent } from './components/publications/publications.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { FollowingComponent } from './components/following/following.component';
-import { FollowedComponent } from './components/followed/followed.component';
+import { TimelineComponent } from './social-network/timeline/timeline.component';
+import { PublicationsComponent } from './social-network/publications/publications.component';
+import { ProfileComponent } from './social-network/profile/profile.component';
+import { FollowingComponent } from './social-network/following/following.component';
+import { FollowedComponent } from './social-network/followed/followed.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { HubComponent } from './components/hub/hub.component';
@@ -42,6 +42,7 @@ import { GamificationModule } from 'angular-gamification';
 import { NgBootstrapAlertModule } from 'ng-bootstrap-alert';
 import { AngularTawkComponent, AngularTawkModule } from 'angular-tawk';
 import { EventComponent } from './components/event/event.component';
+import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 //import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
 //import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
 //import { VideojsComponent } from './pages/channels/videojs/videojs.component';
@@ -82,6 +83,7 @@ const GamificationConfig = {
     AudithoriumComponent,
     SelectJourneyComponent,
     EventComponent,
+    ZoomusComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

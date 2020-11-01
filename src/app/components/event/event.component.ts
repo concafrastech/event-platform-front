@@ -5,6 +5,8 @@ import {GLOBAL} from '../../services/global';
 import * as $ from 'jquery';
 import { GamificationService } from 'angular-gamification';
 import { NgBootstrapAlert, NgBootstrapAlertService } from 'ng-bootstrap-alert';
+import { TutorialComponent } from '../tutorial/tutorial.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'app-event',
@@ -18,14 +20,15 @@ export class EventComponent implements OnInit, DoCheck {
     public url: string;
     public user;
     public progress;
-    public tawkId = "5f918320b5546b2d39909b27";
+    bsModalRef: BsModalRef;
 
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
         private _userService: UserService,
         public _gamificationService: GamificationService,
-        public _bootstrapAlertService: NgBootstrapAlertService
+        public _bootstrapAlertService: NgBootstrapAlertService,
+        private modalService: BsModalService
     ) {
         this.title = 'EVENTO';
         this.url = GLOBAL.url;
@@ -131,5 +134,22 @@ export class EventComponent implements OnInit, DoCheck {
         console.log(this.user.level);
         console.log(this.identity);
 
-      }
+    }
+
+    openTutorialComponent() {
+      const initialState = {
+        list: [
+          'Open a modal with component',
+          'Pass your data',
+          'Do something else',
+          '...'
+        ],
+        title: 'Tutorial'
+      };
+      this.bsModalRef = this.modalService.show(TutorialComponent, {initialState, class: 'modal-lg'});
+      this.bsModalRef.content.closeBtnName = 'Próximo';
+      this.bsModalRef.onHide.subscribe((e) => {
+          localStorage.setItem("tutorial", "true");
+      });
+    }
 }

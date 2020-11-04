@@ -34,6 +34,7 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { HubComponent } from './components/hub/hub.component';
 import { AudithoriumComponent } from './components/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 // Services
 import { UserService } from './services/user.service';
@@ -84,6 +85,7 @@ const GamificationConfig = {
     SelectJourneyComponent,
     EventComponent,
     ZoomusComponent,
+    AdminComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

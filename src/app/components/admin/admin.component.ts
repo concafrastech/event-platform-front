@@ -9,16 +9,25 @@ import { AdminService } from '../../services/admin.service';
 })
 export class AdminComponent implements OnInit {
   public title: String;
+  public flagConteudo: Boolean;
 
   constructor(
     private _adminService: AdminService
   ) {
-    this.title = 'Admin';
+    this.title = 'Tela Administrativa';
+    this.flagConteudo = true;
   }
 
   ngOnInit(): void {
     console.log('[OK] Component: admin.');
     this._adminService.helloWorld();
+  }
+
+  changeFlag(flag) {
+    if(flag == 'especifico')
+      this.flagConteudo = true;
+    else
+      this.flagConteudo = false;
   }
 
 }

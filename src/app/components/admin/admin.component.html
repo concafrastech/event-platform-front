@@ -1,1 +1,64 @@
-<p>admin works!</p>
+<div class="col-lg-8 col-lg-offset-2">
+    <div id="center">
+        <h1>{{ title }}</h1>
+        <h3>Gerenciamento de conteúdo</h3>
+        <p>
+            <a class="btn btn-primary btn-lg" (click)="changeFlag('especifico')" role="button">Tema Específico / Tema Atual</a>
+            <a class="btn btn-primary btn-lg" (click)="changeFlag('nova')" role="button">Nova Dimensão do Conhecimento</a>
+        </p>
+        <div *ngIf="flagConteudo" class="formConteudo">
+            <form>
+                <div class="form-group row">
+                    <label for="inputLinkVideo" class="col-sm-2 col-form-label">Link Video</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputLinkVideo" placeholder="URL do vídeo (Youtube / Vimeo)">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputUploadImage" class="col-sm-2 col-form-label">Imagem</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control-file" id="inputUploadImage">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputUploadFile" class="col-sm-2 col-form-label">PDF / DOC</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control-file" id="inputUploadFile">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputLinkExterno" class="col-sm-2 col-form-label" style="vertical-align: middle;">Link Externo</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputLinkExterno" placeholder="Link de conteúdo externo (Jogo, site, etc..)">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success btn-enviar">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="!flagConteudo" class="formConteudo">
+            <form>
+                <div class="form-group row">
+                    <label for="inputLinkVideo" class="col-sm-2 col-form-label">Link Video</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputLinkVideo" placeholder="URL do vídeo (Youtube / Vimeo)">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputLinkExterno" class="col-sm-2 col-form-label" style="vertical-align: middle;">Link Externo</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputLinkExterno" placeholder="Link de conteúdo externo (Jogo, site, etc..)">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success btn-enviar">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>  

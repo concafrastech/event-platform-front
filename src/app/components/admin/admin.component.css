@@ -16,3 +16,11 @@ div.form-group {
 .btn-enviar {
     width: 100px;
 }
+
+.selectConteudo {
+    width: 100%;
+}
+
+.divCorpoSelect {
+    padding-bottom: 25px;
+}

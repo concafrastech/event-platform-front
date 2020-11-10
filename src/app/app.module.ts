@@ -35,6 +35,7 @@ import { HubComponent } from './components/hub/hub.component';
 import { AudithoriumComponent } from './components/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { FormGroupConteudoComponent } from './components/admin/form-group-conteudo/form-group-conteudo.component';
 
 // Services
 import { UserService } from './services/user.service';
@@ -88,6 +89,7 @@ const GamificationConfig = {
     ZoomusComponent,
     IframeComponent,
     AdminComponent,
+    FormGroupConteudoComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

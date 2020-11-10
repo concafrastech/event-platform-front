@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { UsersComponent } from './social-network/users/users.component';
 import { TimelineComponent } from './social-network/timeline/timeline.component';
 import { ProfileComponent } from './social-network/profile/profile.component';
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
             {path: 'perfil/:id', component: ProfileComponent, canActivate:[UserGuard]},
             {path: 'seguindo/:id/:page', component: FollowingComponent, canActivate:[UserGuard]},
             {path: 'seguidores/:id/:page', component: FollowedComponent, canActivate:[UserGuard]},
+            {path: 'admin', component: AdminComponent, canActivate:[UserGuard]},
         ],
     },
     {path: '**', redirectTo: 'home', pathMatch: 'full'},

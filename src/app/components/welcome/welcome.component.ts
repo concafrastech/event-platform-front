@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-
+import * as $ from 'jquery';
 declare let videojs: any;
 
 @Component({
@@ -17,6 +17,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
    // Instancia do video.js.
    videoJSplayer: any;
+   mediaPlayer: any;
    // Acessa o elemento video do html5 via viewchild.
    @ViewChild('welcomevideo') vid: ElementRef;
  
@@ -50,9 +51,10 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
               enablejsapi: 1,
               origin: this.originData
             }
-          }
+          },
         }
       ], 
+      controlBar: { playToggle: false }
     };
 
 

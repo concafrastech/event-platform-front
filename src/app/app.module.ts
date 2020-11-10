@@ -43,6 +43,7 @@ import { NgBootstrapAlertModule } from 'ng-bootstrap-alert';
 import { AngularTawkComponent, AngularTawkModule } from 'angular-tawk';
 import { EventComponent } from './components/event/event.component';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
+import { IframeComponent } from './components/channels/iframe/iframe.component';
 //import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
 //import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
 //import { VideojsComponent } from './pages/channels/videojs/videojs.component';
@@ -84,6 +85,7 @@ const GamificationConfig = {
     SelectJourneyComponent,
     EventComponent,
     ZoomusComponent,
+    IframeComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "git push origin main && firebase deploy"
+    "deploy": "git push origin main && ng build --aot --prod && firebase deploy"
   },
   "engines": {
     "node": "14.12.0",
@@ -29,6 +29,7 @@
     "@angular/platform-browser": "^10.2.0",
     "@angular/platform-browser-dynamic": "^10.2.0",
     "@angular/router": "^10.2.0",
+    "@zoomus/websdk": "^1.8.1",
     "angular-gamification": "^0.1.1",
     "angular-in-memory-web-api": "^0.11.0",
     "angular-tawk": "0.0.4",
@@ -36,6 +37,7 @@
     "core-js": "^2.5.7",
     "flv.js": "^1.5.0",
     "jquery": "^3.5.1",
+    "mediaelement": "^4.2.16",
     "modal-video": "^2.4.2",
     "moment": "^2.29.1",
     "ng-bootstrap-alert": "^2.0.0",

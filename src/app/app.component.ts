@@ -2,9 +2,6 @@ import {Component, OnInit, DoCheck} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {UserService} from './services/user.service';
 import {GLOBAL} from './services/global';
-import * as $ from 'jquery';
-import { GamificationService } from 'angular-gamification';
-import { NgBootstrapAlert, NgBootstrapAlertService } from 'ng-bootstrap-alert';
 
 @Component({
     selector: 'app-root',

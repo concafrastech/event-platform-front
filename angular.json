@@ -44,6 +44,9 @@
               "node_modules/video.js/dist/video.min.js",
               "node_modules/videojs-youtube/dist/Youtube.min.js",
               "node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "@zoomus/websdk"
             ]
           },
           "configurations": {

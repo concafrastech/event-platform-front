@@ -17,10 +17,12 @@ import { HubComponent } from './components/hub/hub.component';
 import { AudithoriumComponent } from './components/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { EventComponent } from './components/event/event.component';
+import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'testezoom', component: ZoomusComponent},
     {
         path: '',
         component: EventComponent,

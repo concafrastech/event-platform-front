@@ -1,5 +1,7 @@
 <main>
     <h1>Zoom WebSDK Sample Angular</h1>
-  
+    <input #box type="text" 
+        (keyup.enter)="update(box.value)"
+        (blur)="update(box.value)">
     <button (click)="getSignature()">Join Meeting</button>
 </main>

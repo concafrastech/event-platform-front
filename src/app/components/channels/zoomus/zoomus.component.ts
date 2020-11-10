@@ -19,12 +19,17 @@ export class ZoomusComponent implements OnInit {
   // setup your signature endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
   signatureEndpoint = GLOBAL.signatureEndpoint
   apiKey = '-yM1c8utSjmJxN1Okh6YEg'
-  meetingNumber = 75044206440
+  meetingNumber = 75895039904
   role = 0
   leaveUrl = GLOBAL.leaveUrl
   userName = 'Angular'
   userEmail = ''
-  passWord = 'w8uHVn'
+  passWord = 'scy8W3'
+
+  update(value: string) { 
+
+    this.userName = value; 
+  }
 
   constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document) {
 

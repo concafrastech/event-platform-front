@@ -24,7 +24,7 @@ export class ZoomusComponent implements OnInit {
   leaveUrl = GLOBAL.leaveUrl
   userName = 'Angular'
   userEmail = ''
-  passWord = ''
+  passWord = 'w8uHVn'
 
   constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document) {
 

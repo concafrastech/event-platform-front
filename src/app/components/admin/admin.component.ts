@@ -50,9 +50,24 @@ export class AdminComponent implements OnInit {
     } else if(value == 'zoom') {
       content = {  
         id: 'Zoom',
-        label: 'Link Zoom',
-        type: 'text',
-        placeholder: 'URL da Sala do Zoom'
+        inputs: [
+          {
+            name: 'API_KEY',
+            label: 'API_KEY',
+            type: 'text',
+            placeholder: 'Insira aqui sua API_KEY'
+          },{
+            name: 'API_SECRET',
+            label: 'API_SECRET',
+            type: 'text',
+            placeholder: 'Insira aqui sua API_SECRET'
+          },{
+            name: 'Zoom',
+            label: 'Número da Sala',
+            type: 'text',
+            placeholder: 'Insira aqui o número da sala do Zoom'
+          }
+        ]
       }
     }
     this.contents.push(content);

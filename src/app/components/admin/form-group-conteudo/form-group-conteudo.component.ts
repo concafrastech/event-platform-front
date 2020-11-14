@@ -13,6 +13,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         </div>
       </div>
       <div class="row padd5">
+        <input class="form-control" type="text" placeholder="Ordem: {{ ordem }}" readonly>
+      </div>
+      <div class="row padd5">
         <button class="btn btn-danger" (click)="removeType(content)"><i class="glyphicon glyphicon-trash"></i></button>
       </div>
     </div>
@@ -21,6 +24,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class FormGroupConteudoComponent {
 
   @Input() content: any;
+  @Input() ordem: any;
 
   @Output() excluir = new EventEmitter();
 

@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   public flagConteudo: Boolean;
   public types: any = ['audio:Áudio','img:Imagem','doc:Documento / PDF','zoom:Sala do Zoom','youtube:YouTube','externo:Conteúdo externo'];
   public contents: any;
+  public ordem: any;
 
   constructor(
     private _adminService: AdminService
@@ -19,6 +20,7 @@ export class AdminComponent implements OnInit {
     this.title = 'Gerenciamento de conteúdo';
     this.flagConteudo = true;
     this.contents = [];
+    this.ordem = 0;
   }
 
   ngOnInit(): void {
@@ -48,7 +50,7 @@ export class AdminComponent implements OnInit {
         ]
       }
     } else if(value == 'zoom') {
-      content = {  
+      content = {
         id: 'Zoom',
         inputs: [
           {
@@ -118,14 +120,16 @@ export class AdminComponent implements OnInit {
         ]
       }
     }
-    
-    if(value != "")
+
+    if(value != "") {
       this.contents.push(content);
+      this.ordem = this.contents.length;
+    }
   }
 
   removeType(event) {
     let arr = this.contents;
-    
+
     arr = this.arrayRemove(arr, event);
 
     this.contents = arr;

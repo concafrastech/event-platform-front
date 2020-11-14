@@ -4,7 +4,7 @@
         <p>
             Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que deseja subir (a ordem importa):
             <!-- <a class="btn btn-primary btn-conteudoplus" (click)="changeFlag('especifico')" role="button">+</a> -->
-        </p>        
+        </p>
         <div class="formConteudo">
             <!-- SELECT DINÂMICO -->
             <div class="divCorpoSelect">
@@ -14,12 +14,12 @@
                 </select>
             </div>
             <form>
-                <form-group-conteudo *ngFor="let content of contents" [content]="content" (excluir)="removeType($event)"></form-group-conteudo>
+                <form-group-conteudo *ngFor="let content of contents" [content]="content" [ordem]="ordem" (excluir)="removeType($event)"></form-group-conteudo>
                 <button type="submit" class="btn btn-success" *ngIf="contents.length != 0">Enviar</button>
             </form>
         </div>
     </div>
-</div>  
+</div>
 
 <!-- <div class="form-group row">
     <label for="inputLinkVideo" class="col-sm-2 col-form-label">Link Video</label>

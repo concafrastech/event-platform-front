@@ -12,7 +12,6 @@ export class AdminComponent implements OnInit {
   public flagConteudo: Boolean;
   public types: any = ['audio:Áudio','img:Imagem','doc:Documento / PDF','zoom:Sala do Zoom','youtube:YouTube','externo:Conteúdo externo'];
   public contents: any;
-  private indice;
 
   constructor(
     private _adminService: AdminService
@@ -20,7 +19,6 @@ export class AdminComponent implements OnInit {
     this.title = 'Gerenciamento de conteúdo';
     this.flagConteudo = true;
     this.contents = [];
-    this.indice = 0;
   }
 
   ngOnInit(): void {
@@ -29,15 +27,11 @@ export class AdminComponent implements OnInit {
   }
 
   submitType(value) {
-    console.log(value);
     let content = {}
-
-    this.indice++;
 
     if(value == 'youtube') {
       content = {
         id: 'YouTube',
-        indice: this.indice,
         inputs: [
           {
             name: 'YouTubeLive',
@@ -56,7 +50,6 @@ export class AdminComponent implements OnInit {
     } else if(value == 'zoom') {
       content = {  
         id: 'Zoom',
-        indice: this.indice,
         inputs: [
           {
             name: 'API_KEY',
@@ -79,7 +72,6 @@ export class AdminComponent implements OnInit {
     } else if(value == 'audio') {
       content = {
         id: 'Áudio',
-        indice: this.indice,
         inputs: [
           {
             name: 'Audio',
@@ -92,7 +84,6 @@ export class AdminComponent implements OnInit {
     } else if(value == 'img') {
       content = {
         id: 'Imagem',
-        indice: this.indice,
         inputs: [
           {
             name: 'Imagem',
@@ -105,7 +96,6 @@ export class AdminComponent implements OnInit {
     } else if(value == 'doc') {
       content = {
         id: 'Documentos',
-        indice: this.indice,
         inputs: [
           {
             name: 'Documentos',
@@ -118,7 +108,6 @@ export class AdminComponent implements OnInit {
     } else if(value == 'externo') {
       content = {
         id: 'Externo',
-        indice: this.indice,
         inputs: [
           {
             name: 'Externo',
@@ -131,12 +120,20 @@ export class AdminComponent implements OnInit {
     }
 
     this.contents.push(content);
-    console.log(this.contents.length);
-    console.log(this.indice);
   }
 
-  removeType() {
-    console.log("Clicou aqui");
+  removeType(event) {
+    let arr = this.contents;
+    
+    arr = this.arrayRemove(arr, event);
+
+    this.contents = arr;
+  }
+
+  private arrayRemove(arr, value) {
+    return arr.filter(function(element) {
+      return element.id != value.id;
+    });
   }
 
   changeFlag(flag) {

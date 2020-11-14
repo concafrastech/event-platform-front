@@ -13,7 +13,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         </div>
       </div>
       <div class="row padd5">
-        <button class="btn btn-danger" (click)="removeType(content.indice)"><i class="glyphicon glyphicon-trash"></i></button>
+        <button class="btn btn-danger" (click)="removeType(content)"><i class="glyphicon glyphicon-trash"></i></button>
       </div>
     </div>
   `

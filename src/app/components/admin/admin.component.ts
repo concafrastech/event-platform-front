@@ -31,9 +31,12 @@ export class AdminComponent implements OnInit {
   submitType(value) {
     let content = {}
 
+    this.ordem++;
+
     if(value == 'youtube') {
       content = {
-        id: 'YouTube',
+        id: 'YouTube' + this.ordem,
+        ordem: this.ordem,
         inputs: [
           {
             name: 'YouTubeLive',
@@ -51,7 +54,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'zoom') {
       content = {
-        id: 'Zoom',
+        id: 'Zoom' + this.ordem,
+        ordem: this.ordem,
         inputs: [
           {
             name: 'API_KEY',
@@ -73,7 +77,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'audio') {
       content = {
-        id: 'Áudio',
+        id: 'Áudio' + this.ordem,
+        ordem: this.ordem,
         inputs: [
           {
             name: 'Audio',
@@ -85,7 +90,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'img') {
       content = {
-        id: 'Imagem',
+        id: 'Imagem' + this.ordem,
+        ordem: this.ordem,
         inputs: [
           {
             name: 'Imagem',
@@ -97,7 +103,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'doc') {
       content = {
-        id: 'Documentos',
+        id: 'Documentos' + this.ordem,
+        ordem: this.ordem,
         inputs: [
           {
             name: 'Documentos',
@@ -109,7 +116,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'externo') {
       content = {
-        id: 'Externo',
+        id: 'Externo' + this.ordem,
+        ordem: this.ordem,
         inputs: [
           {
             name: 'Externo',
@@ -121,16 +129,16 @@ export class AdminComponent implements OnInit {
       }
     }
 
-    if(value != "") {
+    if(value != "")
       this.contents.push(content);
-      this.ordem = this.contents.length;
-    }
   }
 
   removeType(event) {
     let arr = this.contents;
 
     arr = this.arrayRemove(arr, event);
+
+    this.ordem--;
 
     this.contents = arr;
   }

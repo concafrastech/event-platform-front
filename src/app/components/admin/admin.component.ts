@@ -118,8 +118,9 @@ export class AdminComponent implements OnInit {
         ]
       }
     }
-
-    this.contents.push(content);
+    
+    if(value != "")
+      this.contents.push(content);
   }
 
   removeType(event) {

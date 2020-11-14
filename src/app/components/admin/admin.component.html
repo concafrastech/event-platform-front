@@ -2,14 +2,14 @@
     <div id="center">
         <h1>{{ title }}</h1>
         <p>
-            Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que deseja subir:
+            Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que deseja subir (a ordem importa):
             <!-- <a class="btn btn-primary btn-conteudoplus" (click)="changeFlag('especifico')" role="button">+</a> -->
         </p>        
         <div class="formConteudo">
             <!-- SELECT DINÂMICO -->
             <div class="divCorpoSelect">
                 <select class="form-control selectConteudo" (change)="submitType($event.target.value)">
-                    <option>Tipo do conteúdo</option>
+                    <option value="">Tipo do conteúdo</option>
                     <option *ngFor="let type of types" value="{{ type.split(':')[0] }}">{{ type.split(':')[1] }}</option>
                 </select>
             </div>

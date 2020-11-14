@@ -10,8 +10,9 @@ import { AdminService } from '../../services/admin.service';
 export class AdminComponent implements OnInit {
   public title: String;
   public flagConteudo: Boolean;
-  public types: any = ['audio:Áudio','img:Image','doc:Documento / PDF','zoom:Sala do Zoom','youtube:YouTube','externo:Conteúdo externo'];
+  public types: any = ['audio:Áudio','img:Imagem','doc:Documento / PDF','zoom:Sala do Zoom','youtube:YouTube','externo:Conteúdo externo'];
   public contents: any;
+  private indice;
 
   constructor(
     private _adminService: AdminService
@@ -19,6 +20,7 @@ export class AdminComponent implements OnInit {
     this.title = 'Gerenciamento de conteúdo';
     this.flagConteudo = true;
     this.contents = [];
+    this.indice = 0;
   }
 
   ngOnInit(): void {
@@ -29,9 +31,13 @@ export class AdminComponent implements OnInit {
   submitType(value) {
     console.log(value);
     let content = {}
+
+    this.indice++;
+
     if(value == 'youtube') {
       content = {
         id: 'YouTube',
+        indice: this.indice,
         inputs: [
           {
             name: 'YouTubeLive',
@@ -50,6 +56,7 @@ export class AdminComponent implements OnInit {
     } else if(value == 'zoom') {
       content = {  
         id: 'Zoom',
+        indice: this.indice,
         inputs: [
           {
             name: 'API_KEY',
@@ -69,9 +76,67 @@ export class AdminComponent implements OnInit {
           }
         ]
       }
+    } else if(value == 'audio') {
+      content = {
+        id: 'Áudio',
+        indice: this.indice,
+        inputs: [
+          {
+            name: 'Audio',
+            label: 'Arquivo de áudio',
+            type: 'file',
+            placeholder: ''
+          }
+        ]
+      }
+    } else if(value == 'img') {
+      content = {
+        id: 'Imagem',
+        indice: this.indice,
+        inputs: [
+          {
+            name: 'Imagem',
+            label: 'Arquivo de imagem',
+            type: 'file',
+            placeholder: ''
+          }
+        ]
+      }
+    } else if(value == 'doc') {
+      content = {
+        id: 'Documentos',
+        indice: this.indice,
+        inputs: [
+          {
+            name: 'Documentos',
+            label: 'Documentos / PDF',
+            type: 'file',
+            placeholder: ''
+          }
+        ]
+      }
+    } else if(value == 'externo') {
+      content = {
+        id: 'Externo',
+        indice: this.indice,
+        inputs: [
+          {
+            name: 'Externo',
+            label: 'Conteúdo externo',
+            type: 'text',
+            placeholder: 'URL do conteúdo externo (Jogo, conteúdo interativo, etc...)'
+          }
+        ]
+      }
     }
+
     this.contents.push(content);
-    console.log(this.contents);
+    console.log(this.contents.length);
+    console.log(this.indice);
+  }
+
+  removeType() {
+    console.log("Clicou aqui");
   }
 
   changeFlag(flag) {

@@ -1,3 +1,15 @@
 div.row {
     padding: 10px 0;
 }
+
+.padd5 {
+    padding: 5px;
+}
+
+.padd10-vert {
+    padding: 10px 5px;
+}
+
+.btn {
+    margin: 0;
+}

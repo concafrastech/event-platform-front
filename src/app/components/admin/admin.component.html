@@ -14,7 +14,7 @@
                 </select>
             </div>
             <form>
-                <form-group-conteudo *ngFor="let content of contents" [content]="content" [ordem]="ordem" (excluir)="removeType($event)"></form-group-conteudo>
+                <form-group-conteudo *ngFor="let content of contents; let i = index" [content]="content" [ordem]="i" (excluir)="removeType($event)"></form-group-conteudo>
                 <button type="submit" class="btn btn-success" *ngIf="contents.length != 0">Enviar</button>
             </form>
         </div>

@@ -12,7 +12,7 @@ export class AdminComponent implements OnInit {
   public flagConteudo: Boolean;
   public types: any = ['audio:Áudio','img:Imagem','doc:Documento / PDF','zoom:Sala do Zoom','youtube:YouTube','externo:Conteúdo externo'];
   public contents: any;
-  public ordem: any;
+  public idAux: any;
 
   constructor(
     private _adminService: AdminService
@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
     this.title = 'Gerenciamento de conteúdo';
     this.flagConteudo = true;
     this.contents = [];
-    this.ordem = 0;
+    this.idAux = 0;
   }
 
   ngOnInit(): void {
@@ -31,12 +31,12 @@ export class AdminComponent implements OnInit {
   submitType(value) {
     let content = {}
 
-    this.ordem++;
+    this.idAux++;
 
     if(value == 'youtube') {
       content = {
-        id: 'YouTube' + this.ordem,
-        ordem: this.ordem,
+        id: 'youtube' + this.idAux,
+        title: 'YouTube',
         inputs: [
           {
             name: 'YouTubeLive',
@@ -54,8 +54,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'zoom') {
       content = {
-        id: 'Zoom' + this.ordem,
-        ordem: this.ordem,
+        id: 'zoom' + this.idAux,
+        title: 'Zoom',
         inputs: [
           {
             name: 'API_KEY',
@@ -77,8 +77,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'audio') {
       content = {
-        id: 'Áudio' + this.ordem,
-        ordem: this.ordem,
+        id: 'audio' + this.idAux,
+        title: 'Áudio',
         inputs: [
           {
             name: 'Audio',
@@ -90,8 +90,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'img') {
       content = {
-        id: 'Imagem' + this.ordem,
-        ordem: this.ordem,
+        id: 'imagem' + this.idAux,
+        title: 'Imagem',
         inputs: [
           {
             name: 'Imagem',
@@ -103,8 +103,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'doc') {
       content = {
-        id: 'Documentos' + this.ordem,
-        ordem: this.ordem,
+        id: 'documentos' + this.idAux,
+        title: 'Documentos',
         inputs: [
           {
             name: 'Documentos',
@@ -116,8 +116,8 @@ export class AdminComponent implements OnInit {
       }
     } else if(value == 'externo') {
       content = {
-        id: 'Externo' + this.ordem,
-        ordem: this.ordem,
+        id: 'externo' + this.idAux,
+        title: 'Externo',
         inputs: [
           {
             name: 'Externo',
@@ -134,13 +134,17 @@ export class AdminComponent implements OnInit {
   }
 
   removeType(event) {
+    console.log(event);
+
     let arr = this.contents;
 
     arr = this.arrayRemove(arr, event);
 
-    this.ordem--;
+    this.idAux--;
 
     this.contents = arr;
+
+    console.log(this.contents);
   }
 
   private arrayRemove(arr, value) {

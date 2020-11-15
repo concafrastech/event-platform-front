@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: [`./form-group-conteudo.component.css`],
   template: `
     <div class="form-group row">
-      <h3>{{ content.id }}</h3>
+      <h3>{{ content.title }}</h3>
       <div *ngFor="let input of content.inputs" class="row">
         <label for="{{ 'input' + content.id + input.name }}" class="col-sm-2 col-form-label padd10-vert">{{ input.label }}</label>
         <div class="col-sm-10 padd5">
@@ -13,7 +13,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         </div>
       </div>
       <div class="row padd5">
-        <input class="form-control" type="text" placeholder="Ordem: {{ content.ordem }}" readonly>
+        <input class="form-control" type="text" placeholder="Ordem: {{ ordem + 1 }}" readonly>
       </div>
       <div class="row padd5">
         <button class="btn btn-danger" (click)="removeType(content)"><i class="glyphicon glyphicon-trash"></i></button>

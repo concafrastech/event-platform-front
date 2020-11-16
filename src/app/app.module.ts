@@ -46,6 +46,9 @@ import { AngularTawkComponent, AngularTawkModule } from 'angular-tawk';
 import { EventComponent } from './components/event/event.component';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { IframeComponent } from './components/channels/iframe/iframe.component';
+import { ConferenceListComponent } from './components/admin/conference/conference-list/conference-list.component';
+import { ConferenceEditComponent } from './components/admin/conference/conference-edit/conference-edit.component';
+import { ConferenceAddComponent } from './components/admin/conference/conference-add/conference-add.component';
 //import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
 //import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
 //import { VideojsComponent } from './pages/channels/videojs/videojs.component';
@@ -90,6 +93,9 @@ const GamificationConfig = {
     IframeComponent,
     AdminComponent,
     FormGroupConteudoComponent,
+    ConferenceListComponent,
+    ConferenceEditComponent,
+    ConferenceAddComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

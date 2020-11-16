@@ -46,7 +46,8 @@
               "node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.js"
             ],
             "allowedCommonJsDependencies": [
-              "@zoomus/websdk"
+              "@zoomus/websdk",
+              "svg-pan-zoom"
             ]
           },
           "configurations": {

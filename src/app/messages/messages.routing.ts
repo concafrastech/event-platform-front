@@ -12,7 +12,7 @@ import {UserGuard} from '../services/user.guard';
 
 const messagesRoutes: Routes = [
     {
-        path: 'mensages',
+        path: 'mensagens',
         component: MainComponent,
         children: [
             {path: '', redirectTo: 'enviar', pathMatch: 'full'},

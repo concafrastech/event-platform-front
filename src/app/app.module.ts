@@ -59,6 +59,7 @@ import { AngularTawkComponent, AngularTawkModule } from 'angular-tawk';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ContentComponent } from './admin/content/content.component';
 import { FormGroupConteudoComponent } from './admin/content/form-group-conteudo/form-group-conteudo.component';
+import { SocialDashboardComponent } from './social-network/social-dashboard/social-dashboard.component';
 
 
 const levels = [
@@ -85,6 +86,7 @@ const GamificationConfig = {
     HomeComponent,
     WelcomeComponent,
     ProfileEditComponent,
+    SocialDashboardComponent,
     UsersComponent,
     SidebarComponent,
     TimelineComponent,

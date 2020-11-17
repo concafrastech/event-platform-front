@@ -29,7 +29,7 @@ export class EpicAddComponent implements OnInit {
     private _userService: UserService,
     private _bsLocaleService: BsLocaleService
   ) { 
-    this.title = 'Adicionar Evento';
+    this.title = 'Adicionar Épicos';
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }

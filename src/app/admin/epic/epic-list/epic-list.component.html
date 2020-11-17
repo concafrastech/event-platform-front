@@ -4,15 +4,9 @@
         <div class="item-epic" *ngFor="let epic of epics">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="image-epic pull-left">
-                        <a [routerLink]="['/editepic', epic._id]">
-                            <img src="{{url + 'get-image-epic/' + epic.image}}" *ngIf="epic.image" />
-                            <img src="assets/epic.png" class="avatar-default" *ngIf="!epic.image" />
-                        </a>
-                    </div>
                     <div class="epicname pull-left">
                         <p class="name-surname">
-                            <a [routerLink]="['/editepic', epic._id]">
+                            <a [routerLink]="['/admin/epic/edit', epic._id]">
                                 {{epic.name}}
                             </a>
                         </p>

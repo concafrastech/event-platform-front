@@ -32,7 +32,7 @@ export class EpicListComponent implements OnInit {
       private _epicService: EpicService,
       private _userService: UserService
   ) {
-      this.title = 'Lista Eventos';
+      this.title = 'Lista de Épicos';
       this.url = GLOBAL.url;
       this.identity = this._userService.getIdentity();
       this.token = this._userService.getToken();

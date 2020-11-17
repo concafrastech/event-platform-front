@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../../services/admin.service';
+import { ContentService } from '../../services/content.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css'],
-  providers: [AdminService]
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.css'],
+  providers: [ContentService]
 })
-export class AdminComponent implements OnInit {
+export class ContentComponent implements OnInit {
   public title: String;
   public flagConteudo: Boolean;
   public types: any = ['audio:Áudio','img:Imagem','doc:Documento / PDF','zoom:Sala do Zoom','youtube:YouTube','externo:Conteúdo externo'];
@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   public idAux: any;
 
   constructor(
-    private _adminService: AdminService
+    private _contentService: ContentService
   ) {
     this.title = 'Gerenciamento de conteúdo';
     this.flagConteudo = true;
@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('[OK] Component: admin.');
-    this._adminService.helloWorld();
+    this._contentService.helloWorld();
   }
 
   submitType(value) {

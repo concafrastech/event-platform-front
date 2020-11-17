@@ -30,7 +30,7 @@ export class UserEditComponent implements OnInit {
     private _uploadService: UploadService,
     private _bsLocaleService: BsLocaleService
   ) { 
-    this.title = 'Editar Evento';
+    this.title = 'Editar Usuário';
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }
@@ -62,7 +62,7 @@ export class UserEditComponent implements OnInit {
           },
           error => {
               console.log(<any>error);
-              this._router.navigate(['/edituser', this.userId]);
+              this._router.navigate(['/admin/user/list', this.userId]);
           }
       );
   }

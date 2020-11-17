@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { ContentComponent } from './admin/content/content.component';
 import { UsersComponent } from './social-network/users/users.component';
 import { TimelineComponent } from './social-network/timeline/timeline.component';
 import { ProfileComponent } from './social-network/profile/profile.component';
@@ -33,6 +33,7 @@ const appRoutes: Routes = [
     {
         path: 'admin',
         component: DashboardComponent,
+        canActivate:[UserGuard],
         children: [
             {path: 'conference/edit/:id', component: ConferenceEditComponent},
             {path: 'conference/list', component: ConferenceListComponent},
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
             {path: 'epic/list', component: EpicListComponent},
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
+            {path: 'content', component: ContentComponent},
         ],
     },
     {
@@ -58,7 +60,6 @@ const appRoutes: Routes = [
             {path: 'perfil/:id', component: ProfileComponent, canActivate:[UserGuard]},
             {path: 'seguindo/:id/:page', component: FollowingComponent, canActivate:[UserGuard]},
             {path: 'seguidores/:id/:page', component: FollowedComponent, canActivate:[UserGuard]},
-            {path: 'conteudo', component: AdminComponent, canActivate:[UserGuard]},
         ],
     },
     {path: '**', redirectTo: 'home', pathMatch: 'full'},

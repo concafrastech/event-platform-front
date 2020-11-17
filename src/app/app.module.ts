@@ -33,8 +33,6 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { HubComponent } from './components/hub/hub.component';
 import { AudithoriumComponent } from './components/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { FormGroupConteudoComponent } from './components/admin/form-group-conteudo/form-group-conteudo.component';
 import { EventComponent } from './components/event/event.component';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { IframeComponent } from './components/channels/iframe/iframe.component';
@@ -59,6 +57,8 @@ import { GamificationModule } from 'angular-gamification';
 import { NgBootstrapAlertModule } from 'ng-bootstrap-alert';
 import { AngularTawkComponent, AngularTawkModule } from 'angular-tawk';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+import { ContentComponent } from './admin/content/content.component';
+import { FormGroupConteudoComponent } from './admin/content/form-group-conteudo/form-group-conteudo.component';
 
 
 const levels = [
@@ -99,7 +99,7 @@ const GamificationConfig = {
     EventComponent,
     ZoomusComponent,
     IframeComponent,
-    AdminComponent,
+    ContentComponent,
     FormGroupConteudoComponent,
     ConferenceListComponent,
     ConferenceEditComponent,

@@ -30,7 +30,7 @@ export class UserListComponent implements OnInit {
       private _router: Router,
       private _userService: UserService
   ) {
-      this.title = 'Lista Eventos';
+      this.title = 'Lista de Usuários';
       this.url = GLOBAL.url;
       this.identity = this._userService.getIdentity();
       this.token = this._userService.getToken();
@@ -76,7 +76,7 @@ export class UserListComponent implements OnInit {
                   this.users = response.users;
                   this.pages = response.pages;
                   if (page > this.pages) {
-                      this._router.navigate(['/listuser', 1]);
+                      this._router.navigate(['/admin/user/list', 1]);
                   }
               }
           },

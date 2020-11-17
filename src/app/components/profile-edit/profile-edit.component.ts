@@ -10,8 +10,8 @@ import { ptBrLocale } from 'ngx-bootstrap/locale';
 defineLocale('pt-br', ptBrLocale);
 
 @Component({
-    selector: 'user-profile',
-    templateUrl: './user-profile.component.html',
+    selector: 'profile-edit',
+    templateUrl: './profile-edit.component.html',
     providers: [UserService, UploadService]
 })
 export class ProfileEditComponent implements OnInit {

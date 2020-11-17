@@ -55,7 +55,7 @@
         <aside id="sidebar">
             <ul id="sidemenu" class="sidebar-nav">
                 <li>
-                    <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['active']">
+                    <a [routerLink]="['/admin']" [routerLinkActive]="['active']">
                         <span class="sidebar-icon"><i class="fa fa-home"></i></span>
                         <span class="sidebar-title">DashBoard</span>
                     </a>
@@ -79,6 +79,13 @@
                     </a>
                 </li>
                 <li>
+                    <a [routerLink]="['/admin/content']" [routerLinkActive]="['active']">
+                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
+                        <span class="sidebar-title">Conteúdo</span>
+                    </a>
+                </li>
+                <!-- 
+                <li>
                     <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
                         <span class="sidebar-icon"><i class="fa fa-users"></i></span>
                         <span class="sidebar-title">Events</span>
@@ -99,7 +106,7 @@
                         <li><a href="#"><i class="fa fa-caret-right"></i>Posts</a></li>
                         <li><a href="#"><i class="fa fa-caret-right"></i>Comments</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </aside>            
     </div>

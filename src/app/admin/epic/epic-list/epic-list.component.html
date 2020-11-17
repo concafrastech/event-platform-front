@@ -1,0 +1,28 @@
+<div class="col-lg-8">
+    <h1 class="h1-strong">{{title}}</h1>
+    <div class="people">
+        <div class="item-epic" *ngFor="let epic of epics">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="image-epic pull-left">
+                        <a [routerLink]="['/editepic', epic._id]">
+                            <img src="{{url + 'get-image-epic/' + epic.image}}" *ngIf="epic.image" />
+                            <img src="assets/epic.png" class="avatar-default" *ngIf="!epic.image" />
+                        </a>
+                    </div>
+                    <div class="epicname pull-left">
+                        <p class="name-surname">
+                            <a [routerLink]="['/editepic', epic._id]">
+                                {{epic.name}}
+                            </a>
+                        </p>
+                        <p class="nickname">
+                            {{'De ' + epic.start_date + ' à ' + epic.end_date}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

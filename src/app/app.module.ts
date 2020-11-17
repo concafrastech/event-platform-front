@@ -21,7 +21,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersComponent } from './social-network/users/users.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TimelineComponent } from './social-network/timeline/timeline.component';
@@ -36,6 +35,22 @@ import { AudithoriumComponent } from './components/audithorium/audithorium.compo
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FormGroupConteudoComponent } from './components/admin/form-group-conteudo/form-group-conteudo.component';
+import { EventComponent } from './components/event/event.component';
+import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
+import { IframeComponent } from './components/channels/iframe/iframe.component';
+import { ConferenceListComponent } from './admin/conference/conference-list/conference-list.component';
+import { ConferenceEditComponent } from './admin/conference/conference-edit/conference-edit.component';
+import { ConferenceAddComponent } from './admin/conference/conference-add/conference-add.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UserAddComponent } from './admin/user/user-add/user-add.component';
+import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
+import { UserListComponent } from './admin/user/user-list/user-list.component';
+import { EpicAddComponent } from './admin/epic/epic-add/epic-add.component';
+import { EpicEditComponent } from './admin/epic/epic-edit/epic-edit.component';
+import { EpicListComponent } from './admin/epic/epic-list/epic-list.component';
+//import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
+//import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
+//import { VideojsComponent } from './pages/channels/videojs/videojs.component';
 
 // Services
 import { UserService } from './services/user.service';
@@ -43,15 +58,8 @@ import { UserGuard } from './services/user.guard';
 import { GamificationModule } from 'angular-gamification';
 import { NgBootstrapAlertModule } from 'ng-bootstrap-alert';
 import { AngularTawkComponent, AngularTawkModule } from 'angular-tawk';
-import { EventComponent } from './components/event/event.component';
-import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
-import { IframeComponent } from './components/channels/iframe/iframe.component';
-import { ConferenceListComponent } from './components/admin/conference/conference-list/conference-list.component';
-import { ConferenceEditComponent } from './components/admin/conference/conference-edit/conference-edit.component';
-import { ConferenceAddComponent } from './components/admin/conference/conference-add/conference-add.component';
-//import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
-//import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
-//import { VideojsComponent } from './pages/channels/videojs/videojs.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -76,7 +84,7 @@ const GamificationConfig = {
     RegisterComponent,
     HomeComponent,
     WelcomeComponent,
-    UserEditComponent,
+    ProfileEditComponent,
     UsersComponent,
     SidebarComponent,
     TimelineComponent,
@@ -96,6 +104,13 @@ const GamificationConfig = {
     ConferenceListComponent,
     ConferenceEditComponent,
     ConferenceAddComponent,
+    EpicListComponent,
+    EpicEditComponent,
+    EpicAddComponent,
+    UserListComponent,
+    UserEditComponent,
+    UserAddComponent,
+    DashboardComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

@@ -4,7 +4,6 @@ import {Routes, RouterModule} from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UsersComponent } from './social-network/users/users.component';
 import { TimelineComponent } from './social-network/timeline/timeline.component';
@@ -18,15 +17,31 @@ import { AudithoriumComponent } from './components/audithorium/audithorium.compo
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { EventComponent } from './components/event/event.component';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
-import { ConferenceEditComponent } from './components/admin/conference/conference-edit/conference-edit.component';
-import { ConferenceListComponent } from './components/admin/conference/conference-list/conference-list.component';
+import { ConferenceEditComponent } from './admin/conference/conference-edit/conference-edit.component';
+import { ConferenceListComponent } from './admin/conference/conference-list/conference-list.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { EpicEditComponent } from './admin/epic/epic-edit/epic-edit.component';
+import { EpicListComponent } from './admin/epic/epic-list/epic-list.component';
+import { UserListComponent } from './admin/user/user-list/user-list.component';
+import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'testezoom', component: ZoomusComponent},
-    {path: 'editconference/:id', component: ConferenceEditComponent},
-    {path: 'listconference', component: ConferenceListComponent},
+    {
+        path: 'admin',
+        component: DashboardComponent,
+        children: [
+            {path: 'conference/edit/:id', component: ConferenceEditComponent},
+            {path: 'conference/list', component: ConferenceListComponent},
+            {path: 'epic/edit/:id', component: EpicEditComponent},
+            {path: 'epic/list', component: EpicListComponent},
+            {path: 'user/edit/:id', component: UserEditComponent},
+            {path: 'user/list', component: UserListComponent},
+        ],
+    },
     {
         path: '',
         component: EventComponent,
@@ -36,14 +51,14 @@ const appRoutes: Routes = [
             {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
             {path: 'audithorium', component: AudithoriumComponent, canActivate:[UserGuard]},
             {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
-            {path: 'meus-dados', component: UserEditComponent, canActivate:[UserGuard]},
+            {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
             {path: 'gente', component: UsersComponent, canActivate:[UserGuard]},
             {path: 'gente/:page', component: UsersComponent, canActivate:[UserGuard]},
             {path: 'timeline', component: TimelineComponent, canActivate:[UserGuard]},
             {path: 'perfil/:id', component: ProfileComponent, canActivate:[UserGuard]},
             {path: 'seguindo/:id/:page', component: FollowingComponent, canActivate:[UserGuard]},
             {path: 'seguidores/:id/:page', component: FollowedComponent, canActivate:[UserGuard]},
-            {path: 'admin', component: AdminComponent, canActivate:[UserGuard]},
+            {path: 'conteudo', component: AdminComponent, canActivate:[UserGuard]},
         ],
     },
     {path: '**', redirectTo: 'home', pathMatch: 'full'},

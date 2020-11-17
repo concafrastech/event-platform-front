@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {Conference} from '../../../../models/conference';
-import {ConferenceService} from '../../../../services/conference.service';
-import {UserService} from '../../../../services/user.service';
-import {GLOBAL} from '../../../../services/global';
+import {Epic} from '../../../models/epic';
+import {EpicService} from '../../../services/epic.service';
+import {UserService} from '../../../services/user.service';
+import {GLOBAL} from '../../../services/global';
 
 @Component({
-  selector: 'app-conference-list',
-  templateUrl: './conference-list.component.html',
-  styleUrls: ['./conference-list.component.css'],
-  providers: [UserService, ConferenceService]
+  selector: 'app-epic-list',
+  templateUrl: './epic-list.component.html',
+  styleUrls: ['./epic-list.component.css'],
+  providers: [UserService, EpicService]
 })
-export class ConferenceListComponent implements OnInit {
+export class EpicListComponent implements OnInit {
   public title: string;
   public url: string;
   public identity;
@@ -21,7 +21,7 @@ export class ConferenceListComponent implements OnInit {
   public prev_page;
   public total;
   public pages;
-  public conferences: Conference[];
+  public epics: Epic[];
   public follows;
   public follow_me;
   public status: string;
@@ -29,7 +29,7 @@ export class ConferenceListComponent implements OnInit {
   constructor(
       private _route: ActivatedRoute,
       private _router: Router,
-      private _conferenceService: ConferenceService,
+      private _epicService: EpicService,
       private _userService: UserService
   ) {
       this.title = 'Lista Eventos';
@@ -40,7 +40,7 @@ export class ConferenceListComponent implements OnInit {
   }
 
   ngOnInit() {
-      console.log('[OK] Component: conferences.');
+      console.log('[OK] Component: epics.');
       this.actualPage();
   }
 
@@ -64,21 +64,21 @@ export class ConferenceListComponent implements OnInit {
               }
           }
           
-          this.getConferences(page);
+          this.getEpics(page);
       });
   }
 
-  getConferences(page) {
-      this._conferenceService.getConferences(page).subscribe(
+  getEpics(page) {
+      this._epicService.getEpics(page).subscribe(
           response => {
-              if (!response.conferences) {
+              if (!response.epics) {
                   this.status = 'error';
               } else {
                   this.total = response.total;
-                  this.conferences = response.conferences;
+                  this.epics = response.epics;
                   this.pages = response.pages;
                   if (page > this.pages) {
-                      this._router.navigate(['/listconference', 1]);
+                      this._router.navigate(['/listepic', 1]);
                   }
               }
           },

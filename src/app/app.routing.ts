@@ -27,6 +27,7 @@ import { UserEditComponent } from './admin/user/user-edit/user-edit.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { SocialDashboardComponent } from './social-network/social-dashboard/social-dashboard.component';
 import { SocialHomeComponent } from './social-network/social-home/social-home.component';
+import { ConferenceAddComponent } from './admin/conference/conference-add/conference-add.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
         component: DashboardComponent,
         canActivate:[UserGuard],
         children: [
+            {path: 'conference/add', component: ConferenceAddComponent},
             {path: 'conference/edit/:id', component: ConferenceEditComponent},
             {path: 'conference/list', component: ConferenceListComponent},
             {path: 'epic/edit/:id', component: EpicEditComponent},

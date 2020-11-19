@@ -7,20 +7,29 @@
         Erro ao atualizar os dados.
     </div>
     <form #conferenceEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
-        <p>
-            <label>Nome</label>
-            <input type="text" name="name" #name="ngModel" [(ngModel)]="conference.name" class="form-control" required />
-            <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
-        </p>
-        <p>
-            <label>Data de Início</label>
-            <input type="text" name="start_date" #nick="ngModel" [(ngModel)]="conference.start_date" class="form-control" bsDatepicker />
-        </p>
-        <p>
-            <label>Data de Término</label>
-            <input type="text" name="end_date" #nick="ngModel" [(ngModel)]="conference.end_date" class="form-control" bsDatepicker />
-        </p>
-        <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!conferenceEditForm.form.valid" />
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Nome</label>
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="conference.name" class="form-control" required />
+                <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Data de Início</label>
+                <input type="text" name="start_date" #start_date="ngModel" [(ngModel)]="conference.start_date" class="form-control" bsDatepicker />
+            </div>
+            <div class="form-group col-md-4">
+                <label>Data de Término</label>
+                <input type="text" name="end_date" #end_date="ngModel" [(ngModel)]="conference.end_date" class="form-control" bsDatepicker />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+            <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!conferenceEditForm.form.valid" />
+            <a [routerLink]="['/admin/conference/list']" class="btn btn-default">Cancelar</a>
+            </div>
+        </div>
         <br/>
         <br/>
     </form>

@@ -68,7 +68,7 @@ export class ConferenceEditComponent implements OnInit {
   onSubmit() {
       this._conferenceService.updateConference(this._userService.getToken(), this.conference).subscribe(
           response => {
-              if (!response.user) {
+              if (!response.conference) {
                   this.status = 'error';
               } else {
                   this.status = 'success';

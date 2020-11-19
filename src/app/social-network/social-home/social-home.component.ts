@@ -1,9 +1,10 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import {UserService} from '../../services/user.service';
 
 @Component({
-    selector: 'home',
+    selector: 'app-social-home',
     templateUrl: './social-home.component.html',
     providers: [UserService]
 })
@@ -14,6 +15,8 @@ export class SocialHomeComponent implements OnInit, AfterViewInit {
     bsModalRef2: BsModalRef;
 
     constructor(
+        private _route: ActivatedRoute,
+        private _router: Router,
         private _userService: UserService,
         private modalService: BsModalService
     ) {

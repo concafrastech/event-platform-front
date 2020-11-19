@@ -17,7 +17,7 @@ export class ConferenceService {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                        .set('Authorization', token);
 
-        return this._http.post(this.url + 'conference', params, {headers: headers});
+        return this._http.post(this.url + 'conferences', params, {headers: headers});
     }
 
     updateConference(token, conference: Conference): Observable<any> {

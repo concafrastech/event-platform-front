@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { Epic } from 'src/app/models/epic';
+import { ConferenceService } from 'src/app/services/conference.service';
 import { EpicService } from 'src/app/services/epic.service';
 import { GLOBAL } from 'src/app/services/global';
 import { UserService } from 'src/app/services/user.service';
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   selector: 'app-epic-edit',
   templateUrl: './epic-edit.component.html',
   styleUrls: ['./epic-edit.component.css'],
-  providers: [UserService, EpicService]
+  providers: [UserService, EpicService, ConferenceService]
 
 })
 export class EpicEditComponent implements OnInit {
@@ -21,12 +22,14 @@ export class EpicEditComponent implements OnInit {
   public status: string;
   public epic: Epic;
   public identity: string;
+  public conferences = [];
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _epicService: EpicService,
     private _userService: UserService,
+    private _conferenceService: ConferenceService,
     private _bsLocaleService: BsLocaleService
   ) { 
     this.title = 'Editar Épicos';
@@ -45,6 +48,16 @@ export class EpicEditComponent implements OnInit {
         params => {
             this.epicId = params['id'];
             this.getEpic(this.epicId);
+        }
+    );
+    this._conferenceService.getConferences(this._userService.getToken()).subscribe(
+        response => {
+            if (response) {
+                this.conferences = response.conferences;
+            }
+        },
+        error => {
+            console.log(<any>error);
         }
     );
   }

@@ -37,41 +37,17 @@ export class ConferenceAddComponent implements OnInit {
   ngOnInit() {
     console.log('[OK] Component: conference-add.');
     this.identity = this._userService.getIdentity();
-    this.loadPage();
-  }
-
-  loadPage() {
-    this._route.params.subscribe(
-        params => {
-            this.conferenceId = params['id'];
-            this.getConference(this.conferenceId);
-        }
-    );
-  }
-
-  getConference(id) {
-      this._conferenceService.getConference(this._userService.getToken(), id).subscribe(
-          response => {
-              if (response.conference) {
-                  this.conference = response.conference;
-              } else {
-                  this.status = 'error';
-              }
-          },
-          error => {
-              console.log(<any>error);
-              this._router.navigate(['/editconference', this.conferenceId]);
-          }
-      );
+    this.conference = new Conference(null,'',new Date(), new Date(),false,'',false,'', false, false, false, false, new Date(), new Date());
   }
 
   onSubmit() {
-      this._conferenceService.updateConference(this._userService.getToken(), this.conference).subscribe(
+      this._conferenceService.addConference(this._userService.getToken(), this.conference).subscribe(
           response => {
-              if (!response.user) {
+              if (!response.conference) {
                   this.status = 'error';
               } else {
                   this.status = 'success';
+                  this._router.navigate(['/admin/conference/edit', this.conferenceId]);
               }
           },
           error => {

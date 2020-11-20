@@ -4,6 +4,8 @@ import {Epic} from '../../../models/epic';
 import {EpicService} from '../../../services/epic.service';
 import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-epic-list',
@@ -25,12 +27,14 @@ export class EpicListComponent implements OnInit {
   public follows;
   public follow_me;
   public status: string;
+  public bsModalRef: BsModalRef;
 
   constructor(
       private _route: ActivatedRoute,
       private _router: Router,
       private _epicService: EpicService,
-      private _userService: UserService
+      private _userService: UserService,
+      private modalService: BsModalService
   ) {
       this.title = 'Lista de Épicos';
       this.url = GLOBAL.url;
@@ -83,6 +87,44 @@ export class EpicListComponent implements OnInit {
               }
           },
           error => {
+              var errorMessage = <any>error;
+              console.log(errorMessage);
+              
+              if (errorMessage != null) {
+                  this.status = 'error';
+              }
+          }
+      );
+  }
+
+  openDeleteConfirm(epic) {
+    const initialState = {
+      title: 'Excluir Épico',
+      message: 'Deseja realmente excluir o épico : ' + epic.name + '? <br> Essa ação não poderá ser desfeita.'
+    };
+    this.bsModalRef = this.modalService.show(DeleteConfirmComponent, {initialState});
+    this.bsModalRef.content.actionBtnName = 'Excluir';
+    this.bsModalRef.content.closeBtnName = 'Cancelar';
+
+    this.bsModalRef.content.onClose.subscribe(
+        result => {
+            this.deleteEpic(epic._id);
+        },
+        err => {
+            console.log(err);
+            this.status = 'error';
+        }
+    )
+  }
+
+  deleteEpic(id){
+      console.log(id);
+      this._epicService.deleteEpic(this._userService.getToken, id).subscribe(
+        response => {
+            console.log(response);
+            this.actualPage();
+        },
+        error => {
               var errorMessage = <any>error;
               console.log(errorMessage);
               

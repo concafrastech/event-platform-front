@@ -6,7 +6,7 @@
     <div class="alert alert-danger" *ngIf="status == 'error'">
         Erro ao atualizar os dados.
     </div>
-    <form #conferenceEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+    <form #conferenceAddForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
         <div class="row">
             <div class="form-group col-md-12">
                 <label>Nome</label>
@@ -25,8 +25,28 @@
             </div>
         </div>
         <div class="row">
+            <div class="form-group col-md-4">
+                <label>Tela de Boas Vindas</label>
+                <input type="checkbox" name="welcome_page" #welcome_page="ngModel" [(ngModel)]="conference.welcome_page" class="form-control"/>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Video de Boas Vindas</label>
+                <input type="text" name="welcome_page_content" #welcome_page_content="ngModel" [(ngModel)]="conference.welcome_page_content" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Tela de Tutorial</label>
+                <input type="checkbox" name="tutorial_page" #tutorial_page="ngModel" [(ngModel)]="conference.tutorial_page" class="form-control"/>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Video de Tutorial</label>
+                <input type="text" name="tutorial_page_content" #tutorial_page_content="ngModel" [(ngModel)]="conference.tutorial_page_content" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-12">
-            <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!conferenceEditForm.form.valid" />
+            <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!conferenceAddForm.form.valid" />
             <a [routerLink]="['/admin/conference/list']" class="btn btn-default">Cancelar</a>
             </div>
         </div>

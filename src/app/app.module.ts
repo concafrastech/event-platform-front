@@ -60,6 +60,8 @@ import { ProfileEditComponent } from './components/profile-edit/profile-edit.com
 import { ContentComponent } from './admin/content/content.component';
 import { FormGroupConteudoComponent } from './admin/content/form-group-conteudo/form-group-conteudo.component';
 import { SocialDashboardComponent } from './social-network/social-dashboard/social-dashboard.component';
+import { SocialHomeComponent } from './social-network/social-home/social-home.component';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 
 
 const levels = [
@@ -87,6 +89,7 @@ const GamificationConfig = {
     WelcomeComponent,
     ProfileEditComponent,
     SocialDashboardComponent,
+    SocialHomeComponent,
     UsersComponent,
     SidebarComponent,
     TimelineComponent,
@@ -113,6 +116,7 @@ const GamificationConfig = {
     UserEditComponent,
     UserAddComponent,
     DashboardComponent,
+    DeleteConfirmComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

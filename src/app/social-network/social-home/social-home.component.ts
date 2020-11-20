@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import {UserService} from '../../services/user.service';
 
 @Component({
@@ -11,14 +10,11 @@ import {UserService} from '../../services/user.service';
 export class SocialHomeComponent implements OnInit, AfterViewInit {
     public title: string;
     public identity;
-    bsModalRef: BsModalRef;
-    bsModalRef2: BsModalRef;
 
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
-        private _userService: UserService,
-        private modalService: BsModalService
+        private _userService: UserService
     ) {
         this.title = 'Bem Vindos!';
     }

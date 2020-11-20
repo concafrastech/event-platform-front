@@ -42,7 +42,7 @@
                         <td class="actions">
                             <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
                             <a class="btn btn-warning btn-xs" [routerLink]="['/admin/conference/edit', conference._id]">Editar</a>
-                            <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                            <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(conference)">Excluir</a>
                         </td>
                     </tr>
     
@@ -65,23 +65,6 @@
     
         </div>
     </div> <!-- /#bottom -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
-                </div>
-                <div class="modal-body">Deseja realmente excluir este item? </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Sim</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="clearfix"></div>

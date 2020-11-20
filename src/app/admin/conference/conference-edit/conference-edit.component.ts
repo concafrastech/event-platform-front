@@ -37,6 +37,7 @@ export class ConferenceEditComponent implements OnInit {
   ngOnInit() {
     console.log('[OK] Component: conference-edit.');
     this.identity = this._userService.getIdentity();
+    this.conference = new Conference(null,'',new Date(), new Date(),false,'',false,'', false, false, false, false, new Date(), new Date());
     this.loadPage();
   }
 
@@ -53,14 +54,18 @@ export class ConferenceEditComponent implements OnInit {
       this._conferenceService.getConference(this._userService.getToken(), id).subscribe(
           response => {
               if (response.conference) {
-                  this.conference = response.conference;
+                  let conference = response.conference;
+                  conference.start_date = new Date(conference.start_date);
+                  conference.end_date = new Date(conference.end_date);
+                  this.conference = conference;
+
               } else {
                   this.status = 'error';
               }
           },
           error => {
               console.log(<any>error);
-              this._router.navigate(['/editconference', this.conferenceId]);
+              this._router.navigate(['/admin/conference/edit', this.conferenceId]);
           }
       );
   }

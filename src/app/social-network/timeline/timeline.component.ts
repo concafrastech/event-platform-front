@@ -45,7 +45,7 @@ export class TimelineComponent implements OnInit {
     }
 
     getPublications(page, adding = false) {
-        this._publicationService.getPublication(this.token, page).subscribe(
+        this._publicationService.getPublication(page).subscribe(
             response => {
                 if (response.publications) {
                     this.total = response.total_items;
@@ -100,7 +100,7 @@ export class TimelineComponent implements OnInit {
     }
 
     deletePublication(id) {
-        this._publicationService.deletePublication(this.token, id).subscribe(
+        this._publicationService.deletePublication(id).subscribe(
             response => {
                 this.refresh();
             },

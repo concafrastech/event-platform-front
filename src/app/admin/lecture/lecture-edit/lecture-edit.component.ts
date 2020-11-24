@@ -1,34 +1,34 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
-import { Conference } from 'src/app/models/conference';
-import { Epic } from "src/app/models/epic";
-import { ConferenceService } from "src/app/services/conference.service";
+import { Epic } from 'src/app/models/epic';
+import { Lecture } from "src/app/models/lecture";
 import { EpicService } from "src/app/services/epic.service";
+import { LectureService } from "src/app/services/lecture.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
-  selector: "app-epic-edit",
-  templateUrl: "./epic-edit.component.html",
-  styleUrls: ["./epic-edit.component.css"],
-  providers: [UserService, EpicService, ConferenceService],
+  selector: "app-lecture-edit",
+  templateUrl: "./lecture-edit.component.html",
+  styleUrls: ["./lecture-edit.component.css"],
+  providers: [UserService, LectureService, EpicService],
 })
-export class EpicEditComponent implements OnInit {
+export class LectureEditComponent implements OnInit {
   public title: string;
-  public epicId: string;
+  public lectureId: string;
   public url: string;
   public status: string;
-  public epic: Epic;
+  public lecture: Lecture;
   public identity: string;
-  public conferences = [];
+  public epics = [];
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _epicService: EpicService,
+    private _lectureService: LectureService,
     private _userService: UserService,
-    private _conferenceService: ConferenceService,
+    private _epicService: EpicService,
     private _bsLocaleService: BsLocaleService
   ) {
     this.title = "Editar Épicos";
@@ -37,23 +37,23 @@ export class EpicEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: epic-edit.");
+    console.log("[OK] Component: lecture-edit.");
     this.identity = this._userService.getIdentity();
-    this.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
-    this.epic.conference = new Conference(null,'',new Date(), new Date(),false,'',false,'', false, false, false, false, new Date(), new Date());
+    this.lecture = new Lecture('', '', '', '', '', new Date(), new Date(), null, [], new Date(), new Date());
+    this.lecture.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }
 
   loadPage() {
-    this._conferenceService
-      .getConferences()
+    this._epicService
+      .getEpics()
       .subscribe(
         (response) => {
           if (response) {
-            this.conferences = response.conferences;
+            this.epics = response.epics;
             this._route.params.subscribe((params) => {
-              this.epicId = params["id"];
-              this.getEpic(this.epicId);
+              this.lectureId = params["id"];
+              this.getLecture(this.lectureId);
             });
           }
         },
@@ -63,18 +63,18 @@ export class EpicEditComponent implements OnInit {
       );
   }
 
-  getEpic(id) {
-    this._epicService.getEpic(id).subscribe(
+  getLecture(id) {
+    this._lectureService.getLecture(id).subscribe(
       (response) => {
-        if (response.epic) {
-          this.epic = response.epic;
+        if (response.lecture) {
+          this.lecture = response.lecture;
         } else {
           this.status = "error";
         }
       },
       (error) => {
         console.log(<any>error);
-        this._router.navigate(["/editepic", this.epicId]);
+        this._router.navigate(["/editlecture", this.lectureId]);
       }
     );
   }
@@ -85,15 +85,15 @@ export class EpicEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this._epicService
-      .updateEpic(this.epic)
+    this._lectureService
+      .updateLecture(this.lecture)
       .subscribe(
         (response) => {
-          if (!response.epic) {
+          if (!response.lecture) {
             this.status = "error";
           } else {
             this.status = "success";
-            this.getEpic(this.epicId);
+            this.getLecture(this.lectureId);
           }
         },
         (error) => {

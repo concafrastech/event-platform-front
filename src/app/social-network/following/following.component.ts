@@ -74,7 +74,7 @@ export class FollowingComponent implements OnInit {
     }
 
     getFollows(user_id, page) {
-        this._followService.getFollowing(this.token, user_id, page).subscribe(
+        this._followService.getFollowing(user_id, page).subscribe(
             response => {
                 if (!response.follows) {
                     this.status = 'error';
@@ -133,7 +133,7 @@ export class FollowingComponent implements OnInit {
     followUser(followed) {
         var follow = new Follow('', this.identity._id, followed);
 
-        this._followService.addFollow(this.token, follow).subscribe(
+        this._followService.addFollow(follow).subscribe(
             response => {
                 if (!response.follow) {
                     this.status = 'error';
@@ -153,7 +153,7 @@ export class FollowingComponent implements OnInit {
     }
 
     unfollowUser(followed) {
-        this._followService.deleteFollow(this.token, followed).subscribe(
+        this._followService.deleteFollow(followed).subscribe(
             response => {
                 var search = this.follows.indexOf(followed);
                 if (search != -1) {

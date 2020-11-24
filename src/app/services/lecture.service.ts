@@ -2,35 +2,35 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {GLOBAL} from './global';
-import {Epic} from '../models/epic';
+import {Lecture} from '../models/lecture';
 import { getToken } from '../utils/token';
 
 @Injectable()
-export class EpicService {
+export class LectureService {
     public url: string;
 
     constructor(private _http: HttpClient) {
         this.url = GLOBAL.url;
     }
 
-    addEpic(epic): Observable<any> {
-        let params = JSON.stringify(epic);
+    addLecture(lecture): Observable<any> {
+        let params = JSON.stringify(lecture);
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                        .set('Authorization', getToken());
 
-        return this._http.post(this.url + 'epics', params, {headers: headers});
+        return this._http.post(this.url + 'lectures', params, {headers: headers});
     }
 
-    updateEpic(epic: Epic): Observable<any> {
-        let params = JSON.stringify(epic);
+    updateLecture(lecture: Lecture): Observable<any> {
+        let params = JSON.stringify(lecture);
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Authorization', getToken());
 
-        return this._http.put(this.url + 'epics/' + epic._id, params, {headers: headers});
+        return this._http.put(this.url + 'lectures/' + lecture._id, params, {headers: headers});
     }
 
-    getEpics(page = null, conferenceId = null): Observable<any> {
+    getLectures(page = null, conferenceId = null): Observable<any> {
         let params = { 
             page : page,
             conference : conferenceId != null ? conferenceId : ''
@@ -39,21 +39,21 @@ export class EpicService {
             .set('Content-Type', 'application/json')
             .set('Authorization', getToken());
 
-        return this._http.get(this.url + 'epics/', {headers: headers, params: params});
+        return this._http.get(this.url + 'lectures/', {headers: headers, params: params});
     }
 
-    getEpic(id): Observable<any> {
+    getLecture(id): Observable<any> {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Authorization', getToken());
 
-        return this._http.get(this.url + 'epics/' + id, {headers: headers});
+        return this._http.get(this.url + 'lectures/' + id, {headers: headers});
     }
 
-    deleteEpic(id): Observable<any> {
+    deleteLecture(id): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                        .set('Authorization', getToken());
 
-        return this._http.delete(this.url + 'epics/' + id, {headers: headers});
+        return this._http.delete(this.url + 'lectures/' + id, {headers: headers});
     }
 }

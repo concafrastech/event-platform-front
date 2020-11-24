@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Epic} from '../../../models/epic';
 import {EpicService} from '../../../services/epic.service';
@@ -14,6 +14,7 @@ import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete
   providers: [UserService, EpicService]
 })
 export class EpicListComponent implements OnInit {
+  @Input() conferenceId: string = null;
   public title: string;
   public url: string;
   public identity;
@@ -67,13 +68,12 @@ export class EpicListComponent implements OnInit {
                   this.prev_page = 1;
               }
           }
-          
-          this.getEpics(page);
+          this.getEpics(page, this.conferenceId);
       });
   }
 
-  getEpics(page) {
-      this._epicService.getEpics(page).subscribe(
+  getEpics(page, conferenceId) {
+      this._epicService.getEpics(page, conferenceId).subscribe(
           response => {
               if (!response.epics) {
                   this.status = 'error';
@@ -81,9 +81,9 @@ export class EpicListComponent implements OnInit {
                   this.total = response.total;
                   this.epics = response.epics;
                   this.pages = response.pages;
-                  if (page > this.pages) {
-                      this._router.navigate(['/listepic', 1]);
-                  }
+                  if (this.pages > 1 && page > this.pages) {
+                    this._router.navigate(['/admin/epic/list', 1]);
+                }
               }
           },
           error => {
@@ -119,7 +119,7 @@ export class EpicListComponent implements OnInit {
 
   deleteEpic(id){
       console.log(id);
-      this._epicService.deleteEpic(this._userService.getToken, id).subscribe(
+      this._epicService.deleteEpic(id).subscribe(
         response => {
             console.log(response);
             this.actualPage();

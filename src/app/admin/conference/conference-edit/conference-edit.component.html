@@ -1,4 +1,4 @@
-<div class="col-lg-5">
+<div class="col-lg-12">
     <h1 class="h1-strong">{{title}}</h1>
     <div class="alert alert-success" *ngIf="status == 'success'">
         Dados atualizados com sucesso!
@@ -8,7 +8,7 @@
     </div>
     <form #conferenceEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
         <div class="row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-12 col-lg-5">
                 <label>Nome</label>
                 <input type="text" name="name" #name="ngModel" [(ngModel)]="conference.name" class="form-control" required />
                 <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
@@ -44,6 +44,19 @@
                 <input type="text" name="tutorial_page_content" #tutorial_page_content="ngModel" [(ngModel)]="conference.tutorial_page_content" class="form-control" />
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Épicos</label>
+                <input type="checkbox" name="tutorial_page" #tutorial_page="ngModel" [(ngModel)]="conference.epics_enabled" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="conference.epics_enabled">
+            <div class="form-group col-md-12">
+                <app-epic-list conferenceId="{{conference._id}}"></app-epic-list>
+            </div>
+        </div>
+
         <div class="row">
             <div class="form-group col-md-12">
                 <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!conferenceEditForm.form.valid" />

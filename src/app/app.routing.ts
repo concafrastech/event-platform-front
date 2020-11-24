@@ -28,6 +28,10 @@ import { ProfileEditComponent } from './components/profile-edit/profile-edit.com
 import { SocialDashboardComponent } from './social-network/social-dashboard/social-dashboard.component';
 import { SocialHomeComponent } from './social-network/social-home/social-home.component';
 import { ConferenceAddComponent } from './admin/conference/conference-add/conference-add.component';
+import { EpicAddComponent } from './admin/epic/epic-add/epic-add.component';
+import { LectureAddComponent } from './admin/lecture/lecture-add/lecture-add.component';
+import { LectureEditComponent } from './admin/lecture/lecture-edit/lecture-edit.component';
+import { LectureListComponent } from './admin/lecture/lecture-list/lecture-list.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -41,8 +45,12 @@ const appRoutes: Routes = [
             {path: 'conference/add', component: ConferenceAddComponent},
             {path: 'conference/edit/:id', component: ConferenceEditComponent},
             {path: 'conference/list', component: ConferenceListComponent},
+            {path: 'epic/add', component: EpicAddComponent},
             {path: 'epic/edit/:id', component: EpicEditComponent},
             {path: 'epic/list', component: EpicListComponent},
+            {path: 'lecture/add', component: LectureAddComponent},
+            {path: 'lecture/edit/:id', component: LectureEditComponent},
+            {path: 'lecture/list', component: LectureListComponent},
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
             {path: 'content', component: ContentComponent},

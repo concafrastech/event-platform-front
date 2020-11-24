@@ -5,7 +5,7 @@
         </div>
     
         <div class="col-md-6">
-            <div class="input-group h2">
+            <div class="input-group h2" *ngIf="false">
                 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit">
@@ -53,7 +53,7 @@
     </div> <!-- /#list -->
 
     <div id="bottom" class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="pages > 1">
             
             <ul class="pagination">
                 <li class="disabled"><a>&lt; Anterior</a></li>

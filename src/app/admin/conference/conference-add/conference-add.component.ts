@@ -41,13 +41,13 @@ export class ConferenceAddComponent implements OnInit {
   }
 
   onSubmit() {
-      this._conferenceService.addConference(this._userService.getToken(), this.conference).subscribe(
+      this._conferenceService.addConference(this.conference).subscribe(
           response => {
               if (!response.conference) {
                   this.status = 'error';
               } else {
                   this.status = 'success';
-                  this._router.navigate(['/admin/conference/edit', this.conferenceId]);
+                  this._router.navigate(['/admin/conference/edit', response.conference._id]);
               }
           },
           error => {

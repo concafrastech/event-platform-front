@@ -62,6 +62,10 @@ import { FormGroupConteudoComponent } from './admin/content/form-group-conteudo/
 import { SocialDashboardComponent } from './social-network/social-dashboard/social-dashboard.component';
 import { SocialHomeComponent } from './social-network/social-home/social-home.component';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
+import { InterceptorModule } from './utils/interceptor.module';
+import { LectureListComponent } from './admin/lecture/lecture-list/lecture-list.component';
+import { LectureEditComponent } from './admin/lecture/lecture-edit/lecture-edit.component';
+import { LectureAddComponent } from './admin/lecture/lecture-add/lecture-add.component';
 
 
 const levels = [
@@ -115,6 +119,9 @@ const GamificationConfig = {
     UserListComponent,
     UserEditComponent,
     UserAddComponent,
+    LectureListComponent,
+    LectureEditComponent,
+    LectureAddComponent,
     DashboardComponent,
     DeleteConfirmComponent,
     //YoutubeComponent,
@@ -127,6 +134,7 @@ const GamificationConfig = {
     FormsModule,
     routing,
     HttpClientModule,
+    InterceptorModule,
     MomentModule,
     MessagesModule,
     GamificationModule.forRoot(GamificationConfig),

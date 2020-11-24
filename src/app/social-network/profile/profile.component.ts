@@ -90,7 +90,7 @@ export class ProfileComponent implements OnInit {
 
     followUser(followed) {
         var follow = new Follow('', this.identity._id, followed);
-        this._followService.addFollow(this.token, follow).subscribe(
+        this._followService.addFollow(follow).subscribe(
             response => {
                 this.following = true;
             },
@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
     }
 
     unfollowUser(followed) {
-        this._followService.deleteFollow(this.token, followed).subscribe(
+        this._followService.deleteFollow(followed).subscribe(
             response => {
                 this.following = false;
             },

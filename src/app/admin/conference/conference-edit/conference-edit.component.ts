@@ -51,7 +51,7 @@ export class ConferenceEditComponent implements OnInit {
   }
 
   getConference(id) {
-      this._conferenceService.getConference(this._userService.getToken(), id).subscribe(
+      this._conferenceService.getConference(id).subscribe(
           response => {
               if (response.conference) {
                   let conference = response.conference;
@@ -71,7 +71,7 @@ export class ConferenceEditComponent implements OnInit {
   }
 
   onSubmit() {
-      this._conferenceService.updateConference(this._userService.getToken(), this.conference).subscribe(
+      this._conferenceService.updateConference(this.conference).subscribe(
           response => {
               if (!response.conference) {
                   this.status = 'error';

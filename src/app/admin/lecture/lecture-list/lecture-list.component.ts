@@ -1,20 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {Conference} from '../../../models/conference';
-import {ConferenceService} from '../../../services/conference.service';
+import {Lecture} from '../../../models/lecture';
+import {LectureService} from '../../../services/lecture.service';
 import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
-import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-conference-list',
-  templateUrl: './conference-list.component.html',
-  styleUrls: ['./conference-list.component.css'],
-  providers: [UserService, ConferenceService]
+  selector: 'app-lecture-list',
+  templateUrl: './lecture-list.component.html',
+  styleUrls: ['./lecture-list.component.css'],
+  providers: [UserService, LectureService]
 })
-export class ConferenceListComponent implements OnInit {
+export class LectureListComponent implements OnInit {
+  @Input() epicId: string = null;
   public title: string;
   public url: string;
   public identity;
@@ -24,7 +24,7 @@ export class ConferenceListComponent implements OnInit {
   public prev_page;
   public total;
   public pages;
-  public conferences: Conference[];
+  public lectures: Lecture[];
   public follows;
   public follow_me;
   public status: string;
@@ -33,11 +33,11 @@ export class ConferenceListComponent implements OnInit {
   constructor(
       private _route: ActivatedRoute,
       private _router: Router,
-      private _conferenceService: ConferenceService,
+      private _lectureService: LectureService,
       private _userService: UserService,
       private modalService: BsModalService
   ) {
-      this.title = 'Lista de Eventos';
+      this.title = 'Lista de Palestras';
       this.url = GLOBAL.url;
       this.identity = this._userService.getIdentity();
       this.token = this._userService.getToken();
@@ -45,7 +45,7 @@ export class ConferenceListComponent implements OnInit {
   }
 
   ngOnInit() {
-      console.log('[OK] Component: conferences.');
+      console.log('[OK] Component: lectures.');
       this.actualPage();
   }
 
@@ -68,23 +68,22 @@ export class ConferenceListComponent implements OnInit {
                   this.prev_page = 1;
               }
           }
-          
-          this.getConferences(page);
+          this.getLectures(page, this.epicId);
       });
   }
 
-  getConferences(page) {
-      this._conferenceService.getConferences(page).subscribe(
+  getLectures(page, epicId) {
+      this._lectureService.getLectures(page, epicId).subscribe(
           response => {
-              if (!response.conferences) {
+              if (!response.lectures) {
                   this.status = 'error';
               } else {
                   this.total = response.total;
-                  this.conferences = response.conferences;
+                  this.lectures = response.lectures;
                   this.pages = response.pages;
                   if (this.pages > 1 && page > this.pages) {
-                    this._router.navigate(['/admin/conference/list', 1]);
-                }
+                      this._router.navigate(['/admin/lecture/list', 1]);
+                  }
               }
           },
           error => {
@@ -98,10 +97,10 @@ export class ConferenceListComponent implements OnInit {
       );
   }
 
-  openDeleteConfirm(conference) {
+  openDeleteConfirm(lecture) {
     const initialState = {
-      title: 'Excluir Evento',
-      message: 'Deseja realmente excluir o evento : ' + conference.name + '?'
+      title: 'Excluir Palestra',
+      message: 'Deseja realmente excluir o palestra : ' + lecture.name + '? <br> Essa ação não poderá ser desfeita.'
     };
     this.bsModalRef = this.modalService.show(DeleteConfirmComponent, {initialState});
     this.bsModalRef.content.actionBtnName = 'Excluir';
@@ -109,9 +108,7 @@ export class ConferenceListComponent implements OnInit {
 
     this.bsModalRef.content.onClose.subscribe(
         result => {
-            if(result){
-                this.deleteConference(conference._id);
-            }
+            this.deleteLecture(lecture._id);
         },
         err => {
             console.log(err);
@@ -120,9 +117,9 @@ export class ConferenceListComponent implements OnInit {
     )
   }
 
-  deleteConference(id){
+  deleteLecture(id){
       console.log(id);
-      this._conferenceService.deleteConference(id).subscribe(
+      this._lectureService.deleteLecture(id).subscribe(
         response => {
             console.log(response);
             this.actualPage();

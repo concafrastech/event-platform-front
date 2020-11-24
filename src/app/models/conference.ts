@@ -15,4 +15,5 @@ export class Conference {
         public created_at: Date,
         public updated_at: Date,
     ) {}
+    
 }

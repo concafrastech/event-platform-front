@@ -1,19 +1,19 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {Lecture} from '../../../models/lecture';
-import {LectureService} from '../../../services/lecture.service';
+import {Trail} from '../../../models/trail';
+import {TrailService} from '../../../services/trail.service';
 import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
 
 @Component({
-  selector: 'app-lecture-list',
-  templateUrl: './lecture-list.component.html',
-  styleUrls: ['./lecture-list.component.css'],
-  providers: [UserService, LectureService]
+  selector: 'app-trail-list',
+  templateUrl: './trail-list.component.html',
+  styleUrls: ['./trail-list.component.css'],
+  providers: [UserService, TrailService]
 })
-export class LectureListComponent implements OnInit {
+export class TrailListComponent implements OnInit {
   @Input() epicId: string = null;
   public title: string;
   public url: string;
@@ -24,7 +24,7 @@ export class LectureListComponent implements OnInit {
   public prev_page;
   public total;
   public pages;
-  public lectures: Lecture[];
+  public trails: Trail[];
   public follows;
   public follow_me;
   public status: string;
@@ -33,11 +33,11 @@ export class LectureListComponent implements OnInit {
   constructor(
       private _route: ActivatedRoute,
       private _router: Router,
-      private _lectureService: LectureService,
+      private _trailService: TrailService,
       private _userService: UserService,
       private modalService: BsModalService
   ) {
-      this.title = 'Lista de Palestras';
+      this.title = 'Lista de Temas';
       this.url = GLOBAL.url;
       this.identity = this._userService.getIdentity();
       this.token = this._userService.getToken();
@@ -45,7 +45,7 @@ export class LectureListComponent implements OnInit {
   }
 
   ngOnInit() {
-      console.log('[OK] Component: lectures.');
+      console.log('[OK] Component: trails.');
       this.actualPage();
   }
 
@@ -68,22 +68,22 @@ export class LectureListComponent implements OnInit {
                   this.prev_page = 1;
               }
           }
-          this.getLectures(page, this.epicId);
+          this.getTrails(page, this.epicId);
       });
   }
 
-  getLectures(page, epicId) {
-      this._lectureService.getLectures(page, epicId).subscribe(
+  getTrails(page, epicId) {
+      this._trailService.getTrails(page, epicId).subscribe(
           response => {
-              if (!response.lectures) {
+              if (!response.trails) {
                   this.status = 'error';
               } else {
                   this.total = response.total;
-                  this.lectures = response.lectures;
+                  this.trails = response.trails;
                   this.pages = response.pages;
                   if (this.pages > 1 && page > this.pages) {
-                      this._router.navigate(['/admin/lecture/list', 1]);
-                  }
+                    this._router.navigate(['/admin/trail/list', 1]);
+                }
               }
           },
           error => {
@@ -97,10 +97,10 @@ export class LectureListComponent implements OnInit {
       );
   }
 
-  openDeleteConfirm(lecture) {
+  openDeleteConfirm(trail) {
     const initialState = {
-      title: 'Excluir Palestra',
-      message: 'Deseja realmente excluir o palestra : ' + lecture.name + '? <br> Essa ação não poderá ser desfeita.'
+      title: 'Excluir Épico',
+      message: 'Deseja realmente excluir o épico : ' + trail.name + '? <br> Essa ação não poderá ser desfeita.'
     };
     this.bsModalRef = this.modalService.show(DeleteConfirmComponent, {initialState});
     this.bsModalRef.content.actionBtnName = 'Excluir';
@@ -108,9 +108,7 @@ export class LectureListComponent implements OnInit {
 
     this.bsModalRef.content.onClose.subscribe(
         result => {
-            if(result) {
-                this.deleteLecture(lecture._id);
-            }
+            this.deleteTrail(trail._id);
         },
         err => {
             console.log(err);
@@ -119,9 +117,9 @@ export class LectureListComponent implements OnInit {
     )
   }
 
-  deleteLecture(id){
+  deleteTrail(id){
       console.log(id);
-      this._lectureService.deleteLecture(id).subscribe(
+      this._trailService.deleteTrail(id).subscribe(
         response => {
             console.log(response);
             this.actualPage();

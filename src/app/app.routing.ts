@@ -32,6 +32,12 @@ import { EpicAddComponent } from './admin/epic/epic-add/epic-add.component';
 import { LectureAddComponent } from './admin/lecture/lecture-add/lecture-add.component';
 import { LectureEditComponent } from './admin/lecture/lecture-edit/lecture-edit.component';
 import { LectureListComponent } from './admin/lecture/lecture-list/lecture-list.component';
+import { TrailAddComponent } from './admin/trail/trail-add/trail-add.component';
+import { TrailEditComponent } from './admin/trail/trail-edit/trail-edit.component';
+import { TrailListComponent } from './admin/trail/trail-list/trail-list.component';
+import { ClassroomAddComponent } from './admin/classroom/classroom-add/classroom-add.component';
+import { ClassroomEditComponent } from './admin/classroom/classroom-edit/classroom-edit.component';
+import { ClassroomListComponent } from './admin/classroom/classroom-list/classroom-list.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -51,6 +57,12 @@ const appRoutes: Routes = [
             {path: 'lecture/add', component: LectureAddComponent},
             {path: 'lecture/edit/:id', component: LectureEditComponent},
             {path: 'lecture/list', component: LectureListComponent},
+            {path: 'trail/add', component: TrailAddComponent},
+            {path: 'trail/edit/:id', component: TrailEditComponent},
+            {path: 'trail/list', component: TrailListComponent},
+            {path: 'classroom/add', component: ClassroomAddComponent},
+            {path: 'classroom/edit/:id', component: ClassroomEditComponent},
+            {path: 'classroom/list', component: ClassroomListComponent},
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
             {path: 'content', component: ContentComponent},

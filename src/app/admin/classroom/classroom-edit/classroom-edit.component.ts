@@ -1,34 +1,34 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
-import { Epic } from 'src/app/models/epic';
-import { Lecture } from "src/app/models/lecture";
-import { EpicService } from "src/app/services/epic.service";
-import { LectureService } from "src/app/services/lecture.service";
+import { Trail } from 'src/app/models/trail';
+import { Classroom } from "src/app/models/classroom";
+import { TrailService } from "src/app/services/trail.service";
+import { ClassroomService } from "src/app/services/classroom.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
-  selector: "app-lecture-edit",
-  templateUrl: "./lecture-edit.component.html",
-  styleUrls: ["./lecture-edit.component.css"],
-  providers: [UserService, LectureService, EpicService],
+  selector: "app-classroom-edit",
+  templateUrl: "./classroom-edit.component.html",
+  styleUrls: ["./classroom-edit.component.css"],
+  providers: [UserService, ClassroomService, TrailService],
 })
-export class LectureEditComponent implements OnInit {
+export class ClassroomEditComponent implements OnInit {
   public title: string;
-  public lectureId: string;
+  public classroomId: string;
   public url: string;
   public status: string;
-  public lecture: Lecture;
+  public classroom: Classroom;
   public identity: string;
-  public epics = [];
+  public trails = [];
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _lectureService: LectureService,
+    private _classroomService: ClassroomService,
     private _userService: UserService,
-    private _epicService: EpicService,
+    private _trailService: TrailService,
     private _bsLocaleService: BsLocaleService
   ) {
     this.title = "Editar Palestra";
@@ -37,23 +37,23 @@ export class LectureEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: lecture-edit.");
+    console.log("[OK] Component: classroom-edit.");
     this.identity = this._userService.getIdentity();
-    this.lecture = new Lecture('', '', '', '', '', new Date(), new Date(), null, [], new Date(), new Date());
-    this.lecture.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
+    this.classroom = new Classroom('', '', '', '', new Date(), new Date(), null, [], new Date(), new Date());
+    this.classroom.trail = new Trail('', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }
 
   loadPage() {
-    this._epicService
-      .getEpics()
+    this._trailService
+      .getTrails()
       .subscribe(
         (response) => {
           if (response) {
-            this.epics = response.epics;
+            this.trails = response.trails;
             this._route.params.subscribe((params) => {
-              this.lectureId = params["id"];
-              this.getLecture(this.lectureId);
+              this.classroomId = params["id"];
+              this.getClassroom(this.classroomId);
             });
           }
         },
@@ -63,21 +63,21 @@ export class LectureEditComponent implements OnInit {
       );
   }
 
-  getLecture(id) {
-    this._lectureService.getLecture(id).subscribe(
+  getClassroom(id) {
+    this._classroomService.getClassroom(id).subscribe(
       (response) => {
-        if (response.lecture) {
-          let lecture = response.lecture;
-          lecture.start_time = new Date(lecture.start_time);
-          lecture.end_time = new Date(lecture.end_time);
-          this.lecture =lecture;
+        if (response.classroom) {
+          let classroom = response.classroom;
+          classroom.start_time = new Date(classroom.start_time);
+          classroom.end_time = new Date(classroom.end_time);
+          this.classroom =classroom;
         } else {
           this.status = "error";
         }
       },
       (error) => {
         console.log(<any>error);
-        this._router.navigate(["/editlecture", this.lectureId]);
+        this._router.navigate(["/editclassroom", this.classroomId]);
       }
     );
   }
@@ -88,16 +88,16 @@ export class LectureEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.lecture);
-    this._lectureService
-      .updateLecture(this.lecture)
+    console.log(this.classroom);
+    this._classroomService
+      .updateClassroom(this.classroom)
       .subscribe(
         (response) => {
-          if (!response.lecture) {
+          if (!response.classroom) {
             this.status = "error";
           } else {
             this.status = "success";
-            this.getLecture(this.lectureId);
+            this.getClassroom(this.classroomId);
           }
         },
         (error) => {

@@ -12,6 +12,7 @@ import { MomentModule } from 'ngx-moment';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 // Module Custom
 import { MessagesModule} from './messages/messages.module';
@@ -46,6 +47,9 @@ import { UserListComponent } from './admin/user/user-list/user-list.component';
 import { EpicAddComponent } from './admin/epic/epic-add/epic-add.component';
 import { EpicEditComponent } from './admin/epic/epic-edit/epic-edit.component';
 import { EpicListComponent } from './admin/epic/epic-list/epic-list.component';
+import { LectureListComponent } from './admin/lecture/lecture-list/lecture-list.component';
+import { LectureEditComponent } from './admin/lecture/lecture-edit/lecture-edit.component';
+import { LectureAddComponent } from './admin/lecture/lecture-add/lecture-add.component';
 //import { YoutubeComponent } from './pages/channels/youtube/youtube.component';
 //import { FlvplayerComponent } from './pages/channels/flvplayer/flvplayer.component';
 //import { VideojsComponent } from './pages/channels/videojs/videojs.component';
@@ -63,9 +67,14 @@ import { SocialDashboardComponent } from './social-network/social-dashboard/soci
 import { SocialHomeComponent } from './social-network/social-home/social-home.component';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 import { InterceptorModule } from './utils/interceptor.module';
-import { LectureListComponent } from './admin/lecture/lecture-list/lecture-list.component';
-import { LectureEditComponent } from './admin/lecture/lecture-edit/lecture-edit.component';
-import { LectureAddComponent } from './admin/lecture/lecture-add/lecture-add.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { DatetimePopupModule } from 'ngx-bootstrap-datetime-popup';
+import { TrailListComponent } from './admin/trail/trail-list/trail-list.component';
+import { TrailEditComponent } from './admin/trail/trail-edit/trail-edit.component';
+import { TrailAddComponent } from './admin/trail/trail-add/trail-add.component';
+import { ClassroomListComponent } from './admin/classroom/classroom-list/classroom-list.component';
+import { ClassroomEditComponent } from './admin/classroom/classroom-edit/classroom-edit.component';
+import { ClassroomAddComponent } from './admin/classroom/classroom-add/classroom-add.component';
 
 
 const levels = [
@@ -122,6 +131,12 @@ const GamificationConfig = {
     LectureListComponent,
     LectureEditComponent,
     LectureAddComponent,
+    TrailListComponent,
+    TrailEditComponent,
+    TrailAddComponent,
+    ClassroomListComponent,
+    ClassroomEditComponent,
+    ClassroomAddComponent,
     DashboardComponent,
     DeleteConfirmComponent,
     //YoutubeComponent,
@@ -140,7 +155,10 @@ const GamificationConfig = {
     GamificationModule.forRoot(GamificationConfig),
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
+    BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
+    DatetimePopupModule,
     NgBootstrapAlertModule,
     AngularTawkModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests

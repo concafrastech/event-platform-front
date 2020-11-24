@@ -16,7 +16,7 @@
         </div>
     
         <div class="col-md-3">
-            <a [routerLink]="['/admin/lecture/add']" class="btn btn-primary pull-right h2">Novo Item</a>
+            <a [routerLink]="['/admin/classroom/add']" class="btn btn-primary pull-right h2">Novo Item</a>
         </div>
     </div> <!-- /#top -->
 
@@ -35,15 +35,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="item-lecture" *ngFor="let lecture of lectures">
-                        <td>{{lecture.start_time | date:'dd/MM/yy HH:mm':'-0300'}}</td>
-                        <td>{{lecture.end_time | date:'dd/MM/yy HH:mm':'-0300'}}</td>
-                        <td>{{lecture.name}}</td>
-                        <td>{{lecture.speecher}}</td>
+                    <tr class="item-classroom" *ngFor="let classroom of classrooms">
+                        <td>{{classroom.start_time | date:'dd/MM/yy HH:mm':'-0300'}}</td>
+                        <td>{{classroom.end_time | date:'dd/MM/yy HH:mm':'-0300'}}</td>
+                        <td>{{classroom.name}}</td>
+                        <td>{{classroom.speecher}}</td>
                         <td class="actions">
                             <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
-                            <a class="btn btn-warning btn-xs" [routerLink]="['/admin/lecture/edit', lecture._id]">Editar</a>
-                            <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(lecture)">Excluir</a>
+                            <a class="btn btn-warning btn-xs" [routerLink]="['/admin/classroom/edit', classroom._id]">Editar</a>
+                            <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(classroom)">Excluir</a>
                         </td>
                     </tr>
     

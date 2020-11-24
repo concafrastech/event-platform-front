@@ -2,45 +2,45 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
 import { Epic } from 'src/app/models/epic';
-import { Lecture } from "src/app/models/lecture";
+import { Trail } from "src/app/models/trail";
 import { EpicService } from "src/app/services/epic.service";
-import { LectureService } from "src/app/services/lecture.service";
+import { TrailService } from "src/app/services/trail.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
-  selector: "app-lecture-edit",
-  templateUrl: "./lecture-edit.component.html",
-  styleUrls: ["./lecture-edit.component.css"],
-  providers: [UserService, LectureService, EpicService],
+  selector: "app-trail-edit",
+  templateUrl: "./trail-edit.component.html",
+  styleUrls: ["./trail-edit.component.css"],
+  providers: [UserService, TrailService, EpicService],
 })
-export class LectureEditComponent implements OnInit {
+export class TrailEditComponent implements OnInit {
   public title: string;
-  public lectureId: string;
+  public trailId: string;
   public url: string;
   public status: string;
-  public lecture: Lecture;
+  public trail: Trail;
   public identity: string;
   public epics = [];
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _lectureService: LectureService,
+    private _trailService: TrailService,
     private _userService: UserService,
     private _epicService: EpicService,
     private _bsLocaleService: BsLocaleService
   ) {
-    this.title = "Editar Palestra";
+    this.title = "Editar Épicos";
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }
 
   ngOnInit() {
-    console.log("[OK] Component: lecture-edit.");
+    console.log("[OK] Component: trail-edit.");
     this.identity = this._userService.getIdentity();
-    this.lecture = new Lecture('', '', '', '', '', new Date(), new Date(), null, [], new Date(), new Date());
-    this.lecture.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
+    this.trail = new Trail('', '', '', '', '', null, new Date(), new Date());
+    this.trail.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }
 
@@ -52,8 +52,8 @@ export class LectureEditComponent implements OnInit {
           if (response) {
             this.epics = response.epics;
             this._route.params.subscribe((params) => {
-              this.lectureId = params["id"];
-              this.getLecture(this.lectureId);
+              this.trailId = params["id"];
+              this.getTrail(this.trailId);
             });
           }
         },
@@ -63,21 +63,18 @@ export class LectureEditComponent implements OnInit {
       );
   }
 
-  getLecture(id) {
-    this._lectureService.getLecture(id).subscribe(
+  getTrail(id) {
+    this._trailService.getTrail(id).subscribe(
       (response) => {
-        if (response.lecture) {
-          let lecture = response.lecture;
-          lecture.start_time = new Date(lecture.start_time);
-          lecture.end_time = new Date(lecture.end_time);
-          this.lecture =lecture;
+        if (response.trail) {
+          this.trail = response.trail;
         } else {
           this.status = "error";
         }
       },
       (error) => {
         console.log(<any>error);
-        this._router.navigate(["/editlecture", this.lectureId]);
+        this._router.navigate(["/edittrail", this.trailId]);
       }
     );
   }
@@ -88,16 +85,15 @@ export class LectureEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.lecture);
-    this._lectureService
-      .updateLecture(this.lecture)
+    this._trailService
+      .updateTrail(this.trail)
       .subscribe(
         (response) => {
-          if (!response.lecture) {
+          if (!response.trail) {
             this.status = "error";
           } else {
             this.status = "success";
-            this.getLecture(this.lectureId);
+            this.getTrail(this.trailId);
           }
         },
         (error) => {

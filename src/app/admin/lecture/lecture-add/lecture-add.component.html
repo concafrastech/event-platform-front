@@ -1,4 +1,4 @@
-<div class="col-lg-5">
+<div class="col-md-12 col-lg-8">
     <h1 class="h1-strong">{{title}}</h1>
     <div class="alert alert-success" *ngIf="status == 'success'">
         Dados atualizados com sucesso!
@@ -17,18 +17,31 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <label>Descrição</label>
-                <input type="text" name="description" #description="ngModel" [(ngModel)]="epic.description" class="form-control" required />
-                <span *ngIf="!description.value && description.touched" >Uma descrição é obrigatória!</span>
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="lecture.description" class="form-control" />
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-4">
-                <label>Horário de Início</label>
-                <input type="text" name="start_time" #start_time="ngModel" [(ngModel)]="lecture.start_time" class="form-control" />
+            <div class="form-group col-md-12">
+                <label>Palestrante</label>
+                <input type="text" name="speecher" #speecher="ngModel" [(ngModel)]="lecture.speecher" class="form-control"/>
             </div>
-            <div class="form-group col-md-4">
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label>Data de Início</label>
+                <input type="text" name="start_time" #start_time="ngModel" [(ngModel)]="lecture.start_time" class="form-control" bsDatepicker/>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Horário de Início</label>
+                <timepicker #start_time="ngModel" [(ngModel)]="lecture.start_time" [showMeridian]="false"></timepicker>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Data de Término</label>
+                <input type="text" name="end_time" #end_date="ngModel" [(ngModel)]="lecture.end_time" class="form-control" bsDatepicker/>
+            </div>
+            <div class="form-group col-md-3">
                 <label>Horário de Término</label>
-                <input type="text" name="end_time" #end_time="ngModel" [(ngModel)]="lecture.end_time" class="form-control" />
+                <timepicker #end_time="ngModel" [(ngModel)]="lecture.end_time" [showMeridian]="false"></timepicker>
             </div>
         </div>
         <div class="row">

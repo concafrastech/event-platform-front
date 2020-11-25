@@ -77,6 +77,7 @@ export class ConferenceEditComponent implements OnInit {
                   this.status = 'error';
               } else {
                   this.status = 'success';
+                  this._router.navigate(['/admin/conference/list']);
               }
           },
           error => {

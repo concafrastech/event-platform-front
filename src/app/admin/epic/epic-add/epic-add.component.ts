@@ -61,29 +61,28 @@ export class EpicAddComponent implements OnInit {
     );
   }
 
-    /* Return true or false if it is the selected */
-    compareByOptionId(idFist, idSecond) {
-        return idFist && idSecond && idFist._id == idSecond._id;
-      }
-
-  onSubmit() {
-      this._epicService.addEpic(this.epic).subscribe(
-          response => {
-              if (!response.epic) {
-                  this.status = 'error';
-              } else {
-                  this.status = 'success';
-                  this._router.navigate(['/admin/epic/edit', response.epic._id]);
-              }
-          },
-          error => {
-              var errorMessage = <any> error;
-              console.log(errorMessage);
-              if (errorMessage != null) {
-                  this.status = 'error';
-              }
-          }
-      );
+  /* Return true or false if it is the selected */
+  compareByOptionId(idFist, idSecond) {
+    return idFist && idSecond && idFist._id == idSecond._id;
   }
 
+  onSubmit() {
+   this._epicService.addEpic(this.epic).subscribe(
+        (response) => {
+          if (!response.epic) {
+           this.status = 'error';
+          } else {
+           this.status = 'success';
+            this._router.navigate(['/admin/epic/edit', response.epic._id]);
+          }
+        },
+        (error) => {
+          var errorMessage = <any>error;
+          console.log(errorMessage);
+          if (errorMessage != null) {
+           this.status = 'error';
+          }
+        }
+      );
+  }
 }

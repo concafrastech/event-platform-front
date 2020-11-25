@@ -72,6 +72,11 @@ export class TrailListComponent implements OnInit {
       });
   }
 
+  pageChanged(event: any): void {
+    this.page = event.page;
+    this.actualPage();
+  }
+
   getTrails(page, epicId) {
       this._trailService.getTrails(page, epicId).subscribe(
           response => {

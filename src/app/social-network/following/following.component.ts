@@ -85,7 +85,7 @@ export class FollowingComponent implements OnInit {
                     this.follows = response.user_following;
 //                    this.follows = response.user_following;
                     if (page > this.pages) {
-                        this._router.navigate(['/gente', 1]);
+                        this._router.navigate(['/social/pessoas', 1]);
                     }
                 }
             },
@@ -108,7 +108,7 @@ export class FollowingComponent implements OnInit {
                     this.user = response.user;
                     this.getFollows(userId, page);
                 } else {
-                    this._router.navigate(['/home']);
+                    this._router.navigate(['/social/home']);
                 }
             },
             error => {

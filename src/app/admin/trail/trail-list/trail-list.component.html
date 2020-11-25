@@ -35,7 +35,7 @@
                 <tbody>
     
                     <tr class="item-trail" *ngFor="let trail of trails">
-                        <td>{{trail.name}}</td>
+                        <td>{{trail.name}}<br/><sub>{{trail.description}}</sub></td>
                         <td>{{trail.subject}}</td>
                         <td class="actions">
                             <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
@@ -51,16 +51,8 @@
     </div> <!-- /#list -->
 
     <div id="bottom" class="row">
-        <div class="col-md-12" *ngIf="pages > 1">
-            
-            <ul class="pagination">
-                <li class="disabled"><a>&lt; Anterior</a></li>
-                <li class="disabled"><a>1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-            </ul><!-- /.pagination -->
-    
+        <div class="col-md-12">         
+            <pagination [totalItems]="total" [(ngModel)]="page" (pageChanged)="pageChanged($event)"></pagination>
         </div>
     </div> <!-- /#bottom -->
 </div>

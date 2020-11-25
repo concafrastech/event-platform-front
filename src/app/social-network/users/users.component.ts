@@ -83,7 +83,7 @@ export class UsersComponent implements OnInit {
                     this.follows = response.user_following;
                     this.follow_me = response.user_follow_me;
                     if (page > this.pages) {
-                        this._router.navigate(['/gente', 1]);
+                        this._router.navigate(['/social/pessoas', 1]);
                     }
                 }
             },

@@ -17,8 +17,7 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <label>Descrição</label>
-                <input type="text" name="description" #description="ngModel" [(ngModel)]="trail.description" class="form-control" required />
-                <span *ngIf="!description.value && description.touched" >Uma descrição é obrigatória!</span>
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="trail.description" class="form-control" />
             </div>
         </div>
         <div class="row">

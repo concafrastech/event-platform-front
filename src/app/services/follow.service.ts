@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {GLOBAL} from './global';
-import {User} from '../models/user';
+import { getToken } from '../utils/token';
 
 @Injectable()
 export class FollowService {
@@ -12,24 +12,24 @@ export class FollowService {
         this.url = GLOBAL.url;
     }
 
-    addFollow(token, follow): Observable<any> {
+    addFollow(follow): Observable<any> {
         let params = JSON.stringify(follow);
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                       .set('Authorization', token);
+                                       .set('Authorization', getToken());
 
         return this._http.post(this.url + 'follow', params, {headers: headers});
     }
 
-    deleteFollow(token, id): Observable<any> {
+    deleteFollow(id): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                       .set('Authorization', token);
+                                       .set('Authorization', getToken());
 
         return this._http.delete(this.url + 'follow/'+id, {headers: headers});
     }
 
-    getFollowing(token, userId = null, page = 1): Observable<any> {
+    getFollowing(userId = null, page = 1): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                       .set('Authorization', token);
+                                       .set('Authorization', getToken());
 
         var url = this.url + 'following';
         if (userId != null) {
@@ -38,9 +38,9 @@ export class FollowService {
         return this._http.get(url, {headers: headers});
     }
 
-    getFollowed(token, userId = null, page = 1): Observable<any> {
+    getFollowed(userId = null, page = 1): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                       .set('Authorization', token);
+                                       .set('Authorization', getToken());
 
         var url = this.url + 'followed';
         if (userId != null) {

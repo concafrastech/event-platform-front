@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5001/event-platform-concafras-back/us-central1/app/api/',
+  apiUrl: 'http://localhost:3800/api/',
   signatureEndpoint: 'https://event-platform-zoom.herokuapp.com',
   leaveUrl: 'http://localhost:4200'
 };

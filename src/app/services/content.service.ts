@@ -4,7 +4,7 @@ import { GLOBAL } from './global';
 import { UserService } from './user.service';
 
 @Injectable()
-export class AdminService {
+export class ContentService {
     public url: String;
     public token;
 

@@ -1,0 +1,53 @@
+<div class="col-lg-5">
+    <h1 class="h1-strong">{{title}}</h1>
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        Dados atualizados com sucesso!
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Erro ao atualizar os dados.
+    </div>
+    <form #epicAddForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Nome</label>
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="epic.name" class="form-control" required />
+                <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Descrição</label>
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="epic.description" class="form-control" required />
+                <span *ngIf="!description.value && description.touched" >Uma descrição é obrigatória!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Idade Inicial</label>
+                <input type="text" name="start_age" #start_age="ngModel" [(ngModel)]="epic.start_age" class="form-control" />
+            </div>
+            <div class="form-group col-md-4">
+                <label>Idade Final</label>
+                <input type="text" name="end_age" #end_age="ngModel" [(ngModel)]="epic.end_age" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Evento</label>
+                    <select [compareWith]="compareByOptionId" name="conference" #conference="ngModel" [(ngModel)]="epic.conference" class="form-control">
+                        <option value="">-- Selecione --</option>
+                        <option *ngFor="let conference of conferences" [ngValue]="conference">{{conference.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!epicAddForm.form.valid" />
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </form>
+</div>

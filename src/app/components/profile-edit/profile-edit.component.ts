@@ -10,11 +10,11 @@ import { ptBrLocale } from 'ngx-bootstrap/locale';
 defineLocale('pt-br', ptBrLocale);
 
 @Component({
-    selector: 'user-edit',
-    templateUrl: './user-edit.component.html',
+    selector: 'profile-edit',
+    templateUrl: './profile-edit.component.html',
     providers: [UserService, UploadService]
 })
-export class UserEditComponent implements OnInit {
+export class ProfileEditComponent implements OnInit {
     public title: string;
     public user: User;
     public status: string;
@@ -38,7 +38,7 @@ export class UserEditComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('[OK] Component: user-edit.');
+        console.log('[OK] Component: profile-edit.');
     }
 
     onSubmit() {

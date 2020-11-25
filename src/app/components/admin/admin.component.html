@@ -12,11 +12,11 @@
                     <option value="">Tipo do conteúdo</option>
                     <option *ngFor="let type of types" value="{{ type.split(':')[0] }}">{{ type.split(':')[1] }}</option>
                 </select>
+                <form>
+                    <form-group-conteudo *ngFor="let content of contents; let i = index" [content]="content" [ordem]="i" (excluir)="removeType($event)"></form-group-conteudo>
+                    <button type="submit" class="btn btn-success" *ngIf="contents.length != 0">Enviar</button>
+                </form>
             </div>
-            <form>
-                <form-group-conteudo *ngFor="let content of contents; let i = index" [content]="content" [ordem]="i" (excluir)="removeType($event)"></form-group-conteudo>
-                <button type="submit" class="btn btn-success" *ngIf="contents.length != 0">Enviar</button>
-            </form>
         </div>
     </div>
 </div>

@@ -6,8 +6,13 @@ div.row {
     padding: 5px;
 }
 
+.gamb5 {
+    padding: 5px;
+    height: 50px;
+}
+
 .padd10-vert {
-    padding: 10px 5px;
+    padding: 10px 0px;
 }
 
 .btn {

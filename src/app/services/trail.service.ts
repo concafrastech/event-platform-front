@@ -30,10 +30,10 @@ export class TrailService {
         return this._http.put(this.url + 'trails/' + trail._id, params, {headers: headers});
     }
 
-    getTrails(page = null, conferenceId = null): Observable<any> {
+    getTrails(page = null, epicId = null): Observable<any> {
         let params = { 
             page : page,
-            conference : conferenceId != null ? conferenceId : ''
+            epic : epicId != null ? epicId : ''
          };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

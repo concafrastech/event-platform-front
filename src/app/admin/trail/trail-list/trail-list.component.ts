@@ -1,7 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Trail} from '../../../models/trail';
+import { Epic } from '../../../models/epic';
 import {TrailService} from '../../../services/trail.service';
+import {EpicService} from '../../../services/epic.service';
 import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -11,7 +13,7 @@ import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete
   selector: 'app-trail-list',
   templateUrl: './trail-list.component.html',
   styleUrls: ['./trail-list.component.css'],
-  providers: [UserService, TrailService]
+  providers: [UserService, TrailService, EpicService]
 })
 export class TrailListComponent implements OnInit {
   @Input() epicId: string = null;
@@ -25,6 +27,7 @@ export class TrailListComponent implements OnInit {
   public total;
   public pages;
   public trails: Trail[];
+  public epics: Epic[];
   public follows;
   public follow_me;
   public status: string;
@@ -34,6 +37,7 @@ export class TrailListComponent implements OnInit {
       private _route: ActivatedRoute,
       private _router: Router,
       private _trailService: TrailService,
+      private _epicService: EpicService,
       private _userService: UserService,
       private modalService: BsModalService
   ) {
@@ -46,7 +50,23 @@ export class TrailListComponent implements OnInit {
 
   ngOnInit() {
       console.log('[OK] Component: trails.');
+      this.loadEpics();
       this.actualPage();
+  }
+
+  loadEpics() {
+    this._epicService
+      .getEpics()
+      .subscribe(
+        (response) => {
+          if (response) {
+            this.epics = response.epics;
+          }
+        },
+        (error) => {
+          console.log(<any>error);
+        }
+      );
   }
 
   actualPage() {
@@ -70,6 +90,11 @@ export class TrailListComponent implements OnInit {
           }
           this.getTrails(page, this.epicId);
       });
+  }
+
+  epicChanged(event: any): void {
+      this.epicId = event;
+      this.actualPage();
   }
 
   pageChanged(event: any): void {

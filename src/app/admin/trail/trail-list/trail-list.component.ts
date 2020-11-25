@@ -137,10 +137,12 @@ export class TrailListComponent implements OnInit {
     this.bsModalRef.content.closeBtnName = 'Cancelar';
 
     this.bsModalRef.content.onClose.subscribe(
-        result => {
-            this.deleteTrail(trail._id);
+        (result) => {
+            if(result){
+                this.deleteTrail(trail._id);
+            }
         },
-        err => {
+        (err) => {
             console.log(err);
             this.status = 'error';
         }

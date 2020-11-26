@@ -31,7 +31,7 @@ export class TrailEditComponent implements OnInit {
     private _epicService: EpicService,
     private _bsLocaleService: BsLocaleService
   ) {
-    this.title = "Editar Épicos";
+    this.title = "Editar Temas";
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }

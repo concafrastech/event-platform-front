@@ -13,6 +13,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { DatetimePopupModule } from 'ngx-bootstrap-datetime-popup';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 // Module Custom
 import { MessagesModule} from './messages/messages.module';
@@ -66,8 +69,6 @@ import { SocialDashboardComponent } from './social-network/social-dashboard/soci
 import { SocialHomeComponent } from './social-network/social-home/social-home.component';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 import { InterceptorModule } from './utils/interceptor.module';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { DatetimePopupModule } from 'ngx-bootstrap-datetime-popup';
 import { TrailListComponent } from './admin/trail/trail-list/trail-list.component';
 import { TrailEditComponent } from './admin/trail/trail-edit/trail-edit.component';
 import { TrailAddComponent } from './admin/trail/trail-add/trail-add.component';
@@ -156,6 +157,7 @@ const GamificationConfig = {
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     DatetimePopupModule,
     NgBootstrapAlertModule,
     AngularTawkModule

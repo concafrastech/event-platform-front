@@ -12,7 +12,7 @@
                     </div>
                     <div class="username pull-left">
                         <p class="name-surname">
-                            <a [routerLink]="['/perfil', follow.followed._id]">
+                            <a [routerLink]="['/social/perfil', follow.followed._id]">
                                 {{follow.followed.name + ' ' + follow.followed.surname}}
                             </a>
                         </p>
@@ -44,8 +44,8 @@
             </div>
         </div>
         <ul class="pagination pull-right">
-            <li *ngIf="page > 1"><a [routerLink]="['/seguindo', userPageId, prev_page]">Anterior</a></li>
-            <li *ngIf="pages != page"><a [routerLink]="['/seguindo', userPageId, next_page]">Próximo</a></li>
+            <li *ngIf="page > 1"><a [routerLink]="['/social/seguindo', userPageId, prev_page]">Anterior</a></li>
+            <li *ngIf="pages != page"><a [routerLink]="['/social/seguindo', userPageId, next_page]">Próximo</a></li>
         </ul>
     </div>
 </div>

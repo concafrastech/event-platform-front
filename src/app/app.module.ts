@@ -62,7 +62,6 @@ import { NgBootstrapAlertModule } from 'ng-bootstrap-alert';
 import { AngularTawkComponent, AngularTawkModule } from 'angular-tawk';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ContentComponent } from './admin/content/content.component';
-import { FormGroupConteudoComponent } from './admin/content/form-group-conteudo/form-group-conteudo.component';
 import { SocialDashboardComponent } from './social-network/social-dashboard/social-dashboard.component';
 import { SocialHomeComponent } from './social-network/social-home/social-home.component';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
@@ -118,7 +117,6 @@ const GamificationConfig = {
     ZoomusComponent,
     IframeComponent,
     ContentComponent,
-    FormGroupConteudoComponent,
     ConferenceListComponent,
     ConferenceEditComponent,
     ConferenceAddComponent,

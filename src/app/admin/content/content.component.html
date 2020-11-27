@@ -1,9 +1,7 @@
 <div class="content">
-  <!-- <h1>{{ pageTitle }}</h1> -->
   <p>
     Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que
     deseja subir (a ordem importa):
-    <!-- <a class="btn btn-primary btn-conteudoplus" (click)="changeFlag('especifico')" role="button">+</a> -->
   </p>
   <div>
     <!-- SELECT DINÂMICO -->
@@ -96,7 +94,7 @@
         </div>
 
         <div *ngIf="content.type == 'externo'" class="div-content">
-          <label class="col-sm-3 col-form-label">Documentos / PDF</label>
+          <label class="col-sm-3 col-form-label">Conteúdo externo</label>
           <div class="col-sm-9">
             <input
               class="form-control"

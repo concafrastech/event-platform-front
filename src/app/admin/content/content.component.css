@@ -38,10 +38,6 @@ form {
     justify-content: left;
 }
 
-.content {
-    margin: 10px;
-}
-
 .div-content {
     height: 50px;
     display: flex;

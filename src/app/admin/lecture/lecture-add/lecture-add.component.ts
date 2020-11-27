@@ -24,6 +24,7 @@ export class LectureAddComponent implements OnInit {
   public lecture: Lecture;
   public identity: string;
   public epics = [];
+  public alturaTela: number;
 
   constructor(
     private _route: ActivatedRoute,
@@ -44,6 +45,7 @@ export class LectureAddComponent implements OnInit {
     this.lecture = new Lecture('', '', '', '', '', new Date(), new Date(), null, [], new Date(), new Date());
     this.lecture.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
+    this.alturaTela = window.innerHeight > 0 ? window.innerHeight : screen.height;
   }
 
   loadPage() {
@@ -67,7 +69,7 @@ export class LectureAddComponent implements OnInit {
       }
 
   onSubmit() {
-      this._lectureService.addLecture(this.lecture).subscribe(
+    this._lectureService.addLecture(this.lecture).subscribe(
           response => {
               if (!response.lecture) {
                   this.status = 'error';
@@ -83,7 +85,7 @@ export class LectureAddComponent implements OnInit {
                   this.status = 'error';
               }
           }
-      );
+    );
   }
 
 }

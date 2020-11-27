@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ContentService } from "../../services/content.service";
 import { Content } from "../../models/Content";
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: "app-content",
@@ -28,7 +29,7 @@ export class ContentComponent implements OnInit {
     externo: "Conteúdo externo",
     texto: "Texto",
   };
-  public vContent: Content[] = [];
+  @Input() public vContent: Content[] = [];
   select: string = "";
 
   constructor(private _contentService: ContentService) {
@@ -63,21 +64,37 @@ export class ContentComponent implements OnInit {
         )
       );
     }
-
   }
 
   onSelectFile(event: FileList, content: Content) {
-    content.file = event[0];
+
+    let files: Set<File> = new Set<File>();
+    files.add(event[0]);
+
+    let sub = this._contentService.uploadFile(files)
+    .subscribe((response) => {
+      //Começou o download
+      if (response.type == HttpEventType.Sent) {
+        //É possível adicionar uma barre de progresso ou um spinner ao inicializar o upload.
+      } else if (response.type == HttpEventType.UploadProgress) {
+        //Progresso
+      } else if (response.type == HttpEventType.Response) {
+        sub.unsubscribe();
+        //Final do upload - TODO: pegar caminho do arquivo na repsosta
+        //content.file = "Caminho do arquivo"
+      }
+    });
+
   }
 
-  onSubmit(form) {
+  /*onSubmit(form) {
     this.vContent.map((content) => {
       this._contentService.addContent(content).subscribe((item) =>{
         console.log(item);
         
       });
     });
-  }
+  }*/
 
   removeType(event) {
     this.vContent = this.arrayRemove(this.vContent, event);

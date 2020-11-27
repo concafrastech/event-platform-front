@@ -1,3 +1,4 @@
+import { Content } from './Content';
 import { Epic } from './epic';
 
 export class Lecture {
@@ -10,7 +11,7 @@ export class Lecture {
         public start_time: Date,
         public end_time: Date,
         public epic: Epic,
-        public contents: [],
+        public contents: Content[],
         public created_at: Date,
         public updated_at: Date
     ) {}

@@ -22,7 +22,17 @@
         class="form-group container-form"
         *ngFor="let content of vContent; let i = index"
       >
-        <h3>{{ vTypes[content.type] }}</h3>
+        <div class="div-content">
+          <div class="col-sm-3">
+            <h4><b>{{ vTypes[content.type] }}</b></h4>
+          </div>
+          <div class="col-sm-9">
+            <button class="btn btn-info" disabled>Ordem: {{ content.sequence }}</button>
+            <button class="btn btn-danger" (click)="removeType(content)">
+              <i class="glyphicon glyphicon-trash"></i>
+            </button>
+          </div>
+        </div>
         <div class="div-content">
           <label class="col-sm-3 col-form-label">Nome</label>
           <div class="col-sm-9">
@@ -204,18 +214,6 @@
             </div>
             <label class="form-check-label col-sm-9">Autoplay?</label>
           </div>
-        </div>
-
-        <div>
-          <input
-            class="form-control input-sequence"
-            type="text"
-            placeholder="Ordem: {{ content.sequence }}"
-            readonly
-          />
-          <button class="btn btn-danger" (click)="removeType(content)">
-            <i class="glyphicon glyphicon-trash"></i>
-          </button>
         </div>
       </div>
     </form>

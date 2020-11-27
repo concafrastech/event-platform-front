@@ -1,271 +1,265 @@
-<div class="container">
-  <div id="center">
-    <h1>{{ pageTitle }}</h1>
-    <p>
-      Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que
-      deseja subir (a ordem importa):
-      <!-- <a class="btn btn-primary btn-conteudoplus" (click)="changeFlag('especifico')" role="button">+</a> -->
-    </p>
-    <div>
-      <!-- SELECT DINÂMICO -->
-      <div class="div-select">
-        <select class="form-control select-conteudo" [(ngModel)]="select">
-          <option value="">Tipo do conteúdo</option>
-          <option *ngFor="let type of types" [value]="type.split(':')[0]">
-            {{ type.split(":")[1] }}
-          </option>
-        </select>
-        <button class="btn btn-success btn-send btn-lg" (click)="addContent()">
-          <i class="glyphicon glyphicon-plus"></i>
-        </button>
-      </div>
-      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-        <div
-          class="form-group container-form"
-          *ngFor="let content of vContent; let i = index"
-        >
-          <h3>{{ vTypes[content.type] }}</h3>
-          <div class="separator">
-            <label class="col-sm-3 col-form-label col-right">Nome</label>
-            <div class="col-sm-9">
-              <input
-                class="form-control"
-                name="name_conteudo{{ i }}"
-                type="text"
-                [(ngModel)]="content.name"
-                placeholder="Nome do Conteúdo"
-              />
-            </div>
-          </div>
-
-          <div class="separator">
-            <label class="col-sm-3 col-form-label col-right">Tempo de Exibição</label>
-            <div class="col-sm-9">
-              <input
-                class="form-control"
-                name="time{{ i }}"
-                type="number"
-                min="0"
-                [(ngModel)]="content.time"
-              />
-            </div>
-          </div>
-
-          <div *ngIf="content.type == 'img'" class="separator">
-            <label class="col-sm-3 col-form-label">Arquivo de imagem</label>
-            <div class="col-sm-9">
-              <input
-                class="form-control"
-                type="file"
-                (change)="onSelectFile($event.target.files, content)"
-              />
-            </div>
-          </div>
-
-          <div *ngIf="content.type == 'audio'" class="separator">
-            <label class="col-sm-3 col-form-label">Arquivo de áudio</label>
-            <div class="col-sm-9">
-              <input
-                class="form-control"
-                type="file"
-                (change)="onSelectFile($event.target.files, content)"
-              />
-            </div>
-          </div>
-
-          <div *ngIf="content.type == 'doc'" class="separator">
-            <label class="col-sm-3 col-form-label">Documentos / PDF</label>
-            <div class="col-sm-9">
-              <input
-                class="form-control"
-                type="file"
-                (change)="onSelectFile($event.target.files, content)"
-              />
-            </div>
-          </div>
-
-          <div *ngIf="content.type == 'texto'" class="separator">
-            <label class="col-sm-3 col-form-label">Texto</label>
-            <div class="col-sm-9">
-              <textarea
-                class="form-control"
-                name="texto{{ i }}"
-                rows="5"
-                [(ngModel)]="content.text"
-              ></textarea>
-            </div>
-          </div>
-
-          <div *ngIf="content.type == 'externo'" class="separator">
-            <label class="col-sm-3 col-form-label">Documentos / PDF</label>
-            <div class="col-sm-9">
-              <input
-                class="form-control"
-                name="externo{{ i }}"
-                type="text"
-                [(ngModel)]="content.url"
-                placeholder="URL do conteúdo externo (Jogo, conteúdo interativo, etc...)"
-              />
-            </div>
-          </div>
-
-          <div *ngIf="content.type == 'zoom'">
-            <div class="separator">
-              <label class="col-sm-3 col-form-label col-right">API_KEY</label>
-              <div class="col-sm-9">
-                <input
-                  class="form-control"
-                  name="zoom_key{{ i }}"
-                  type="text"
-                  [(ngModel)]="content.zoom_api_key"
-                  placeholder="Insira aqui sua API_KEY"
-                />
-              </div>
-            </div>
-            <div class="separator">
-              <label class="col-sm-3 col-form-label col-right">API_SECRET</label>
-              <div class="col-sm-9">
-                <input
-                  class="form-control"
-                  name="zoom_secret{{ i }}"
-                  type="text"
-                  [(ngModel)]="content.zoom_api_secret"
-                  placeholder="Insira aqui sua API_SECRET"
-                />
-              </div>
-            </div>
-            <div class="separator">
-              <label class="col-sm-3 col-form-label col-right">Número da Sala</label>
-              <div class="col-sm-9">
-                <input
-                  class="form-control"
-                  name="zoom_room{{ i }}"
-                  type="text"
-                  [(ngModel)]="content.zoom_room"
-                  placeholder="Insira aqui o número da sala do Zoom"
-                />
-              </div>
-            </div>
-
-            <div>
-              <div class="form-check form-check-inline separator">
-                <div class="col-sm-3 col-right">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="controls{{ i }}"
-                    [(ngModel)]="content.controls"
-                  />
-                </div>
-                <label class="form-check-label col-sm-9">Exibir Controles</label>
-              </div>
-              <div class="form-check form-check-inline separator">
-                <div class="col-sm-3 col-right">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="replay{{ i }}"
-                    [(ngModel)]="content.replay"
-                  />
-                </div>
-                <label class="form-check-label col-sm-9">Replay?</label>
-              </div>
-              <div class="form-check form-check-inline separator">
-                <div class="col-sm-3 col-right">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="autoplay{{ i }}"
-                    [(ngModel)]="content.autoplay"
-                  />
-                </div>
-                <label class="form-check-label col-sm-9">Autoplay?</label>
-              </div>
-            </div>
-          </div>
-
-          <div *ngIf="content.type == 'youtube'">
-            <div class="separator">
-              <label class="col-sm-3 col-form-label col-right">Link Vídeo</label>
-              <div class="col-sm-9">
-                <input
-                  class="form-control"
-                  name="youtube_url{{ i }}"
-                  type="text"
-                  [(ngModel)]="content.url"
-                  placeholder="URL ao vivo (Youtube / Vimeo)"
-                />
-              </div>
-            </div>
-            <div class="separator">
-              <label class="col-sm-3 col-form-label col-right">Link Reserva</label>
-              <div class="col-sm-9">
-                <input
-                  class="form-control"
-                  name="youtube_url_alternative{{ i }}"
-                  type="text"
-                  [(ngModel)]="content.url_alternative"
-                  placeholder="URL do vídeo gravado (Youtube / Vimeo)"
-                />
-              </div>
-            </div>
-            <div>
-              <div class="form-check form-check-inline separator">
-                <div class="col-sm-3 col-right">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="controls{{ i }}"
-                    [(ngModel)]="content.controls"
-                  />
-                </div>
-                <label class="form-check-label col-sm-9">Exibir Controles</label>
-              </div>
-              <div class="form-check form-check-inline separator">
-                <div class="col-sm-3 col-right">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="replay{{ i }}"
-                    [(ngModel)]="content.replay"
-                  />
-                </div>
-                <label class="form-check-label col-sm-9">Replay?</label>
-              </div>
-              <div class="form-check form-check-inline separator">
-                <div class="col-sm-3 col-right">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="autoplay{{ i }}"
-                    [(ngModel)]="content.autoplay"
-                  />
-                </div>
-                <label class="form-check-label col-sm-9">Autoplay?</label>
-              </div>
-            </div>
-          </div>
-
-          <div>
+<div class="content">
+  <!-- <h1>{{ pageTitle }}</h1> -->
+  <p>
+    Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que
+    deseja subir (a ordem importa):
+    <!-- <a class="btn btn-primary btn-conteudoplus" (click)="changeFlag('especifico')" role="button">+</a> -->
+  </p>
+  <div>
+    <!-- SELECT DINÂMICO -->
+    <div class="div-select">
+      <select class="form-control select-content" [(ngModel)]="select">
+        <option value="">Tipo do conteúdo</option>
+        <option *ngFor="let type of types" [value]="type.split(':')[0]">
+          {{ type.split(":")[1] }}
+        </option>
+      </select>
+      <button class="btn btn-success btn-send btn-lg" (click)="addContent()">
+        <i class="glyphicon glyphicon-plus"></i>
+      </button>
+    </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div
+        class="form-group container-form"
+        *ngFor="let content of vContent; let i = index"
+      >
+        <h3>{{ vTypes[content.type] }}</h3>
+        <div class="div-content">
+          <label class="col-sm-3 col-form-label">Nome</label>
+          <div class="col-sm-9">
             <input
-              class="form-control input-sequence"
+              class="form-control"
+              name="name_conteudo{{ i }}"
               type="text"
-              placeholder="Ordem: {{ content.sequence }}"
-              readonly
-              />
-            <button class="btn btn-danger" (click)="removeType(content)">
-              <i class="glyphicon glyphicon-trash"></i>
-            </button>
+              [(ngModel)]="content.name"
+              placeholder="Nome do Conteúdo"
+            />
           </div>
         </div>
-        <button
-          type="submit"
-          class="btn btn-success"
-          *ngIf="vContent.length != 0"
-        >
-          Enviar
-        </button>
-      </form>
-    </div>
+
+        <div class="div-content">
+          <label class="col-sm-3 col-form-label">Tempo de Exibição</label>
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              name="time{{ i }}"
+              type="number"
+              min="0"
+              [(ngModel)]="content.time"
+            />
+          </div>
+        </div>
+
+        <div *ngIf="content.type == 'img'" class="div-content">
+          <label class="col-sm-3 col-form-label">Arquivo de imagem</label>
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              type="file"
+              (change)="onSelectFile($event.target.files, content)"
+            />
+          </div>
+        </div>
+
+        <div *ngIf="content.type == 'audio'" class="div-content">
+          <label class="col-sm-3 col-form-label">Arquivo de áudio</label>
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              type="file"
+              (change)="onSelectFile($event.target.files, content)"
+            />
+          </div>
+        </div>
+
+        <div *ngIf="content.type == 'doc'" class="div-content">
+          <label class="col-sm-3 col-form-label">Documentos / PDF</label>
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              type="file"
+              (change)="onSelectFile($event.target.files, content)"
+            />
+          </div>
+        </div>
+
+        <div *ngIf="content.type == 'texto'" class="div-content">
+          <label class="col-sm-3 col-form-label">Texto</label>
+          <div class="col-sm-9">
+            <textarea
+              class="form-control"
+              name="texto{{ i }}"
+              rows="5"
+              [(ngModel)]="content.text"
+            ></textarea>
+          </div>
+        </div>
+
+        <div *ngIf="content.type == 'externo'" class="div-content">
+          <label class="col-sm-3 col-form-label">Documentos / PDF</label>
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              name="externo{{ i }}"
+              type="text"
+              [(ngModel)]="content.url"
+              placeholder="URL do conteúdo externo (Jogo, conteúdo interativo, etc...)"
+            />
+          </div>
+        </div>
+
+        <div *ngIf="content.type == 'zoom'">
+          <div class="div-content">
+            <label class="col-sm-3 col-form-label">API_KEY</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                name="zoom_key{{ i }}"
+                type="text"
+                [(ngModel)]="content.zoom_api_key"
+                placeholder="Insira aqui sua API_KEY"
+              />
+            </div>
+          </div>
+          <div class="div-content">
+            <label class="col-sm-3 col-form-label">API_SECRET</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                name="zoom_secret{{ i }}"
+                type="text"
+                [(ngModel)]="content.zoom_api_secret"
+                placeholder="Insira aqui sua API_SECRET"
+              />
+            </div>
+          </div>
+          <div class="div-content">
+            <label class="col-sm-3 col-form-label">Número da Sala</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                name="zoom_room{{ i }}"
+                type="text"
+                [(ngModel)]="content.zoom_room"
+                placeholder="Insira aqui o número da sala do Zoom"
+              />
+            </div>
+          </div>
+
+          <div class="form-check form-check-inline div-content">
+            <div class="col-sm-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="controls{{ i }}"
+                [(ngModel)]="content.controls"
+              />
+            </div>
+            <label class="form-check-label col-sm-9">Exibir Controles</label>
+          </div>
+          <div class="form-check form-check-inline div-content">
+            <div class="col-sm-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="replay{{ i }}"
+                [(ngModel)]="content.replay"
+              />
+            </div>
+            <label class="form-check-label col-sm-9">Replay?</label>
+          </div>
+          <div class="form-check form-check-inline div-content">
+            <div class="col-sm-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="autoplay{{ i }}"
+                [(ngModel)]="content.autoplay"
+              />
+            </div>
+            <label class="form-check-label col-sm-9">Autoplay?</label>
+          </div>
+        </div>
+
+        <div *ngIf="content.type == 'youtube'">
+          <div class="div-content">
+            <label class="col-sm-3 col-form-label">Link Vídeo</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                name="youtube_url{{ i }}"
+                type="text"
+                [(ngModel)]="content.url"
+                placeholder="URL ao vivo (Youtube / Vimeo)"
+              />
+            </div>
+          </div>
+          <div class="div-content">
+            <label class="col-sm-3 col-form-label">Link Reserva</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                name="youtube_url_alternative{{ i }}"
+                type="text"
+                [(ngModel)]="content.url_alternative"
+                placeholder="URL do vídeo gravado (Youtube / Vimeo)"
+              />
+            </div>
+          </div>
+          <div class="form-check form-check-inline div-content">
+            <div class="col-sm-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="controls{{ i }}"
+                [(ngModel)]="content.controls"
+              />
+            </div>
+            <label class="form-check-label col-sm-9">Exibir Controles</label>
+          </div>
+          <div class="form-check form-check-inline div-content">
+            <div class="col-sm-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="replay{{ i }}"
+                [(ngModel)]="content.replay"
+              />
+            </div>
+            <label class="form-check-label col-sm-9">Replay?</label>
+          </div>
+          <div class="form-check form-check-inline div-content">
+            <div class="col-sm-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="autoplay{{ i }}"
+                [(ngModel)]="content.autoplay"
+              />
+            </div>
+            <label class="form-check-label col-sm-9">Autoplay?</label>
+          </div>
+        </div>
+
+        <div>
+          <input
+            class="form-control input-sequence"
+            type="text"
+            placeholder="Ordem: {{ content.sequence }}"
+            readonly
+          />
+          <button class="btn btn-danger" (click)="removeType(content)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-success"
+        *ngIf="vContent.length != 0"
+      >
+        Enviar
+      </button>
+    </form>
   </div>
 </div>

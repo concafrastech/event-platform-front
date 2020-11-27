@@ -12,14 +12,12 @@ form {
 
 @media(min-width: 1200px) {
     .container-form {
-        margin: 0 auto;
         width: 970px;
     }
 }
 
 @media(min-width: 768px) {
     .container-form {
-        margin: 0 auto;
         width: 750px;
     }
 }
@@ -37,11 +35,22 @@ form {
 .div-select {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 }
 
-.select-conteudo {
-    margin: 5px;
+.content {
+    margin: 10px;
+}
+
+.div-content {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.select-content {
+    margin: 5px 0px;
     width: 60%;
 }
 
@@ -52,8 +61,4 @@ form {
 
 .col-right {
     text-align: right;
-}
-
-.separator {
-    margin: 10px;
 }

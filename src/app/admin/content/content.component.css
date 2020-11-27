@@ -2,25 +2,58 @@ div#center {
     text-align: center;
 }
 
-div.formConteudo {
-    padding: 20px 0;
-    margin: 0 auto;
-    width: 100%;
-    text-align: left;
-}
-
 div.form-group {
     padding: 5px 0;
 }
 
-.btn-enviar {
+form {
+    text-align: left;
+}
+
+@media(min-width: 1200px) {
+    .container-form {
+        margin: 0 auto;
+        width: 970px;
+    }
+}
+
+@media(min-width: 768px) {
+    .container-form {
+        margin: 0 auto;
+        width: 750px;
+    }
+}
+
+.btn-send {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.div-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-conteudo {
+    margin: 5px;
+    width: 60%;
+}
+
+.input-sequence {
+    display: initial;
     width: 100px;
 }
 
-.selectConteudo {
-    width: 100%;
+.col-right {
+    text-align: right;
 }
 
-.divCorpoSelect {
-    padding-bottom: 25px;
+.separator {
+    margin: 10px;
 }

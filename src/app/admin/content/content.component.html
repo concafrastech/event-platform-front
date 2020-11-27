@@ -14,11 +14,12 @@
           {{ type.split(":")[1] }}
         </option>
       </select>
-      <button class="btn btn-success btn-send btn-lg" (click)="addContent()">
+      <button class="btn btn-success btn-send btn-lg" type="button" (click)="addContent()">
         <i class="glyphicon glyphicon-plus"></i>
       </button>
     </div>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <!--<form #f="ngForm" (ngSubmit)="onSubmit(f)">-->
+    <form>
       <div
         class="form-group container-form"
         *ngFor="let content of vContent; let i = index"
@@ -253,13 +254,6 @@
           </button>
         </div>
       </div>
-      <button
-        type="submit"
-        class="btn btn-success"
-        *ngIf="vContent.length != 0"
-      >
-        Enviar
-      </button>
     </form>
   </div>
 </div>

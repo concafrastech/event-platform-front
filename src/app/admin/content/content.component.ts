@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ContentService } from "../../services/content.service";
-import { Content } from "../../models/Content";
+import { Content } from "../../models/content";
 import { HttpEventType } from "@angular/common/http";
 
 @Component({

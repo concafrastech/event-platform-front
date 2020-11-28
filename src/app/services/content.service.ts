@@ -1,17 +1,11 @@
-import { concatMap } from "rxjs/operators";
-import {
-  HttpClient,
-  HttpRequest,
-  HttpHeaders,
-  HttpEventType,
-} from "@angular/common/http";
+import { HttpClient, HttpRequest, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { GLOBAL } from "./global";
 import { Observable } from "rxjs/Observable";
 import { UserService } from "./user.service";
-import { Content } from "../models/Content";
-import { forkJoin } from "rxjs/internal/observable/forkJoin";
+import { Content } from "../models/content";
 import { concat } from "rxjs";
+import { concatMap } from "rxjs/operators";
 
 @Injectable()
 export class ContentService {
@@ -49,6 +43,7 @@ export class ContentService {
     );
   }
 
+  //TODO: Criar serviço próprio de gerenciar Documents
   //Realiza o upload de um arquivo
   private uploadFile(file: File): Observable<any> {
     let formData = new FormData();
@@ -67,5 +62,27 @@ export class ContentService {
       /*, reportProgress: true  */
     );
     return this._http.request(requisicao);
+  }
+
+  //TODO: Criar serviço próprio de gerenciar Documents
+  //Deleta um documento
+  deleteDocument(id): Observable<any> {
+    let headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", this._userService.getToken());
+
+    return this._http.delete(this.url + "documents/" + id, {
+      headers: headers,
+    });
+  }
+
+  //TODO: Criar serviço próprio de gerenciar Documents
+  //Buscar um documento
+  getClassroom(id): Observable<any> {
+    let headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", this._userService.getToken());
+
+    return this._http.get(this.url + "documents/" + id, { headers: headers });
   }
 }

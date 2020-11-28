@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ContentService } from "../../services/content.service";
 import { Content } from "../../models/Content";
-import { HttpEventType } from '@angular/common/http';
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: "app-content",
@@ -51,6 +51,7 @@ export class ContentComponent implements OnInit {
           false,
           "",
           null,
+          null,
           "",
           "",
           "",
@@ -67,24 +68,22 @@ export class ContentComponent implements OnInit {
   }
 
   onSelectFile(event: FileList, content: Content) {
-
     let files: Set<File> = new Set<File>();
     files.add(event[0]);
 
-    let sub = this._contentService.uploadFile(files)
-    .subscribe((response) => {
-      //Começou o download
+    content.fileToUpload = event[0]
+    /*let sub = this._contentService.uploadFile(files).subscribe((response) => {
+      //Começou o upload
       if (response.type == HttpEventType.Sent) {
         //É possível adicionar uma barre de progresso ou um spinner ao inicializar o upload.
       } else if (response.type == HttpEventType.UploadProgress) {
         //Progresso
       } else if (response.type == HttpEventType.Response) {
         sub.unsubscribe();
-        //Final do upload - TODO: pegar caminho do arquivo na repsosta
-        //content.file = "Caminho do arquivo"
+        //Final do upload
+        content.file = response.body;
       }
-    });
-
+    });*/
   }
 
   /*onSubmit(form) {

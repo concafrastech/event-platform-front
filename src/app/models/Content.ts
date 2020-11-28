@@ -1,3 +1,5 @@
+import { Document } from './document';
+
 export class Content {
   constructor(
     public _id,
@@ -8,7 +10,8 @@ export class Content {
     public autoplay: boolean,
     public controls: boolean,
     public url: string,
-    public file: File,
+    public file: Document,
+    public fileToUpload: File,
     public text: string,
     public zoom_api_key: string,
     public zoom_api_secret: string,

@@ -29,6 +29,9 @@ export class ContentComponent implements OnInit {
     externo: "Conteúdo externo",
     texto: "Texto",
   };
+
+  public inputsRequire: any = [];
+
   @Input() public vContent: Content[] = [];
   select: string = "";
 
@@ -64,6 +67,11 @@ export class ContentComponent implements OnInit {
           0
         )
       );
+      this.inputsRequire.push({
+        name: null,
+        time: null,
+        text: null
+      });
     }
   }
 
@@ -90,10 +98,37 @@ export class ContentComponent implements OnInit {
     this.vContent.map((content) => {
       this._contentService.addContent(content).subscribe((item) =>{
         console.log(item);
-        
+
       });
     });
   }*/
+
+  validationForm(type, indice) {
+    switch(type) {
+      case "name":
+        // Valida o campo name
+        if(this.vContent[indice].name == "")
+          this.inputsRequire[indice].name = 1;
+        else
+          this.inputsRequire[indice].name = null;
+        break;
+      case "time":
+        // Valida o campo time
+        if(this.vContent[indice].time == 0)
+          this.inputsRequire[indice].time = 1;
+        else
+          this.inputsRequire[indice].time = null;
+        break;
+      case "text":
+        // Valida o campo descrição
+        if(this.vContent[indice].text == "")
+          this.inputsRequire[indice].text = 1;
+        else
+          this.inputsRequire[indice].text = null;
+        break;
+    }
+
+  }
 
   removeType(event) {
     this.vContent = this.arrayRemove(this.vContent, event);

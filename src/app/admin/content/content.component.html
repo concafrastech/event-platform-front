@@ -40,9 +40,11 @@
               class="form-control"
               name="name_conteudo{{ i }}"
               type="text"
+              (focusout) = "validationForm('name',i)"
               [(ngModel)]="content.name"
               placeholder="Nome do Conteúdo"
             />
+            <span *ngIf="this.inputsRequire[i].name != null">O nome é obrigatório!</span>
           </div>
         </div>
 
@@ -54,8 +56,24 @@
               name="time{{ i }}"
               type="number"
               min="0"
+              (focusout) = "validationForm('time',i)"
               [(ngModel)]="content.time"
             />
+            <span *ngIf="this.inputsRequire[i].time != null">O tempo é obrigatório!</span>
+          </div>
+        </div>
+
+        <div class="div-content">
+          <label class="col-sm-3 col-form-label">Descrição</label>
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              name="texto{{ i }}"
+              placeholder="Descrição do conteúdo..."
+              (focusout) = "validationForm('text',i)"
+              [(ngModel)]="content.text"
+            />
+            <span *ngIf="this.inputsRequire[i].text != null">A descrição é obrigatória!</span>
           </div>
         </div>
 
@@ -89,18 +107,6 @@
               type="file"
               (change)="onSelectFile($event.target.files, content)"
             />
-          </div>
-        </div>
-
-        <div *ngIf="content.type == 'texto'" class="div-content">
-          <label class="col-sm-3 col-form-label">Texto</label>
-          <div class="col-sm-9">
-            <textarea
-              class="form-control"
-              name="texto{{ i }}"
-              rows="5"
-              [(ngModel)]="content.text"
-            ></textarea>
           </div>
         </div>
 

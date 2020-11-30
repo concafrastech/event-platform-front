@@ -1,3 +1,4 @@
+import { Content } from './content';
 import { Trail } from './trail';
 
 export class Classroom {
@@ -9,7 +10,7 @@ export class Classroom {
         public start_time: Date,
         public end_time: Date,
         public trail: Trail,
-        public contents: [],
+        public contents: Content[],
         public created_at: Date,
         public updated_at: Date
     ) {}

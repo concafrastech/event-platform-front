@@ -22,7 +22,17 @@
         class="form-group container-form"
         *ngFor="let content of vContent; let i = index"
       >
-        <h3>{{ vTypes[content.type] }}</h3>
+        <div class="div-content">
+          <div class="col-sm-3">
+            <h4><b>{{ vTypes[content.type] }}</b></h4>
+          </div>
+          <div class="col-sm-9">
+            <button class="btn btn-info btn-sequence" disabled>Ordem: {{ content.sequence }}</button>
+            <button class="btn btn-danger" (click)="removeType(content)">
+              <i class="glyphicon glyphicon-trash"></i>
+            </button>
+          </div>
+        </div>
         <div class="div-content">
           <label class="col-sm-3 col-form-label">Nome</label>
           <div class="col-sm-9">
@@ -30,9 +40,11 @@
               class="form-control"
               name="name_conteudo{{ i }}"
               type="text"
+              (focusout) = "validationForm('name',i)"
               [(ngModel)]="content.name"
               placeholder="Nome do Conteúdo"
             />
+            <span *ngIf="this.inputsRequire[i].name != null">O nome é obrigatório!</span>
           </div>
         </div>
 
@@ -44,8 +56,24 @@
               name="time{{ i }}"
               type="number"
               min="0"
+              (focusout) = "validationForm('time',i)"
               [(ngModel)]="content.time"
             />
+            <span *ngIf="this.inputsRequire[i].time != null">O tempo é obrigatório!</span>
+          </div>
+        </div>
+
+        <div class="div-content">
+          <label class="col-sm-3 col-form-label">Descrição</label>
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              name="texto{{ i }}"
+              placeholder="Descrição do conteúdo..."
+              (focusout) = "validationForm('text',i)"
+              [(ngModel)]="content.text"
+            />
+            <span *ngIf="this.inputsRequire[i].text != null">A descrição é obrigatória!</span>
           </div>
         </div>
 
@@ -79,18 +107,6 @@
               type="file"
               (change)="onSelectFile($event.target.files, content)"
             />
-          </div>
-        </div>
-
-        <div *ngIf="content.type == 'texto'" class="div-content">
-          <label class="col-sm-3 col-form-label">Texto</label>
-          <div class="col-sm-9">
-            <textarea
-              class="form-control"
-              name="texto{{ i }}"
-              rows="5"
-              [(ngModel)]="content.text"
-            ></textarea>
           </div>
         </div>
 
@@ -204,18 +220,6 @@
             </div>
             <label class="form-check-label col-sm-9">Autoplay?</label>
           </div>
-        </div>
-
-        <div>
-          <input
-            class="form-control input-sequence"
-            type="text"
-            placeholder="Ordem: {{ content.sequence }}"
-            readonly
-          />
-          <button class="btn btn-danger" (click)="removeType(content)">
-            <i class="glyphicon glyphicon-trash"></i>
-          </button>
         </div>
       </div>
     </form>

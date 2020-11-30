@@ -32,6 +32,10 @@ form {
     line-height: 1.42857;
 }
 
+.btn-sequence {
+    margin: 5px 0px !important;
+}
+
 .div-select {
     display: flex;
     align-items: center;

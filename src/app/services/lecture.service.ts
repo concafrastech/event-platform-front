@@ -17,7 +17,7 @@ export class LectureService {
         let params = JSON.stringify(lecture);
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                        .set('Authorization', getToken());
-
+        
         return this._http.post(this.url + 'lectures', params, {headers: headers});
     }
 

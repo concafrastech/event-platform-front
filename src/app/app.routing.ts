@@ -38,6 +38,8 @@ import { TrailListComponent } from './admin/trail/trail-list/trail-list.componen
 import { ClassroomAddComponent } from './admin/classroom/classroom-add/classroom-add.component';
 import { ClassroomEditComponent } from './admin/classroom/classroom-edit/classroom-edit.component';
 import { ClassroomListComponent } from './admin/classroom/classroom-list/classroom-list.component';
+import { DocumentEditComponent } from './admin/document/document-edit/document-edit.component';
+import { DocumentListComponent } from './admin/document/document-list/document-list.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -68,6 +70,9 @@ const appRoutes: Routes = [
             {path: 'classroom/edit/:id', component: ClassroomEditComponent},
             {path: 'classroom/list', component: ClassroomListComponent},
             {path: 'classroom/list/:page', component: ClassroomListComponent},
+            {path: 'document/edit/:id', component: DocumentEditComponent},
+            {path: 'document/list', component: DocumentListComponent},
+            {path: 'document/list/:page', component: DocumentListComponent},
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
             {path: 'content', component: ContentComponent},

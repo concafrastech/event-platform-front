@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import {UserService} from '../../services/user.service';
 import { TutorialComponent } from '../tutorial/tutorial.component';
@@ -16,6 +17,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     bsModalRef2: BsModalRef;
 
     constructor(
+        private _route: ActivatedRoute,
+        private _router: Router,
         private _userService: UserService,
         private modalService: BsModalService
     ) {
@@ -25,18 +28,31 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         console.log('[OK] Component: home.');
         console.log('event-platform-concafras App Version: 0.2.0');
+
+        var epic = localStorage.getItem("epic");
+        
+        if(epic == 'jovem'){
+            this._router.navigate(['/jovem/home']);
+        }
+        if(epic == 'infancia'){
+            this._router.navigate(['/concafrinhas/home']);
+        }
+
         this.identity = this._userService.getIdentity();
     }
 
     ngAfterViewInit(){
-        var welcome = localStorage.getItem("welcome");
-        if(this.identity && !this.identity.firstlogin){
-            if( welcome != "true" ){ 
-                this.openWelcomeComponent();
-            } else {
-                var tutorial = localStorage.getItem("tutorial");
-                if(tutorial != "true") {
-                    this.openTutorialComponent();
+        var epic = localStorage.getItem("epic");
+        if(epic == null){
+            var welcome = localStorage.getItem("welcome");
+            if(this.identity && !this.identity.firstlogin){
+                if( welcome != "true" ){ 
+                    this.openWelcomeComponent();
+                } else {
+                    var tutorial = localStorage.getItem("tutorial");
+                    if(tutorial != "true") {
+                        this.openTutorialComponent();
+                    }
                 }
             }
         }

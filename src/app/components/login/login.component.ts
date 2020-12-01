@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         console.log('[OK] Component: login.');
+        localStorage.setItem('epic', null);
     }
 
     onSubmit() {
@@ -76,7 +77,7 @@ export class LoginComponent implements OnInit {
             response => {
                 localStorage.setItem('stats', JSON.stringify(response));
                 this.status = "success";
-                this._router.navigate(['/home']);
+                this._router.navigate(['/select-journey']);
             },
             error => {
                 console.log(<any> error);

@@ -40,11 +40,16 @@ import { ClassroomEditComponent } from './admin/classroom/classroom-edit/classro
 import { ClassroomListComponent } from './admin/classroom/classroom-list/classroom-list.component';
 import { DocumentEditComponent } from './admin/document/document-edit/document-edit.component';
 import { DocumentListComponent } from './admin/document/document-list/document-list.component';
+import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
+import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
+import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
+import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'testezoom', component: ZoomusComponent},
+    {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
     {
         path: 'admin',
         component: DashboardComponent,
@@ -94,6 +99,24 @@ const appRoutes: Routes = [
         ],
     },
     {
+        path: 'jovem',
+        component: JovemDashboardComponent,
+        canActivate:[UserGuard],
+        children: [
+            {path: '',  redirectTo: 'home', pathMatch: 'full'},
+            {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]}
+        ],
+    },
+    {
+        path: 'concafrinhas',
+        component: InfanciaDashboardComponent,
+        canActivate:[UserGuard],
+        children: [
+            {path: '',  redirectTo: 'home', pathMatch: 'full'},
+            {path: 'home', component: InfanciaHomeComponent, canActivate:[UserGuard]}
+        ],
+    },
+    {
         path: '',
         component: EventComponent,
         children: [
@@ -101,7 +124,6 @@ const appRoutes: Routes = [
             {path: 'home', component: HomeComponent, canActivate:[UserGuard]},
             {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
             {path: 'audithorium', component: AudithoriumComponent, canActivate:[UserGuard]},
-            {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
             {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
             
         ],

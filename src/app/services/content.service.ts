@@ -1,3 +1,4 @@
+import { Document } from './../models/document';
 import { HttpClient, HttpRequest, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { GLOBAL } from "./global";
@@ -64,17 +65,6 @@ export class ContentService {
     return this._http.request(requisicao);
   }
 
-  //TODO: Criar serviço próprio de gerenciar Documents
-  //Deleta um documento
-  deleteDocument(id): Observable<any> {
-    let headers = new HttpHeaders()
-      .set("Content-Type", "application/json")
-      .set("Authorization", this._userService.getToken());
-
-    return this._http.delete(this.url + "documents/" + id, {
-      headers: headers,
-    });
-  }
 
   //TODO: Criar serviço próprio de gerenciar Documents
   //Buscar um documento

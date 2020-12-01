@@ -75,6 +75,7 @@ import { TrailAddComponent } from './admin/trail/trail-add/trail-add.component';
 import { ClassroomListComponent } from './admin/classroom/classroom-list/classroom-list.component';
 import { ClassroomEditComponent } from './admin/classroom/classroom-edit/classroom-edit.component';
 import { ClassroomAddComponent } from './admin/classroom/classroom-add/classroom-add.component';
+import { ContentTimeDirective } from './directives/form-validators/content-time.directive';
 
 
 const levels = [
@@ -138,6 +139,7 @@ const GamificationConfig = {
     ClassroomAddComponent,
     DashboardComponent,
     DeleteConfirmComponent,
+    ContentTimeDirective,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

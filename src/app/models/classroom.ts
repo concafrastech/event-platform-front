@@ -9,6 +9,7 @@ export class Classroom {
         public type: string,
         public start_time: Date,
         public end_time: Date,
+        public speecher: string,
         public trail: Trail,
         public contents: Content[],
         public created_at: Date,

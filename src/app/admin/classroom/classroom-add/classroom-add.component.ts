@@ -1,3 +1,4 @@
+import { DocumentService } from './../../../services/document.service';
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
@@ -14,7 +15,7 @@ import { HttpEventType } from '@angular/common/http';
   selector: "app-classroom-add",
   templateUrl: "./classroom-add.component.html",
   styleUrls: ["./classroom-add.component.css"],
-  providers: [UserService, ClassroomService, TrailService, ContentService],
+  providers: [UserService, ClassroomService, TrailService, ContentService, DocumentService],
 })
 export class ClassroomAddComponent implements OnInit {
   public title: string;
@@ -25,6 +26,7 @@ export class ClassroomAddComponent implements OnInit {
   public identity: string;
   public trails = [];
   public alturaTela: number;
+  public contentIsValid: boolean = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -33,7 +35,8 @@ export class ClassroomAddComponent implements OnInit {
     private _userService: UserService,
     private _trailService: TrailService,
     private _contentService: ContentService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _documentService: DocumentService
   ) {
     this.title = "Adicionar Curso";
     this.url = GLOBAL.url;
@@ -50,6 +53,7 @@ export class ClassroomAddComponent implements OnInit {
       "",
       new Date(),
       new Date(),
+      "",
       null,
       [],
       new Date(),
@@ -89,13 +93,17 @@ export class ClassroomAddComponent implements OnInit {
     return idFist && idSecond && idFist._id == idSecond._id;
   }
 
+  contentFormIsValid(event: boolean) {
+    return (this.contentIsValid = event);
+  }
+
   onSubmit() {
     let index = 0;
     this._contentService.uploadContents(this.classroom.contents).subscribe({
       next: (response) => {
         //Final do upload
         if (response.type == HttpEventType.Response) {
-          this.classroom.contents[index].file = response.body;
+          this.classroom.contents[index].file = response.body.document;
           this.classroom.contents[index].fileToUpload = null;
           index += 1;
         }
@@ -125,6 +133,7 @@ export class ClassroomAddComponent implements OnInit {
         }
       },
       (error) => {
+        this.deleteDocuments();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -132,5 +141,14 @@ export class ClassroomAddComponent implements OnInit {
         }
       }
     );
+  }
+
+  //Apaga documentos dos conteúdos
+  deleteDocuments() {
+    this.classroom.contents.forEach((content) => {
+      if (content.file) {
+        this._documentService.deleteDocument(content.file._id).subscribe();
+      }
+    });
   }
 }

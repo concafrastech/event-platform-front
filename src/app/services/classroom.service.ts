@@ -15,6 +15,8 @@ export class ClassroomService {
 
     addClassroom(classroom): Observable<any> {
         let params = JSON.stringify(classroom);
+        console.log(params);
+        
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                        .set('Authorization', getToken());
 

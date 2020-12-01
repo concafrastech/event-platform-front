@@ -16,8 +16,7 @@
         <i class="glyphicon glyphicon-plus"></i>
       </button>
     </div>
-    <!--<form #f="ngForm" (ngSubmit)="onSubmit(f)">-->
-    <form>
+    <form #contentEditForm="ngForm" (change)="onChangeForm(contentEditForm)">
       <div
         class="form-group container-form"
         *ngFor="let content of vContent; let i = index"
@@ -39,12 +38,13 @@
             <input
               class="form-control"
               name="name_conteudo{{ i }}"
+              #name="ngModel"
               type="text"
-              (focusout) = "validationForm('name',i)"
               [(ngModel)]="content.name"
               placeholder="Nome do Conteúdo"
+              required
             />
-            <span *ngIf="this.inputsRequire[i].name != null">O nome é obrigatório!</span>
+            <span *ngIf="!name.value && name.touched">O nome é obrigatório!</span>
           </div>
         </div>
 
@@ -55,11 +55,12 @@
               class="form-control"
               name="time{{ i }}"
               type="number"
-              min="0"
-              (focusout) = "validationForm('time',i)"
               [(ngModel)]="content.time"
+              #time="ngModel"
+              value="0"
+              contentTime
             />
-            <span *ngIf="this.inputsRequire[i].time != null">O tempo é obrigatório!</span>
+            <span *ngIf="time.touched && time.errors">O tempo deverá ser superior a 0!</span>
           </div>
         </div>
 
@@ -70,10 +71,11 @@
               class="form-control"
               name="texto{{ i }}"
               placeholder="Descrição do conteúdo..."
-              (focusout) = "validationForm('text',i)"
               [(ngModel)]="content.text"
+              #description="ngModel"
+              required
             />
-            <span *ngIf="this.inputsRequire[i].text != null">A descrição é obrigatória!</span>
+            <span *ngIf="!description.value && description.touched">A descrição é obrigatória!</span>
           </div>
         </div>
 
@@ -83,7 +85,9 @@
             <input
               class="form-control"
               type="file"
+              name="image{{i}}"
               (change)="onSelectFile($event.target.files, content)"
+              required
             />
           </div>
         </div>

@@ -86,6 +86,7 @@
               class="form-control"
               type="file"
               name="image{{i}}"
+              accept="image/x-png,image/gif,image/jpeg"
               (change)="onSelectFile($event.target.files, content)"
               required
             />
@@ -98,6 +99,7 @@
             <input
               class="form-control"
               type="file"
+              accept="audio/*"
               (change)="onSelectFile($event.target.files, content)"
             />
           </div>
@@ -109,6 +111,7 @@
             <input
               class="form-control"
               type="file"
+              accept="application/msword, application/pdf"
               (change)="onSelectFile($event.target.files, content)"
             />
           </div>

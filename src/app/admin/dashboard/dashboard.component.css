@@ -45,6 +45,12 @@ body {
     }
 }
 
+/* #page-content-wrapper {
+    height:auto;
+    min-height:100%;
+    overflow: auto;
+} */
+
 #sidebar-wrapper {
     border-right: 1px solid #e7e7e7;
 }

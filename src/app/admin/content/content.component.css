@@ -14,7 +14,7 @@ span {
     font-size: 15px;
 }
 
-@media(min-width: 1200px) {
+/* @media(min-width: 1200px) {
     .container-form {
         width: 970px;
     }
@@ -24,7 +24,7 @@ span {
     .container-form {
         width: 750px;
     }
-}
+} */
 
 .btn-send {
     width: 30px;
@@ -47,7 +47,7 @@ span {
 }
 
 .div-content {
-    height: 60px;
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -55,7 +55,6 @@ span {
 
 .select-content {
     margin: 5px 0px;
-    width: 60%;
 }
 
 .input-sequence {

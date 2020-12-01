@@ -39,7 +39,7 @@ export class ClassroomEditComponent implements OnInit {
   ngOnInit() {
     console.log("[OK] Component: classroom-edit.");
     this.identity = this._userService.getIdentity();
-    this.classroom = new Classroom('', '', '', '', new Date(), new Date(), null, [], new Date(), new Date());
+    this.classroom = new Classroom('', '', '', '', new Date(), new Date(), '', null, [], new Date(), new Date());
     this.classroom.trail = new Trail('', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }

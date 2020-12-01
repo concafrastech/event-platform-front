@@ -113,14 +113,14 @@
         </div>
       </div>
 
-      <app-content [(vContent)]="lecture.contents"></app-content>
+      <app-content [(vContent)]="lecture.contents" (contentFormIsValid)="contentFormIsValid($event)"></app-content>
       <div class="row">
         <div class="form-group col-md-12">
           <input
             type="submit"
             value="{{ title }}"
             class="btn btn-warning"
-            [disabled]="!lectureAddForm.form.valid"
+            [disabled]="!lectureAddForm.form.valid || !contentIsValid"
           />
         </div>
       </div>

@@ -9,12 +9,19 @@ import { LectureService } from "src/app/services/lecture.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { HttpEventType } from "@angular/common/http";
+import { DocumentService } from "src/app/services/document.service";
 
 @Component({
   selector: "app-lecture-add",
   templateUrl: "./lecture-add.component.html",
   styleUrls: ["./lecture-add.component.css"],
-  providers: [UserService, LectureService, EpicService, ContentService],
+  providers: [
+    UserService,
+    LectureService,
+    EpicService,
+    ContentService,
+    DocumentService,
+  ],
 })
 export class LectureAddComponent implements OnInit {
   public title: string;
@@ -25,6 +32,7 @@ export class LectureAddComponent implements OnInit {
   public identity: string;
   public epics = [];
   public alturaTela: number;
+  public contentIsValid: boolean = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -33,7 +41,8 @@ export class LectureAddComponent implements OnInit {
     private _contentService: ContentService,
     private _userService: UserService,
     private _epicService: EpicService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _documentService: DocumentService
   ) {
     this.title = "Adicionar Palestra";
     this.url = GLOBAL.url;
@@ -91,13 +100,17 @@ export class LectureAddComponent implements OnInit {
     return idFist && idSecond && idFist._id == idSecond._id;
   }
 
+  contentFormIsValid(event: boolean) {
+    return (this.contentIsValid = event);
+  }
+
   onSubmit() {
     let index = 0;
     this._contentService.uploadContents(this.lecture.contents).subscribe({
       next: (response) => {
         //Final do upload
         if (response.type == HttpEventType.Response) {
-          this.lecture.contents[index].file = response.body;
+          this.lecture.contents[index].file = response.body.document;
           this.lecture.contents[index].fileToUpload = null;
           index += 1;
         }
@@ -124,6 +137,7 @@ export class LectureAddComponent implements OnInit {
         }
       },
       (error) => {
+        this.deleteDocuments();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -131,5 +145,14 @@ export class LectureAddComponent implements OnInit {
         }
       }
     );
+  }
+
+  //Apaga documentos dos conteúdos
+  deleteDocuments() {
+    this.lecture.contents.forEach((content) => {
+      if (content.file) {
+        this._documentService.deleteDocument(content.file._id).subscribe();
+      }
+    });
   }
 }

@@ -81,6 +81,7 @@ import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.componen
 import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
 import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
 import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
+import { ContentTimeDirective } from './directives/form-validators/content-time.directive';
 
 
 const levels = [
@@ -150,6 +151,7 @@ const GamificationConfig = {
     JovemDashboardComponent,
     InfanciaHomeComponent,
     InfanciaDashboardComponent,
+    ContentTimeDirective,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

@@ -56,12 +56,12 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <app-content [(vContent)]="classroom.contents"></app-content>
+                <app-content [(vContent)]="classroom.contents" (contentFormIsValid)="contentFormIsValid($event)"></app-content>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!classroomAddForm.form.valid" />
+                <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!classroomAddForm.form.valid || !contentIsValid" />
             </div>
         </div>
         <br/>

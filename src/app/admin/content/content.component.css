@@ -10,6 +10,10 @@ form {
     text-align: left;
 }
 
+span {
+    font-size: 15px;
+}
+
 @media(min-width: 1200px) {
     .container-form {
         width: 970px;
@@ -43,7 +47,7 @@ form {
 }
 
 .div-content {
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: left;

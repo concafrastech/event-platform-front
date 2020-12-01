@@ -126,7 +126,10 @@
               type="text"
               [(ngModel)]="content.url"
               placeholder="URL do conteúdo externo (Jogo, conteúdo interativo, etc...)"
+              #url_extern="ngModel"
+              required
             />
+            <span *ngIf="!url_extern.value && url_extern.touched">A URL do conteúdo é obrigatória!</span>
           </div>
         </div>
 
@@ -140,7 +143,10 @@
                 type="text"
                 [(ngModel)]="content.zoom_api_key"
                 placeholder="Insira aqui sua API_KEY"
+                #api_key="ngModel"
+                required
               />
+              <span *ngIf="!api_key.value && api_key.touched">A API_KEY é obrigatória!</span>
             </div>
           </div>
           <div class="div-content">
@@ -152,7 +158,10 @@
                 type="text"
                 [(ngModel)]="content.zoom_api_secret"
                 placeholder="Insira aqui sua API_SECRET"
+                #api_secret="ngModel"
+                required
               />
+              <span *ngIf="!api_secret.value && api_secret.touched">A API_SECRET é obrigatória!</span>
             </div>
           </div>
           <div class="div-content">
@@ -164,7 +173,10 @@
                 type="text"
                 [(ngModel)]="content.zoom_room"
                 placeholder="Insira aqui o número da sala do Zoom"
+                #number_room="ngModel"
+                required
               />
+              <span *ngIf="!number_room.value && number_room.touched">O número da sala é obrigatória!</span>
             </div>
           </div>
         </div>
@@ -179,7 +191,10 @@
                 type="text"
                 [(ngModel)]="content.url"
                 placeholder="URL ao vivo (Youtube / Vimeo)"
+                #url_stream="ngModel"
+                required
               />
+              <span *ngIf="!url_stream.value && url_stream.touched">A URL da live é obrigatória!</span>
             </div>
           </div>
           <div class="div-content">
@@ -191,7 +206,10 @@
                 type="text"
                 [(ngModel)]="content.url_alternative"
                 placeholder="URL do vídeo gravado (Youtube / Vimeo)"
+                #url_record="ngModel"
+                required
               />
+              <span *ngIf="!url_record.value && url_record.touched">A URL do video gravado é obrigatória!</span>
             </div>
           </div>
           <div class="form-check form-check-inline div-content">

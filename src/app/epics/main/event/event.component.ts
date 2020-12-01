@@ -1,12 +1,12 @@
 import {Component, OnInit, DoCheck} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {UserService} from '../../services/user.service';
-import {GLOBAL} from '../../services/global';
+import {UserService} from '../../../services/user.service';
+import {GLOBAL} from '../../../services/global';
 import * as $ from 'jquery';
 import { GamificationService } from 'angular-gamification';
 import { NgBootstrapAlert, NgBootstrapAlertService } from 'ng-bootstrap-alert';
-import { TutorialComponent } from '../tutorial/tutorial.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { TutorialComponent } from 'src/app/components/tutorial/tutorial.component';
 
 @Component({
     selector: 'app-event',

@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import {UserService} from '../../services/user.service';
-import { TutorialComponent } from '../tutorial/tutorial.component';
-import { WelcomeComponent } from '../welcome/welcome.component';
+import { TutorialComponent } from 'src/app/components/tutorial/tutorial.component';
+import { WelcomeComponent } from 'src/app/components/welcome/welcome.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'home',

@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './epics/main/home/home.component';
 import { ContentComponent } from './admin/content/content.component';
 import { UsersComponent } from './social-network/users/users.component';
 import { TimelineComponent } from './social-network/timeline/timeline.component';
@@ -12,10 +12,10 @@ import { FollowingComponent } from './social-network/following/following.compone
 import { FollowedComponent } from './social-network/followed/followed.component';
 
 import { UserGuard } from './services/user.guard';
-import { HubComponent } from './components/hub/hub.component';
-import { AudithoriumComponent } from './components/audithorium/audithorium.component';
+import { HubComponent } from './epics/main/hub/hub.component';
+import { AudithoriumComponent } from './epics/main/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
-import { EventComponent } from './components/event/event.component';
+import { EventComponent } from './epics/main/event/event.component';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { ConferenceEditComponent } from './admin/conference/conference-edit/conference-edit.component';
 import { ConferenceListComponent } from './admin/conference/conference-list/conference-list.component';

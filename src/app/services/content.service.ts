@@ -1,4 +1,3 @@
-import { Document } from './../models/document';
 import { HttpClient, HttpRequest, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { GLOBAL } from "./global";
@@ -19,6 +18,14 @@ export class ContentService {
     this.url = GLOBAL.url;
   }
 
+  getContent(id): Observable<any>{
+    let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', this._userService.getToken());
+
+        return this._http.get(this.url + 'contents/' + id, {headers: headers});
+  }
+
   addContent(content): Observable<any> {
     let params = JSON.stringify(content);
     let headers = new HttpHeaders()
@@ -26,6 +33,28 @@ export class ContentService {
       .set("Authorization", this._userService.getToken());
 
     return this._http.post(this.url + "contents", params, { headers: headers });
+  }
+
+  deleteCotent(id): Observable<any> {
+    let headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", this._userService.getToken());
+
+    return this._http.delete(this.url + "contents/" + id, { headers: headers });
+  }
+
+  //Recebe um array de contents e retorna um Observable que executará a inserção na ordem.
+  saveContents(VContents: Content[]): Observable<any> {
+    let obs$: Observable<any>[] = [];
+    VContents.map((content) => {
+      obs$.push(this.addContent(content));
+    });
+
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
+    );
   }
 
   //Recebe um array de contents e retorna um Observable que executará o upload em ordem.
@@ -44,7 +73,6 @@ export class ContentService {
     );
   }
 
-  //TODO: Criar serviço próprio de gerenciar Documents
   //Realiza o upload de um arquivo
   private uploadFile(file: File): Observable<any> {
     let formData = new FormData();
@@ -63,16 +91,5 @@ export class ContentService {
       /*, reportProgress: true  */
     );
     return this._http.request(requisicao);
-  }
-
-
-  //TODO: Criar serviço próprio de gerenciar Documents
-  //Buscar um documento
-  getClassroom(id): Observable<any> {
-    let headers = new HttpHeaders()
-      .set("Content-Type", "application/json")
-      .set("Authorization", this._userService.getToken());
-
-    return this._http.get(this.url + "documents/" + id, { headers: headers });
   }
 }

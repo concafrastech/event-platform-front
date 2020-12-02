@@ -92,6 +92,7 @@ import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia
 import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 
 const levels = [
@@ -182,6 +183,7 @@ const GamificationConfig = {
     InfanciaAudithoriumComponent,
     InfanciaGeralComponent,
     SelectConferenceComponent,
+    ConfirmComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

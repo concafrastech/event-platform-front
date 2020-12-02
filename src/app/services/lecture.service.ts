@@ -15,6 +15,7 @@ export class LectureService {
 
     addLecture(lecture): Observable<any> {
         let params = JSON.stringify(lecture);
+        
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                        .set('Authorization', getToken());
         

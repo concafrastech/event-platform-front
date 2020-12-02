@@ -39,7 +39,12 @@ export class ContentComponent implements OnInit {
     this.pageTitle = "Gerenciamento de conteúdo";
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {    
+  }
+
+  ngOnChanges(): void {
+
+  }
 
   addContent() {
     if (this.select) {

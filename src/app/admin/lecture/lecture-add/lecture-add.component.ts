@@ -105,6 +105,11 @@ export class LectureAddComponent implements OnInit {
   }
 
   onSubmit() {
+    this.saveDocuments();
+  }
+
+  //Realiza upload e salva os documentos
+  saveDocuments() {
     let index = 0;
     this._contentService.uploadContents(this.lecture.contents).subscribe({
       next: (response) => {
@@ -112,8 +117,28 @@ export class LectureAddComponent implements OnInit {
         if (response.type == HttpEventType.Response) {
           this.lecture.contents[index].file = response.body.document;
           this.lecture.contents[index].fileToUpload = null;
+          //this._contentService.addContent(this.lecture.contents[index]).subscribe((content)=>this.lecture.contents[index]=content);
           index += 1;
         }
+      },
+      error: (error) => {
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      },
+      complete: () => this.saveContents(),
+    });
+  }
+
+  //Salva os conteúdos
+  saveContents() {
+    let index = 0;
+    this._contentService.saveContents(this.lecture.contents).subscribe({
+      next: (content) => {
+        this.lecture.contents[index]._id = content.content._id;
+        index += 1;
       },
       error: (error) => {
         var errorMessage = <any>error;
@@ -126,6 +151,7 @@ export class LectureAddComponent implements OnInit {
     });
   }
 
+  //Salva a palestra
   saveLecture() {
     this._lectureService.addLecture(this.lecture).subscribe(
       (response) => {
@@ -138,6 +164,7 @@ export class LectureAddComponent implements OnInit {
       },
       (error) => {
         this.deleteDocuments();
+        this.deleteContents();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -152,6 +179,15 @@ export class LectureAddComponent implements OnInit {
     this.lecture.contents.forEach((content) => {
       if (content.file) {
         this._documentService.deleteDocument(content.file._id).subscribe();
+      }
+    });
+  }
+
+  //Apaga conteúdos
+  deleteContents() {
+    this.lecture.contents.forEach((content) => {
+      if (content.file) {
+        this._contentService.deleteCotent(content._id).subscribe();
       }
     });
   }

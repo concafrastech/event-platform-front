@@ -43,7 +43,7 @@
                         <td class="actions">
                             <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
                             <a class="btn btn-warning btn-xs" [routerLink]="['/admin/classroom/edit', classroom._id]">Editar</a>
-                            <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(classroom)">Excluir</a>
+                            <a class="btn btn-danger btn-xs" (click)="canDeleteClassroom(classroom)">Excluir</a>
                         </td>
                     </tr>
     

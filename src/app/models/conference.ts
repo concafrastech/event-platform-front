@@ -2,6 +2,7 @@ export class Conference {
     constructor(
         public _id: string,
         public name: string,
+        public folder: string,
         public start_date: Date,
         public end_date: Date,
         public welcome_page: boolean,
@@ -12,6 +13,7 @@ export class Conference {
         public courses_enabled: boolean,
         public lectures_enabled: boolean,
         public trails_enabled: boolean,
+        public active: boolean,
         public created_at: Date,
         public updated_at: Date,
     ) {}

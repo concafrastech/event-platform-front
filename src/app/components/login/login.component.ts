@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
         private _userService: UserService
     ) {
         this.title = 'Seja bem vindo';
-        this.user = new User("", "", "", "", "", new Date(), "", "", "", "", "", "", "", false, "", "ROLE_USER", "", 0, false, {});
+        this.user = new User("", "", "", "", "", new Date(), "", "", "", "", "", "", false, "", "ROLE_USER", "", 0, false, [], {});
     }
 
     ngOnInit() {
@@ -33,11 +33,13 @@ export class LoginComponent implements OnInit {
         this._userService.signup(this.user).subscribe(
             response => {
                 this.identity = response.user;
+                console.log(this.identity);
                 if (!this.identity || !this.identity._id) {
                     this.status = 'error';
                 } else {
                     this.status = 'success';
                     localStorage.setItem('identity', JSON.stringify(this.identity));
+                    localStorage.setItem('subscriptions', JSON.stringify(this.identity.subscriptions));
                     this.getToken();
                 }
             },
@@ -77,7 +79,12 @@ export class LoginComponent implements OnInit {
             response => {
                 localStorage.setItem('stats', JSON.stringify(response));
                 this.status = "success";
-                this._router.navigate(['/select-journey']);
+                if(this.identity.subscriptions.length == 1 && this.identity.subscriptions[0].active){
+                    localStorage.setItem('currentSubscription', JSON.stringify(this.identity.subscriptions[0]));
+                    this._router.navigate(['/select-journey']);
+                } else {
+                    this._router.navigate(['/select-conference']);
+                }
             },
             error => {
                 console.log(<any> error);

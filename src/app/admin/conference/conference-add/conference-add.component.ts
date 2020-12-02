@@ -37,7 +37,7 @@ export class ConferenceAddComponent implements OnInit {
   ngOnInit() {
     console.log('[OK] Component: conference-add.');
     this.identity = this._userService.getIdentity();
-    this.conference = new Conference(null,'',new Date(), new Date(),false,'',false,'', false, false, false, false, new Date(), new Date());
+    this.conference = new Conference(null,'','',new Date(), new Date(),false,'',false,'', false, false, false, false, false,new Date(), new Date());
   }
 
   onSubmit() {

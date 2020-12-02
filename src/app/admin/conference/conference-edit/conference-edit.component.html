@@ -15,6 +15,13 @@
             </div>
         </div>
         <div class="row">
+            <div class="form-group col-md-12 col-lg-5">
+                <label>Nome</label>
+                <input type="text" name="folder" #folder="ngModel" [(ngModel)]="conference.folder" class="form-control" required />
+                <span *ngIf="!folder.value && folder.touched" >A pasta é obrigatória!</span>
+            </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-4">
                 <label>Data de Início</label>
                 <input type="text" name="start_date" #start_date="ngModel" [(ngModel)]="conference.start_date" class="form-control" bsDatepicker />

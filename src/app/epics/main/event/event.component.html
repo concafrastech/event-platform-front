@@ -5,20 +5,6 @@
                 <div class="navbar-header" *ngIf="identity">
                     <a [routerLink]="['/home']" [routerLinkActive]="['active']" class="navbar-brand">{{title}}</a>
                 </div>
-                <ul class="nav navbar-nav" *ngIf="false">
-                    <li>
-                        <a [routerLink]="['/home']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-home"></span> Inicio</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/timeline']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-th-list"></span> Timeline</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/gente']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-user"></span> Pessoas</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/mensages']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-envelope"></span> Mensagens</a>
-                    </li>
-                </ul>
                 <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
                     <li>
                         <a [routerLink]="['/login']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-log-in"></span> Login</a>
@@ -97,14 +83,6 @@
                         <div class="row text-center"> 
                             <span class="fa fa-terminal fa-4x text-center"> </span>
                             <span class="sidebar-title">Conhecimento Espírita</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin']" [routerLinkActive]="['active']">
-                        <div class="row text-center"> 
-                            <span class="fa fa-users fa-4x text-center"> </span>
-                            <span class="sidebar-title">Admin</span>
                         </div>
                     </a>
                 </li>

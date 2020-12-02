@@ -1,3 +1,5 @@
+import { Subscription } from './subscription';
+
 export class User {
     constructor(
         public _id: string,
@@ -12,13 +14,13 @@ export class User {
         public country: string,
         public state: string,
         public city: string,
-        public course: string,
         public leader: boolean,
         public company: string,
         public role: string,
         public image: string,
         public points: number,
         public firstlogin: boolean,
+        public subscriptions: Subscription[],
         public level: {}
     ) {}
 }

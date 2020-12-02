@@ -88,6 +88,10 @@ import { StageAddComponent } from './admin/stage/stage-add/stage-add.component';
 import { ActivityListComponent } from './admin/activity/activity-list/activity-list.component';
 import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
 import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
+import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
+import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
+import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
+import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 
 
 const levels = [
@@ -102,8 +106,18 @@ const levels = [
   { badge: 'LORD', icon: './../assets/badges/LORD.svg', range: { min: 800, max: 899 } },
   { badge: 'KING', icon: './../assets/badges/KING.svg', range: { min: 900, max: 999 } }
 ];
+
+const levelsConcafras2021 = [
+  { badge: 'TERRA', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 149 } },
+  { badge: 'MARTE', icon: './../assets/badges/NICE.svg', range: { min: 150, max: 299 } },
+  { badge: 'VENUS', icon: './../assets/badges/USUAL.svg', range: { min: 300, max: 699 } },
+  { badge: 'JUPITER', icon: './../assets/badges/CONSTANT.svg', range: { min: 700, max: 899 } },
+  { badge: 'SOL', icon: './../assets/badges/VIP.svg', range: { min: 900, max: 2000 } },
+];
+
+
 const GamificationConfig = {
-  levels: levels
+  levels: levelsConcafras2021
 };
 
 @NgModule({
@@ -164,6 +178,10 @@ const GamificationConfig = {
     InfanciaHomeComponent,
     InfanciaDashboardComponent,
     ContentTimeDirective,
+    InfanciaLevelComponent,
+    InfanciaAudithoriumComponent,
+    InfanciaGeralComponent,
+    SelectConferenceComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

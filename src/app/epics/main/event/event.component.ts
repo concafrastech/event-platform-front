@@ -30,6 +30,17 @@ export class EventComponent implements OnInit, DoCheck {
         public _bootstrapAlertService: NgBootstrapAlertService,
         private modalService: BsModalService
     ) {
+
+
+      var epic = localStorage.getItem("epic");
+        
+      if(epic == 'jovem'){
+          this._router.navigate(['/jovem/home']);
+      }
+      if(epic == 'infancia'){
+          this._router.navigate(['/concafrinhas/home']);
+      }
+
         this.title = 'EVENTO';
         this.url = GLOBAL.url;
         this.user = {

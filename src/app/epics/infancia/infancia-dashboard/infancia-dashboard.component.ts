@@ -10,6 +10,7 @@ export class InfanciaDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem('epic', 'jovem');
   }
 
 }

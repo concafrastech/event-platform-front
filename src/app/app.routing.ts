@@ -50,12 +50,17 @@ import { StageAddComponent } from './admin/stage/stage-add/stage-add.component';
 import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
 import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
 import { ActivityListComponent } from './admin/activity/activity-list/activity-list.component';
+import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
+import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
+import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
+import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'testezoom', component: ZoomusComponent},
     {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
+    {path: 'select-conference', component: SelectConferenceComponent, canActivate:[UserGuard]},
     {
         path: 'admin',
         component: DashboardComponent,
@@ -127,7 +132,11 @@ const appRoutes: Routes = [
         canActivate:[UserGuard],
         children: [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
-            {path: 'home', component: InfanciaHomeComponent, canActivate:[UserGuard]}
+            {path: 'home', component: InfanciaHomeComponent, canActivate:[UserGuard]},
+            {path: 'nivel', component: InfanciaLevelComponent, canActivate:[UserGuard]},
+            {path: 'nivel/:level', component: InfanciaLevelComponent, canActivate:[UserGuard]},
+            {path: 'geral', component: InfanciaGeralComponent, canActivate:[UserGuard]},
+            {path: 'audithorium', component: InfanciaAudithoriumComponent, canActivate:[UserGuard]},
         ],
     },
     {

@@ -29,15 +29,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
         console.log('[OK] Component: home.');
         console.log('event-platform-concafras App Version: 0.2.0');
 
-        var epic = localStorage.getItem("epic");
-        
-        if(epic == 'jovem'){
-            this._router.navigate(['/jovem/home']);
-        }
-        if(epic == 'infancia'){
-            this._router.navigate(['/concafrinhas/home']);
-        }
-
         this.identity = this._userService.getIdentity();
     }
 

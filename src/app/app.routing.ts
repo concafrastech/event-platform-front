@@ -44,6 +44,12 @@ import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-das
 import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
 import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
 import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
+import { StageEditComponent } from './admin/stage/stage-edit/stage-edit.component';
+import { StageListComponent } from './admin/stage/stage-list/stage-list.component';
+import { StageAddComponent } from './admin/stage/stage-add/stage-add.component';
+import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
+import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
+import { ActivityListComponent } from './admin/activity/activity-list/activity-list.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -78,6 +84,14 @@ const appRoutes: Routes = [
             {path: 'document/edit/:id', component: DocumentEditComponent},
             {path: 'document/list', component: DocumentListComponent},
             {path: 'document/list/:page', component: DocumentListComponent},
+            {path: 'stage/add', component: StageAddComponent},
+            {path: 'stage/edit/:id', component: StageEditComponent},
+            {path: 'stage/list', component: StageListComponent},
+            {path: 'stage/list/:page', component: StageListComponent},
+            {path: 'activity/add', component: ActivityAddComponent},
+            {path: 'activity/edit/:id', component: ActivityEditComponent},
+            {path: 'activity/list', component: ActivityListComponent},
+            {path: 'activity/list/:page', component: ActivityListComponent},
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
             {path: 'content', component: ContentComponent},

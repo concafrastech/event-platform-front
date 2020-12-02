@@ -1,0 +1,48 @@
+<div class="col-lg-5">
+    <h1 class="h1-strong">{{title}}</h1>
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        Dados atualizados com sucesso!
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Erro ao atualizar os dados.
+    </div>
+    <form #stageAddForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Nome</label>
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="stage.name" class="form-control" required />
+                <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Descrição</label>
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="stage.description" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Tipo</label>
+                <input type="text" name="type" #type="ngModel" [(ngModel)]="stage.type" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Épico</label>
+                    <select [compareWith]="compareByOptionId" name="epic" #epic="ngModel" [(ngModel)]="stage.epic" class="form-control">
+                        <option value="">-- Selecione --</option>
+                        <option *ngFor="let epic of epics" [ngValue]="epic">{{epic.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!stageAddForm.form.valid" />
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </form>
+</div>

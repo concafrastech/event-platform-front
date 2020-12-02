@@ -82,6 +82,12 @@ import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-das
 import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
 import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
 import { ContentTimeDirective } from './directives/form-validators/content-time.directive';
+import { StageListComponent } from './admin/stage/stage-list/stage-list.component';
+import { StageEditComponent } from './admin/stage/stage-edit/stage-edit.component';
+import { StageAddComponent } from './admin/stage/stage-add/stage-add.component';
+import { ActivityListComponent } from './admin/activity/activity-list/activity-list.component';
+import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
+import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
 
 
 const levels = [
@@ -145,6 +151,12 @@ const GamificationConfig = {
     ClassroomAddComponent,
     DocumentEditComponent,
     DocumentListComponent,
+    StageListComponent,
+    StageEditComponent,
+    StageAddComponent,
+    ActivityListComponent,
+    ActivityEditComponent,
+    ActivityAddComponent,
     DashboardComponent,
     DeleteConfirmComponent,
     JovemHomeComponent,

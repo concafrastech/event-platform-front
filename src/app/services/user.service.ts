@@ -81,6 +81,14 @@ export class UserService {
         }
     }
 
+    getMockSubscription(userId = null): Observable<any> {
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', this.getToken());
+
+        return this._http.get(this.url + 'mocks/subscription/' + userId, {headers: headers});
+    }
+
     updateUser(user: User): Observable<any> {
         let params = JSON.stringify(user);
         let headers = new HttpHeaders()

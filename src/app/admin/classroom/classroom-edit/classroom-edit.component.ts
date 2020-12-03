@@ -21,6 +21,7 @@ export class ClassroomEditComponent implements OnInit {
   public status: string;
   public classroom: Classroom;
   public identity: string;
+  public alturaTela: number;
   public trails = [];
 
   constructor(
@@ -42,6 +43,9 @@ export class ClassroomEditComponent implements OnInit {
     this.classroom = new Classroom('', '', '', '', new Date(), new Date(), '', null, [], new Date(), new Date());
     this.classroom.trail = new Trail('', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
+    //Adicionado altura da tela apenas para forçar a criação da barra de rolagem, rever css
+    this.alturaTela =
+      window.innerHeight > 0 ? window.innerHeight : screen.height;
   }
 
   loadPage() {

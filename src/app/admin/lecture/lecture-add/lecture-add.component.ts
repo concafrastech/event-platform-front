@@ -187,7 +187,7 @@ export class LectureAddComponent implements OnInit {
   deleteContents() {
     this.lecture.contents.forEach((content) => {
       if (content.file) {
-        this._contentService.deleteCotent(content._id).subscribe();
+        this._contentService.deleteContent(content._id).subscribe();
       }
     });
   }

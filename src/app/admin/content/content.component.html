@@ -1,7 +1,7 @@
 <div>
   <p>
-    Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que
-    deseja subir (a ordem importa):
+    Monte a sua trilha do conhecimento! Escolha os tipos de conteúdo que deseja
+    subir (a ordem importa):
   </p>
   <div>
     <!-- SELECT DINÂMICO -->
@@ -12,7 +12,11 @@
           {{ type.split(":")[1] }}
         </option>
       </select>
-      <button class="btn btn-success btn-send btn-lg" type="button" (click)="addContent()">
+      <button
+        class="btn btn-success btn-send btn-lg"
+        type="button"
+        (click)="addContent()"
+      >
         <i class="glyphicon glyphicon-plus"></i>
       </button>
     </div>
@@ -23,10 +27,14 @@
       >
         <div class="div-content">
           <div class="col-sm-3">
-            <h4><b>{{ vTypes[content.type] }}</b></h4>
+            <h4>
+              <b>{{ vTypes[content.type] }}</b>
+            </h4>
           </div>
           <div class="col-sm-9">
-            <button class="btn btn-info btn-sequence" disabled>Ordem: {{ content.sequence }}</button>
+            <button class="btn btn-info btn-sequence" disabled>
+              Ordem: {{ content.sequence }}
+            </button>
             <button class="btn btn-danger" (click)="removeType(content)">
               <i class="glyphicon glyphicon-trash"></i>
             </button>
@@ -44,7 +52,9 @@
               placeholder="Nome do Conteúdo"
               required
             />
-            <span *ngIf="!name.value && name.touched">O nome é obrigatório!</span>
+            <span *ngIf="!name.value && name.touched"
+              >O nome é obrigatório!</span
+            >
           </div>
         </div>
 
@@ -60,7 +70,9 @@
               value="0"
               contentTime
             />
-            <span *ngIf="time.touched && time.errors">O tempo deverá ser superior a 0!</span>
+            <span *ngIf="time.touched && time.errors"
+              >O tempo deverá ser superior a 0!</span
+            >
           </div>
         </div>
 
@@ -75,7 +87,9 @@
               #description="ngModel"
               required
             />
-            <span *ngIf="!description.value && description.touched">A descrição é obrigatória!</span>
+            <span *ngIf="!description.value && description.touched"
+              >A descrição é obrigatória!</span
+            >
           </div>
         </div>
 
@@ -83,13 +97,22 @@
           <label class="col-sm-3 col-form-label">Arquivo de imagem</label>
           <div class="col-sm-9">
             <input
+              *ngIf="!content.file"
               class="form-control"
               type="file"
-              name="image{{i}}"
+              name="image{{ i }}"
               accept="image/x-png,image/gif,image/jpeg"
               (change)="onSelectFile($event.target.files, content)"
               required
             />
+            <div *ngIf="content.file">
+              <a [href]="content.file.file_link">{{
+                content.file.description
+              }}</a>
+              <button class="btn btn-danger" (click)="onRemoveFile(content)">
+                <i class="glyphicon glyphicon-trash"></i>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -97,11 +120,20 @@
           <label class="col-sm-3 col-form-label">Arquivo de áudio</label>
           <div class="col-sm-9">
             <input
+              *ngIf="!content.file"
               class="form-control"
               type="file"
               accept="audio/*"
               (change)="onSelectFile($event.target.files, content)"
             />
+            <div *ngIf="content.file">
+              <a [href]="content.file.file_link">{{
+                content.file.description
+              }}</a>
+              <button class="btn btn-danger" (click)="onRemoveFile(content)">
+                <i class="glyphicon glyphicon-trash"></i>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -109,11 +141,20 @@
           <label class="col-sm-3 col-form-label">Documentos / PDF</label>
           <div class="col-sm-9">
             <input
+              *ngIf="!content.file"
               class="form-control"
               type="file"
               accept="application/msword, application/pdf"
               (change)="onSelectFile($event.target.files, content)"
             />
+            <div *ngIf="content.file">
+              <a [href]="content.file.file_link">{{
+                content.file.description
+              }}</a>
+              <button class="btn btn-danger" (click)="onRemoveFile(content)">
+                <i class="glyphicon glyphicon-trash"></i>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -129,7 +170,9 @@
               #url_extern="ngModel"
               required
             />
-            <span *ngIf="!url_extern.value && url_extern.touched">A URL do conteúdo é obrigatória!</span>
+            <span *ngIf="!url_extern.value && url_extern.touched"
+              >A URL do conteúdo é obrigatória!</span
+            >
           </div>
         </div>
 
@@ -146,7 +189,9 @@
                 #api_key="ngModel"
                 required
               />
-              <span *ngIf="!api_key.value && api_key.touched">A API_KEY é obrigatória!</span>
+              <span *ngIf="!api_key.value && api_key.touched"
+                >A API_KEY é obrigatória!</span
+              >
             </div>
           </div>
           <div class="div-content">
@@ -161,7 +206,9 @@
                 #api_secret="ngModel"
                 required
               />
-              <span *ngIf="!api_secret.value && api_secret.touched">A API_SECRET é obrigatória!</span>
+              <span *ngIf="!api_secret.value && api_secret.touched"
+                >A API_SECRET é obrigatória!</span
+              >
             </div>
           </div>
           <div class="div-content">
@@ -176,7 +223,9 @@
                 #number_room="ngModel"
                 required
               />
-              <span *ngIf="!number_room.value && number_room.touched">O número da sala é obrigatória!</span>
+              <span *ngIf="!number_room.value && number_room.touched"
+                >O número da sala é obrigatória!</span
+              >
             </div>
           </div>
         </div>
@@ -194,7 +243,9 @@
                 #url_stream="ngModel"
                 required
               />
-              <span *ngIf="!url_stream.value && url_stream.touched">A URL da live é obrigatória!</span>
+              <span *ngIf="!url_stream.value && url_stream.touched"
+                >A URL da live é obrigatória!</span
+              >
             </div>
           </div>
           <div class="div-content">
@@ -209,7 +260,9 @@
                 #url_record="ngModel"
                 required
               />
-              <span *ngIf="!url_record.value && url_record.touched">A URL do video gravado é obrigatória!</span>
+              <span *ngIf="!url_record.value && url_record.touched"
+                >A URL do video gravado é obrigatória!</span
+              >
             </div>
           </div>
           <div class="form-check form-check-inline div-content">

@@ -7,6 +7,9 @@ import { GamificationService } from 'angular-gamification';
 import { NgBootstrapAlert, NgBootstrapAlertService } from 'ng-bootstrap-alert';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TutorialComponent } from 'src/app/components/tutorial/tutorial.component';
+import { Subscription } from 'src/app/models/subscription';
+import { Conference } from 'src/app/models/conference';
+import { Trail } from 'src/app/models/trail';
 
 @Component({
     selector: 'app-event',
@@ -20,6 +23,7 @@ export class EventComponent implements OnInit, DoCheck {
     public url: string;
     public user;
     public progress;
+    public subscription: Subscription;
     bsModalRef: BsModalRef;
 
     constructor(
@@ -30,8 +34,6 @@ export class EventComponent implements OnInit, DoCheck {
         public _bootstrapAlertService: NgBootstrapAlertService,
         private modalService: BsModalService
     ) {
-
-
       var epic = localStorage.getItem("epic");
         
       if(epic == 'jovem'){
@@ -57,6 +59,7 @@ export class EventComponent implements OnInit, DoCheck {
 
     ngOnInit() {
         this.identity = this._userService.getIdentity();
+        this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
     }
 
     ngDoCheck() {

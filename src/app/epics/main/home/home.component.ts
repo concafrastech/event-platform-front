@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TutorialComponent } from 'src/app/components/tutorial/tutorial.component';
 import { WelcomeComponent } from 'src/app/components/welcome/welcome.component';
+import { Subscription } from 'src/app/models/subscription';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent implements OnInit, AfterViewInit {
     public title: string;
     public identity;
+    public subscription: Subscription;
     bsModalRef: BsModalRef;
     bsModalRef2: BsModalRef;
 
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         console.log('event-platform-concafras App Version: 0.2.0');
 
         this.identity = this._userService.getIdentity();
+        this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
     }
 
     ngAfterViewInit(){

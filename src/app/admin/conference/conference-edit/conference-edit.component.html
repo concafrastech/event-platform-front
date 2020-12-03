@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12 col-lg-5">
-                <label>Nome</label>
+                <label>Pasta (apenas letras e números, sem espaços)</label>
                 <input type="text" name="folder" #folder="ngModel" [(ngModel)]="conference.folder" class="form-control" required />
                 <span *ngIf="!folder.value && folder.touched" >A pasta é obrigatória!</span>
             </div>

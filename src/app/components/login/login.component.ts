@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Subscription } from 'src/app/models/subscription';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
 
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
     public status: string;
     public identity;
     public token;
+    public subscriptions: Subscription[] = [];
 
     constructor(
         private _route: ActivatedRoute,

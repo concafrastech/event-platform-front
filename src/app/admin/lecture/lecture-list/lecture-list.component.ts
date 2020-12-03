@@ -98,9 +98,7 @@ export class LectureListComponent implements OnInit {
   }
 
   canDeleteLecture(lecture: Lecture) {
-      console.log(lecture);
-      
-    if (lecture.contents) {
+    if (lecture.contents && lecture.contents.length > 0) {
       this.errorDeleteModal(lecture);
     } else {
       this.openDeleteConfirm(lecture);
@@ -146,10 +144,8 @@ export class LectureListComponent implements OnInit {
   }
 
   deleteLecture(id) {
-    console.log(id);
     this._lectureService.deleteLecture(id).subscribe(
       (response) => {
-        console.log(response);
         this.actualPage();
       },
       (error) => {

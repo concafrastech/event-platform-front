@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ContentService } from "../../services/content.service";
 import { DocumentService } from "./../../services/document.service";
 import { Content } from "../../models/content";
-import { Document } from "../../models/document";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -43,14 +42,6 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  ngOnChanges(): void {
-    if (this.vContent) {
-      this.vContent.map((content) => {
-        console.log(content.file);
-      });
-    }
-  }
 
   addContent() {
     if (this.select) {
@@ -96,21 +87,32 @@ export class ContentComponent implements OnInit {
     this._documentService
       .deleteDocument(content.file._id)
       .subscribe((response) => {
-        console.log(response);
         content.file = null;
-        console.log(this.vContent);
       });
   }
 
   removeType(event) {
-    this.vContent = this.arrayRemove(this.vContent, event);
-    this.reprocessingSequence();
+    if (event._id) {
+      if (event.file) {
+        this._documentService
+          .deleteDocument(event.file._id)
+          .subscribe((response) => {
+            this._contentService
+              .deleteContent(event._id)
+              .subscribe((response) => {
+                this.arrayRemove(event);
+              });
+          });
+      }
+    } else {
+      this.arrayRemove(event);
+    }
   }
 
-  private arrayRemove(arr, value) {
-    return arr.filter(function (element) {
-      return element.sequence != value.sequence;
-    });
+  private arrayRemove(contentToRemove: Content) {
+    let index = this.vContent.indexOf(contentToRemove);
+    this.vContent.splice(index, 1);
+    this.reprocessingSequence();
   }
 
   private reprocessingSequence() {

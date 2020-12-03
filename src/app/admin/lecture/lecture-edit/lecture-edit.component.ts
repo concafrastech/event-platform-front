@@ -137,10 +137,19 @@ export class LectureEditComponent implements OnInit {
   }
 
   getDocuments(content: Content, idFile: any) {
-    this._documentService.getDocument(idFile).subscribe((response) => {
-      content.file = response.document;
-      console.log(this.lecture);
-    });
+    this._documentService.getDocument(idFile).subscribe(
+      (response) => {
+        content.file = response.document;
+      },
+      (error) => {
+        content.file = null;
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
   }
 
   /* Return true or false if it is the selected */
@@ -161,7 +170,14 @@ export class LectureEditComponent implements OnInit {
     let index = 0;
     this._contentService.uploadContents(this.lecture.contents).subscribe({
       next: (response) => {
-        //Final do upload
+        //Uploads anteriores retornam Documents como resposta
+        if (response.document) {
+          this.lecture.contents[index].file = response.document;
+          this.lecture.contents[index].fileToUpload = null;
+          index += 1;
+        }
+
+        //Novos uploads retornam HttpEventType como resposta
         if (response.type == HttpEventType.Response) {
           this.lecture.contents[index].file = response.body.document;
           this.lecture.contents[index].fileToUpload = null;

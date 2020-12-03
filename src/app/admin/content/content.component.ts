@@ -1,14 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ContentService } from "../../services/content.service";
+import { DocumentService } from "./../../services/document.service";
 import { Content } from "../../models/content";
-import { HttpEventType } from "@angular/common/http";
-import { AbstractControl, NgForm, NgModel, ValidatorFn } from "@angular/forms";
+import { Document } from "../../models/document";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-content",
   templateUrl: "./content.component.html",
   styleUrls: ["./content.component.css"],
-  providers: [ContentService],
+  providers: [ContentService, DocumentService],
 })
 export class ContentComponent implements OnInit {
   public pageTitle: String;
@@ -29,21 +30,26 @@ export class ContentComponent implements OnInit {
     externo: "Conteúdo externo",
   };
 
-
   select: string = "";
-  
+
   @Input() public vContent: Content[] = [];
   @Output() public contentFormIsValid = new EventEmitter();
 
-  constructor() {
+  constructor(
+    private _contentService: ContentService,
+    private _documentService: DocumentService
+  ) {
     this.pageTitle = "Gerenciamento de conteúdo";
   }
 
-  ngOnInit(): void {    
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(): void {
-
+    if (this.vContent) {
+      this.vContent.map((content) => {
+        console.log(content.file);
+      });
+    }
   }
 
   addContent() {
@@ -75,7 +81,7 @@ export class ContentComponent implements OnInit {
     }
   }
 
-  onChangeForm(form: NgForm){
+  onChangeForm(form: NgForm) {
     this.contentFormIsValid.emit(form.valid);
   }
 
@@ -84,6 +90,16 @@ export class ContentComponent implements OnInit {
     files.add(event[0]);
 
     content.fileToUpload = event[0];
+  }
+
+  onRemoveFile(content: Content) {
+    this._documentService
+      .deleteDocument(content.file._id)
+      .subscribe((response) => {
+        console.log(response);
+        content.file = null;
+        console.log(this.vContent);
+      });
   }
 
   removeType(event) {

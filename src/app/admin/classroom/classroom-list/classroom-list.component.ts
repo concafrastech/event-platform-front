@@ -107,7 +107,7 @@ export class ClassroomListComponent implements OnInit {
 
   errorDeleteModal(classroom: Classroom) {
     const initialState = {
-      title: "Não é possível excluir a Palestra",
+      title: "Não é possível excluir o curso",
       message: "O curso: " + classroom.name + " possui conteúdo.",
     };
     this.bsModalRef = this.modalService.show(ConfirmComponent, {
@@ -118,7 +118,7 @@ export class ClassroomListComponent implements OnInit {
 
   openDeleteConfirm(classroom: Classroom) {
     const initialState = {
-      title: "Excluir Palestra",
+      title: "Excluir Curso",
       message:
         "Deseja realmente excluir o curso : " +
         classroom.name +

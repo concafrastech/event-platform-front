@@ -7,12 +7,17 @@ import { StageService } from "src/app/services/stage.service";
 import { ActivityService } from "src/app/services/activity.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
+import { ContentService } from 'src/app/services/content.service';
+import { DocumentService } from 'src/app/services/document.service';
+import { Content } from 'src/app/models/content';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: "app-activity-edit",
   templateUrl: "./activity-edit.component.html",
   styleUrls: ["./activity-edit.component.css"],
-  providers: [UserService, ActivityService, StageService],
+  providers: [UserService, ActivityService, StageService, ContentService,
+    DocumentService,],
 })
 export class ActivityEditComponent implements OnInit {
   public title: string;
@@ -21,7 +26,9 @@ export class ActivityEditComponent implements OnInit {
   public status: string;
   public activity: Activity;
   public identity: string;
-  public alturaTela: number;
+  public contentIsValid: boolean = false;
+  public alturaTela;
+  public isLoading: boolean = true;
   public stages = [];
 
   constructor(
@@ -30,6 +37,8 @@ export class ActivityEditComponent implements OnInit {
     private _activityService: ActivityService,
     private _userService: UserService,
     private _stageService: StageService,
+    private _contentService: ContentService,
+    private _documentService: DocumentService,
     private _bsLocaleService: BsLocaleService
   ) {
     this.title = "Editar Painel";
@@ -75,6 +84,12 @@ export class ActivityEditComponent implements OnInit {
           activity.start_time = new Date(activity.start_time);
           activity.end_time = new Date(activity.end_time);
           this.activity =activity;
+          if(this.activity.contents){
+            this.getContents();
+          }else{
+            this.isLoading = false;
+            this.activity.contents = [];
+          }
         } else {
           this.status = "error";
         }
@@ -86,31 +101,119 @@ export class ActivityEditComponent implements OnInit {
     );
   }
 
+  getContents() {
+    this.activity.contents.forEach((content, index) => {
+      this._contentService.getContent(content._id).subscribe((response) => {
+        this.activity.contents[index] = response.content;
+        this.isLoading = false;
+        if (this.activity.contents[index].file) {
+          let idFile = this.activity.contents[index].file;
+          this.getDocuments(this.activity.contents[index], idFile);
+        }
+      });
+    });
+  }
+
+  getDocuments(content: Content, idFile: any) {
+    this._documentService.getDocument(idFile).subscribe(
+      (response) => {
+        content.file = response.document;
+      },
+      (error) => {
+        content.file = null;
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
+  }
+
   /* Return true or false if it is the selected */
   compareByOptionId(idFist, idSecond) {
     return idFist && idSecond && idFist._id == idSecond._id;
   }
 
+  contentFormIsValid(event: boolean) {
+    return (this.contentIsValid = event);
+  }
+
   onSubmit() {
-    console.log(this.activity);
-    this._activityService
-      .updateActivity(this.activity)
-      .subscribe(
-        (response) => {
-          if (!response.activity) {
-            this.status = "error";
-          } else {
-            this.status = "success";
-            this.getActivity(this.activityId);
-          }
-        },
-        (error) => {
-          var errorMessage = <any>error;
-          console.log(errorMessage);
-          if (errorMessage != null) {
-            this.status = "error";
-          }
+    this.isLoading = true;
+    this.saveDocuments();
+  }
+
+  //Realiza upload e salva os documentos
+  saveDocuments() {
+    let index = 0;
+    this._contentService.uploadContents(this.activity.contents).subscribe({
+      next: (response) => {
+        //Uploads anteriores retornam Documents como resposta
+        if (response.document) {
+          this.activity.contents[index].file = response.document;
+          this.activity.contents[index].fileToUpload = null;
+          index += 1;
         }
-      );
+
+        //Novos uploads retornam HttpEventType como resposta
+        if (response.type == HttpEventType.Response) {
+          this.activity.contents[index].file = response.body.document;
+          this.activity.contents[index].fileToUpload = null;
+          index += 1;
+        }
+      },
+      error: (error) => {
+        this.isLoading = false;
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      },
+      complete: () => this.saveContents(),
+    });
+  }
+
+  //Salva os conteúdos
+  saveContents() {
+    let index = 0;
+    this._contentService.saveContents(this.activity.contents).subscribe({
+      next: (content) => {
+        this.activity.contents[index] = content.content;
+        index += 1;
+      },
+      error: (error) => {
+        this.isLoading = false;
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      },
+      complete: () => this.saveActivity(),
+    });
+  }
+
+  saveActivity() {
+    this._activityService.updateActivity(this.activity).subscribe(
+      (response) => {
+        this.isLoading = false;
+        if (!response.lecture) {
+          this.status = "error";
+        } else {
+          this.status = "success";
+          this.getActivity(this.activityId);
+        }
+      },
+      (error) => {
+        this.isLoading = false;
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
   }
 }

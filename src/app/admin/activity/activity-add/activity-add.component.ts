@@ -33,6 +33,7 @@ export class ActivityAddComponent implements OnInit {
   public stages = [];
   public alturaTela: number;
   public contentIsValid: boolean = false;
+  public isLoading: boolean = true;
 
   constructor(
     private _route: ActivatedRoute,
@@ -89,6 +90,7 @@ export class ActivityAddComponent implements OnInit {
       (response) => {
         if (response) {
           this.stages = response.stages;
+          this.isLoading = false;
         }
       },
       (error) => {
@@ -107,6 +109,12 @@ export class ActivityAddComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
+    this.saveDocuments();
+  }
+
+  //Realiza upload e salva os documentos
+  saveDocuments() {
     let index = 0;
     this._contentService.uploadContents(this.activity.contents).subscribe({
       next: (response) => {
@@ -118,6 +126,27 @@ export class ActivityAddComponent implements OnInit {
         }
       },
       error: (error) => {
+        this.isLoading = false;
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      },
+      complete: () => this.saveContents(),
+    });
+  }
+
+  //Salva os conteúdos
+  saveContents() {
+    let index = 0;
+    this._contentService.saveContents(this.activity.contents).subscribe({
+      next: (content) => {
+        this.activity.contents[index]._id = content.content._id;
+        index += 1;
+      },
+      error: (error) => {
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -128,9 +157,11 @@ export class ActivityAddComponent implements OnInit {
     });
   }
 
+  //Salva o painel
   saveActivity() {
     this._activityService.addActivity(this.activity).subscribe(
       (response) => {
+        this.isLoading = false;
         if (!response.activity) {
           this.status = "error";
         } else {
@@ -140,6 +171,8 @@ export class ActivityAddComponent implements OnInit {
       },
       (error) => {
         this.deleteDocuments();
+        this.deleteContents();
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -154,6 +187,15 @@ export class ActivityAddComponent implements OnInit {
     this.activity.contents.forEach((content) => {
       if (content.file) {
         this._documentService.deleteDocument(content.file._id).subscribe();
+      }
+    });
+  }
+
+  //Apaga conteúdos
+  deleteContents() {
+    this.activity.contents.forEach((content) => {
+      if (content.file) {
+        this._contentService.deleteContent(content._id).subscribe();
       }
     });
   }

@@ -107,7 +107,7 @@ export class LectureListComponent implements OnInit {
 
   errorDeleteModal(lecture) {
     const initialState = {
-      title: "Não é possível excluir a Palestra",
+      title: "Não é possível excluir a palestra",
       message: "A palestra: " + lecture.name + " possui conteúdo.",
     };
     this.bsModalRef = this.modalService.show(ConfirmComponent, {

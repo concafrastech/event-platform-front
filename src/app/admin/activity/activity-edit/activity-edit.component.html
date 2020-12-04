@@ -64,6 +64,7 @@
                     </fieldset>
                 </div>
             </div>
+            <app-content [(vContent)]="activity.contents" (contentFormIsValid)="contentFormIsValid($event)"></app-content>
             <div class="row">
                 <div class="form-group col-md-12">
                     <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!activityEditForm.form.valid" />

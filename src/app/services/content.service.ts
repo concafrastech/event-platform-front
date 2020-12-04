@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { GLOBAL } from "./global";
 import { Observable } from "rxjs/Observable";
 import { UserService } from "./user.service";
-import { DocumentService } from './document.service';
+import { DocumentService } from "./document.service";
 import { Content } from "../models/content";
 import { concat } from "rxjs";
 import { concatMap } from "rxjs/operators";
@@ -15,16 +15,20 @@ export class ContentService {
 
   public filesUploaded: EventEmitter<boolean>;
 
-  constructor(public _http: HttpClient, private _userService: UserService, private _documentService: DocumentService) {
+  constructor(
+    public _http: HttpClient,
+    private _userService: UserService,
+    private _documentService: DocumentService
+  ) {
     this.url = GLOBAL.url;
   }
 
-  getContent(id): Observable<any>{
+  getContent(id): Observable<any> {
     let headers = new HttpHeaders()
-            .set('Content-Type', 'application/json')
-            .set('Authorization', this._userService.getToken());
+      .set("Content-Type", "application/json")
+      .set("Authorization", this._userService.getToken());
 
-        return this._http.get(this.url + 'contents/' + id, {headers: headers});
+    return this._http.get(this.url + "contents/" + id, { headers: headers });
   }
 
   addContent(content): Observable<any> {
@@ -39,11 +43,13 @@ export class ContentService {
   updateContent(content: Content): Observable<any> {
     let params = JSON.stringify(content);
     let headers = new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set('Authorization', this._userService.getToken());
+      .set("Content-Type", "application/json")
+      .set("Authorization", this._userService.getToken());
 
-    return this._http.put(this.url + 'contents/' + content._id, params, {headers: headers});
-}
+    return this._http.put(this.url + "contents/" + content._id, params, {
+      headers: headers,
+    });
+  }
 
   deleteContent(id): Observable<any> {
     let headers = new HttpHeaders()
@@ -57,9 +63,9 @@ export class ContentService {
   saveContents(VContents: Content[]): Observable<any> {
     let obs$: Observable<any>[] = [];
     VContents.map((content) => {
-      if(content._id){
+      if (content._id) {
         obs$.push(this.updateContent(content));
-      }else{
+      } else {
         obs$.push(this.addContent(content));
       }
     });
@@ -75,12 +81,20 @@ export class ContentService {
   uploadContents(VContents: Content[]): Observable<any> {
     let obs$: Observable<any>[] = [];
     VContents.map((content) => {
-      if (content.fileToUpload) {
-        obs$.push(this.uploadFile(content.fileToUpload));
-      }else{
-        if(content.file._id){
-          obs$.push(this._documentService.updateDocument(content.file))
+      if (
+        content.type == "audio" ||
+        content.type == "img" ||
+        content.type == "doc"
+      ) {
+        if (content.fileToUpload) {
+          obs$.push(this.uploadFile(content.fileToUpload));
+        } else {
+          if (content.file._id) {
+            obs$.push(this._documentService.updateDocument(content.file));
+          }
         }
+      }else{
+        obs$.push(this.addContent(content));
       }
     });
 

@@ -1,6 +1,7 @@
-<div class="col-md-12" [style]="
-'height:' + (alturaTela - 50) + 'px; overflow: auto; width: 100%;'
-">
+<div
+  class="col-md-12"
+  [style]="'height:' + (alturaTela - 50) + 'px; overflow: auto; width: 100%;'"
+>
   <h1 class="h1-strong">{{ title }}</h1>
   <div class="alert alert-success" *ngIf="status == 'success'">
     Dados atualizados com sucesso!
@@ -115,7 +116,10 @@
         </div>
       </div>
 
-      <app-content [(vContent)]="lecture.contents" (contentFormIsValid)="contentFormIsValid($event)"></app-content>
+      <app-content
+        [(vContent)]="lecture.contents"
+        (contentFormIsValid)="contentFormIsValid($event)"
+      ></app-content>
       <div class="row">
         <div class="form-group col-md-12">
           <input

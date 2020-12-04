@@ -100,7 +100,7 @@ export class DocumentListComponent implements OnInit {
   openDeleteConfirm(document) {
     const initialState = {
       title: 'Excluir Palestra',
-      message: 'Deseja realmente excluir o palestra : ' + document.name + '? <br> Essa ação não poderá ser desfeita.'
+      message: 'Deseja realmente excluir o document : ' + document.description + '? <br> Essa ação não poderá ser desfeita.'
     };
     this.bsModalRef = this.modalService.show(DeleteConfirmComponent, {initialState});
     this.bsModalRef.content.actionBtnName = 'Excluir';

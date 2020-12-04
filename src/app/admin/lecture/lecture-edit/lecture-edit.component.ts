@@ -34,6 +34,7 @@ export class LectureEditComponent implements OnInit {
   public epics = [];
   public contentIsValid: boolean = false;
   public alturaTela;
+  public isLoading: boolean = true;
 
   constructor(
     private _route: ActivatedRoute,
@@ -111,6 +112,7 @@ export class LectureEditComponent implements OnInit {
           if (this.lecture.contents) {
             this.getContents();
           } else {
+            this.isLoading = false;
             this.lecture.contents = [];
           }
         } else {
@@ -128,6 +130,7 @@ export class LectureEditComponent implements OnInit {
     this.lecture.contents.forEach((content, index) => {
       this._contentService.getContent(content._id).subscribe((response) => {
         this.lecture.contents[index] = response.content;
+        this.isLoading = false;
         if (this.lecture.contents[index].file) {
           let idFile = this.lecture.contents[index].file;
           this.getDocuments(this.lecture.contents[index], idFile);
@@ -162,6 +165,7 @@ export class LectureEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     this.saveDocuments();
   }
 
@@ -185,6 +189,7 @@ export class LectureEditComponent implements OnInit {
         }
       },
       error: (error) => {
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -204,6 +209,7 @@ export class LectureEditComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -217,6 +223,7 @@ export class LectureEditComponent implements OnInit {
   saveLecture() {
     this._lectureService.updateLecture(this.lecture).subscribe(
       (response) => {
+        this.isLoading = false;
         if (!response.lecture) {
           this.status = "error";
         } else {
@@ -225,6 +232,7 @@ export class LectureEditComponent implements OnInit {
         }
       },
       (error) => {
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {

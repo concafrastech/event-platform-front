@@ -98,7 +98,7 @@ export class ClassroomListComponent implements OnInit {
   }
 
   canDeleteClassroom(classroom: Classroom) {
-    if (classroom.contents) {
+    if (classroom.contents && classroom.contents.length > 0) {
       this.errorDeleteModal(classroom);
     } else {
       this.openDeleteConfirm(classroom);

@@ -33,6 +33,7 @@ export class LectureAddComponent implements OnInit {
   public epics = [];
   public alturaTela: number;
   public contentIsValid: boolean = false;
+  public isLoading: boolean = true;
 
   constructor(
     private _route: ActivatedRoute,
@@ -87,6 +88,7 @@ export class LectureAddComponent implements OnInit {
       (response) => {
         if (response) {
           this.epics = response.epics;
+          this.isLoading = false;
         }
       },
       (error) => {
@@ -105,6 +107,7 @@ export class LectureAddComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     this.saveDocuments();
   }
 
@@ -117,11 +120,11 @@ export class LectureAddComponent implements OnInit {
         if (response.type == HttpEventType.Response) {
           this.lecture.contents[index].file = response.body.document;
           this.lecture.contents[index].fileToUpload = null;
-          //this._contentService.addContent(this.lecture.contents[index]).subscribe((content)=>this.lecture.contents[index]=content);
           index += 1;
         }
       },
       error: (error) => {
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -141,6 +144,7 @@ export class LectureAddComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -155,6 +159,7 @@ export class LectureAddComponent implements OnInit {
   saveLecture() {
     this._lectureService.addLecture(this.lecture).subscribe(
       (response) => {
+        this.isLoading = false;
         if (!response.lecture) {
           this.status = "error";
         } else {
@@ -165,6 +170,7 @@ export class LectureAddComponent implements OnInit {
       (error) => {
         this.deleteDocuments();
         this.deleteContents();
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {

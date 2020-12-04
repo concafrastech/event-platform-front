@@ -27,6 +27,7 @@ export class ClassroomAddComponent implements OnInit {
   public trails = [];
   public alturaTela: number;
   public contentIsValid: boolean = false;
+  public isLoading: boolean = true;
 
   constructor(
     private _route: ActivatedRoute,
@@ -80,6 +81,7 @@ export class ClassroomAddComponent implements OnInit {
       (response) => {
         if (response) {
           this.trails = response.trails;
+          this.isLoading = false;
         }
       },
       (error) => {
@@ -98,6 +100,11 @@ export class ClassroomAddComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
+    this.saveDocuments();
+  }
+  //Realiza upload e salva os documentos
+  saveDocuments() {
     let index = 0;
     this._contentService.uploadContents(this.classroom.contents).subscribe({
       next: (response) => {
@@ -109,6 +116,27 @@ export class ClassroomAddComponent implements OnInit {
         }
       },
       error: (error) => {
+        this.isLoading = false;
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      },
+      complete: () => this.saveContents(),
+    });
+  }
+
+  //Salva os conteúdos
+  saveContents() {
+    let index = 0;
+    this._contentService.saveContents(this.classroom.contents).subscribe({
+      next: (content) => {
+        this.classroom.contents[index]._id = content.content._id;
+        index += 1;
+      },
+      error: (error) => {
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -122,6 +150,7 @@ export class ClassroomAddComponent implements OnInit {
   saveClassroom() {
     this._classroomService.addClassroom(this.classroom).subscribe(
       (response) => {
+        this.isLoading = false;
         if (!response.classroom) {
           this.status = "error";
         } else {
@@ -134,6 +163,8 @@ export class ClassroomAddComponent implements OnInit {
       },
       (error) => {
         this.deleteDocuments();
+        this.deleteContents();
+        this.isLoading = false;
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -148,6 +179,15 @@ export class ClassroomAddComponent implements OnInit {
     this.classroom.contents.forEach((content) => {
       if (content.file) {
         this._documentService.deleteDocument(content.file._id).subscribe();
+      }
+    });
+  }
+
+  //Apaga conteúdos
+  deleteContents() {
+    this.classroom.contents.forEach((content) => {
+      if (content.file) {
+        this._contentService.deleteContent(content._id).subscribe();
       }
     });
   }

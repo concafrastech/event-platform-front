@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label>Horário de Início</label>
-                    <timepicker name="start_time" [(ngModel)]="lecture.start_time" [showMeridian]="false"></timepicker>
+                    <timepicker name="start_time" [(ngModel)]="lecture.start_time" [minuteStep]="5" [showSpinners]="false" [showMeridian]="false"></timepicker>
                 </div>
                 <div class="form-group col-md-3">
                     <label>Data de Término</label>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label>Horário de Término</label>
-                    <timepicker name="end_time" [(ngModel)]="lecture.end_time" [showMeridian]="false"></timepicker>
+                    <timepicker name="end_time" [(ngModel)]="lecture.end_time" [minuteStep]="5" [showSpinners]="false" [showMeridian]="false"></timepicker>
                 </div>
             </div>
             <div class="row">

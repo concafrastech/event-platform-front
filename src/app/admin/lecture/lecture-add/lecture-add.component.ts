@@ -10,6 +10,7 @@ import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { HttpEventType } from "@angular/common/http";
 import { DocumentService } from "src/app/services/document.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-lecture-add",
@@ -43,7 +44,8 @@ export class LectureAddComponent implements OnInit {
     private _userService: UserService,
     private _epicService: EpicService,
     private _bsLocaleService: BsLocaleService,
-    private _documentService: DocumentService
+    private _documentService: DocumentService,
+    private spinner: NgxSpinnerService
   ) {
     this.title = "Adicionar Palestra";
     this.url = GLOBAL.url;
@@ -51,6 +53,9 @@ export class LectureAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Chamada do Spinner
+    this.callSpinner(2000);
+
     console.log("[OK] Component: lecture-add.");
     this.identity = this._userService.getIdentity();
     this.lecture = new Lecture(
@@ -88,7 +93,6 @@ export class LectureAddComponent implements OnInit {
       (response) => {
         if (response) {
           this.epics = response.epics;
-          this.isLoading = false;
         }
       },
       (error) => {
@@ -107,7 +111,7 @@ export class LectureAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this.callSpinner(5000);
     this.saveDocuments();
   }
 
@@ -196,5 +200,15 @@ export class LectureAddComponent implements OnInit {
         this._contentService.deleteContent(content._id).subscribe();
       }
     });
+  }
+
+  private callSpinner(time: any) {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, time);
   }
 }

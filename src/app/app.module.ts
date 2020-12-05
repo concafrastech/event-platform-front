@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { MomentModule } from 'ngx-moment';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -206,7 +207,8 @@ const GamificationConfig = {
     PaginationModule.forRoot(),
     DatetimePopupModule,
     NgBootstrapAlertModule,
-    AngularTawkModule
+    AngularTawkModule,
+    NgxSpinnerModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

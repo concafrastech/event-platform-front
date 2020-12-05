@@ -34,7 +34,6 @@ export class LectureAddComponent implements OnInit {
   public epics = [];
   public alturaTela: number;
   public contentIsValid: boolean = false;
-  public isLoading: boolean = true;
 
   constructor(
     private _route: ActivatedRoute,
@@ -45,7 +44,7 @@ export class LectureAddComponent implements OnInit {
     private _epicService: EpicService,
     private _bsLocaleService: BsLocaleService,
     private _documentService: DocumentService,
-    private spinner: NgxSpinnerService
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Adicionar Palestra";
     this.url = GLOBAL.url;
@@ -53,10 +52,8 @@ export class LectureAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Chamada do Spinner
-    this.callSpinner(2000);
-
     console.log("[OK] Component: lecture-add.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.lecture = new Lecture(
       "",
@@ -93,6 +90,7 @@ export class LectureAddComponent implements OnInit {
       (response) => {
         if (response) {
           this.epics = response.epics;
+          this._spinner.hide();
         }
       },
       (error) => {
@@ -111,7 +109,7 @@ export class LectureAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.callSpinner(5000);
+    this._spinner.show();
     this.saveDocuments();
   }
 
@@ -128,7 +126,7 @@ export class LectureAddComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -148,7 +146,7 @@ export class LectureAddComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -163,7 +161,7 @@ export class LectureAddComponent implements OnInit {
   saveLecture() {
     this._lectureService.addLecture(this.lecture).subscribe(
       (response) => {
-        this.isLoading = false;
+        this._spinner.hide();
         if (!response.lecture) {
           this.status = "error";
         } else {
@@ -174,7 +172,7 @@ export class LectureAddComponent implements OnInit {
       (error) => {
         this.deleteDocuments();
         this.deleteContents();
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -202,13 +200,4 @@ export class LectureAddComponent implements OnInit {
     });
   }
 
-  private callSpinner(time: any) {
-    /** spinner starts on init */
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, time);
-  }
 }

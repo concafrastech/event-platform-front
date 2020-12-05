@@ -10,6 +10,7 @@ import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { HttpEventType } from "@angular/common/http";
 import { DocumentService } from "src/app/services/document.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-activity-add",
@@ -43,7 +44,8 @@ export class ActivityAddComponent implements OnInit {
     private _userService: UserService,
     private _stageService: StageService,
     private _bsLocaleService: BsLocaleService,
-    private _documentService: DocumentService
+    private _documentService: DocumentService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Adicionar Painel";
     this.url = GLOBAL.url;
@@ -52,6 +54,7 @@ export class ActivityAddComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: activity-add.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.activity = new Activity(
       "",
@@ -90,7 +93,7 @@ export class ActivityAddComponent implements OnInit {
       (response) => {
         if (response) {
           this.stages = response.stages;
-          this.isLoading = false;
+          this._spinner.hide();
         }
       },
       (error) => {
@@ -109,7 +112,7 @@ export class ActivityAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this._spinner.show();
     this.saveDocuments();
   }
 
@@ -126,7 +129,7 @@ export class ActivityAddComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -146,7 +149,7 @@ export class ActivityAddComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -161,7 +164,7 @@ export class ActivityAddComponent implements OnInit {
   saveActivity() {
     this._activityService.addActivity(this.activity).subscribe(
       (response) => {
-        this.isLoading = false;
+        this._spinner.hide();
         if (!response.activity) {
           this.status = "error";
         } else {
@@ -172,7 +175,7 @@ export class ActivityAddComponent implements OnInit {
       (error) => {
         this.deleteDocuments();
         this.deleteContents();
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {

@@ -11,6 +11,7 @@ import { ContentService } from 'src/app/services/content.service';
 import { DocumentService } from 'src/app/services/document.service';
 import { Content } from 'src/app/models/content';
 import { HttpEventType } from '@angular/common/http';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-activity-edit",
@@ -39,7 +40,8 @@ export class ActivityEditComponent implements OnInit {
     private _stageService: StageService,
     private _contentService: ContentService,
     private _documentService: DocumentService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Editar Painel";
     this.url = GLOBAL.url;
@@ -48,6 +50,7 @@ export class ActivityEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: activity-edit.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.activity = new Activity('', 0, '', '', '', '', new Date(), new Date(), false, null, [], new Date(), new Date());
     this.activity.stage = new Stage('', 0, '', '', '', null, new Date(), new Date());
@@ -87,7 +90,7 @@ export class ActivityEditComponent implements OnInit {
           if(this.activity.contents){
             this.getContents();
           }else{
-            this.isLoading = false;
+            this._spinner.hide();
             this.activity.contents = [];
           }
         } else {
@@ -105,7 +108,7 @@ export class ActivityEditComponent implements OnInit {
     this.activity.contents.forEach((content, index) => {
       this._contentService.getContent(content._id).subscribe((response) => {
         this.activity.contents[index] = response.content;
-        this.isLoading = false;
+        this._spinner.hide();
         if (this.activity.contents[index].file) {
           let idFile = this.activity.contents[index].file;
           this.getDocuments(this.activity.contents[index], idFile);
@@ -140,7 +143,7 @@ export class ActivityEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this._spinner.show();
     this.saveDocuments();
   }
 
@@ -164,7 +167,7 @@ export class ActivityEditComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -184,7 +187,7 @@ export class ActivityEditComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -198,7 +201,7 @@ export class ActivityEditComponent implements OnInit {
   saveActivity() {
     this._activityService.updateActivity(this.activity).subscribe(
       (response) => {
-        this.isLoading = false;
+        this._spinner.hide();
         if (!response.lecture) {
           this.status = "error";
         } else {
@@ -207,7 +210,7 @@ export class ActivityEditComponent implements OnInit {
         }
       },
       (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {

@@ -11,6 +11,7 @@ import { ContentService } from "src/app/services/content.service";
 import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
 import { HttpEventType } from "@angular/common/http";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-classroom-edit",
@@ -43,7 +44,8 @@ export class ClassroomEditComponent implements OnInit {
     private _trailService: TrailService,
     private _contentService: ContentService,
     private _documentService: DocumentService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Editar Palestra";
     this.url = GLOBAL.url;
@@ -52,6 +54,7 @@ export class ClassroomEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: classroom-edit.");
+    this._spinner.show()
     this.identity = this._userService.getIdentity();
     this.classroom = new Classroom(
       "",
@@ -110,7 +113,7 @@ export class ClassroomEditComponent implements OnInit {
           if (this.classroom.contents) {
             this.getContents();
           } else {
-            this.isLoading = false;
+            this._spinner.hide();
             this.classroom.contents = [];
           }
         } else {
@@ -128,7 +131,7 @@ export class ClassroomEditComponent implements OnInit {
     this.classroom.contents.forEach((content, index) => {
       this._contentService.getContent(content._id).subscribe((response) => {
         this.classroom.contents[index] = response.content;
-        this.isLoading = false;
+        this._spinner.hide();
         if (this.classroom.contents[index].file) {
           let idFile = this.classroom.contents[index].file;
           this.getDocuments(this.classroom.contents[index], idFile);
@@ -159,7 +162,7 @@ export class ClassroomEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this._spinner.show();
     this.saveDocuments();
   }
 
@@ -183,7 +186,7 @@ export class ClassroomEditComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -203,7 +206,7 @@ export class ClassroomEditComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -217,7 +220,7 @@ export class ClassroomEditComponent implements OnInit {
   saveClassroom() {
     this._classroomService.updateClassroom(this.classroom).subscribe(
       (response) => {
-        this.isLoading = false;
+        this._spinner.hide();
         if (!response.classroom) {
           this.status = "error";
         } else {
@@ -226,7 +229,7 @@ export class ClassroomEditComponent implements OnInit {
         }
       },
       (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {

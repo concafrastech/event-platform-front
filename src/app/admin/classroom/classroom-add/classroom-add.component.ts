@@ -10,6 +10,7 @@ import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { ContentService } from "src/app/services/content.service";
 import { HttpEventType } from '@angular/common/http';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-classroom-add",
@@ -37,7 +38,8 @@ export class ClassroomAddComponent implements OnInit {
     private _trailService: TrailService,
     private _contentService: ContentService,
     private _bsLocaleService: BsLocaleService,
-    private _documentService: DocumentService
+    private _documentService: DocumentService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Adicionar Curso";
     this.url = GLOBAL.url;
@@ -46,6 +48,7 @@ export class ClassroomAddComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: classroom-add.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.classroom = new Classroom(
       "",
@@ -81,7 +84,7 @@ export class ClassroomAddComponent implements OnInit {
       (response) => {
         if (response) {
           this.trails = response.trails;
-          this.isLoading = false;
+          this._spinner.hide();
         }
       },
       (error) => {
@@ -100,7 +103,7 @@ export class ClassroomAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this._spinner.show();
     this.saveDocuments();
   }
   //Realiza upload e salva os documentos
@@ -116,7 +119,7 @@ export class ClassroomAddComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -136,7 +139,7 @@ export class ClassroomAddComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -150,7 +153,7 @@ export class ClassroomAddComponent implements OnInit {
   saveClassroom() {
     this._classroomService.addClassroom(this.classroom).subscribe(
       (response) => {
-        this.isLoading = false;
+        this._spinner.hide();
         if (!response.classroom) {
           this.status = "error";
         } else {
@@ -164,7 +167,7 @@ export class ClassroomAddComponent implements OnInit {
       (error) => {
         this.deleteDocuments();
         this.deleteContents();
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {

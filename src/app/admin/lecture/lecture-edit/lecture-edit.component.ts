@@ -11,6 +11,7 @@ import { UserService } from "src/app/services/user.service";
 import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
 import { HttpEventType } from "@angular/common/http";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-lecture-edit",
@@ -44,7 +45,8 @@ export class LectureEditComponent implements OnInit {
     private _epicService: EpicService,
     private _contentService: ContentService,
     private _documentService: DocumentService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Editar Palestra";
     this.url = GLOBAL.url;
@@ -52,6 +54,7 @@ export class LectureEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._spinner.show();
     console.log("[OK] Component: lecture-edit.");
     this.identity = this._userService.getIdentity();
     this.lecture = new Lecture(
@@ -112,7 +115,7 @@ export class LectureEditComponent implements OnInit {
           if (this.lecture.contents) {
             this.getContents();
           } else {
-            this.isLoading = false;
+            this._spinner.hide();
             this.lecture.contents = [];
           }
         } else {
@@ -130,7 +133,7 @@ export class LectureEditComponent implements OnInit {
     this.lecture.contents.forEach((content, index) => {
       this._contentService.getContent(content._id).subscribe((response) => {
         this.lecture.contents[index] = response.content;
-        this.isLoading = false;
+        this._spinner.hide();
         if (this.lecture.contents[index].file) {
           let idFile = this.lecture.contents[index].file;
           this.getDocuments(this.lecture.contents[index], idFile);
@@ -165,7 +168,7 @@ export class LectureEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this._spinner.show();
     this.saveDocuments();
   }
 
@@ -189,7 +192,7 @@ export class LectureEditComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -209,7 +212,7 @@ export class LectureEditComponent implements OnInit {
         index += 1;
       },
       error: (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {
@@ -223,7 +226,7 @@ export class LectureEditComponent implements OnInit {
   saveLecture() {
     this._lectureService.updateLecture(this.lecture).subscribe(
       (response) => {
-        this.isLoading = false;
+        this._spinner.hide();
         if (!response.lecture) {
           this.status = "error";
         } else {
@@ -232,7 +235,7 @@ export class LectureEditComponent implements OnInit {
         }
       },
       (error) => {
-        this.isLoading = false;
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
         if (errorMessage != null) {

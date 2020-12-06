@@ -54,15 +54,13 @@
     </div> <!-- /#list -->
 
     <div id="bottom" class="row">
-        <div class="col-md-12" *ngIf="pages > 1">
+        <div class="col-md-12" *ngIf="pages.length > 1">
             
             <ul class="pagination">
-                <li class="disabled"><a>&lt; Anterior</a></li>
-                <li class="disabled"><a>1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-            </ul><!-- /.pagination -->
+                <li [class.disabled]="page == 1"><a [routerLink]="['/admin/document/list', page-1]" [routerLinkActive]="['active']">&lt; Anterior</a></li>
+                <li [class.disabled]="p == page" *ngFor="let p of pages"><a [routerLink]="['/admin/document/list', p]" [routerLinkActive]="['active']">{{p}}</a></li>
+                <li [class.disabled]="page == pages.length" class="next"><a [routerLink]="['/admin/document/list', page+1]" [routerLinkActive]="['active']" rel="next">Próximo &gt;</a></li>
+            </ul> <!-- /.pagination -->
     
         </div>
     </div> <!-- /#bottom -->

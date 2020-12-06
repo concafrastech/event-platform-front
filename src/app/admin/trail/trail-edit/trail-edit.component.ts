@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
-import { Epic } from 'src/app/models/epic';
+import { Epic } from "src/app/models/epic";
 import { Trail } from "src/app/models/trail";
 import { EpicService } from "src/app/services/epic.service";
 import { TrailService } from "src/app/services/trail.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-trail-edit",
@@ -29,7 +30,8 @@ export class TrailEditComponent implements OnInit {
     private _trailService: TrailService,
     private _userService: UserService,
     private _epicService: EpicService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Editar Temas";
     this.url = GLOBAL.url;
@@ -38,41 +40,52 @@ export class TrailEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: trail-edit.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.trail = new Trail('', '', '', '', '', null, new Date(), new Date());
-    this.trail.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
+    this.trail = new Trail("", "", "", "", "", null, new Date(), new Date());
+    this.trail.epic = new Epic(
+      "",
+      "",
+      "",
+      "",
+      "",
+      null,
+      new Date(),
+      new Date()
+    );
     this.loadPage();
   }
 
   loadPage() {
-    this._epicService
-      .getEpics()
-      .subscribe(
-        (response) => {
-          if (response) {
-            this.epics = response.epics;
-            this._route.params.subscribe((params) => {
-              this.trailId = params["id"];
-              this.getTrail(this.trailId);
-            });
-          }
-        },
-        (error) => {
-          console.log(<any>error);
+    this._epicService.getEpics().subscribe(
+      (response) => {
+        if (response) {
+          this.epics = response.epics;
+          this._route.params.subscribe((params) => {
+            this.trailId = params["id"];
+            this.getTrail(this.trailId);
+          });
         }
-      );
+      },
+      (error) => {
+        console.log(<any>error);
+      }
+    );
   }
 
   getTrail(id) {
     this._trailService.getTrail(id).subscribe(
       (response) => {
         if (response.trail) {
+          this._spinner.hide();
           this.trail = response.trail;
         } else {
+          this._spinner.hide();
           this.status = "error";
         }
       },
       (error) => {
+        this._spinner.hide();
         console.log(<any>error);
         this._router.navigate(["/edittrail", this.trailId]);
       }
@@ -85,24 +98,26 @@ export class TrailEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this._trailService
-      .updateTrail(this.trail)
-      .subscribe(
-        (response) => {
-          if (!response.trail) {
-            this.status = "error";
-          } else {
-            this.status = "success";
-            this.getTrail(this.trailId);
-          }
-        },
-        (error) => {
-          var errorMessage = <any>error;
-          console.log(errorMessage);
-          if (errorMessage != null) {
-            this.status = "error";
-          }
+    this._spinner.show();
+    this._trailService.updateTrail(this.trail).subscribe(
+      (response) => {
+        if (!response.trail) {
+          this._spinner.hide();
+          this.status = "error";
+        } else {
+          this._spinner.hide();
+          this.status = "success";
+          this.getTrail(this.trailId);
         }
-      );
+      },
+      (error) => {
+        this._spinner.hide();
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
   }
 }

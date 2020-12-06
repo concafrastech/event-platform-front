@@ -3,7 +3,7 @@
         <div class="col-md-3">
             <h2>{{title}}</h2>
         </div>
-    
+
         <div class="col-md-6">
             <div class="input-group h2" *ngIf="false">
                 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
@@ -14,7 +14,7 @@
                 </span>
             </div>
         </div>
-    
+
         <div class="col-md-3">
             <a [routerLink]="['/admin/trail/add']" class="btn btn-primary pull-right h2">Novo Item</a>
         </div>
@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-    
+
                     <tr class="item-trail" *ngFor="let trail of trails">
                         <td>{{trail.name}}<br/><sub>{{trail.description}}</sub></td>
                         <td>{{trail.subject}}</td>
@@ -55,7 +55,7 @@
                             <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(trail)">Excluir</a>
                         </td>
                     </tr>
-    
+
                 </tbody>
             </table>
         </div>
@@ -63,10 +63,13 @@
     </div> <!-- /#list -->
 
     <div id="bottom" class="row">
-        <div class="col-md-12">         
+        <div class="col-md-12">
             <pagination [totalItems]="total" [(ngModel)]="page" (pageChanged)="pageChanged($event)"></pagination>
         </div>
     </div> <!-- /#bottom -->
 </div>
 
 <div class="clearfix"></div>
+
+<!-- Spinner -->
+<ngx-spinner></ngx-spinner>

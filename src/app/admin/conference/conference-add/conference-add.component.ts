@@ -5,6 +5,7 @@ import { Conference } from 'src/app/models/conference';
 import { ConferenceService } from 'src/app/services/conference.service';
 import { GLOBAL } from 'src/app/services/global';
 import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-conference-add',
@@ -27,8 +28,9 @@ export class ConferenceAddComponent implements OnInit {
     private _router: Router,
     private _conferenceService: ConferenceService,
     private _userService: UserService,
-    private _bsLocaleService: BsLocaleService
-  ) { 
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
+  ) {
     this.title = 'Adicionar Evento';
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
@@ -41,16 +43,20 @@ export class ConferenceAddComponent implements OnInit {
   }
 
   onSubmit() {
+    this._spinner.show();
       this._conferenceService.addConference(this.conference).subscribe(
           response => {
               if (!response.conference) {
+                  this._spinner.hide();
                   this.status = 'error';
               } else {
+                  this._spinner.hide();
                   this.status = 'success';
                   this._router.navigate(['/admin/conference/edit', response.conference._id]);
               }
           },
           error => {
+              this._spinner.hide();
               var errorMessage = <any> error;
               console.log(errorMessage);
               if (errorMessage != null) {

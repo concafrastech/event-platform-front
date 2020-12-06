@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {User} from '../../../models/user';
 import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-user-list',
@@ -28,7 +29,8 @@ export class UserListComponent implements OnInit {
   constructor(
       private _route: ActivatedRoute,
       private _router: Router,
-      private _userService: UserService
+      private _userService: UserService,
+      private _spinner: NgxSpinnerService
   ) {
       this.title = 'Lista de Usuários';
       this.url = GLOBAL.url;
@@ -39,6 +41,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
       console.log('[OK] Component: users.');
+      this._spinner.show();
       this.actualPage();
   }
 
@@ -46,22 +49,22 @@ export class UserListComponent implements OnInit {
       this._route.params.subscribe(params => {
           let page = +params['page'];
           this.page = page;
-          
+
           if (!params['page']) {
               page = 1;
           }
-          
+
           if (!page) {
               page = 1;
           } else {
               this.next_page = page + 1;
               this.prev_page = page - 1;
-              
+
               if (this.prev_page <= 0) {
                   this.prev_page = 1;
               }
           }
-          
+
           this.getUsers(page);
       });
   }
@@ -71,7 +74,9 @@ export class UserListComponent implements OnInit {
           response => {
               if (!response.users) {
                   this.status = 'error';
+                  this._spinner.hide();
               } else {
+                  this._spinner.hide();
                   this.total = response.total;
                   this.users = response.users;
                   this.pages = response.pages;
@@ -81,9 +86,10 @@ export class UserListComponent implements OnInit {
               }
           },
           error => {
+              this._spinner.hide();
               var errorMessage = <any>error;
               console.log(errorMessage);
-              
+
               if (errorMessage != null) {
                   this.status = 'error';
               }

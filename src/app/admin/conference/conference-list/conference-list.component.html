@@ -3,7 +3,7 @@
         <div class="col-md-3">
             <h2>{{title}}</h2>
         </div>
-    
+
         <div class="col-md-6">
             <div class="input-group h2" *ngIf="false">
                 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
@@ -14,7 +14,7 @@
                 </span>
             </div>
         </div>
-    
+
         <div class="col-md-3">
             <a [routerLink]="['/admin/conference/add']" class="btn btn-primary pull-right h2">Novo Item</a>
         </div>
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-    
+
                     <tr class="item-conference" *ngFor="let conference of conferences">
                         <td>{{conference.name}}</td>
                         <td>{{conference.start_date | date:'dd/MM/yyyy':'-0300'}}</td>
@@ -45,7 +45,7 @@
                             <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(conference)">Excluir</a>
                         </td>
                     </tr>
-    
+
                 </tbody>
             </table>
         </div>
@@ -54,7 +54,7 @@
 
     <div id="bottom" class="row">
         <div class="col-md-12" *ngIf="pages > 1">
-            
+
             <ul class="pagination">
                 <li class="disabled"><a>&lt; Anterior</a></li>
                 <li class="disabled"><a>1</a></li>
@@ -62,9 +62,12 @@
                 <li><a href="#">3</a></li>
                 <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
             </ul><!-- /.pagination -->
-    
+
         </div>
     </div> <!-- /#bottom -->
 </div>
 
 <div class="clearfix"></div>
+
+<!-- Spinner -->
+<ngx-spinner></ngx-spinner>

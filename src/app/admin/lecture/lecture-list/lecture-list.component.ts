@@ -7,6 +7,7 @@ import { GLOBAL } from "../../../services/global";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { DeleteConfirmComponent } from "src/app/components/delete-confirm/delete-confirm.component";
 import { ConfirmComponent } from 'src/app/components/confirm/confirm.component';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-lecture-list",
@@ -36,7 +37,8 @@ export class LectureListComponent implements OnInit {
     private _router: Router,
     private _lectureService: LectureService,
     private _userService: UserService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Lista de Palestras";
     this.url = GLOBAL.url;
@@ -46,6 +48,7 @@ export class LectureListComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: lectures.");
+    this._spinner.show();
     this.actualPage();
   }
 
@@ -77,7 +80,9 @@ export class LectureListComponent implements OnInit {
       (response) => {
         if (!response.lectures) {
           this.status = "error";
+          this._spinner.hide();
         } else {
+          this._spinner.hide();
           this.total = response.total;
           this.lectures = response.lectures;
           this.pages = response.pages;
@@ -87,6 +92,7 @@ export class LectureListComponent implements OnInit {
         }
       },
       (error) => {
+        this._spinner.hide();
         var errorMessage = <any>error;
         console.log(errorMessage);
 

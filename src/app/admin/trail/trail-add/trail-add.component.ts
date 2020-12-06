@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { Epic } from 'src/app/models/epic';
-import { Trail } from 'src/app/models/trail';
-import { EpicService } from 'src/app/services/epic.service';
-import { TrailService } from 'src/app/services/trail.service';
-import { GLOBAL } from 'src/app/services/global';
-import { UserService } from 'src/app/services/user.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { BsLocaleService } from "ngx-bootstrap/datepicker";
+import { Epic } from "src/app/models/epic";
+import { Trail } from "src/app/models/trail";
+import { EpicService } from "src/app/services/epic.service";
+import { TrailService } from "src/app/services/trail.service";
+import { GLOBAL } from "src/app/services/global";
+import { UserService } from "src/app/services/user.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  selector: 'app-trail-add',
-  templateUrl: './trail-add.component.html',
-  styleUrls: ['./trail-add.component.css'],
-  providers: [UserService, TrailService, EpicService]
-
+  selector: "app-trail-add",
+  templateUrl: "./trail-add.component.html",
+  styleUrls: ["./trail-add.component.css"],
+  providers: [UserService, TrailService, EpicService],
 })
 export class TrailAddComponent implements OnInit {
-
   public title: string;
   public trailId: string;
   public url: string;
@@ -31,59 +30,73 @@ export class TrailAddComponent implements OnInit {
     private _trailService: TrailService,
     private _userService: UserService,
     private _epicService: EpicService,
-    private _bsLocaleService: BsLocaleService
-  ) { 
-    this.title = 'Adicionar Temas';
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
+  ) {
+    this.title = "Adicionar Temas";
     this.url = GLOBAL.url;
-    this._bsLocaleService.use('pt-br');
+    this._bsLocaleService.use("pt-br");
   }
 
   ngOnInit() {
-    console.log('[OK] Component: trail-add.');
+    console.log("[OK] Component: trail-add.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.trail = new Trail('', '', '', '', '', null, new Date(), new Date());
-    this.trail.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
+    this.trail = new Trail("", "", "", "", "", null, new Date(), new Date());
+    this.trail.epic = new Epic(
+      "",
+      "",
+      "",
+      "",
+      "",
+      null,
+      new Date(),
+      new Date()
+    );
     this.loadPage();
   }
 
   loadPage() {
-    this._epicService
-    .getEpics()
-    .subscribe(
+    this._epicService.getEpics().subscribe(
       (response) => {
         if (response) {
+          this._spinner.hide();
           this.epics = response.epics;
         }
       },
       (error) => {
+        this._spinner.hide();
         console.log(<any>error);
       }
     );
   }
 
-    /* Return true or false if it is the selected */
-    compareByOptionId(idFist, idSecond) {
-        return idFist && idSecond && idFist._id == idSecond._id;
-      }
-
-  onSubmit() {
-      this._trailService.addTrail(this.trail).subscribe(
-          response => {
-              if (!response.trail) {
-                  this.status = 'error';
-              } else {
-                  this.status = 'success';
-                  this._router.navigate(['/admin/trail/edit', response.trail._id]);
-              }
-          },
-          error => {
-              var errorMessage = <any> error;
-              console.log(errorMessage);
-              if (errorMessage != null) {
-                  this.status = 'error';
-              }
-          }
-      );
+  /* Return true or false if it is the selected */
+  compareByOptionId(idFist, idSecond) {
+    return idFist && idSecond && idFist._id == idSecond._id;
   }
 
+  onSubmit() {
+    this._spinner.show();
+    this._trailService.addTrail(this.trail).subscribe(
+      (response) => {
+        if (!response.trail) {
+          this._spinner.hide();
+          this.status = "error";
+        } else {
+          this._spinner.hide();
+          this.status = "success";
+          this._router.navigate(["/admin/trail/edit", response.trail._id]);
+        }
+      },
+      (error) => {
+        this._spinner.hide();
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
+  }
 }

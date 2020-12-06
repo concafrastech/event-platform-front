@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { GLOBAL } from 'src/app/services/global';
 import { UploadService } from 'src/app/services/upload.service';
 import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-user-edit',
@@ -28,8 +29,9 @@ export class UserEditComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _uploadService: UploadService,
-    private _bsLocaleService: BsLocaleService
-  ) { 
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
+  ) {
     this.title = 'Editar Usuário';
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
@@ -37,6 +39,7 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     console.log('[OK] Component: user-edit.');
+    this._spinner.show();
     this.user = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.loadPage();
@@ -55,12 +58,15 @@ export class UserEditComponent implements OnInit {
       this._userService.getUser(id).subscribe(
           response => {
               if (response.user) {
+                  this._spinner.hide();
                   this.user = response.user;
               } else {
+                  this._spinner.hide();
                   this.status = 'error';
               }
           },
           error => {
+              this._spinner.hide();
               console.log(<any>error);
               this._router.navigate(['/admin/user/list', this.userId]);
           }
@@ -68,11 +74,14 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit() {
+      this._spinner.show();
       this._userService.updateUser(this.user).subscribe(
           response => {
               if (!response.user) {
+                  this._spinner.hide();
                   this.status = 'error';
               } else {
+                  this._spinner.hide();
                   this.status = 'success';
                   localStorage.setItem('identity', JSON.stringify(this.user));
                   this._uploadService
@@ -84,6 +93,7 @@ export class UserEditComponent implements OnInit {
               }
           },
           error => {
+              this._spinner.hide();
               var errorMessage = <any> error;
               console.log(errorMessage);
               if (errorMessage != null) {

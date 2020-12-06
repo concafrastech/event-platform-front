@@ -7,6 +7,7 @@ import { ConferenceService } from "src/app/services/conference.service";
 import { EpicService } from "src/app/services/epic.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-epic-edit",
@@ -29,7 +30,8 @@ export class EpicEditComponent implements OnInit {
     private _epicService: EpicService,
     private _userService: UserService,
     private _conferenceService: ConferenceService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Editar Épicos";
     this.url = GLOBAL.url;
@@ -38,6 +40,7 @@ export class EpicEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: epic-edit.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
     this.epic.conference = new Conference(null,'', '', new Date(), new Date(),false,'',false,'', false, false, false, false, false, new Date(), new Date());
@@ -58,6 +61,7 @@ export class EpicEditComponent implements OnInit {
           }
         },
         (error) => {
+          this._spinner.hide();
           console.log(<any>error);
         }
       );
@@ -67,12 +71,15 @@ export class EpicEditComponent implements OnInit {
     this._epicService.getEpic(id).subscribe(
       (response) => {
         if (response.epic) {
+          this._spinner.hide();
           this.epic = response.epic;
         } else {
+          this._spinner.hide();
           this.status = "error";
         }
       },
       (error) => {
+        this._spinner.hide();
         console.log(<any>error);
         this._router.navigate(["/editepic", this.epicId]);
       }
@@ -85,18 +92,22 @@ export class EpicEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this._spinner.show();
     this._epicService
       .updateEpic(this.epic)
       .subscribe(
         (response) => {
           if (!response.epic) {
+            this._spinner.hide();
             this.status = "error";
           } else {
+            this._spinner.hide();
             this.status = "success";
             this.getEpic(this.epicId);
           }
         },
         (error) => {
+          this._spinner.hide();
           var errorMessage = <any>error;
           console.log(errorMessage);
           if (errorMessage != null) {

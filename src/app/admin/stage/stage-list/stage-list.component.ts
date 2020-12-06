@@ -8,6 +8,7 @@ import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-stage-list',
@@ -39,7 +40,8 @@ export class StageListComponent implements OnInit {
       private _stageService: StageService,
       private _epicService: EpicService,
       private _userService: UserService,
-      private modalService: BsModalService
+      private modalService: BsModalService,
+      private _spinner: NgxSpinnerService
   ) {
       this.title = 'Lista de Trilhas';
       this.url = GLOBAL.url;
@@ -50,6 +52,7 @@ export class StageListComponent implements OnInit {
 
   ngOnInit() {
       console.log('[OK] Component: stages.');
+      this._spinner.show();
       this.loadEpics();
       this.actualPage();
   }
@@ -61,10 +64,12 @@ export class StageListComponent implements OnInit {
         (response) => {
           if (response) {
             this.epics = response.epics;
+            this._spinner.hide();
           }
         },
         (error) => {
           console.log(<any>error);
+          this._spinner.hide();
         }
       );
   }
@@ -73,17 +78,17 @@ export class StageListComponent implements OnInit {
       this._route.params.subscribe(params => {
           let page = +params['page'];
           this.page = page;
-          
+
           if (!params['page']) {
               page = 1;
           }
-          
+
           if (!page) {
               page = 1;
           } else {
               this.next_page = page + 1;
               this.prev_page = page - 1;
-              
+
               if (this.prev_page <= 0) {
                   this.prev_page = 1;
               }
@@ -106,8 +111,10 @@ export class StageListComponent implements OnInit {
       this._stageService.getStages(page, epicId).subscribe(
           response => {
               if (!response.stages) {
+                  this._spinner.hide();
                   this.status = 'error';
               } else {
+                  this._spinner.hide();
                   this.total = response.total;
                   this.stages = response.stages;
                   this.pages = response.pages;
@@ -117,9 +124,10 @@ export class StageListComponent implements OnInit {
               }
           },
           error => {
+              this._spinner.hide();
               var errorMessage = <any>error;
               console.log(errorMessage);
-              
+
               if (errorMessage != null) {
                   this.status = 'error';
               }
@@ -159,7 +167,7 @@ export class StageListComponent implements OnInit {
         error => {
               var errorMessage = <any>error;
               console.log(errorMessage);
-              
+
               if (errorMessage != null) {
                   this.status = 'error';
               }

@@ -5,6 +5,7 @@ import { Conference } from 'src/app/models/conference';
 import { ConferenceService } from 'src/app/services/conference.service';
 import { GLOBAL } from 'src/app/services/global';
 import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-conference-edit',
@@ -27,8 +28,9 @@ export class ConferenceEditComponent implements OnInit {
     private _router: Router,
     private _conferenceService: ConferenceService,
     private _userService: UserService,
-    private _bsLocaleService: BsLocaleService
-  ) { 
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
+  ) {
     this.title = 'Editar Evento';
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
@@ -36,6 +38,7 @@ export class ConferenceEditComponent implements OnInit {
 
   ngOnInit() {
     console.log('[OK] Component: conference-edit.');
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.conference = new Conference(null,'','',new Date(), new Date(),false,'',false,'', false, false, false, false, false, new Date(), new Date());
     this.loadPage();
@@ -54,16 +57,18 @@ export class ConferenceEditComponent implements OnInit {
       this._conferenceService.getConference(id).subscribe(
           response => {
               if (response.conference) {
+                  this._spinner.hide();
                   let conference = response.conference;
                   conference.start_date = new Date(conference.start_date);
                   conference.end_date = new Date(conference.end_date);
                   this.conference = conference;
-
               } else {
+                  this._spinner.hide();
                   this.status = 'error';
               }
           },
           error => {
+              this._spinner.hide();
               console.log(<any>error);
               this._router.navigate(['/admin/conference/edit', this.conferenceId]);
           }
@@ -71,16 +76,20 @@ export class ConferenceEditComponent implements OnInit {
   }
 
   onSubmit() {
+      this._spinner.show();
       this._conferenceService.updateConference(this.conference).subscribe(
           response => {
               if (!response.conference) {
+                  this._spinner.hide();
                   this.status = 'error';
               } else {
+                  this._spinner.hide();
                   this.status = 'success';
                   this._router.navigate(['/admin/conference/list']);
               }
           },
           error => {
+              this._spinner.hide();
               var errorMessage = <any> error;
               console.log(errorMessage);
               if (errorMessage != null) {

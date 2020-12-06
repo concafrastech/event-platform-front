@@ -7,6 +7,7 @@ import { EpicService } from "src/app/services/epic.service";
 import { StageService } from "src/app/services/stage.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-stage-edit",
@@ -29,7 +30,8 @@ export class StageEditComponent implements OnInit {
     private _stageService: StageService,
     private _userService: UserService,
     private _epicService: EpicService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _spinner: NgxSpinnerService
   ) {
     this.title = "Editar Trilha";
     this.url = GLOBAL.url;
@@ -38,6 +40,7 @@ export class StageEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: stage-edit.");
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.stage = new Stage('', 0, '', '', '', null, new Date(), new Date());
     this.stage.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
@@ -58,6 +61,7 @@ export class StageEditComponent implements OnInit {
           }
         },
         (error) => {
+          this._spinner.hide();
           console.log(<any>error);
         }
       );
@@ -67,12 +71,15 @@ export class StageEditComponent implements OnInit {
     this._stageService.getStage(id).subscribe(
       (response) => {
         if (response.stage) {
+          this._spinner.hide();
           this.stage = response.stage;
         } else {
+          this._spinner.hide();
           this.status = "error";
         }
       },
       (error) => {
+        this._spinner.hide();
         console.log(<any>error);
         this._router.navigate(["/editstage", this.stageId]);
       }
@@ -85,18 +92,22 @@ export class StageEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this._spinner.show();
     this._stageService
       .updateStage(this.stage)
       .subscribe(
         (response) => {
           if (!response.stage) {
+            this._spinner.hide();
             this.status = "error";
           } else {
+            this._spinner.hide();
             this.status = "success";
             this.getStage(this.stageId);
           }
         },
         (error) => {
+          this._spinner.hide();
           var errorMessage = <any>error;
           console.log(errorMessage);
           if (errorMessage != null) {

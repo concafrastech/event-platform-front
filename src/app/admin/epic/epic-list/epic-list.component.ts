@@ -6,6 +6,7 @@ import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-epic-list',
@@ -35,7 +36,8 @@ export class EpicListComponent implements OnInit {
       private _router: Router,
       private _epicService: EpicService,
       private _userService: UserService,
-      private modalService: BsModalService
+      private modalService: BsModalService,
+      private _spinner: NgxSpinnerService
   ) {
       this.title = 'Lista de Épicos';
       this.url = GLOBAL.url;
@@ -46,6 +48,7 @@ export class EpicListComponent implements OnInit {
 
   ngOnInit() {
       console.log('[OK] Component: epics.');
+      this._spinner.show();
       this.actualPage();
   }
 
@@ -53,17 +56,17 @@ export class EpicListComponent implements OnInit {
       this._route.params.subscribe(params => {
           let page = +params['page'];
           this.page = page;
-          
+
           if (!params['page']) {
               page = 1;
           }
-          
+
           if (!page) {
               page = 1;
           } else {
               this.next_page = page + 1;
               this.prev_page = page - 1;
-              
+
               if (this.prev_page <= 0) {
                   this.prev_page = 1;
               }
@@ -77,7 +80,9 @@ export class EpicListComponent implements OnInit {
           response => {
               if (!response.epics) {
                   this.status = 'error';
+                  this._spinner.hide();
               } else {
+                  this._spinner.hide();
                   this.total = response.total;
                   this.epics = response.epics;
                   this.pages = response.pages;
@@ -87,9 +92,10 @@ export class EpicListComponent implements OnInit {
               }
           },
           error => {
+              this._spinner.hide();
               var errorMessage = <any>error;
               console.log(errorMessage);
-              
+
               if (errorMessage != null) {
                   this.status = 'error';
               }
@@ -127,7 +133,7 @@ export class EpicListComponent implements OnInit {
         error => {
               var errorMessage = <any>error;
               console.log(errorMessage);
-              
+
               if (errorMessage != null) {
                   this.status = 'error';
               }

@@ -95,7 +95,6 @@ import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 
-
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
   { badge: 'NICE', icon: './../assets/badges/NICE.svg', range: { min: 100, max: 199 } },

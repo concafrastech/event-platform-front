@@ -67,7 +67,6 @@ export class DocumentListComponent implements OnInit {
           this.prev_page = 1;
         }
       }
-
       this.getDocuments(page, this.trailId);
     });
   }

@@ -81,7 +81,7 @@ const appRoutes: Routes = [
             {path: 'trail/add', component: TrailAddComponent},
             {path: 'trail/edit/:id', component: TrailEditComponent},
             {path: 'trail/list', component: TrailListComponent},
-            {path: 'trail/list:page', component: TrailListComponent},
+            {path: 'trail/list/:page', component: TrailListComponent},
             {path: 'classroom/add', component: ClassroomAddComponent},
             {path: 'classroom/edit/:id', component: ClassroomEditComponent},
             {path: 'classroom/list', component: ClassroomListComponent},

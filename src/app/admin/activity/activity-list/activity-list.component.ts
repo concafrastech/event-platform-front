@@ -25,7 +25,7 @@ export class ActivityListComponent implements OnInit {
   public next_page;
   public prev_page;
   public total;
-  public pages;
+  public pages: number[] = [];
   public activitys: Activity[];
   public follows;
   public follow_me;
@@ -85,9 +85,15 @@ export class ActivityListComponent implements OnInit {
           this._spinner.hide();
           this.total = response.total;
           this.activitys = response.activitys;
-          this.pages = response.pages;
-          if (this.pages > 1 && page > this.pages) {
+          this.pages = [];
+          for (let i = 1; i <= response.pages; i++) {
+            this.pages.push(i);
+          }
+
+          if (this.pages && page > this.pages.length) {
             this._router.navigate(["/admin/activity/list", 1]);
+          } else {
+            this._router.navigate(["/admin/activity/list", page]);
           }
         }
       },

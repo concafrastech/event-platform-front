@@ -1,18 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import {Epic} from '../../../models/epic';
-import {EpicService} from '../../../services/epic.service';
-import {UserService} from '../../../services/user.service';
-import {GLOBAL} from '../../../services/global';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
+import { Component, Input, OnInit } from "@angular/core";
+import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Epic } from "../../../models/epic";
+import { EpicService } from "../../../services/epic.service";
+import { UserService } from "../../../services/user.service";
+import { GLOBAL } from "../../../services/global";
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { DeleteConfirmComponent } from "src/app/components/delete-confirm/delete-confirm.component";
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  selector: 'app-epic-list',
-  templateUrl: './epic-list.component.html',
-  styleUrls: ['./epic-list.component.css'],
-  providers: [UserService, EpicService]
+  selector: "app-epic-list",
+  templateUrl: "./epic-list.component.html",
+  styleUrls: ["./epic-list.component.css"],
+  providers: [UserService, EpicService],
 })
 export class EpicListComponent implements OnInit {
   @Input() conferenceId: string = null;
@@ -24,7 +24,7 @@ export class EpicListComponent implements OnInit {
   public next_page;
   public prev_page;
   public total;
-  public pages;
+  public pages: number[] = [];
   public epics: Epic[];
   public follows;
   public follow_me;
@@ -32,112 +32,122 @@ export class EpicListComponent implements OnInit {
   public bsModalRef: BsModalRef;
 
   constructor(
-      private _route: ActivatedRoute,
-      private _router: Router,
-      private _epicService: EpicService,
-      private _userService: UserService,
-      private modalService: BsModalService,
-      private _spinner: NgxSpinnerService
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _epicService: EpicService,
+    private _userService: UserService,
+    private modalService: BsModalService,
+    private _spinner: NgxSpinnerService
   ) {
-      this.title = 'Lista de Épicos';
-      this.url = GLOBAL.url;
-      this.identity = this._userService.getIdentity();
-      this.token = this._userService.getToken();
-
+    this.title = "Lista de Épicos";
+    this.url = GLOBAL.url;
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();
   }
 
   ngOnInit() {
-      console.log('[OK] Component: epics.');
-      this._spinner.show();
-      this.actualPage();
+    console.log("[OK] Component: epics.");
+    this._spinner.show();
+    this.actualPage();
   }
 
   actualPage() {
-      this._route.params.subscribe(params => {
-          let page = +params['page'];
-          this.page = page;
+    this._route.params.subscribe((params) => {
+      let page = +params["page"];
+      this.page = page;
 
-          if (!params['page']) {
-              page = 1;
-          }
+      if (!params["page"]) {
+        page = 1;
+      }
 
-          if (!page) {
-              page = 1;
-          } else {
-              this.next_page = page + 1;
-              this.prev_page = page - 1;
+      if (!page) {
+        page = 1;
+      } else {
+        this.next_page = page + 1;
+        this.prev_page = page - 1;
 
-              if (this.prev_page <= 0) {
-                  this.prev_page = 1;
-              }
-          }
-          this.getEpics(page, this.conferenceId);
-      });
+        if (this.prev_page <= 0) {
+          this.prev_page = 1;
+        }
+      }
+      this.getEpics(page, this.conferenceId);
+    });
   }
 
   getEpics(page, conferenceId) {
-      this._epicService.getEpics(page, conferenceId).subscribe(
-          response => {
-              if (!response.epics) {
-                  this.status = 'error';
-                  this._spinner.hide();
-              } else {
-                  this._spinner.hide();
-                  this.total = response.total;
-                  this.epics = response.epics;
-                  this.pages = response.pages;
-                  if (this.pages > 1 && page > this.pages) {
-                    this._router.navigate(['/admin/epic/list', 1]);
-                }
-              }
-          },
-          error => {
-              this._spinner.hide();
-              var errorMessage = <any>error;
-              console.log(errorMessage);
-
-              if (errorMessage != null) {
-                  this.status = 'error';
-              }
+    this._epicService.getEpics(page, conferenceId).subscribe(
+      (response) => {
+        if (!response.epics) {
+          this.status = "error";
+          this._spinner.hide();
+        } else {
+          this._spinner.hide();
+          this.total = response.total;
+          this.epics = response.epics;
+          this.pages = [];
+          for (let i = 1; i <= response.pages; i++) {
+            this.pages.push(i);
           }
-      );
+
+          if (this.pages && page > this.pages.length) {
+            this._router.navigate(["/admin/epic/list", 1]);
+          } else {
+            this._router.navigate(["/admin/epic/list", page]);
+          }
+        }
+      },
+      (error) => {
+        this._spinner.hide();
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
   }
 
   openDeleteConfirm(epic) {
     const initialState = {
-      title: 'Excluir Épico',
-      message: 'Deseja realmente excluir o épico : ' + epic.name + '? <br> Essa ação não poderá ser desfeita.'
+      title: "Excluir Épico",
+      message:
+        "Deseja realmente excluir o épico : " +
+        epic.name +
+        "? <br> Essa ação não poderá ser desfeita.",
     };
-    this.bsModalRef = this.modalService.show(DeleteConfirmComponent, {initialState});
-    this.bsModalRef.content.actionBtnName = 'Excluir';
-    this.bsModalRef.content.closeBtnName = 'Cancelar';
+    this.bsModalRef = this.modalService.show(DeleteConfirmComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.actionBtnName = "Excluir";
+    this.bsModalRef.content.closeBtnName = "Cancelar";
 
     this.bsModalRef.content.onClose.subscribe(
-        result => {
-            this.deleteEpic(epic._id);
-        },
-        err => {
-            console.log(err);
-            this.status = 'error';
-        }
-    )
+      (result) => {
+        this.deleteEpic(epic._id);
+      },
+      (err) => {
+        console.log(err);
+        this.status = "error";
+      }
+    );
   }
 
-  deleteEpic(id){
-      console.log(id);
-      this._epicService.deleteEpic(id).subscribe(
-        response => {
-            console.log(response);
-            this.actualPage();
-        },
-        error => {
-              var errorMessage = <any>error;
-              console.log(errorMessage);
+  deleteEpic(id) {
+    console.log(id);
+    this._epicService.deleteEpic(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.actualPage();
+      },
+      (error) => {
+        var errorMessage = <any>error;
+        console.log(errorMessage);
 
-              if (errorMessage != null) {
-                  this.status = 'error';
-              }
-          }
-      );
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
   }
 }

@@ -1,70 +1,103 @@
 <div id="main" class="container-fluid">
-    <div id="top" class="row">
-        <div class="col-md-3">
-            <h2>{{title}}</h2>
-        </div>
+  <div id="top" class="row">
+    <div class="col-md-3">
+      <h2>{{ title }}</h2>
+    </div>
 
-        <div class="col-md-6">
-            <div class="input-group h2" *ngIf="false">
-                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
-        </div>
+    <div class="col-md-6">
+      <div class="input-group h2" *ngIf="false">
+        <input
+          name="data[search]"
+          class="form-control"
+          id="search"
+          type="text"
+          placeholder="Pesquisar Itens"
+        />
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
 
-        <div class="col-md-3">
-            <a [routerLink]="['/admin/conference/add']" class="btn btn-primary pull-right h2">Novo Item</a>
-        </div>
-    </div> <!-- /#top -->
+    <div class="col-md-3">
+      <a
+        [routerLink]="['/admin/conference/add']"
+        class="btn btn-primary pull-right h2"
+        >Novo Item</a
+      >
+    </div>
+  </div>
+  <!-- /#top -->
 
-    <hr />
-    <div id="list" class="row">
+  <hr />
+  <div id="list" class="row">
+    <div class="table-responsive col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Evento</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th class="actions">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="item-conference" *ngFor="let conference of conferences">
+            <td>{{ conference.name }}</td>
+            <td>{{ conference.start_date | date: "dd/MM/yyyy":"-0300" }}</td>
+            <td>{{ conference.end_date | date: "dd/MM/yyyy":"-0300" }}</td>
+            <td class="actions">
+              <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
+              <a
+                class="btn btn-warning btn-xs"
+                [routerLink]="['/admin/conference/edit', conference._id]"
+                >Editar</a
+              >
+              <a
+                class="btn btn-danger btn-xs"
+                (click)="openDeleteConfirm(conference)"
+                >Excluir</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- /#list -->
 
-        <div class="table-responsive col-md-12">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Evento</th>
-                        <th>Início</th>
-                        <th>Fim</th>
-                        <th class="actions">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr class="item-conference" *ngFor="let conference of conferences">
-                        <td>{{conference.name}}</td>
-                        <td>{{conference.start_date | date:'dd/MM/yyyy':'-0300'}}</td>
-                        <td>{{conference.end_date | date:'dd/MM/yyyy':'-0300'}}</td>
-                        <td class="actions">
-                            <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
-                            <a class="btn btn-warning btn-xs" [routerLink]="['/admin/conference/edit', conference._id]">Editar</a>
-                            <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(conference)">Excluir</a>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-
-    </div> <!-- /#list -->
-
-    <div id="bottom" class="row">
-        <div class="col-md-12" *ngIf="pages > 1">
-
-            <ul class="pagination">
-                <li class="disabled"><a>&lt; Anterior</a></li>
-                <li class="disabled"><a>1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-            </ul><!-- /.pagination -->
-
-        </div>
-    </div> <!-- /#bottom -->
+  <div id="bottom" class="row">
+    <div class="col-md-12" *ngIf="pages.length > 1">
+      <ul class="pagination">
+        <li [class.disabled]="page == 1">
+          <a
+            [routerLink]="['/admin/conference/list', page - 1]"
+            [routerLinkActive]="['active']"
+            >&lt; Anterior</a
+          >
+        </li>
+        <li [class.disabled]="p == page" *ngFor="let p of pages">
+          <a
+            [routerLink]="['/admin/conference/list', p]"
+            [routerLinkActive]="['active']"
+            >{{ p }}</a
+          >
+        </li>
+        <li [class.disabled]="page == pages.length" class="next">
+          <a
+            [routerLink]="['/admin/conference/list', page + 1]"
+            [routerLinkActive]="['active']"
+            rel="next"
+            >Próximo &gt;</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- /.pagination -->
+  </div>
+  <!-- /#bottom -->
 </div>
 
 <div class="clearfix"></div>

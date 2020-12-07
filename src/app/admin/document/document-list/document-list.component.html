@@ -1,69 +1,105 @@
 <div id="main" class="container-fluid">
-    <div id="top" class="row">
-        <div class="col-md-3">
-            <h2>{{title}}</h2>
-        </div>
-    
-        <div class="col-md-6">
-            <div class="input-group h2" *ngIf="false">
-                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
-        </div>
-    
-        <div class="col-md-3">
-            <a [routerLink]="['/admin/document/add']" class="btn btn-primary pull-right h2">Novo Item</a>
-        </div>
-    </div> <!-- /#top -->
+  <div id="top" class="row">
+    <div class="col-md-3">
+      <h2>{{ title }}</h2>
+    </div>
 
-    <hr />
-    <div id="list" class="row">
+    <div class="col-md-6">
+      <div class="input-group h2" *ngIf="false">
+        <input
+          name="data[search]"
+          class="form-control"
+          id="search"
+          type="text"
+          placeholder="Pesquisar Itens"
+        />
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
 
-        <div class="table-responsive col-md-12">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Descrição</th>
-                        <th>Tipo</th>
-                        <th>Key</th>
-                        <th class="actions">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="item-document" *ngFor="let document of documents">
-                        <td>{{document.document_id}}</td>
-                        <td>{{document.description}}</td>
-                        <td>{{document.type}}</td>
-                        <td>{{document.s3_key}}</td>
-                        <td class="actions">
-                            <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
-                            <a class="btn btn-warning btn-xs" [routerLink]="['/admin/document/edit', document._id]">Editar</a>
-                            <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(document)">Excluir</a>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-        </div>
+    <div class="col-md-3">
+      <a
+        [routerLink]="['/admin/document/add']"
+        class="btn btn-primary pull-right h2"
+        >Novo Item</a
+      >
+    </div>
+  </div>
+  <!-- /#top -->
 
-    </div> <!-- /#list -->
+  <hr />
+  <div id="list" class="row">
+    <div class="table-responsive col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Key</th>
+            <th class="actions">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="item-document" *ngFor="let document of documents">
+            <td>{{ document.document_id }}</td>
+            <td>{{ document.description }}</td>
+            <td>{{ document.type }}</td>
+            <td>{{ document.s3_key }}</td>
+            <td class="actions">
+              <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
+              <a
+                class="btn btn-warning btn-xs"
+                [routerLink]="['/admin/document/edit', document._id]"
+                >Editar</a
+              >
+              <a
+                class="btn btn-danger btn-xs"
+                (click)="openDeleteConfirm(document)"
+                >Excluir</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- /#list -->
 
-    <div id="bottom" class="row">
-        <div class="col-md-12" *ngIf="pages.length > 1">
-            
-            <ul class="pagination">
-                <li [class.disabled]="page == 1"><a [routerLink]="['/admin/document/list', page-1]" [routerLinkActive]="['active']">&lt; Anterior</a></li>
-                <li [class.disabled]="p == page" *ngFor="let p of pages"><a [routerLink]="['/admin/document/list', p]" [routerLinkActive]="['active']">{{p}}</a></li>
-                <li [class.disabled]="page == pages.length" class="next"><a [routerLink]="['/admin/document/list', page+1]" [routerLinkActive]="['active']" rel="next">Próximo &gt;</a></li>
-            </ul> <!-- /.pagination -->
-    
-        </div>
-    </div> <!-- /#bottom -->
+  <div id="bottom" class="row">
+    <div class="col-md-12" *ngIf="pages.length > 1">
+      <ul class="pagination">
+        <li [class.disabled]="page == 1">
+          <a
+            [routerLink]="['/admin/document/list', page - 1]"
+            [routerLinkActive]="['active']"
+            >&lt; Anterior</a
+          >
+        </li>
+        <li [class.disabled]="p == page" *ngFor="let p of pages">
+          <a
+            [routerLink]="['/admin/document/list', p]"
+            [routerLinkActive]="['active']"
+            >{{ p }}</a
+          >
+        </li>
+        <li [class.disabled]="page == pages.length" class="next">
+          <a
+            [routerLink]="['/admin/document/list', page + 1]"
+            [routerLinkActive]="['active']"
+            rel="next"
+            >Próximo &gt;</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- /.pagination -->
+  </div>
+  <!-- /#bottom -->
 </div>
 
 <div class="clearfix"></div>

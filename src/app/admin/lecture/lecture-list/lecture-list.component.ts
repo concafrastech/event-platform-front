@@ -6,7 +6,7 @@ import { UserService } from "../../../services/user.service";
 import { GLOBAL } from "../../../services/global";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { DeleteConfirmComponent } from "src/app/components/delete-confirm/delete-confirm.component";
-import { ConfirmComponent } from 'src/app/components/confirm/confirm.component';
+import { ConfirmComponent } from "src/app/components/confirm/confirm.component";
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -25,7 +25,7 @@ export class LectureListComponent implements OnInit {
   public next_page;
   public prev_page;
   public total;
-  public pages;
+  public pages: number[] = [];
   public lectures: Lecture[];
   public follows;
   public follow_me;
@@ -85,9 +85,15 @@ export class LectureListComponent implements OnInit {
           this._spinner.hide();
           this.total = response.total;
           this.lectures = response.lectures;
-          this.pages = response.pages;
-          if (this.pages > 1 && page > this.pages) {
+          this.pages = [];
+          for (let i = 1; i <= response.pages; i++) {
+            this.pages.push(i);
+          }
+
+          if (this.pages && page > this.pages.length) {
             this._router.navigate(["/admin/lecture/list", 1]);
+          } else {
+            this._router.navigate(["/admin/lecture/list", page]);
           }
         }
       },

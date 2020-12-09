@@ -49,6 +49,7 @@ export class TrailAddComponent implements OnInit {
       "",
       "",
       "",
+      "",
       null,
       new Date(),
       new Date()

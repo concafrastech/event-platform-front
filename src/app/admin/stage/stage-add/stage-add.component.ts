@@ -49,6 +49,7 @@ export class StageAddComponent implements OnInit {
       "",
       "",
       "",
+      "",
       null,
       new Date(),
       new Date()

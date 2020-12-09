@@ -34,6 +34,7 @@ export class SelectConferenceComponent implements OnInit {
         this.identity.subscriptions = this.subscriptions;
         localStorage.setItem('subscriptions', JSON.stringify(this.subscriptions));
         localStorage.setItem('currentSubscription', JSON.stringify(this.subscriptions[0]));
+        localStorage.setItem('currentConference', JSON.stringify(this.subscriptions[0].conference));
         localStorage.setItem('mocked', 'true');
       },
       error => {

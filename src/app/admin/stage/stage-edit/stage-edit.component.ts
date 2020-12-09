@@ -43,7 +43,7 @@ export class StageEditComponent implements OnInit {
     this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.stage = new Stage('', 0, '', '', '', null, new Date(), new Date());
-    this.stage.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
+    this.stage.epic = new Epic('', '', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }
 

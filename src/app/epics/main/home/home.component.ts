@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TutorialComponent } from 'src/app/components/tutorial/tutorial.component';
 import { WelcomeComponent } from 'src/app/components/welcome/welcome.component';
+import { Epic } from 'src/app/models/epic';
 import { Subscription } from 'src/app/models/subscription';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     public title: string;
     public identity;
     public subscription: Subscription;
+    public epic: Epic;
     bsModalRef: BsModalRef;
     bsModalRef2: BsModalRef;
 
@@ -31,8 +33,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
         console.log('[OK] Component: home.');
         console.log('event-platform-concafras App Version: 0.2.0');
 
+        // Como pegar usuário logado
         this.identity = this._userService.getIdentity();
+        // Como pegar inscrição atual, a partir dela dá para pegar a trail, e a conference, e o user
         this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
+        // Como pegar o epico atual
+        this.epic = JSON.parse(localStorage.getItem('currentEpic'));
     }
 
     ngAfterViewInit(){

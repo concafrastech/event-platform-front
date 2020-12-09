@@ -74,6 +74,7 @@ export class LectureAddComponent implements OnInit {
       "",
       "",
       "",
+      "",
       null,
       new Date(),
       new Date()

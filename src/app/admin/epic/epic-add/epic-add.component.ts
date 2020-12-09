@@ -42,7 +42,7 @@ export class EpicAddComponent implements OnInit {
     console.log("[OK] Component: epic-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.epic = new Epic("", "", "", "", "", null, new Date(), new Date());
+    this.epic = new Epic("", "", "", "", "", "", null, new Date(), new Date());
     this.epic.conference = new Conference(
       null,
       "",

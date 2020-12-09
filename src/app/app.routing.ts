@@ -146,7 +146,7 @@ const appRoutes: Routes = [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: HomeComponent, canActivate:[UserGuard]},
             {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
-            {path: 'audithorium', component: AudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
             {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
             
         ],

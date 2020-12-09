@@ -3,6 +3,7 @@
         <h2>Palestras</h2>
         <ul>
             <li *ngFor="let lecture of lectures">
+                <a role="button" [routerLink]="['/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>
             </li>
         </ul>
     </div>
@@ -10,6 +11,7 @@
         <h2>Cursos</h2>
         <ul>
             <li *ngFor="let trail of trails">
+                {{trail.name}}
             </li>
         </ul>
     </div>
@@ -17,6 +19,7 @@
         <h2>Estandes</h2>
         <ul>
             <li *ngFor="let stage of stages">
+                {{stage.name}}
             </li>
         </ul>
     </div>

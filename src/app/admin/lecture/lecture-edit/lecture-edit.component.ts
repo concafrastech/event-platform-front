@@ -124,6 +124,7 @@ export class LectureEditComponent implements OnInit {
         }
       },
       (error) => {
+        this._spinner.hide();
         console.log(<any>error);
         this._router.navigate(["/editlecture", this.lectureId]);
       }
@@ -139,6 +140,9 @@ export class LectureEditComponent implements OnInit {
           let idFile = this.lecture.contents[index].file;
           this.getDocuments(this.lecture.contents[index], idFile);
         }
+      }, 
+      (error) => {
+        this._spinner.hide();
       });
     });
   }

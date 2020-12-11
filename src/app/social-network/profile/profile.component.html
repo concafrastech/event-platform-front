@@ -38,10 +38,10 @@
                     [class.btn-danger]="user._id == followUserOver"
                 >
                     <span *ngIf="user._id == followUserOver; else following">
-                        <span class="glyphicon glyphicon-minus-sign"></span> Deixar de seguir
+                        <span class="fa fa-minus-sign"></span> Deixar de seguir
                     </span>
                     <ng-template #following>
-                        <span class="glyphicon glyphicon-ok-sign"></span> Seguindo
+                        <span class="fa fa-ok-sign"></span> Seguindo
                     </ng-template>
                 </button>
             </div>

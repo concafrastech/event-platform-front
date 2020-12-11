@@ -17,7 +17,7 @@
         type="button"
         (click)="addContent()"
       >
-        <i class="glyphicon glyphicon-plus"></i>
+        <i class="fa fa-plus"></i>
       </button>
     </div>
     <form #contentEditForm="ngForm" (change)="onChangeForm(contentEditForm)">
@@ -36,7 +36,7 @@
               Ordem: {{ content.sequence }}
             </button>
             <button class="btn btn-danger" (click)="removeType(content)">
-              <i class="glyphicon glyphicon-trash"></i>
+              <i class="fa fa-trash"></i>
             </button>
           </div>
         </div>
@@ -110,7 +110,7 @@
                 content.file.description
               }}</a>
               <button class="btn btn-danger" (click)="onRemoveFile(content)">
-                <i class="glyphicon glyphicon-trash"></i>
+                <i class="fa fa-trash"></i>
               </button>
             </div>
           </div>
@@ -131,7 +131,7 @@
                 content.file.description
               }}</a>
               <button class="btn btn-danger" (click)="onRemoveFile(content)">
-                <i class="glyphicon glyphicon-trash"></i>
+                <i class="fa fa-trash"></i>
               </button>
             </div>
           </div>
@@ -152,7 +152,7 @@
                 content.file.description
               }}</a>
               <button class="btn btn-danger" (click)="onRemoveFile(content)">
-                <i class="glyphicon glyphicon-trash"></i>
+                <i class="fa fa-trash"></i>
               </button>
             </div>
           </div>

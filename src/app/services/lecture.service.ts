@@ -31,10 +31,10 @@ export class LectureService {
         return this._http.put(this.url + 'lectures/' + lecture._id, params, {headers: headers});
     }
 
-    getLectures(page = null, conferenceId = null): Observable<any> {
+    getLectures(page = null, epicId = null): Observable<any> {
         let params = { 
             page : page,
-            conference : conferenceId != null ? conferenceId : ''
+            epic : epicId != null ? epicId : ''
          };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

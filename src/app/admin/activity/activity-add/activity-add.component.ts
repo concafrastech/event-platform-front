@@ -78,6 +78,7 @@ export class ActivityAddComponent implements OnInit {
       "",
       "",
       null,
+      [],
       new Date(),
       new Date()
     );

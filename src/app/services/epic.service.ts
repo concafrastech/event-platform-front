@@ -42,6 +42,14 @@ export class EpicService {
         return this._http.get(this.url + 'epics/', {headers: headers, params: params});
     }
 
+    getSchedules(epicId = null, userId = null): Observable<any> {
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', getToken());
+
+        return this._http.get(this.url + 'epics/' + epicId + '/schedule/' + userId, {headers: headers});
+    }
+
     getEpic(id): Observable<any> {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

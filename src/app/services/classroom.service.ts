@@ -30,10 +30,10 @@ export class ClassroomService {
         return this._http.put(this.url + 'classrooms/' + classroom._id, params, {headers: headers});
     }
 
-    getClassrooms(page = null, conferenceId = null): Observable<any> {
+    getClassrooms(page = null, trailId = null): Observable<any> {
         let params = { 
             page : page,
-            conference : conferenceId != null ? conferenceId : ''
+            trail : trailId != null ? trailId : ''
          };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

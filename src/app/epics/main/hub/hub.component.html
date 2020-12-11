@@ -20,6 +20,11 @@
         <ul>
             <li *ngFor="let stage of stages">
                 {{stage.name}}
+                <ul>
+                    <li *ngFor="let activity of stage.activities">
+                        <a role="button" [routerLink]="['/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

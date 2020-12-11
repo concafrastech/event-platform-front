@@ -1,3 +1,4 @@
+import { Activity } from './activity';
 import { Epic } from './epic';
 
 export class Stage {
@@ -8,6 +9,7 @@ export class Stage {
         public description: string,
         public type: string,
         public epic: Epic,
+        public activities: Activity[],
         public created_at: Date,
         public updated_at: Date
     ) {}

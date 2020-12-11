@@ -93,6 +93,7 @@ import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -183,6 +184,7 @@ const GamificationConfig = {
     SelectConferenceComponent,
     ConfirmComponent,
     ChartComponent,
+    ScheduleComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

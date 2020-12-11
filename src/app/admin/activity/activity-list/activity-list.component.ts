@@ -26,7 +26,7 @@ export class ActivityListComponent implements OnInit {
   public prev_page;
   public total;
   public pages: number[] = [];
-  public activitys: Activity[];
+  public activities: Activity[];
   public follows;
   public follow_me;
   public status: string;
@@ -47,7 +47,7 @@ export class ActivityListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: activitys.");
+    console.log("[OK] Component: activities.");
     this._spinner.show();
     this.actualPage();
   }
@@ -71,20 +71,20 @@ export class ActivityListComponent implements OnInit {
           this.prev_page = 1;
         }
       }
-      this.getActivitys(page, this.epicId);
+      this.getActivities(page, this.epicId);
     });
   }
 
-  getActivitys(page, epicId) {
-    this._activityService.getActivitys(page, epicId).subscribe(
+  getActivities(page, epicId) {
+    this._activityService.getActivities(page, epicId).subscribe(
       (response) => {
-        if (!response.activitys) {
+        if (!response.activities) {
           this.status = "error";
           this._spinner.hide();
         } else {
           this._spinner.hide();
           this.total = response.total;
-          this.activitys = response.activitys;
+          this.activities = response.activities;
           this.pages = [];
           for (let i = 1; i <= response.pages; i++) {
             this.pages.push(i);

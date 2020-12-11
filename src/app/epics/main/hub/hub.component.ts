@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Lecture } from 'src/app/models/lecture';
 import { Stage } from 'src/app/models/stage';
 import { Trail } from 'src/app/models/trail';
+import { ActivityService } from 'src/app/services/activity.service';
 import { LectureService } from 'src/app/services/lecture.service';
 import { StageService } from 'src/app/services/stage.service';
 import { TrailService } from 'src/app/services/trail.service';
@@ -11,7 +12,7 @@ import * as SvgPanZoom from 'svg-pan-zoom';
   selector: 'app-hub',
   templateUrl: './hub.component.html',
   styleUrls: ['./hub.component.css'],
-  providers: [LectureService, TrailService, StageService]
+  providers: [LectureService, TrailService, StageService, ActivityService]
 })
 export class HubComponent implements OnInit, AfterViewInit {
 
@@ -32,7 +33,8 @@ export class HubComponent implements OnInit, AfterViewInit {
   constructor(
     private _lectureService: LectureService,
     private _trailService: TrailService,
-    private _stageService: StageService
+    private _stageService: StageService,
+    private _activityService: ActivityService
   ) { }
 
   ngOnInit(): void {
@@ -77,6 +79,7 @@ export class HubComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.trails = response.trails;
+
         }
       },
       (error) => {
@@ -97,6 +100,29 @@ export class HubComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.stages = response.stages;
+          this.stages.forEach((stage, index) => {
+            this.getActivities(page, stage, index);
+          });
+        }
+      },
+      (error) => {
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
+  }
+
+  getActivities(page, stage, index) {
+    this._activityService.getActivities(page, stage._id).subscribe(
+      (response) => {
+        if (!response.activities) {
+          this.status = "error";
+        } else {
+          this.stages[index].activities = response.activities;
         }
       },
       (error) => {

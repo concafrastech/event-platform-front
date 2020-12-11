@@ -26,7 +26,6 @@
     "@angular/platform-browser": "^10.2.0",
     "@angular/platform-browser-dynamic": "^10.2.0",
     "@angular/router": "^10.2.0",
-    "@zoomus/websdk": "^1.8.1",
     "angular-gamification": "^0.1.1",
     "angular-in-memory-web-api": "^0.11.0",
     "angular-tawk": "0.0.4",

@@ -39,7 +39,6 @@ import { HubComponent } from './epics/main/hub/hub.component';
 import { AudithoriumComponent } from './epics/main/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { EventComponent } from './epics/main/event/event.component';
-import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { IframeComponent } from './components/channels/iframe/iframe.component';
 import { ConferenceListComponent } from './admin/conference/conference-list/conference-list.component';
 import { ConferenceEditComponent } from './admin/conference/conference-edit/conference-edit.component';
@@ -143,7 +142,6 @@ const GamificationConfig = {
     AudithoriumComponent,
     SelectJourneyComponent,
     EventComponent,
-    ZoomusComponent,
     IframeComponent,
     ContentComponent,
     ConferenceListComponent,

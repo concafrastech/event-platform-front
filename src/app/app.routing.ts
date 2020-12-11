@@ -16,7 +16,6 @@ import { HubComponent } from './epics/main/hub/hub.component';
 import { AudithoriumComponent } from './epics/main/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { EventComponent } from './epics/main/event/event.component';
-import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { ConferenceEditComponent } from './admin/conference/conference-edit/conference-edit.component';
 import { ConferenceListComponent } from './admin/conference/conference-list/conference-list.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
@@ -58,7 +57,6 @@ import { SelectConferenceComponent } from './components/select-conference/select
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'testezoom', component: ZoomusComponent},
     {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
     {path: 'select-conference', component: SelectConferenceComponent, canActivate:[UserGuard]},
     {

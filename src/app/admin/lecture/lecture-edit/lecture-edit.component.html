@@ -50,6 +50,21 @@
             <div class="row">
                 <div class="form-group col-md-12">
                     <fieldset class="form-group">
+                        <label>Tipo</label>
+                        <select [compareWith]="compareByOptionId" name="tipo" #type="ngModel" [(ngModel)]="lecture.type" class="form-control">
+                            <option value="">-- Selecione --</option>
+                            <option value="palestra">Palestra</option>
+                            <option value="momento_coletivo">Momento Coletivo</option>
+                            <option value="especial">Especial</option>
+                            <option value="cfas">CFAS</option>
+                            <option value="central">Central</option>
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <fieldset class="form-group">
                         <label>Épico</label>
                         <select [compareWith]="compareByOptionId" name="epic" #epic="ngModel" [(ngModel)]="lecture.epic" class="form-control">
                             <option value="">-- Selecione --</option>

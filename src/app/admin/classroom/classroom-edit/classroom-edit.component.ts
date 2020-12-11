@@ -35,6 +35,7 @@ export class ClassroomEditComponent implements OnInit {
   public alturaTela: number;
   public trails = [];
   public isLoading: boolean = true;
+  public contentIsValid: boolean = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -47,7 +48,7 @@ export class ClassroomEditComponent implements OnInit {
     private _bsLocaleService: BsLocaleService,
     private _spinner: NgxSpinnerService
   ) {
-    this.title = "Editar Palestra";
+    this.title = "Editar Curso";
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }
@@ -195,6 +196,10 @@ export class ClassroomEditComponent implements OnInit {
       },
       complete: () => this.saveContents(),
     });
+  }
+
+  contentFormIsValid(event: boolean) {
+    return (this.contentIsValid = event);
   }
 
   //Salva os conteúdos

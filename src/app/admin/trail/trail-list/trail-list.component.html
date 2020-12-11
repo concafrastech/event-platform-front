@@ -57,6 +57,7 @@
         <thead>
           <tr>
             <th>Tema</th>
+            <th>Tipo</th>
             <th>Área</th>
             <th class="actions">Ações</th>
           </tr>
@@ -66,6 +67,7 @@
             <td>
               {{ trail.name }}<br /><sub>{{ trail.description }}</sub>
             </td>
+            <td>{{ trail.type == 'atual' ? 'Atual' : (trail.type == 'especifico' ? 'Específico' : '') }}</td>
             <td>{{ trail.subject }}</td>
             <td class="actions">
               <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->

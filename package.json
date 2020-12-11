@@ -29,7 +29,7 @@
     "angular-gamification": "^0.1.1",
     "angular-in-memory-web-api": "^0.11.0",
     "angular-tawk": "0.0.4",
-    "bootstrap": "^3.4.1",
+    "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "core-js": "^2.5.7",
     "flv.js": "^1.5.0",

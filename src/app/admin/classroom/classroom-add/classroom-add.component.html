@@ -105,6 +105,24 @@
       </div>
       <div class="row">
         <div class="form-group col-md-12">
+          <fieldset class="form-group">
+            <label>Tipo</label>
+            <select
+              [compareWith]="compareByOptionId"
+              name="tipo"
+              #type="ngModel"
+              [(ngModel)]="classroom.type"
+              class="form-control"
+            >
+              <option value="">-- Selecione --</option>
+              <option value="teorico">Teórico</option>
+              <option value="pratico">Prático</option>
+            </select>
+          </fieldset>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
           <app-content
             [(vContent)]="classroom.contents"
             (contentFormIsValid)="contentFormIsValid($event)"

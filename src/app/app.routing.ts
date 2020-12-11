@@ -53,6 +53,7 @@ import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia
 import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
         component: DashboardComponent,
         canActivate:[UserGuard],
         children: [
+            {path: '', component: ChartComponent},
             {path: 'conference/add', component: ConferenceAddComponent},
             {path: 'conference/edit/:id', component: ConferenceEditComponent},
             {path: 'conference/list', component: ConferenceListComponent},
@@ -146,7 +148,7 @@ const appRoutes: Routes = [
             {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
             {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
             {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
-            
+
         ],
     },
     {path: '**', redirectTo: 'home', pathMatch: 'full'},

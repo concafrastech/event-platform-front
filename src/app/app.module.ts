@@ -8,8 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { MomentModule } from 'ngx-moment';
 import { NgxSpinnerModule } from "ngx-spinner";
-
-
+import { ChartsModule } from 'ng2-charts';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -93,6 +92,7 @@ import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithor
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -182,6 +182,7 @@ const GamificationConfig = {
     InfanciaGeralComponent,
     SelectConferenceComponent,
     ConfirmComponent,
+    ChartComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,
@@ -205,7 +206,8 @@ const GamificationConfig = {
     DatetimePopupModule,
     NgBootstrapAlertModule,
     AngularTawkModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartsModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

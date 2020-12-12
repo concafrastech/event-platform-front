@@ -1,20 +1,32 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivityService } from "src/app/services/activity.service";
+import { ClassroomService } from "src/app/services/classroom.service";
+import { EpicService } from "src/app/services/epic.service";
 import { LectureService } from "src/app/services/lecture.service";
+import { TrailService } from "src/app/services/trail.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-chart",
   templateUrl: "./chart.component.html",
   styleUrls: ["./chart.component.css"],
-  providers: [UserService, LectureService]
+  providers: [
+    UserService,
+    LectureService,
+    ClassroomService,
+    TrailService,
+    EpicService,
+    ActivityService,
+  ],
 })
 export class ChartComponent implements OnInit {
-  private totalUsers;
-  private totalLectures;
-
   constructor(
     private _userService: UserService,
-    private _lectureService: LectureService
+    private _lectureService: LectureService,
+    private _classroomService: ClassroomService,
+    private _trailService: TrailService,
+    private _epicService: EpicService,
+    private _activityService: ActivityService
   ) {}
 
   public barChartOptions = {
@@ -54,6 +66,12 @@ export class ChartComponent implements OnInit {
   public pieChartData = [];
   public pieChartType = "pie";
 
+  public chartColors: any[] = [
+    {
+      backgroundColor: ["#FF7360", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"],
+    },
+  ];
+
   ngOnInit(): void {
     this.getAllResources();
   }
@@ -61,21 +79,65 @@ export class ChartComponent implements OnInit {
   private getAllResources() {
     this.getTotalUsers();
     this.getTotalLectures();
+    this.getTotalClassroom();
+    this.getTotalTrails();
+    this.getTotalEpics();
+    this.getTotalActivities();
   }
 
   private getTotalUsers() {
     this._userService.getUsers().subscribe((response) => {
-      this.totalUsers = response.total;
-      this.pieChartLabels.push("Usuários");
-      this.pieChartData.push(this.totalUsers);
+      console.log(response);
+      let numberTotal = 0;
+      numberTotal = response.total;
+      this.insertOnChartPie(numberTotal, "Usuários");
     });
   }
 
   private getTotalLectures() {
     this._lectureService.getLectures().subscribe((response) => {
-      this.totalLectures = response.total;
-      this.pieChartLabels.push("Palestras");
-      this.pieChartData.push(this.totalLectures);
+      let numberTotal = 0;
+      numberTotal = response.total;
+      this.insertOnChartPie(numberTotal, "Palestras");
     });
+  }
+
+  private getTotalClassroom() {
+    this._classroomService.getClassrooms().subscribe((response) => {
+      let numberTotal = 0;
+      numberTotal = response.total;
+      this.insertOnChartPie(numberTotal, "Cursos");
+    });
+  }
+
+  private getTotalTrails() {
+    this._trailService.getTrails().subscribe((response) => {
+      let numberTotal = 0;
+      numberTotal = response.total;
+      this.insertOnChartPie(numberTotal, "Trilhas");
+    });
+  }
+
+  private getTotalEpics() {
+    this._epicService.getEpics().subscribe((response) => {
+      let numberTotal = 0;
+      numberTotal = response.total;
+      this.insertOnChartPie(numberTotal, "Épicos");
+    });
+  }
+
+  private getTotalActivities() {
+    this._activityService.getActivities().subscribe((response) => {
+      let numberTotal = 0;
+      numberTotal = response.total;
+      this.insertOnChartPie(numberTotal, "Atividades");
+    });
+  }
+
+  private insertOnChartPie(total, nameLabel) {
+    if (total != 0) {
+      this.pieChartLabels.push(nameLabel);
+      this.pieChartData.push(total);
+    }
   }
 }

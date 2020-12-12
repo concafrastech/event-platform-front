@@ -12,6 +12,7 @@ import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
 import { HttpEventType } from "@angular/common/http";
 import { NgxSpinnerService } from "ngx-spinner";
+import { event } from "jquery";
 
 @Component({
   selector: "app-classroom-edit",
@@ -32,7 +33,6 @@ export class ClassroomEditComponent implements OnInit {
   public status: string;
   public classroom: Classroom;
   public identity: string;
-  public alturaTela: number;
   public trails = [];
   public isLoading: boolean = true;
   public contentIsValid: boolean = false;
@@ -55,7 +55,7 @@ export class ClassroomEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: classroom-edit.");
-    this._spinner.show()
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.classroom = new Classroom(
       "",
@@ -66,6 +66,7 @@ export class ClassroomEditComponent implements OnInit {
       new Date(),
       "",
       null,
+      [],
       [],
       new Date(),
       new Date()
@@ -81,9 +82,6 @@ export class ClassroomEditComponent implements OnInit {
       new Date()
     );
     this.loadPage();
-    //Adicionado altura da tela apenas para forçar a criação da barra de rolagem, rever css
-    this.alturaTela =
-      window.innerHeight > 0 ? window.innerHeight : screen.height;
   }
 
   loadPage() {
@@ -242,5 +240,22 @@ export class ClassroomEditComponent implements OnInit {
         }
       }
     );
+  }
+
+  public addTag(evento) {
+    if (evento.key == "Enter") {
+      if (evento.target.value != "") {
+        this.classroom.tags.push(evento.target.value);
+        evento.target.value = "";
+      }
+      
+      //Impede do angular enviar o form no enter
+      evento.preventDefault();
+    }
+  }
+
+  public removeTag(tag) {
+    let index = this.classroom.tags.indexOf(tag);
+    this.classroom.tags.splice(index, 1);
   }
 }

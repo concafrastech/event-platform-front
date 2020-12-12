@@ -11,8 +11,10 @@ export class Classroom {
         public end_time: Date,
         public speecher: string,
         public trail: Trail,
+        public tags: string[],
         public contents: Content[],
         public created_at: Date,
-        public updated_at: Date
+        public updated_at: Date,
+        
     ) {}
 }

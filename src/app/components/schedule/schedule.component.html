@@ -3,7 +3,7 @@
         <h2>Programação</h2>
         <ul>
             <li *ngFor="let schedule of schedules">
-                {{schedule.name}}
+                {{schedule.start_time | date:'dd/MM/yyyy' }} - {{schedule.start_time | date:'HH:mm' }} - {{schedule.end_time | date:'HH:mm' }} - {{schedule.name}}
             </li>
         </ul>
     </div>

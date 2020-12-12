@@ -3,6 +3,7 @@ import { ActivityService } from "src/app/services/activity.service";
 import { ClassroomService } from "src/app/services/classroom.service";
 import { EpicService } from "src/app/services/epic.service";
 import { LectureService } from "src/app/services/lecture.service";
+import { StageService } from "src/app/services/stage.service";
 import { TrailService } from "src/app/services/trail.service";
 import { UserService } from "src/app/services/user.service";
 
@@ -17,6 +18,7 @@ import { UserService } from "src/app/services/user.service";
     TrailService,
     EpicService,
     ActivityService,
+    StageService,
   ],
 })
 export class ChartComponent implements OnInit {
@@ -26,7 +28,8 @@ export class ChartComponent implements OnInit {
     private _classroomService: ClassroomService,
     private _trailService: TrailService,
     private _epicService: EpicService,
-    private _activityService: ActivityService
+    private _activityService: ActivityService,
+    private _stageService: StageService
   ) {}
 
   public barChartOptions = {
@@ -68,7 +71,17 @@ export class ChartComponent implements OnInit {
 
   public chartColors: any[] = [
     {
-      backgroundColor: ["#FF7360", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"],
+      backgroundColor: [
+        "#f7a1b6",
+        "#77c7f4",
+        "#fbe29d",
+        "#FF7360",
+        "#6FC8CE",
+        "#FFFCC4",
+        "#B9E8E0",
+        "#f1f2f4",
+        "#FAFFF2",
+      ],
     },
   ];
 
@@ -83,6 +96,7 @@ export class ChartComponent implements OnInit {
     this.getTotalTrails();
     this.getTotalEpics();
     this.getTotalActivities();
+    this.getTotalStages();
   }
 
   private getTotalUsers() {
@@ -119,6 +133,12 @@ export class ChartComponent implements OnInit {
   private getTotalActivities() {
     this._activityService.getActivities().subscribe((response) => {
       this.insertOnChartPie(response, "Atividades");
+    });
+  }
+
+  private getTotalStages() {
+    this._stageService.getStages().subscribe((response) => {
+      this.insertOnChartPie(response, "Trilhas");
     });
   }
 

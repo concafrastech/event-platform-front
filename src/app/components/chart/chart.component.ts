@@ -1,13 +1,21 @@
 import { Component, OnInit } from "@angular/core";
+import { LectureService } from "src/app/services/lecture.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-chart",
   templateUrl: "./chart.component.html",
   styleUrls: ["./chart.component.css"],
+  providers: [UserService, LectureService]
 })
 export class ChartComponent implements OnInit {
-  constructor(private _userService: UserService) {}
+  private totalUsers;
+  private totalLectures;
+
+  constructor(
+    private _userService: UserService,
+    private _lectureService: LectureService
+  ) {}
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -40,16 +48,34 @@ export class ChartComponent implements OnInit {
   ];
   public radarChartType = "radar";
 
-  public pieChartLabels = ["Sales Q1", "Sales Q2", "Sales Q3", "Sales Q4"];
-  public pieChartData = [120, 150, 180, 90];
+  // public pieChartLabels = ["Usuários", "Sales Q2", "Sales Q3", "Sales Q4"];
+  public pieChartLabels = [];
+  // public pieChartData = [120, 150, 180, 90];
+  public pieChartData = [];
   public pieChartType = "pie";
 
   ngOnInit(): void {
-    let totalRegistros = 0;
+    this.getAllResources();
+  }
+
+  private getAllResources() {
+    this.getTotalUsers();
+    this.getTotalLectures();
+  }
+
+  private getTotalUsers() {
     this._userService.getUsers().subscribe((response) => {
-      totalRegistros = response.total;
-      console.log(totalRegistros);
-      
+      this.totalUsers = response.total;
+      this.pieChartLabels.push("Usuários");
+      this.pieChartData.push(this.totalUsers);
+    });
+  }
+
+  private getTotalLectures() {
+    this._lectureService.getLectures().subscribe((response) => {
+      this.totalLectures = response.total;
+      this.pieChartLabels.push("Palestras");
+      this.pieChartData.push(this.totalLectures);
     });
   }
 }

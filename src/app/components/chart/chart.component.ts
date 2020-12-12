@@ -88,53 +88,43 @@ export class ChartComponent implements OnInit {
   private getTotalUsers() {
     this._userService.getUsers().subscribe((response) => {
       console.log(response);
-      let numberTotal = 0;
-      numberTotal = response.total;
-      this.insertOnChartPie(numberTotal, "Usuários");
+      this.insertOnChartPie(response, "Usuários");
     });
   }
 
   private getTotalLectures() {
     this._lectureService.getLectures().subscribe((response) => {
-      let numberTotal = 0;
-      numberTotal = response.total;
-      this.insertOnChartPie(numberTotal, "Palestras");
+      this.insertOnChartPie(response, "Palestras");
     });
   }
 
   private getTotalClassroom() {
     this._classroomService.getClassrooms().subscribe((response) => {
-      let numberTotal = 0;
-      numberTotal = response.total;
-      this.insertOnChartPie(numberTotal, "Cursos");
+      this.insertOnChartPie(response, "Cursos");
     });
   }
 
   private getTotalTrails() {
     this._trailService.getTrails().subscribe((response) => {
-      let numberTotal = 0;
-      numberTotal = response.total;
-      this.insertOnChartPie(numberTotal, "Trilhas");
+      this.insertOnChartPie(response, "Temas");
     });
   }
 
   private getTotalEpics() {
     this._epicService.getEpics().subscribe((response) => {
-      let numberTotal = 0;
-      numberTotal = response.total;
-      this.insertOnChartPie(numberTotal, "Épicos");
+      this.insertOnChartPie(response, "Épicos");
     });
   }
 
   private getTotalActivities() {
     this._activityService.getActivities().subscribe((response) => {
-      let numberTotal = 0;
-      numberTotal = response.total;
-      this.insertOnChartPie(numberTotal, "Atividades");
+      this.insertOnChartPie(response, "Atividades");
     });
   }
 
-  private insertOnChartPie(total, nameLabel) {
+  private insertOnChartPie(response, nameLabel) {
+    let total = 0;
+    total = response.total;
     if (total != 0) {
       this.pieChartLabels.push(nameLabel);
       this.pieChartData.push(total);

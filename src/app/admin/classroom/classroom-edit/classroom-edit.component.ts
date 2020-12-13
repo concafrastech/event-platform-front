@@ -78,6 +78,7 @@ export class ClassroomEditComponent implements OnInit {
       "",
       "",
       null,
+      [],
       new Date(),
       new Date()
     );

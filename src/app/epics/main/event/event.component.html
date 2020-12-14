@@ -111,6 +111,54 @@
     <!-- ============================================================== -->
     <!-- end wrapper  -->
     <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-right-sidebar sidebar-dark" *ngIf="false">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <div class="nav-user-info">
+                            <h5 class="mb-0 text-white nav-user-name">{{identity.name}}</h5>
+                            <span class="status"></span><span class="ml-2">Available</span>
+                        </div>
+                        <div>
+                            <h6>{{user.level.badge}} - {{user.points}} Pts</h6>
+                            <progress max="{{progress.max}}" value="{{progress.value}}"></progress>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/perfil']" ><i class="fas fa-fw fa-rocket"></i>Meu Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/schedule']" ><i class="fas fa-fw fa-rocket"></i>Programação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/hub']" ><i class="fas fa-fw fa-rocket"></i>Acessar Feira</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Passe Virtual</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Suporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="logout()"><i class="fas fa-fw fa-rocket"></i>Sair</a>
+                    </li>
+                </ul>
+                </div>
+            </nav>
+        </div>       
+    </div>
+    <!-- ============================================================== -->
+    <!-- end right sidebar -->
+    <!-- ============================================================== -->
 </div>
 <!-- ============================================================== -->
 <!-- end main wrapper  -->

@@ -3,6 +3,7 @@ import { Lecture } from 'src/app/models/lecture';
 import { Stage } from 'src/app/models/stage';
 import { Trail } from 'src/app/models/trail';
 import { ActivityService } from 'src/app/services/activity.service';
+import { ClassroomService } from 'src/app/services/classroom.service';
 import { LectureService } from 'src/app/services/lecture.service';
 import { StageService } from 'src/app/services/stage.service';
 import { TrailService } from 'src/app/services/trail.service';
@@ -12,7 +13,7 @@ import * as SvgPanZoom from 'svg-pan-zoom';
   selector: 'app-hub',
   templateUrl: './hub.component.html',
   styleUrls: ['./hub.component.css'],
-  providers: [LectureService, TrailService, StageService, ActivityService]
+  providers: [LectureService, TrailService, StageService, ActivityService, ClassroomService]
 })
 export class HubComponent implements OnInit, AfterViewInit {
 
@@ -34,7 +35,8 @@ export class HubComponent implements OnInit, AfterViewInit {
     private _lectureService: LectureService,
     private _trailService: TrailService,
     private _stageService: StageService,
-    private _activityService: ActivityService
+    private _activityService: ActivityService,
+    private _classroomService: ClassroomService
   ) { }
 
   ngOnInit(): void {
@@ -79,7 +81,29 @@ export class HubComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.trails = response.trails;
+          this.trails.forEach((trail, index) => {
+            this.getClassrooms(page, trail, index);
+          });
+        }
+      },
+      (error) => {
+        var errorMessage = <any>error;
+        console.log(errorMessage);
 
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
+  }
+
+  getClassrooms(page, trail, index) {
+    this._classroomService.getClassrooms(page, trail._id).subscribe(
+      (response) => {
+        if (!response.classrooms) {
+          this.status = "error";
+        } else {
+          this.trails[index].classrooms = response.classrooms;
         }
       },
       (error) => {

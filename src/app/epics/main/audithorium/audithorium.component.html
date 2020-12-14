@@ -1,3 +1,28 @@
-<p>
-  audithorium works!
-</p>
+<carousel [(activeSlide)]="activeSlideIndex" [noWrap]="true">
+  <slide *ngFor="let content of contents; let index=index">
+    <div  *ngIf="content.type == 'img'">
+      <img [src]="content.file.fileLink" alt="image slide" style="display: block; width: 100%;">
+    </div>
+
+    <div *ngIf="content.type == 'youtube'">
+      <app-videojs [vContent]="content"></app-videojs>
+    </div>
+
+    <div *ngIf="content.type == 'externo'">
+      <app-iframe [vContent]="content"></app-iframe>
+    </div>
+ 
+    <div class="carousel-caption">
+      <h4>Slide {{index}}</h4>
+      <p>{{content.name}}</p>
+    </div>
+  </slide>
+</carousel>
+
+<p>Tipo: {{type}}</p>
+<p>Qtde: {{contents.length}}</p>
+
+<div *ngIf="lecture">
+  Tema: {{lecture.name}}
+</div>
+

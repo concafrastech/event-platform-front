@@ -15,6 +15,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DatetimePopupModule } from 'ngx-bootstrap-datetime-popup';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 // Module Custom
@@ -94,6 +95,8 @@ import { SelectConferenceComponent } from './components/select-conference/select
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { VideojsComponent } from './components/channels/videojs/videojs.component';
+import { SafePipe } from './utils/safe.pipe';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -187,7 +190,8 @@ const GamificationConfig = {
     ScheduleComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
-    //VideojsComponent,
+    VideojsComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -205,6 +209,7 @@ const GamificationConfig = {
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     PaginationModule.forRoot(),
+    CarouselModule.forRoot(),
     DatetimePopupModule,
     NgBootstrapAlertModule,
     AngularTawkModule,

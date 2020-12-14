@@ -1,3 +1,4 @@
+import { Classroom } from './classroom';
 import { Epic } from './epic';
 
 export class Trail {
@@ -8,6 +9,7 @@ export class Trail {
         public type: string,
         public subject: string,
         public epic: Epic,
+        public classrooms: Classroom[],
         public created_at: Date,
         public updated_at: Date
     ) {}

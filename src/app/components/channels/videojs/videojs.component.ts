@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Content } from 'src/app/models/content';
 
 // Declara a lib do videojs como externa ao angular
 declare let videojs: any;
@@ -10,15 +11,8 @@ declare let videojs: any;
 })
 export class VideojsComponent implements AfterViewInit {
 
-  // Titulo do component
-  title = 'Player com Video.JS';
-  // Instancia do video.js.
   vidObj: any;
-  // Poster para ser usado no video.js
-  poster = '//d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png';
-  // URL do video a ser reproduzido.
-  video = '//d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4';
-  // Acessa o elemento video do html5 via viewchild.
+  @Input() public vContent: Content;
   @ViewChild('myvid') vid: ElementRef;
 
   ngAfterViewInit() {
@@ -37,7 +31,7 @@ export class VideojsComponent implements AfterViewInit {
       sources: [ 
         {
           type: "video/youtube", 
-          src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+          src: this.vContent.url,
         }
       ], 
       youtube: { 

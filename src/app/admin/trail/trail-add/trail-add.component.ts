@@ -42,7 +42,7 @@ export class TrailAddComponent implements OnInit {
     console.log("[OK] Component: trail-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.trail = new Trail("", "", "", "", "", null, new Date(), new Date());
+    this.trail = new Trail("", "", "", "", "", null, [], new Date(), new Date());
     this.trail.epic = new Epic(
       "",
       "",

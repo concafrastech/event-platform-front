@@ -76,6 +76,7 @@ export class ClassroomAddComponent implements OnInit {
       "",
       "",
       null,
+      [],
       new Date(),
       new Date()
     );

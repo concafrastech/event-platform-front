@@ -1,4 +1,4 @@
-<div class="col-lg-5">
+<div class="col-lg-8">
     <h1 class="h1-strong">{{title}}</h1>
     <div class="alert alert-success" *ngIf="status == 'success'">
         Dados atualizados com sucesso!
@@ -43,8 +43,48 @@
                 <fieldset class="form-group">
                     <label>Épico</label>
                     <select [compareWith]="compareByOptionId" name="epic" #epic="ngModel" [(ngModel)]="trail.epic" class="form-control">
-                        <option value="">-- Selecione --</option>
+                        <option [value]="null">-- Selecione --</option>
                         <option *ngFor="let epic of epics" [ngValue]="epic">{{epic.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Curso teórico 1</label>
+                    <select [compareWith]="compareByOptionId" name="theoreticalclassroom1" #tClassroom1="ngModel" [(ngModel)]="theoreticalClassroom1" class="form-control">
+                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
+                        <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Curso teórico 2</label>
+                    <select [compareWith]="compareByOptionId" name="theoreticalclassroom2" #tClassroom2="ngModel" [(ngModel)]="theoreticalClassroom2" class="form-control">
+                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
+                        <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Adicionar cursos práticos?</label>
+                <button class="btn btn-success" type="button" (click)="addClassroom()"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="row"*ngFor="let classroom of trail.classrooms; let i=index; trackBy: trackByFn">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Curso prático {{i+1}}</label>
+                    <button class="btn btn-danger" type="button" (click)="removeClassroom(i)"><i class="fa fa-trash"></i></button>
+                    <select [name]="'praticalclassroom'+i" #pclassroom="ngModel" [(ngModel)]="trail.classrooms[i]" class="form-control">
+                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
+                        <option *ngFor="let option of practicalClassrooms" [ngValue]="option">{{option.name}}</option>
                     </select>
                 </fieldset>
             </div>

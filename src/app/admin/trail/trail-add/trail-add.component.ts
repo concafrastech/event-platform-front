@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
-import { Epic } from "src/app/models/epic";
 import { Trail } from "src/app/models/trail";
 import { EpicService } from "src/app/services/epic.service";
 import { TrailService } from "src/app/services/trail.service";
+import { ClassroomService } from "./../../../services/classroom.service";
+import { Classroom } from "./../../../models/classroom";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
@@ -13,7 +14,7 @@ import { NgxSpinnerService } from "ngx-spinner";
   selector: "app-trail-add",
   templateUrl: "./trail-add.component.html",
   styleUrls: ["./trail-add.component.css"],
-  providers: [UserService, TrailService, EpicService],
+  providers: [UserService, TrailService, EpicService, ClassroomService],
 })
 export class TrailAddComponent implements OnInit {
   public title: string;
@@ -23,6 +24,10 @@ export class TrailAddComponent implements OnInit {
   public trail: Trail;
   public identity: string;
   public epics = [];
+  public theoreticalClassrooms: Classroom[] = [];
+  public practicalClassrooms: Classroom[] = [];
+  public theoreticalClassroom1: Classroom = null;
+  public theoreticalClassroom2: Classroom = null;
 
   constructor(
     private _route: ActivatedRoute,
@@ -30,6 +35,7 @@ export class TrailAddComponent implements OnInit {
     private _trailService: TrailService,
     private _userService: UserService,
     private _epicService: EpicService,
+    private _classroomService: ClassroomService,
     private _bsLocaleService: BsLocaleService,
     private _spinner: NgxSpinnerService
   ) {
@@ -42,8 +48,19 @@ export class TrailAddComponent implements OnInit {
     console.log("[OK] Component: trail-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.trail = new Trail("", "", "", "", "", null, [], new Date(), new Date());
-    this.trail.epic = new Epic(
+    this.trail = new Trail(
+      "",
+      "",
+      "",
+      "",
+      "",
+      null,
+      [],
+      new Date(),
+      new Date()
+    );
+    this.trail.epic = null;
+    /*new Epic(
       "",
       "",
       "",
@@ -53,7 +70,7 @@ export class TrailAddComponent implements OnInit {
       null,
       new Date(),
       new Date()
-    );
+    );*/
     this.loadPage();
   }
 
@@ -61,8 +78,37 @@ export class TrailAddComponent implements OnInit {
     this._epicService.getEpics().subscribe(
       (response) => {
         if (response) {
-          this._spinner.hide();
           this.epics = response.epics;
+          this.getClassrooms();
+        }
+      },
+      (error) => {
+        this._spinner.hide();
+        console.log(<any>error);
+      }
+    );
+  }
+
+  getClassrooms() {
+    this.theoreticalClassrooms = [];
+    this.practicalClassrooms = [];
+    //Lê todos os classrooms e separa por tipo, classrooms sem tipo não aparecem.
+    //Atualizar após get classroom por tipo.
+    this._classroomService.getClassrooms().subscribe(
+      (response) => {
+        if (response) {
+          let classrooms: Classroom[] = response.classrooms;
+
+          for (let i = 0; i < classrooms.length; i++) {
+            if (classrooms[i].type == "teorico") {
+              this.theoreticalClassrooms.push(classrooms[i]);
+            }
+            if (classrooms[i].type == "pratico") {
+              this.practicalClassrooms.push(classrooms[i]);
+            }
+          }
+
+          this._spinner.hide();
         }
       },
       (error) => {
@@ -77,7 +123,25 @@ export class TrailAddComponent implements OnInit {
     return idFist && idSecond && idFist._id == idSecond._id;
   }
 
+  trackByFn(index, item) {
+    return index;
+  }
+
+  addClassroom() {
+    this.trail.classrooms.push(null);
+  }
+
+  removeClassroom(index: number) {
+    this.trail.classrooms.splice(index, 1);
+  }
+
   onSubmit() {
+    if (this.theoreticalClassroom1) {
+      this.trail.classrooms.push(this.theoreticalClassroom1);
+    }
+    if (this.theoreticalClassroom2) {
+      this.trail.classrooms.push(this.theoreticalClassroom2);
+    }
     this._spinner.show();
     this._trailService.addTrail(this.trail).subscribe(
       (response) => {

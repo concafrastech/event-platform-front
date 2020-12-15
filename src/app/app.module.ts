@@ -94,6 +94,7 @@ import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithor
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { SidebarjovemComponent } from './sidebarjovem/sidebarjovem.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -184,6 +185,8 @@ const GamificationConfig = {
     InfanciaGeralComponent,
     SelectConferenceComponent,
     ConfirmComponent,
+    SidebarjovemComponent,
+    Ilha1Component,
     //YoutubeComponent,
     //FlvplayerComponent,
     //VideojsComponent,

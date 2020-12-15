@@ -1,20 +1,6 @@
 
-<div class="container-fluid">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="jumbotron">
-            <h3 class="text-center">Player com Video.JS</h3>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col text-center">
-          <video #myvid id="my-video" class="video-js vjs-big-play-centered mini-play"
-                  width="640" height="360" [poster]="poster" style="margin: auto;">
-            <source [src]="video" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="video-js-responsive-container vjs-hd">
+  <video #myvid id="my-video" class="video-js vjs-big-play-centered mini-play" style="margin: auto;">
+    <source [src]="vContent.url" type="video/mp4">
+  </video>
+</div>

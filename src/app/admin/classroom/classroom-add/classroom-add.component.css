@@ -1,0 +1,38 @@
+.container{
+    width: 100%;
+    margin: 1px;
+    padding: 1px;
+}
+.tag-container{
+    border: 1px solid #ced4da;
+    padding: 5px;
+    border-radius: 5px;
+    display: table;
+    width: 100%;
+}
+
+.tag-container .tag{
+    padding: 3px;
+    border: 1px solid #ced4da;
+    margin: 3px;
+    display: inline-block;
+    width: fit-content;
+    align-items: center;
+    border-radius: 3px;
+    background: #f2f2f2;
+}
+
+.tag i {
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.tag-container input{
+    flex: 1;
+    font-size: 16px;
+    padding: 5px;
+    outline: none;
+    border: 0;
+    width: max-content;
+}

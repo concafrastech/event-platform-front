@@ -1,141 +1,144 @@
-<div id="navbar-wrapper" class="navigation">
-    <header>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header" *ngIf="identity">
-                    <a [routerLink]="['/home']" [routerLinkActive]="['active']" class="navbar-brand">{{title}}</a>
-                </div>
-                <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
-                    <li>
-                        <a [routerLink]="['/login']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+<!-- ============================================================== -->
+<!-- main wrapper -->
+<!-- ============================================================== -->
+<div class="dashboard-main-wrapper">
+    <!-- ============================================================== -->
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" [routerLink]="['/admin']">EVENTOS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                    <li class="nav-item">
+                        <div id="custom-search" class="top-search-bar">
+                            <input class="form-control" type="text" placeholder="Search..">
+                        </div>
                     </li>
-                    <li>
-                        <a [routerLink]="['/register']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-user"></span> Cadastrar-se</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right" *ngIf="identity">
-                    <li class="avatar">
-                        <img src="{{ url + 'get-image-user/' + identity.image }}" *ngIf="identity && identity.image" />
-                    </li>
-                    <li class="dropdown">
-                        <a  class="dropdown-toggle" data-toggle="dropdown" href="#">{{identity.name}} <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a [routerLink]="['/perfil', identity._id]"><span class="glyphicon glyphicon-user"></span> Meu perfil</a>
-                            </li>
-                            <li>
-                                <a [routerLink]="['/meus-dados']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-cog"></span> Meus dados</a>
-                            </li>
-                            <li>
-                                <a class="pointer" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Encerrar sessão</a>
-                            </li>
-                        </ul>
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name">{{identity.name}}</h5>
+                                <span class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                            <a class="dropdown-item" [routerLink]="['/perfil', identity._id]"><i class="fas fa-user mr-2"></i>Perfil</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                            <a class="dropdown-item" (click)="logout()"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                        </div>
                     </li>
                 </ul>
             </div>
         </nav>
-    </header>
-</div>
-<div id="wrapper">
-    <div id="sidebar-wrapper">
-        <aside id="sidebar">
-            <ul id="sidemenu" class="sidebar-nav">
-                <li>
-                    <a [routerLink]="['/admin']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">DashBoard</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/conference/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Eventos</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/epic/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Épicos</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/lecture/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Palestras</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/trail/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Temas</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/classroom/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Cursos</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/stage/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Trilhas</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/activity/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Paineis</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/document/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Mídia</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/user/list']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Usuários</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin/content']" [routerLinkActive]="['active']">
-                        <span class="sidebar-icon"><i class="fa fa-home"></i></span>
-                        <span class="sidebar-title">Conteúdo</span>
-                    </a>
-                </li>
-                <!--
-                <li>
-                    <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
-                        <span class="sidebar-icon"><i class="fa fa-users"></i></span>
-                        <span class="sidebar-title">Events</span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-                        <li><a href="#"><i class="fa fa-caret-right"></i>Users</a></li>
-                        <li><a href="#"><i class="fa fa-caret-right"></i>Roles</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
-                        <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
-                        <span class="sidebar-title">Blog</span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul id="submenu-3" class="panel-collapse collapse panel-switch" role="menu">
-                        <li><a href="#"><i class="fa fa-caret-right"></i>Posts</a></li>
-                        <li><a href="#"><i class="fa fa-caret-right"></i>Comments</a></li>
-                    </ul>
-                </li> -->
-            </ul>
-        </aside>
     </div>
-    <main id="page-content-wrapper" role="main">
-        <router-outlet></router-outlet>
-    </main>
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+                        
+                        <a class="nav-link" [routerLink]="['/admin']" aria-expanded="false" ><i class="fas fa-fw fa-user-circle"></i>Dashboard </a>
+                        <li class="nav-divider">
+                            CADASTROS GERAIS
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/conference/list']" [routerLinkActive]="['active']"><i class="fas fa-fw fa-rocket"></i>Eventos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/user/list']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Usuários</a>
+                        </li>
+                        <li class="nav-divider">
+                            POR EVENTO
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/epic/list']" [routerLinkActive]="['active']"><i class="fas  fa-home"></i>Épicos</a>
+                        </li>
+                        <li class="nav-divider">
+                            POR EPICO
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/lecture/list']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Palestras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/trail/list']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Temas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/stage/list']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Trilhas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/classroom/list']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Cursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/activity/list']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Paineis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/document/list']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Mídia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/admin/content']" [routerLinkActive]="['active']"><i class="fa fa-home"></i>Conteúdo</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end left sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+    <div class="dashboard-wrapper">
+        <div class="dashboard-ecommerce">
+            <div class="container-fluid dashboard-content ">
+               <div class="ecommerce-widget">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            Copyright © 2021 Concafras. All rights reserved.
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="text-md-right footer-links d-none d-sm-block">
+                            <a href="javascript: void(0);">Opcao 1</a>
+                            <a href="javascript: void(0);">Opcao 2</a>
+                            <a href="javascript: void(0);">Opcao 3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end wrapper  -->
+    <!-- ============================================================== -->
 </div>
-<!-- <footer class="navbar navbar-default navbar-fixed-bottom">
-    TESTE'
-</footer> -->
+<!-- ============================================================== -->
+<!-- end main wrapper  -->
+<!-- ============================================================== -->

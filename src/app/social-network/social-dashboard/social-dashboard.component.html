@@ -7,24 +7,24 @@
                 </div>
                 <ul class="nav navbar-nav" *ngIf="identity">
                     <li>
-                        <a [routerLink]="['/social/home']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+                        <a [routerLink]="['/social/home']" [routerLinkActive]="['active']"><span class="fa fa-home"></span> Inicio</a>
                     </li>
                     <li>
-                        <a [routerLink]="['/social/timeline']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-th-list"></span> Timeline</a>
+                        <a [routerLink]="['/social/timeline']" [routerLinkActive]="['active']"><span class="fa fa-th-list"></span> Timeline</a>
                     </li>
                     <li>
-                        <a [routerLink]="['/social/pessoas']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-user"></span> Pessoas</a>
+                        <a [routerLink]="['/social/pessoas']" [routerLinkActive]="['active']"><span class="fa fa-user"></span> Pessoas</a>
                     </li>
                     <li>
-                        <a [routerLink]="['/mensagens']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-envelope"></span> Mensagens</a>
+                        <a [routerLink]="['/mensagens']" [routerLinkActive]="['active']"><span class="fa fa-envelope"></span> Mensagens</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
                     <li>
-                        <a [routerLink]="['/login']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        <a [routerLink]="['/login']" [routerLinkActive]="['active']"><span class="fa fa-log-in"></span> Login</a>
                     </li>
                     <li>
-                        <a [routerLink]="['/register']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-user"></span> Cadastrar-se</a>
+                        <a [routerLink]="['/register']" [routerLinkActive]="['active']"><span class="fa fa-user"></span> Cadastrar-se</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" *ngIf="identity">
@@ -35,13 +35,13 @@
                         <a  class="dropdown-toggle" data-toggle="dropdown" href="#">{{identity.name}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a [routerLink]="['/social/perfil', identity._id]"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a>
+                                <a [routerLink]="['/social/perfil', identity._id]"><span class="fa fa-user"></span> Meu Perfil</a>
                             </li>
                             <li>
-                                <a [routerLink]="['/meus-dados']" [routerLinkActive]="['active']"><span class="glyphicon glyphicon-cog"></span> Meus dados</a>
+                                <a [routerLink]="['/meus-dados']" [routerLinkActive]="['active']"><span class="fa fa-cog"></span> Meus dados</a>
                             </li>
                             <li>
-                                <a class="pointer" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Encerrar sessão</a>
+                                <a class="pointer" (click)="logout()"><span class="fa fa-log-out"></span> Encerrar sessão</a>
                             </li>
                         </ul>
                     </li>

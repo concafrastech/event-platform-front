@@ -78,14 +78,12 @@ export class ActivityAddComponent implements OnInit {
       "",
       "",
       null,
+      [],
       new Date(),
       new Date()
     );
     this.loadPage();
-
-    //Adicionado altura da tela apenas para forçar a criação da barra de rolagem, rever css
-    this.alturaTela =
-      window.innerHeight > 0 ? window.innerHeight : screen.height;
+    
   }
 
   loadPage() {

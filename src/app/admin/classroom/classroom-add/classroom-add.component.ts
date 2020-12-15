@@ -1,4 +1,4 @@
-import { DocumentService } from './../../../services/document.service';
+import { DocumentService } from "./../../../services/document.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
@@ -9,14 +9,20 @@ import { ClassroomService } from "src/app/services/classroom.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { ContentService } from "src/app/services/content.service";
-import { HttpEventType } from '@angular/common/http';
+import { HttpEventType } from "@angular/common/http";
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-classroom-add",
   templateUrl: "./classroom-add.component.html",
   styleUrls: ["./classroom-add.component.css"],
-  providers: [UserService, ClassroomService, TrailService, ContentService, DocumentService],
+  providers: [
+    UserService,
+    ClassroomService,
+    TrailService,
+    ContentService,
+    DocumentService,
+  ],
 })
 export class ClassroomAddComponent implements OnInit {
   public title: string;
@@ -26,7 +32,6 @@ export class ClassroomAddComponent implements OnInit {
   public classroom: Classroom;
   public identity: string;
   public trails = [];
-  public alturaTela: number;
   public contentIsValid: boolean = false;
   public isLoading: boolean = true;
 
@@ -60,6 +65,7 @@ export class ClassroomAddComponent implements OnInit {
       "",
       null,
       [],
+      [],
       new Date(),
       new Date()
     );
@@ -70,13 +76,11 @@ export class ClassroomAddComponent implements OnInit {
       "",
       "",
       null,
+      [],
       new Date(),
       new Date()
     );
     this.loadPage();
-    //Adicionado altura da tela apenas para forçar a criação da barra de rolagem, rever css
-    this.alturaTela =
-      window.innerHeight > 0 ? window.innerHeight : screen.height;
   }
 
   loadPage() {
@@ -193,5 +197,22 @@ export class ClassroomAddComponent implements OnInit {
         this._contentService.deleteContent(content._id).subscribe();
       }
     });
+  }
+
+  public addTag(evento) {
+    if (evento.key == "Enter") {
+      if (evento.target.value != "") {
+        this.classroom.tags.push(evento.target.value);
+        evento.target.value = "";
+      }
+      
+      //Impede do angular enviar o form no enter
+      evento.preventDefault();
+    }
+  }
+
+  public removeTag(tag) {
+    let index = this.classroom.tags.indexOf(tag);
+    this.classroom.tags.splice(index, 1);
   }
 }

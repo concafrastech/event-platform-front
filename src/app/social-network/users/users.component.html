@@ -28,14 +28,14 @@
                             Te segue
                         </button>
                         <button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0" (click)="followUser(user._id)">
-                            <span class="glyphicon glyphicon-plus-sign"></span> Seguir
+                            <span class="fa fa-plus-sign"></span> Seguir
                         </button>
                         <button class="btn btn-primary" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)" (mouseleave)="mouseLeave(user._id)" (click)="unfollowUser(user._id)" [class.btn-danger]="user._id == followUserOver">
                             <span *ngIf="user._id == followUserOver; else following">
-                                <span class="glyphicon glyphicon-minus-sign"></span> Deixar de seguir
+                                <span class="fa fa-minus-sign"></span> Deixar de seguir
                             </span>
                             <ng-template #following>
-                                <span class="glyphicon glyphicon-ok-sign"></span> Seguindo
+                                <span class="fa fa-ok-sign"></span> Seguindo
                             </ng-template>
                         </button>
                     </div>

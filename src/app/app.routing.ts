@@ -16,7 +16,6 @@ import { HubComponent } from './epics/main/hub/hub.component';
 import { AudithoriumComponent } from './epics/main/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { EventComponent } from './epics/main/event/event.component';
-import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { ConferenceEditComponent } from './admin/conference/conference-edit/conference-edit.component';
 import { ConferenceListComponent } from './admin/conference/conference-list/conference-list.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
@@ -54,11 +53,12 @@ import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia
 import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'testezoom', component: ZoomusComponent},
     {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
     {path: 'select-conference', component: SelectConferenceComponent, canActivate:[UserGuard]},
     {
@@ -66,6 +66,7 @@ const appRoutes: Routes = [
         component: DashboardComponent,
         canActivate:[UserGuard],
         children: [
+            {path: '', component: ChartComponent},
             {path: 'conference/add', component: ConferenceAddComponent},
             {path: 'conference/edit/:id', component: ConferenceEditComponent},
             {path: 'conference/list', component: ConferenceListComponent},
@@ -146,9 +147,9 @@ const appRoutes: Routes = [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: HomeComponent, canActivate:[UserGuard]},
             {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
-            {path: 'audithorium', component: AudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
             {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
-            
+            {path: 'schedule', component: ScheduleComponent, canActivate:[UserGuard]},
         ],
     },
     {path: '**', redirectTo: 'home', pathMatch: 'full'},

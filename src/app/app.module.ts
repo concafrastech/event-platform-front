@@ -8,14 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { MomentModule } from 'ngx-moment';
 import { NgxSpinnerModule } from "ngx-spinner";
-
-
+import { ChartsModule } from 'ng2-charts';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DatetimePopupModule } from 'ngx-bootstrap-datetime-popup';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 // Module Custom
@@ -39,7 +39,6 @@ import { HubComponent } from './epics/main/hub/hub.component';
 import { AudithoriumComponent } from './epics/main/audithorium/audithorium.component';
 import { SelectJourneyComponent } from './components/select-journey/select-journey.component';
 import { EventComponent } from './epics/main/event/event.component';
-import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { IframeComponent } from './components/channels/iframe/iframe.component';
 import { ConferenceListComponent } from './admin/conference/conference-list/conference-list.component';
 import { ConferenceEditComponent } from './admin/conference/conference-edit/conference-edit.component';
@@ -94,7 +93,10 @@ import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithor
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
-import { SidebarjovemComponent } from './sidebarjovem/sidebarjovem.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { VideojsComponent } from './components/channels/videojs/videojs.component';
+import { SafePipe } from './utils/safe.pipe';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -144,7 +146,6 @@ const GamificationConfig = {
     AudithoriumComponent,
     SelectJourneyComponent,
     EventComponent,
-    ZoomusComponent,
     IframeComponent,
     ContentComponent,
     ConferenceListComponent,
@@ -185,11 +186,12 @@ const GamificationConfig = {
     InfanciaGeralComponent,
     SelectConferenceComponent,
     ConfirmComponent,
-    SidebarjovemComponent,
-    Ilha1Component,
+    ChartComponent,
+    ScheduleComponent,
     //YoutubeComponent,
     //FlvplayerComponent,
-    //VideojsComponent,
+    VideojsComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -207,10 +209,12 @@ const GamificationConfig = {
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     PaginationModule.forRoot(),
+    CarouselModule.forRoot(),
     DatetimePopupModule,
     NgBootstrapAlertModule,
     AngularTawkModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartsModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

@@ -4,6 +4,7 @@ export class Epic {
     constructor(
         public _id: string,
         public name: string,
+        public type: string,
         public description: string,
         public start_age: string,
         public end_age: string,

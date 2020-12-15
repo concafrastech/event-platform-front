@@ -30,10 +30,10 @@ export class ActivityService {
         return this._http.put(this.url + 'activities/' + activity._id, params, {headers: headers});
     }
 
-    getActivitys(page = null, conferenceId = null): Observable<any> {
+    getActivities(page = null, stageId = null): Observable<any> {
         let params = { 
             page : page,
-            conference : conferenceId != null ? conferenceId : ''
+            stage : stageId != null ? stageId : ''
          };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

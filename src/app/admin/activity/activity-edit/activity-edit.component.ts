@@ -53,7 +53,7 @@ export class ActivityEditComponent implements OnInit {
     this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.activity = new Activity('', 0, '', '', '', '', new Date(), new Date(), false, null, [], new Date(), new Date());
-    this.activity.stage = new Stage('', 0, '', '', '', null, new Date(), new Date());
+    this.activity.stage = new Stage('', 0, '', '', '', null, [], new Date(), new Date());
     this.loadPage();
     //Adicionado altura da tela apenas para forçar a criação da barra de rolagem, rever css
     this.alturaTela =

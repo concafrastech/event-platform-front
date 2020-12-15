@@ -1,5 +1,36 @@
+<div class="row">
+    <div class="col-md-4">
+        <h2>Palestras</h2>
+        <ul>
+            <li *ngFor="let lecture of lectures">
+                <a role="button" [routerLink]="['/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h2>Cursos</h2>
+        <ul>
+            <li *ngFor="let trail of trails">
+                {{trail.name}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h2>Estandes</h2>
+        <ul>
+            <li *ngFor="let stage of stages">
+                {{stage.name}}
+                <ul>
+                    <li *ngFor="let activity of stage.activities">
+                        <a role="button" [routerLink]="['/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
 
-<div class="dXPGmn">
+<div class="dXPGmn" *ngIf="false">
     <div>
         <div style="height: 100%; width: 100%; position: relative; touch-action: none;">
             <svg class="svgMap svgSVWC" version="1.1" id="svgMap"

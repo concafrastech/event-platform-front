@@ -42,8 +42,8 @@ export class StageEditComponent implements OnInit {
     console.log("[OK] Component: stage-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.stage = new Stage('', 0, '', '', '', null, new Date(), new Date());
-    this.stage.epic = new Epic('', '', '', '', '', null, new Date(), new Date());
+    this.stage = new Stage('', 0, '', '', '', null, [], new Date(), new Date());
+    this.stage.epic = new Epic('', '', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }
 

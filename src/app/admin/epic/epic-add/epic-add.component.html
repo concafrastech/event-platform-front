@@ -22,6 +22,20 @@
             </div>
         </div>
         <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Tipo:</label>
+                    <select name="conference" #type="ngModel" [(ngModel)]="epic.type" class="form-control">
+                        <option value="">-- Selecione --</option>
+                        <option value="adulto" [selected]="epic.type == 'adulto'">Adulto</option>
+                        <option value="jovem"  [selected]="epic.type == 'jovem'">Mocidade</option>
+                        <option value="infancia"  [selected]="epic.type == 'infancia'">Infantil</option>
+                        <option value="outros"  [selected]="epic.type == 'outros'">Outros</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-4">
                 <label>Idade Inicial</label>
                 <input type="text" name="start_age" #start_age="ngModel" [(ngModel)]="epic.start_age" class="form-control" />

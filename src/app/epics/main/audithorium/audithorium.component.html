@@ -41,6 +41,10 @@
     <app-iframe [vContent]="contents[index]"></app-iframe>
   </div>
 
+  <div *ngIf="actualContent.type == 'doc'">
+    <embed [src]="actualContent.url" width="100%" height="500px" />
+  </div>
+
   <div style="display: flex; place-content: space-between">
     <button
       [disabled]="index <= 0"

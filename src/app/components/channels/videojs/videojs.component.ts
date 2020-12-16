@@ -14,9 +14,29 @@ export class VideojsComponent implements AfterViewInit {
   vidObj: any;
   @Input() public vContent: Content;
   @ViewChild('myvid') vid: ElementRef;
+  option: any;
+
+  //Adicionado on init para criar options: Opção Replay?
+  ngOnInit(): void {
+    this.option = {
+      controls: this.vContent.controls,
+      autoplay: this.vContent.autoplay,
+      preload: 'auto',
+      techOrder: ['youtube'],
+      sources: [ 
+        {
+          type: "video/youtube", 
+          src: this.vContent.url,
+        }
+      ], 
+      youtube: { 
+        iv_load_policy: 1 
+      }
+    }
+  }
 
   ngAfterViewInit() {
-    const options = {
+    /*const options = {
       controls: true,
       autoplay: false,
       preload: 'auto',
@@ -37,10 +57,9 @@ export class VideojsComponent implements AfterViewInit {
       youtube: { 
         iv_load_policy: 1 
       }
-    };
-
-
-    this.vidObj = new videojs(this.vid.nativeElement, options2, function onPlayerReady() {
+    };*/
+    
+    this.vidObj = new videojs(this.vid.nativeElement, this.option, function onPlayerReady() {
       videojs.log('Your player is ready!');
     });
   }

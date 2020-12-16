@@ -25,7 +25,7 @@ export class AudithoriumComponent implements OnInit {
   public actualContent: Content;
 
   public index: number;
-  public secondsToNext: number = 5;
+  public secondsToNext: number = 1;
   public canMoveForward: boolean = false;
 
   constructor(
@@ -87,6 +87,8 @@ export class AudithoriumComponent implements OnInit {
         this.canMoveForward = false;
         this.index += 1;
         this.actualContent = this.contents[this.index];
+        console.log("Arquivo a ser exibido");
+        console.log(this.actualContent);
         this.timeToMoveForward();
       }
     }

@@ -1,6 +1,6 @@
-<carousel [(activeSlide)]="activeSlideIndex" [noWrap]="true">
-  <slide *ngFor="let content of contents; let index=index">
-    <div  *ngIf="content.type == 'img'">
+<!--<carousel [(activeSlide)]="activeSlideIndex" [noWrap]="true" style="width: 100%; height: 100%;">
+  <slide *ngFor="let content of contents; let index=index" style="width: 100%; height: 100%;">
+    <div  *ngIf="content.type == 'img'" style="width: 100%; height: 100%;">
       <img [src]="content.file.fileLink" alt="image slide" style="display: block; width: 100%;">
     </div>
 
@@ -17,12 +17,55 @@
       <p>{{content.name}}</p>
     </div>
   </slide>
-</carousel>
+</carousel>-->
 
-<p>Tipo: {{type}}</p>
-<p>Qtde: {{contents.length}}</p>
+<!--  <div *ngFor="let content of contents; let index=index" style="width: 100%; height: 100%;">-->
+<div *ngIf="actualContent" style="width: 100%; height: 80%">
+  <div>
+    <h4>Conteúdo {{ index + 1 }} de {{ contents.length }}</h4>
+    <p>{{ actualContent.name }}</p>
+  </div>
+  <div *ngIf="actualContent.type == 'img'">
+    <img
+      [src]="actualContent.file.fileLink"
+      alt="image slide"
+      style="display: block; width: 100% ;"
+    />
+  </div>
 
-<div *ngIf="lecture">
-  Tema: {{lecture.name}}
+  <div *ngIf="contents[index].type == 'youtube'">
+    <app-videojs [vContent]="contents[index]"></app-videojs>
+  </div>
+
+  <div *ngIf="contents[index].type == 'externo'">
+    <app-iframe [vContent]="contents[index]"></app-iframe>
+  </div>
+
+  <div *ngIf="actualContent.type == 'doc'">
+    <embed [src]="actualContent.url" width="100%" height="500px" />
+  </div>
+
+  <div style="display: flex; place-content: space-between">
+    <button
+      [disabled]="index <= 0"
+      class="btn btn-success"
+      (click)="previousContent()"
+      type="button"
+    >
+      Anterior
+    </button>
+    <button
+      [disabled]="index >= contents.length - 1 || !canMoveForward"
+      class="btn btn-success"
+      (click)="nextContent()"
+      type="button"
+    >
+      Próximo
+    </button>
+  </div>
 </div>
 
+<p>Tipo: {{ type }}</p>
+<p>Qtde: {{ contents.length }}</p>
+
+<div *ngIf="lecture">Tema: {{ lecture.name }}</div>

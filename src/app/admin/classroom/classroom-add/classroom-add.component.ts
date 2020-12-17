@@ -1,5 +1,5 @@
 import { DocumentService } from "./../../../services/document.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
 import { Trail } from "src/app/models/trail";
@@ -29,7 +29,7 @@ export class ClassroomAddComponent implements OnInit {
   public classroomId: string;
   public url: string;
   public status: string;
-  public classroom: Classroom;
+  @Input() public classroom: Classroom;
   public identity: string;
   public trails = [];
   public contentIsValid: boolean = false;
@@ -46,7 +46,7 @@ export class ClassroomAddComponent implements OnInit {
     private _documentService: DocumentService,
     private _spinner: NgxSpinnerService
   ) {
-    this.title = "Adicionar Curso";
+    this.title = "Adicionar momento";
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }
@@ -55,31 +55,33 @@ export class ClassroomAddComponent implements OnInit {
     console.log("[OK] Component: classroom-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.classroom = new Classroom(
-      "",
-      "",
-      "",
-      "",
-      new Date(),
-      new Date(),
-      "",
-      null,
-      [],
-      [],
-      new Date(),
-      new Date()
-    );
-    this.classroom.trail = new Trail(
-      "",
-      "",
-      "",
-      "",
-      "",
-      null,
-      [],
-      new Date(),
-      new Date()
-    );
+    if(!this.classroom) {
+      this.classroom = new Classroom(
+        "",
+        "",
+        "",
+        "",
+        new Date(),
+        new Date(),
+        "",
+        null,
+        [],
+        [],
+        new Date(),
+        new Date()
+      );
+      this.classroom.trail = new Trail(
+        "",
+        "",
+        "",
+        "",
+        "",
+        null,
+        [],
+        new Date(),
+        new Date()
+      );
+    }
     this.loadPage();
   }
 
@@ -205,7 +207,7 @@ export class ClassroomAddComponent implements OnInit {
         this.classroom.tags.push(evento.target.value);
         evento.target.value = "";
       }
-      
+
       //Impede do angular enviar o form no enter
       evento.preventDefault();
     }

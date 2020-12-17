@@ -52,22 +52,24 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <fieldset class="form-group">
-                    <label>Curso teórico 1</label>
-                    <select [compareWith]="compareByOptionId" name="theoreticalclassroom1" #tClassroom1="ngModel" [(ngModel)]="theoreticalClassroom1" class="form-control">
+                    <h4>Momento 1</h4>
+                    <app-classroom-add [(classroom)]="momentOne"></app-classroom-add>
+                    <!-- <select [compareWith]="compareByOptionId" name="theoreticalclassroom1" #tClassroom1="ngModel" [(ngModel)]="theoreticalClassroom1" class="form-control">
                         <option [ngValue]="null" [value]="null">-- Selecione --</option>
                         <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
-                    </select>
+                    </select> -->
                 </fieldset>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <fieldset class="form-group">
-                    <label>Curso teórico 2</label>
-                    <select [compareWith]="compareByOptionId" name="theoreticalclassroom2" #tClassroom2="ngModel" [(ngModel)]="theoreticalClassroom2" class="form-control">
+                    <h4>Momento 2</h4>
+                    <app-classroom-add [(classroom)]="momentTwo"></app-classroom-add>
+                    <!-- <select [compareWith]="compareByOptionId" name="theoreticalclassroom2" #tClassroom2="ngModel" [(ngModel)]="theoreticalClassroom2" class="form-control">
                         <option [ngValue]="null" [value]="null">-- Selecione --</option>
                         <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
-                    </select>
+                    </select> -->
                 </fieldset>
             </div>
         </div>

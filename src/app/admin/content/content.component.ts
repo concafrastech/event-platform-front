@@ -3,6 +3,7 @@ import { ContentService } from "../../services/content.service";
 import { DocumentService } from "./../../services/document.service";
 import { Content } from "../../models/content";
 import { NgForm } from "@angular/forms";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-content",
@@ -36,7 +37,8 @@ export class ContentComponent implements OnInit {
 
   constructor(
     private _contentService: ContentService,
-    private _documentService: DocumentService
+    private _documentService: DocumentService,
+    private _spinner: NgxSpinnerService
   ) {
     this.pageTitle = "Gerenciamento de conteúdo";
   }
@@ -79,20 +81,22 @@ export class ContentComponent implements OnInit {
   onSelectFile(event: FileList, content: Content) {
     let files: Set<File> = new Set<File>();
     files.add(event[0]);
-
     content.fileToUpload = event[0];
   }
 
   onRemoveFile(content: Content) {
+    this._spinner.show();
     this._documentService
       .deleteDocument(content.file._id)
       .subscribe((response) => {
+        this._spinner.hide();
         content.file = null;
       });
   }
 
   removeType(event) {
     if (event._id) {
+      this._spinner.show();
       if (event.file) {
         this._documentService
           .deleteDocument(event.file._id)
@@ -100,9 +104,15 @@ export class ContentComponent implements OnInit {
             this._contentService
               .deleteContent(event._id)
               .subscribe((response) => {
+                this._spinner.hide();
                 this.arrayRemove(event);
               });
           });
+      } else {
+        this._contentService.deleteContent(event._id).subscribe((response) => {
+          this._spinner.hide();
+          this.arrayRemove(event);
+        });
       }
     } else {
       this.arrayRemove(event);

@@ -39,6 +39,24 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
+                <label>Adicionar Painel?</label>
+                <button class="btn btn-success" type="button" (click)="addActivity()"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="row"*ngFor="let activity of stage.activities; let i=index; trackBy: trackByFn">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Painel {{i+1}}</label>
+                    <button class="btn btn-danger" type="button" (click)="removeActivity(i)"><i class="fa fa-trash"></i></button>
+                    <select [compareWith]="compareByOptionId" [name]="'painel'+i" #pactivity="ngModel" [(ngModel)]="stage.activities[i]" class="form-control">
+                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
+                        <option *ngFor="let option of activities" [ngValue]="option">{{option.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
                 <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!stageEditForm.form.valid" />
             </div>
         </div>

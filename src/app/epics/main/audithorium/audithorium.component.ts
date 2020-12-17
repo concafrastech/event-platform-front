@@ -25,7 +25,7 @@ export class AudithoriumComponent implements OnInit {
   public actualContent: Content;
 
   public index: number;
-  public secondsToNext: number = 1;
+  public secondsToNext: number = 2;
   public canMoveForward: boolean = false;
 
   constructor(
@@ -37,6 +37,10 @@ export class AudithoriumComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    
+  }
+
+  ngAfterContentInit(): void {
     this.loadContents();
   }
 
@@ -76,6 +80,8 @@ export class AudithoriumComponent implements OnInit {
   handleDisplay(contents: Content[]) {
     this.contents = contents;
     this.actualContent = this.lecture.contents[0];
+    console.log(this.contents);
+    
     this.index = 0;
     this.timeToMoveForward();
   }

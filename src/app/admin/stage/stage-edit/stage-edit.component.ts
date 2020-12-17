@@ -1,19 +1,20 @@
+import { ActivityService } from "src/app/services/activity.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
-import { Epic } from 'src/app/models/epic';
 import { Stage } from "src/app/models/stage";
 import { EpicService } from "src/app/services/epic.service";
 import { StageService } from "src/app/services/stage.service";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Activity } from "src/app/models/activity";
 
 @Component({
   selector: "app-stage-edit",
   templateUrl: "./stage-edit.component.html",
   styleUrls: ["./stage-edit.component.css"],
-  providers: [UserService, StageService, EpicService],
+  providers: [UserService, StageService, EpicService, ActivityService],
 })
 export class StageEditComponent implements OnInit {
   public title: string;
@@ -23,6 +24,7 @@ export class StageEditComponent implements OnInit {
   public stage: Stage;
   public identity: string;
   public epics = [];
+  public activities: Activity[] = [];
 
   constructor(
     private _route: ActivatedRoute,
@@ -30,6 +32,7 @@ export class StageEditComponent implements OnInit {
     private _stageService: StageService,
     private _userService: UserService,
     private _epicService: EpicService,
+    private _activityService: ActivityService,
     private _bsLocaleService: BsLocaleService,
     private _spinner: NgxSpinnerService
   ) {
@@ -42,29 +45,37 @@ export class StageEditComponent implements OnInit {
     console.log("[OK] Component: stage-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.stage = new Stage('', 0, '', '', '', null, [], new Date(), new Date());
-    this.stage.epic = new Epic('', '', '', '', '', '', null, new Date(), new Date());
+    this.stage = new Stage("", 0, "", "", "", null, [], new Date(), new Date());
+    this.stage.epic = null; // new Epic('', '', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }
 
   loadPage() {
-    this._epicService
-      .getEpics()
-      .subscribe(
-        (response) => {
-          if (response) {
-            this.epics = response.epics;
-            this._route.params.subscribe((params) => {
-              this.stageId = params["id"];
-              this.getStage(this.stageId);
-            });
-          }
-        },
-        (error) => {
-          this._spinner.hide();
-          console.log(<any>error);
+    this._activityService.getActivities().subscribe(
+      (response) => {
+        this._spinner.hide();
+        this.activities = response.activities;
+      },
+      (error) => {
+        this._spinner.hide();
+        console.log(<any>error);
+      }
+    );
+    this._epicService.getEpics().subscribe(
+      (response) => {
+        if (response) {
+          this.epics = response.epics;
+          this._route.params.subscribe((params) => {
+            this.stageId = params["id"];
+            this.getStage(this.stageId);
+          });
         }
-      );
+      },
+      (error) => {
+        this._spinner.hide();
+        console.log(<any>error);
+      }
+    );
   }
 
   getStage(id) {
@@ -89,6 +100,18 @@ export class StageEditComponent implements OnInit {
   /* Return true or false if it is the selected */
   compareByOptionId(idFist, idSecond) {
     return idFist && idSecond && idFist._id == idSecond._id;
+  }
+
+  trackByFn(index, item) {
+    return index;
+  }
+
+  addActivity() {
+    this.stage.activities.push(null);
+  }
+
+  removeActivity(index: number) {
+    this.stage.activities.splice(index, 1);
   }
 
   onSubmit() {

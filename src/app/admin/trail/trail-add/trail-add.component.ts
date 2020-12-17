@@ -26,8 +26,8 @@ export class TrailAddComponent implements OnInit {
   public epics = [];
   public theoreticalClassrooms: Classroom[] = [];
   public practicalClassrooms: Classroom[] = [];
-  public theoreticalClassroom1: Classroom = null;
-  public theoreticalClassroom2: Classroom = null;
+  public momentOne: Classroom;
+  public momentTwo: Classroom;
 
   constructor(
     private _route: ActivatedRoute,
@@ -48,6 +48,34 @@ export class TrailAddComponent implements OnInit {
     console.log("[OK] Component: trail-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
+    this.momentOne = new Classroom(
+      "",
+      "",
+      "",
+      "",
+      new Date(),
+      new Date(),
+      "",
+      null,
+      [],
+      [],
+      new Date(),
+      new Date()
+    );
+    this.momentTwo = new Classroom(
+      "",
+      "",
+      "",
+      "",
+      new Date(),
+      new Date(),
+      "",
+      null,
+      [],
+      [],
+      new Date(),
+      new Date()
+    );
     this.trail = new Trail(
       "",
       "",
@@ -136,13 +164,42 @@ export class TrailAddComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.theoreticalClassroom1) {
-      this.trail.classrooms.push(this.theoreticalClassroom1);
+    // Vincula momentos com o tema
+    if (this.momentOne) {
+      this.trail.classrooms.push(this.momentOne);
     }
-    if (this.theoreticalClassroom2) {
-      this.trail.classrooms.push(this.theoreticalClassroom2);
+    if (this.momentTwo) {
+      this.trail.classrooms.push(this.momentTwo);
     }
+
+    // Habilita o spinner
     this._spinner.show();
+
+    // Chama a inserção
+    this.saveClassroom();
+  }
+
+  saveClassroom() {
+    let index = 0;
+    this._classroomService.saveclassrooms(this.trail.classrooms).subscribe({
+      next: (response) => {
+        this.trail.classrooms[index] = response.classroom;
+        index =+ 1;
+      },
+      error: (error) => {
+        this._spinner.hide();
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      },
+      complete: () => this.saveTrail()
+    })
+  }
+
+  // Salva Tema
+  saveTrail() {
     this._trailService.addTrail(this.trail).subscribe(
       (response) => {
         if (!response.trail) {

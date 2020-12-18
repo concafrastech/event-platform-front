@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Content } from 'src/app/models/content';
 
 @Component({
   selector: 'app-iframe',
@@ -8,11 +7,12 @@ import { Content } from 'src/app/models/content';
 })
 export class IframeComponent implements OnInit {
 
-  @Input() public vContent: Content;
+  //@Input() public vContent: Content;
+  @Input() public sourceUrl: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
-
 }

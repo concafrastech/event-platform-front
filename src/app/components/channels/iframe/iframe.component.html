@@ -1,4 +1,6 @@
 <!-- 4:3 aspect ratio -->
 <div class="embed-responsive embed-responsive-4by3">
-    <iframe class="embed-responsive-item" [src]="vContent.url | safe" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen></iframe>
+    <iframe *ngIf="sourceUrl" class="embed-responsive-item" [src]="sourceUrl | safe" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen></iframe>
 </div>
+
+<!--<iframe *ngIf="sourceUrl" style="width: 100%; height: 100%" [src]="sourceUrl | safe" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen></iframe>-->

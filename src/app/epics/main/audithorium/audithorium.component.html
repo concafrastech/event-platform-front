@@ -20,52 +20,54 @@
 </carousel>-->
 
 <!--  <div *ngFor="let content of contents; let index=index" style="width: 100%; height: 100%;">-->
-<div *ngIf="actualContent" style="width: 100%; height: 80%">
+<div *ngIf="actualContent">
   <div>
     <h4>Conteúdo {{ index + 1 }} de {{ contents.length }}</h4>
     <p>{{ actualContent.name }}</p>
   </div>
-  <div *ngIf="actualContent.type == 'img'">
+
+  <div *ngIf="actualContent.type == 'img'" style="height: inherit;">
     <img
       [src]="actualContent.file.fileLink"
       alt="image slide"
-      style="display: block; width: 100% ;"
+      style="display: block; width: 100%; height: 876px;"
     />
   </div>
 
-  <div *ngIf="contents[index].type == 'youtube'">
-    <app-videojs [vContent]="contents[index]"></app-videojs>
+  <div *ngIf="actualContent.type == 'youtube'">
+    <app-videojs [vContent]="actualContent"></app-videojs>
   </div>
 
-  <div *ngIf="contents[index].type == 'externo'">
-    <app-iframe [vContent]="contents[index]"></app-iframe>
+  <div *ngIf="actualContent.type == 'externo'">
+    <app-iframe [sourceUrl]="actualContent.url"></app-iframe>
   </div>
 
   <div *ngIf="actualContent.type == 'doc'">
-    <embed [src]="contents[index].file.fileLink | safe" width="100%" height="400px" />
-  </div>
-
-  <div style="display: flex; place-content: space-between">
-    <button
-      [disabled]="index <= 0"
-      class="btn btn-success"
-      (click)="previousContent()"
-      type="button"
-    >
-      Anterior
-    </button>
-    <button
-      [disabled]="index >= contents.length - 1 || !canMoveForward"
-      class="btn btn-success"
-      (click)="nextContent()"
-      type="button"
-    >
-      Próximo
-    </button>
+    <app-iframe [sourceUrl]="actualContent.file.fileLink"></app-iframe>
   </div>
 </div>
+<div style="display: flex; place-content: space-between">
+  <button
+    [disabled]="index <= 0"
+    class="btn btn-success"
+    (click)="previousContent()"
+    type="button"
+  >
+    Anterior
+  </button>
+  <button
+    [disabled]="index >= contents.length - 1 || !canMoveForward"
+    class="btn btn-success"
+    (click)="nextContent()"
+    type="button"
+  >
+    Próximo
+  </button>
+</div>
 
-<p>Tipo: {{ type }}</p>
-<p>Qtde: {{ contents.length }}</p>
+<div>
+  <p>Tipo: {{ type }}</p>
+  <p>Qtde: {{ contents.length }}</p>
 
-<div *ngIf="lecture">Tema: {{ lecture.name }}</div>
+  <div *ngIf="lecture">Tema: {{ lecture.name }}</div>
+</div>

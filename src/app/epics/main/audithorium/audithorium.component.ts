@@ -80,6 +80,9 @@ export class AudithoriumComponent implements OnInit {
   handleDisplay(contents: Content[]) {
     this.contents = contents;
     this.actualContent = this.lecture.contents[0];
+    if(this.actualContent.type == 'doc'){
+      this.actualContent.url = this.actualContent.file.fileLink
+    }
     console.log(this.contents);
     
     this.index = 0;
@@ -88,8 +91,10 @@ export class AudithoriumComponent implements OnInit {
 
   //Exibe próximo conteúdo
   nextContent() {
+    this.actualContent = null;
     if (this.contents) {
       if (this.index < this.contents.length - 1) {
+        
         this.canMoveForward = false;
         this.index += 1;
         this.actualContent = this.contents[this.index];

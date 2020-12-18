@@ -6,7 +6,7 @@ export class Document {
         public description: string,
         public type: string,
         public size: number,
-        public file_link: string,
+        public fileLink: string,
         public s3_key: string,
         public created_at: Date,
         public updated_at: Date,

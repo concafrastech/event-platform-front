@@ -106,7 +106,7 @@
               required
             />
             <div *ngIf="content.file">
-              <a [href]="content.file.file_link">{{
+              <a [href]="content.file.fileLink">{{
                 content.file.description
               }}</a>
               <button class="btn btn-danger" (click)="onRemoveFile(content)">
@@ -127,7 +127,7 @@
               (change)="onSelectFile($event.target.files, content)"
             />
             <div *ngIf="content.file">
-              <a [href]="content.file.file_link">{{
+              <a [href]="content.file.fileLink">{{
                 content.file.description
               }}</a>
               <button class="btn btn-danger" (click)="onRemoveFile(content)">
@@ -148,7 +148,7 @@
               (change)="onSelectFile($event.target.files, content)"
             />
             <div *ngIf="content.file">
-              <a [href]="content.file.file_link">{{
+              <a [href]="content.file.fileLink">{{
                 content.file.description
               }}</a>
               <button class="btn btn-danger" (click)="onRemoveFile(content)">

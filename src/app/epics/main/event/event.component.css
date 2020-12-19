@@ -621,7 +621,7 @@ Container / Wrapper
     margin-left: 197px;
     margin-right: 264px;
     min-height: 870px !important;
-    width: calc(100% - 197px);
+    width: calc(100% - 461px);
 }
 
 .dashboard-content {

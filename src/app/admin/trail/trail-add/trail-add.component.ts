@@ -9,12 +9,22 @@ import { Classroom } from "./../../../models/classroom";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { ContentService } from "src/app/services/content.service";
+import { DocumentService } from "src/app/services/document.service";
+import { Content } from "src/app/models/content";
 
 @Component({
   selector: "app-trail-add",
   templateUrl: "./trail-add.component.html",
   styleUrls: ["./trail-add.component.css"],
-  providers: [UserService, TrailService, EpicService, ClassroomService],
+  providers: [
+    UserService,
+    TrailService,
+    EpicService,
+    ClassroomService,
+    ContentService,
+    DocumentService,
+  ],
 })
 export class TrailAddComponent implements OnInit {
   public title: string;
@@ -28,6 +38,8 @@ export class TrailAddComponent implements OnInit {
   public practicalClassrooms: Classroom[] = [];
   public momentOne: Classroom;
   public momentTwo: Classroom;
+  public contentOne: Content[];
+  public contentTwo: Content[];
 
   constructor(
     private _route: ActivatedRoute,
@@ -36,6 +48,7 @@ export class TrailAddComponent implements OnInit {
     private _userService: UserService,
     private _epicService: EpicService,
     private _classroomService: ClassroomService,
+    private _contentService: ContentService,
     private _bsLocaleService: BsLocaleService,
     private _spinner: NgxSpinnerService
   ) {
@@ -176,15 +189,47 @@ export class TrailAddComponent implements OnInit {
     this._spinner.show();
 
     // Chama a inserção
-    this.saveClassroom();
+    this.saveContents();
   }
 
+  // Salva nada, mas vai salva documentos
+  saveDocuments() {}
+
+  // Salva Conteúdos
+  saveContents() {
+    let aux = 0;
+    this.trail.classrooms.forEach((classroom) => {
+      let index = 0;
+      aux += 1;
+      this._contentService.saveContents(classroom.contents).subscribe({
+        next: (content) => {
+          classroom.contents[index]._id = content._id;
+          index += 1;
+        },
+        error: (error) => {
+          this._spinner.hide();
+          var errorMessage = <any>error;
+          console.log(errorMessage);
+          if (errorMessage != null) {
+            this.status = "error";
+          }
+        },
+        complete: () => {
+          if (aux == 2) {
+            this.saveClassroom();
+          }
+        },
+      });
+    });
+  }
+
+  // Salva Classroom
   saveClassroom() {
     let index = 0;
     this._classroomService.saveclassrooms(this.trail.classrooms).subscribe({
       next: (response) => {
         this.trail.classrooms[index] = response.classroom;
-        index =+ 1;
+        index = +1;
       },
       error: (error) => {
         this._spinner.hide();
@@ -194,8 +239,8 @@ export class TrailAddComponent implements OnInit {
           this.status = "error";
         }
       },
-      complete: () => this.saveTrail()
-    })
+      complete: () => this.saveTrail(),
+    });
   }
 
   // Salva Tema

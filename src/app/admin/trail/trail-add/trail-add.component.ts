@@ -189,7 +189,7 @@ export class TrailAddComponent implements OnInit {
     this._spinner.show();
 
     // Chama a inserção
-    this.saveContents();
+    this.saveClassroom();
   }
 
   // Salva nada, mas vai salva documentos
@@ -199,27 +199,31 @@ export class TrailAddComponent implements OnInit {
   saveContents() {
     let aux = 0;
     this.trail.classrooms.forEach((classroom) => {
-      let index = 0;
-      aux += 1;
-      this._contentService.saveContents(classroom.contents).subscribe({
-        next: (content) => {
-          classroom.contents[index]._id = content._id;
-          index += 1;
-        },
-        error: (error) => {
-          this._spinner.hide();
-          var errorMessage = <any>error;
-          console.log(errorMessage);
-          if (errorMessage != null) {
-            this.status = "error";
-          }
-        },
-        complete: () => {
-          if (aux == 2) {
-            this.saveClassroom();
-          }
-        },
-      });
+      // Tem algo errado aqui, minha cabeça fritou
+      // Tentei pegar apenas o Contents[] mas se eu separar, ele perde a referência do Classroom
+      console.log(classroom.contents);
+      this._spinner.hide();
+      // let index = 0;
+      // aux += 1;
+      // this._contentService.saveContents(classroom.contents).subscribe({
+      //   next: (content) => {
+      //     classroom.contents[index]._id = content._id;
+      //     index += 1;
+      //   },
+      //   error: (error) => {
+      //     this._spinner.hide();
+      //     var errorMessage = <any>error;
+      //     console.log(errorMessage);
+      //     if (errorMessage != null) {
+      //       this.status = "error";
+      //     }
+      //   },
+      //   complete: () => {
+      //     if (aux == 2) {
+      //       this.saveClassroom();
+      //     }
+      //   },
+      // });
     });
   }
 

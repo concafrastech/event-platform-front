@@ -22,7 +22,7 @@
 <!--  <div *ngFor="let content of contents; let index=index" style="width: 100%; height: 100%;">-->
 <div *ngIf="actualContent">
   <div>
-    <h4>Conteúdo {{ index + 1 }} de {{ contents.length }}</h4>
+    <h4 *ngIf="contents.length > 1">Conteúdo {{ index + 1 }} de {{ contents.length }}</h4>
     <p>{{ actualContent.name }}</p>
   </div>
 
@@ -45,8 +45,13 @@
   <div *ngIf="actualContent.type == 'doc'">
     <app-iframe [sourceUrl]="actualContent.file.fileLink"></app-iframe>
   </div>
+
+  <div *ngIf="actualContent.type == 'zoom'">
+    <app-zoomus [vContent]="actualContent"></app-zoomus>
+  </div>
+
 </div>
-<div style="display: flex; place-content: space-between">
+<div style="display: flex; place-content: space-between" *ngIf="contents.length > 1">
   <button
     [disabled]="index <= 0"
     class="btn btn-success"

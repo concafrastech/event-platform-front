@@ -1,13 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DOCUMENT } from '@angular/common';
-
-import { ZoomMtg } from '@zoomus/websdk';
+import { Component, OnInit, Input } from '@angular/core';
 import { GLOBAL } from 'src/app/services/global';
-
-ZoomMtg.setZoomJSLib('https://source.zoom.us/1.8.1/lib', '/av');
-ZoomMtg.preLoadWasm();
-ZoomMtg.prepareJssdk();
+import { Content } from 'src/app/models/content';
 
 @Component({
   selector: 'app-zoomus',
@@ -16,74 +9,15 @@ ZoomMtg.prepareJssdk();
 })
 export class ZoomusComponent implements OnInit {
 
-  // setup your signature endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
-  signatureEndpoint = GLOBAL.signatureEndpoint
-  apiKey = '-yM1c8utSjmJxN1Okh6YEg'
-  meetingNumber = 75895039904
-  role = 0
-  leaveUrl = GLOBAL.leaveUrl
-  userName = 'Angular'
-  userEmail = ''
-  passWord = 'scy8W3'
+  @Input() public vContent: Content;
+  sourceUrl: string = '';
 
-  update(value: string) { 
-
-    this.userName = value; 
-  }
-
-  constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document) {
+  constructor() {
 
   }
 
   ngOnInit() {
-
+    this.sourceUrl = GLOBAL.zoomUrl + "/" + this.vContent._id
   }
 
-  getSignature() {
-    this.httpClient.post(this.signatureEndpoint, {
-	    meetingNumber: this.meetingNumber,
-	    role: this.role
-    }).toPromise().then((data: any) => {
-      if(data.signature) {
-        console.log(data.signature)
-        this.startMeeting(data.signature)
-      } else {
-        console.log(data)
-      }
-    }).catch((error) => {
-      console.log(error)
-    })
-  }
-
-  startMeeting(signature) {
-
-    document.getElementById('zmmtg-root').style.display = 'block'
-
-    ZoomMtg.init({
-      leaveUrl: this.leaveUrl,
-      isSupportAV: true,
-      success: (success) => {
-        console.log(success)
-
-        ZoomMtg.join({
-          signature: signature,
-          meetingNumber: this.meetingNumber,
-          userName: this.userName,
-          apiKey: this.apiKey,
-          userEmail: this.userEmail,
-          passWord: this.passWord,
-          success: (success) => {
-            console.log(success)
-          },
-          error: (error) => {
-            console.log(error)
-          }
-        })
-
-      },
-      error: (error) => {
-        console.log(error)
-      }
-    })
-  }
 }

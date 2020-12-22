@@ -20,32 +20,34 @@
 </carousel>-->
 
 <!--  <div *ngFor="let content of contents; let index=index" style="width: 100%; height: 100%;">-->
-<div *ngIf="actualContent">
-  <div>
-    <h4>Conteúdo {{ index + 1 }} de {{ contents.length }}</h4>
-    <p>{{ actualContent.name }}</p>
-  </div>
+<div *ngIf="actualContent" style="height: inherit;">
+  
 
   <div *ngIf="actualContent.type == 'img'" style="height: inherit;">
     <img
       [src]="actualContent.file.fileLink"
       alt="image slide"
-      style="display: block; width: 100%; height: 876px;"
+      style="display: block; width: 100%; max-height: 650px;"
     />
   </div>
 
-  <div *ngIf="actualContent.type == 'youtube'">
+  <div *ngIf="actualContent.type == 'youtube'" style="height: inherit;">
     <app-videojs [vContent]="actualContent"></app-videojs>
   </div>
 
-  <div *ngIf="actualContent.type == 'externo'">
+  <div *ngIf="actualContent.type == 'externo'" style="height: inherit;">
     <app-iframe [sourceUrl]="actualContent.url"></app-iframe>
   </div>
 
-  <div *ngIf="actualContent.type == 'doc'">
+  <div *ngIf="actualContent.type == 'doc'" style="height: inherit;">
     <app-iframe [sourceUrl]="actualContent.file.fileLink"></app-iframe>
   </div>
-</div>
+
+  <div>
+    <h4>Conteúdo {{ index + 1 }} de {{ contents.length }}</h4>
+    <p>{{ actualContent.name }}</p>
+  </div>
+
 <div style="display: flex; place-content: space-between">
   <button
     [disabled]="index <= 0"
@@ -64,7 +66,7 @@
     Próximo
   </button>
 </div>
-
+</div>
 <div>
   <p>Tipo: {{ type }}</p>
   <p>Qtde: {{ contents.length }}</p>

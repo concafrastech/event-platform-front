@@ -18,19 +18,19 @@
 
   <div class="row">
     <div class="col-md-4" *ngFor="let epic of epics">
-      <div class="panel panel-warning" style="height: 550px" *ngIf="epic.type == 'infancia'">
+      <div class="panel panel-warning" *ngIf="epic.type == 'infancia'">
         <div>
           <a class="btn btn-primary btn-lg btn-epics" role="button" (click)="gotoInfancia(epic)">Infantil</a>
         </div>
       </div>
 
-      <div class="panel panel-success" style="height: 550px" *ngIf="epic.type == 'jovem'">
+      <div class="panel panel-success" *ngIf="epic.type == 'jovem'">
         <div>
           <a class="btn btn-primary btn-lg btn-epics" role="button" (click)="gotoJovem(epic)">Jovem</a>
         </div>
       </div>
 
-      <div class="panel panel-info" style="height: 550px" *ngIf="epic.type == 'adulto'">
+      <div class="panel panel-info" *ngIf="epic.type == 'adulto'">
         <div>
           <a class="btn btn-primary btn-lg btn-epics" role="button" (click)="gotoPrincipal(epic)">Adulto</a>
         </div>

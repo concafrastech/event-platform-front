@@ -1,36 +1,38 @@
+<div id="bg">
+  <img
+    src="../../../assets/concafras2021/concafronas/acesso/Retangulo_1.png"
+    alt=""
+  />
+</div>
+
 <div class="container">
-    <div class="row">
-        <h1 class="text-center">Selecione a sua Jornada</h1>
-        <br />
-    </div>
-    <div class="row">
-
-        <div class="col-md-4" *ngFor="let epic of epics">
-
-            <div class="panel panel-warning" style="height:550px;" *ngIf="epic.type == 'infancia'">
-                <div class="panel-heading"> Concafrinhas</div>
-                <div class="panel-body">
-                    <img class="center-block img-responsive" alt="cannot load image"  src="//placehold.it/300x420?text=INFÂNCIA">
-                    <a class="btn btn-primary btn-lg" role="button" (click)="gotoInfancia(epic)">Entrar</a>
-                </div>
-            </div>
-
-            <div class="panel panel-success" style="height:550px;" *ngIf="epic.type == 'jovem'">
-                <div class="panel-heading"> Estação Jovem</div>
-                <div class="panel-body">
-                    <img class="center-block img-responsive" alt="cannot load image"  src="//placehold.it/300x420?text=MOCIDADE">
-                    <a class="btn btn-primary btn-lg" role="button" (click)="gotoJovem(epic)">Entrar</a>
-                </div>
-            </div>
-
-            <div class="panel panel-info" style="height:550px;" *ngIf="epic.type == 'adulto'">
-                <div class="panel-heading"> Concafras</div>
-                <div class="panel-body">
-                    <img class="center-block img-responsive" alt="cannot load image"  src="//placehold.it/300x420?text=ADULTO">
-                    <a class="btn btn-primary btn-lg" role="button" (click)="gotoPrincipal(epic)">Entrar</a>
-                </div>
-            </div>
-
+  <div class="row row-logotipo">
+    <div class="Logotipo-horizontal"></div>
+  </div>
+  <div class="row" style="text-align: center">
+    <h4 class="text-welcome">
+      Bem vindo a CONCAFRAS 2021! Acesse abaixo a sua plataforma:
+    </h4>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let epic of epics">
+      <div class="panel panel-warning" style="height: 550px" *ngIf="epic.type == 'infancia'">
+        <div>
+          <a class="btn btn-primary btn-lg btn-epics" role="button" (click)="gotoInfancia(epic)">Infantil</a>
         </div>
+      </div>
+
+      <div class="panel panel-success" style="height: 550px" *ngIf="epic.type == 'jovem'">
+        <div>
+          <a class="btn btn-primary btn-lg btn-epics" role="button" (click)="gotoJovem(epic)">Jovem</a>
+        </div>
+      </div>
+
+      <div class="panel panel-info" style="height: 550px" *ngIf="epic.type == 'adulto'">
+        <div>
+          <a class="btn btn-primary btn-lg btn-epics" role="button" (click)="gotoPrincipal(epic)">Adulto</a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

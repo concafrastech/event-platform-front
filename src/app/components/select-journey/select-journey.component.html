@@ -17,7 +17,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4" *ngFor="let epic of epics">
+    <div class="col-md-4 col-sm-12" *ngFor="let epic of epics">
       <div class="panel panel-warning" *ngIf="epic.type == 'infancia'">
         <div>
           <a class="btn btn-primary btn-lg btn-epics" role="button" (click)="gotoInfancia(epic)">Infantil</a>

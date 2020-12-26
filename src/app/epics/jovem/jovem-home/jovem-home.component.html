@@ -1,15 +1,46 @@
 <router-outlet></router-outlet>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/balloon-css/balloon.min.css">
+<!-- balloon explicado em https://kazzkiq.github.io/balloon.css/ -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
 
-<div class="py-5 text-center text-white h-100 align-items-center d-flex capa" >
-	<div class="container py-5">
-		<div class="row">
-			<a  routerLink="ilha1"><img class="img-fluid d-block ilha1 animacao shake-horizontal2" src="/assets/jovem/img/ilha4.png"></a>
-			<div class=""><img class="img-fluid d-block ilha2 animacao shake-horizontal1" src="/assets/jovem/img/ilha2.png"></div>
-			<div class=""><img class="img-fluid d-block ilha3 animacao shake-horizontal3" src="/assets/jovem/img/ilha3.png"></div>
-			<div class=""> <img class="img-fluid d-block ilha4 animacao shake-horizontal4" src="/assets/jovem/img/ilha1.png"></div>
-			<div class=""><img class="img-fluid d-block ilha5 animacao shake-horizontal5" src="/assets/jovem/img/ilha5.png "></div>
+<div class="capa"> <!-- background image -->
+	<div class="row">
+		<p class="titulo-capa1">Bem-vindos à</p>
+		<p class="column titulo-capa2">CONCAFRAS 2021</p>
+		<p class="titulo-capa3">Clique nas ilhas para iniciar sua aventura.</p>
+	</div>
+
+	<div class="row">
+		<div class="column abaixo ilha">
+			<a  routerLink="ilha/1" button aria-label="Instituto Almas Irmãs" class="balloon-config" data-balloon-pos="up" data-balloon-blunt data-balloon-length="medium"><img class="animacao shake-horizontal1" src="/assets/jovem/img/ilha1.png" width="200"></a>
+			<p class="titulo-ilha visivel">Instituto Almas Irmãs</p>
+		</div>
+		<div class="column centro ilha">
+			<a  routerLink="ilha/2" button aria-label="Casa do Caminho" class="balloon-config" data-balloon-pos="up" data-balloon-blunt data-balloon-length="medium"><img class="animacao shake-horizontal2" src="/assets/jovem/img/ilha2.png" width="200"></a>
+			<p class="titulo-ilha visivel">Casa do Caminho</p>
+		</div>
+		<div class="column abaixo ilha">
+			<a  routerLink="ilha/3" button aria-label="Casa do Escritor" class="balloon-config" data-balloon-pos="up" data-balloon-blunt data-balloon-length="medium"><img class="animacao shake-horizontal3" src="/assets/jovem/img/ilha3.png" width="200"></a>
+			<p class="titulo-ilha visivel">Casa do Escritor</p>
 		</div>
 	</div>
+	<div class="row">
+		<div class="column acima ilha">
+			<a  routerLink="ilha/4" button aria-label="Catedral do Som" class="balloon-config" data-balloon-pos="up" data-balloon-blunt data-balloon-length="medium"><img class="animacao shake-horizontal5" src="/assets/jovem/img/ilha4.png" width="200"></a>
+			<p class="titulo-ilha visivel">Catedral do Som</p>
+		</div>
+		<div class="column acima ilha">
+			<a  routerLink="ilha/5" button aria-label="Estação Jovem" class="balloon-config" data-balloon-pos="up" data-balloon-blunt data-balloon-length="medium"><img class="animacao shake-horizontal4" src="/assets/jovem/img/ilha5.png" width="200"></a>
+			<p class="titulo-ilha visivel">Estação Jovem</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="column centro ilha">
+			<a  routerLink="adulto"><div class="animacao botao-adulto">ADULTO</div></a>
+		</div>
+	</div>
+
 </div>

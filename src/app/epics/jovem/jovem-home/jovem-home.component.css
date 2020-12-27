@@ -1,5 +1,49 @@
-::root {
+:root {
    font-family: 'Poppins', sans-serif;
+}
+
+.circle-header {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   flex-wrap: wrap;
+   width: 425px;
+/*   min-width: 320px;
+   max-width: 425px; */
+   padding: 0;
+   margin: 0;
+   background-color: transparent;
+   font-family: 'Poppins', sans-serif;
+   z-index: 2;
+   transform: translateY(-300px);
+}
+
+.circle-header-radius {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   width: 425px;
+/*   width: 100%;
+   min-width: 320px;
+   max-width: 425px; */
+   height: 250px;
+   padding: 0px;
+   margin: 0;
+   font-family: 'Poppins', sans-serif;
+   z-index: 1;
+}
+
+svg {
+   position: sticky;
+   width:100%;
+   min-width: 425px;
+   margin: 0;
+}
+ 
+#arc-path {
+   padding: 0;
+   margin: 0;
+   /*fill: white;*/
 }
 
 .row {
@@ -7,7 +51,7 @@
    justify-content: center;
    flex-wrap: wrap;
    width: 100%;
-   min-width: 320px;
+   min-width: 425px;
    padding: 0px;
    margin: 0px;
  }
@@ -66,6 +110,7 @@
    margin: 0px;
    padding: 0px;
    width: 100%;
+   min-width: 425px;
 }
 
 .titulo-capa1 {
@@ -73,24 +118,24 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 12px;
-   padding: 1px;
-   margin: 0px;
-   color: white;
+   font-size: 20px;
+   font-weight: bolder;
+   padding: 0px;
+   margin: 10px 0 0 0;
+   color: #263887;
 }
 
 .titulo-capa2{
-   width: 180px;
+   width: 200px;
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 16px;
+   font-size: 20px;
+   font-weight: bolder;
    padding: 3px;
-   margin: 1px;
-   border-radius: 20px;
-   background-color: #263887;
+   margin: 10px;
+   background-color: rgb(30, 166, 236);
    color: white;
-   Opacity: .6;
 }
 
 .titulo-capa3{
@@ -98,10 +143,10 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 12px;
-   padding: 1px 1px 50px 1px;
+   font-size: 10px;
+   padding: 0px;
    margin: 0px;
-   color: white;
+   color: #263887;
 }
 
 .botao-adulto {
@@ -111,7 +156,7 @@
    align-items: center;
    font-size: 16px;
    padding: 3px;
-   margin: 1px;
+   margin: 1px 1px 50px 1px;
    border-radius: 20px;
    background-color: #263887;
    color: white;
@@ -167,33 +212,8 @@
       /* overflow: hidden; */
       padding: 0px;
       margin: 0px;
+      min-width: 213px;
     }
-}
-
-@media (max-width: 425px) {
-   .column {
-      padding: 0px;
-      margin: 0px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      border: 0px dashed gray;  /* só para teste - visualizar as div das imagens */
-      /* overflow: hidden; */
-   }
-   .ilha {
-      height: 100px;
-   }
-   .abaixo {
-      justify-content: flex-end;
-      transform: translateY(0px);
-   }
-   .centro {
-      justify-content: flex-end;
-   }
-   .acima {
-      justify-content: flex-end;
-      transform: translateY(0px);
-   }
 }
 
 /*Configuração da animação das ilhas*/

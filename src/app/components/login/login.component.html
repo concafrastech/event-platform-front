@@ -7,24 +7,26 @@
 <div class="retangulo-2">
     <div class="col-lg-12">
         <span class="text-login">Faça seu login:</span>
-        <div class="alert alert-success" *ngIf="status == 'success'">
+        <!-- <div class="alert alert-success" *ngIf="status == 'success'">
             Login com sucesso!
-        </div>
+        </div> -->
         <div class="alert alert-danger" *ngIf="status == 'error'">
             Usuário ou senha inválidos.
         </div>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
-            <p>
-                <label>Login</label>
-                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12 form-login">
+            <div class="row login-row">
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" placeholder="Digite o email cadastrado" required />
                 <span *ngIf="!email.valid && email.touched" >Email não é válido!</span>
-            </p>
-            <p>
-                <label>Senha</label>
-                <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required />
+            </div>
+            <div class="row login-row">
+                <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Senha" required />
                 <span *ngIf="!password.valid && password.touched" >Senha é obrigatória!</span>
-            </p>
-            <input type="submit" value="Login" class="btn btn-success" [disabled]="!loginForm.form.valid">
+            </div>
+            <div class="row login-row send-row">
+                <a href="" class="send-login text-link-login"><small>Esqueceu a senha?</small></a>
+                <input type="submit" value="Entrar" class="btn btn-primary btn-login send-login" [disabled]="!loginForm.form.valid">
+                <a href="" class="send-login text-link-login"><small>Precisa de ajuda?</small></a>
+            </div>
         </form>
     </div>
 </div>

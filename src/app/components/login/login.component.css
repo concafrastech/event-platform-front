@@ -24,9 +24,7 @@
   width: 600px;
   height: 320px;
   position: relative;
-  background: transparent
-    url("../../../assets/concafras2021/concafronas/login/Retangulo_2.png") 0% 0%
-    no-repeat padding-box;
+  background-image: linear-gradient(#fbfbfb,#dcdcdc);
   box-shadow: 0px 10px 15px #00000021;
   padding: 30px 85px;
   text-align: center;

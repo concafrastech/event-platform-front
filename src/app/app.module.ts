@@ -79,6 +79,7 @@ import { DocumentEditComponent } from './admin/document/document-edit/document-e
 import { DocumentListComponent } from './admin/document/document-list/document-list.component';
 import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
 import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
+import { Ilha1Component } from './epics/jovem/pages/ilha1/ilha1.component';
 import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
 import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
 import { ContentTimeDirective } from './directives/form-validators/content-time.directive';
@@ -179,6 +180,7 @@ const GamificationConfig = {
     DeleteConfirmComponent,
     JovemHomeComponent,
     JovemDashboardComponent,
+    Ilha1Component,
     InfanciaHomeComponent,
     InfanciaDashboardComponent,
     ContentTimeDirective,

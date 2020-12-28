@@ -1,195 +1,206 @@
-/*Font*/
-@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
-
-/*Menu coloridão*/
-main{
-   max-width: 1080px;
-   margin: 0 auto;
-   font-size: 16px;
-}
-.menumarelin{
-   position: absolute;
-   right: 6%;
-   top: -23%;
-
-}
-/*colorização*/
-.color-change-4x {
-   -webkit-animation: color-change-4x 6s linear infinite alternate both;
-   animation: color-change-4x 6s linear infinite alternate both;
+::root {
+   font-family: 'Poppins', sans-serif;
 }
 
-@-webkit-keyframes color-change-4x {
-   0% {
-      background: #0062cc;
-   }
-   33.3333% {
-      background: #b22cff;
-   }
-   66.666% {
-      background: #ea2222;
-   }
-   100% {
-      background: #f5be10;
-   }
-}
-@keyframes color-change-4x {
-   0% {
-      background: #0062cc;
-   }
-   33.3333% {
-      background: #b22cff;
-   }
-   66.666% {
-      background: #ea2222;
-   }
-   100% {
-      background: #f5be10;
-   }
-}
-
-/*final de colorização*/
-.menu{
-   position: absolute;
-   margin: 15em auto 0 auto;
-   /*    background-color: #ddb91f;*/  
-
-   width: 70px;
-   border-radius: 25px;
-   transition: 0.3s border-radius ease-in-out, 0.3s height ease-in-out;
+.row {
    display: flex;
-   flex-direction: column;
-   align-items: center;
    justify-content: center;
-   overflow: hidden;
-   z-index: 10;
-}
-.icone i{
-   font-size: 2rem !important;
-   color: antiquewhite;
-
-}
-.menu--closed{
-   height: 70px;
-}
-
-.menu--open{
-   height: 400px;
-}
-
-.button{
-   transition: 0.3s transform ease-in-out, 0.3s opacity ease-in-out;;
-   cursor: pointer;
-   position: absolute;
-   display: flex;
    flex-wrap: wrap;
-   align-items: center;
-   width: 2em;
-   height: 2em;
-   left: 27%;
-   top: 20px;
-   opacity: 1;
-}
-
-.button:hover {
-   opacity: 0.6;
-}
-
-.button span{
    width: 100%;
-   height: 4px;
-   background-color: antiquewhite;
-   border-radius: 20%;
-}
-
-.menu--open .button{
-   transform-origin: center;
-   transform: rotate(90deg);
-}
-
-.tools{
+   min-width: 320px;
+   padding: 0px;
+   margin: 0px;
+ }
+ 
+.column {
    display: flex;
-   flex-wrap: wrap;
    flex-direction: column;
    align-items: center;
-   height: 60%;
-   justify-content: space-between;
-   transition: 0.3s margin ease-in-out;
+   justify-content: flex-end;
+   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
+   /* overflow: hidden; */
+   padding: 0px;
+   margin: 0px;
+ }
+
+.abaixo {
+   transform: translateY(40px);
 }
 
-
-.tools .icon{
-   transition: 0.2s transform ease-in-out;
+.centro {
+   justify-content: center;
 }
 
-.tools .icon:hover{
-   transform: scale(0.8);
+.acima {
+   transform: translateY(-40px);
 }
 
-.tools--hidden{
-   margin-top: 400px;
-   z-index: -100;
+.ilha {
+   height: 150px;
 }
 
-.tools--visible{
-   margin-top: 40%;
-   z-index: 100;
+.titulo-ilha{
+   color: black;
+   font-size: 10px;
+   font-weight: 700;
+   font-family: 'Poppins', sans-serif;
+   padding: 5px;
+   margin: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex: 60%;
+   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
+   height:20px;
 }
 
-
-/*Final Menu*/
-
-.capa{
-   background-image: url(/assets/jovem/img/fund.jpg);
-   background-position: center center, center center;  
-   background-size: cover, cover;  
-   background-repeat: repeat, repeat; 
-   height: 100vh !important;
+.visivel {
+   opacity: 0; /* só para teste - visualizar as div das imagens */
 }
 
-.ilha1{
-   position: absolute;
-   width: 29%;
-   left: 0%;
-   top: 15%;
+.capa {
+   background-image: url('/assets/jovem/img/fund.jpg'); /* usar @media para carregar fundo diferente para celular */
+   background-position: center center; 
+   background-size: cover;
+   background-clip: padding-box;
+   margin: 0px;
+   padding: 0px;
+   width: 100%;
 }
 
-
-.ilha2{
-   right: 3%;
-   position: absolute;
-   width: 30%;
-   top: 26%;
+.titulo-capa1 {
+   flex: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 12px;
+   padding: 1px;
+   margin: 0px;
+   color: white;
 }
 
-.ilha3{
-   position: absolute;
-   width: 25%;
-   left: 39%;
-   top: 20%;
-
+.titulo-capa2{
+   width: 180px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 16px;
+   padding: 3px;
+   margin: 1px;
+   border-radius: 20px;
+   background-color: #263887;
+   color: white;
+   Opacity: .6;
 }
 
-.ilha4{
-   position: absolute;
-   width: 38%;
-   left: 10%;
-   top: 50%;
+.titulo-capa3{
+   flex: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 12px;
+   padding: 1px 1px 50px 1px;
+   margin: 0px;
+   color: white;
 }
 
-.ilha5{
-   position: absolute;
-   width: 35%;
-   right: 13%;
-   top: 48%;
+.botao-adulto {
+   width: 100px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 16px;
+   padding: 3px;
+   margin: 1px;
+   border-radius: 20px;
+   background-color: #263887;
+   color: white;
+   Opacity: .9;
+   cursor: pointer;
+}
 
+/*Configuração dos balloons*/
+
+.balloon-config {
+   --balloon-border-radius: 5px;
+   --balloon-color: #ffffff;
+   --balloon-text-color: #263887;
+   --balloon-font-size: 12px;
+   --balloon-move: 4px;
+   --ballon-pos: "up";
+}
+ 
+@media (max-width: 899px) {
+   img {
+      max-width: 100%;
+      max-height: 100%;
+   }
+   .ilha {
+      height: 150px;
+   }
+   .abaixo {
+      justify-content: flex-end;
+      transform: translateY(0px);
+   }
+   .centro {
+      justify-content: flex-end;
+   }
+   .acima {
+      justify-content: flex-end;
+      transform: translateY(0px);
+   }
+   .visivel {
+      opacity: 1;
+   }
+   .balloon-config {
+      --balloon-border-radius: 5px;
+      --balloon-color: transparent;
+      --balloon-text-color: transparent;
+      --balloon-font-size: 12px;
+      --balloon-move: 4px;
+   }
+   .column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
+      /* overflow: hidden; */
+      padding: 0px;
+      margin: 0px;
+    }
+}
+
+@media (max-width: 425px) {
+   .column {
+      padding: 0px;
+      margin: 0px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: 0px dashed gray;  /* só para teste - visualizar as div das imagens */
+      /* overflow: hidden; */
+   }
+   .ilha {
+      height: 100px;
+   }
+   .abaixo {
+      justify-content: flex-end;
+      transform: translateY(0px);
+   }
+   .centro {
+      justify-content: flex-end;
+   }
+   .acima {
+      justify-content: flex-end;
+      transform: translateY(0px);
+   }
 }
 
 /*Configuração da animação das ilhas*/
 
 .animacao:hover {
-   -webkit-filter: drop-shadow(0px 0px 25px #FFF82E);
-   filter: drop-shadow(0px 0px 25px #FFF82E);
+   -webkit-filter: drop-shadow(0px 0px 25px #ffffff);
+   filter: drop-shadow(0px 0px 25px #ffffff);
 }
 
 .shake-horizontal1 {

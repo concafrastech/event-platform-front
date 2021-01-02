@@ -41,6 +41,7 @@ import { DocumentEditComponent } from './admin/document/document-edit/document-e
 import { DocumentListComponent } from './admin/document/document-list/document-list.component';
 import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
 import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
+import { Ilha1Component } from './epics/jovem/pages/ilha1/ilha1.component';
 import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
 import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
 import { StageEditComponent } from './admin/stage/stage-edit/stage-edit.component';
@@ -124,7 +125,8 @@ const appRoutes: Routes = [
         canActivate:[UserGuard],
         children: [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
-            {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]}
+            {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]},
+            {path: 'pages/ilha1', component: Ilha1Component, canActivate:[UserGuard]},
         ],
     },
     {

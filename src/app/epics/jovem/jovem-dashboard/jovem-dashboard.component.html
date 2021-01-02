@@ -1,52 +1,65 @@
 <!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
+
+<nav class="navbar navbar-light bg-light shadow">
 	<div class="mx-auto" style="width: 200px;">
-			<a class="navbar-brand CONCAFRASVIRTUAL2021" href="#">
-				<img src="/assets/jovem/img/logoauta.svg" class="d-inline-block align-top" alt="">
-				<span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
-			</a>
-		</div>
+   <a class="navbar-brand CONCAFRASVIRTUAL2021" href="#">
+    <img src="/assets/jovem/img/logoauta.svg" class="" alt="">
+    <span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
+  </a>
+</div>
 
-		<button class="navbar-toggler d-block" type="button" id="navToggle">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="navbar-collapse offcanvas-collapse open">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="https://www.youtube.com/c/decomtvs">Dashboard <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="https://www.youtube.com/c/decomtvs">Notifications</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="https://www.youtube.com/c/decomtvs">Profile</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="https://www.youtube.com/c/decomtvs" target="_blank">Developer</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-					<div class="dropdown-menu" aria-labelledby="dropdown01">
-						<a class="dropdown-item" href="https://www.youtube.com/c/decomtvs">Action</a>
-						<a class="dropdown-item" href="https://www.youtube.com/c/decomtvs">Another action</a>
-						<a class="dropdown-item" href="https://www.youtube.com/c/decomtvs">Something else here</a>
-					</div>
-				</li>
-			</ul>
+<button class="navbar-toggler d-block" type="button" id="sidebarCollapse">
+ <span class="navbar-toggler-icon"></span>
+</button>
 
 
-		</div>
 </nav>
-<div class="menu">
 
+<div class="wrapper ">
+
+  <!-- Sidebar Holder -->
+  <nav class="text_sid" id="sidebar">
+    <div class="sidebar-header " >
+      <p>Seja Bem vindo</p>
+    </div>
+
+    <ul class="list-unstyled components">
+      <p>Dummy Heading</p>
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li><a href="#">Home 1</a></li>
+          <li><a href="#">Home 2</a></li>
+          <li><a href="#">Home 3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">About</a>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Portfolio</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+      <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to the article</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content Holder -->
+  <div id="content">
+      <div class="moon"></div> <!--moon-->
+
+   <router-outlet></router-outlet>
+
+ </div>
 </div>
-<div class="event-area">
-	<router-outlet></router-outlet>
-</div>
-<div class="event-info">
-</div>
-
-
-
-

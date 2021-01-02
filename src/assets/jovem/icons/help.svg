@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Camada_x0020_1" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:#0a7cb7}.cls-1{fill-rule:evenodd}
+        </style>
+    </defs>
+    <path id="Caminho_53" d="M15 0A15 15 0 1 1 0 15 15 15 0 0 1 15 0zm9.006 5.991A12.747 12.747 0 1 0 27.738 15a12.723 12.723 0 0 0-3.729-9.012z" class="cls-1"/>
+    <path id="Caminho_54" d="M21.033 14.06a6.97 6.97 0 1 1-6.973 6.973 6.967 6.967 0 0 1 6.973-6.973zm3.33 3.638a4.722 4.722 0 1 0 1.376 3.335 4.7 4.7 0 0 0-1.376-3.333z" class="cls-1" transform="translate(-6.03 -6.03)"/>
+    <path id="Caminho_55" d="M8.739 7.4l6.037 6.031-1.6 1.6L7.14 9z" class="cls-2" transform="translate(-3.062 -3.174)"/>
+    <path id="Caminho_56" d="M7.14 38.307l6.037-6.037 1.6 1.6-6.038 6.036z" class="cls-2" transform="translate(-3.062 -13.841)"/>
+    <path id="Caminho_57" d="M33.619 32.27l6.037 6.037-1.6 1.6-6.036-6.038z" class="cls-2" transform="translate(-13.733 -13.841)"/>
+    <path id="Caminho_58" d="M32.02 13.431L38.057 7.4l1.6 1.6-6.037 6.037z" class="cls-2" transform="translate(-13.733 -3.174)"/>
+</svg>

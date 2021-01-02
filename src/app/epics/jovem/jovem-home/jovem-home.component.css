@@ -1,5 +1,4 @@
 .day-background {
-   background-image: url('/assets/jovem/img/day-background.jpg'); /* usar @media para carregar fundo diferente para celular */
    background-position: center center; 
    background-size: cover;
    background-clip: padding-box;
@@ -12,7 +11,6 @@
 }
 
 .night-background {
-   background-image: url('/assets/jovem/img/night-background.jpg'); /* usar @media para carregar fundo diferente para celular */
    background-position: center center; 
    background-size: cover;
    background-clip: padding-box;

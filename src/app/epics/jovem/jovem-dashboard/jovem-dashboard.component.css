@@ -1,69 +1,18 @@
-/*
+/* DEMO STYLE*/
 
-.header-bar {
-    width: 100%;
-    height: 5px;
-    background-image: linear-gradient(to right, #4c5fa0, #31a0da, #4c5fa0);
-    margin-bottom: 5px;
-}
-
-
-
-
-
-
-*/
-.menu {
-    object-fit: contain;
-    width: 100px;
-    position: absolute;
-    top: 45px;
-    left: 0;
-    margin: 6px;
-    margin-left: 9px;
-    border-radius: 4px;
-    overflow: hidden;
-    z-index: 2;
-}
-
-.event-area {
-    height: calc(100vh - 45px);
-    min-height: 250px;
-    flex: 1;
-}
-
-.event-info {
-    object-fit: contain;
-    width: 205px;
-    position: absolute;
-    top: 45px;
-    left: calc(100% - 231px);
-    margin: 6px;
-    border-radius: 4px;
-    overflow: hidden;
-    z-index: 2;
-}
-header {
-    width: 100%;
-    height: 45px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    background-color: rgb(251,251,251);
-    box-shadow: 0px 6px 8px #888888;
-}
-@media (max-width: 900px), (max-height: 426px) {
-    .menu {
-        display: none;
-    }
-
-    .event-info {
-        display: none;
-    }
+.moon {
+  width: 35%;
+  height: 68%;
+  padding: 0px;
+  margin: -16%;
+  background-image: radial-gradient(circle, white, rgb(192, 243, 255));
+  border-radius: 50%;
+  box-shadow: 6px 6px 16px rgb(84, 180, 237);
 }
 .navbar-brand img {
-  width: 15%;
+  width: 24%;
+  padding-right: 5px;
+  white-space: nowrap;
 
 }
 
@@ -82,75 +31,163 @@ header {
   font-style: italic;
   color: #1EA6EC;
 }
-/*Sidebar*/
-.offcanvas-collapse {
-    position: fixed;
-    top: 56px;
-    bottom: 0;
-    right: 100%;
-    left: -300px;
-    width: 300px;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    overflow-y: auto;
-    visibility: hidden;
-    background-color: /*#343a40*//*#f8f9fa*/#155592;
-    transition-timing-function: ease-in-out;
-    transition-duration: .3s;
-    transition-property: left, visibility;
-}
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-.offcanvas-collapse {
-    align-items: start;
-    -moz-background-clip: padding;
-    -webkit-background-clip: padding;
-    background-clip: padding-box;
-    border-right: 5px solid rgba(0, 0, 0, 0.2);
 
-}
 
-.offcanvas-collapse.open {
-    left: 0;
-    visibility: visible;
-}
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+    ----------------------------------------------------- */
 
-.navbar-expand-lg .navbar-nav {
-    -ms-flex-direction: column;
-    flex-direction: column;
-}
+    .wrapper {
+      background-image: url("/assets/jovem/img/day-background.jpg") !important;
 
-.nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-}
-.nav-scroller .nav {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    color: rgba(255, 255, 255, .75);
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
+      display: flex;
+      align-items: stretch;
+    }
 
-.nav-underline .nav-link {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    font-size: .875rem;
-    color: #6c757d;
-}
+    #sidebar {
+      min-width: 86px;
+      max-width: 250px;
+      margin: 1%;
+      background: #273b87;
+      border-radius: 10px;
+      box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+      color: #fff;
+      transition: all 0.3s;
+      z-index: 10;
+    }
 
-.nav-underline .nav-link:hover {
-    color: #007bff;
-}
+    #sidebar a,
+    #sidebar a:hover,
+    #sidebar a:focus {
+      color: inherit;
+    }
 
-.nav-underline .active {
-    font-weight: 500;
-    color: #343a40;
-}
+    #sidebar.active {
+      margin-left: -180px;
+    }
+
+    #sidebar .sidebar-header {
+      padding: 20px;
+      background: #273b87;
+      border-radius: 10px;
+
+    }
+
+    #sidebar ul.components {
+      padding: 20px 0;
+      border-bottom: 1px solid #47748b;
+    }
+
+    #sidebar ul p {
+      color: #fff;
+      padding: 10px;
+    }
+
+    #sidebar ul li a {
+      padding: 10px;
+      font-size: 1.1em;
+      display: block;
+    }
+
+    #sidebar ul li a:hover {
+      color: #7386D5;
+      background: #fff;
+    }
+
+    #sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+      color: #fff;
+      background: #6d7fcc;
+    }
+
+    a[data-toggle="collapse"] {
+      position: relative;
+    }
+
+    a[aria-expanded="false"]::before,
+    a[aria-expanded="true"]::before {
+      content: '\e259';
+      display: block;
+      position: absolute;
+      right: 20px;
+      font-family: 'Glyphicons Halflings';
+      font-size: 0.6em;
+    }
+
+    a[aria-expanded="true"]::before {
+      content: '\e260';
+    }
+
+    ul ul a {
+      font-size: 0.9em !important;
+      padding-left: 30px !important;
+      background: #6d7fcc;
+    }
+
+    ul.CTAs {
+      padding: 20px;
+    }
+
+    ul.CTAs a {
+      text-align: center;
+      font-size: 0.9em !important;
+      display: block;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+
+    a.download {
+      background: #fff;
+      color: #7386D5;
+    }
+
+    a.article,
+    a.article:hover {
+      background: #6d7fcc !important;
+      color: #fff !important;
+    }
+
+    .text_sid p{
+      object-fit: contain;
+      font-family: Poppins;
+      font-size: 1rem;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.54;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fbfbfb;
+    }
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+    ----------------------------------------------------- */
+
+    #content {
+      min-height: 100vh;
+      transition: all 0.3s;
+    }
+
+    #content p a {
+      color:
+    }
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+    ----------------------------------------------------- */
+
+    @media (max-width: 768px) {
+      #sidebar {
+        margin-left: -250px;
+      }
+      #sidebar.active {
+        margin-left: 0;
+      }
+      #sidebarCollapse span {
+        display: none;
+      }
+    }

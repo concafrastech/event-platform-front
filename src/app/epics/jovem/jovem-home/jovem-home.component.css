@@ -1,5 +1,5 @@
-.sky-background {
-   background-image: url('/assets/jovem/img/fund.jpg'); /* usar @media para carregar fundo diferente para celular */
+.day-background {
+   background-image: url('/assets/jovem/img/day-background.jpg'); /* usar @media para carregar fundo diferente para celular */
    background-position: center center; 
    background-size: cover;
    background-clip: padding-box;
@@ -7,8 +7,32 @@
    padding: 0px;
    width: 100%;
    min-width: 320px;
-   min-height: 100vh;
+   min-height: 100%;
    overflow: hidden;
+}
+
+.night-background {
+   background-image: url('/assets/jovem/img/night-background.jpg'); /* usar @media para carregar fundo diferente para celular */
+   background-position: center center; 
+   background-size: cover;
+   background-clip: padding-box;
+   margin: 0px;
+   padding: 0px;
+   width: 100%;
+   min-width: 320px;
+   min-height: 100%;
+   overflow: hidden;
+}
+
+.visible-area {
+   width:100%;
+   height:100%;
+   padding-left: 109px;
+   padding-right: 225px;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   margin: 0px;
+   border: 0px dashed yellow;   /* só para teste - visualizar as div das imagens */
 }
 
 .moon {
@@ -16,8 +40,19 @@
    height: 500px;
    padding: 0px;
    margin: -250px;
-   background-image: radial-gradient(circle, gray, lightgray, white);
+   background-image: radial-gradient(circle, white, rgb(192, 243, 255));
    border-radius: 50%;
+   box-shadow: 6px 6px 16px rgb(84, 180, 237);
+ }
+
+ .sun {
+   width: 500px;
+   height: 500px;
+   padding: 0px;
+   margin: -250px;
+   background-image: radial-gradient(circle, rgb(255, 255, 255), rgb(255, 255, 100));
+   border-radius: 50%;
+   box-shadow: 6px 6px 40px rgb(255, 255, 100);
  }
 
 .header-container {
@@ -34,7 +69,7 @@
    font-weight: bolder;
    color: #263887;
    padding: 0px;
-   margin-top: 0px;
+   margin-top: 15px;
    margin-left: 10px;
    margin-right: 10px;
    margin-bottom: 0px;
@@ -85,16 +120,17 @@
    min-width: 320px;
    padding: 0px;
    margin: 0px;
+   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
  }
  
  .ilha-container {
    display: flex;
-   flex-direction: column; /*mudando para row coloca ao lado ao invés de embaixo*/
+   flex-direction: column-reverse; /*mudando para row coloca ao lado ao invés de embaixo*/
    align-items: center; /*quando muda para column, incluir esta linha*/
-   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
    /* overflow: hidden; */
    padding: 0px;
    margin: 0px;
+   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
 }
 
 .abaixo {
@@ -112,70 +148,86 @@
 .ilha-imagem {
    object-fit: contain;
    width: 310px;
-   height: 233px;
+   height: 170px; /*era 233px*/
    padding-left: 10px;
    padding-right: 10px;
    z-index: 1;
+   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
 }
 
 .ilha-titulo {
    padding: 0px;
+   padding-left: 2px;
+   padding-right: 2px;
    margin: 0px;
-   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
    width: 110px;
    height: auto;
    font-family: 'Poppins', sans-serif;
    font-size: 10px;
-   font-weight: 700;
-   color: black;
+   color: white;
+   background-color: rgba(83, 93, 138, 0.4);
+   border-radius: 50vh;
    text-align: center;
    line-height: 18px;
    z-index: 2;
+   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
 }
 
 .visivel {
    opacity: 0; /* só para teste - visualizar as div das imagens */
 }
 
-.botao-adulto-row {
+.btn-epics-row {
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
+   justify-content: center;
    align-items: center;
    width: 100%;
    min-width: 320px;
-   height: 30px;
-   padding: 0px;
-   margin: 20px;
- }
-
-.botao-adulto {
-   width: 90px;
-   height: 24px;
-   font-size: 16px;
-   text-align: center;
-   line-height: 24px;
+   height: 36px;
    padding: 0px;
    margin: 0px;
-   border-radius: 50vh;
-   background-color: #263887;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
+ }
+
+.btn-epics {
+   width: 260px;
+   height: 36px;
+   font-size: 14px;
+   font-weight: 500;
+   text-align: center;
+   line-height: 34px;
+   padding: 0px;
+   margin: 0px;
+   border-radius: 18px;
+   border: 1px solid #13288a;
+   background-color: rgba(38, 56, 135, .7);
    color: white;
-   Opacity: 1;
    cursor: pointer;
+   transition: background 1s;
+   transition: border-color 0.2s;
+}
+
+.btn-epics:hover {
+   background-color: rgba(38, 56, 135, 1);
+   box-shadow: 0px 0px 25px #ffffff;
 }
 
 /*Configuração dos balloons*/
 
 .balloon-config {
    --balloon-border-radius: 5px;
-   --balloon-color: #ffffff;
-   --balloon-text-color: #263887;
+   --balloon-color: rgba(83, 93, 138, 0.4);
+   --balloon-text-color: white;
    --balloon-font-size: 12px;
-   --balloon-move: 4px;
+   --balloon-move: 6px;
    --ballon-pos: "up";
 }
 
-@media (max-width: 900px) {
-   /*alterna do modo balão quando passa o mouse para nome fixo sob a ilha*/
+@media (hover: none) {
+/*alterna do modo balão quando passa o mouse para nome fixo sob a ilha*/
    .visivel {
       opacity: 1;
    }
@@ -187,10 +239,22 @@
       --balloon-font-size: 12px;
       --balloon-move: 4px;
    }
+}
+
+@media (max-width: 900px), (max-height: 426px) {
+   /* ajusta a área visivel em função da ocultação do menu da event-info */
+   .visible-area {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin: 0px;
+      border: 0px dashed yellow;   /* só para teste - visualizar as div das imagens */
+   }
 
    .ilha-container {
       display: flex;
-      flex-direction: column; /*mudando para row coloca ao lado ao invés de embaixo*/
+      flex-direction: column-reverse; /*mudando para row coloca ao lado ao invés de embaixo*/
       align-items: center; /*quando muda para column, incluir esta linha*/
       border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
       /* overflow: hidden; */
@@ -214,13 +278,14 @@
       height: 120vw;
       padding: 0px;
       margin: -80vw -10vw -40vw -10vw;
-      background-image: radial-gradient(circle, gray, lightgray, white);
+      background-image: radial-gradient(circle, white, rgb(192, 243, 255));
       border-radius: 50%;
+      box-shadow: 6px 6px 8px rgb(84, 180, 237);
    }
 
    .header1{
       margin: auto;
-      margin-top: 0px;
+      margin-top: 15px;
       margin-bottom: 0px;
    }
 

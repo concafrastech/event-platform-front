@@ -1,115 +1,221 @@
- @import url(https://fonts.googleapis.com/css?family=Carter+One);
- input[type='radio'] {
-   display: none;
+:root {
+  --cor-principal: rgba(46, 62, 77, .7);
+  --cor-secundaria: rgba(222, 228, 235, .7);
 }
- input[type='radio']#section1:checked ~ nav label[for="section1"] {
-   background-color: white;
+
+.interior-background {
+  background-image: url('/assets/jovem/img/ilha1_interior.svg'); /* usar @media para carregar fundo diferente para celular */
+  background-position: center center; 
+  background-size: cover;
+  background-clip: padding-box;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  border: 0px dashed yellow;   /* só para teste - visualizar as div das imagens */
 }
- input[type='radio']#section1:checked ~ section:nth-of-type(1) {
-   z-index: 1;
-   top: 0;
-   transition: top 0.5s ease-in-out;
-   transition-delay: 0s;
+
+.visible-area {
+  width: 100%;
+  height: 100%;
+  min-height: 230px;
+  padding-left: 109px;
+  padding-right: 225px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border: 0px dashed green;   /* só para teste - visualizar as div das imagens */
 }
- input[type='radio']#section1:checked ~ .cover {
-   background-color: #f8b195;
+
+.personagem-dialogo-container {
+  height: fit-content;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  border: 0px dashed black;   /* só para teste - visualizar as div das imagens */
 }
- input[type='radio']#section2:checked ~ nav label[for="section2"] {
-   background-color: white;
+
+.personagem-container {
+  height: fit-content;
+  width: 30%;
+  min-width: 220px;
+  max-width: 200px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border: 0px dashed yellow;   /* só para teste - visualizar as div das imagens */
 }
- input[type='radio']#section2:checked ~ section:nth-of-type(2) {
-   z-index: 1;
-   top: 0;
-   transition: top 0.5s ease-in-out;
-   transition-delay: 0s;
+
+.dialogo-container {
+  height: fit-content;
+  flex: 1;
+  margin: 0;
+  margin-top: 0px;
+  padding: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 0px dashed yellow;   /* só para teste - visualizar as div das imagens */
 }
- input[type='radio']#section2:checked ~ .cover {
-   background-color: #c06c85;
+
+.personagem {
+  width: 100%;
+  opacity: 1;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
- input[type='radio']#section3:checked ~ nav label[for="section3"] {
-   background-color: white;
+
+.dialogo {
+  background-color: rgba(255, 255, 255, .8);
+  height: fit-content;
+  max-height: 100%;
+  max-width: 300px;
+  margin: 3px;
+  margin-top: 0;
+  padding: 6px;
+  padding-bottom: 3px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
 }
- input[type='radio']#section3:checked ~ section:nth-of-type(3) {
-   z-index: 1;
-   top: 0;
-   transition: top 0.5s ease-in-out;
-   transition-delay: 0s;
+
+p {
+  margin-bottom: 3px;
 }
- input[type='radio']#section3:checked ~ .cover {
-   background-color: #6c5c7c;
+
+.btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 1em;
+  border-radius: 8px;
 }
- input[type='radio']#section4:checked ~ nav label[for="section4"] {
-   background-color: white;
+
+.btn-darkblue {
+  background-color: #273B87;
+  border-color: #273B87
 }
- input[type='radio']#section4:checked ~ section:nth-of-type(4) {
-   z-index: 1;
-   top: 0;
-   transition: top 0.5s ease-in-out;
-   transition-delay: 0s;
+
+.btn-darkblue:hover {
+  background-color: #121B3F;
+  border-color: #121B3F;
 }
- input[type='radio']#section4:checked ~ .cover {
-   background-color: #345d7e;
+
+.btn-blue {
+  background-color: #2371BA;
+  border-color: #2371BA;
 }
- .nav {
-   position: fixed;
-   z-index: 2;
-   right: 30px;
-   top: 50%;
-   transform: translateY(-50%);
+
+.btn-blue:hover {
+  background-color: #103456;
+  border-color: #103456;
 }
- .nav__item {
-   width: 12px;
-   height: 12px;
-   display: block;
-   margin: 12px auto;
-   border: solid 2px white;
-   border-radius: 50%;
-   cursor: pointer;
+
+.btn-lightblue {
+  background-color: #1EA6EC;
+  border-color: #1EA6EC;
 }
- .nav__item:hover {
-   background-color: white;
+
+.btn-lightblue:hover {
+  background-color: #0A4E71;
+  border-color: #0A4E71;
 }
- section {
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: absolute;
-   top: 100%;
-   right: 0;
-   left: 0;
-   transition-delay: 0.5s;
+
+.btn-lightpink {
+  background-color: #a6808c;
+  border-color: #a6808c;
 }
- section:nth-of-type(1) {
-   background: #f8b195;
+
+.btn-lightpink:hover {
+  background-color: #60434c;
+  border-color: #60434c;
 }
- section:nth-of-type(2) {
-   background: #c06c85;
+
+@media (max-width: 900px) {
+
+  .visible-area {
+    width: 100%;
+    height: 100%; /*min-height*/
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    border: 0px dashed green;   /* só para teste - visualizar as div das imagens */
+  }
 }
- section:nth-of-type(3) {
-   background: #6c5c7c;
+
+
+@media (orientation: landscape) and (max-height: 426px) {
+
+  .visible-area {
+    height: 100%;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+  }
+  
+  .personagem-dialogo-container {
+    height: fit-content;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+  }
 }
- section:nth-of-type(4) {
-   background: #345d7e;
-}
- .cover {
-   position: fixed;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   left: 0;
-   z-index: -1;
-}
- html, body {
-   height: 100%;
-}
- body {
-   overflow: hidden;
-   color: white;
-   font: 100% 'Carter One', cursive;
-}
- h1 {
-   font-size: 6em;
-   text-align: center;
+
+@media (orientation: portrait) and (max-width: 426px) {
+
+  .visible-area {
+    width: 100%;
+    height: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .personagem-dialogo-container {
+    height: fit-content;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
 }
  

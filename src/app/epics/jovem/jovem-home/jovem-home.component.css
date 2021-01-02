@@ -145,15 +145,15 @@
    transform: translateY(0px);
 }
 
-.ilha-imagem {
+.ilha-imagem img{
    object-fit: contain;
    width: 310px;
-   height: 170px; /*era 233px*/
    padding-left: 10px;
    padding-right: 10px;
    z-index: 1;
    border: 0px dashed gray;   /* só para teste - visualizar as div das imagens */
 }
+
 
 .ilha-titulo {
    padding: 0px;

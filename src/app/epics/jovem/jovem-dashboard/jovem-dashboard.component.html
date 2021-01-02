@@ -1,22 +1,52 @@
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
 	<div class="mx-auto" style="width: 200px;">
-		<a class="navbar-brand CONCAFRASVIRTUAL2021" href="#">
-			<img src="/assets/jovem/img/logoauta.svg" class="d-inline-block align-top" alt="">
-			<span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
-		</a>
-	</div>
+			<a class="navbar-brand CONCAFRASVIRTUAL2021" href="#">
+				<img src="/assets/jovem/img/logoauta.svg" class="d-inline-block align-top" alt="">
+				<span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
+			</a>
+		</div>
+
+		<button class="navbar-toggler d-block" type="button" id="navToggle">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse offcanvas-collapse open">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="https://www.youtube.com/c/decomtvs">Dashboard <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://www.youtube.com/c/decomtvs">Notifications</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://www.youtube.com/c/decomtvs">Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://www.youtube.com/c/decomtvs" target="_blank">Developer</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="https://www.youtube.com/c/decomtvs">Action</a>
+						<a class="dropdown-item" href="https://www.youtube.com/c/decomtvs">Another action</a>
+						<a class="dropdown-item" href="https://www.youtube.com/c/decomtvs">Something else here</a>
+					</div>
+				</li>
+			</ul>
+
+
+		</div>
 </nav>
 <div class="menu">
-    <img src="/assets/jovem/img/menu-desktop.png" style='height: 100%; width: 100%; object-fit: contain'/>
+
 </div>
 <div class="event-area">
-    <router-outlet></router-outlet>
+	<router-outlet></router-outlet>
 </div>
 <div class="event-info">
-    <img src="/assets/jovem/img/event-info.png" style='height: 100%; width: 100%; object-fit: contain'/>
 </div>
-<router-outlet></router-outlet>
+
 
 
 

@@ -1,13 +1,4 @@
-header {
-    width: 100%;
-    height: 45px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    background-color: rgb(251,251,251);
-    box-shadow: 0px 6px 8px #888888;
-}
+/*
 
 .header-bar {
     width: 100%;
@@ -16,6 +7,12 @@ header {
     margin-bottom: 5px;
 }
 
+
+
+
+
+
+*/
 .menu {
     object-fit: contain;
     width: 100px;
@@ -32,7 +29,6 @@ header {
 .event-area {
     height: calc(100vh - 45px);
     min-height: 250px;
-    margin-top: 45px;
     flex: 1;
 }
 
@@ -47,7 +43,16 @@ header {
     overflow: hidden;
     z-index: 2;
 }
-
+header {
+    width: 100%;
+    height: 45px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: rgb(251,251,251);
+    box-shadow: 0px 6px 8px #888888;
+}
 @media (max-width: 900px), (max-height: 426px) {
     .menu {
         display: none;
@@ -76,4 +81,76 @@ header {
 .CONCAFRASVIRTUAL2021 .text-style-1 {
   font-style: italic;
   color: #1EA6EC;
+}
+/*Sidebar*/
+.offcanvas-collapse {
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    right: 100%;
+    left: -300px;
+    width: 300px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: /*#343a40*//*#f8f9fa*/#155592;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+    transition-property: left, visibility;
+}
+
+.offcanvas-collapse {
+    align-items: start;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    border-right: 5px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.offcanvas-collapse.open {
+    left: 0;
+    visibility: visible;
+}
+
+.navbar-expand-lg .navbar-nav {
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+.nav-scroller .nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    color: rgba(255, 255, 255, .75);
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: .875rem;
+    color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+    color: #007bff;
+}
+
+.nav-underline .active {
+    font-weight: 500;
+    color: #343a40;
 }

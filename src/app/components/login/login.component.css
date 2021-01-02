@@ -20,13 +20,14 @@
 
 .retangulo-2 {
   top: 150px;
-  left: 372px;
-  width: 600px;
-  height: 320px;
+  left: 25%;
+  width: 50%;
+  height: 33%;
   position: relative;
-  background: transparent
+  /* background: transparent
     url("../../../assets/concafras2021/concafronas/login/Retangulo_2.png") 0% 0%
-    no-repeat padding-box;
+    no-repeat padding-box; */
+  background-image: linear-gradient(#fbfbfb, #dcdcdc);
   box-shadow: 0px 10px 15px #00000021;
 }
 
@@ -41,4 +42,45 @@
   text-align: left;
   color: #273b87;
   opacity: 1;
+}
+
+.form-login {
+  text-align: left;
+  margin: 25px 0px;
+}
+
+.login-row {
+  margin: 30px 0px;
+}
+
+.btn-login {
+  margin: 0px;
+  width: 100px;
+  background: transparent;
+  border-radius: 50px;
+  border-color: #273b87;
+  color: #273b87;
+  font-weight: bold;
+  transition: color 0.2s;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.btn-login:hover {
+  background: #273b87;
+  color: #ffffff;
+}
+
+.send-row {
+  display: flex;
+  align-items: center;
+  margin: 0px 5%;
+}
+
+.send-login {
+  margin: 0px 4%;
+}
+
+.text-link-login {
+  color: #4b4b4bb3;
 }

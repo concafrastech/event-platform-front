@@ -1,7 +1,21 @@
-<p>select-conference works!</p>
+<div id="bg">
+  <img
+    src="../../../assets/concafras2021/concafronas/acesso/Retangulo_1.png"
+    alt=""
+  />
+</div>
+<div class="retangulo-2">
+    <p>Você tem {{ subscriptions.length }} inscrições!</p>
+    <a
+      class="btn btn-primary btn-sm btn-conference"
+      role="button"
+      [routerLink]="['/select-journey']"
+      [routerLinkActive]="['active']">Acessar Evento<br>(Link Temporário)</a>
 
-<p>Você tem {{subscriptions.length}} inscrições!</p>
+    <a
+      class="btn btn-primary btn-sm btn-conference"
+      role="button"
+      [routerLink]="['/admin']"
+      [routerLinkActive]="['active']">Accessar Admin</a>
+</div>
 
-<a class="btn btn-primary btn-xs" role="button" [routerLink]="['/select-journey']" [routerLinkActive]="['active']">Acessar Evento (Link Temporário)</a>
-
-<a class="btn btn-primary btn-xs" role="button" [routerLink]="['/admin']" [routerLinkActive]="['active']">Accessar Admin</a>

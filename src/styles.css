@@ -1,6 +1,10 @@
 @import url("./assets/fonts/fontawesome/css/fontawesome-all.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 .h1-strong {
   font-size: 35px;
   font-weight: bold;

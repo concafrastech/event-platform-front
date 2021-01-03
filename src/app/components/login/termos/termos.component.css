@@ -47,7 +47,7 @@
   font-size: 15px;
 }
 
-.btn-login {
+.btn-termos {
   margin: 0px;
   width: 100px;
   background: transparent;
@@ -60,7 +60,7 @@
   opacity: 1;
 }
 
-.btn-login:hover {
+.btn-termos:hover {
   background: #273b87;
   color: #ffffff;
 }

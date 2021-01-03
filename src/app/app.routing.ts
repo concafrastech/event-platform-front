@@ -56,10 +56,12 @@ import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { TermosComponent } from './components/login/termos/termos.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'termos', component: TermosComponent},
     {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
     {path: 'select-conference', component: SelectConferenceComponent, canActivate:[UserGuard]},
     {

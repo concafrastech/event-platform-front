@@ -99,6 +99,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { VideojsComponent } from './components/channels/videojs/videojs.component';
 import { SafePipe } from './utils/safe.pipe';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
+import { TermosComponent } from './components/login/termos/termos.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -195,7 +196,8 @@ const GamificationConfig = {
     //FlvplayerComponent,
     VideojsComponent,
     ZoomusComponent,
-    SafePipe
+    SafePipe,
+    TermosComponent
   ],
   imports: [
     BrowserModule,

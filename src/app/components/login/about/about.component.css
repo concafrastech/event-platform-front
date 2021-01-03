@@ -43,3 +43,21 @@
   color: #4B4B4BB3;
   font-size: 12px;
 }
+
+.btn-about {
+  margin: 0px;
+  width: 150px;
+  background: transparent;
+  border-radius: 50px;
+  border-color: #273b87;
+  color: #273b87;
+  font-weight: bold;
+  transition: color 0.2s;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.btn-about:hover {
+  background: #273b87;
+  color: #ffffff;
+}

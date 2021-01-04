@@ -7,6 +7,10 @@
 <div class="retangulo-2">
     <div class="col-lg-12">
         <span class="text-login">Faça seu login:</span>
+        <!-- <i class="fas fa-times icon-close"></i> -->
+        <button type="button" class="close icon-close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         <div class="alert alert-danger" *ngIf="status == 'error'">
             Usuário ou senha inválidos.
         </div>

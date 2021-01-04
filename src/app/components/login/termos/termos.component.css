@@ -26,7 +26,7 @@
   position: relative;
   background-image: linear-gradient(#fbfbfb, #dcdcdc);
   box-shadow: 0px 10px 15px #00000021;
-  padding: 30px 85px;
+  padding: 30px 10px;
   text-align: center;
   border-radius: 2px;
 }
@@ -69,4 +69,10 @@
 .check-termos {
   font-size: 12px;
   margin: 20px 0px;
+}
+
+.icon-close {
+  cursor: pointer;
+  position: relative;
+  top: -22px;
 }

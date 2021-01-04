@@ -84,3 +84,10 @@
 .text-link-login {
   color: #4b4b4bb3;
 }
+
+.icon-close {
+  cursor: pointer;
+  position: relative;
+  left: 18%;
+  top: -22px;
+}

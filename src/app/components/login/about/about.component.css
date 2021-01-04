@@ -19,7 +19,7 @@
 }
 
 .retangulo-2 {
-  top: 70px;
+  top: 40px;
   left: 25%;
   width: 50%;
   height: 33%;
@@ -60,4 +60,11 @@
 .btn-about:hover {
   background: #273b87;
   color: #ffffff;
+}
+
+.icon-close {
+  cursor: pointer;
+  position: relative;
+  left: 14%;
+  top: -22px;
 }

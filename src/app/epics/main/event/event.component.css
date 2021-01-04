@@ -236,7 +236,7 @@ body {
 .navigation-horizontal .navbar-nav .nav-item {}
 
 .navigation-horizontal .navbar-nav .nav-link {
-   font-size: 13px;
+    font-size: 12px;
     padding: 9px 30px 9px 20px;
     margin-bottom: 2px;
     color: #71789e;
@@ -301,8 +301,10 @@ Left Navigation Sidebar
 .nav-left-sidebar {
     position: fixed;
     width: 197px;
-    height: 100%;
-    top: 60px;
+    height: 88%;
+    top: 70px;
+    left: 10px;
+    border-radius: 10px;
     overflow: auto;
     background-color: #fff;
     -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
@@ -480,7 +482,7 @@ Leftsidebar - dark
 ------------------------- */
 
 .sidebar-dark {
-    background-color: #0e0c28;
+    background-color: #273b87;
     -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     -webkit-transition: all 0.3s ease;
@@ -504,9 +506,9 @@ Leftsidebar - dark
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus,
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:hover {
-    color: #fff;
+    color: rgb(250, 250, 250);
     background-color: #242849;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus,
@@ -787,4 +789,36 @@ Container / Wrapper
     background-position-x: 40%;
     background-position-y: 20%;
     box-shadow: 0px 0px 28px 0px #aaaaaa;
+}
+
+.user-icon {
+    border: 3px solid #13245f;
+    width: 60px;
+    height: 60px;
+    border-radius: 40px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.user-badge {
+    border: 3px solid #13245f;
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.nav-item {
+    color: #fff;
+    font-size: 12px;
+}
+
+.nav-center {
+    text-align: center;
+}
+
+.nav-hr {
+    border-color: #13245f;
+    width: 100%;
 }

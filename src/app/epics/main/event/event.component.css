@@ -801,11 +801,13 @@ Container / Wrapper
 }
 
 .user-badge {
-    border: 3px solid #13245f;
-    width: 50px;
-    height: 50px;
-    border-radius: 40px;
-    text-align: center;
+    -webkit-filter: drop-shadow(1px 1px 0 #13245f)
+                    drop-shadow(-1px -1px 0 #13245f);
+    filter: drop-shadow(1px 1px 0 #13245f)
+            drop-shadow(-1px -1px 0 #13245f);
+    display: block;
+    width: 55px;
+    height: 55px;
     margin: 0px auto;
 }
 

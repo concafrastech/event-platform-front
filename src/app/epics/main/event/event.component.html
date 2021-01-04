@@ -51,7 +51,7 @@
     <!-- ============================================================== -->
     <!-- left sidebar -->
     <!-- ============================================================== -->
-    <div class="nav-left-sidebar sidebar-dark">
+    <div class="nav-left-sidebar">
         <div class="menu-list">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
@@ -61,32 +61,31 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
                     <li class="nav-item">
-                        <div class="nav-user-info">
-                            <h5 class="mb-0 text-white nav-user-name">{{identity.name}}</h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
-                        </div>
-                        <div>
-                            <h6>{{user.level.badge}} - {{user.points}} Pts</h6>
-                            <progress max="{{progress.max}}" value="{{progress.value}}"></progress>
-                        </div>
+                        <a class="nav-link" [routerLink]="['/meus-dados']" ><fa-icon [icon]="faUserCircle" size="4x" class="sidebar-icon"></fa-icon> Bem vindo,<br/>{{identity.name}}!</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/perfil']" ><i class="fas fa-fw fa-rocket"></i>Meu Perfil</a>
+                        <a class="nav-link" [routerLink]="['/meus-dados']" ><fa-icon [icon]="faUserCircle" size="3x" class="sidebar-icon"></fa-icon> Nivel {{user.level.badge}}<br/>{{user.points}} pontos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/schedule']" ><i class="fas fa-fw fa-rocket"></i>Programação</a>
+                        <a class="nav-link" [routerLink]="['/schedule']" ><fa-icon [icon]="faCalendarAlt" size="3x" class="sidebar-icon"></fa-icon> Programação</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/hub']" ><i class="fas fa-fw fa-rocket"></i>Acessar Feira</a>
+                        <a class="nav-link" [routerLink]="['/hub']" ><svg-icon src="assets/concafras2021/concafronas/cfas-menu-item.svg" class="sidebar-icon"></svg-icon> Acesso Inicial</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Passe Virtual</a>
+                        <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/preces-menu-item.svg" class="sidebar-icon"></svg-icon>  Passe a Distância</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Suporte</a>
+                        <a class="nav-link" [routerLink]="['/home']" ><fa-icon [icon]="faHeart" size="3x" class="sidebar-icon" ></fa-icon> Amparo Fraterno: <br/> Quer conversar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" (click)="logout()"><i class="fas fa-fw fa-rocket"></i>Sair</a>
+                        <a class="nav-link" [routerLink]="['/home']" ><fa-icon [icon]="faQuestionCircle" size="3x" class="sidebar-icon" ></fa-icon> Como Navegar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']" ><fa-icon [icon]="faLifeRing" size="3x" class="sidebar-icon" ></fa-icon> Duvidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="logout()"><fa-icon [icon]="faDoorOpen" size="3x" class="sidebar-icon" ></fa-icon> Sair</a>
                     </li>
                 </ul>
                 </div>
@@ -97,12 +96,41 @@
     <!-- end left sidebar -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
+    <!-- right sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-right-sidebar">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarNavRight">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <h3 class="nav-header">Fique Atento!</h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3 class="nav-header">Espaço do Caravaneiro</h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3 class="nav-destaque">Acessar o espaço do Caravaneiro</h3>
+                            Faça um post usnado a hashtag <br/>
+                            <span class="strong-hash">#concafras</span> nas redes sociais <br/>
+                            e apareça por aqui.
+                            <h3 class="nav-destaque">Marque o Encontro Fraterno Auta de Souza na sua Cidade!</h3>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end right sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
     <!-- wrapper  -->
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
-        <div class="dashboard-ecommerce">
+        <div class="dashboard-principal">
             <div class="container-fluid dashboard-content ">
-               <div class="ecommerce-widget">
+               <div class="principal-widget">
                     <router-outlet></router-outlet>
                 </div>
             </div>
@@ -111,54 +139,7 @@
     <!-- ============================================================== -->
     <!-- end wrapper  -->
     <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- left sidebar -->
-    <!-- ============================================================== -->
-    <div class="nav-right-sidebar sidebar-dark" *ngIf="false">
-        <div class="menu-list">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav flex-column">
-                    <li class="nav-item">
-                        <div class="nav-user-info">
-                            <h5 class="mb-0 text-white nav-user-name">{{identity.name}}</h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
-                        </div>
-                        <div>
-                            <h6>{{user.level.badge}} - {{user.points}} Pts</h6>
-                            <progress max="{{progress.max}}" value="{{progress.value}}"></progress>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/perfil']" ><i class="fas fa-fw fa-rocket"></i>Meu Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/schedule']" ><i class="fas fa-fw fa-rocket"></i>Programação</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/hub']" ><i class="fas fa-fw fa-rocket"></i>Acessar Feira</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Passe Virtual</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Suporte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="logout()"><i class="fas fa-fw fa-rocket"></i>Sair</a>
-                    </li>
-                </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- end right sidebar -->
-    <!-- ============================================================== -->
+    
 </div>
 <!-- ============================================================== -->
 <!-- end main wrapper  -->
@@ -168,7 +149,6 @@
 <!-- footer -->
 <!-- ============================================================== -->
 <footer class="navbar navbar-default navbar-fixed-bottom">
-    TESTE
 </footer>
 <!-- ============================================================== -->
 <!-- end footer -->

@@ -101,6 +101,8 @@ import { SafePipe } from './utils/safe.pipe';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
 import { TermosComponent } from './components/login/termos/termos.component';
 import { AboutComponent } from './components/login/about/about.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -222,7 +224,9 @@ const GamificationConfig = {
     NgBootstrapAlertModule,
     AngularTawkModule,
     NgxSpinnerModule,
-    ChartsModule
+    ChartsModule,
+    FontAwesomeModule,
+    AngularSvgIconModule.forRoot()
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

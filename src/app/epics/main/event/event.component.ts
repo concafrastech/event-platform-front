@@ -10,6 +10,19 @@ import { TutorialComponent } from 'src/app/components/tutorial/tutorial.componen
 import { Subscription } from 'src/app/models/subscription';
 import { Conference } from 'src/app/models/conference';
 import { Trail } from 'src/app/models/trail';
+import { 
+  faCalendarAlt,
+  faPrayingHands,
+  faDoorOpen,
+  faHome
+} from '@fortawesome/free-solid-svg-icons';
+
+import { 
+  faHeart,
+  faLifeRing,
+  faQuestionCircle,
+  faUserCircle
+} from '@fortawesome/free-regular-svg-icons';
 
 @Component({
     selector: 'app-event',
@@ -25,6 +38,16 @@ export class EventComponent implements OnInit, DoCheck {
     public progress;
     public subscription: Subscription;
     bsModalRef: BsModalRef;
+
+    public faCalendarAlt = faCalendarAlt;
+    public faPrayingHands = faPrayingHands;
+    public faHeart = faHeart;
+    public faLifeRing = faLifeRing;
+    public faDoorOpen = faDoorOpen;
+    public faQuestionCircle = faQuestionCircle;
+    public faUserCircle = faUserCircle;
+    public faHome = faHome;  
+    
 
     constructor(
         private _route: ActivatedRoute,

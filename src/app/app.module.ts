@@ -118,11 +118,11 @@ const levels = [
 ];
 
 const levelsConcafras2021 = [
-  { badge: 'TERRA', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 149 } },
-  { badge: 'MARTE', icon: './../assets/badges/NICE.svg', range: { min: 150, max: 299 } },
-  { badge: 'VENUS', icon: './../assets/badges/USUAL.svg', range: { min: 300, max: 699 } },
-  { badge: 'JUPITER', icon: './../assets/badges/CONSTANT.svg', range: { min: 700, max: 899 } },
-  { badge: 'SOL', icon: './../assets/badges/VIP.svg', range: { min: 900, max: 2000 } },
+  { badge: 'TERRA', icon: 'assets/concafras2021/concafronas/badges/terra.svg', range: { min: 1, max: 149 } },
+  { badge: 'MARTE', icon: 'assets/concafras2021/concafronas/badges/marte.svg', range: { min: 150, max: 299 } },
+  { badge: 'VENUS', icon: 'assets/concafras2021/concafronas/badges/venus.svg', range: { min: 300, max: 699 } },
+  { badge: 'JUPITER', icon: 'assets/concafras2021/concafronas/badges/jupiter.svg', range: { min: 700, max: 899 } },
+  { badge: 'SOL', icon: 'assets/concafras2021/concafronas/badges/sol.svg', range: { min: 900, max: 2000 } },
 ];
 
 

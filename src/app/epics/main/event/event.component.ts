@@ -78,6 +78,8 @@ export class EventComponent implements OnInit, DoCheck {
             value: 0
         };
         this.initGamefication();
+
+        console.log(this.user);
     }
 
     ngOnInit() {

@@ -1,0 +1,50 @@
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+}
+
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.retangulo-2 {
+  top: 70px;
+  left: 25%;
+  width: 50%;
+  height: 33%;
+  position: relative;
+  background-image: linear-gradient(#fbfbfb, #dcdcdc);
+  box-shadow: 0px 10px 15px #00000021;
+  padding: 30px 85px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.btn-conference {
+  margin: 5px;
+  width: 250px;
+  background: transparent;
+  border-radius: 50px;
+  border-color: #273b87;
+  color: #273b87;
+  font-weight: bold;
+  transition: color 0.2s;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.btn-conference:hover {
+  background: #273b87;
+  color: #ffffff;
+}

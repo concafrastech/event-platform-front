@@ -6,14 +6,14 @@
     <!-- navbar -->
     <!-- ============================================================== -->
     <div class="dashboard-header">
-        <nav class="navbar navbar-expand-lg bg-white fixed-top" role="navigation">
-            <div class="navbar-header" *ngIf="identity">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top background-navbar" role="navigation">
+            <!-- <div class="navbar-header" *ngIf="identity">
                 <a [routerLink]="['/home']" [routerLinkActive]="['active']" class="navbar-brand">{{title}}</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            </button> -->
+            <!-- <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-right-top" *ngIf="!identity">
                     <li class="nav-item">
                         <a [routerLink]="['/login']" [routerLinkActive]="['active']"><span class="fa fa-log-in"></span> Login</a>
@@ -42,7 +42,7 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </nav>
     </div>
         <!-- ============================================================== -->
@@ -51,7 +51,7 @@
     <!-- ============================================================== -->
     <!-- left sidebar -->
     <!-- ============================================================== -->
-    <div class="nav-left-sidebar sidebar-dark">
+    <div class="nav-left-sidebar">
         <div class="menu-list">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
@@ -61,48 +61,113 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
                     <li class="nav-item">
-                        <div class="nav-user-info">
-                            <h5 class="mb-0 text-white nav-user-name">{{identity.name}}</h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
+                        <a class="nav-link" [routerLink]="['/meus-dados']" ><fa-icon [icon]="faUserCircle" size="4x" class="sidebar-icon"></fa-icon> Bem vindo,<br/>{{identity.name}}!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/meus-dados']" ><svg-icon src="{{user.level.icon}}" class="sidebar-icon"></svg-icon> Nivel {{user.level.badge}}<br/>{{user.points}} pontos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/schedule']" ><svg-icon src="assets/concafras2021/concafronas/icones/programacao-menu-item.svg" class="sidebar-icon"></svg-icon> Programação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/hub']" ><svg-icon src="assets/concafras2021/concafronas/icones/acesso-inicial-menu-item.svg" class="sidebar-icon"></svg-icon> Acesso Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/passe-virtual-menu-item.svg" class="sidebar-icon"></svg-icon>  Passe a Distância</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/amparo-fraterno-menu-item.svg" class="sidebar-icon"></svg-icon>  Amparo Fraterno: <br/> Quer conversar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/como-navegar-menu-item.svg" class="sidebar-icon"></svg-icon>  Como Navegar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Duvidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="logout()"><svg-icon src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" class="sidebar-icon"></svg-icon>  Sair</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-column" *ngIf="false">
+                    <li class="nav-item">
+                        <!-- <div class="nav-user-info"> -->
+                        <div>
+                            <div class="user-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span>Bem vindo,<br><b>{{identity.name}}!</b></span>
                         </div>
                         <div>
-                            <h6>{{user.level.badge}} - {{user.points}} Pts</h6>
-                            <progress max="{{progress.max}}" value="{{progress.value}}"></progress>
+                            <img class="user-badge" src="../../../../assets/concafras2021/concafronas/icones/terra.png" alt="Terra">
+                            <span>Nível {{user.level.badge}}<br><b>{{user.points}}</b> pontos</span>
                         </div>
                     </li>
+                    <hr class="nav-hr">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/perfil']" ><i class="fas fa-fw fa-rocket"></i>Meu Perfil</a>
+                        <a class="nav-link" [routerLink]="['/schedule']" ><img src="../../../../assets/concafras2021/concafronas/icones/programacao.png" alt="Programação"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/schedule']" ><i class="fas fa-fw fa-rocket"></i>Programação</a>
+                        <a class="nav-link" [routerLink]="['/hub']" ><img src="../../../../assets/concafras2021/concafronas/icones/acesso_inicial.png" alt="Acesso Inicial"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/hub']" ><i class="fas fa-fw fa-rocket"></i>Acessar Feira</a>
+                        <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/passe_virtual.png" alt="Passe a distância"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Passe Virtual</a>
+                        <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/amparo_fraterno.png" alt="Amparo Fraterno"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Suporte</a>
+                        <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/como_navegar.png" alt="Como Navegar"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" (click)="logout()"><i class="fas fa-fw fa-rocket"></i>Sair</a>
+                        <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/suporte.png" alt="Suporte"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="logout()"><img src="../../../../assets/concafras2021/concafronas/icones/sair.png" alt="Sair"></a>
                     </li>
                 </ul>
                 </div>
             </nav>
-        </div>       
+        </div>
     </div>
     <!-- ============================================================== -->
     <!-- end left sidebar -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
+    <!-- right sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-right-sidebar">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarNavRight">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <h3 class="nav-header">Fique Atento!</h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3 class="nav-header">Espaço do Caravaneiro</h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3 class="nav-destaque">Acessar o espaço do Caravaneiro</h3>
+                            Faça um post usnado a hashtag <br/>
+                            <span class="strong-hash">#concafras</span> nas redes sociais <br/>
+                            e apareça por aqui.
+                            <h3 class="nav-destaque">Marque o Encontro Fraterno Auta de Souza na sua Cidade!</h3>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end right sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
     <!-- wrapper  -->
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
-        <div class="dashboard-ecommerce">
+        <div class="dashboard-principal">
             <div class="container-fluid dashboard-content ">
-               <div class="ecommerce-widget">
+               <div class="principal-widget">
                     <router-outlet></router-outlet>
                 </div>
             </div>
@@ -111,54 +176,7 @@
     <!-- ============================================================== -->
     <!-- end wrapper  -->
     <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- left sidebar -->
-    <!-- ============================================================== -->
-    <div class="nav-right-sidebar sidebar-dark" *ngIf="false">
-        <div class="menu-list">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav flex-column">
-                    <li class="nav-item">
-                        <div class="nav-user-info">
-                            <h5 class="mb-0 text-white nav-user-name">{{identity.name}}</h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
-                        </div>
-                        <div>
-                            <h6>{{user.level.badge}} - {{user.points}} Pts</h6>
-                            <progress max="{{progress.max}}" value="{{progress.value}}"></progress>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/perfil']" ><i class="fas fa-fw fa-rocket"></i>Meu Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/schedule']" ><i class="fas fa-fw fa-rocket"></i>Programação</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/hub']" ><i class="fas fa-fw fa-rocket"></i>Acessar Feira</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Passe Virtual</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']" ><i class="fas fa-fw fa-rocket"></i>Suporte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="logout()"><i class="fas fa-fw fa-rocket"></i>Sair</a>
-                    </li>
-                </ul>
-                </div>
-            </nav>
-        </div>       
-    </div>
-    <!-- ============================================================== -->
-    <!-- end right sidebar -->
-    <!-- ============================================================== -->
+    
 </div>
 <!-- ============================================================== -->
 <!-- end main wrapper  -->
@@ -168,7 +186,6 @@
 <!-- footer -->
 <!-- ============================================================== -->
 <footer class="navbar navbar-default navbar-fixed-bottom">
-    TESTE
 </footer>
 <!-- ============================================================== -->
 <!-- end footer -->

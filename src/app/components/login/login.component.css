@@ -24,16 +24,16 @@
   width: 50%;
   height: 33%;
   position: relative;
-  /* background: transparent
-    url("../../../assets/concafras2021/concafronas/login/Retangulo_2.png") 0% 0%
-    no-repeat padding-box; */
   background-image: linear-gradient(#fbfbfb, #dcdcdc);
   box-shadow: 0px 10px 15px #00000021;
+  padding: 30px 85px;
+  text-align: center;
+  border-radius: 2px;
 }
 
 .text-login {
-  font-family: "Poppins", sans-serif;
-  font-size: 36px;
+  /* font-family: "Poppins", sans-serif; */
+  font-size: 25px;
   font-weight: bolder;
   font-stretch: normal;
   font-style: normal;
@@ -78,9 +78,16 @@
 }
 
 .send-login {
-  margin: 0px 4%;
+  margin: 0px 2%;
 }
 
 .text-link-login {
   color: #4b4b4bb3;
+}
+
+.icon-close {
+  cursor: pointer;
+  position: relative;
+  left: 18%;
+  top: -22px;
 }

@@ -99,6 +99,10 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { VideojsComponent } from './components/channels/videojs/videojs.component';
 import { SafePipe } from './utils/safe.pipe';
 import { ZoomusComponent } from './components/channels/zoomus/zoomus.component';
+import { TermosComponent } from './components/login/termos/termos.component';
+import { AboutComponent } from './components/login/about/about.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -114,11 +118,11 @@ const levels = [
 ];
 
 const levelsConcafras2021 = [
-  { badge: 'TERRA', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 149 } },
-  { badge: 'MARTE', icon: './../assets/badges/NICE.svg', range: { min: 150, max: 299 } },
-  { badge: 'VENUS', icon: './../assets/badges/USUAL.svg', range: { min: 300, max: 699 } },
-  { badge: 'JUPITER', icon: './../assets/badges/CONSTANT.svg', range: { min: 700, max: 899 } },
-  { badge: 'SOL', icon: './../assets/badges/VIP.svg', range: { min: 900, max: 2000 } },
+  { badge: 'TERRA', icon: 'assets/concafras2021/concafronas/badges/terra.svg', range: { min: 1, max: 149 } },
+  { badge: 'MARTE', icon: 'assets/concafras2021/concafronas/badges/marte.svg', range: { min: 150, max: 299 } },
+  { badge: 'VENUS', icon: 'assets/concafras2021/concafronas/badges/venus.svg', range: { min: 300, max: 699 } },
+  { badge: 'JUPITER', icon: 'assets/concafras2021/concafronas/badges/jupiter.svg', range: { min: 700, max: 899 } },
+  { badge: 'SOL', icon: 'assets/concafras2021/concafronas/badges/sol.svg', range: { min: 900, max: 2000 } },
 ];
 
 
@@ -195,7 +199,9 @@ const GamificationConfig = {
     //FlvplayerComponent,
     VideojsComponent,
     ZoomusComponent,
-    SafePipe
+    SafePipe,
+    TermosComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -218,7 +224,9 @@ const GamificationConfig = {
     NgBootstrapAlertModule,
     AngularTawkModule,
     NgxSpinnerModule,
-    ChartsModule
+    ChartsModule,
+    FontAwesomeModule,
+    AngularSvgIconModule.forRoot()
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

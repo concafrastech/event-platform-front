@@ -12,6 +12,7 @@ defineLocale('pt-br', ptBrLocale);
 @Component({
     selector: 'profile-edit',
     templateUrl: './profile-edit.component.html',
+    styleUrls: ['./profile-edit.component.css'],
     providers: [UserService, UploadService]
 })
 export class ProfileEditComponent implements OnInit {
@@ -29,7 +30,7 @@ export class ProfileEditComponent implements OnInit {
         private _uploadService: UploadService,
         private _bsLocaleService: BsLocaleService
     ) {
-        this.title = 'Atualizar Perfil';
+        this.title = 'Meu Perfil';
         this.user = this._userService.getIdentity();
         this.token = this._userService.getToken();
         this.identity = this.user;

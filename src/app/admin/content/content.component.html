@@ -237,10 +237,10 @@
                 type="text"
                 [(ngModel)]="content.zoom_password"
                 placeholder="Insira aqui a senha da sala do Zoom"
-                #number_room="ngModel"
+                #password_room="ngModel"
                 required
               />
-              <span *ngIf="!number_password.value && number_password.touched"
+              <span *ngIf="!password_room.value && password_room.touched"
                 >A senha da sala é obrigatória!</span
               >
             </div>

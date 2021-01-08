@@ -130,9 +130,9 @@ const appRoutes: Routes = [
         children: [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]},
-            {path: 'pages/ilha1/:dialog', component: Ilha1Component, canActivate:[UserGuard]},
         ],
     },
+    {path: 'ilha1', component: Ilha1Component},
     {
         path: 'concafrinhas',
         component: InfanciaDashboardComponent,

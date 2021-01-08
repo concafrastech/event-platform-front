@@ -10,7 +10,11 @@ export class JovemHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    localStorage.setItem('epic', 'jovem');
+ 
+  }
+}
+
+  /* localStorage.setItem('epic', 'jovem');
 
     var thedate   = new Date();
     var hourofday = thedate.getUTCHours();
@@ -22,7 +26,4 @@ export class JovemHomeComponent implements OnInit {
     else {
       document.getElementById("sky-background").className = "night-background";
       document.getElementById("sky-ball").className = "moon";
-    }
-
-  }
-}
+    }*/

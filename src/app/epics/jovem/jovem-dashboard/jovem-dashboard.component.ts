@@ -11,8 +11,12 @@ export class JovemDashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+   
 
 }
+
+
+
 
 $(document).ready(function() {
   $("#sidebarCollapse").on("click", function() {

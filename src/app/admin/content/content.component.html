@@ -228,6 +228,23 @@
               >
             </div>
           </div>
+          <div class="div-content">
+            <label class="col-sm-3 col-form-label">Senha da Sala</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                name="zoom_password{{ i }}"
+                type="text"
+                [(ngModel)]="content.zoom_password"
+                placeholder="Insira aqui a senha da sala do Zoom"
+                #password_room="ngModel"
+                required
+              />
+              <span *ngIf="!password_room.value && password_room.touched"
+                >A senha da sala é obrigatória!</span
+              >
+            </div>
+          </div>
         </div>
 
         <div *ngIf="content.type == 'youtube'">

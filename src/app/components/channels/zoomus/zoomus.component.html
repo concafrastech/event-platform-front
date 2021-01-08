@@ -1,4 +1,4 @@
 <!-- 4:3 aspect ratio -->
 <div class="embed-responsive embed-responsive-16by9">
-    <iframe *ngIf="sourceUrl" class="embed-responsive-item" [src]="sourceUrl | safe" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen></iframe>
+    <iframe *ngIf="sourceUrl" class="embed-responsive-item" [src]="sourceUrl | safe" allowusermedia allow="camera *; microphone *" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen></iframe>
 </div>

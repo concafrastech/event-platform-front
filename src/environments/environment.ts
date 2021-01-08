@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://apieventos.contratacaodemetas.com.br/api/',
-  signatureEndpoint: 'https://event-platform-zoom.herokuapp.com',
+  signatureEndpoint: 'https://apieventos.contratacaodemetas.com.br/zoom/',
   leaveUrl: 'http://localhost:4200',
   zoomUrl: 'http://localhost:4201'
 };

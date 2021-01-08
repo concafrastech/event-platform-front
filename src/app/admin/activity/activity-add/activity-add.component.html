@@ -55,7 +55,7 @@
             <input type="checkbox" name="scheduled" #scheduled="ngModel" [(ngModel)]="activity.scheduled" class="form-control"/>
         </div>
     </div>
-      <div class="row">
+      <div class="row" [ngStyle]="{'visibility': activity.scheduled ? 'visible' : 'hidden'}">
         <div class="form-group col-md-3">
           <label>Data de Início</label>
           <input

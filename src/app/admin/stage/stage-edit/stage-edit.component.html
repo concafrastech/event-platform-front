@@ -29,7 +29,7 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <fieldset class="form-group">
-                    <label>Evento</label>
+                    <label>Épico</label>
                     <select [compareWith]="compareByOptionId" name="epic" #conference="ngModel" [(ngModel)]="stage.epic" class="form-control">
                         <option value="">-- Selecione --</option>
                         <option *ngFor="let epic of epics" [ngValue]="epic">{{epic.name}}</option>

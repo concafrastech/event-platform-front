@@ -1,41 +1,77 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-<div class="interior-background">
-	<div class="visible-area">
-        <div class="personagem-dialogo-container">
-            <div class="personagem-container">
-                <div class="personagem">
-                    <img src="/assets/jovem/img/Patricia.png" style='height: 100%; width: 100%; object-fit: contain'/>
-                </div>
-            </div>
-            <div class="dialogo-container">
-                <div *ngIf="dialog == 'home'" class="dialogo">
-                    <p>Olá, o que você deseja acessar?</p>
-                    <div class="btn-group-vertical" role="group" aria-label="Home">
-                        <a href="/jovem/pages/ilha1/cursosetemas" class="btn btn-primary btn-lg btn-block btn-lightpink" role="button">Cursos e Temas...</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-primary btn-lg btn-block btn-lightpink" role="button">Revista Auta de Souza</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-primary btn-lg btn-block btn-lightpink" role="button">Jogos Temáticos...</a>
-                    </div>
-                </div>
-                <div *ngIf="dialog == 'cursosetemas'" class="dialogo">
-                    <p>Olá. O que você deseja?</p>
-                    <div class="btn-group-vertical" role="group" aria-label="Cursos e Temas">
-                        <a href="/jovem/pages/ilha1/temasespecificos" class="btn btn-secondary btn-lg btn-block btn-blue" role="button">Tema Específico...</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-secondary btn-lg btn-block btn-blue" role="button">Tema Central</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-secondary btn-lg btn-block btn-blue" role="button">Tema Campanha</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-secondary btn-lg btn-block btn-blue" role="button">Novas Dimensões do Conhecimento</a>
-                    </div>
-                </div>
-                <div *ngIf="dialog == 'temasespecificos'" class="dialogo">
-                    <p>Qual tema você deseja acessar?</p>
-                    <div class="btn-group-vertical" role="group" aria-label="Temas Específicos">
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-secondary btn-lg btn-block btn-lightblue" role="button">Arte e Assistência</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-secondary btn-lg btn-block btn-lightblue" role="button">Campanha em Defesa da Vida</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-secondary btn-lg btn-block btn-lightblue" role="button">Caridade pelo Livro</a>
-                        <a href="/jovem/pages/ilha1/home" class="btn btn-secondary btn-lg btn-block btn-lightblue" role="button">Comunicação Social</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<div class="container1">
+  <form>
+    <input type="radio" id="Slide1" name="slider" title="Home"  checked="checked"/>
+    <input type="radio" id="Slide2" name="slider" title="Section 2"/>
+    <input type="radio" id="Slide3" name="slider" title="Section 3"/>
+    <input type="radio" id="Slide4" name="slider" title="Section 4"/>
+    <input type="radio" id="Slide5" name="slider" title="Section 5"/>
+    <div class="labels">
+      <label for="Slide1" id="Slide1" class="Slide">
+        <div class="content">
+
+            <div class="container alinhamento_baixo">
+              <div class="row align-items-start">
+                <div class="col">
+                  One of three columns
+              </div>
+              <div class="col">
+                  One of three columns
+              </div>
+              <div class="col">
+                  One of three columns
+              </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col">
+              One of three columns
+          </div>
+          <div class="col">
+              One of three columns
+          </div>
+          <div class="col">
+              One of three columns
+          </div>
+      </div>
+      <div class="row align-items-end">
+        <div class="col">
+          One of three columns
+      </div>
+      <div class="col">
+          One of three columns
+      </div>
+      <div class="col">
+          One of three columns
+      </div>
+  </div>
 </div>
+</div><!-- FINAL CONTENT -->
+</label>
+<label for="Slide2" id="Slide2" class="Slide">
+    <div class="content">
+      <h2>Seção 2</h2>
+  </div>
+</label>
+<label for="Slide3" id="Slide3" class="Slide">
+    <div class="content">
+      <h2>Seção 3</h2>  
+  </div>
+</label>
+<label for="Slide4" id="Slide4" class="Slide">
+    <div class="content">
+      <h2>Seção 4</h2>
+  </div>
+</label>
+<label for="Slide5" id="Slide5" class="Slide">
+    <div class="content">
+      <h2>Seção 5</h2>
+  </div>
+</label>
+</div>
+</form>
+</div>
+
+
+
 <router-outlet></router-outlet>

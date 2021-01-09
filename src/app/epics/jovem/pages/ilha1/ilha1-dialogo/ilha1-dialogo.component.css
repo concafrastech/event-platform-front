@@ -1,6 +1,8 @@
+
+
 .dialogo p{
 	color:#fff;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 
 }
 .list-group-item{
@@ -9,5 +11,28 @@
 
 .list-group-item{
 	color:#fff;
-	font-size: 1rem;
+	font-size: 1.2rem;
+}
+
+.list-group-item a{
+	color:#fff;
+	text-decoration: none;
+
+}
+.list-group-item a:hover{
+	color:#fff;
+	font-weight: 400;
+
+}
+
+.list-group-item:hover{
+
+	background-color: #494a4ca6 !important;
+	transition: 0.3s;
+	cursor: url();
+}
+
+ul.list-group > li:hover:before {
+  content: ">";
+  padding: 5px;
 }

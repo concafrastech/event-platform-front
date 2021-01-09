@@ -1,15 +1,10 @@
-
-
 .capa{
-/*   background-image: url(/assets/jovem/img/fundo.jpg); 
-*/   background-position: center center, center center;  
-   background-size: cover, cover;  
-   background-repeat: repeat, repeat; 
+ background-image: url(/assets/jovem/img/fundo.jpg); 
+ background-position: center center, center center;  
+ background-size: cover, cover;  
+ background-repeat: no-repeat;
 
 }
-
-
-
 /*Configuração da animação das ilhas*/
 
 .animacao:hover {

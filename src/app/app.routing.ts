@@ -59,6 +59,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { TermosComponent } from './components/login/termos/termos.component';
 import { AboutComponent } from './components/login/about/about.component';
 import { Ilha1DialogoComponent} from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
+import { JogostematicosComponent } from './epics/jovem/pages/ilha1/jogostematicos/jogostematicos.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -140,6 +141,7 @@ const appRoutes: Routes = [
                     {path: 'dialogo/:dialog', component: Ilha1DialogoComponent, canActivate:[UserGuard]}
                 ],
             },
+            {path: 'jogostematicos', component: JogostematicosComponent, canActivate:[UserGuard]},
         ],
     },
     

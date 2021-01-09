@@ -104,6 +104,7 @@ import { AboutComponent } from './components/login/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { Ilha1DialogoComponent } from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
+import { JogostematicosComponent } from './epics/jovem/pages/ilha1/jogostematicos/jogostematicos.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -203,7 +204,8 @@ const GamificationConfig = {
     SafePipe,
     TermosComponent,
     AboutComponent,
-    Ilha1DialogoComponent
+    Ilha1DialogoComponent,
+    JogostematicosComponent
   ],
   imports: [
     BrowserModule,

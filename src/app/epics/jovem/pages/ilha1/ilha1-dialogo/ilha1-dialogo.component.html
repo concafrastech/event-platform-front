@@ -1,11 +1,19 @@
-<div class="dialogo ">
-<p class="text-left">Patrícia: Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+<div class="dialogo" *ngIf="dialog == 'inicial'">
+  <p class="text-left">Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/cursosetemas']" [routerLinkActive]="['active']">Cursos e Temas</a></li>
+    <li class="list-group-item"><a>Revista Auta de Souza</a></li>
+    <li class="list-group-item"><a>Jogos Temáticos</a></li>
+  </ul>
+</div>
 
+<div class="dialogo" *ngIf="dialog == 'cursosetemas'">
+  <p class="text-left">Escolha uma opção de temas:</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a>Tema Específico</a></li>
+    <li class="list-group-item"><a>Tema Central</a></li>
+    <li class="list-group-item"><a>Tema Campanha</a></li>
+    <li class="list-group-item"><a>Novas Dimensões do Conhecimento</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+  </ul>
 </div>

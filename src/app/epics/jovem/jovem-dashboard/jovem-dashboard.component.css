@@ -230,9 +230,9 @@ Left Navigation Sidebar
 ------------------------- */
 
 .nav-left-sidebar {
-  position: fixed;
+  position: absolute;
   width: 197px;
-  height: 100%;
+  /*height: 100%;*/
   top: 90px;
   overflow: auto;
   -webkit-transition: all 0.3s ease;

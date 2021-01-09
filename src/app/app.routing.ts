@@ -136,7 +136,7 @@ const appRoutes: Routes = [
                 component: Ilha1Component,
                 canActivate:[UserGuard],
                 children: [
-                    {path: '',  redirectTo: 'dialog/inicial', pathMatch: 'full'},
+                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
                     {path: 'dialogo/:dialog', component: Ilha1DialogoComponent, canActivate:[UserGuard]}
                 ],
             },

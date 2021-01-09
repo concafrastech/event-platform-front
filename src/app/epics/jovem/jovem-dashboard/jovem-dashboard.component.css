@@ -587,10 +587,14 @@ Container / Wrapper
 -------------------------*/
 
 .dashboard-main-wrapper {
-  background-color: #11215b;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   min-height: 100%;
-  padding-top: 60px;
-  position: relative;
+
+  background-color: #11215b;
+  /*  padding-top: 60px;*/  
+
 
 }
 

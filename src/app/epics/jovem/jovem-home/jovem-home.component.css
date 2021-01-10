@@ -1,8 +1,19 @@
 .capa{
- background-image: url(/assets/jovem/img/fundo.jpg); 
- background-position: center center, center center;  
- background-size: cover, cover;  
- background-repeat: no-repeat;
+  background-image: url(/assets/jovem/img/fundo.jpg);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  align-items: flex-end!important;
+  justify-content: center;
+  transition-delay: 0.5s;
+  background-position: bottom;  
+  background-size: cover;  
+  background-repeat: no-repeat;
+
+
 
 }
 /*Configuração da animação das ilhas*/

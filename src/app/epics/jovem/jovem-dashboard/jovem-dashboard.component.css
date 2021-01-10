@@ -216,6 +216,14 @@
       color:
     }
 
+    .container-fluid {
+      height: 100%;
+    }
+
+    .row {
+      height: 90%;
+    }
+
 
 /* ---------------------------------------------------
     MEDIAQUERIES

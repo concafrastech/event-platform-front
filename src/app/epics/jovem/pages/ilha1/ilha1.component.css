@@ -9,10 +9,9 @@ section {
    background-position: bottom;  
    background-size: cover;  
    background-repeat: no-repeat;
-
-
 }
-.caixa{
+
+.caixa {
    background-color: #007bff7a;
    padding: 15px;
    margin-bottom: 15px;
@@ -24,7 +23,7 @@ section {
 
 }
 
-.caixa p{
+.caixa p {
  font-family: "Poppins", sans-serif;
  font-style: normal;
  font-weight: 400;

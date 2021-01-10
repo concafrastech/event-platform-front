@@ -10,6 +10,13 @@ export class JogostematicosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
+
+$(document).ready(function() {
+    $('#Carousel').carousel({
+        interval: 5000
+    })
+});

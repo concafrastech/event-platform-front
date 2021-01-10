@@ -1,19 +1,19 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
   <p class="text-left">Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico</a></li>
-    <li class="list-group-item"><a>Novas Dimensões do Conhecimento</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico: Arte e Assistência</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/activity/1']" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: Livro dos Espíritos: O Game!</a></li>
     <li class="list-group-item"><a>Revista Auta de Souza</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/jogostematicos']" [routerLinkActive]="['active']">Jogos Temáticos</a></li>
   </ul>
 </div>
 
 <div class="dialogo" *ngIf="dialog == 'temaespecifico'">
-  <p class="text-left">Escolha uma opção de temas:</p>
+  <p class="text-left">Como você deseja acessar o seu curso:</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a>Tema Específico</a></li>
-    <li class="list-group-item"><a>Tema Central</a></li>
-    <li class="list-group-item"><a>Tema Campanha</a></li>
+    <li class="list-group-item"><a>Zoom</a></li>
+    <li class="list-group-item"><a>Youtube</a></li>
+    <li class="list-group-item"><a>Áudio</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
   </ul>
 </div>

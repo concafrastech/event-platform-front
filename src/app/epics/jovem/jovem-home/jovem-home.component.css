@@ -13,8 +13,6 @@
   background-size: cover;  
   background-repeat: no-repeat;
 
-
-
 }
 /*Configuração da animação das ilhas*/
 
@@ -101,6 +99,13 @@
       transform: translateX(-8px);
    }
 }
-
-
+  
+.titulo {
+   font-family: "Poppins", sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 1.2rem;
+   color: #fff;
+   padding: 20px;
+}
 

@@ -1,11 +1,9 @@
 section {
    height: 100%;
+   width: 100%;
    display: grid;
    align-items: flex-end!important;
    justify-content: center;
-   position: absolute;
-   right: 0;
-   left: 0;
    transition-delay: 0.5s;
    background-image: url(/assets/jovem/img/bribrioteca.png);
    background-position: bottom;  

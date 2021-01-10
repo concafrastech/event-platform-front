@@ -14,9 +14,10 @@ export class JogostematicosComponent implements OnInit {
   }
 
 }
-
+/*
 $(document).ready(function() {
     $('#Carousel').carousel({
         interval: 5000
     })
 });
+*/

@@ -5,14 +5,11 @@
   top: 0;
   height: 100%;
   width: 100%;
-  display: grid;
-  align-items: flex-end!important;
-  justify-content: center;
   transition-delay: 0.5s;
-  background-position: bottom;  
-  background-size: cover;  
-  background-repeat: no-repeat;
 
+   background-position: bottom;  
+   background-size: cover;  
+   background-repeat: no-repeat;
 }
 /*Configuração da animação das ilhas*/
 
@@ -106,6 +103,6 @@
    font-weight: 400;
    font-size: 1.2rem;
    color: #fff;
-   padding: 20px;
+   z-index: 1;
 }
 

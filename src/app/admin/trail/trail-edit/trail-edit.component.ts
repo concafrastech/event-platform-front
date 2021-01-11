@@ -10,12 +10,17 @@ import { UserService } from "src/app/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ClassroomService } from "src/app/services/classroom.service";
 import { Classroom } from "src/app/models/classroom";
+import { Content } from "src/app/models/content";
+import { concat, Observable } from "rxjs";
+import { concatMap, map } from "rxjs/operators";
+import { ContentService } from "src/app/services/content.service";
+import { DocumentService } from "src/app/services/document.service";
 
 @Component({
   selector: "app-trail-edit",
   templateUrl: "./trail-edit.component.html",
   styleUrls: ["./trail-edit.component.css"],
-  providers: [UserService, TrailService, EpicService, ClassroomService],
+  providers: [UserService, TrailService, EpicService, ClassroomService, ContentService, DocumentService],
 })
 export class TrailEditComponent implements OnInit {
   public title: string;
@@ -26,9 +31,11 @@ export class TrailEditComponent implements OnInit {
   public identity: string;
   public theoreticalClassrooms: Classroom[] = [];
   public practicalClassrooms: Classroom[] = [];
-  public theoreticalClassroom1: Classroom = null;
-  public theoreticalClassroom2: Classroom = null;
   public epics = [];
+  public momentOne: Classroom;
+  public momentTwo: Classroom;
+  public contentOne: Content[];
+  public contentTwo: Content[];
 
   constructor(
     private _route: ActivatedRoute,
@@ -37,6 +44,7 @@ export class TrailEditComponent implements OnInit {
     private _userService: UserService,
     private _epicService: EpicService,
     private _classroomService: ClassroomService,
+    private _contentService: ContentService,
     private _bsLocaleService: BsLocaleService,
     private _spinner: NgxSpinnerService
   ) {
@@ -49,6 +57,8 @@ export class TrailEditComponent implements OnInit {
     console.log("[OK] Component: trail-edit.");
     
     this.identity = this._userService.getIdentity();
+    this.momentOne = null;
+    this.momentTwo = null;
     this.trail = new Trail(
       "",
       "",
@@ -125,21 +135,23 @@ export class TrailEditComponent implements OnInit {
       (response) => {
         if (response.trail) {
           this.trail = response.trail;
+          console.log(this.trail);
+          
           for (let i = 0; i < this.trail.classrooms.length; i++) {
             if (this.trail.classrooms[i].type == "teorico") {
-              if (!this.theoreticalClassroom1) {
-                this.theoreticalClassroom1 = this.trail.classrooms[i];
+              if (!this.momentOne) {
+                this.momentOne = this.trail.classrooms[i];
               } else {
-                this.theoreticalClassroom2 = this.trail.classrooms[i];
+                this.momentTwo = this.trail.classrooms[i];
               }
             }
           }
-
-          if(this.theoreticalClassroom1){
-            this.removeClassroom(this.trail.classrooms.indexOf(this.theoreticalClassroom1));
+          
+          if(this.momentOne){
+            this.removeClassroom(this.trail.classrooms.indexOf(this.momentOne));
           }
-          if(this.theoreticalClassroom2){
-            this.removeClassroom(this.trail.classrooms.indexOf(this.theoreticalClassroom2));
+          if(this.momentTwo){
+            this.removeClassroom(this.trail.classrooms.indexOf(this.momentTwo));
           }
           
           this._spinner.hide();
@@ -166,7 +178,20 @@ export class TrailEditComponent implements OnInit {
   }
 
   addClassroom() {
-    this.trail.classrooms.push(null);
+    this.trail.classrooms.push(new Classroom(
+      "",
+      "",
+      "",
+      "",
+      new Date(),
+      new Date(),
+      "",
+      null,
+      [],
+      [],
+      new Date(),
+      new Date()
+    ));
   }
 
   removeClassroom(index: number) {
@@ -174,14 +199,97 @@ export class TrailEditComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.theoreticalClassroom1 !== null) {
-      this.trail.classrooms.push(this.theoreticalClassroom1);
+    // Vincula momentos com o tema
+    if (this.momentOne) {
+      this.trail.classrooms.push(this.momentOne);
     }
-    if (this.theoreticalClassroom2 !== null) {
-      this.trail.classrooms.push(this.theoreticalClassroom2);
+    if (this.momentTwo) {
+      this.trail.classrooms.push(this.momentTwo);
     }
 
+    // Habilita o spinner
     this._spinner.show();
+    this.saveContents().subscribe({
+      next: (resposta) => {},
+      error: null,
+      complete: () => {
+        this.saveClassrooms().subscribe({
+          next: (resposta) => {},
+          error: null,
+          complete: () => {
+            this.saveTrail();
+          },
+        });
+      },
+    });
+    this._trailService.updateTrail(this.trail).subscribe(
+      (response) => {
+        if (!response.trail) {
+          this._spinner.hide();
+          this.status = "error";
+        } else {
+          this._spinner.hide();
+          this.status = "success";
+          this.loadPage();
+          this.getTrail(this.trailId);
+        }
+      },
+      (error) => {
+        this._spinner.hide();
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
+  }
+
+  //Salva documentos/contents
+  saveContents() {
+    let obs$: Observable<any>[] = [];
+
+    this.trail.classrooms.map((classroom, index) => {
+      classroom.contents.map((content, i) => {
+        obs$.push(
+          this._contentService.addContent(content).pipe(
+            map((c) => {
+              this.trail.classrooms[index].contents[i]._id = c.content._id;
+            })
+          )
+        );
+      });
+    });
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
+    );
+  }
+
+  // Salva Classrooms
+  saveClassrooms() {
+    let obs$: Observable<any>[] = [];
+
+    this.trail.classrooms.map((classroom, index) => {
+      obs$.push(
+        this._classroomService.addClassroom(classroom).pipe(
+          map((c) => {
+            this.trail.classrooms[index] = c.classroom;
+            return this.trail.classrooms[index];
+          })
+        )
+      );
+    });
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
+    );
+  }
+
+  // Salva Tema
+  saveTrail() {
     this._trailService.updateTrail(this.trail).subscribe(
       (response) => {
         if (!response.trail) {

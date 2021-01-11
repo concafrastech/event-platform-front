@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
 import { Trail } from "src/app/models/trail";
@@ -12,7 +12,6 @@ import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
 import { HttpEventType } from "@angular/common/http";
 import { NgxSpinnerService } from "ngx-spinner";
-import { event } from "jquery";
 
 @Component({
   selector: "app-classroom-edit",
@@ -31,7 +30,7 @@ export class ClassroomEditComponent implements OnInit {
   public classroomId: string;
   public url: string;
   public status: string;
-  public classroom: Classroom;
+  @Input() public classroom: Classroom;
   public identity: string;
   public trails = [];
   public isLoading: boolean = true;
@@ -57,7 +56,7 @@ export class ClassroomEditComponent implements OnInit {
     console.log("[OK] Component: classroom-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.classroom = new Classroom(
+    /*this.classroom = new Classroom(
       "",
       "",
       "",
@@ -70,8 +69,8 @@ export class ClassroomEditComponent implements OnInit {
       [],
       new Date(),
       new Date()
-    );
-    this.classroom.trail = new Trail(
+    );*/
+    /*this.classroom.trail = new Trail(
       "",
       "",
       "",
@@ -81,7 +80,7 @@ export class ClassroomEditComponent implements OnInit {
       [],
       new Date(),
       new Date()
-    );
+    );*/
     this.loadPage();
   }
 
@@ -90,16 +89,19 @@ export class ClassroomEditComponent implements OnInit {
       (response) => {
         if (response) {
           this.trails = response.trails;
-          this._route.params.subscribe((params) => {
+          this.getClassroom(this.classroom._id);
+          /*this._route.params.subscribe((params) => {
             this.classroomId = params["id"];
-            this.getClassroom(this.classroomId);
-          });
+            
+          });*/
         }
       },
       (error) => {
         console.log(<any>error);
       }
     );
+
+    
   }
 
   getClassroom(id) {
@@ -122,7 +124,6 @@ export class ClassroomEditComponent implements OnInit {
       },
       (error) => {
         console.log(<any>error);
-        this._router.navigate(["/editclassroom", this.classroomId]);
       }
     );
   }

@@ -39,7 +39,8 @@
               "node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.js"
             ],
             "allowedCommonJsDependencies": [
-              "svg-pan-zoom"
+              "svg-pan-zoom",
+              "ngx-bootstrap-datetime-popup"
             ]
           },
           "configurations": {

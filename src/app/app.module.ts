@@ -103,6 +103,7 @@ import { TermosComponent } from './components/login/termos/termos.component';
 import { AboutComponent } from './components/login/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -125,6 +126,7 @@ const levelsConcafras2021 = [
   { badge: 'SOL', icon: 'assets/concafras2021/concafronas/badges/sol.svg', range: { min: 900, max: 2000 } },
 ];
 
+const config: SocketIoConfig = { url: 'http://localhost:3800', options: {} };
 
 const GamificationConfig = {
   levels: levelsConcafras2021
@@ -226,7 +228,8 @@ const GamificationConfig = {
     NgxSpinnerModule,
     ChartsModule,
     FontAwesomeModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    SocketIoModule.forRoot(config)
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

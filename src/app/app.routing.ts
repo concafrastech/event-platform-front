@@ -58,6 +58,8 @@ import { ChartComponent } from './components/chart/chart.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { TermosComponent } from './components/login/termos/termos.component';
 import { AboutComponent } from './components/login/about/about.component';
+import { Ilha1DialogoComponent} from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
+import { JogostematicosComponent } from './epics/jovem/pages/ilha1/jogostematicos/jogostematicos.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -130,9 +132,19 @@ const appRoutes: Routes = [
         children: [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]},
+            {
+                path: 'ilha1',
+                component: Ilha1Component,
+                canActivate:[UserGuard],
+                children: [
+                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
+                    {path: 'dialogo/:dialog', component: Ilha1DialogoComponent, canActivate:[UserGuard]}
+                ],
+            },
+            {path: 'jogostematicos', component: JogostematicosComponent, canActivate:[UserGuard]},
         ],
     },
-    {path: 'ilha1', component: Ilha1Component},
+    
     {
         path: 'concafrinhas',
         component: InfanciaDashboardComponent,

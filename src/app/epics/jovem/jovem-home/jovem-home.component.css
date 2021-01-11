@@ -1,15 +1,16 @@
-
-
 .capa{
-/*   background-image: url(/assets/jovem/img/fundo.jpg); 
-*/   background-position: center center, center center;  
-   background-size: cover, cover;  
-   background-repeat: repeat, repeat; 
+  background-image: url(/assets/jovem/img/fundo.jpg);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition-delay: 0.5s;
 
+   background-position: bottom;  
+   background-size: cover;  
+   background-repeat: no-repeat;
 }
-
-
-
 /*Configuração da animação das ilhas*/
 
 .animacao:hover {
@@ -95,6 +96,13 @@
       transform: translateX(-8px);
    }
 }
-
-
+  
+.titulo {
+   font-family: "Poppins", sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 1.2rem;
+   color: #fff;
+   z-index: 1;
+}
 

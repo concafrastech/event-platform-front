@@ -1,168 +1,124 @@
-<!-- ============================================================== -->
-<!-- main wrapper -->
-<!-- ============================================================== -->
-<div class="dashboard-main-wrapper capa">
-    <!-- ============================================================== -->
-    <!-- navbar -->
-    <!-- ============================================================== -->
-    <div class="dashboard-header">
-        <nav class="navbar navbar-light bg-light fixed-top shadow">
-          <div class="mx-auto" style="width: 200px;">
-             <a class="navbar-brand CONCAFRASVIRTUAL2021" href="#">
-                <img src="/assets/jovem/img/logoauta.svg" class="" alt="">
-                <span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
+<div class="wrapper">
+  <!-- Sidebar Holder -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <img class="img-fluid d-block rounded-circle" src="https://static.pingendo.com/img-placeholder-3.svg" width="100px" height="100px" style="margin-left: auto; margin-right: auto;margin-top:15px; margin-bottom: 10px;">
+
+      <a class="nav-link text-center" > Bem vindo,<br/>Godofredo</a>
+    </div>
+
+    <ul class="list-unstyled components">
+      <li class="text-center">
+        <a href="">
+          <img class="img-fluid" src="assets/jovem/icons/calendar.svg" width="25%">
+          <p >Programação</p>
+        </a>
+      </li>
+      <li class="text-center">
+        <a href="">
+          <img class="img-fluid" src="assets/jovem/icons/auta.svg" width="25%">
+          <p >Acesso inicial</p>
+        </a>
+      </li>
+      <li class="text-center">
+        <a href="">
+          <img class="img-fluid" src="assets/jovem/icons/maos.svg" width="25%">
+          <p >Passe a distância</p>
+        </a>
+      </li>
+      <li class="text-center">
+        <a href="">
+          <img class="img-fluid" src="assets/jovem/icons/coracao.svg" width="25%">
+          <p >Amparo Fraterno: Quer conversar?</p>
+        </a>
+      </li>
+      <li class="text-center">
+        <a href="">
+          <img class="img-fluid" src="assets/jovem/icons/duvida.svg" width="25%">
+          <p >Como navegar</p>
+        </a>
+      </li>
+      <li class="text-center">
+
+        <a href="#">
+          <img class="img-fluid" src="assets/jovem/icons/sair.svg" width="25%">
+          <p >Sair</p>
+        </a>
+      </li>
+       <!-- <li>
+        <a href="#">About</a>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </li> -->
+    </ul>
+  </nav>
+
+  <!-- Page Content Holder -->
+  <div id="content">
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+<!--           <div style="width: 200px;">
+            <a class="navbar-brand CONCAFRASVIRTUAL2021" href="#" id="sidebarCollapse">
+              <img src="/assets/jovem/img/logoauta.svg" class="" alt="">
+              <span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
             </a>
-        </div>
+          </div> -->
+        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+          <i class="glyphicon glyphicon-align-left"></i>
+          <span>Toggle Sidebar</span>
+        </button>
+      </div>
 
-        <button class="navbar-toggler d-block" type="button" id="sidebarCollapse">
-           <span class="navbar-toggler-icon"></span>
-       </button>
-   </nav>
-</div>
-<!-- ============================================================== -->
-<!-- end navbar -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- left sidebar -->
-<!-- ============================================================== -->
-<div class="nav-left-sidebar">
-    <div class="menu-list">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav flex-column">
-                    <li class="nav-item">
-                      <img class="img-fluid d-block rounded-circle" src="https://static.pingendo.com/img-placeholder-3.svg" width="100px" height="100px" style="margin-left: auto; margin-right: auto;margin-top:15px; margin-bottom: 10px;">
-
-                      <a class="nav-link" > Bem vindo,<br/>Godofredo</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" ><svg-icon src="#" class="sidebar-icon"></svg-icon> Nivel Terra<br/>100 pontos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  ><svg-icon src="assets/concafras2021/concafronas/icones/programacao-menu-item.svg" class="sidebar-icon"></svg-icon> Programação</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  ><svg-icon src="assets/concafras2021/concafronas/icones/acesso-inicial-menu-item.svg" class="sidebar-icon"></svg-icon> Acesso Inicial</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"  ><svg-icon src="assets/concafras2021/concafronas/icones/passe-virtual-menu-item.svg" class="sidebar-icon"></svg-icon>  Passe a Distância</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" ><svg-icon src="assets/concafras2021/concafronas/icones/amparo-fraterno-menu-item.svg" class="sidebar-icon"></svg-icon>  Amparo Fraterno: <br/> Quer conversar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" ><svg-icon src="assets/concafras2021/concafronas/icones/como-navegar-menu-item.svg" class="sidebar-icon"></svg-icon>  Como Navegar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Duvidas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" ><svg-icon src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" class="sidebar-icon"></svg-icon>  Sair</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav flex-column" *ngIf="false">
-                <li class="nav-item">
-                    <!-- <div class="nav-user-info"> -->
-                        <div>
-                            <div class="user-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <span>Bem vindo,<br><b>Godofredo</b></span>
-                        </div>
-                        <div>
-                            <img class="user-badge" src="../../../../assets/concafras2021/concafronas/icones/terra.png" alt="Terra">
-                            <span>Nível 100<br><b>54545</b> pontos</span>
-                        </div>
-                    </li>
-                    <hr class="nav-hr">
-                    <li class="nav-item">
-                        <a class="nav-link" ><img src="../../../../assets/concafras2021/concafronas/icones/programacao.png" alt="Programação"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ><img src="../../../../assets/concafras2021/concafronas/icones/acesso_inicial.png" alt="Acesso Inicial"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ><img src="../../../../assets/concafras2021/concafronas/icones/passe_virtual.png" alt="Passe a distância"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ><img src="../../../../assets/concafras2021/concafronas/icones/amparo_fraterno.png" alt="Amparo Fraterno"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"  ><img src="../../../../assets/concafras2021/concafronas/icones/como_navegar.png" alt="Como Navegar"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"  ><img src="../../../../assets/concafras2021/concafronas/icones/suporte.png" alt="Suporte"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ><img src="../../../../assets/concafras2021/concafronas/icones/sair.png" alt="Sair"></a>
-                    </li>
-                </ul>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Page</a></li>
+          <li><a href="#">Page</a></li>
+          <li><a href="#">Page</a></li>
+          <li><a href="#">Page</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- início do conteúdoi -->
+  <div class="container-fluid">
+    <div class="row" >
+      <div class="col-md-10"><router-outlet></router-outlet></div>
+      <div class="col-md-2">
+        <div class="caixaazul">
+          <p class="text-center">Fique atento</p>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="https://static.pingendo.com/img-placeholder-1.svg" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="https://static.pingendo.com/img-placeholder-1.svg" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="https://static.pingendo.com/img-placeholder-1.svg" alt="Third slide">
+              </div>
             </div>
-        </nav>
-    </div>
-</div>
-<!-- ============================================================== -->
-<!-- end left sidebar -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- right sidebar -->
-<!-- ============================================================== -->
-<div class="nav-right-sidebar">
-    <div class="menu-list">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse" id="navbarNavRight">
-                <ul class="navbar-nav flex-column">
-                    <li class="nav-item">
-                        <h3 class="nav-header">Fique Atento!</h3>
-                    </li>
-                    <li class="nav-item">
-                        <h3 class="nav-header">Espaço do Caravaneiro</h3>
-                    </li>
-                    <li class="nav-item">
-                        <h3 class="nav-destaque">Acessar o espaço do Caravaneiro</h3>
-                        Faça um post usnado a hashtag <br/>
-                        <span class="strong-hash">#concafras</span> nas redes sociais <br/>
-                        e apareça por aqui.
-                        <h3 class="nav-destaque">Marque o Encontro Fraterno Auta de Souza na sua Cidade!</h3>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
-<!-- ============================================================== -->
-<!-- end right sidebar -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- wrapper  -->
-<!-- ============================================================== -->
-<div class="dashboard-wrapper">
-    <div class="dashboard-principal">
-        <div class="container-fluid dashboard-content ">
-           <div class="principal-widget">
-            <router-outlet></router-outlet>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-<!-- ============================================================== -->
-<!-- end wrapper  -->
-<!-- ============================================================== -->
+    
 
+    <!-- final do conteúdo -->
+  </div>
 </div>
-<!-- ============================================================== -->
-<!-- end main wrapper  -->
-<!-- ============================================================== -->
-
-<!-- ============================================================== -->
-<!-- footer -->
-<!-- ============================================================== -->
-<!-- <footer class="navbar navbar-default navbar-fixed-bottom">
-</footer> -->
-<!-- ============================================================== -->
-<!-- end footer -->
-<!-- ============================================================== -->

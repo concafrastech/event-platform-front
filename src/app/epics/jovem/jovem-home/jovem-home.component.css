@@ -1,10 +1,5 @@
 .capa{
-  background-image: url(/assets/jovem/img/fundo.jpg);
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
+
   display: grid;
   align-items: flex-end!important;
   justify-content: center;

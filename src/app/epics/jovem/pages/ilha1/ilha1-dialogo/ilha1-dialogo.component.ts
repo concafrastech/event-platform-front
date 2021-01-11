@@ -21,5 +21,9 @@ export class Ilha1DialogoComponent implements OnInit {
       this.dialog = dialog;
     });
   }
+    getUrl()
+  {
+    return "url(/assets/jovem/img/bribrioteca.png)";
+  }
 
 }

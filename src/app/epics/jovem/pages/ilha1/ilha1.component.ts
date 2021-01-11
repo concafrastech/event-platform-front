@@ -13,9 +13,13 @@ export class Ilha1Component implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router
-  ) { }
+    ) { }
 
   ngOnInit(): void {
 
+  }
+  getUrl()
+  {
+    return "url(/assets/jovem/img/bribrioteca.png)";
   }
 }

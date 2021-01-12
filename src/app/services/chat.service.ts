@@ -17,7 +17,7 @@ export class ChatService {
         .set("Content-Type", "application/json")
         .set("Authorization", getToken());
 
-    return this.http.get(this.url + 'chat/' + room, {
+    return this.http.get(this.url + 'chat/?room=' + room, {
         headers: headers
       });
   }
@@ -31,6 +31,37 @@ export class ChatService {
     return this.http.post(this.url + 'chat/', params, {
         headers: headers,
     });
+  }
+
+  showChat(id) {
+    let headers = new HttpHeaders()
+        .set("Content-Type", "application/json")
+        .set("Authorization", getToken());
+
+    return this.http.get('/chat/' + id, {
+        headers: headers
+      });
+  }
+
+  updateChat(id, data) {
+    let params = JSON.stringify(data);
+    let headers = new HttpHeaders()
+        .set("Content-Type", "application/json")
+        .set("Authorization", getToken());
+
+    return this.http.put(this.url + 'chat/' + id, params, {
+        headers: headers,
+    });
+  }
+
+  deleteChat(id) {
+    let headers = new HttpHeaders()
+        .set("Content-Type", "application/json")
+        .set("Authorization", getToken());
+
+    return this.http.delete('/chat/' + id, {
+        headers: headers
+      });
   }
 
 }

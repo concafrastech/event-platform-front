@@ -60,12 +60,14 @@ import { TermosComponent } from './components/login/termos/termos.component';
 import { AboutComponent } from './components/login/about/about.component';
 import { Ilha1DialogoComponent} from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
 import { JogostematicosComponent } from './epics/jovem/pages/ilha1/jogostematicos/jogostematicos.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'termos', component: TermosComponent},
     {path: 'about', component: AboutComponent},
+    {path: 'chat', component: ChatComponent},
     {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
     {path: 'select-conference', component: SelectConferenceComponent, canActivate:[UserGuard]},
     {

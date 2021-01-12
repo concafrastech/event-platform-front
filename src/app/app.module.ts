@@ -106,6 +106,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { Ilha1DialogoComponent } from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
 import { JogostematicosComponent } from './epics/jovem/pages/ilha1/jogostematicos/jogostematicos.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -207,7 +208,8 @@ const GamificationConfig = {
     TermosComponent,
     AboutComponent,
     Ilha1DialogoComponent,
-    JogostematicosComponent
+    JogostematicosComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

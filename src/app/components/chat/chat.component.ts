@@ -6,7 +6,8 @@ import { GLOBAL } from 'src/app/services/global';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  providers: [ChatService] 
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
 
@@ -52,13 +53,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   getChatByRoom(room) {
-    this.chatService.getChatByRoom(room).subscribe(
-      (res) => {
-        this.chats = res;
-      }, (err) => {
-        console.log(err);
-      }
-    );
+    this.chatService.getChatByRoom(room).subscribe((res) => {
+      this.chats = res;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   joinRoom() {
@@ -71,14 +70,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage() {
-    this.chatService.saveChat(this.msgData).subscribe(
-      (result) => {
-        this.socket.emit('save-message', result);
-      }, 
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.chatService.saveChat(this.msgData).subscribe((result) => {
+      this.socket.emit('save-message', result);
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   logout() {

@@ -15,7 +15,7 @@ export class ClassroomService {
     this.url = GLOBAL.url;
   }
 
-  saveclassrooms(classrooms: Classroom[]): Observable<any> {
+  saveclassrooms(classrooms: Classroom[]): Observable<any>[] {
     let obs$: Observable<any>[] = [];
     classrooms.map((classroom) => {
         if(classroom._id) {
@@ -24,12 +24,12 @@ export class ClassroomService {
             obs$.push(this.addClassroom(classroom));
         }
     });
-
-    return concat(obs$).pipe(
+    return obs$;
+    /*return concat(obs$).pipe(
       concatMap((observableClassroom) => {
         return observableClassroom;
       })
-    );
+    );*/
   }
 
   addClassroom(classroom): Observable<any> {

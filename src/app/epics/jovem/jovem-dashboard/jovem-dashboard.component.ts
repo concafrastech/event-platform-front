@@ -12,7 +12,6 @@ export class JovemDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
 
 }
 $(document).ready(function() {

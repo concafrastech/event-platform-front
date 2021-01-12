@@ -51,23 +51,17 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <fieldset class="form-group">
-                    <label>Curso teórico 1</label>
-                    <select [compareWith]="compareByOptionId" name="theoreticalclassroom1" #tClassroom1="ngModel" [(ngModel)]="theoreticalClassroom1" class="form-control">
-                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
-                        <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
-                    </select>
+                <fieldset class="form-group" *ngIf="momentOne">
+                    <h4>Momento 1</h4>
+                    <app-classroom-edit [(classroom)]="momentOne"></app-classroom-edit>
                 </fieldset>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <fieldset class="form-group">
-                    <label>Curso teórico 2</label>
-                    <select [compareWith]="compareByOptionId" name="theoreticalclassroom2" #tClassroom2="ngModel" [(ngModel)]="theoreticalClassroom2" class="form-control">
-                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
-                        <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
-                    </select>
+                <fieldset class="form-group" *ngIf="momentTwo">
+                    <h4>Momento 2</h4>
+                    <app-classroom-edit [(classroom)]="momentTwo"></app-classroom-edit>
                 </fieldset>
             </div>
         </div>
@@ -82,10 +76,7 @@
                 <fieldset class="form-group">
                     <label>Curso prático {{i+1}}</label>
                     <button class="btn btn-danger" type="button" (click)="removeClassroom(i)"><i class="fa fa-trash"></i></button>
-                    <select [compareWith]="compareByOptionId" [name]="'praticalclassroom'+i" #pclassroom="ngModel" [(ngModel)]="trail.classrooms[i]" class="form-control">
-                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
-                        <option *ngFor="let option of practicalClassrooms" [ngValue]="option">{{option.name}}</option>
-                    </select>
+                    <app-classroom-add [(classroom)]="trail.classrooms[i]"></app-classroom-add>
                 </fieldset>
             </div>
         </div>

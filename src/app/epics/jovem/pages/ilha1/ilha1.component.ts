@@ -16,10 +16,10 @@ export class Ilha1Component implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this._route.params.subscribe(params => {
+      let dialog = params['dialog'];
+      this.dialog = dialog;
+    });
+  }
 
-  }
-  getUrl()
-  {
-    return "url(/assets/jovem/img/bribrioteca.png)";
-  }
 }

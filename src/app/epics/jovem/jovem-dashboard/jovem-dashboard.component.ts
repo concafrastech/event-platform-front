@@ -11,10 +11,6 @@ export class JovemDashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getUrl()
-  {
-    return "url(/assets/jovem/img/fundo.jpg)";
-  }
   
 
 }

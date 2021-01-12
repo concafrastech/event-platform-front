@@ -18,8 +18,5 @@ export class Ilha1Component implements OnInit {
   ngOnInit(): void {
 
   }
-  getUrl()
-  {
-    return "url(/assets/jovem/img/bribrioteca.png)";
-  }
+
 }

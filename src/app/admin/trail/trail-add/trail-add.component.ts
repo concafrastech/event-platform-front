@@ -1,3 +1,4 @@
+import { Observable } from "rxjs/Observable";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
@@ -12,6 +13,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { ContentService } from "src/app/services/content.service";
 import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
+import { concat } from "rxjs";
+import { concatMap, map } from "rxjs/operators";
 
 @Component({
   selector: "app-trail-add",
@@ -65,7 +68,7 @@ export class TrailAddComponent implements OnInit {
       "",
       "",
       "",
-      "",
+      "teorico",
       new Date(),
       new Date(),
       "",
@@ -79,7 +82,7 @@ export class TrailAddComponent implements OnInit {
       "",
       "",
       "",
-      "",
+      "teorico",
       new Date(),
       new Date(),
       "",
@@ -169,7 +172,20 @@ export class TrailAddComponent implements OnInit {
   }
 
   addClassroom() {
-    this.trail.classrooms.push(null);
+    this.trail.classrooms.push(new Classroom(
+      "",
+      "",
+      "",
+      "pratico",
+      new Date(),
+      new Date(),
+      "",
+      null,
+      [],
+      [],
+      new Date(),
+      new Date()
+    ));
   }
 
   removeClassroom(index: number) {
@@ -187,64 +203,62 @@ export class TrailAddComponent implements OnInit {
 
     // Habilita o spinner
     this._spinner.show();
-
-    // Chama a inserção
-    this.saveClassroom();
+    this.saveContents().subscribe({
+      next: (resposta) => {},
+      error: null,
+      complete: () => {
+        this.saveClassrooms().subscribe({
+          next: (resposta) => {},
+          error: null,
+          complete: () => {
+            this.saveTrail();
+          },
+        });
+      },
+    });
   }
 
-  // Salva nada, mas vai salva documentos
-  saveDocuments() {}
-
-  // Salva Conteúdos
+  //Salva documentos/contents
   saveContents() {
-    let aux = 0;
-    this.trail.classrooms.forEach((classroom) => {
-      // Tem algo errado aqui, minha cabeça fritou
-      // Tentei pegar apenas o Contents[] mas se eu separar, ele perde a referência do Classroom
-      console.log(classroom.contents);
-      this._spinner.hide();
-      // let index = 0;
-      // aux += 1;
-      // this._contentService.saveContents(classroom.contents).subscribe({
-      //   next: (content) => {
-      //     classroom.contents[index]._id = content._id;
-      //     index += 1;
-      //   },
-      //   error: (error) => {
-      //     this._spinner.hide();
-      //     var errorMessage = <any>error;
-      //     console.log(errorMessage);
-      //     if (errorMessage != null) {
-      //       this.status = "error";
-      //     }
-      //   },
-      //   complete: () => {
-      //     if (aux == 2) {
-      //       this.saveClassroom();
-      //     }
-      //   },
-      // });
+    let obs$: Observable<any>[] = [];
+
+    this.trail.classrooms.map((classroom, index) => {
+      classroom.contents.map((content, i) => {
+        obs$.push(
+          this._contentService.addContent(content).pipe(
+            map((c) => {
+              this.trail.classrooms[index].contents[i]._id = c.content._id;
+            })
+          )
+        );
+      });
     });
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
+    );
   }
 
-  // Salva Classroom
-  saveClassroom() {
-    let index = 0;
-    this._classroomService.saveclassrooms(this.trail.classrooms).subscribe({
-      next: (response) => {
-        this.trail.classrooms[index] = response.classroom;
-        index = +1;
-      },
-      error: (error) => {
-        this._spinner.hide();
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      },
-      complete: () => this.saveTrail(),
+  // Salva Classrooms
+  saveClassrooms() {
+    let obs$: Observable<any>[] = [];
+
+    this.trail.classrooms.map((classroom, index) => {
+      obs$.push(
+        this._classroomService.addClassroom(classroom).pipe(
+          map((c) => {
+            this.trail.classrooms[index] = c.classroom;
+            return this.trail.classrooms[index];
+          })
+        )
+      );
     });
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
+    );
   }
 
   // Salva Tema

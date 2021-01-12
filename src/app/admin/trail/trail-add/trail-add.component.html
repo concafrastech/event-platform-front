@@ -54,10 +54,6 @@
                 <fieldset class="form-group">
                     <h4>Momento 1</h4>
                     <app-classroom-add [(classroom)]="momentOne"></app-classroom-add>
-                    <!-- <select [compareWith]="compareByOptionId" name="theoreticalclassroom1" #tClassroom1="ngModel" [(ngModel)]="theoreticalClassroom1" class="form-control">
-                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
-                        <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
-                    </select> -->
                 </fieldset>
             </div>
         </div>
@@ -66,10 +62,6 @@
                 <fieldset class="form-group">
                     <h4>Momento 2</h4>
                     <app-classroom-add [(classroom)]="momentTwo"></app-classroom-add>
-                    <!-- <select [compareWith]="compareByOptionId" name="theoreticalclassroom2" #tClassroom2="ngModel" [(ngModel)]="theoreticalClassroom2" class="form-control">
-                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
-                        <option *ngFor="let classroom of theoreticalClassrooms" [ngValue]="classroom">{{classroom.name}}</option>
-                    </select> -->
                 </fieldset>
             </div>
         </div>
@@ -84,10 +76,12 @@
                 <fieldset class="form-group">
                     <label>Curso prático {{i+1}}</label>
                     <button class="btn btn-danger" type="button" (click)="removeClassroom(i)"><i class="fa fa-trash"></i></button>
-                    <select [name]="'praticalclassroom'+i" #pclassroom="ngModel" [(ngModel)]="trail.classrooms[i]" class="form-control">
+                    <app-classroom-add [(classroom)]="trail.classrooms[i]"></app-classroom-add>
+                    
+                    <!--<select [name]="'praticalclassroom'+i" #pclassroom="ngModel" [(ngModel)]="trail.classrooms[i]" class="form-control">
                         <option [ngValue]="null" [value]="null">-- Selecione --</option>
                         <option *ngFor="let option of practicalClassrooms" [ngValue]="option">{{option.name}}</option>
-                    </select>
+                    </select>-->
                 </fieldset>
             </div>
         </div>

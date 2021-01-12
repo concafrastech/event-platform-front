@@ -11,6 +11,7 @@ import { UserService } from "src/app/services/user.service";
 import { ContentService } from "src/app/services/content.service";
 import { HttpEventType } from "@angular/common/http";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Content } from "src/app/models/content";
 
 @Component({
   selector: "app-classroom-add",
@@ -30,6 +31,7 @@ export class ClassroomAddComponent implements OnInit {
   public url: string;
   public status: string;
   @Input() public classroom: Classroom;
+  @Input() public typeClassroom: string;
   public identity: string;
   public trails = [];
   public contentIsValid: boolean = false;
@@ -60,7 +62,7 @@ export class ClassroomAddComponent implements OnInit {
         "",
         "",
         "",
-        "",
+        this.typeClassroom,
         new Date(),
         new Date(),
         "",

@@ -222,6 +222,13 @@
       width: 100%;
       min-height: 100vh;
       transition: all 0.3s;
+      /*background-color: #273B87;
+      background-position: center center;  
+      background-size: cover;  
+      background-repeat: no-repeat;*/
+
+    
+
     }
 
     #content p a {

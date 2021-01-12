@@ -13,9 +13,13 @@ export class Ilha1Component implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router
-  ) { }
+    ) { }
 
   ngOnInit(): void {
-
+    this._route.params.subscribe(params => {
+      let dialog = params['dialog'];
+      this.dialog = dialog;
+    });
   }
+
 }

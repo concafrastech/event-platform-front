@@ -19,11 +19,10 @@
 }
 
 .retangulo-2 {
-  top: 100px;
-  left: 17%;
   width: 55em;
   height: 450px;
-  position: relative;
+  margin: 0px auto;
+  margin-top: 200px;
   background-image: linear-gradient(#fbfbfb, #dcdcdc);
   box-shadow: 0px 10px 15px #00000021;
   padding: 100px 200px;

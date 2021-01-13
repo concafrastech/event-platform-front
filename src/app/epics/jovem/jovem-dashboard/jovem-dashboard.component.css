@@ -1,6 +1,6 @@
 
 .navbar-brand img {
-  width: 24%;
+  width: 15%;
   padding-right: 5px;
   white-space: nowrap;
 
@@ -14,7 +14,10 @@
   line-height: 1.53;
   letter-spacing: normal;
   text-align: left;
-  color:#273B87 !important;
+  color:#273B87 !important;    
+  background: white;
+  border: none;
+
 }
 .CONCAFRASVIRTUAL2021 .text-style-1 {
   font-style: italic;
@@ -227,7 +230,7 @@
       background-size: cover;  
       background-repeat: no-repeat;*/
 
-    
+
 
     }
 
@@ -256,6 +259,6 @@
         margin-left: 0;
       }
       #sidebarCollapse span {
-        display: none;
+        /*display: none;*/
       }
     }

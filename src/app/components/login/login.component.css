@@ -20,13 +20,13 @@
 
 .retangulo-2 {
   top: 100px;
-  left: 23%;
-  width: 55%;
+  left: 17%;
+  width: 55em;
   height: 450px;
   position: relative;
   background-image: linear-gradient(#fbfbfb, #dcdcdc);
   box-shadow: 0px 10px 15px #00000021;
-  padding: 100px;
+  padding: 100px 200px;
   text-align: center;
   border-radius: 2px;
 }
@@ -88,6 +88,6 @@
 .icon-close {
   cursor: pointer;
   position: relative;
-  left: 18%;
+  left: 40%;
   top: -80px;
 }

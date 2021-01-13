@@ -77,9 +77,6 @@ import { ClassroomEditComponent } from './admin/classroom/classroom-edit/classro
 import { ClassroomAddComponent } from './admin/classroom/classroom-add/classroom-add.component';
 import { DocumentEditComponent } from './admin/document/document-edit/document-edit.component';
 import { DocumentListComponent } from './admin/document/document-list/document-list.component';
-import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
-import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
-import { Ilha1Component } from './epics/jovem/pages/ilha1/ilha1.component';
 import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
 import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
 import { ContentTimeDirective } from './directives/form-validators/content-time.directive';
@@ -103,8 +100,22 @@ import { TermosComponent } from './components/login/termos/termos.component';
 import { AboutComponent } from './components/login/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { Ilha1DialogoComponent } from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
-import { JogostematicosComponent } from './epics/jovem/pages/ilha1/jogostematicos/jogostematicos.component';
+import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
+import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
+import { Ilha1Component } from './epics/jovem/pages/ilha1/ilha1.component';
+import { Ilha2Component } from './epics/jovem/pages/ilha2/ilha2.component';
+import { Ilha3Component } from './epics/jovem/pages/ilha3/ilha3.component';
+import { Ilha4Component } from './epics/jovem/pages/ilha4/ilha4.component';
+import { Ilha5Component } from './epics/jovem/pages/ilha5/ilha5.component';
+import { Ilha1DialogoComponent} from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
+import { Ilha2DialogoComponent } from './epics/jovem/pages/ilha2/ilha2-dialogo/ilha2-dialogo.component';
+import { Ilha3DialogoComponent } from './epics/jovem/pages/ilha3/ilha3-dialogo/ilha3-dialogo.component';
+import { Ilha4DialogoComponent } from './epics/jovem/pages/ilha4/ilha4-dialogo/ilha4-dialogo.component';
+import { Ilha5DialogoComponent } from './epics/jovem/pages/ilha5/ilha5-dialogo/ilha5-dialogo.component';
+import { JogosTematicosComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/jogos-tematicos.component';
+import { MuralArtisticoComponent } from './epics/jovem/pages/ilha2/mural-artistico/mural-artistico.component';
+import { AlegriaCristaMusicasComponent } from './epics/jovem/pages/ilha2/alegria-crista-musicas/alegria-crista-musicas.component';
+import { LancamentosComponent } from './epics/jovem/pages/ilha5/lancamentos/lancamentos.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -205,7 +216,18 @@ const GamificationConfig = {
     TermosComponent,
     AboutComponent,
     Ilha1DialogoComponent,
-    JogostematicosComponent
+    JogosTematicosComponent,
+    Ilha2Component,
+    Ilha3Component,
+    Ilha4Component,
+    Ilha5Component,
+    Ilha3DialogoComponent,
+    Ilha4DialogoComponent,
+    Ilha5DialogoComponent,
+    Ilha2DialogoComponent,
+    MuralArtisticoComponent,
+    AlegriaCristaMusicasComponent,
+    LancamentosComponent,
   ],
   imports: [
     BrowserModule,

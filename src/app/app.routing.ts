@@ -39,9 +39,6 @@ import { ClassroomEditComponent } from './admin/classroom/classroom-edit/classro
 import { ClassroomListComponent } from './admin/classroom/classroom-list/classroom-list.component';
 import { DocumentEditComponent } from './admin/document/document-edit/document-edit.component';
 import { DocumentListComponent } from './admin/document/document-list/document-list.component';
-import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
-import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
-import { Ilha1Component } from './epics/jovem/pages/ilha1/ilha1.component';
 import { InfanciaDashboardComponent } from './epics/infancia/infancia-dashboard/infancia-dashboard.component';
 import { InfanciaHomeComponent } from './epics/infancia/infancia-home/infancia-home.component';
 import { StageEditComponent } from './admin/stage/stage-edit/stage-edit.component';
@@ -58,8 +55,22 @@ import { ChartComponent } from './components/chart/chart.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { TermosComponent } from './components/login/termos/termos.component';
 import { AboutComponent } from './components/login/about/about.component';
+import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
+import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
+import { Ilha1Component } from './epics/jovem/pages/ilha1/ilha1.component';
+import { Ilha2Component } from './epics/jovem/pages/ilha2/ilha2.component';
+import { Ilha3Component } from './epics/jovem/pages/ilha3/ilha3.component';
+import { Ilha4Component } from './epics/jovem/pages/ilha4/ilha4.component';
+import { Ilha5Component } from './epics/jovem/pages/ilha5/ilha5.component';
 import { Ilha1DialogoComponent} from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
-import { JogostematicosComponent } from './epics/jovem/pages/ilha1/jogostematicos/jogostematicos.component';
+import { Ilha2DialogoComponent } from './epics/jovem/pages/ilha2/ilha2-dialogo/ilha2-dialogo.component';
+import { Ilha3DialogoComponent } from './epics/jovem/pages/ilha3/ilha3-dialogo/ilha3-dialogo.component';
+import { Ilha4DialogoComponent } from './epics/jovem/pages/ilha4/ilha4-dialogo/ilha4-dialogo.component';
+import { Ilha5DialogoComponent } from './epics/jovem/pages/ilha5/ilha5-dialogo/ilha5-dialogo.component';
+import { JogosTematicosComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/jogos-tematicos.component';
+import { MuralArtisticoComponent } from './epics/jovem/pages/ilha2/mural-artistico/mural-artistico.component';
+import { AlegriaCristaMusicasComponent } from './epics/jovem/pages/ilha2/alegria-crista-musicas/alegria-crista-musicas.component';
+import { LancamentosComponent } from './epics/jovem/pages/ilha5/lancamentos/lancamentos.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -141,7 +152,46 @@ const appRoutes: Routes = [
                     {path: 'dialogo/:dialog', component: Ilha1DialogoComponent, canActivate:[UserGuard]}
                 ],
             },
-            {path: 'jogostematicos', component: JogostematicosComponent, canActivate:[UserGuard]},
+            {path: 'jogos-tematicos', component: JogosTematicosComponent, canActivate:[UserGuard]},
+            {
+                path: 'ilha2',
+                component: Ilha2Component,
+                canActivate:[UserGuard],
+                children: [
+                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
+                    {path: 'dialogo/:dialog', component: Ilha2DialogoComponent, canActivate:[UserGuard]}
+                ],
+            },
+            {path: 'mural-artistico', component: MuralArtisticoComponent, canActivate:[UserGuard]},
+            {path: 'alegria-crista-musicas', component: AlegriaCristaMusicasComponent, canActivate:[UserGuard]},
+            {
+                path: 'ilha3',
+                component: Ilha3Component,
+                canActivate:[UserGuard],
+                children: [
+                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
+                    {path: 'dialogo/:dialog', component: Ilha3DialogoComponent, canActivate:[UserGuard]}
+                ],
+            },
+            {
+                path: 'ilha4',
+                component: Ilha4Component,
+                canActivate:[UserGuard],
+                children: [
+                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
+                    {path: 'dialogo/:dialog', component: Ilha4DialogoComponent, canActivate:[UserGuard]}
+                ],
+            },
+            {
+                path: 'ilha5',
+                component: Ilha5Component,
+                canActivate:[UserGuard],
+                children: [
+                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
+                    {path: 'dialogo/:dialog', component: Ilha5DialogoComponent, canActivate:[UserGuard]}
+                ],
+            },
+            {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
         ],
     },
     

@@ -19,14 +19,13 @@
 }
 
 .retangulo-2 {
-  top: 150px;
-  left: 25%;
-  width: 50%;
-  height: 33%;
-  position: relative;
+  width: 55em;
+  height: 450px;
+  margin: 0px auto;
+  margin-top: 10%;
   background-image: linear-gradient(#fbfbfb, #dcdcdc);
   box-shadow: 0px 10px 15px #00000021;
-  padding: 30px 85px;
+  padding: 100px 200px;
   text-align: center;
   border-radius: 2px;
 }
@@ -78,7 +77,7 @@
 }
 
 .send-login {
-  margin: 0px 2%;
+  margin: 0px auto;
 }
 
 .text-link-login {
@@ -88,6 +87,6 @@
 .icon-close {
   cursor: pointer;
   position: relative;
-  left: 18%;
-  top: -22px;
+  left: 40%;
+  top: -80px;
 }

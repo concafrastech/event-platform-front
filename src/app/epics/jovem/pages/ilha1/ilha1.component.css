@@ -1,7 +1,4 @@
 .fundo {
-  /*  display: grid;
-    align-items: flex-end!important;
-    justify-content: center;*/
     background-image: url(/assets/jovem/img/biblioteca.png);
     position: fixed;
     left: 0;
@@ -11,31 +8,8 @@
     background-position: center bottom;  
     background-size: cover;  
     background-repeat: no-repeat;
-  /*  transition-delay: 0.5s;  */
     z-index: -1;
   }
-/*
-#altera .fundo{
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background-position: bottom;  
-  background-size: cover;  
-  background-repeat: no-repeat;
-}
-
-section {
-   align-items: flex-end!important;
-   justify-content: center;
-   transition-delay: 0.5s;
-   display: grid;
-   align-items: flex-end!important;
-   justify-content: center;
-   transition-delay: 0.5s;
-}
-*/
 
 .caixa {
    background-color: #007bff7a;

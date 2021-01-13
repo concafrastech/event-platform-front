@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ilha1',
@@ -8,18 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class Ilha1Component implements OnInit {
 
-  @Input() public dialog: string;
-
-  constructor(
-    private _route: ActivatedRoute,
-    private _router: Router
-    ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this._route.params.subscribe(params => {
-      let dialog = params['dialog'];
-      this.dialog = dialog;
-    });
   }
 
 }
+

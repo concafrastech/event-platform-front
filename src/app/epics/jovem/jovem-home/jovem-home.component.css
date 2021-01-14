@@ -17,20 +17,21 @@
   /*  transition-delay: 0.5s;  */
   z-index: -1;
 }
-
 .titulo {
  font-family: "Poppins", sans-serif;
  font-style: normal;
- font-weight: bold;
+ font-weight: 900;
  font-size: 1.2rem;
  color: #273b87;
- font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.49;
-  letter-spacing: normal;
-  text-align: left;
+ line-height: 1.49;
+ letter-spacing: normal;
 
+}
+.titulo span{
+  background: #1ea6ec;
+  color:#fff;
+  padding: 10px;
+  text-transform: capitalize;
 }
 
 .titulo-ilha {

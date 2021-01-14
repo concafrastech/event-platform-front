@@ -1,6 +1,47 @@
-.dashboard-main-wrapper {
+.hub-main {
+    width: 100%;
+    height: 100%;
     background-image: url('/assets/concafras2021/concafronas/fundo_tenda.png') !important ;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
     background-position: center !important ; 
+}
+
+.welcome {
+    font-family: 'Poppins';
+    font-size: 20pt;
+    padding: 15px;
+    width: 300px;
+    float: left;
+}
+
+.welcome1 {
+    font-size: 20pt;
+    color: #273B87;
+    font-weight: bolder;
+    padding: 5px;
+}
+
+.welcome2 {
+    color: white;
+    font-weight: bolder;
+    background-color: #1EA6EC;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.welcome3 {
+    color: #273B87;
+    font-size: 10pt;
+    padding: 5px;
+}
+
+#svgMap {
+    padding: 10px;
+    float: right;
+    width: 70%;
+    right: 0px;
 }

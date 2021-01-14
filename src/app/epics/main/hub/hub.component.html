@@ -1,35 +1,43 @@
-<div >
-    <embed id="svgMap" type="image/svg+xml" src="assets/concafras2021/concafronas/tenda.svg" />
-</div>
+<div class="hub-main ">
+    <div class="welcome">
+        <div class="welcome1">Bem Vindos à</div>
+        <div class="welcome2">Concafras 2021!</div>
+        <div class="welcome3">Clique nos círculos do desenho interativo para acessar as plataformas virtuais.</div>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Momentos Coletivos</h2>
-        <ul>
-            <li *ngFor="let lecture of lectures">
-                <a role="button" [routerLink]="['/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>
-            </li>
-        </ul>
+    <div>
+        <embed id="svgMap" type="image/svg+xml" src="assets/concafras2021/concafronas/tenda.svg" />
     </div>
-    <div class="col-md-4">
-        <h2>Temas Específicos</h2>
-        <ul>
-            <li *ngFor="let trail of trails">
-                {{trail.name}}
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-4">
-        <h2>Novas Dimensões do Conhecimento</h2>
-        <ul>
-            <li *ngFor="let stage of stages">
-                {{stage.name}}
-                <ul>
-                    <li *ngFor="let activity of stage.activities">
-                        <a role="button" [routerLink]="['/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Momentos Coletivos</h2>
+            <ul>
+                <li *ngFor="let lecture of lectures">
+                    <a role="button" [routerLink]="['/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>Temas Específicos</h2>
+            <ul>
+                <li *ngFor="let trail of trails">
+                    {{trail.name}}
                     </li>
-                </ul>
-            </li>
-        </ul>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>Novas Dimensões do Conhecimento</h2>
+            <ul>
+                <li *ngFor="let stage of stages">
+                    {{stage.name}}
+                    <ul>
+                        <li *ngFor="let activity of stage.activities">
+                            <a role="button" [routerLink]="['/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

@@ -1,0 +1,115 @@
+@import url('../../../../assets/fonts/circular-std/style.css');
+@import url('../../../../assets/fonts/fontawesome/css/fontawesome-all.css');
+
+body {
+    font-family: 'Circular Std Book';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #71748d;
+    background-color: #efeff6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-header {}
+
+.dashboard-header .navbar {
+    padding: 0px;
+    border-bottom: 1px solid #e6e6f2;
+    /* -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
+    box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13); */
+    -webkit-transition: all 0.3s ease;
+    min-height: 80px;
+}
+
+.dashboard-main-wrapper {
+    min-height: 100%;
+    padding-top: 60px;
+    position: relative;
+}
+
+.dashboard-wrapper {
+    position: relative;
+    left: 0;
+    margin-left: 197px;
+    margin-right: 320px;
+    min-height: 870px !important;
+    width: calc(100% - 517px);
+}
+
+.dashboard-content {
+    padding: 30px 30px 60px 30px;
+}
+
+
+.background-navbar {
+    background: url("../../../../assets/concafras2021/concafronas/navbar.jpg");
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position-x: 40%;
+    background-position-y: 20%;
+    box-shadow: 0px 0px 28px 0px #aaaaaa;
+}
+
+
+.footer {
+    border-top: 1px solid rgba(152, 166, 173, .2);
+    padding: 14px 30px 14px;
+    color: #71748d;
+    background-color: #fff;
+    width: 100%;
+    /*position: absolute; bottom: 0;*/
+}
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (max-width:1400px) {
+}
+@media only screen and (max-width:1200px) {
+}
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width:992px) {
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width:768px) {
+    .dashboard-content {
+        padding: 20px 20px 60px 20px;
+    }
+    .dashboard-wrapper {
+        margin-left: 0px;
+    }
+    .dashboard-footer {
+        margin-left: 0px;
+    }
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (max-width:480px) {
+    .dashboard-content {
+        padding: 20px 20px 60px 20px;
+    }
+
+    .dashboard-wrapper {
+        margin-left: 0px;
+    }
+    .dashboard-footer {
+        margin-left: 0px;
+    }
+    .dashboard-main-wrapper .main-content {
+        margin-left: 0px;
+        width: auto;
+    }
+
+    .footer {
+        margin-left: 0px;
+    }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width:320px) {}

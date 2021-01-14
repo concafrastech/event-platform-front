@@ -1,0 +1,78 @@
+<div class="nav-left-sidebar">
+    <div class="menu-list">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="d-xl-none d-lg-none" href="#">Menu Principal</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']"  ><fa-icon [icon]="faUserCircle" size="4x" class="sidebar-icon"></fa-icon> Bem vindo,<br/>{{identity.name}}!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/meus-dados']" ><svg-icon src="{{user.level.icon}}" class="sidebar-icon"></svg-icon> Nivel {{user.level.badge}}<br/>{{user.points}} pontos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/schedule']" ><svg-icon src="assets/concafras2021/concafronas/icones/programacao-menu-item.svg" class="sidebar-icon"></svg-icon> Programação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/hub']" ><svg-icon src="assets/concafras2021/concafronas/icones/acesso-inicial-menu-item.svg" class="sidebar-icon"></svg-icon> Acesso Inicial</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/passe-virtual-menu-item.svg" class="sidebar-icon"></svg-icon>  Passe a Distância</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/amparo-fraterno-menu-item.svg" class="sidebar-icon"></svg-icon>  Amparo Fraterno: <br/> Quer conversar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/como-navegar-menu-item.svg" class="sidebar-icon"></svg-icon>  Como Navegar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Duvidas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logout()"><svg-icon src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" class="sidebar-icon"></svg-icon>  Sair</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav flex-column" *ngIf="false">
+                <li class="nav-item">
+                    <!-- <div class="nav-user-info"> -->
+                    <div>
+                        <div class="user-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span>Bem vindo,<br><b>{{identity.name}}!</b></span>
+                    </div>
+                    <div>
+                        <img class="user-badge" src="../../../../assets/concafras2021/concafronas/icones/terra.png" alt="Terra">
+                        <span>Nível {{user.level.badge}}<br><b>{{user.points}}</b> pontos</span>
+                    </div>
+                </li>
+                <hr class="nav-hr">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/schedule']" ><img src="../../../../assets/concafras2021/concafronas/icones/programacao.png" alt="Programação"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/hub']" ><img src="../../../../assets/concafras2021/concafronas/icones/acesso_inicial.png" alt="Acesso Inicial"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/passe_virtual.png" alt="Passe a distância"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/amparo_fraterno.png" alt="Amparo Fraterno"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/como_navegar.png" alt="Como Navegar"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" ><img src="../../../../assets/concafras2021/concafronas/icones/suporte.png" alt="Suporte"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logout()"><img src="../../../../assets/concafras2021/concafronas/icones/sair.png" alt="Sair"></a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+    </div>
+</div>

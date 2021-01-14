@@ -8,6 +8,7 @@ import { LectureService } from 'src/app/services/lecture.service';
 import { StageService } from 'src/app/services/stage.service';
 import { TrailService } from 'src/app/services/trail.service';
 import * as SvgPanZoom from 'svg-pan-zoom';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-hub',
@@ -25,8 +26,8 @@ export class HubComponent implements OnInit, AfterViewInit {
   options = { 
     zoomEnabled: true,
     controlIconsEnabled: true,
-    minZoom: 0.1,
-    maxZoom: 10,
+    minZoom: 0.5,
+    maxZoom: 0.8,
     preventMouseEventsDefault: false,
     dblClickZoomEnabled: false
   };
@@ -47,11 +48,11 @@ export class HubComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // initializing the function
-    let svgPanZoom: SvgPanZoom.Instance = SvgPanZoom('#svgMap', this.options);
-    /* see typing definiton for more APIs. */
-    svgPanZoom.zoom(0.8);
-
+    /*$( () => {
+      // initializing the function
+      let svgPanZoom: SvgPanZoom.Instance = SvgPanZoom('#svgMap', this.options);
+      svgPanZoom.zoom(0.6);
+    });*/
   }
 
   getLectures(page, epicId) {

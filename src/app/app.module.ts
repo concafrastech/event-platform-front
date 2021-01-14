@@ -118,6 +118,10 @@ import { JogosTematicosComponent } from './epics/jovem/pages/ilha1/jogos-tematic
 import { MuralArtisticoComponent } from './epics/jovem/pages/ilha2/mural-artistico/mural-artistico.component';
 import { AlegriaCristaMusicasComponent } from './epics/jovem/pages/ilha2/alegria-crista-musicas/alegria-crista-musicas.component';
 import { LancamentosComponent } from './epics/jovem/pages/ilha5/lancamentos/lancamentos.component';
+import { LeftSidebarComponent } from './epics/main/left-sidebar/left-sidebar.component';
+import { RightSidebarComponent } from './epics/main/right-sidebar/right-sidebar.component';
+import { TendaComponent } from './epics/main/tenda/tenda.component';
+import { EventCleanComponent } from './epics/main/event-clean/event-clean.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -232,6 +236,10 @@ const GamificationConfig = {
     MuralArtisticoComponent,
     AlegriaCristaMusicasComponent,
     LancamentosComponent,
+    LeftSidebarComponent,
+    RightSidebarComponent,
+    TendaComponent,
+    EventCleanComponent
   ],
   imports: [
     BrowserModule,

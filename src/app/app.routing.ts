@@ -72,6 +72,8 @@ import { JogosTematicosComponent } from './epics/jovem/pages/ilha1/jogos-tematic
 import { MuralArtisticoComponent } from './epics/jovem/pages/ilha2/mural-artistico/mural-artistico.component';
 import { AlegriaCristaMusicasComponent } from './epics/jovem/pages/ilha2/alegria-crista-musicas/alegria-crista-musicas.component';
 import { LancamentosComponent } from './epics/jovem/pages/ilha5/lancamentos/lancamentos.component';
+import { TendaComponent } from './epics/main/tenda/tenda.component';
+import { EventCleanComponent } from './epics/main/event-clean/event-clean.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -216,10 +218,22 @@ const appRoutes: Routes = [
         children: [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: HomeComponent, canActivate:[UserGuard]},
-            {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
             {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
-            {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
             {path: 'schedule', component: ScheduleComponent, canActivate:[UserGuard]},
+        ],
+    },
+    {
+        path: '',
+        component: EventCleanComponent,
+        children: [
+            {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
+        ],
+    },
+    {
+        path: '',
+        component: TendaComponent,
+        children: [
+            {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
         ],
     },
     {path: '**', redirectTo: 'home', pathMatch: 'full'},

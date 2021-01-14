@@ -1,4 +1,4 @@
-<div class="col-lg-5">
+<div class="col-lg-8">
     <h1 class="h1-strong">{{title}}</h1>
     <div class="alert alert-success" *ngIf="status == 'success'">
         Dados atualizados com sucesso!
@@ -51,17 +51,19 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <fieldset class="form-group" *ngIf="momentOne">
+                <fieldset class="form-group">
                     <h4>Momento 1</h4>
-                    <app-classroom-edit [(classroom)]="momentOne"></app-classroom-edit>
+                    <app-classroom-edit *ngIf="momentOne._id" [(classroom)]="momentOne"></app-classroom-edit>
+                    <app-classroom-add *ngIf="!momentOne._id" [(classroom)]="momentOne"></app-classroom-add>
                 </fieldset>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <fieldset class="form-group" *ngIf="momentTwo">
+                <fieldset class="form-group">
                     <h4>Momento 2</h4>
-                    <app-classroom-edit [(classroom)]="momentTwo"></app-classroom-edit>
+                    <app-classroom-edit *ngIf="momentTwo._id" [(classroom)]="momentTwo"></app-classroom-edit>
+                    <app-classroom-add *ngIf="!momentTwo._id" [(classroom)]="momentTwo"></app-classroom-add>
                 </fieldset>
             </div>
         </div>

@@ -26,7 +26,6 @@ import { Content } from "src/app/models/content";
   ],
 })
 export class ClassroomAddComponent implements OnInit {
-  public title: string;
   public classroomId: string;
   public url: string;
   public status: string;
@@ -48,7 +47,6 @@ export class ClassroomAddComponent implements OnInit {
     private _documentService: DocumentService,
     private _spinner: NgxSpinnerService
   ) {
-    this.title = "Adicionar momento";
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }
@@ -88,17 +86,7 @@ export class ClassroomAddComponent implements OnInit {
   }
 
   loadPage() {
-    this._trailService.getTrails().subscribe(
-      (response) => {
-        if (response) {
-          this.trails = response.trails;
-          this._spinner.hide();
-        }
-      },
-      (error) => {
-        console.log(<any>error);
-      }
-    );
+    this._spinner.hide();
   }
 
   /* Return true or false if it is the selected */
@@ -110,10 +98,13 @@ export class ClassroomAddComponent implements OnInit {
     return (this.contentIsValid = event);
   }
 
-  onSubmit() {
+  /*onSubmit() {
+    console.log("oi submit classroom add");
+    
     this._spinner.show();
     this.saveDocuments();
   }
+
   //Realiza upload e salva os documentos
   saveDocuments() {
     let index = 0;
@@ -183,7 +174,7 @@ export class ClassroomAddComponent implements OnInit {
         }
       }
     );
-  }
+  }*/
 
   //Apaga documentos dos conteúdos
   deleteDocuments() {

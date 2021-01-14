@@ -26,15 +26,15 @@ import { NgxSpinnerService } from "ngx-spinner";
   ],
 })
 export class ClassroomEditComponent implements OnInit {
-  public title: string;
   public classroomId: string;
   public url: string;
   public status: string;
   @Input() public classroom: Classroom;
+  @Input() public typeClassroom: string;
   public identity: string;
   public trails = [];
-  public isLoading: boolean = true;
   public contentIsValid: boolean = false;
+  public isLoading: boolean = true;
 
   constructor(
     private _route: ActivatedRoute,
@@ -47,7 +47,6 @@ export class ClassroomEditComponent implements OnInit {
     private _bsLocaleService: BsLocaleService,
     private _spinner: NgxSpinnerService
   ) {
-    this.title = "Editar Curso";
     this.url = GLOBAL.url;
     this._bsLocaleService.use("pt-br");
   }
@@ -56,52 +55,11 @@ export class ClassroomEditComponent implements OnInit {
     console.log("[OK] Component: classroom-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    /*this.classroom = new Classroom(
-      "",
-      "",
-      "",
-      "",
-      new Date(),
-      new Date(),
-      "",
-      null,
-      [],
-      [],
-      new Date(),
-      new Date()
-    );*/
-    /*this.classroom.trail = new Trail(
-      "",
-      "",
-      "",
-      "",
-      "",
-      null,
-      [],
-      new Date(),
-      new Date()
-    );*/
     this.loadPage();
   }
 
   loadPage() {
-    this._trailService.getTrails().subscribe(
-      (response) => {
-        if (response) {
-          this.trails = response.trails;
-          this.getClassroom(this.classroom._id);
-          /*this._route.params.subscribe((params) => {
-            this.classroomId = params["id"];
-            
-          });*/
-        }
-      },
-      (error) => {
-        console.log(<any>error);
-      }
-    );
-
-    
+    this.getClassroom(this.classroom._id);
   }
 
   getClassroom(id) {
@@ -130,7 +88,7 @@ export class ClassroomEditComponent implements OnInit {
 
   getContents() {
     this.classroom.contents.forEach((content, index) => {
-      this._contentService.getContent(content._id).subscribe((response) => {
+      this._contentService.getContent(content).subscribe((response) => {
         this.classroom.contents[index] = response.content;
         this._spinner.hide();
         if (this.classroom.contents[index].file) {
@@ -162,7 +120,11 @@ export class ClassroomEditComponent implements OnInit {
     return idFist && idSecond && idFist._id == idSecond._id;
   }
 
-  onSubmit() {
+  contentFormIsValid(event: boolean) {
+    return (this.contentIsValid = event);
+  }
+
+  /*onSubmit() {
     this._spinner.show();
     this.saveDocuments();
   }
@@ -196,10 +158,6 @@ export class ClassroomEditComponent implements OnInit {
       },
       complete: () => this.saveContents(),
     });
-  }
-
-  contentFormIsValid(event: boolean) {
-    return (this.contentIsValid = event);
   }
 
   //Salva os conteúdos
@@ -242,7 +200,7 @@ export class ClassroomEditComponent implements OnInit {
         }
       }
     );
-  }
+  }*/
 
   public addTag(evento) {
     if (evento.key == "Enter") {

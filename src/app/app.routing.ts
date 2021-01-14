@@ -74,6 +74,13 @@ import { AlegriaCristaMusicasComponent } from './epics/jovem/pages/ilha2/alegria
 import { LancamentosComponent } from './epics/jovem/pages/ilha5/lancamentos/lancamentos.component';
 import { TendaComponent } from './epics/main/tenda/tenda.component';
 import { EventCleanComponent } from './epics/main/event-clean/event-clean.component';
+import { EditoraComponent } from './epics/main/feira/editora/editora.component';
+import { ClubeDoLivroComponent } from './epics/main/feira/clube-do-livro/clube-do-livro.component';
+import { PalestrasComponent } from './epics/main/feira/palestras/palestras.component';
+import { LivrosComponent } from './epics/main/feira/livros/livros.component';
+import { VoluntariosComponent } from './epics/main/feira/voluntarios/voluntarios.component';
+import { CecxComponent } from './epics/main/feira/cecx/cecx.component';
+import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -220,6 +227,14 @@ const appRoutes: Routes = [
             {path: 'home', component: HomeComponent, canActivate:[UserGuard]},
             {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
             {path: 'schedule', component: ScheduleComponent, canActivate:[UserGuard]},
+            {path: 'cfas', component: CfasComponent, canActivate:[UserGuard]},
+            {path: 'cecx', component: CecxComponent, canActivate:[UserGuard]},
+            {path: 'voluntarios', component: VoluntariosComponent, canActivate:[UserGuard]},
+            {path: 'livros', component: LivrosComponent, canActivate:[UserGuard]},
+            {path: 'clube-do-livro', component: ClubeDoLivroComponent, canActivate:[UserGuard]},
+            {path: 'palestras', component: PalestrasComponent, canActivate:[UserGuard]},
+            {path: 'editora', component: EditoraComponent, canActivate:[UserGuard]},
+
         ],
     },
     {

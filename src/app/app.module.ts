@@ -122,6 +122,14 @@ import { LeftSidebarComponent } from './epics/main/left-sidebar/left-sidebar.com
 import { RightSidebarComponent } from './epics/main/right-sidebar/right-sidebar.component';
 import { TendaComponent } from './epics/main/tenda/tenda.component';
 import { EventCleanComponent } from './epics/main/event-clean/event-clean.component';
+import { NdcComponent } from './epics/main/feira/ndc/ndc.component';
+import { CecxComponent } from './epics/main/feira/cecx/cecx.component';
+import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
+import { LivrosComponent } from './epics/main/feira/livros/livros.component';
+import { VoluntariosComponent } from './epics/main/feira/voluntarios/voluntarios.component';
+import { PalestrasComponent } from './epics/main/feira/palestras/palestras.component';
+import { ClubeDoLivroComponent } from './epics/main/feira/clube-do-livro/clube-do-livro.component';
+import { EditoraComponent } from './epics/main/feira/editora/editora.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -239,7 +247,15 @@ const GamificationConfig = {
     LeftSidebarComponent,
     RightSidebarComponent,
     TendaComponent,
-    EventCleanComponent
+    EventCleanComponent,
+    NdcComponent,
+    CecxComponent,
+    CfasComponent,
+    LivrosComponent,
+    VoluntariosComponent,
+    PalestrasComponent,
+    ClubeDoLivroComponent,
+    EditoraComponent
   ],
   imports: [
     BrowserModule,

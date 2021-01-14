@@ -1,17 +1,12 @@
-<!-- col-md-12 -->
 <div>
-  <!-- col-lg-8 -->
-  <!-- <h1 class="h1-strong">{{ title }}</h1> -->
   <div class="alert alert-success" *ngIf="status == 'success'">
     Dados atualizados com sucesso!
   </div>
   <div class="alert alert-danger" *ngIf="status == 'error'">
     Erro ao atualizar os dados.
   </div>
-  <!-- col-md-12 col-lg-8 -->
   <div>
-    <!-- col-lg-12 -->
-    <form #classroomAddForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #classroomAddForm="ngForm">
       <div class="row">
         <div class="form-group col-md-12">
           <label>Nome</label>
@@ -99,26 +94,6 @@
           </div>
         </div>
       </div>
-      <!-- TURMA -->
-      <!-- <div class="row">
-        <div class="form-group col-md-12">
-          <fieldset class="form-group">
-            <label>Turma</label>
-            <select
-              [compareWith]="compareByOptionId"
-              name="trail"
-              #trail="ngModel"
-              [(ngModel)]="classroom.trail"
-              class="form-control"
-            >
-              <option value="">-- Selecione --</option>
-              <option *ngFor="let trail of trails" [ngValue]="trail">
-                {{ trail.name }}
-              </option>
-            </select>
-          </fieldset>
-        </div>
-      </div> -->
       <div class="row">
         <div class="form-group col-md-12">
           <fieldset class="form-group">
@@ -146,17 +121,6 @@
           ></app-content>
         </div>
       </div>
-      <!-- BOTÃO SUBMIT -->
-      <!-- <div class="row">
-        <div class="form-group col-md-12">
-          <input
-            type="submit"
-            value="{{ title }}"
-            class="btn btn-warning"
-            [disabled]="!classroomAddForm.form.valid || !contentIsValid"
-          />
-        </div>
-      </div> -->
     </form>
   </div>
 </div>

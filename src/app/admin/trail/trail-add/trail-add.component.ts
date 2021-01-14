@@ -15,6 +15,7 @@ import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
 import { concat } from "rxjs";
 import { concatMap, map } from "rxjs/operators";
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: "app-trail-add",
@@ -104,17 +105,6 @@ export class TrailAddComponent implements OnInit {
       new Date()
     );
     this.trail.epic = null;
-    /*new Epic(
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      null,
-      new Date(),
-      new Date()
-    );*/
     this.loadPage();
   }
 
@@ -172,20 +162,22 @@ export class TrailAddComponent implements OnInit {
   }
 
   addClassroom() {
-    this.trail.classrooms.push(new Classroom(
-      "",
-      "",
-      "",
-      "pratico",
-      new Date(),
-      new Date(),
-      "",
-      null,
-      [],
-      [],
-      new Date(),
-      new Date()
-    ));
+    this.trail.classrooms.push(
+      new Classroom(
+        "",
+        "",
+        "",
+        "pratico",
+        new Date(),
+        new Date(),
+        "",
+        null,
+        [],
+        [],
+        new Date(),
+        new Date()
+      )
+    );
   }
 
   removeClassroom(index: number) {
@@ -203,22 +195,56 @@ export class TrailAddComponent implements OnInit {
 
     // Habilita o spinner
     this._spinner.show();
-    this.saveContents().subscribe({
+
+    this.saveDocuments().subscribe({
       next: (resposta) => {},
       error: null,
       complete: () => {
-        this.saveClassrooms().subscribe({
+        this.saveContents().subscribe({
           next: (resposta) => {},
           error: null,
           complete: () => {
-            this.saveTrail();
+            this.saveClassrooms().subscribe({
+              next: (resposta) => {},
+              error: null,
+              complete: () => {
+                this.saveTrail();
+              },
+            });
           },
         });
       },
     });
   }
 
-  //Salva documentos/contents
+  //Salva documentos
+  saveDocuments() {
+    let obs$: Observable<any>[] = [];
+
+    this.trail.classrooms.map((classroom, index) => {
+      let i = 0;
+      obs$.push(
+        this._contentService.uploadContents(classroom.contents).pipe(
+          map((response) => {
+            //Final do upload
+            if (response.type == HttpEventType.Response) {
+              this.trail.classrooms[index].contents[i].file =
+                response.body.document;
+              this.trail.classrooms[index].contents[i].fileToUpload = null;
+              i += 1;
+            }
+          })
+        )
+      );
+    });
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
+    );
+  }
+
+  //Salva contents
   saveContents() {
     let obs$: Observable<any>[] = [];
 

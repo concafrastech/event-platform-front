@@ -77,11 +77,6 @@
                     <label>Curso prático {{i+1}}</label>
                     <button class="btn btn-danger" type="button" (click)="removeClassroom(i)"><i class="fa fa-trash"></i></button>
                     <app-classroom-add [(classroom)]="trail.classrooms[i]"></app-classroom-add>
-                    
-                    <!--<select [name]="'praticalclassroom'+i" #pclassroom="ngModel" [(ngModel)]="trail.classrooms[i]" class="form-control">
-                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
-                        <option *ngFor="let option of practicalClassrooms" [ngValue]="option">{{option.name}}</option>
-                    </select>-->
                 </fieldset>
             </div>
         </div>

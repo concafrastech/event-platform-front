@@ -1,15 +1,12 @@
-<div
-  class="col-md-12"
->
-  <h1 class="h1-strong">{{ title }}</h1>
+<div>
   <div class="alert alert-success" *ngIf="status == 'success'">
     Dados atualizados com sucesso!
   </div>
   <div class="alert alert-danger" *ngIf="status == 'error'">
     Erro ao atualizar os dados.
   </div>
-  <div class="col-md-12 col-lg-8">
-    <form #classroomEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+  <div>
+    <form #classroomEditForm="ngForm">
       <div class="row">
         <div class="form-group col-md-12">
           <label>Nome</label>
@@ -89,28 +86,14 @@
                 <span>{{ tag }}</span>
                 <i class="fa fa-times" (click)="removeTag(tag)"></i>
               </div>
-              <input type="text" name="tags" placeholder="Adicionar tags" (keydown)="addTag($event)" />
+              <input
+                type="text"
+                name="tags"
+                placeholder="Adicionar tags"
+                (keydown)="addTag($event)"
+              />
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <fieldset class="form-group">
-            <label>Tema</label>
-            <select
-              [compareWith]="compareByOptionId"
-              name="trail"
-              #trail="ngModel"
-              [(ngModel)]="classroom.trail"
-              class="form-control"
-            >
-              <option value="">-- Selecione --</option>
-              <option *ngFor="let trail of trails" [ngValue]="trail">
-                {{ trail.name }}
-              </option>
-            </select>
-          </fieldset>
         </div>
       </div>
       <div class="row">
@@ -140,18 +123,6 @@
           ></app-content>
         </div>
       </div>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <input
-            type="submit"
-            value="{{ title }}"
-            class="btn btn-warning"
-            [disabled]="!classroomEditForm.form.valid"
-          />
-        </div>
-      </div>
-      <br />
-      <br />
     </form>
   </div>
 </div>

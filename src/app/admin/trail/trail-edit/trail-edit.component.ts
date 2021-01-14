@@ -15,12 +15,20 @@ import { concat, Observable } from "rxjs";
 import { concatMap, map } from "rxjs/operators";
 import { ContentService } from "src/app/services/content.service";
 import { DocumentService } from "src/app/services/document.service";
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: "app-trail-edit",
   templateUrl: "./trail-edit.component.html",
   styleUrls: ["./trail-edit.component.css"],
-  providers: [UserService, TrailService, EpicService, ClassroomService, ContentService, DocumentService],
+  providers: [
+    UserService,
+    TrailService,
+    EpicService,
+    ClassroomService,
+    ContentService,
+    DocumentService,
+  ],
 })
 export class TrailEditComponent implements OnInit {
   public title: string;
@@ -55,10 +63,36 @@ export class TrailEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: trail-edit.");
-    
+    this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.momentOne = null;
-    this.momentTwo = null;
+    this.momentOne = new Classroom(
+      "",
+      "",
+      "",
+      "teorico",
+      new Date(),
+      new Date(),
+      "",
+      null,
+      [],
+      [],
+      new Date(),
+      new Date()
+    );
+    this.momentTwo = new Classroom(
+      "",
+      "",
+      "",
+      "teorico",
+      new Date(),
+      new Date(),
+      "",
+      null,
+      [],
+      [],
+      new Date(),
+      new Date()
+    );
     this.trail = new Trail(
       "",
       "",
@@ -85,19 +119,23 @@ export class TrailEditComponent implements OnInit {
   }
 
   loadPage() {
-    this._spinner.show();
     this._epicService.getEpics().subscribe(
       (response) => {
         if (response) {
           this.epics = response.epics;
-          this.getClassrooms();
         }
       },
       (error) => {
         console.log(<any>error);
       }
     );
+
+    this._route.params.subscribe((params) => {
+      this.trailId = params["id"];
+      this.getTrail(this.trailId);
+    });
   }
+
   getClassrooms() {
     this.theoreticalClassrooms = [];
     this.practicalClassrooms = [];
@@ -116,11 +154,6 @@ export class TrailEditComponent implements OnInit {
               this.practicalClassrooms.push(classrooms[i]);
             }
           }
-
-          this._route.params.subscribe((params) => {
-            this.trailId = params["id"];
-            this.getTrail(this.trailId);
-          });
         }
       },
       (error) => {
@@ -135,8 +168,7 @@ export class TrailEditComponent implements OnInit {
       (response) => {
         if (response.trail) {
           this.trail = response.trail;
-          console.log(this.trail);
-          
+
           for (let i = 0; i < this.trail.classrooms.length; i++) {
             if (this.trail.classrooms[i].type == "teorico") {
               if (!this.momentOne) {
@@ -146,14 +178,14 @@ export class TrailEditComponent implements OnInit {
               }
             }
           }
-          
-          if(this.momentOne){
+
+          if (this.momentOne) {
             this.removeClassroom(this.trail.classrooms.indexOf(this.momentOne));
           }
-          if(this.momentTwo){
+          if (this.momentTwo) {
             this.removeClassroom(this.trail.classrooms.indexOf(this.momentTwo));
           }
-          
+
           this._spinner.hide();
         } else {
           this._spinner.hide();
@@ -178,20 +210,22 @@ export class TrailEditComponent implements OnInit {
   }
 
   addClassroom() {
-    this.trail.classrooms.push(new Classroom(
-      "",
-      "",
-      "",
-      "",
-      new Date(),
-      new Date(),
-      "",
-      null,
-      [],
-      [],
-      new Date(),
-      new Date()
-    ));
+    this.trail.classrooms.push(
+      new Classroom(
+        "",
+        "",
+        "",
+        "",
+        new Date(),
+        new Date(),
+        "",
+        null,
+        [],
+        [],
+        new Date(),
+        new Date()
+      )
+    );
   }
 
   removeClassroom(index: number) {
@@ -209,55 +243,73 @@ export class TrailEditComponent implements OnInit {
 
     // Habilita o spinner
     this._spinner.show();
-    this.saveContents().subscribe({
+
+    this.saveDocuments().subscribe({
       next: (resposta) => {},
       error: null,
       complete: () => {
-        this.saveClassrooms().subscribe({
-          next: (resposta) => {},
+        this.saveContents().subscribe({
+          next: (resposta) => {
+          },
           error: null,
           complete: () => {
-            this.saveTrail();
+            this.saveClassrooms().subscribe({
+              next: (resposta) => {},
+              error: null,
+              complete: () => {
+                this.saveTrail();
+              },
+            });
           },
         });
       },
     });
-    this._trailService.updateTrail(this.trail).subscribe(
-      (response) => {
-        if (!response.trail) {
-          this._spinner.hide();
-          this.status = "error";
-        } else {
-          this._spinner.hide();
-          this.status = "success";
-          this.loadPage();
-          this.getTrail(this.trailId);
-        }
-      },
-      (error) => {
-        this._spinner.hide();
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      }
+  }
+
+  //Salva documentos
+  saveDocuments() {
+    let obs$: Observable<any>[] = [];
+
+    this.trail.classrooms.map((classroom, index) => {
+      let i = 0;
+      obs$.push(
+        this._contentService.uploadContents(classroom.contents).pipe(
+          map((response) => {
+            //Final do upload
+            if (response.type == HttpEventType.Response) {
+              this.trail.classrooms[index].contents[i].file =
+                response.body.document;
+              this.trail.classrooms[index].contents[i].fileToUpload = null;
+              i += 1;
+            }
+          })
+        )
+      );
+    });
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
     );
   }
 
-  //Salva documentos/contents
+  //Salva contents
   saveContents() {
     let obs$: Observable<any>[] = [];
 
     this.trail.classrooms.map((classroom, index) => {
       classroom.contents.map((content, i) => {
-        obs$.push(
-          this._contentService.addContent(content).pipe(
-            map((c) => {
-              this.trail.classrooms[index].contents[i]._id = c.content._id;
-            })
-          )
-        );
+        if (content._id) {
+          obs$.push(this._contentService.updateContent(content));
+        } else {
+          obs$.push(
+            this._contentService.addContent(content).pipe(
+              map((c) => {
+                this.trail.classrooms[index].contents[i]._id = c.content._id;
+              })
+            )
+          );
+        }
       });
     });
     return concat(obs$).pipe(
@@ -272,14 +324,18 @@ export class TrailEditComponent implements OnInit {
     let obs$: Observable<any>[] = [];
 
     this.trail.classrooms.map((classroom, index) => {
-      obs$.push(
-        this._classroomService.addClassroom(classroom).pipe(
-          map((c) => {
-            this.trail.classrooms[index] = c.classroom;
-            return this.trail.classrooms[index];
-          })
-        )
-      );
+      if (classroom._id) {
+        obs$.push(this._classroomService.updateClassroom(classroom));
+      } else {
+        obs$.push(
+          this._classroomService.addClassroom(classroom).pipe(
+            map((c) => {
+              this.trail.classrooms[index] = c.classroom;
+              return this.trail.classrooms[index];
+            })
+          )
+        );
+      }
     });
     return concat(obs$).pipe(
       concatMap((observableContent) => {

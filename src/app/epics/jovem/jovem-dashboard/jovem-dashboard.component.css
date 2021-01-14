@@ -15,7 +15,7 @@
   letter-spacing: normal;
   text-align: left;
   color:#273B87 !important;    
-  background: white;
+  background: none;
   border: none;
 
 }
@@ -74,13 +74,18 @@
     }
 
     .navbar {
-      padding: 15px 10px;
-      background: #fff;
+      /*padding: 15px 10px;*/
+      background: rgb(255,255,255); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(234,234,234,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+
       border: none;
       border-radius: 0;
       margin-bottom: 10px;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-      z-index: 100;
+      -webkit-box-shadow: 1px 1px 5px 2px #00000021;
+      box-shadow: 1px 1px 5px 2px #00000021;
     }
 
     .navbar-btn {

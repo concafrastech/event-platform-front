@@ -21,16 +21,28 @@
 .titulo {
  font-family: "Poppins", sans-serif;
  font-style: normal;
- font-weight: bold;
+ font-weight: 900;
  font-size: 1.2rem;
  color: #273b87;
- font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.49;
-  letter-spacing: normal;
-  text-align: left;
+ line-height: 1.49;
+ letter-spacing: normal;
 
+}
+.titulo span{
+  background: #1ea6ec;
+  color:#fff;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+.titulo-peq {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: .7rem;
+  color: #273b87;
+  line-height: 1;
+  letter-spacing: -.1px;
 }
 
 .titulo-ilha {
@@ -54,8 +66,22 @@
  /*SOMBRA*/
  -webkit-box-shadow: 1px 1px 5px 2px #00000021;
  box-shadow: 1px 1px 5px 2px #00000021;
-
+ /*faz o título da ilha não visível para monitores maiores*/
+ visibility: visible;
 }
+
+
+@media only screen and (min-width:992px) { /*equivale a @screen-lg*/
+  /*exibe o título da ilha somente quando passa o mouse sobre a ilha para telas maiores que lg */
+  .titulo-ilha {
+  visibility: hidden;
+ }
+
+ .ilha:hover .titulo-ilha{
+  visibility: visible;
+}
+}
+
 
 /*Configuração da animação das ilhas*/
 

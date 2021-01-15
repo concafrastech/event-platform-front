@@ -6,13 +6,18 @@
 </div>
 <div class="modal-body">
     <div class="row">
-        <div class="col text-center">
-            <ul>
-                <li *ngFor="let schedule of schedules">
-                    {{schedule.start_time | date:'dd/MM/yyyy' }} - {{schedule.start_time | date:'HH:mm' }} - {{schedule.end_time | date:'HH:mm' }} - {{schedule.name}}
+        <div *ngFor="let group of groupSchedules; let i = index">
+            <div class="card" style="width: 100%">
+              <div class="card-header">dia {{ i + 1 }} - {{ group.day }}</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let schedule of group.schedule">
+                  {{ schedule.name }}
+                  {{ schedule.start_time | date: "HH:mm" }} -
+                  {{ schedule.end_time | date: "HH:mm" }}
                 </li>
-            </ul>
-        </div>
+              </ul>
+            </div>
+          </div>
     </div>
 </div>
 <div class="modal-footer">

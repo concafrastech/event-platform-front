@@ -2,7 +2,7 @@
 .nav-right-sidebar {
     position: fixed;
     width: 320px;
-    height: 100%;
+    height: calc(100% - 90px);
     right: 0;
     top: 90px;
     overflow: auto;
@@ -23,9 +23,10 @@
 }
 
 .nav-right-sidebar .navbar-nav .nav-header {
-    padding: 12px;
-    margin: 12px;
-    font-size: 16px;
+    padding: 12px 0px;
+    margin: 12px 0px;
+    font-size: 14px;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
@@ -51,4 +52,45 @@
 .nav-item {
     color: #fff;
     font-size: 12px;
+}
+
+.card-height {
+    min-height: 150px;
+}
+
+.img-size {
+    width: 50px;
+    height: 50px;
+}
+
+.img-size-share {
+    width: 25px;
+    height: 25px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.btn-right-sidebar {
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: solid white 1px;
+    transition: 0.2s;
+}
+
+.btn-right-sidebar:hover {
+    background-color: #1EA6EC;
+    border-color: #273B87;
+}
+
+.marg20 {
+    margin: 20px 0px;
+}
+
+.share-div {
+    text-transform: uppercase;
 }

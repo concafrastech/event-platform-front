@@ -46,6 +46,19 @@
   color: #fff;
   font-size: 1rem;
 }
+.caixaazul li{
+  list-style-type: none;
+}
+
+.btn-compartilhe{
+  margin-top: 25px;
+  background: #273b87;
+  color: #fff;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  border: solid 1px #fff;
+  border-radius: 25px;
+}
 /*
     DEMO STYLE
     */

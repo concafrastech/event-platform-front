@@ -15,6 +15,8 @@ export class ScheduleComponent implements OnInit {
   public groupSchedules: any[] = [];
   public schedules : Schedule[] = [];
   public status : string;
+  public closeBtnName : string;
+  public title : string;
 
   constructor(
     private _userService : UserService,

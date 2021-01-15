@@ -139,16 +139,10 @@ export class LeftSidebarComponent implements OnInit {
 
   openProgramacaoComponent() {
     const initialState = {
-      list: [
-        'Open a modal with component',
-        'Pass your data',
-        'Do something else',
-        '...'
-      ],
-      title: 'Tutorial'
+      title: 'Programação'
     };
     this.bsModalRef = this._modalService.show(ScheduleComponent, {initialState, class: 'modal-lg'});
-    this.bsModalRef.content.closeBtnName = 'Próximo';
+    this.bsModalRef.content.closeBtnName = 'Fechar';
   }
 
 }

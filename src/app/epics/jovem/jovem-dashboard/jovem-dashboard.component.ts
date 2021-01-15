@@ -50,21 +50,23 @@ export class JovemDashboardComponent implements OnInit, DoCheck {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
+    public _gamificationService: GamificationService,
     public _bootstrapAlertService: NgBootstrapAlertService,
     private _modalService: BsModalService  
-  ) {
+    ) 
+  {
     var epic = localStorage.getItem("epic");
     this.title = 'EVENTO';
     this.url = GLOBAL.url;
-   }
 
+  }
+  
   ngOnInit() {
     this.identity = this._userService.getIdentity();
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
   }
 
 
-  ngOnInit(): void {
 
 
   ngDoCheck() {
@@ -74,17 +76,17 @@ export class JovemDashboardComponent implements OnInit, DoCheck {
   openTutorialComponent() {
     const initialState = {
       list: [
-        'Open a modal with component',
-        'Pass your data',
-        'Do something else',
-        '...'
+      'Open a modal with component',
+      'Pass your data',
+      'Do something else',
+      '...'
       ],
       title: 'Tutorial'
     };
     this.bsModalRef = this._modalService.show(TutorialComponent, {initialState, class: 'modal-lg'});
     this.bsModalRef.content.closeBtnName = 'Próximo';
     this.bsModalRef.onHide.subscribe((e) => {
-        localStorage.setItem("tutorial", "true");
+      localStorage.setItem("tutorial", "true");
     });
   }
 
@@ -93,8 +95,8 @@ export class JovemDashboardComponent implements OnInit, DoCheck {
 /* Verificar se esta função pode ir para dentro do export */
 $(document).ready(function() {
   $("#sidebarCollapse").on("click", function() {
-    $("#sidebar").toggleClass("active");
-    $(this).toggleClass("active");
+    $("#sidebar").toggleClass("active_jovem");
+    $(this).toggleClass("active_jovem");
   });
 });
 

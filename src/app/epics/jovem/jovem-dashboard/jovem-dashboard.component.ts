@@ -10,6 +10,7 @@ export class JovemDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 

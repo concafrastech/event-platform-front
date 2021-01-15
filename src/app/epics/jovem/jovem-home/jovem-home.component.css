@@ -17,6 +17,7 @@
   /*  transition-delay: 0.5s;  */
   z-index: -1;
 }
+
 .titulo {
  font-family: "Poppins", sans-serif;
  font-style: normal;
@@ -32,6 +33,16 @@
   color:#fff;
   padding: 10px;
   text-transform: capitalize;
+}
+
+.titulo-peq {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: .7rem;
+  color: #273b87;
+  line-height: 1;
+  letter-spacing: -.1px;
 }
 
 .titulo-ilha {

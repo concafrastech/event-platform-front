@@ -203,6 +203,7 @@ const appRoutes: Routes = [
                 ],
             },
             {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
+            {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
         ],
     },
     

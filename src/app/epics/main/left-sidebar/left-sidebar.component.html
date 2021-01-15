@@ -14,7 +14,7 @@
                     <a class="nav-link" [routerLink]="['/meus-dados']" ><svg-icon src="{{user.level.icon}}" class="sidebar-icon"></svg-icon> Nivel {{user.level.badge}}<br/>{{user.points}} pontos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/schedule']" ><svg-icon src="assets/concafras2021/concafronas/icones/programacao-menu-item.svg" class="sidebar-icon"></svg-icon> Programação</a>
+                    <a class="nav-link" (click)="openProgramacaoComponent()" ><svg-icon src="assets/concafras2021/concafronas/icones/programacao-menu-item.svg" class="sidebar-icon"></svg-icon> Programação</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/hub']" ><svg-icon src="assets/concafras2021/concafronas/icones/acesso-inicial-menu-item.svg" class="sidebar-icon"></svg-icon> Acesso Inicial</a>

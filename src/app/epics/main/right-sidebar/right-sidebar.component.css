@@ -63,6 +63,13 @@
     height: 50px;
 }
 
+.img-size-share {
+    width: 25px;
+    height: 25px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
 .btn-right-sidebar {
     background: transparent;
     color: #fff;
@@ -78,4 +85,12 @@
 .btn-right-sidebar:hover {
     background-color: #1EA6EC;
     border-color: #273B87;
+}
+
+.marg20 {
+    margin: 20px 0px;
+}
+
+.share-div {
+    text-transform: uppercase;
 }

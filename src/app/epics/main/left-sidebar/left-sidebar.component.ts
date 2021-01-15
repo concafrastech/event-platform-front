@@ -10,6 +10,8 @@ import {
   faQuestionCircle,
   faUserCircle
 } from '@fortawesome/free-regular-svg-icons';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ScheduleComponent } from 'src/app/components/schedule/schedule.component';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -22,6 +24,7 @@ export class LeftSidebarComponent implements OnInit {
   public identity;
   public user;
   public progress;
+  public bsModalRef: BsModalRef;
 
   public faUserCircle = faUserCircle;
 
@@ -30,6 +33,7 @@ export class LeftSidebarComponent implements OnInit {
     private _userService: UserService,
     public _gamificationService: GamificationService,
     public _bootstrapAlertService: NgBootstrapAlertService,
+    private _modalService: BsModalService
   ) { 
     this.user = {
       name: 'Gui',
@@ -131,6 +135,14 @@ export class LeftSidebarComponent implements OnInit {
     console.log(this.user.level);
     console.log(this.identity);
 
+  }
+
+  openProgramacaoComponent() {
+    const initialState = {
+      title: 'Programação'
+    };
+    this.bsModalRef = this._modalService.show(ScheduleComponent, {initialState, class: 'modal-lg'});
+    this.bsModalRef.content.closeBtnName = 'Fechar';
   }
 
 }

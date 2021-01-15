@@ -62,7 +62,7 @@ export class ActivityEditComponent implements OnInit {
 
   loadPage() {
     this._stageService
-      .getStages()
+      .getFullStages()
       .subscribe(
         (response) => {
           if (response) {
@@ -202,7 +202,7 @@ export class ActivityEditComponent implements OnInit {
     this._activityService.updateActivity(this.activity).subscribe(
       (response) => {
         this._spinner.hide();
-        if (!response.lecture) {
+        if (!response.activity) {
           this.status = "error";
         } else {
           this.status = "success";

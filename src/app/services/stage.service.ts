@@ -42,6 +42,19 @@ export class StageService {
         return this._http.get(this.url + 'stages/', {headers: headers, params: params});
     }
 
+    getFullStages(page = null, epicId = null): Observable<any> {
+        let params = { 
+            full : '1',
+            page : page,
+            epic : epicId != null ? epicId : ''
+         };
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', getToken());
+
+        return this._http.get(this.url + 'stages/', {headers: headers, params: params});
+    }
+
     getStage(id): Observable<any> {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

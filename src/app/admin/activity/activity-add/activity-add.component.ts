@@ -87,7 +87,7 @@ export class ActivityAddComponent implements OnInit {
   }
 
   loadPage() {
-    this._stageService.getStages().subscribe(
+    this._stageService.getFullStages().subscribe(
       (response) => {
         if (response) {
           this.stages = response.stages;

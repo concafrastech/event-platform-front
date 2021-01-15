@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Schedule } from 'src/app/models/schedule';
 import { EpicService } from 'src/app/services/epic.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,6 +18,7 @@ export class ScheduleComponent implements OnInit {
   constructor(
     private _userService : UserService,
     private _epicService : EpicService,
+    public bsModalRef: BsModalRef,
   ) { }
 
   ngOnInit(): void {

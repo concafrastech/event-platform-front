@@ -2,7 +2,7 @@
 .nav-right-sidebar {
     position: fixed;
     width: 320px;
-    height: 100%;
+    height: calc(100% - 90px);
     right: 0;
     top: 90px;
     overflow: auto;
@@ -51,4 +51,8 @@
 .nav-item {
     color: #fff;
     font-size: 12px;
+}
+
+.card-height {
+    min-height: 150px;
 }

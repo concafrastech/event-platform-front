@@ -14,7 +14,7 @@
 
     <ul class="list-unstyled components">
       <li class="text-center">
-        <a href="">
+        <a href="#" data-toggle="modal" data-target="#programacao">
           <img class="img-fluid" src="assets/jovem/icons/calendar.svg" >
           <p >Programação</p>
         </a>
@@ -26,7 +26,7 @@
         </a>
       </li>
       <li class="text-center">
-        <a href="">
+        <a href="#" data-toggle="modal" data-target="#passedistancia">
           <img class="img-fluid" src="assets/jovem/icons/maos.svg" >
           <p >Passe a distância</p>
         </a>
@@ -38,7 +38,7 @@
         </a>
       </li>
       <li class="text-center">
-        <a href="">
+        <a href="#" data-toggle="modal" data-target="#navegar">
           <img class="img-fluid" src="assets/jovem/icons/duvida.svg" >
           <p >Como navegar</p>
         </a>
@@ -104,4 +104,65 @@
 
     <!-- final do conteúdo -->
   </div>
+</div>
+
+
+<!-- Modal programação -->
+<div class="modal fade" id="programacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Programação</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Programação
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Passe a Distância -->
+<div class="modal fade" id="passedistancia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Passe a Distância</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Passe a Distância
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Como navegar -->
+  <div class="modal fade bd-example-modal-lg" id="navegar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Como Navegar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/rw2LoqWb9XA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
 </div>

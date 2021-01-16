@@ -29,7 +29,7 @@ body {
     background-image: url('/assets/concafras2021/concafronas/fundo.png') !important ;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    background-position: center !important ; 
+    background-position: center !important ;
 }
 
 .dashboard-wrapper {
@@ -47,7 +47,7 @@ body {
 
 
 .background-navbar {
-    background: url("../../../../assets/concafras2021/concafronas/navbar.jpg");
+    background: url("/assets/concafras2021/concafronas/navbar.jpg");
     background-repeat: no-repeat;
     background-size: 110%;
     background-position-x: 40%;
@@ -68,6 +68,9 @@ body {
 /* Large Devices, Wide Screens */
 
 @media only screen and (max-width:1400px) {
+    .dashboard-header .navbar {
+        min-height: 60px;
+    }
 }
 @media only screen and (max-width:1200px) {
 }

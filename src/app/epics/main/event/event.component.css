@@ -47,7 +47,7 @@ body {
 
 
 .background-navbar {
-    background: url("../../../../assets/concafras2021/concafronas/navbar.jpg");
+    background: url("/assets/concafras2021/concafronas/navbar.jpg");
     background-repeat: no-repeat;
     background-size: 110%;
     background-position-x: 40%;

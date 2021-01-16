@@ -17,6 +17,7 @@ export class ScheduleComponent implements OnInit {
   public status : string;
   public closeBtnName : string;
   public title : string;
+  public strMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
   constructor(
     private _userService : UserService,
@@ -35,22 +36,15 @@ export class ScheduleComponent implements OnInit {
           this.schedules.sort(this.sortSchedules);
           for(let i = 0; i < this.schedules.length; i++){
             let day = new Date(this.schedules[i].start_time).getDate();
+            let month = this.strMonths[new Date(this.schedules[i].start_time).getMonth()];
+            let dayMonth = ("00" + day).slice(-2) + ' de ' + month;
             
-
-            if(!this.findDayGroupSchedule(day)){
-              this.groupSchedules.push({day: day, schedule: [this.schedules[i]]});
+            if(!this.findDayGroupSchedule(dayMonth)){
+              this.groupSchedules.push({group: dayMonth, schedule: [this.schedules[i]]});
             }else{
-              this.findDayGroupSchedule(day).schedule.push(this.schedules[i])
+              this.findDayGroupSchedule(dayMonth).schedule.push(this.schedules[i])
             }
-            /*if(this.groupSchedules.indexOf(day) == -1){
-              
-            }*/
-            
-            //console.log(this.schedules[i].start_time.getDay().toString());
           }
-
-          console.log(this.groupSchedules);
-          
         }
       },
       (error) => {
@@ -65,9 +59,9 @@ export class ScheduleComponent implements OnInit {
 
   }
 
-  findDayGroupSchedule(day: number){
+  findDayGroupSchedule(group: string){
     return this.groupSchedules.find((item, index, arr)=>{
-      if(item.day == day){
+      if(item.group == group){
         return true
       }
     })

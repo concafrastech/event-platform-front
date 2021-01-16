@@ -32,8 +32,27 @@
     font-weight: 300;
 }
 
+.caravan-container:first-child {
+    margin-top: 0;
+}
+
+.caravan-container {
+    margin: 2rem 0;
+}
+
 /* ==== IMG ==== */
 .img-size {
     width: 150px;
     height: 150px;
+}
+
+/* ==== CAROUSEL ==== */
+
+#carousel-recent-messages .row .card {
+    min-height: 8rem;
+    padding: 0.5rem;
+}
+
+.active {
+    border-color: transparent !important;
 }

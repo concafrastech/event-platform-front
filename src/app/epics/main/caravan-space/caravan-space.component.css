@@ -56,3 +56,41 @@
 .active {
     border-color: transparent !important;
 }
+
+/* ==== POST CONCAFRAS ==== */
+.post-content {
+    text-align: center;
+}
+
+.post-content .post-text {
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.post-content .btn-post {
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: solid white 1px;
+    transition: 0.2s;
+}
+
+.post-content .btn-post:hover {
+    background-color: #1EA6EC;
+    border-color: #1EA6EC;
+}
+
+.hashtag-text {
+    font-weight: bold;
+}
+
+/* ==== HIGHLIGHT ==== */
+.marker-highlight{
+    background-color: #1EA6EC;
+}

@@ -35,14 +35,20 @@ body {
 .dashboard-wrapper {
     position: relative;
     left: 0;
-    margin-left: 197px;
-    margin-right: 320px;
     min-height: 870px !important;
-    width: calc(100% - 517px);
+    /*margin-left: 197px;
+    margin-right: 320px;
+    
+    width: calc(100% - 517px);*/
 }
 
 .dashboard-content {
     padding: 15px 30px 60px 30px;
+    position: fixed;
+    margin-left: 197px;
+    margin-right: 320px;
+    width: calc(100% - 517px);
+    top: 90px;
 }
 
 

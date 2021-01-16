@@ -9,6 +9,7 @@ Left Navigation Sidebar
     top: 90px;
     overflow: auto;
     -webkit-transition: all 0.3s ease;
+    z-index: 100;
 }
 
 .nav-left-sidebar .nav-link[data-toggle="collapse"] {

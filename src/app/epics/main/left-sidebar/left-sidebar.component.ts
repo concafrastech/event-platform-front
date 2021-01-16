@@ -1,3 +1,4 @@
+import { MagneticPassDistanceComponent } from './../magnetic-pass-distance/magnetic-pass-distance.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GamificationService } from 'angular-gamification';
@@ -142,6 +143,15 @@ export class LeftSidebarComponent implements OnInit {
       title: 'Programação'
     };
     this.bsModalRef = this._modalService.show(ScheduleComponent, {initialState, class: 'modal-lg'});
+    this.bsModalRef.content.closeBtnName = 'Fechar';
+  }
+
+
+  openMagneticPassDistanceComponent(){
+    const initialState = {
+      title: 'O passe pode ser dado à distância?'
+    };
+    this.bsModalRef = this._modalService.show(MagneticPassDistanceComponent, {initialState, class: 'modal-lg'});
     this.bsModalRef.content.closeBtnName = 'Fechar';
   }
 

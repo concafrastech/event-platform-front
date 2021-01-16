@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-magnetic-pass-distance',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MagneticPassDistanceComponent implements OnInit {
 
-  constructor() { }
+  public closeBtnName : string;
+  public title : string;
+  
+  constructor(private _userService : UserService,
+    public bsModalRef: BsModalRef,) { }
 
   ngOnInit(): void {
   }

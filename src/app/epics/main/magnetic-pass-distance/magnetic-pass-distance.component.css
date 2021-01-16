@@ -1,0 +1,17 @@
+.btn-modal {
+    background: transparent;
+    color: #273b87;
+    font-size: 12px;
+    padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: solid #273b87 1px;
+    transition: 0.2s;
+}
+
+.btn-modal:hover {
+    color: white;
+    background-color: #273b87;
+    border-color: white;
+}

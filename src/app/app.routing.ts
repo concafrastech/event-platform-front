@@ -72,6 +72,7 @@ import { JogosTematicosComponent } from './epics/jovem/pages/ilha1/jogos-tematic
 import { MuralArtisticoComponent } from './epics/jovem/pages/ilha2/mural-artistico/mural-artistico.component';
 import { AlegriaCristaMusicasComponent } from './epics/jovem/pages/ilha2/alegria-crista-musicas/alegria-crista-musicas.component';
 import { LancamentosComponent } from './epics/jovem/pages/ilha5/lancamentos/lancamentos.component';
+import { JovemAudithoriumComponent } from './epics/jovem/jovem-audithorium/jovem-audithorium.component';
 import { TendaComponent } from './epics/main/tenda/tenda.component';
 import { EventCleanComponent } from './epics/main/event-clean/event-clean.component';
 import { EditoraComponent } from './epics/main/feira/editora/editora.component';
@@ -203,7 +204,7 @@ const appRoutes: Routes = [
                 ],
             },
             {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
-            {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
         ],
     },
     

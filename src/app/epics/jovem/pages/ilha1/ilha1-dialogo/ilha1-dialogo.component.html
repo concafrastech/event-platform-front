@@ -1,8 +1,8 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
   <p class="text-left">Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/tema-especifico']" [routerLinkActive]="['active']">Tema Específico</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/novas-dimensoes']" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-casa-do-escritor/dialogo/tema-especifico']" [routerLinkActive]="['active']">Tema Específico</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-casa-do-escritor/dialogo/novas-dimensoes']" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento</a></li>
     <li class="list-group-item"><a>Revista Auta de Souza</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/jogos-tematicos']" [routerLinkActive]="['active']">Jogos Temáticos</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
@@ -12,9 +12,16 @@
 <div class="dialogo" *ngIf="dialog == 'tema-especifico'">
   <p class="text-left">Qual tema específico você deseja acessar?</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/audithorium/', 'trail', subscription.trails[0]._id]" [routerLinkActive]="['active']">{{subscription.trails[0].name}}</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>  
+    <!-- <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'trail', subscription.trails[0]._id]" [routerLinkActive]="['active']">{{subscription.trails[0].name}}</a></li> -->
+    <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'trail', '5fbdaae328723000adb0885b']" [routerLinkActive]="['active']">Arte e Assistência</a></li>
+    <!-- forcei um id para funcionar pois o cadastro de teste chamava um curso inexistente-->
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-casa-do-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+  </ul>
+  <!-- inclui esta parte so para pegar os id dos cursos 
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let trail of trails">{{trail.name}} : {{trail._id}}</li>
+  </ul>
+-->
 </div>
 
 <div class="dialogo" *ngIf="dialog == 'novas-dimensoes'">
@@ -24,10 +31,11 @@
       {{stage.name}}
       <ul>
           <li class="list-group-item" *ngFor="let activity of stage.activities">
-              <a [routerLink]="['/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
+              <a [routerLink]="['jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
           </li>
       </ul>
     </li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-casa-do-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
   </ul>  
 </div>
+

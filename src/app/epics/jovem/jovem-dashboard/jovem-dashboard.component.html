@@ -3,7 +3,7 @@
   <nav id="sidebar">
     <div class="sidebar-header">
 
-      <a class="nav-link text-center" [routerLink]="['/jovem/home']" ><img class="img-fluid rounded-circle col mx-auto text-center" src="https://static.pingendo.com/img-placeholder-3.svg" width="50px" height="50px" > Bem vindo,<br/>{{identity.name}}!</a>
+      <a class="nav-link text-center" [routerLink]="['/jovem/home']" ><img class="img-fluid rounded-circle col mx-auto text-center" src="assets/jovem/img/user.jpg" width="50px" height="50px" > Bem vindo,<br/>{{identity.name}}!</a>
       
       <div class="text-center mx-auto" >
         <img src="assets/jovem/icons/terra.svg" >
@@ -20,7 +20,7 @@
         </a>
       </li>
       <li class="text-center">
-        <a [routerLink]="['/select-journey']">
+        <a [routerLink]="['/jovem/home']">
           <img class="img-fluid" src="assets/jovem/icons/auta.svg"  >
           <p >Acesso inicial</p>
         </a>
@@ -45,7 +45,7 @@
       </li>
       <li class="text-center">
 
-        <a href="#">
+        <a [routerLink]="['/select-journey']">
           <img class="img-fluid" src="assets/jovem/icons/sair.svg" >
           <p >Sair</p>
         </a>

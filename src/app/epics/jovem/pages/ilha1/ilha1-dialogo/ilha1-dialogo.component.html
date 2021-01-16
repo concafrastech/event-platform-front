@@ -32,7 +32,7 @@
       {{stage.name}}
       <ul>
           <li class="list-group-item" *ngFor="let activity of stage.activities">
-              <a [routerLink]="['jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
+              <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
           </li>
       </ul>
     </li>

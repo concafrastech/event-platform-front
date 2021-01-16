@@ -156,7 +156,7 @@ const appRoutes: Routes = [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]},
             {
-                path: 'ilha-casa-do-escritor',
+                path: 'ilha-escritor',
                 component: Ilha1Component,
                 canActivate:[UserGuard],
                 children: [
@@ -166,7 +166,7 @@ const appRoutes: Routes = [
             },
             {path: 'jogos-tematicos', component: JogosTematicosComponent, canActivate:[UserGuard]},
             {
-                path: 'ilha-catedral-do-som',
+                path: 'ilha-som',
                 component: Ilha2Component,
                 canActivate:[UserGuard],
                 children: [
@@ -177,7 +177,7 @@ const appRoutes: Routes = [
             {path: 'mural-artistico', component: MuralArtisticoComponent, canActivate:[UserGuard]},
             {path: 'alegria-crista-musicas', component: AlegriaCristaMusicasComponent, canActivate:[UserGuard]},
             {
-                path: 'ilha-casa-do-caminho',
+                path: 'ilha-caminho',
                 component: Ilha3Component,
                 canActivate:[UserGuard],
                 children: [
@@ -186,7 +186,7 @@ const appRoutes: Routes = [
                 ],
             },
             {
-                path: 'ilha-instituto-almas-irmas',
+                path: 'ilha-irmas',
                 component: Ilha4Component,
                 canActivate:[UserGuard],
                 children: [
@@ -195,7 +195,7 @@ const appRoutes: Routes = [
                 ],
             },
             {
-                path: 'ilha-estacao-jovem-ao-vivo',
+                path: 'ilha-vivo',
                 component: Ilha5Component,
                 canActivate:[UserGuard],
                 children: [

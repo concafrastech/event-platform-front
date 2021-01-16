@@ -1,10 +1,8 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
-    <p class="text-left">Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><a [routerLink]="['/jovem/ilha1/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico: Arte e Assistência</a></li>
-      <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/activity/1']" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: Livro dos Espíritos: O Game!</a></li>
-      <li class="list-group-item"><a>Revista Auta de Souza</a></li>
-      <li class="list-group-item"><a [routerLink]="['/jovem/jogostematicos']" [routerLinkActive]="['active']">Jogos Temáticos</a></li>
-      <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
-    </ul>
-  </div>
+  <p class="text-left">Bem vindo(a) à Casa do Caminho! Aqui vamos por em prática tudo que temos aprendido na CONCAFRAS! Você também pode conferir como acontecem as atividades práticas nas Mocidades Espíritas:</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha3/dialogo/minha-pratica']" [routerLinkActive]="['active']">Minha prática na CONCAFRAS</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha3/dialogo/praticas-mocidade']" [routerLinkActive]="['active']">Práticas Assistenciais na Mocidade Espírita</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+  </ul>
+</div>

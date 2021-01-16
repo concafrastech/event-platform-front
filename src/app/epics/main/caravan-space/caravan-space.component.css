@@ -53,6 +53,10 @@
     padding: 0.5rem;
 }
 
+.caravan-carousel-recent {
+    margin-top: 2rem;
+}
+
 .active {
     border-color: transparent !important;
 }
@@ -93,4 +97,22 @@
 /* ==== HIGHLIGHT ==== */
 .marker-highlight{
     background-color: #1EA6EC;
+}
+
+/* ==== SING WITH US ==== */
+.sing-with-us-iframe {
+    width: 560px;
+    height: 315px;
+}
+
+.sing-with-us-card {
+    margin-top: 2rem;
+}
+
+/* ==== RESPONSIVE ==== */
+@media only screen and (max-width:1400px) {
+    .sing-with-us-iframe {
+        width: 560px;
+        height: 315px;
+    }
 }

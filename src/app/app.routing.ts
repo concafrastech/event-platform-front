@@ -72,6 +72,7 @@ import { JogosTematicosComponent } from './epics/jovem/pages/ilha1/jogos-tematic
 import { MuralArtisticoComponent } from './epics/jovem/pages/ilha2/mural-artistico/mural-artistico.component';
 import { AlegriaCristaMusicasComponent } from './epics/jovem/pages/ilha2/alegria-crista-musicas/alegria-crista-musicas.component';
 import { LancamentosComponent } from './epics/jovem/pages/ilha5/lancamentos/lancamentos.component';
+import { JovemAudithoriumComponent } from './epics/jovem/jovem-audithorium/jovem-audithorium.component';
 import { TendaComponent } from './epics/main/tenda/tenda.component';
 import { EventCleanComponent } from './epics/main/event-clean/event-clean.component';
 import { EditoraComponent } from './epics/main/feira/editora/editora.component';
@@ -155,7 +156,7 @@ const appRoutes: Routes = [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]},
             {
-                path: 'ilha1',
+                path: 'ilha-escritor',
                 component: Ilha1Component,
                 canActivate:[UserGuard],
                 children: [
@@ -165,7 +166,7 @@ const appRoutes: Routes = [
             },
             {path: 'jogos-tematicos', component: JogosTematicosComponent, canActivate:[UserGuard]},
             {
-                path: 'ilha2',
+                path: 'ilha-som',
                 component: Ilha2Component,
                 canActivate:[UserGuard],
                 children: [
@@ -176,7 +177,7 @@ const appRoutes: Routes = [
             {path: 'mural-artistico', component: MuralArtisticoComponent, canActivate:[UserGuard]},
             {path: 'alegria-crista-musicas', component: AlegriaCristaMusicasComponent, canActivate:[UserGuard]},
             {
-                path: 'ilha3',
+                path: 'ilha-caminho',
                 component: Ilha3Component,
                 canActivate:[UserGuard],
                 children: [
@@ -185,7 +186,7 @@ const appRoutes: Routes = [
                 ],
             },
             {
-                path: 'ilha4',
+                path: 'ilha-irmas',
                 component: Ilha4Component,
                 canActivate:[UserGuard],
                 children: [
@@ -194,7 +195,7 @@ const appRoutes: Routes = [
                 ],
             },
             {
-                path: 'ilha5',
+                path: 'ilha-vivo',
                 component: Ilha5Component,
                 canActivate:[UserGuard],
                 children: [
@@ -203,7 +204,7 @@ const appRoutes: Routes = [
                 ],
             },
             {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
-            {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
         ],
     },
     

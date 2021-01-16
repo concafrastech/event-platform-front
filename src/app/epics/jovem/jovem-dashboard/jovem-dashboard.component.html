@@ -3,9 +3,9 @@
   <nav id="sidebar">
     <div class="sidebar-header">
 
-      <a class="nav-link" [routerLink]="['/jovem/home']" ><img class="img-fluid rounded-circle col mx-auto text-center" src="https://static.pingendo.com/img-placeholder-3.svg" width="50px" height="50px" > Bem vindo,<br/>{{identity.name}}!</a>
+      <a class="nav-link text-center" [routerLink]="['/jovem/home']" ><img class="img-fluid rounded-circle col mx-auto text-center" src="assets/jovem/img/user.jpg" width="50px" height="50px" > Bem vindo,<br/>{{identity.name}}!</a>
       
-      <div class="" >
+      <div class="text-center mx-auto" >
         <img src="assets/jovem/icons/terra.svg" >
         <p class="text-center" style="color: #fff;">Nível Terra <br>0 pontos</p>
       </div>
@@ -14,19 +14,19 @@
 
     <ul class="list-unstyled components">
       <li class="text-center">
-        <a href="">
+        <a href="#" data-toggle="modal" data-target="#programacao">
           <img class="img-fluid" src="assets/jovem/icons/calendar.svg" >
           <p >Programação</p>
         </a>
       </li>
       <li class="text-center">
-        <a [routerLink]="['/select-journey']">
+        <a [routerLink]="['/jovem/home']">
           <img class="img-fluid" src="assets/jovem/icons/auta.svg"  >
           <p >Acesso inicial</p>
         </a>
       </li>
       <li class="text-center">
-        <a href="">
+        <a href="#" data-toggle="modal" data-target="#passedistancia">
           <img class="img-fluid" src="assets/jovem/icons/maos.svg" >
           <p >Passe a distância</p>
         </a>
@@ -38,14 +38,14 @@
         </a>
       </li>
       <li class="text-center">
-        <a href="">
+        <a href="#" data-toggle="modal" data-target="#navegar">
           <img class="img-fluid" src="assets/jovem/icons/duvida.svg" >
           <p >Como navegar</p>
         </a>
       </li>
       <li class="text-center">
 
-        <a href="#">
+        <a [routerLink]="['/select-journey']">
           <img class="img-fluid" src="assets/jovem/icons/sair.svg" >
           <p >Sair</p>
         </a>
@@ -91,8 +91,8 @@
   </nav>
   <!-- início do conteúdoi -->
   <div class="container-fluid">
-    <div class="row" >
-      <div class="col-12 col-sm-6 col-md-8"><router-outlet></router-outlet></div>
+    <div class="row">
+      <div class="col-12 col-md-10 pl-md-0 pr-md-5 h-100"><router-outlet></router-outlet></div>
       <div class="col-6 col-md-4">
 
         <app-right-sidebar></app-right-sidebar>
@@ -104,4 +104,65 @@
 
     <!-- final do conteúdo -->
   </div>
+</div>
+
+
+<!-- Modal programação -->
+<div class="modal fade" id="programacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Programação</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Programação
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Passe a Distância -->
+<div class="modal fade" id="passedistancia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Passe a Distância</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Passe a Distância
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Como navegar -->
+  <div class="modal fade bd-example-modal-lg" id="navegar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Como Navegar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/rw2LoqWb9XA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
 </div>

@@ -49,7 +49,7 @@ Left Navigation Sidebar
     padding: 14px;
 }
 
-.nav-left-sidebar .navbar-nav .nav-item {}
+/* .nav-left-sidebar .navbar-nav .nav-item {} */
 
 .nav-left-sidebar .navbar-nav .nav-link {
     font-size: 12px;
@@ -127,6 +127,37 @@ Left Navigation Sidebar
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: .25rem;
+}
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (max-width:1400px) {
+    .nav-left-sidebar {
+        width: 160px;
+        top: 60px;
+        height: calc(100% - 50px);
+    }
+
+    .nav-left-sidebar .navbar {
+        padding: 10px;
+    }
+
+    .nav-left-sidebar .navbar-nav .nav-link {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .sidebar-icon {
+        margin-bottom: 2px;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+}
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width:992px) {
 }
 
 /* Small Devices, Tablets */

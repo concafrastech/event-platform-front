@@ -94,3 +94,66 @@
 .share-div {
     text-transform: uppercase;
 }
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (max-width:1400px) {
+    .nav-right-sidebar {
+        width: 260px;
+        top: 60px;
+        height: calc(100% - 50px);
+    }
+
+    .nav-right-sidebar .navbar {
+        padding: 10px;
+    }
+
+    .nav-right-sidebar .navbar-nav .nav-item {
+        padding: 5px 10px;
+    }
+
+    .nav-right-sidebar .navbar-nav .nav-header {
+        padding: 8px 0px;
+        margin: 8px 0px;
+    }
+
+    .nav-right-sidebar .navbar-nav .nav-header.h-caravaneiro {
+        font-size: 11px;
+    }
+
+    .btn-right-sidebar {
+        font-size: 10px;
+        padding: 5px 10px;
+        margin: 5px 10px;
+    }
+
+    .marg20 {
+        margin: 10px 0px;
+    }
+
+    .card-height {
+        min-height: 100px;
+    }
+
+}
+@media only screen and (max-width:1200px) {
+}
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width:992px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width:768px) {
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (max-width:480px) {
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width:320px) {
+}

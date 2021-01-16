@@ -24,7 +24,7 @@ body {
 
 .dashboard-main-wrapper {
     min-height: 100%;
-    padding-top: 60px;
+    padding-top: 90px;
     position: relative;
     background-image: url('/assets/concafras2021/concafronas/fundo_tenda.png') !important ;
     background-repeat: no-repeat !important;
@@ -36,21 +36,14 @@ body {
     position: relative;
     left: 0;
     min-height: 870px !important;
-    /*margin-left: 197px;
+    margin-left: 197px;
     margin-right: 320px;
-    
-    width: calc(100% - 517px);*/
+    width: calc(100% - 517px);
 }
 
 .dashboard-content {
     padding: 15px 30px 60px 30px;
-    position: fixed;
-    margin-left: 197px;
-    margin-right: 320px;
-    width: calc(100% - 517px);
-    top: 90px;
 }
-
 
 .background-navbar {
     background: url("../../../../assets/concafras2021/concafronas/navbar.jpg");
@@ -78,12 +71,18 @@ body {
         min-height: 60px;
     }
 
-    .dashboard-content {
-        padding: 10px 30px 60px 30px;
+    .dashboard-main-wrapper {
+        padding-top: 60px;
+    }
+
+    .dashboard-wrapper {
         margin-left: 160px;
         margin-right: 260px;
         width: calc(100% - 420px);
-        top: 60px;
+    }
+
+    .dashboard-content{
+        padding: 10px 30px 60px 30px;
     }
 }
 @media only screen and (max-width:1200px) {

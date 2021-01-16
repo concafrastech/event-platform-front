@@ -82,6 +82,7 @@ import { LivrosComponent } from './epics/main/feira/livros/livros.component';
 import { VoluntariosComponent } from './epics/main/feira/voluntarios/voluntarios.component';
 import { CecxComponent } from './epics/main/feira/cecx/cecx.component';
 import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
+import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -207,7 +208,7 @@ const appRoutes: Routes = [
             {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
         ],
     },
-    
+
     {
         path: 'concafrinhas',
         component: InfanciaDashboardComponent,
@@ -236,6 +237,7 @@ const appRoutes: Routes = [
             {path: 'clube-do-livro', component: ClubeDoLivroComponent, canActivate:[UserGuard]},
             {path: 'palestras', component: PalestrasComponent, canActivate:[UserGuard]},
             {path: 'editora', component: EditoraComponent, canActivate:[UserGuard]},
+            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
 
         ],
     },

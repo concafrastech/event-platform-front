@@ -131,6 +131,7 @@ import { PalestrasComponent } from './epics/main/feira/palestras/palestras.compo
 import { ClubeDoLivroComponent } from './epics/main/feira/clube-do-livro/clube-do-livro.component';
 import { EditoraComponent } from './epics/main/feira/editora/editora.component';
 import { JovemAudithoriumComponent } from './epics/jovem/jovem-audithorium/jovem-audithorium.component';
+import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -257,7 +258,8 @@ const GamificationConfig = {
     PalestrasComponent,
     ClubeDoLivroComponent,
     EditoraComponent,
-    JovemAudithoriumComponent
+    JovemAudithoriumComponent,
+    CaravanSpaceComponent
   ],
   imports: [
     BrowserModule,

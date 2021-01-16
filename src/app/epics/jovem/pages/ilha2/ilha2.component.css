@@ -1,15 +1,15 @@
 .fundo {
-  background-image: url(/assets/jovem/img/fundo_som.png);
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background-position: right top;  
-  background-size: cover;  
-  background-repeat: no-repeat;
-  z-index: -1;
-}
+    background-image: url(/assets/jovem/img/fundo_som.png);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-position: center bottom;  
+    background-size: cover;  
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
 
 .caixa {
    background-color: #007bff7a;

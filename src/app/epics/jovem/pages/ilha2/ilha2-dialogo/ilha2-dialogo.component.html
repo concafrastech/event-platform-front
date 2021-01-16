@@ -1,11 +1,10 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
-  <p class="text-left">Olá, eu sou o Luiz Sérgio e juntos vamos interagir com muita Arte aqui na Catedral do Som! Vamos
-    começar? Selecione uma das opções abaixo:</p>
+  <p class="text-left">Bem vindo(a) à Ilha da Catedral do Som! O que você deseja acessar?</p>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha2/dialogo/oficinas']" [routerLinkActive]="['active']">Oficinas</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/alegria-crista']" [routerLinkActive]="['active']">Alegria cristã</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/mural-artistico']" [routerLinkActive]="['active']">Mural Artístico</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha2/dialogo/arte-e-espiritismo']" [routerLinkActive]="['active']">Curiosidades Artísticas</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha2/dialogo/arte-e-espiritismo']" [routerLinkActive]="['active']">Arte e Espiritismo</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
   </ul>
 </div>
@@ -19,7 +18,7 @@
 </div>
 
 <div class="dialogo" *ngIf="dialog == 'arte-e-espiritismo'">
-  <p class="text-left">Qual curiosidade artística você deseja acessar?</p>
+  <p class="text-left">Qual texto sobre arte e espiritismo você deseja acessar?</p>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Lista dos textos</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha2/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>

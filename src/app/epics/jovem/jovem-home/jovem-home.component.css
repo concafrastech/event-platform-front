@@ -169,4 +169,19 @@
 }
 }
 
+.btn-epics {
+  width: 10rem;
+  opacity: .7;
+  background: #273b87;
+  border-radius: 50px;
+  border-color: #fbfbfb;
+  transition: background 1s;
+  transition: border-color 0.2s;
+  line-height: 1rem;
+  font-size: 1rem;
+}
 
+.btn-epics:hover {
+  background: #007bff;
+  border-color: #007bff;
+}

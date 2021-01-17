@@ -91,6 +91,13 @@ export class JovemHomeComponent implements OnInit, AfterViewInit {
       });
   }
 
+// Ir para plataforma adultos, herdado de select-journey.component.ts
+  gotoPrincipal(epic){
+    localStorage.setItem('currentEpic', JSON.stringify(epic));
+    localStorage.setItem('epic', null);
+    this._router.navigate(['/home']);
+  }
+
 }
 
 

@@ -1,10 +1,67 @@
-<p>games works!</p>
-<div class="row align-items-center justify-content-center h-100 w-100">
+<div class="" *ngIf="jogo == 'inicial'" style="padding-top: 20px">
 
-  <div class="col-md-2"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
-  <div class="col-md-2"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
-  <div class="col-md-2"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
-  <div class="col-md-2"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
-  <div class="col-md-2"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
-  <div class="col-md-2"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
+	<div class="row align-items-center justify-content-center h-100 w-100">
+		<div style="padding-top: 100px"><img class="img-fluid d-block" src="/assets/jovem/img/controles-02.png"></div>
+	</div>
+	<div class="row align-items-center justify-content-center h-100 w-100" >
+		<div class=""><a [routerLink]="['/jovem/jogos-tematicos/games/primeiro']" [routerLinkActive]="['active']"><img class="img-fluid d-block" src="/assets/jovem/img/controles-01.png" style="width: 250px;padding-top: 100px;"></a></div>
+	</div>
+
 </div>
+
+<div class="" *ngIf="jogo == 'primeiro'">
+	<div class="py-5">
+		<div class="container">
+			<div><p class="titulojoguinho">Primeiro Jogo</p></div>
+			<div class="row align-items-center justify-content-center">
+
+				<div class="">
+					<iframe src="https://wordwall.net/pt/embed/38ce2c4fd9ec4edb8052dbe326bfcceb?themeId=2&templateId=2" width="500" height="380" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<div class="row align-items-center justify-content-center">
+			<div class="">
+				<a [routerLink]="['/jovem/jogos-tematicos/games/inicial']" [routerLinkActive]="['active']"><img class="img-fluid d-block" src="/assets/jovem/img/controles-03.png" style="width: 80px; padding-right: 10px"></a>
+			</div>
+			<div class="">
+				<a [routerLink]="['/jovem/jogos-tematicos/games/inicial']" [routerLinkActive]="['active']"><img class="img-fluid d-block" src="/assets/jovem/img/controles-04.png" style="width: 80px;"></a>
+			</div>
+			<div class="">
+				<a [routerLink]="['/jovem/jogos-tematicos/games/segundo']" [routerLinkActive]="['active']"><img class="img-fluid d-block" src="/assets/jovem/img/controles-05.png" style="width: 80px;padding-left: 10px"></a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="" *ngIf="jogo == 'segundo'">
+	<div class="py-5">
+		<div class="container">
+			<div><p class="titulojoguinho">Segundo Jogo</p></div>
+			<div class="row align-items-center justify-content-center">
+				<div class="">
+					<iframe src="https://wordwall.net/pt/embed/38ce2c4fd9ec4edb8052dbe326bfcceb?themeId=22&templateId=2" width="500" height="380" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<div class="row align-items-center justify-content-center">
+			<div class="">
+				<a [routerLink]="['/jovem/jogos-tematicos/games/inicial']" [routerLinkActive]="['active']"><img class="img-fluid d-block" src="/assets/jovem/img/controles-03.png" style="width: 80px; padding-right: 10px"></a>
+			</div>
+			<div class="">
+				<a [routerLink]="['/jovem/jogos-tematicos/games/inicial']" [routerLinkActive]="['active']"><img class="img-fluid d-block" src="/assets/jovem/img/controles-04.png" style="width: 80px;"></a>
+			</div>
+			<div class="">
+				<a [routerLink]="['/jovem/jogos-tematicos/games/primeiro']" [routerLinkActive]="['active']"><img class="img-fluid d-block" src="/assets/jovem/img/controles-05.png" style="width: 80px;padding-left: 10px"></a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+

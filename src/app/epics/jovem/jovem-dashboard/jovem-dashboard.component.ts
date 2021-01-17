@@ -23,6 +23,9 @@ import {
   faQuestionCircle,
   faUserCircle
 } from '@fortawesome/free-regular-svg-icons';
+// Componentes importados com base em left-sidebar.component.ts
+import { MagneticPassDistanceComponent } from 'src/app/epics/main/magnetic-pass-distance/magnetic-pass-distance.component';
+import { ScheduleComponent } from 'src/app/components/schedule/schedule.component';
 
 @Component({
   selector: 'app-jovem-dashboard',
@@ -66,9 +69,6 @@ export class JovemDashboardComponent implements OnInit, DoCheck {
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
   }
 
-
-
-
   ngDoCheck() {
     this.identity = this._userService.getIdentity();
   }
@@ -89,6 +89,23 @@ export class JovemDashboardComponent implements OnInit, DoCheck {
       localStorage.setItem("tutorial", "true");
     });
   }
+
+  openProgramacaoComponent() {
+    const initialState = {
+      title: 'Programação'
+    };
+    this.bsModalRef = this._modalService.show(ScheduleComponent, {initialState, class: 'modal-lg'});
+    this.bsModalRef.content.closeBtnName = 'Fechar';
+  }
+
+  openMagneticPassDistanceComponent(){
+    const initialState = {
+      title: 'O passe pode ser dado à distância?'
+    };
+    this.bsModalRef = this._modalService.show(MagneticPassDistanceComponent, {initialState, class: 'modal-lg'});
+    this.bsModalRef.content.closeBtnName = 'Fechar';
+  }
+
 
 }
 

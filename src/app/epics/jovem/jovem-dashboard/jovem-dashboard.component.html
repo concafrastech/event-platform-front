@@ -14,10 +14,10 @@
 
     <ul class="list-unstyled components">
       <li class="text-center">
-        <a href="#" data-toggle="modal" data-target="#programacao">
-          <img class="img-fluid" src="assets/jovem/icons/calendar.svg" >
+        <a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">
+          <img class="img-fluid" src="assets/jovem/icons/calendar.svg">
           <p >Programação</p>
-        </a>
+        </a>          
       </li>
       <li class="text-center">
         <a [routerLink]="['/jovem/home']">
@@ -26,7 +26,7 @@
         </a>
       </li>
       <li class="text-center">
-        <a href="#" data-toggle="modal" data-target="#passedistancia">
+        <a href="#" data-toggle="modal" (click)="openMagneticPassDistanceComponent()">
           <img class="img-fluid" src="assets/jovem/icons/maos.svg" >
           <p >Passe a distância</p>
         </a>

@@ -360,7 +360,7 @@ body
     ----------------------------------------------------- */
 
     #content {
-      padding: 20px;
+      /*padding: 20px;*/
       width: 100%;
       min-height: 100vh;
       transition: all 0.3s;

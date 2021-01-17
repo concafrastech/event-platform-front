@@ -12,4 +12,10 @@ export class AlegriaCristaMusicasComponent implements OnInit {
   ngOnInit(): void {
   }
 
+playVideo(vid_source) {
+  let vid = document.getElementById("myVideo");
+ // vid.src == vid_source;
+ // vid.load();
+} 
+
 }

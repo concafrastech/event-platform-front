@@ -1,0 +1,35 @@
+<div class="modal-header" style="text-align: center; width: 100%">
+  <div style="width: 100%">
+    <h4 class="modal-title">{{ title }}</h4>
+  </div>
+  <div style="width: 0px; z-index: 120">
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="bsModalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<div class="modal-body" style="padding: 1.5rem">
+  <div style="margin: 0px auto; width: 70%; text-align: center">
+    <p style="font-size: 0.8rem; color: #a2a2a2; margin: 1rem">
+      “- Sim, desde que haja sintonia entre aquele que o administra e aquele que
+      o recebe. Nesse caso, diversos companheiros espirituais se ajustam no
+      trabalho do auxílio, favorecendo a realização, e a prece silenciosa será o
+      melhor veículo da força curadora.” (André Luiz, Chico Xavier, Nos Domínios
+      da Mediunidade, cap. 17)
+    </p>
+    <div style="background-color: bisque; height: 400px; margin: 1rem;"></div>
+    <button type="button" class="btn-modal" style="margin: 1rem" (click)="bsModalRef.hide()">
+      AMPARO FRATERNO: QUER CONVERSAR?
+    </button>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">
+    {{ closeBtnName }}
+  </button>
+</div>

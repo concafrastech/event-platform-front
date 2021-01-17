@@ -24,23 +24,22 @@ body {
 
 .dashboard-main-wrapper {
     min-height: 100%;
-    padding-top: 60px;
+    padding-top: 90px;
     position: relative;
 }
 
 .dashboard-wrapper {
     position: relative;
     left: 0;
+    min-height: 870px !important;
     margin-left: 197px;
     margin-right: 320px;
-    min-height: 870px !important;
     width: calc(100% - 517px);
 }
 
 .dashboard-content {
-    padding: 30px 30px 60px 30px;
+    padding: 15px 30px 60px 30px;
 }
-
 
 .background-navbar {
     background: url("../../../../assets/concafras2021/concafronas/navbar.jpg");
@@ -66,6 +65,20 @@ body {
 @media only screen and (max-width:1400px) {
     .dashboard-header .navbar {
         min-height: 60px;
+    }
+
+    .dashboard-main-wrapper {
+        padding-top: 60px;
+    }
+
+    .dashboard-wrapper {
+        margin-left: 160px;
+        margin-right: 260px;
+        width: calc(100% - 420px);
+    }
+
+    .dashboard-content{
+        padding: 10px 30px 60px 30px;
     }
 }
 @media only screen and (max-width:1200px) {

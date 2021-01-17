@@ -32,3 +32,16 @@ ul.list-group > li:hover:before {
   content: ">";
   padding: 5px;
 }
+
+@media (max-width: 768px) {
+	.dialogo p{
+		color:#fff;
+		font-size: 1.2rem;
+	}
+	
+	.list-group-item{
+		background-color: #fff0 !important;
+		color:#fff;
+		font-size: 1rem;
+	}
+}

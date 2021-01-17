@@ -158,6 +158,13 @@ body
   border: none;
 
 }
+
+@media(max-width: 555px){
+  .CONCAFRASVIRTUAL2021{
+    display: none;
+  }
+}
+
 .CONCAFRASVIRTUAL2021 .text-style-1 {
   font-style: italic;
   color: #1EA6EC;

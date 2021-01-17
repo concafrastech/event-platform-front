@@ -1,7 +1,7 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
   <p class="text-left">Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a href="#" data-toggle="modal" data-target="#programacao">Programação Lives</a></li>
+    <li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/lancamentos']" [routerLinkActive]="['active']">Lançamentos</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/ao-vivo']" [routerLinkActive]="['active']">AO VIVO</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
@@ -9,7 +9,7 @@
 </div>
 
 <div class="dialogo" *ngIf="dialog == 'ao-vivo'">
-  <p class="text-left">Qual live você deseja acessar?</p>
+  <p class="text-left">Qual evento ao vivo você deseja acessar?</p>
   <ul class="list-group list-group-flush">
     <li class="list-group-item" *ngFor="let lecture of lectures">
         <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>

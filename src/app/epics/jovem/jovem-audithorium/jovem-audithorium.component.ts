@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Lecture } from "src/app/models/lecture";
-import { Activity } from "./../../../models/activity";
-import { Classroom } from "./../../../models/classroom";
+import { Activity } from "src/app/models/activity";
+import { Classroom } from "src/app/models/classroom";
 import { Content } from "src/app/models/content";
 import { LectureService } from "src/app/services/lecture.service";
-import { ClassroomService } from "./../../../services/classroom.service";
+import { ClassroomService } from "src/app/services/classroom.service";
 import { ActivityService } from "src/app/services/activity.service";
 
 @Component({
@@ -61,14 +61,14 @@ export class JovemAudithoriumComponent implements OnInit {
         case "classroom": {
           this._classroomService.getClassroom(id).subscribe((response) => {
             this.classroom = response.classroom;
-            this.handleDisplay(this.lecture.contents);
+            this.handleDisplay(this.classroom.contents);
           });
           break;
         }
         case "activity": {
           this._activityService.getActivity(id).subscribe((response) => {
-            this.activity = response.acitivity;
-            this.handleDisplay(this.lecture.contents);
+            this.activity = response.activity;
+            this.handleDisplay(this.activity.contents);
           });
           break;
         }

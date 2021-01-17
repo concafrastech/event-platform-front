@@ -13,6 +13,8 @@ import { StageService } from 'src/app/services/stage.service';
 import { TrailService } from 'src/app/services/trail.service';
 import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
+// componente importado baseado em jovem-dashboard.component.ts para usar em openProgramaçãoComponent
+import { ScheduleComponent } from 'src/app/components/schedule/schedule.component';
 
 @Component({
   selector: 'app-ilha5-dialogo',
@@ -178,5 +180,13 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     );
   }
 
+  // função baseada em jovem-dashboard.component.ts
+  openProgramacaoComponent() {
+    const initialState = {
+      title: 'Programação'
+    };
+    this.bsModalRef = this._modalService.show(ScheduleComponent, {initialState, class: 'modal-lg'});
+    this.bsModalRef.content.closeBtnName = 'Fechar';
+  }
 
 }

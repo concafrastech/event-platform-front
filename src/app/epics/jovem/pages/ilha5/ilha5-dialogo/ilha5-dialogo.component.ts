@@ -15,6 +15,7 @@ import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
 // componente importado baseado em jovem-dashboard.component.ts para usar em openProgramaçãoComponent
 import { ScheduleComponent } from 'src/app/components/schedule/schedule.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-ilha5-dialogo',
@@ -32,6 +33,7 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
   public lectures: Lecture[] = []; 
   public trails: Trail[] = [];
   public stages: Stage[] = [];
+  bsModalRef: BsModalRef;
 
   options = { 
     zoomEnabled: true,
@@ -50,7 +52,8 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     private _trailService: TrailService,
     private _stageService: StageService,
     private _activityService: ActivityService,
-    private _classroomService: ClassroomService
+    private _classroomService: ClassroomService,
+    private _modalService: BsModalService 
   ) { }
 
   ngOnInit(): void {

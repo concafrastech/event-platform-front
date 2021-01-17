@@ -83,6 +83,8 @@ import { VoluntariosComponent } from './epics/main/feira/voluntarios/voluntarios
 import { CecxComponent } from './epics/main/feira/cecx/cecx.component';
 import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
 import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
+import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
+
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -165,7 +167,17 @@ const appRoutes: Routes = [
                     {path: 'dialogo/:dialog', component: Ilha1DialogoComponent, canActivate:[UserGuard]}
                 ],
             },
-            {path: 'jogos-tematicos', component: JogosTematicosComponent, canActivate:[UserGuard]},
+            {
+                path: 'jogos-tematicos', 
+                component: JogosTematicosComponent, 
+                canActivate:[UserGuard],
+                children:[
+                {path:'', redirectTo: 'games/inicial', pathMatch: 'full'},
+                {path:'games/:jogo', component: GamesComponent, canActivate:[UserGuard]}
+
+                ],
+            },
+
             {
                 path: 'ilha-som',
                 component: Ilha2Component,

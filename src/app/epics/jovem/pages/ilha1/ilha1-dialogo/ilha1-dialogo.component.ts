@@ -30,6 +30,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   public lectures: Lecture[] = []; 
   public trails: Trail[] = [];
   public stages: Stage[] = [];
+  public stagesFilteredList: Stage[] = [];
 
   options = { 
     zoomEnabled: true,
@@ -142,6 +143,11 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.stages = response.stages;
+
+          //incluido filtro das trilhas da ilha
+          this.stagesFilteredList = this.stages.filter((stage: Stage) => stage.type === "Novas Dimensões");
+          this.stages = this.stagesFilteredList;
+
           this.stages.forEach((stage, index) => {
             this.getActivities(page, stage, index);
           });

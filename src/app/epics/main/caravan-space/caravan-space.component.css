@@ -105,14 +105,32 @@
     height: 315px;
 }
 
+.sing-with-us-iframe-thumbnail {
+    width: 204px;
+    height: 115px;
+}
+
 .sing-with-us-card {
     margin-top: 2rem;
+}
+
+.sing-with-us-container {
+    display: inline-block;
+}
+
+.sing-with-us-block-main {
+    width: 70%;
+}
+
+.sing-with-us-block-second {
+    width: 30%;
+    text-align: right;
 }
 
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
     .sing-with-us-iframe {
-        width: 560px;
+        width: 555px;
         height: 315px;
     }
 }

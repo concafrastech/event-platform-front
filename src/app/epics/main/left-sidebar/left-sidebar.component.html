@@ -8,10 +8,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/home']" ><fa-icon [icon]="faUserCircle" size="4x" class="sidebar-icon"></fa-icon> Bem vindo,<br/>{{identity.name}}!</a>
+                    <a class="nav-link" [routerLink]="['/meus-dados']" ><fa-icon [icon]="faUserCircle" size="4x" class="sidebar-icon"></fa-icon> Bem vindo,<br/>{{identity.name}}!</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/meus-dados']" ><svg-icon src="{{user.level.icon}}" class="sidebar-icon"></svg-icon> Nivel {{user.level.badge}}<br/>{{user.points}} pontos</a>
+                    <a class="nav-link disabled" [routerLink]="" ><svg-icon src="{{user.level.icon}}" class="sidebar-icon"></svg-icon> Nivel {{user.level.badge}}<br/>{{user.points}} pontos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" (click)="openProgramacaoComponent()" ><svg-icon src="assets/concafras2021/concafronas/icones/programacao-menu-item.svg" class="sidebar-icon"></svg-icon> Programação</a>
@@ -29,7 +29,7 @@
                     <a class="nav-link" [routerLink]="['/about']" ><svg-icon src="assets/concafras2021/concafronas/icones/como-navegar-menu-item.svg" class="sidebar-icon"></svg-icon>  Como Navegar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Duvidas</a>
+                    <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Dúvidas?</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" (click)="logout()"><svg-icon src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" class="sidebar-icon"></svg-icon>  Sair</a>

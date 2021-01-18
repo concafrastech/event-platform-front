@@ -13,11 +13,12 @@
 }
 
 #caravan-header .caravan-header-card.caravan-header-item {
-    width: 70%
+    width: 60%;
 }
 
 #caravan-header .caravan-header-card.caravan-header-img {
-    width: 30%
+    width: 40%;
+    text-align: right;
 }
 
 .caravan-header-title {
@@ -27,7 +28,7 @@
 }
 
 .caravan-header-text {
-    font-size: 10px;
+    font-size: 14px;
     color: #fff;
     font-weight: 300;
 }
@@ -101,13 +102,13 @@
 
 /* ==== SING WITH US ==== */
 .sing-with-us-iframe {
-    width: 560px;
-    height: 315px;
+    width: 915px;
+    height: 523px;
 }
 
 .sing-with-us-iframe-thumbnail {
-    width: 204px;
-    height: 115px;
+    width: 395px;
+    height: 255px;
 }
 
 .sing-with-us-card {
@@ -129,8 +130,25 @@
 
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
+    #caravan-header .caravan-header-card.caravan-header-item {
+        width: 70%;
+    }
+
+    #caravan-header .caravan-header-card.caravan-header-img {
+        width: 30%;
+    }
+
+    .caravan-header-text {
+        font-size: 10px;
+    }
+
     .sing-with-us-iframe {
         width: 555px;
         height: 315px;
+    }
+
+    .sing-with-us-iframe-thumbnail {
+        width: 204px;
+        height: 115px;
     }
 }

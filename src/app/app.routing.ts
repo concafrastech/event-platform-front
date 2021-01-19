@@ -84,6 +84,8 @@ import { CecxComponent } from './epics/main/feira/cecx/cecx.component';
 import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
 import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
 import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
+import { JovemCardsComponent } from './epics/jovem/jovem-cards/jovem-cards.component';
+import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
 
 
 const appRoutes: Routes = [
@@ -217,6 +219,8 @@ const appRoutes: Routes = [
                 ],
             },
             {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
+            {path: 'jovem-cards/:id', component: JovemCardsComponent, canActivate:[UserGuard]},
+            {path: 'jovem-list/:id', component: JovemListComponent, canActivate:[UserGuard]},
             {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
         ],
     },

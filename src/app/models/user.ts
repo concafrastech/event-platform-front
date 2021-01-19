@@ -21,7 +21,8 @@ export class User {
         public points: number,
         public firstlogin: boolean,
         public subscriptions: Subscription[],
-        public level: {}
+        public level: {},
+        public address?: string
     ) {}
 }
 

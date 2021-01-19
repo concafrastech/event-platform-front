@@ -1,107 +1,214 @@
-<div class="col-lg-12">
-    <h1 class="h1-strong">{{title}}</h1>
-    <div class="alert alert-success" *ngIf="status == 'success'">
-        Dados atualizados com sucesso!
-    </div>
-    <div class="alert alert-danger" *ngIf="status == 'error'">
-        Erro ao atualizar os dados.
-    </div>
-    <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="user-image-for-edit" *ngIf="user.image">
-                    <img src="{{ url + 'get-image-user/' + user.image}}" />
-                </div>
-                <div class="user-image-for-edit" *ngIf="!user.image">
-                    <img src="{{ url + 'get-image-user/' + user.image}}" />
-                </div>
-                <p>
-                    <label>Foto do Perfil</label>
-                    <input type="file" placeholder="Upload image" (change)="fileChangeEvent($event)" />
-                </p>
-                <input type="button" value="Alterar foto" class="btn btn-warning" />
-            </div>
-            <div class="col-lg-10">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>
-                            <label>Nome</label>
-                            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required />
-                            <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-6">
-                        <p>
-                            <label>Sobrenome</label>
-                            <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required />
-                            <span *ngIf="!surname.value && surname.touched" >O sobrenome é obrigatório!</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <p>
-                            <label>Apelido (Nome do Crachá)</label>
-                            <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required />
-                            <span *ngIf="!nick.value && nick.touched" >O apelido é obrigatório!</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-4">
-                        <p>
-                            <label>Nascimento</label>
-                            <input type="text" name="birthday" #nick="ngModel" [(ngModel)]="user.birthday" class="form-control" bsDatuserker />
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>
-                            <label>E-mail (Esse é seu login)</label>
-                            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
-                            <span *ngIf="!email.value && email.touched" >Email inválido!</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-6">
-                        <p>
-                            <label>Whatsapp</label>
-                            <input type="text" name="whatsapp" #nick="ngModel" [(ngModel)]="user.whatsapp" class="form-control" />
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <p>
-                    <label>Pais</label>
-                    <input type="text" name="country" #nick="ngModel" [(ngModel)]="user.country" class="form-control" />
-                </p>
-            </div>
-            <div class="col-lg-4">
-                <p>
-                    <label>Estado</label>
-                    <input type="text" name="state" #nick="ngModel" [(ngModel)]="user.state" class="form-control" />
-                </p>
-            </div>
-            <div class="col-lg-4">
-                <p>
-                    <label>Cidade</label>
-                    <input type="text" name="city" #nick="ngModel" [(ngModel)]="user.city" class="form-control" />
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9">
-                <p>
-                    <label>Instituição</label>
-                    <input type="text" name="company" #nick="ngModel" [(ngModel)]="user.company" class="form-control" />
-                </p>
-            </div>
-            <div class="col-lg-3">
-                <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!userEditForm.form.valid" />
-            </div>
-        </div>
-        <br/>
-        <br/>
-    </form>
+<h2 class="h2-strong">{{ title }}</h2>
+<div class="alert alert-success" *ngIf="status == 'success'">
+  Dados atualizados com sucesso!
 </div>
+<div class="alert alert-danger" *ngIf="status == 'error'">
+  Erro ao atualizar os dados.
+</div>
+<form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="user-image-for-edit" *ngIf="user.image">
+        <img src="{{ url + 'get-image-user/' + user.image }}" />
+      </div>
+      <div class="user-image-for-edit" *ngIf="!user.image">
+        <img src="{{ url + 'get-image-user/' + user.image }}" />
+      </div>
+      <p>
+        <label>Foto do Perfil</label>
+        <input
+          type="file"
+          placeholder="Upload image"
+          (change)="fileChangeEvent($event)"
+        />
+      </p>
+      <input type="button" value="Alterar foto" class="btn btn-warning" />
+    </div>
+    <div class="col-lg-10">
+      <div class="row">
+        <div class="col-lg-3">
+          <p>
+            <label>Nome</label>
+            <input
+              type="text"
+              name="name"
+              #name="ngModel"
+              [(ngModel)]="user.name"
+              class="form-control"
+              required
+            />
+            <span *ngIf="!name.value && name.touched"
+              >O nome é obrigatório!</span
+            >
+          </p>
+        </div>
+        <div class="col-lg-3">
+          <p>
+            <label>Sobrenome</label>
+            <input
+              type="text"
+              name="surname"
+              #surname="ngModel"
+              [(ngModel)]="user.surname"
+              class="form-control"
+              required
+            />
+            <span *ngIf="!surname.value && surname.touched"
+              >O sobrenome é obrigatório!</span
+            >
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <p>
+            <label>Endereço</label>
+            <input
+              type="text"
+              name="address"
+              #address="ngModel"
+              [(ngModel)]="user.address"
+              class="form-control"
+              required
+            />
+            <span *ngIf="!address.value && address.touched"
+              >O endereço é obrigatório!</span
+            >
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <p>
+            <label>Cidade</label>
+            <input
+              type="text"
+              name="city"
+              #nick="ngModel"
+              [(ngModel)]="user.city"
+              class="form-control"
+            />
+          </p>
+        </div>
+        <div class="col-lg-1">
+          <p>
+            <label>Estado</label>
+            <input
+              type="text"
+              name="state"
+              #nick="ngModel"
+              [(ngModel)]="user.state"
+              class="form-control"
+            />
+          </p>
+        </div>
+        <div class="col-lg-2">
+          <p>
+            <label>Pais</label>
+            <input
+              type="text"
+              name="country"
+              #nick="ngModel"
+              [(ngModel)]="user.country"
+              class="form-control"
+            />
+          </p>
+        </div>
+
+        <div class="col-lg-3">
+          <p>
+            <label>Nascimento</label>
+            <input
+              type="text"
+              name="birthday"
+              #nick="ngModel"
+              [(ngModel)]="user.birthday"
+              class="form-control"
+              bsDatuserker
+            />
+          </p>
+        </div>
+        <div class="col-lg-3">
+          <p>
+            <label>Telefone</label>
+            <input
+              type="text"
+              name="whatsapp"
+              #nick="ngModel"
+              [(ngModel)]="user.whatsapp"
+              class="form-control"
+            />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <p>
+            <label>Centro Espírita</label>
+            <input
+              type="text"
+              name="company"
+              #nick="ngModel"
+              [(ngModel)]="user.company"
+              class="form-control"
+            />
+          </p>
+        </div>
+        <div class="col-lg-3">
+          <p>
+            <label>E-mail (Esse é seu login)</label>
+            <input
+              type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              name="email"
+              #email="ngModel"
+              [(ngModel)]="user.email"
+              class="form-control"
+              required
+            />
+            <span *ngIf="!email.value && email.touched">Email inválido!</span>
+          </p>
+        </div>
+        <div class="col-lg-3">
+          <p>
+            <label>Apelido (Nome do Crachá)</label>
+            <input
+              type="text"
+              name="nick"
+              #nick="ngModel"
+              [(ngModel)]="user.nick"
+              class="form-control"
+              required
+            />
+            <span *ngIf="!nick.value && nick.touched"
+              >O apelido é obrigatório!</span
+            >
+          </p>
+        </div>
+        <div class="col-lg-3">
+          <p>
+            <label>Nível</label>
+            <input
+              type="text"
+              name="level"
+              #level="ngModel"
+              [(ngModel)]="user.level"
+              class="form-control"
+              disabled
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <input
+        type="submit"
+        value="{{ title }}"
+        class="btn btn-warning"
+        [disabled]="!userEditForm.form.valid"
+      />
+    </div>
+  </div>
+  <br />
+  <br />
+</form>

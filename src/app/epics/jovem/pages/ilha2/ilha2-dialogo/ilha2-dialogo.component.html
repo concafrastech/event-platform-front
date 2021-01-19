@@ -2,13 +2,8 @@
   <p class="text-left">Olá, eu sou o Luiz Sérgio e juntos vamos interagir com muita Arte aqui na Catedral do Som! Vamos
     começar? Selecione uma das opções abaixo:</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let stage of stages">
-      Painéis
-      <ul>
-          <li class="list-group-item" *ngFor="let activity of stage.activities">
-              <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
-          </li>
-      </ul>
+    <li class="list-group-item" *ngFor="let activity of stages[0].activities">
+        <a [routerLink]="['/jovem/jovem-cards/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/alegria-crista-musicas']" [routerLinkActive]="['active']">Alegria cristã</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/mural-artistico']" [routerLinkActive]="['active']">Mural Artístico</a></li>

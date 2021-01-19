@@ -1,1 +1,7 @@
-<p>jovem-list works!</p>
+<div>
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let content of contents">
+                <a [routerLink]="['/jovem/audithorium/', 'lecture', content._id]" [routerLinkActive]="['active']">{{content.name}}</a>
+            </li>
+    </ul>
+</div>

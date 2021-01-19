@@ -1,7 +1,8 @@
+Selecione uma das opções a seguir:
 <div>
     <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let content of contents">
-                <a [routerLink]="['/jovem/audithorium/', 'lecture', content._id]" [routerLinkActive]="['active']">{{content.name}}</a>
+            <li class="list-group-item" *ngFor="let activity of stages[0].activities">
+                <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
             </li>
     </ul>
 </div>

@@ -60,15 +60,15 @@ export class JovemAudithoriumComponent implements OnInit {
         }
         case "classroom": {
           this._classroomService.getClassroom(id).subscribe((response) => {
-            this.classroom = response.classroom;
-            this.handleDisplay(this.classroom.contents);
+            this.lecture = response.classroom;
+            this.handleDisplay(this.lecture.contents);
           });
           break;
         }
         case "activity": {
           this._activityService.getActivity(id).subscribe((response) => {
-            this.activity = response.activity;
-            this.handleDisplay(this.activity.contents);
+            this.lecture = response.activity;
+            this.handleDisplay(this.lecture.contents);
           });
           break;
         }

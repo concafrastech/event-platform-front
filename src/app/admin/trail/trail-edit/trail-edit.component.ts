@@ -10,7 +10,6 @@ import { UserService } from "src/app/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ClassroomService } from "src/app/services/classroom.service";
 import { Classroom } from "src/app/models/classroom";
-import { Content } from "src/app/models/content";
 import { concat, Observable } from "rxjs";
 import { concatMap, map } from "rxjs/operators";
 import { ContentService } from "src/app/services/content.service";
@@ -37,13 +36,10 @@ export class TrailEditComponent implements OnInit {
   public status: string;
   public trail: Trail;
   public identity: string;
-  public theoreticalClassrooms: Classroom[] = [];
-  public practicalClassrooms: Classroom[] = [];
   public epics = [];
   public momentOne: Classroom;
   public momentTwo: Classroom;
-  public contentOne: Content[];
-  public contentTwo: Content[];
+  public showMoments: boolean = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -119,6 +115,7 @@ export class TrailEditComponent implements OnInit {
   }
 
   loadPage() {
+    this.showMoments = false;
     this._epicService.getEpics().subscribe(
       (response) => {
         if (response) {
@@ -136,42 +133,14 @@ export class TrailEditComponent implements OnInit {
     });
   }
 
-  getClassrooms() {
-    this.theoreticalClassrooms = [];
-    this.practicalClassrooms = [];
-    //Lê todos os classrooms e separa por tipo, classrooms sem tipo não aparecem.
-    //Atualizar após get classroom por tipo.
-    this._classroomService.getClassrooms().subscribe(
-      (response) => {
-        if (response) {
-          let classrooms: Classroom[] = response.classrooms;
-
-          for (let i = 0; i < classrooms.length; i++) {
-            if (classrooms[i].type == "teorico") {
-              this.theoreticalClassrooms.push(classrooms[i]);
-            }
-            if (classrooms[i].type == "pratico") {
-              this.practicalClassrooms.push(classrooms[i]);
-            }
-          }
-        }
-      },
-      (error) => {
-        this._spinner.hide();
-        console.log(<any>error);
-      }
-    );
-  }
-
   getTrail(id) {
     this._trailService.getTrail(id).subscribe(
       (response) => {
         if (response.trail) {
           this.trail = response.trail;
-
           for (let i = 0; i < this.trail.classrooms.length; i++) {
             if (this.trail.classrooms[i].type == "teorico") {
-              if (!this.momentOne) {
+              if (!this.momentOne || this.momentOne._id == "") {
                 this.momentOne = this.trail.classrooms[i];
               } else {
                 this.momentTwo = this.trail.classrooms[i];
@@ -185,7 +154,7 @@ export class TrailEditComponent implements OnInit {
           if (this.momentTwo) {
             this.removeClassroom(this.trail.classrooms.indexOf(this.momentTwo));
           }
-
+          this.showMoments = true;
           this._spinner.hide();
         } else {
           this._spinner.hide();
@@ -352,10 +321,11 @@ export class TrailEditComponent implements OnInit {
           this._spinner.hide();
           this.status = "error";
         } else {
-          this._spinner.hide();
           this.status = "success";
+          this.trail = null;
+          this.momentOne = null;
+          this.momentTwo = null;
           this.loadPage();
-          this.getTrail(this.trailId);
         }
       },
       (error) => {

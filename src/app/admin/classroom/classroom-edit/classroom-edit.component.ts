@@ -55,15 +55,31 @@ export class ClassroomEditComponent implements OnInit {
     console.log("[OK] Component: classroom-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
+    if (!this.classroom) {
+      this.classroom = new Classroom(
+        "",
+        "",
+        "",
+        this.typeClassroom,
+        new Date(),
+        new Date(),
+        "",
+        null,
+        [],
+        [],
+        new Date(),
+        new Date()
+      );
+    }
     this.loadPage();
   }
 
   loadPage() {
-    this.getClassroom(this.classroom._id);
+    this.getContents();
   }
 
-  getClassroom(id) {
-    this._classroomService.getClassroom(id).subscribe(
+  getClassroom() {
+    this._classroomService.getClassroom(this.classroom._id).subscribe(
       (response) => {
         if (response.classroom) {
           let classroom = response.classroom;
@@ -89,7 +105,8 @@ export class ClassroomEditComponent implements OnInit {
   getContents() {
     this.classroom.contents.forEach((content, index) => {
       this._contentService.getContent(content).subscribe((response) => {
-        this.classroom.contents[index] = response.content;
+        let content = response.content;
+        this.classroom.contents[index] = content;
         this._spinner.hide();
         if (this.classroom.contents[index].file) {
           let idFile = this.classroom.contents[index].file;
@@ -208,7 +225,7 @@ export class ClassroomEditComponent implements OnInit {
         this.classroom.tags.push(evento.target.value);
         evento.target.value = "";
       }
-      
+
       //Impede do angular enviar o form no enter
       evento.preventDefault();
     }

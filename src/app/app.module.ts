@@ -265,7 +265,6 @@ const GamificationConfig = {
     CaravanSpaceComponent,
     GamesComponent,
     MagneticPassDistanceComponent,
-    JovemCardsComponent,
     JovemListComponent
   ],
   imports: [

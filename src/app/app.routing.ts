@@ -84,7 +84,6 @@ import { CecxComponent } from './epics/main/feira/cecx/cecx.component';
 import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
 import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
 import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
-import { JovemCardsComponent } from './epics/jovem/jovem-cards/jovem-cards.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
 
 

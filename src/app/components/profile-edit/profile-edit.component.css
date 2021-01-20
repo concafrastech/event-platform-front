@@ -3,6 +3,10 @@
   margin: 2rem 0;
 }
 
+.my-profile-container:first-child {
+  margin-top: 0;
+}
+
 /* ==== IMG ==== */
 .img-size {
   width: 80px;

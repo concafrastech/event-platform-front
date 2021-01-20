@@ -1,0 +1,51 @@
+<div class="col-lg-5">
+    <h1 class="h1-strong">{{title}}</h1>
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        Dados atualizados com sucesso!
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Erro ao atualizar os dados.
+    </div>
+    <form #missionEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Épico</label>
+                    <select [compareWith]="compareByOptionId" name="epic" #epic="ngModel" [(ngModel)]="mission.epic" class="form-control">
+                        <option [ngValue]="null" [value]="null">-- Selecione --</option>
+                        <option *ngFor="let epic of epics" [ngValue]="epic">{{epic.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Nome</label>
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="mission.name" class="form-control" required />
+                <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Descrição</label>
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="mission.description" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Pontos</label>
+                <input type="text" name="ammount" #ammount="ngModel" [(ngModel)]="mission.ammount" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!missionEditForm.form.valid" />
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </form>
+</div>
+
+<!-- Spinner -->
+<ngx-spinner></ngx-spinner>

@@ -1,3 +1,14 @@
+/* ==== GERAL ==== */
+.my-profile-container {
+  margin: 2rem 0;
+}
+
+/* ==== IMG ==== */
+.img-size {
+  width: 80px;
+  height: 80px;
+}
+
 .user-image-for-edit {
   height: 120px;
   width: 90;
@@ -77,9 +88,7 @@
 }
 
 .secondary-button:hover {
-  /*color: #273B87;*/
-  background-color: #1ea6ec;
-  border-color: white;
+  color: rgb(218, 218, 218);
 }
 
 .container-level {
@@ -94,17 +103,38 @@
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    /*background-color: #2196F3;
-    padding: 10px;*/
+  display: grid;
+  grid-template-columns: auto auto;
+  /*background-color: #2196F3;
+  padding: 10px;*/
+}
+.grid-item {
+    margin-top: 10px;
+    margin-right: 10px;
+  /*background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;*/
+}
+
+/* ==== RESPONSIVE ==== */
+@media only screen and (max-width:1400px) {
+  /* ==== IMG ==== */
+  .img-size {
+    width: 80px;
+    height: 80px;
   }
-  .grid-item {
-      margin-top: 10px;
-      margin-right: 10px;
-    /*background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;*/
+
+  /* ==== BANNER ==== */
+  .banner .banner-card.banner-item {
+    width: 70%;
+    color: white;
+    font-size: 13px;
+    text-align: center;
   }
+
+  .secondary-button {
+    font-size: 14px;
+  }
+}

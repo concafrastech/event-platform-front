@@ -135,6 +135,7 @@ import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.
 import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
 import { MagneticPassDistanceComponent } from './epics/main/magnetic-pass-distance/magnetic-pass-distance.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
+import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -265,7 +266,8 @@ const GamificationConfig = {
     CaravanSpaceComponent,
     GamesComponent,
     MagneticPassDistanceComponent,
-    JovemListComponent
+    JovemListComponent,
+    CardRankingComponent
   ],
   imports: [
     BrowserModule,

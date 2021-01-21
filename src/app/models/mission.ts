@@ -7,7 +7,7 @@ export class Mission {
         public epic: Epic,
         public name: string,
         public description: string,
-        public ammount: number,
+        public amount: number,
         public created_at: Date,
         public updated_at: Date
     ) {}

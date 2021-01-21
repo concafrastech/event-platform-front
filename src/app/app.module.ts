@@ -138,6 +138,8 @@ import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.componen
 import { MissionAddComponent } from './admin/mission/mission-add/mission-add.component';
 import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
 import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
+import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
+import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -271,7 +273,9 @@ const GamificationConfig = {
     CaravanSpaceComponent,
     GamesComponent,
     MagneticPassDistanceComponent,
-    JovemListComponent
+    JovemListComponent,
+    CardRankingComponent,
+    ShareMessageComponent
   ],
   imports: [
     BrowserModule,

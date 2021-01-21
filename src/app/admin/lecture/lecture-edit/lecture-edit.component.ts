@@ -175,22 +175,8 @@ export class LectureEditComponent implements OnInit {
 
   //Realiza upload e salva os documentos
   saveDocuments() {
-    let index = 0;
     this._contentService.uploadContents(this.lecture.contents).subscribe({
       next: (response) => {
-        //Uploads anteriores retornam Documents como resposta
-        if (response.document) {
-          this.lecture.contents[index].file = response.document;
-          this.lecture.contents[index].fileToUpload = null;
-          index += 1;
-        }
-
-        //Novos uploads retornam HttpEventType como resposta
-        if (response.type == HttpEventType.Response) {
-          this.lecture.contents[index].file = response.body.document;
-          this.lecture.contents[index].fileToUpload = null;
-          index += 1;
-        }
       },
       error: (error) => {
         this._spinner.hide();

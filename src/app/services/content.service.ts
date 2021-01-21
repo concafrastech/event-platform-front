@@ -1,4 +1,9 @@
-import { HttpClient, HttpRequest, HttpHeaders } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpRequest,
+  HttpHeaders,
+  HttpEventType,
+} from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { GLOBAL } from "./global";
 import { Observable } from "rxjs/Observable";
@@ -7,6 +12,7 @@ import { DocumentService } from "./document.service";
 import { Content } from "../models/content";
 import { concat } from "rxjs";
 import { concatMap } from "rxjs/operators";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class ContentService {
@@ -87,14 +93,32 @@ export class ContentService {
         content.type == "doc"
       ) {
         if (content.fileToUpload) {
-          obs$.push(this.uploadFile(content.fileToUpload));
+          obs$.push(
+            this.uploadFile(content.fileToUpload).pipe(
+              map((response) => {
+                //Final do upload
+                if (response.type == HttpEventType.Response) {
+                  content.file = response.body.document;
+                  content.fileToUpload = null;
+                }
+              })
+            )
+          );
         } else {
           if (content.file._id) {
-            obs$.push(this._documentService.updateDocument(content.file));
+            obs$.push(
+              this._documentService.updateDocument(content.file).pipe(
+                map((response) => {
+                  //Final do upload
+                  if (response.document) {
+                    content.file = response.document;
+                    content.fileToUpload = null;
+                  }
+                })
+              )
+            );
           }
         }
-      }else{
-        obs$.push(this.addContent(content));
       }
     });
 

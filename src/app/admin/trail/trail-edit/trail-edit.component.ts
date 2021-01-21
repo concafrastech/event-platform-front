@@ -241,19 +241,10 @@ export class TrailEditComponent implements OnInit {
 
     this.trail.classrooms.map((classroom, index) => {
       let i = 0;
-      obs$.push(
-        this._contentService.uploadContents(classroom.contents).pipe(
-          map((response) => {
-            //Final do upload
-            if (response.type == HttpEventType.Response) {
-              this.trail.classrooms[index].contents[i].file =
-                response.body.document;
-              this.trail.classrooms[index].contents[i].fileToUpload = null;
-              i += 1;
-            }
-          })
-        )
-      );
+      if(classroom.contents && classroom.contents.length > 0){
+        obs$.push(this._contentService.uploadContents(classroom.contents));
+      }
+      
     });
     return concat(obs$).pipe(
       concatMap((observableContent) => {

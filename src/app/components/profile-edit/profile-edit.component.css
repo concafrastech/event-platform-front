@@ -198,7 +198,7 @@
 
   /* ==== BANNER ==== */
   .banner {
-    height: 100px;
+    height: 6rem;
   }
 
   .banner .banner-card.banner-item {
@@ -213,7 +213,7 @@
   }
 
   .banner .banner-card.banner-img {
-    width: 15%;
+    width: 13%;
   }
 
   .secondary-button {

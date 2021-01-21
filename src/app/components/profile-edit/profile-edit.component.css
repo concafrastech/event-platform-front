@@ -93,6 +93,11 @@
   height: 80px;
 }
 
+.badge-level-row .badge-level-img-off {
+  width: 80px;
+  height: 80px;
+}
+
 .badge-level-row .badge-level-container {
   width: 45%;
   display: inline-block;
@@ -102,6 +107,24 @@
   color: #fff;
   font-weight: 300;
   font-size: 12px;
+}
+
+.badge-level-row .btn-progress {
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 0.5rem 1.5rem;
+  margin: 0.5rem;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: solid white 1px;
+  transition: 0.2s;
+}
+
+.badge-level-row .btn-progress:hover {
+  background-color: #1EA6EC;
+  border-color: #1EA6EC;
 }
 
 .user-image-for-edit {
@@ -183,6 +206,88 @@
   color: rgb(218, 218, 218);
 }
 
+/* ==== CAROUSEL ==== */
+/* ==== CAROUSEL ==== */
+
+#carousel-change-my-points .row .card {
+  min-height: 8rem;
+  padding: 0.5rem;
+}
+
+.caravan-carousel-recent {
+  margin-top: 2rem;
+}
+
+.active {
+  border-color: transparent !important;
+}
+
+ol.carousel-indicators {
+  position: absolute;
+  bottom: -1.0rem;
+  margin: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+}
+
+ol.carousel-indicators li,
+ol.carousel-indicators li.active {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 0;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+}
+
+ol.carousel-indicators li {
+  background: #fff;
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+
+ol.carousel-indicators li.active {
+  background: #1EA6EC;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 1.8rem;
+  width: 1.8rem;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-image: none;
+}
+
+.carousel-control-prev-icon {
+  position: absolute;
+  left: -2rem;
+  background-color: #fff;
+}
+
+.carousel-control-next-icon {
+  position: absolute;
+  right: -2rem;
+  background-color: #fff;
+}
+
+.carousel-control-next-icon:after {
+  content: '>';
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1EA6EC;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1EA6EC;
+}
+
+
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
   /* ==== GERAL ==== */
@@ -218,5 +323,20 @@
 
   .secondary-button {
     font-size: 14px;
+  }
+
+  /* ==== BADGE ==== */
+  .badge-level-row .badge-level-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .badge-level-row .badge-level-img-off {
+    width: 50px;
+    height: 50px;
+  }
+
+  .badge-level-row .btn-progress {
+    font-size: 12px;
   }
 }

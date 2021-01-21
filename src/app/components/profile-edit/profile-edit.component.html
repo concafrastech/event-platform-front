@@ -190,7 +190,7 @@
     </div>
   </form>
 </section>
-<section class="banner my-profile-container">
+<section id="banner" class="banner my-profile-container">
   <div class="banner-card banner-img">
     <img
       src="assets/concafras2021/concafronas/icones/pesquisa.svg"
@@ -204,8 +204,69 @@
     <input type="button" value="Fazer Pesquisa" class="secondary-button" />
   </div>
 </section>
+<section id="levels" class="my-profile-container">
+  <div class="row">
+    <div class="col-lg-6">
+      <span class="title">Meus níveis e pontos</span>
+      <div class="container-level">
+        <div class="container-level-card">
+          <p class="container-level-basic container-level-card-points">900 pontos</p>
+          <p class="container-level-basic container-level-card-text">5º lugar no ranking</p>
+          <div>
+            <img class="badge-main" src="assets/concafras2021/concafronas/badges/sol.svg" alt="Badge">
+          </div>
+          <p class="container-level-basic container-level-card-text">Faltam 100 pontos<br>para alcançar o <strong class="container-level-card-text-strong">nível do sol</strong></p>
+        </div>
+        <hr class="divider" />
+        <div class="container-level-card">
+          <p class="container-level-basic container-level-card-levels-text">Níveis alcançados</p>
+          <div class="badge-level-row">
+            <div class="badge-level-container">
+              <img *ngIf="false" class="badge-level-img" src="assets/concafras2021/concafronas/badges/venus.svg" alt="Badge">
+              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/venus.svg" alt="Badge">
+              <figcaption class="badge-level-img-text">Vênus</figcaption>
+            </div>
+            <div class="badge-level-container">
+              <img *ngIf="false" class="badge-level" src="assets/concafras2021/concafronas/badges/marte.svg" alt="Badge">
+              <img *ngIf="true" class="badge-level" src="assets/concafras2021/concafronas/badges/marte.svg" alt="Badge">
+              <figcaption class="badge-level-img-text">Marte</figcaption>
+            </div>
+          </div>
+          <div class="badge-level-row">
+            <div class="badge-level-container">
+              <img *ngIf="false" class="badge-level-img" src="assets/concafras2021/concafronas/badges/terra.svg" alt="Badge">
+              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/terra.svg" alt="Badge">
+              <figcaption class="badge-level-img-text">Terra</figcaption>
+            </div>
+            <div class="badge-level-container">
+              <img *ngIf="false" class="badge-level" src="assets/concafras2021/concafronas/badges/jupiter.svg" alt="Badge">
+              <img *ngIf="true" class="badge-level" src="assets/concafras2021/concafronas/badges/jupiter.svg" alt="Badge">
+              <figcaption class="badge-level-img-text">Júpiter</figcaption>
+            </div>
+          </div>
+          <div class="badge-level-row">
+            <div class="badge-level-container">
+              <img *ngIf="false" class="badge-level-img" src="assets/concafras2021/concafronas/badges/sol.svg" alt="Badge">
+              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/sol.svg" alt="Badge">
+              <figcaption class="badge-level-img-text">Sol</figcaption>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <span class="title">Ranking</span>
+      <div class="grid-container">
+        <div class="grid-item">
+          <app-card-ranking></app-card-ranking>
+        </div>
+        <div class="grid-item"><app-card-ranking></app-card-ranking></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-lg-6">
     <span class="title">Meus níveis e pontos</span>
     <div class="container-level">
@@ -223,7 +284,7 @@
       <div class="grid-item"><app-card-ranking></app-card-ranking></div>
     </div>
   </div>
-</div>
+</div> -->
 
 <br />
 <br />

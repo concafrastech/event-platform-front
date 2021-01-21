@@ -1,3 +1,12 @@
+import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/infancia-circo-concafrinhas/infancia-circo-concafrinhas.component';
+import { InfanciaRodaAlegriaComponent } from './epics/infancia/infancia-roda-alegria/infancia-roda-alegria.component';
+import { InfanciaCasaNvl2Component } from './epics/infancia/infancia-casa-nvl2/infancia-casa-nvl2.component';
+import { InfanciaCasaNvl1Component } from './epics/infancia/infancia-casa-nvl1/infancia-casa-nvl1.component';
+import { InfanciaAtividadesComponent } from './epics/infancia/infancia-atividades/infancia-atividades.component';
+import { InfanciaCantinhoHistoriaComponent } from './epics/infancia/infancia-cantinho-historia/infancia-cantinho-historia.component';
+import { InfanciaParquinhoComponent } from './epics/infancia/infancia-parquinho/infancia-parquinho.component';
+import { InfanciaCasaOracaoComponent } from './epics/infancia/infancia-casa-oracao/infancia-casa-oracao.component';
+import { InfanciaInicioComponent } from './epics/infancia/infancia-inicio/infancia-inicio.component';
 import { ModuleWithProviders } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
@@ -85,6 +94,7 @@ import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
 import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
 import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
+import { InfanciaBomSamaritanoComponent } from './epics/infancia/infancia-bom-samaritano/infancia-bom-samaritano.component';
 
 
 const appRoutes: Routes = [
@@ -229,7 +239,19 @@ const appRoutes: Routes = [
         canActivate:[UserGuard],
         children: [
             {path: '',  redirectTo: 'home', pathMatch: 'full'},
+
+            {path: 'inicio', component: InfanciaInicioComponent, canActivate:[UserGuard]},
             {path: 'home', component: InfanciaHomeComponent, canActivate:[UserGuard]},
+            {path: 'casa-oracao', component: InfanciaCasaOracaoComponent, canActivate:[UserGuard]},
+            {path: 'parquinho', component: InfanciaParquinhoComponent, canActivate:[UserGuard]},
+            {path: 'cantinho-historia', component: InfanciaCantinhoHistoriaComponent, canActivate:[UserGuard]},
+            {path: 'atividades', component: InfanciaAtividadesComponent, canActivate:[UserGuard]},
+            {path: 'casa-nvl-1', component: InfanciaCasaNvl1Component, canActivate:[UserGuard]},
+            {path: 'casa-nvl-2', component: InfanciaCasaNvl2Component, canActivate:[UserGuard]},
+            {path: 'roda-alegria', component: InfanciaRodaAlegriaComponent, canActivate:[UserGuard]},
+            {path: 'bom-samaritano', component: InfanciaBomSamaritanoComponent, canActivate:[UserGuard]},
+            {path: 'circo-concafrinhas', component: InfanciaCircoConcafrinhasComponent, canActivate:[UserGuard]},
+
             {path: 'nivel', component: InfanciaLevelComponent, canActivate:[UserGuard]},
             {path: 'nivel/:level', component: InfanciaLevelComponent, canActivate:[UserGuard]},
             {path: 'geral', component: InfanciaGeralComponent, canActivate:[UserGuard]},

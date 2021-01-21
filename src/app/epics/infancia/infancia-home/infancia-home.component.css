@@ -1,5 +1,67 @@
-.entrada {
+.home {
+    position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
+}
+
+.fundo {
+    width: 100%;
+}
+
+.casa-oracao {
+    position: absolute;
+    bottom: -4.5%;
+    left: -3%;
+    width: 42%;
+    height: 46%;
+}
+
+.parquinho {
+    position: absolute;
+    bottom: -2%;
+    right: 9%;
+}
+
+.cantinho-historia {
+    position: absolute;
+    bottom: 15%;
+    left: 2%;
+}
+
+.atividades {
+    position: absolute;
+    top: 30%;
+    left: 10.5%;
+}
+
+.casa-nvl-1 {
+    position: absolute;
+    top: 42%;
+    left: 17.5%;
+}
+
+.casa-nvl-2 {
+    position: absolute;
+    top: 42%;
+    right: 20%;
+}
+
+.roda-alegria {
+    position: absolute;
+    bottom: 20%;
+    right: 0%;
+}
+
+.bom-samaritano {
+    position: absolute;
+    top: 25%;
+    right: 0%;
+}
+
+.circo {
+    position: absolute;
+    top: 5%;
+    right: 32%;
+    width: 42%;
+    height: 65%;
 }

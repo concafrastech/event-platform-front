@@ -136,6 +136,16 @@ import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/
 import { MagneticPassDistanceComponent } from './epics/main/magnetic-pass-distance/magnetic-pass-distance.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
 import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
+import { InfanciaInicioComponent } from './epics/infancia/infancia-inicio/infancia-inicio.component';
+import { InfanciaCasaOracaoComponent } from './epics/infancia/infancia-casa-oracao/infancia-casa-oracao.component';
+import { InfanciaParquinhoComponent } from './epics/infancia/infancia-parquinho/infancia-parquinho.component';
+import { InfanciaCantinhoHistoriaComponent } from './epics/infancia/infancia-cantinho-historia/infancia-cantinho-historia.component';
+import { InfanciaAtividadesComponent } from './epics/infancia/infancia-atividades/infancia-atividades.component';
+import { InfanciaCasaNvl1Component } from './epics/infancia/infancia-casa-nvl1/infancia-casa-nvl1.component';
+import { InfanciaCasaNvl2Component } from './epics/infancia/infancia-casa-nvl2/infancia-casa-nvl2.component';
+import { InfanciaRodaAlegriaComponent } from './epics/infancia/infancia-roda-alegria/infancia-roda-alegria.component';
+import { InfanciaBomSamaritanoComponent } from './epics/infancia/infancia-bom-samaritano/infancia-bom-samaritano.component';
+import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/infancia-circo-concafrinhas/infancia-circo-concafrinhas.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -267,7 +277,17 @@ const GamificationConfig = {
     GamesComponent,
     MagneticPassDistanceComponent,
     JovemListComponent,
-    CardRankingComponent
+    CardRankingComponent,
+    InfanciaInicioComponent,
+    InfanciaCasaOracaoComponent,
+    InfanciaParquinhoComponent,
+    InfanciaCantinhoHistoriaComponent,
+    InfanciaAtividadesComponent,
+    InfanciaCasaNvl1Component,
+    InfanciaCasaNvl2Component,
+    InfanciaRodaAlegriaComponent,
+    InfanciaBomSamaritanoComponent,
+    InfanciaCircoConcafrinhasComponent
   ],
   imports: [
     BrowserModule,

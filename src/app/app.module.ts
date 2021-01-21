@@ -136,6 +136,7 @@ import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/
 import { MagneticPassDistanceComponent } from './epics/main/magnetic-pass-distance/magnetic-pass-distance.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
 import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
+import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -267,7 +268,8 @@ const GamificationConfig = {
     GamesComponent,
     MagneticPassDistanceComponent,
     JovemListComponent,
-    CardRankingComponent
+    CardRankingComponent,
+    ShareMessageComponent
   ],
   imports: [
     BrowserModule,

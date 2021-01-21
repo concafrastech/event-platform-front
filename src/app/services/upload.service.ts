@@ -1,11 +1,13 @@
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import { Observable } from 'rxjs';
 import {GLOBAL} from './global';
 
 @Injectable()
 export class UploadService {
     public url: string;
 
-    constructor() {
+    constructor(public _http: HttpClient) {
         this.url = GLOBAL.url;
     }
 
@@ -33,4 +35,23 @@ export class UploadService {
             xhr.send(formData);
         });
     }
+
+    //Realiza o upload de um arquivo
+  public uploadFile(file: File, token: string, name: string): Observable<any> {
+    let formData = new FormData();
+    formData.append(name, file, file.name);
+
+    let headers = new HttpHeaders()
+      //Cabeçalho removido porque ao adicionar na requisição provocava erro 500
+      .set("Authorization", token);
+
+    const requisicao = new HttpRequest(
+      "POST",
+      this.url + 'upload-image-user/',
+      formData,
+      { headers: headers }
+      /*, reportProgress: true  */
+    );
+    return this._http.request(requisicao);
+  }
 }

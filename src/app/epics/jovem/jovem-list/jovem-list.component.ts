@@ -15,14 +15,14 @@ import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-ilha2-dialogo',
-  templateUrl: './ilha2-dialogo.component.html',
-  styleUrls: ['./ilha2-dialogo.component.css'],
+  selector: 'app-jovem-list',
+  templateUrl: './jovem-list.component.html',
+  styleUrls: ['./jovem-list.component.css'],
   providers: [LectureService, TrailService, StageService, ActivityService, ClassroomService]
 })
-export class Ilha2DialogoComponent implements OnInit, AfterViewInit {
+export class JovemListComponent implements OnInit, AfterViewInit {
 
-  @Input() public dialog: string;
+  @Input() public id: string;
   public identity;
   public subscription: Subscription;
   public epic: Epic;
@@ -54,8 +54,8 @@ export class Ilha2DialogoComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this._route.params.subscribe(params => {
-      let dialog = params['dialog'];
-      this.dialog = dialog;
+      let id = params['id'];
+      this.id = id;
     });
     let epic = JSON.parse(localStorage.getItem('currentEpic'));
     this.identity = this._userService.getIdentity();
@@ -146,7 +146,7 @@ export class Ilha2DialogoComponent implements OnInit, AfterViewInit {
           this.stages = response.stages;
 
           //incluido filtro das trilhas da ilha
-          this.stagesFilteredList = this.stages.filter((stage: Stage) => stage.type.toLowerCase() === "ilha catedral do som");
+          this.stagesFilteredList = this.stages.filter((stage: Stage) => stage._id === this.id);
           this.stages = this.stagesFilteredList;
 
           this.stages.forEach((stage, index) => {

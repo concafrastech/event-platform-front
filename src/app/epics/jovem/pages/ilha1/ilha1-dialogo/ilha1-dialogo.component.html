@@ -3,9 +3,9 @@
   <ul class="list-group list-group-flush">
     <!-- forcei um id para funcionar pois o cadastro de teste chamava um curso inexistente-->
     <!-- <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'trail', subscription.trails[0]._id]" [routerLinkActive]="['active']">Tema Específico: {{subscription.trails[0].name}}</a></li> -->
-    <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'trail', '5fbdaae328723000adb0885b']" [routerLinkActive]="['active']">Tema Específico: Arte e Assistência</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/jovem-list/', '600757276f6f1200bda3c426']" [routerLinkActive]="['active']">Tema Específico: Arte e Assistência</a></li>
     <li class="list-group-item" *ngFor="let stage of stages">
-      <a [routerLink]="['/jovem/audithorium/', 'stage', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
+      <a [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/jogos-tematicos']" [routerLinkActive]="['active']">Jogos</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>

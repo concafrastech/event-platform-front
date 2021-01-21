@@ -1,0 +1,24 @@
+Selecione uma das opções a seguir:
+<div class="container">
+    <ul class="row">
+       <li class="col-md-12 col-lg-6 mt-4 nobull" *ngFor="let activity of stages[0].activities">
+          <div class="card card5">
+             <div class="row no-gutters">
+                <div class="col-4">
+                   <img src="/assets/jovem/img/icones_ilhas_Prancheta 1 cópia 2.png" alt="#" class="card-img">
+                </div>
+                <div class="col-8">
+                   <div class="card-body">
+                      <h5 class="card-title">{{activity.name}}</h5>
+                      <p class="card-text">{{activity.description}}</p>
+                      <div class="card-buttons">
+                         <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']" class="btn card-btn">play</a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </li>
+    </ul>
+ </div>
+ <div class="fundo"></div>

@@ -6,7 +6,7 @@
     <div class="alert alert-danger" *ngIf="status == 'error'">
         Erro ao atualizar os dados.
     </div>
-    <form #trailEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+    <form #trailEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12" *ngIf="this.trail">
         <div class="row">
             <div class="form-group col-md-12">
                 <label>Nome</label>
@@ -51,7 +51,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <fieldset class="form-group">
+                <fieldset class="form-group" *ngIf="showMoments">
                     <h4>Momento 1</h4>
                     <app-classroom-edit *ngIf="momentOne._id" [(classroom)]="momentOne"></app-classroom-edit>
                     <app-classroom-add *ngIf="!momentOne._id" [(classroom)]="momentOne"></app-classroom-add>
@@ -60,7 +60,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <fieldset class="form-group">
+                <fieldset class="form-group" *ngIf="showMoments">
                     <h4>Momento 2</h4>
                     <app-classroom-edit *ngIf="momentTwo._id" [(classroom)]="momentTwo"></app-classroom-edit>
                     <app-classroom-add *ngIf="!momentTwo._id" [(classroom)]="momentTwo"></app-classroom-add>
@@ -78,7 +78,8 @@
                 <fieldset class="form-group">
                     <label>Curso prático {{i+1}}</label>
                     <button class="btn btn-danger" type="button" (click)="removeClassroom(i)"><i class="fa fa-trash"></i></button>
-                    <app-classroom-add [(classroom)]="trail.classrooms[i]"></app-classroom-add>
+                    <app-classroom-add *ngIf="!trail.classrooms[i]._id && trail.classrooms[i].type != 'teorico'" [(classroom)]="trail.classrooms[i]"></app-classroom-add>
+                    <app-classroom-edit *ngIf="trail.classrooms[i]._id && trail.classrooms[i].type != 'teorico'" [(classroom)]="trail.classrooms[i]"></app-classroom-edit>
                 </fieldset>
             </div>
         </div>

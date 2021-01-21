@@ -83,7 +83,6 @@ export class ActivityAddComponent implements OnInit {
       new Date()
     );
     this.loadPage();
-    
   }
 
   loadPage() {
@@ -116,16 +115,8 @@ export class ActivityAddComponent implements OnInit {
 
   //Realiza upload e salva os documentos
   saveDocuments() {
-    let index = 0;
     this._contentService.uploadContents(this.activity.contents).subscribe({
-      next: (response) => {
-        //Final do upload
-        if (response.type == HttpEventType.Response) {
-          this.activity.contents[index].file = response.body.document;
-          this.activity.contents[index].fileToUpload = null;
-          index += 1;
-        }
-      },
+      next: (response) => {},
       error: (error) => {
         this._spinner.hide();
         var errorMessage = <any>error;
@@ -167,7 +158,10 @@ export class ActivityAddComponent implements OnInit {
           this.status = "error";
         } else {
           this.status = "success";
-          this._router.navigate(["/admin/activity/edit", response.activity._id]);
+          this._router.navigate([
+            "/admin/activity/edit",
+            response.activity._id,
+          ]);
         }
       },
       (error) => {

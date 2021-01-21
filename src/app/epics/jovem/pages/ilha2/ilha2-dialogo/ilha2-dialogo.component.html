@@ -2,11 +2,20 @@
   <p class="text-left">Olá, eu sou o Luiz Sérgio e juntos vamos interagir com muita Arte aqui na Catedral do Som! Vamos
     começar? Selecione uma das opções abaixo:</p>
   <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-som/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Catedral do Som</a></li>
     <li class="list-group-item" *ngFor="let stage of stages">
         <a [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/alegria-crista-musicas']" [routerLinkActive]="['active']">Alegria cristã</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/mural-artistico']" [routerLinkActive]="['active']">Mural Artístico</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+  </ul>
+</div>
+
+<div class="dialogo" *ngIf="dialog == 'conhecendo'">
+  <h4>Catedral do Som</h4>
+  <p class="justify-left">Texto explicativo da Ilha</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-som/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
   </ul>
 </div>

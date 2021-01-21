@@ -112,15 +112,8 @@ export class LectureAddComponent implements OnInit {
 
   //Realiza upload e salva os documentos
   saveDocuments() {
-    let index = 0;
     this._contentService.uploadContents(this.lecture.contents).subscribe({
       next: (response) => {
-        //Final do upload
-        if (response.type == HttpEventType.Response) {
-          this.lecture.contents[index].file = response.body.document;
-          this.lecture.contents[index].fileToUpload = null;
-          index += 1;
-        }
       },
       error: (error) => {
         this._spinner.hide();

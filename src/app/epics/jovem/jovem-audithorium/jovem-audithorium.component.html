@@ -23,10 +23,11 @@
         <app-zoomus [vContent]="actualContent"></app-zoomus>
     </div>
 
-    <h4 *ngIf="contents.length > 1">
+    <h4>{{ actualContent.name }}</h4>
+    <p *ngIf="contents.length > 1">
         Conteúdo {{ index + 1 }} de {{ contents.length }}
-    </h4>
-    <p>{{ actualContent.name }}</p>
+    </p>
+    
 </div>
 <div>
     <div
@@ -50,10 +51,4 @@
         Próximo
         </button>
     </div>
-</div>
-<div>
-    <p>Tipo: {{ type }}</p>
-    <p>Qtde: {{ contents.length }}</p>
-
-    <div *ngIf="lecture">Tema: {{ lecture.name }}</div>
 </div>

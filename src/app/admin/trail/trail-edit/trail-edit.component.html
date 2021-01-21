@@ -78,7 +78,8 @@
                 <fieldset class="form-group">
                     <label>Curso prático {{i+1}}</label>
                     <button class="btn btn-danger" type="button" (click)="removeClassroom(i)"><i class="fa fa-trash"></i></button>
-                    <app-classroom-add [(classroom)]="trail.classrooms[i]"></app-classroom-add>
+                    <app-classroom-add *ngIf="!trail.classrooms[i]._id && trail.classrooms[i].type != 'teorico'" [(classroom)]="trail.classrooms[i]"></app-classroom-add>
+                    <app-classroom-edit *ngIf="trail.classrooms[i]._id && trail.classrooms[i].type != 'teorico'" [(classroom)]="trail.classrooms[i]"></app-classroom-edit>
                 </fieldset>
             </div>
         </div>

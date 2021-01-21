@@ -1,0 +1,43 @@
+<section>
+<div class="modal-header" style="text-align: center; width: 100%">
+    <div style="width: 100%">
+        <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div style="width: 0px; z-index: 120">
+        <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="bsModalRef.hide()"
+        >
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    </div>
+</section>
+<section class="modal-body" style="padding: 1.5rem">
+  <div class="row">
+    <form #shareMessageForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-12">
+            <label>Mensagem</label>
+            <textarea
+              name="message"
+              #message="ngModel"
+              [(ngModel)]="this.shareMessage.message"
+              required
+              class="form-control"
+            ></textarea>
+            <span *ngIf="!message.value && message.touched"
+              >A mensagem é obrigatório!</span
+            >
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <input type="submit" value="Enviar mensagem" class="btn-main" />
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

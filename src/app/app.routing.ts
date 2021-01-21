@@ -1,3 +1,4 @@
+import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 import { ModuleWithProviders } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
@@ -85,6 +86,9 @@ import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
 import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
 import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
+import { MissionAddComponent } from './admin/mission/mission-add/mission-add.component';
+import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
+import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
 
 
 const appRoutes: Routes = [
@@ -132,6 +136,10 @@ const appRoutes: Routes = [
             {path: 'activity/edit/:id', component: ActivityEditComponent},
             {path: 'activity/list', component: ActivityListComponent},
             {path: 'activity/list/:page', component: ActivityListComponent},
+            {path: 'mission/add', component: MissionAddComponent},
+            {path: 'mission/edit/:id', component: MissionEditComponent},
+            {path: 'mission/list', component: MissionListComponent},
+            {path: 'mission/list/:page', component: MissionListComponent},
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
             {path: 'content', component: ContentComponent},
@@ -251,7 +259,8 @@ const appRoutes: Routes = [
             {path: 'clube-do-livro', component: ClubeDoLivroComponent, canActivate:[UserGuard]},
             {path: 'palestras', component: PalestrasComponent, canActivate:[UserGuard]},
             {path: 'editora', component: EditoraComponent, canActivate:[UserGuard]},
-            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
+            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]}
+            
 
         ],
     },

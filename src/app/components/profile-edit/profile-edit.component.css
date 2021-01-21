@@ -16,12 +16,6 @@
   display: inline-block;
 }
 
-/* ==== IMG ==== */
-.img-size {
-  width: 80px;
-  height: 80px;
-}
-
 /* ==== CONTAINER ==== */
 .container-level {
   display: flex;
@@ -141,7 +135,7 @@
   width: 100%;
   border-radius: 0.3rem;
   box-shadow: 4px 2px 10px 0px #3b3b3b;
-  height: 100px;
+  height: 7.5rem;
 }
 
 .banner .banner-card {
@@ -150,24 +144,26 @@
 }
 
 .banner .banner-card.banner-item {
-  width: 75%;
+  width: 50%;
   color: white;
   font-size: 14px;
   text-align: center;
 }
 
 .banner .banner-card.banner-button {
-  text-align: right;
-  width: 10%;
+  text-align: left;
+  width: 25%;
 }
 
 .banner .banner-card.banner-img {
-  width: 5rem;
-  text-align: left;
+  width: 25%;
+  text-align: right;
 }
 
-.banner-img {
-  width: 5rem;
+/* ==== IMG ==== */
+.img-size {
+  width: 100px;
+  height: 100px;
 }
 
 .secondary-button {
@@ -201,11 +197,23 @@
   }
 
   /* ==== BANNER ==== */
+  .banner {
+    height: 100px;
+  }
+
   .banner .banner-card.banner-item {
     width: 70%;
     color: white;
     font-size: 13px;
     text-align: center;
+  }
+
+  .banner .banner-card.banner-button {
+    width: 15%;
+  }
+
+  .banner .banner-card.banner-img {
+    width: 15%;
   }
 
   .secondary-button {

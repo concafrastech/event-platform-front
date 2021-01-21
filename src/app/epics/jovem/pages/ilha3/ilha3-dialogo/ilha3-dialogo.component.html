@@ -1,8 +1,18 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
   <p class="text-left">Olá, eu sou o João Marcos. Bem vindo(a) à Casa do Caminho! Aqui vamos por em prática tudo que temos aprendido na CONCAFRAS! Você também pode conferir como acontecem as atividades práticas nas Mocidades Espíritas:</p>
   <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Caminho</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/minha-pratica']" [routerLinkActive]="['active']">Minha prática na CONCAFRAS</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/praticas-mocidade']" [routerLinkActive]="['active']">Práticas Assistenciais na Mocidade Espírita</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+  </ul>
+</div>
+
+   
+<div class="dialogo" *ngIf="dialog == 'conhecendo'">
+  <h4>Casa do Caminho</h4>
+  <p class="justify-left">Texto explicativo da Ilha</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
   </ul>
 </div>

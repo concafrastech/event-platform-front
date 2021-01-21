@@ -1,8 +1,8 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
   <p class="text-left">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!</p>
   <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem ao Vivo</a></li>
     <li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/lancamentos']" [routerLinkActive]="['active']">Lançamentos</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/ao-vivo']" [routerLinkActive]="['active']">AO VIVO</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
   </ul>
@@ -16,4 +16,12 @@
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
   </ul>  
+</div>
+
+<div class="dialogo" *ngIf="dialog == 'conhecendo'">
+  <h4>Estação Jovem ao Vivo</h4>
+  <p class="justify-left">Texto explicativo da Ilha</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+  </ul>
 </div>

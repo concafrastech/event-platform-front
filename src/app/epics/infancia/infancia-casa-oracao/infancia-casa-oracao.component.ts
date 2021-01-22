@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef  } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+// import { YoutubeComponent } from './../../../components/channels/youtube/youtube.component';
 
 @Component({
   selector: 'app-infancia-casa-oracao',
   templateUrl: './infancia-casa-oracao.component.html',
   styleUrls: ['./infancia-casa-oracao.component.css']
 })
-export class InfanciaCasaOracaoComponent implements OnInit {
+export class InfanciaCasaOracaoComponent {
 
-  constructor() { }
+  modalRef: BsModalRef;
+  // linkvideo: string;
+  
 
-  ngOnInit(): void {
+  constructor(private modalService: BsModalService) { }
+
+  // openModal(template: TemplateRef<any>, linkvideo: string) {
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+    // this.linkvideo = linkvideo;
   }
 
 }

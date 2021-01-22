@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -7,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './youtube.component.html',
   styleUrls: ['./youtube.component.css']
 })
-export class YoutubeComponent implements OnInit {
+export class YoutubeComponent {
 
-  constructor() { }
+  modalRef: BsModalRef;
 
-  ngOnInit() {
+  linkvideo: string;
+
+  constructor(private modalService: BsModalService) { }
+
+  openModal(template: TemplateRef<any>, linkvideo: string) {
+    this.modalRef = this.modalService.show(template);
     
+    this.linkvideo = linkvideo;
   }
 
 }

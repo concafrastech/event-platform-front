@@ -37,6 +37,7 @@ export class ShareMessageComponent implements OnInit {
     this.shareMessage.created_at = new Date();
     this._shareMessageService.addShareMessage(this.shareMessage).subscribe((resposta)=>{
       console.log(resposta);
+      this.bsModalRef.hide();
     });
   }
 }

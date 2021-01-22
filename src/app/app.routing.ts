@@ -90,7 +90,7 @@ import { MissionAddComponent } from './admin/mission/mission-add/mission-add.com
 import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
 import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
 import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
-
+import { NdcComponent } from './epics/main/feira/ndc/ndc.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -178,8 +178,8 @@ const appRoutes: Routes = [
                 ],
             },
             {
-                path: 'jogos-tematicos', 
-                component: JogosTematicosComponent, 
+                path: 'jogos-tematicos',
+                component: JogosTematicosComponent,
                 canActivate:[UserGuard],
                 children:[
                 {path:'', redirectTo: 'games/inicial', pathMatch: 'full'},
@@ -261,9 +261,8 @@ const appRoutes: Routes = [
             {path: 'clube-do-livro', component: ClubeDoLivroComponent, canActivate:[UserGuard]},
             {path: 'palestras', component: PalestrasComponent, canActivate:[UserGuard]},
             {path: 'editora', component: EditoraComponent, canActivate:[UserGuard]},
-            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]}
-            
-
+            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
+            {path: 'ndc', component: NdcComponent, canActivate:[UserGuard]},
         ],
     },
     {

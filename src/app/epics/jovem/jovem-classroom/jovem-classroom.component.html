@@ -1,7 +1,7 @@
-Selecione uma das opções a seguir:
+<p>Selecione uma das opções a seguir:</p>
 <div class="container">
     <ul class="row">
-       <li class="col-md-12 col-lg-6 mt-4 nobull" *ngFor="let activity of stages[0].activities">
+       <li class="col-md-12 col-lg-6 mt-4 nobull" *ngFor="let classroom of trails[0].classrooms">
           <div class="card card5">
              <div class="row no-gutters">
                 <div class="col-4">
@@ -9,10 +9,10 @@ Selecione uma das opções a seguir:
                 </div>
                 <div class="col-8">
                    <div class="card-body">
-                      <h5 class="card-title">{{activity.name}}</h5>
-                      <p class="card-text">{{activity.description}}</p>
+                      <h5 class="card-title">{{classroom.name}}</h5>
+                      <p class="card-text">{{classroom.type}}</p>
                       <div class="card-buttons">
-                         <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']" class="btn card-btn">play</a>
+                         <a [routerLink]="['/jovem/audithorium/', 'classroom', classroom._id]" [routerLinkActive]="['active']" class="btn card-btn">play</a>
                       </div>
                    </div>
                 </div>
@@ -22,4 +22,14 @@ Selecione uma das opções a seguir:
     </ul>
  </div>
  <button class="btn btn-primary" onclick="window.history.back()">Voltar</button>
+
+<div *ngFor="let trail of trails">
+    <p>name: {{trail.name}}</p>
+    <p>type: {{trail.type}}</p>
+    <div *ngFor="let classroom of trail.classrooms">
+        <p>classroom: {{classroom.name}}</p>
+    </div>
+    <p><br></p>
+</div>
+    
  <div class="fundo"></div>

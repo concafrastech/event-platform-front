@@ -89,6 +89,7 @@ import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.componen
 import { MissionAddComponent } from './admin/mission/mission-add/mission-add.component';
 import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
 import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
+import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
 
 
 const appRoutes: Routes = [
@@ -228,6 +229,7 @@ const appRoutes: Routes = [
             {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
             {path: 'jovem-list/:id', component: JovemListComponent, canActivate:[UserGuard]},
             {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'jovem-classroom/:type/:id', component: JovemClassroomComponent, canActivate:[UserGuard]},
         ],
     },
 

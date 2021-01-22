@@ -24,7 +24,18 @@ export class ShareMessageService {
         return this._http.post(this.url + 'share-messages', params, {headers: headers});
     }
 
-    getRecentMessages(page = null): Observable<any> {
+    getRecentShareMessages(page = null): Observable<any> {
+        let params = { 
+            page : page,
+         };
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', getToken());
+
+        return this._http.get(this.url + 'share-messages/', {headers: headers, params: params});
+    }
+
+    getFullShareMessages(page = null): Observable<any> {
         let params = { 
             page : page,
             full : '1',

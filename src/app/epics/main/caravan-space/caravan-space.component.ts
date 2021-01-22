@@ -11,6 +11,7 @@ import { Subscription } from "rxjs";
   selector: "app-caravan-space",
   templateUrl: "./caravan-space.component.html",
   styleUrls: ["./caravan-space.component.css"],
+  providers: [ UserService, ShareMessageService, BsModalService ]
 })
 export class CaravanSpaceComponent implements OnInit {
   public bsModalRef: BsModalRef;
@@ -36,7 +37,7 @@ export class CaravanSpaceComponent implements OnInit {
   }
 
   loadCarousel(){
-    this._shareMessageService.getRecentMessages(null).subscribe((resposta) => {
+    this._shareMessageService.getFullShareMessages(null).subscribe((resposta) => {
       this.messages = resposta.shareMessages;
       this.actualCarousel = 0;
       this.maxCarousel = 1;

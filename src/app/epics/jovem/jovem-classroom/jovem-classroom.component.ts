@@ -13,16 +13,18 @@ import { StageService } from 'src/app/services/stage.service';
 import { TrailService } from 'src/app/services/trail.service';
 import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
+import { Classroom } from 'src/app/models/classroom';
 
 @Component({
-  selector: 'app-ilha1-dialogo',
-  templateUrl: './ilha1-dialogo.component.html',
-  styleUrls: ['./ilha1-dialogo.component.css'],
+  selector: 'app-jovem-classroom',
+  templateUrl: './jovem-classroom.component.html',
+  styleUrls: ['./jovem-classroom.component.css'],
   providers: [LectureService, TrailService, StageService, ActivityService, ClassroomService]
 })
-export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
+export class JovemClassroomComponent implements OnInit, AfterViewInit {
 
-  @Input() public dialog: string;
+  @Input() public id: string;
+  @Input() public type: string;
   public identity;
   public subscription: Subscription;
   public epic: Epic;
@@ -31,7 +33,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   public trails: Trail[] = [];
   public stages: Stage[] = [];
   public trailsFilteredList: Trail[] = [];
-  public stagesFilteredList: Stage[] = [];
+  public classroomsFilteredList: Classroom[] = [];
 
   options = { 
     zoomEnabled: true,
@@ -55,17 +57,20 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this._route.params.subscribe(params => {
-      let dialog = params['dialog'];
-      this.dialog = dialog;
+      let type = params['type'];
+      this.type = type;
+      let id = params['id'];
+      this.id = id;
     });
     let epic = JSON.parse(localStorage.getItem('currentEpic'));
     this.identity = this._userService.getIdentity();
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
-    this.getLectures(1, epic._id);
+    //this.getLectures(1, epic._id);
     this.getTrails(1,  epic._id);
-    this.getStages(1,  epic._id);
+    //this.getStages(1,  epic._id);
   }
 
+  
   ngAfterViewInit() {
     /*$( () => {
       // initializing the function
@@ -102,10 +107,8 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
         } else {
           this.trails = response.trails;
 
-          //incluido filtro das trilhas da ilha
-          // forcei um id 600757276f6f1200bda3c426 para funcionar pois o cadastro de teste chamava um curso inexistente
-          this.trailsFilteredList = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
-          // this.trailsFilteredList = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
+          //incluido filtro dos temas
+          this.trailsFilteredList = this.trails.filter((trail: Trail) => trail._id === this.id);
           this.trails = this.trailsFilteredList;
 
           this.trails.forEach((trail, index) => {
@@ -131,6 +134,11 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.trails[index].classrooms = response.classrooms;
+
+          //incluido filtro das classroom somente do momento desejado (definido por type)
+          this.classroomsFilteredList = this.trails[index].classrooms.filter((classroom: Classroom) => classroom.type === this.type);
+          this.trails[index].classrooms = this.classroomsFilteredList;
+
         }
       },
       (error) => {
@@ -151,11 +159,6 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.stages = response.stages;
-
-          //incluido filtro das trilhas da ilha
-          this.stagesFilteredList = this.stages.filter((stage: Stage) => stage.type === "Novas Dimensões");
-          this.stages = this.stagesFilteredList;
-
           this.stages.forEach((stage, index) => {
             this.getActivities(page, stage, index);
           });
@@ -193,3 +196,5 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   }
 
 }
+
+

@@ -2,35 +2,18 @@
   <p class="text-left">Olá, eu sou a Patrícia. Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Escritor</a></li>
-    <!-- forcei um id para funcionar pois o cadastro de teste chamava um curso inexistente-->
-    <!-- <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'trail', subscription.trails[0]._id]" [routerLinkActive]="['active']">Tema Específico: {{subscription.trails[0].name}}</a></li> -->
-    <li class="list-group-item"><a [routerLink]="['/jovem/jovem-list/', '600757276f6f1200bda3c426']" [routerLinkActive]="['active']">Tema Específico: Arte e Assistência</a></li>
+    <li class="list-group-item" *ngFor="let trail of trails">
+      <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Tema Específico: {{trail.name}}</a>
+    </li>
     <li class="list-group-item" *ngFor="let stage of stages">
       <a [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/jogos-tematicos']" [routerLinkActive]="['active']">Jogos</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+    
   </ul>
 </div>
-
-<!--
-<div class="dialogo" *ngIf="dialog == 'novas-dimensoes'">
-  <p class="text-left">Qual trilha/atividade você deseja acessar?</p>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let stage of stages">
-      {{stage.name}}
-      <ul>
-          <li class="list-group-item" *ngFor="let activity of stage.activities">
-              <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
-          </li>
-      </ul>
-    </li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>  
-</div>
--->
-
-    
+   
 <div class="dialogo" *ngIf="dialog == 'conhecendo'">
   <h4>Casa do Escritor</h4>
   <p class="justify-left">Texto explicativo da Ilha</p>

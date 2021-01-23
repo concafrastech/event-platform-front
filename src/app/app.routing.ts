@@ -230,6 +230,7 @@ const appRoutes: Routes = [
             {path: 'jovem-list/:id', component: JovemListComponent, canActivate:[UserGuard]},
             {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
             {path: 'jovem-classroom/:type/:id', component: JovemClassroomComponent, canActivate:[UserGuard]},
+            {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
         ],
     },
 

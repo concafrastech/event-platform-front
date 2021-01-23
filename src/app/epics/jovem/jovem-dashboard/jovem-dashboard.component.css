@@ -176,8 +176,10 @@ body
 #sidebar img, p {
 }
 
-.list-unstyled img{
-  width: 20%;
+
+
+.head {
+  width: 50px;
 }
 
 /*
@@ -194,7 +196,7 @@ body
 
     #sidebar p {
       font-family: 'Poppins', sans-serif;
-      font-size: 0.8em;
+      font-size: .9em;
       font-weight: 300;
       line-height: 1.7em;
       color: #999;
@@ -264,6 +266,8 @@ body
       height: 100%;
       margin: 5px;
       border-radius: 5px;
+      font-weight: normal;
+      line-height: 1.2em;
     }
 
     #sidebar a,
@@ -287,18 +291,30 @@ body
     }
 
     #sidebar ul p {
-      color: #fff;
+      font-size: .95em;
+      display: block;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: inherit;
+      line-height: inherit;
+      margin-top: .4em;
     }
 
     #sidebar ul li a {
       padding: 10px;
-      font-size: 1.1em;
+      font-size: .95em;
       display: block;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-weight: inherit;
+      line-height: inherit;
+      margin-top: .4em;
     }
 
     #sidebar ul li a:hover {
-      color: #7386D5;
-      background: #fff;
+      background-color: #5665A0;
+      /*363F63 5665A0*/
+      border-radius: 10px;
     }
 
     #sidebar ul li.active_jovem > a,
@@ -318,7 +334,7 @@ body
       position: absolute;
       right: 20px;
       font-family: 'Glyphicons Halflings';
-      font-size: 0.6em;
+      font-size: .9em;
     }
 
     a[aria-expanded="true"]::before {
@@ -326,7 +342,7 @@ body
     }
 
     ul ul a {
-      font-size: 0.9em !important;
+      font-size: 0.8em !important;
       padding-left: 30px !important;
       background: #6d7fcc;
     }
@@ -337,7 +353,7 @@ body
 
     ul.CTAs a {
       text-align: center;
-      font-size: 0.9em !important;
+      font-size: 0.8em !important;
       display: block;
       border-radius: 5px;
       margin-bottom: 5px;
@@ -374,7 +390,7 @@ body
     }
 
     #content p a {
-      color:
+
     }
 
     .container-fluid {

@@ -1,23 +1,25 @@
 <div class="wrapper">
   <!-- Sidebar Holder -->
   <nav id="sidebar">
-    <div class="sidebar-header">
-
-      <a class="nav-link text-center" [routerLink]="['/jovem/home']" ><img class="img-fluid rounded-circle col mx-auto text-center" src="assets/jovem/img/user.jpg" width="50px" height="50px" > Bem vindo,<br/>{{identity.name}}!</a>
-      
-      <div class="text-center mx-auto" >
-        <img src="assets/jovem/icons/terra.svg" >
-        <p class="text-center" style="color: #fff;">Nível Terra <br>0 pontos</p>
-      </div>
-
-    </div>
-
     <ul class="list-unstyled components">
+      <li class="text-center">
+        <a class="nav-link text-center" [routerLink]="['/jovem/meus-dados']" >
+          <img class="img-fluid rounded-circle px-4" src="assets/jovem/img/user.jpg">
+          <p >Bem vindo(a),<br/>{{identity.name}}!</p>
+        </a>
+      </li>
+
+      <li class="text-center">
+        <a class="nav-link text-center disabled" [routerLink]="" >
+          <svg-icon src="{{user.level.icon}}" class="img-fluid py-0"></svg-icon>
+          <p>Nivel {{user.level.badge}}<br/>{{user.points}} pontos</p>
+        </a>
+      </li>
       <li class="text-center">
         <a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">
           <img class="img-fluid" src="assets/jovem/icons/calendar.svg">
           <p >Programação</p>
-        </a>          
+        </a>
       </li>
       <li class="text-center">
         <a [routerLink]="['/jovem/home']">
@@ -34,19 +36,18 @@
       <li class="text-center">
         <a href="">
           <img class="img-fluid" src="assets/jovem/icons/coracao.svg" >
-          <p >Amparo Fraterno: Quer conversar?</p>
+          <p >Amparo Fraterno:<br/>Quer conversar?</p>
         </a>
       </li>
       <li class="text-center">
         <a href="#" data-toggle="modal" data-target="#navegar">
           <img class="img-fluid" src="assets/jovem/icons/duvida.svg" >
-          <p >Como navegar</p>
+          <p>Como navegar</p>
         </a>
       </li>
       <li class="text-center">
-
         <a [routerLink]="['/select-journey']">
-          <img class="img-fluid" src="assets/jovem/icons/sair.svg" >
+          <img class="img-fluid" src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" >
           <p >Sair</p>
         </a>
       </li>

@@ -13,12 +13,14 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ScheduleComponent } from 'src/app/components/schedule/schedule.component';
+import { FraternalSupportComponent } from '../fraternal-support/fraternal-support.component';
+import { TawkService } from 'src/app/services/tawk-service';
 
 @Component({
   selector: 'app-left-sidebar',
   templateUrl: './left-sidebar.component.html',
   styleUrls: ['./left-sidebar.component.css'],
-  providers: [ UserService ]
+  providers: [ UserService, TawkService ]
 })
 export class LeftSidebarComponent implements OnInit {
 
@@ -34,7 +36,8 @@ export class LeftSidebarComponent implements OnInit {
     private _userService: UserService,
     public _gamificationService: GamificationService,
     public _bootstrapAlertService: NgBootstrapAlertService,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
+    private _tawkService: TawkService
   ) { 
     this.user = {
       name: 'Gui',
@@ -154,5 +157,18 @@ export class LeftSidebarComponent implements OnInit {
     this.bsModalRef = this._modalService.show(MagneticPassDistanceComponent, {initialState, class: 'modal-lg'});
     this.bsModalRef.content.closeBtnName = 'Fechar';
   }
+
+  openFraternalSupportComponent(){
+    const initialState = {
+      title: 'Apoio Fraterno?'
+    };
+    this.bsModalRef = this._modalService.show(FraternalSupportComponent, {initialState, class: 'modal-lg'});
+    this.bsModalRef.content.closeBtnName = 'Fechar';
+  }
+  
+  openFraternalSupportChat(){
+    this._tawkService.ExpandChatWindow(true);
+  }
+
 
 }

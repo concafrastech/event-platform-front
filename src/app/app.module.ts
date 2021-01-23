@@ -141,6 +141,8 @@ import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.
 import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
 import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
+import { BookClubComponent } from './epics/main/book-club/book-club.component';
+import { FraternalSupportComponent } from './epics/main/fraternal-support/fraternal-support.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -277,7 +279,9 @@ const GamificationConfig = {
     JovemListComponent,
     CardRankingComponent,
     ShareMessageComponent,
-    JovemClassroomComponent
+    JovemClassroomComponent,
+    BookClubComponent,
+    FraternalSupportComponent
   ],
   imports: [
     BrowserModule,

@@ -47,6 +47,14 @@
     top: 7rem;
 }
 
+.pisca {
+    opacity: 0.6;
+}
+
+.pisca:hover {
+    opacity: 1;
+}
+
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
     #svgMap {

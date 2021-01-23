@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Stage } from 'src/app/models/stage';
 
 @Component({
   selector: 'app-ndc',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ndc.component.css']
 })
 export class NdcComponent implements OnInit {
+
+  public stageList: Stage[] = [];
 
   constructor() { }
 

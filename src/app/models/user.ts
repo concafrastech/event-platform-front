@@ -1,3 +1,4 @@
+import { Document } from './document';
 import { Subscription } from './subscription';
 
 export class User {
@@ -17,7 +18,7 @@ export class User {
         public leader: boolean,
         public company: string,
         public role: string,
-        public image: string,
+        public image: Document,
         public points: number,
         public firstlogin: boolean,
         public subscriptions: Subscription[],

@@ -65,6 +65,14 @@
 .icon-close {
   cursor: pointer;
   position: relative;
-  left: 14%;
-  top: -22px;
+  left: 9%;
+  top: -25px;
+}
+
+/* ==== RESPONSIVE ==== */
+@media only screen and (max-width:1400px) {
+  .icon-close {
+    left: 15%;
+    top: -25px;
+  }
 }

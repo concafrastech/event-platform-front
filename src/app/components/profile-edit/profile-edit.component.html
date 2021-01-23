@@ -13,17 +13,18 @@
     <div class="row">
       <div class="col-lg-2">
         <div class="user-image-for-edit" *ngIf="user.image">
-          <img src="{{ url + 'get-image-user/' + user.image }}" />
+          <img [src]="user.image.fileLink" style="width: 98%; height: 98%; border-radius: 50px;" />
         </div>
         <div class="user-image-for-edit" *ngIf="!user.image">
           <fa-icon [icon]="faUserCircle" size="5x"></fa-icon>
-          <!-- <img src="{{ url + 'get-image-user/' + user.image }}" /> -->
         </div>
-        <p>
-          <label>Foto do Perfil</label>
-          <input type="file" style="display: none" placeholder="Upload image" (change)="fileChangeEvent($event)" />
-        </p>
-        <input type="button" value="Alterar foto" class="btn-main" />
+        <div>
+          <button type="button" (click)="selectFile()" class="btn-main">
+            Alterar foto
+            <input id="select-img" type="file" accept="image/x-png,image/gif,image/jpeg" placeholder="Upload image"
+              (change)="fileChangeEvent($event)" />
+          </button>
+        </div>
       </div>
       <div class="col-lg-10">
         <div class="row">

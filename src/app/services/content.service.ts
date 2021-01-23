@@ -130,7 +130,7 @@ export class ContentService {
   }
 
   //Realiza o upload de um arquivo
-  private uploadFile(file: File): Observable<any> {
+  public uploadFile(file: File): Observable<any> {
     let formData = new FormData();
     formData.append("file", file, file.name);
 

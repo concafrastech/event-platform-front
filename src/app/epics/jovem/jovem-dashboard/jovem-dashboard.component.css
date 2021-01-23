@@ -266,6 +266,8 @@ body
       height: 100%;
       margin: 5px;
       border-radius: 5px;
+      font-weight: normal;
+      line-height: 1.2em;
     }
 
     #sidebar a,
@@ -289,29 +291,29 @@ body
     }
 
     #sidebar ul p {
-      font-size: .9em;
+      font-size: .95em;
       display: block;
       color: inherit;
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-      line-height: 1.1em;
-      margin-top: 2px;
+      font-weight: inherit;
+      line-height: inherit;
+      margin-top: .4em;
     }
 
     #sidebar ul li a {
       padding: 10px;
-      font-size: .9em;
+      font-size: .95em;
       display: block;
       color: inherit;
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-      line-height: 1.1em;
-      margin-top: 2px;
+      font-weight: inherit;
+      line-height: inherit;
+      margin-top: .4em;
     }
 
     #sidebar ul li a:hover {
-      background-color: #e2e2eb;
-      color: #3d405c;
+      background-color: #5665A0;
+      /*363F63 5665A0*/
       border-radius: 10px;
     }
 

@@ -16,11 +16,12 @@
           <img src="{{ url + 'get-image-user/' + user.image }}" />
         </div>
         <div class="user-image-for-edit" *ngIf="!user.image">
-          <img src="{{ url + 'get-image-user/' + user.image }}" />
+          <fa-icon [icon]="faUserCircle" size="5x"></fa-icon>
+          <!-- <img src="{{ url + 'get-image-user/' + user.image }}" /> -->
         </div>
         <p>
           <label>Foto do Perfil</label>
-          <input type="file" placeholder="Upload image" (change)="fileChangeEvent($event)" />
+          <input type="file" style="display: none" placeholder="Upload image" (change)="fileChangeEvent($event)" />
         </p>
         <input type="button" value="Alterar foto" class="btn-main" />
       </div>
@@ -118,7 +119,8 @@
     <img src="assets/concafras2021/concafronas/icones/pesquisa.svg" class="img-size" />
   </div>
   <div class="banner-card banner-item">
-    <span>Ajude a CONCAFRAS respondendo nossa pesquisa e <strong>ganhe 200 pontos!</strong></span>
+    <span>Ajude a CONCAFRAS respondendo nossa pesquisa e
+      <strong>ganhe 200 pontos!</strong></span>
   </div>
   <div class="banner-card banner-button">
     <input type="button" value="Fazer Pesquisa" class="secondary-button" />
@@ -130,55 +132,63 @@
       <span class="title">Meus níveis e pontos</span>
       <div class="container-level">
         <div class="container-level-card">
-          <p class="container-level-basic container-level-card-points">900 pontos</p>
-          <p class="container-level-basic container-level-card-text">5º lugar no ranking</p>
+          <p class="container-level-basic container-level-card-points">
+            900 pontos
+          </p>
+          <p class="container-level-basic container-level-card-text">
+            5º lugar no ranking
+          </p>
           <div>
-            <img class="badge-main" src="assets/concafras2021/concafronas/badges/sol.svg" alt="Badge">
+            <img class="badge-main" src="assets/concafras2021/concafronas/badges/sol.svg" alt="Badge" />
           </div>
-          <p class="container-level-basic container-level-card-text">Faltam 100 pontos<br>para alcançar o <strong
-              class="container-level-card-text-strong">nível do sol</strong></p>
+          <p class="container-level-basic container-level-card-text">
+            Faltam 100 pontos<br />para alcançar o
+            <strong class="container-level-card-text-strong">nível do sol</strong>
+          </p>
         </div>
         <hr class="divider" />
         <div class="container-level-card">
-          <p class="container-level-basic container-level-card-levels-text">Níveis alcançados</p>
+          <p class="container-level-basic container-level-card-levels-text">
+            Níveis alcançados
+          </p>
           <div class="badge-level-row">
             <div class="badge-level-container">
               <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/venus off.svg"
-                alt="Badge">
+                alt="Badge" />
               <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/venus.svg"
-                alt="Badge">
+                alt="Badge" />
               <figcaption class="badge-level-img-text">Vênus</figcaption>
             </div>
             <div class="badge-level-container">
               <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/marte off.svg"
-                alt="Badge">
+                alt="Badge" />
               <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/marte.svg"
-                alt="Badge">
+                alt="Badge" />
               <figcaption class="badge-level-img-text">Marte</figcaption>
             </div>
           </div>
           <div class="badge-level-row">
             <div class="badge-level-container">
               <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/terra off.svg"
-                alt="Badge">
+                alt="Badge" />
               <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/terra.svg"
-                alt="Badge">
+                alt="Badge" />
               <figcaption class="badge-level-img-text">Terra</figcaption>
             </div>
             <div class="badge-level-container">
               <img *ngIf="false" class="badge-level-img-off"
-                src="assets/concafras2021/concafronas/badges/jupiter off.svg" alt="Badge">
+                src="assets/concafras2021/concafronas/badges/jupiter off.svg" alt="Badge" />
               <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/jupiter.svg"
-                alt="Badge">
+                alt="Badge" />
               <figcaption class="badge-level-img-text">Júpiter</figcaption>
             </div>
           </div>
           <div class="badge-level-row">
             <div class="badge-level-container">
               <img *ngIf="true" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/sol off.svg"
-                alt="Badge">
+                alt="Badge" />
               <img *ngIf="false" class="badge-level-img" src="assets/concafras2021/concafronas/badges/sol.svg"
-                alt="Badge">
+                alt="Badge" />
               <figcaption class="badge-level-img-text">Sol</figcaption>
             </div>
           </div>
@@ -190,13 +200,9 @@
     </div>
     <div class="col-lg-6">
       <span class="title">Ranking</span>
-      <div class="grid-container">
-        <div class="grid-item">
-          <app-card-ranking></app-card-ranking>
-        </div>
-        <div class="grid-item">
-          <app-card-ranking></app-card-ranking>
-        </div>
+      <app-card-ranking></app-card-ranking>
+      <div style="text-align: center; margin-top: 2rem;">
+        <input type="button" value="Ver ranking completo" class="btn-main" />
       </div>
     </div>
   </div>

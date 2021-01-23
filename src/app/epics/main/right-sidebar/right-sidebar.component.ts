@@ -134,6 +134,12 @@ export class RightSidebarComponent implements OnInit {
   }
 
   formatScheduleStartHour(schedule: Schedule){
-	return ("00" + schedule.start_time.getHours()).slice(-2) + ':' + ("00" + schedule.start_time.getMinutes()).slice(-2);
+    if(schedule){
+      let start = new Date(schedule.start_time);
+      return ("00" + start.getHours()).slice(-2) + ':' + ("00" + start.getMinutes()).slice(-2);
+    }else{
+      return '';
+    }
+	
   }
 }

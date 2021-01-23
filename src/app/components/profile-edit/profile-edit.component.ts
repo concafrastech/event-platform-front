@@ -7,6 +7,9 @@ import {GLOBAL} from '../../services/global';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
+import { 
+    faUserCircle
+  } from '@fortawesome/free-regular-svg-icons';
 defineLocale('pt-br', ptBrLocale);
 
 @Component({
@@ -16,6 +19,7 @@ defineLocale('pt-br', ptBrLocale);
     providers: [UserService, UploadService]
 })
 export class ProfileEditComponent implements OnInit {
+    public faUserCircle = faUserCircle;
     public title: string;
     public user: User;
     public status: string;
@@ -40,17 +44,6 @@ export class ProfileEditComponent implements OnInit {
 
     ngOnInit() {
         console.log('[OK] Component: profile-edit.');
-        this._userService.getUsers().subscribe((response)=>{
-            console.log(response);
-        })
-        this._userService.getUser(this.user._id).subscribe((response)=>{
-            console.log(this.user);
-            console.log(this.identity);
-            
-            console.log(response);
-            
-        })
-        
     }
 
     onSubmit() {
@@ -62,13 +55,13 @@ export class ProfileEditComponent implements OnInit {
                     this.status = 'success';
                     localStorage.setItem('identity', JSON.stringify(this.user));
                     this.identity = this.user;
-                    this._uploadService.uploadFile(this.filesToUpload[0], this.token, 'image').subscribe((response)=>{console.log(response)})
-                    /*this._uploadService
+                    //this._uploadService.uploadFile(this.filesToUpload[0], this.token, 'image').subscribe((response)=>{console.log(response)})
+                    this._uploadService
                         .makeFileRequest(this.url + 'upload-image-user/' + this.user._id, [], this.filesToUpload, this.token, 'image')
                         .then((result: any) => {
                             this.user.image = result.user.image;
                             localStorage.setItem('identity', JSON.stringify(this.user));
-                        });*/
+                        });
                 }
             },
             error => {

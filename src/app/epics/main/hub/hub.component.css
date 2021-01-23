@@ -41,10 +41,10 @@
 
 #svgMap {
     position: relative;
-    width: 50rem;
-    height: 30rem;
-    right: -4rem;
-    top: -4rem;
+    width: 64rem;
+    /* height: 30rem; */
+    right: -2rem;
+    top: 7rem;
 }
 
 /* ==== RESPONSIVE ==== */

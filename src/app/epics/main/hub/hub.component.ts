@@ -146,7 +146,7 @@ export class HubComponent implements OnInit, AfterViewInit {
         break;
 
       case "livros":
-        console.log("livros");
+        window.location.href = "http://www.editoraautadesouza.com.br/";
         break;
 
       case "ccex":
@@ -162,7 +162,7 @@ export class HubComponent implements OnInit, AfterViewInit {
         break;
         
       case "jovem":
-        console.log("jovem");
+        this.redirectToFromSvg("/jovem/home");
         break;
 
       case "stand_editora":
@@ -179,7 +179,7 @@ export class HubComponent implements OnInit, AfterViewInit {
         break;
 
       case "concafrinhas":
-        console.log("concafrinhas");
+        this.redirectToFromSvg("/concafrinhas/home");
         break;
     }
   }

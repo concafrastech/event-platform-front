@@ -1,0 +1,58 @@
+:root {
+    --white: #ffffff;
+    --gray: #212121;
+    --primary: #05668D;
+    --secondary: #028090;
+    --border-radius: 10px;
+    --card-social-item-size: 40px;
+  }
+
+  .nobull {
+      list-style: none;
+  }
+ 
+ .card5 {
+    border: 0;
+    border-radius: var(--border-radius) 0 var(--border-radius) 0;
+    box-shadow: 0px 5px 10px -5px rgba(0,0,0,0.75);
+    background-color: rgba(128, 128, 128, .5);
+    color: var(--white);
+}
+
+    .card5 .card-img {
+       border-radius: var(--border-radius) 0 0 0;
+       height: 100%;
+       object-fit: cover;
+    }
+
+    .card5 .card-buttons {
+       display: flex;
+       flex-wrap: wrap;
+ 
+    }
+    .card5 .card-btn {
+       margin-left: calc(-20px - 2rem);
+       border-radius: 99px;
+       padding: .375rem 2rem;
+       background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+       color: var(--white);
+       transition: .3s;
+    }
+
+    .card5 .card-btn:hover {
+          transform: scale(1.15);
+       }
+    
+
+.fundo {
+    background-image: url(/assets/jovem/img/back-game.png);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-position: right top;  
+    background-size: cover;  
+    background-repeat: no-repeat;
+    z-index: -1;
+}

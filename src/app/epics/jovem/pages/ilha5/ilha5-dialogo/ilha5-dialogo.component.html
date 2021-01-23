@@ -3,7 +3,10 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem ao Vivo</a></li>
     <li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/ao-vivo']" [routerLinkActive]="['active']">AO VIVO</a></li>
+    <li class="list-group-item color-red" *ngFor="let lecture of lectures">
+      <a ckass="color-red" [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}} ({{lecture.start_time | date: "dd/MM" }} {{lecture.start_time | date: "HH:mm" }}-{{lecture.end_time | date: "HH:mm" }})</a>
+    </li>
+    <!--<li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/ao-vivo']" [routerLinkActive]="['active']">AO VIVO</a></li>-->
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
   </ul>
 </div>
@@ -12,7 +15,7 @@
   <p class="text-left">Qual evento ao vivo você deseja acessar?</p>
   <ul class="list-group list-group-flush">
     <li class="list-group-item" *ngFor="let lecture of lectures">
-        <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>
+        <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}} ({{lecture.start_time | date: "dd/MM" }} {{lecture.start_time | date: "HH:mm" }}-{{lecture.end_time | date: "HH:mm" }})</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
   </ul>  

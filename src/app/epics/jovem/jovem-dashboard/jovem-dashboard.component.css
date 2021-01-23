@@ -1,8 +1,4 @@
-.menusuperio{
-list-style:none;
-border:1px solid #c0c0c0;
-float:left;
-}
+
 /*hamburguer menu*/
 *
 {
@@ -219,7 +215,7 @@ body
 
       border: none;
       border-radius: 0;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       -webkit-box-shadow: 1px 1px 5px 2px #00000021;
       box-shadow: 1px 1px 5px 2px #00000021;
     }
@@ -233,7 +229,6 @@ body
     .line {
       width: 100%;
       height: 1px;
-      border-bottom: 1px dashed #ddd;
       margin: 40px 0;
     }
 
@@ -286,8 +281,7 @@ body
     }
 
     #sidebar ul.components {
-      padding: 20px 0;
-      border-bottom: 1px solid #47748b;
+      padding: 0;
     }
 
     #sidebar ul p {
@@ -308,7 +302,7 @@ body
       font-family: 'Poppins', sans-serif;
       font-weight: inherit;
       line-height: inherit;
-      margin-top: .4em;
+      margin-top: .3em;
     }
 
     #sidebar ul li a:hover {

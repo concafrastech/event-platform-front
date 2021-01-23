@@ -6,6 +6,7 @@ import { Epic } from 'src/app/models/epic';
 import { Lecture } from 'src/app/models/lecture';
 import { Stage } from 'src/app/models/stage';
 import { Trail } from 'src/app/models/trail';
+import { Classroom } from 'src/app/models/classroom';
 import { ActivityService } from 'src/app/services/activity.service';
 import { ClassroomService } from 'src/app/services/classroom.service';
 import { LectureService } from 'src/app/services/lecture.service';
@@ -31,6 +32,7 @@ export class JovemListComponent implements OnInit, AfterViewInit {
   public trails: Trail[] = [];
   public stages: Stage[] = [];
   public stagesFilteredList: Stage[] = [];
+  public classrooms: Classroom[] = [];
 
   options = { 
     zoomEnabled: true,

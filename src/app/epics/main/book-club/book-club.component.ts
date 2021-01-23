@@ -9,7 +9,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class BookClubComponent implements OnInit {
 
   public title: string;
-  public urlZoom: string = "https://us02web.zoom.us/s/83822992319?pwd=U3RMTmMxK09pMlZMaGFBR0FRR01Pdz09"
+  public urlZoom: string = "https://us02web.zoom.us/j/83822992319?pwd=U3RMTmMxK09pMlZMaGFBR0FRR01Pdz09"
 
   constructor(public bsModalRef: BsModalRef) { }
 

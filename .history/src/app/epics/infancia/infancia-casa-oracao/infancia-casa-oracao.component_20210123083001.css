@@ -1,0 +1,103 @@
+/* .casa-oracao .fundo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.trat-espiritual {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: auto;
+}
+
+.btn-voltar {
+    width: 7%;
+    max-height: 124px;
+    top: 2%;
+    right: 2%;
+}
+
+.my-modal-content {
+    background-color: #d7963a;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.modal-body {
+    width: 900px;
+    height: 600px;
+}
+
+.embed-responsive-item { 
+    width: 100%;
+    height: 100%;
+}
+
+button.my-close {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    background: red;
+    border-radius: 50%;
+    z-index: 1;
+    right: -10px;
+    color: white;
+    top: -10px;
+    opacity: 1;
+    outline: none;
+}
+*/
+
+
+.casa-oracao {
+    height: 100%;
+}
+
+.container-total {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+} 
+
+.casa-oracao .trat-espiritual {
+    width: 29.9%;
+    top: 22%;
+    left: 35%;
+}
+
+.buttons {
+    height: auto;
+    position: absolute;
+    z-index: 1;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-voltar {
+    width: 7%;
+    max-height: 124px;
+    top: 2%;
+    right: 2%;
+}
+
+.btn-upload {
+    width: 9.5%;
+    max-height: 124px;
+    top: 2%;
+    left: 2%;
+}
+
+.principal {
+    max-width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+

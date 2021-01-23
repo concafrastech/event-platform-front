@@ -1,0 +1,58 @@
+.laborterapias {
+    height: 100%;
+}
+
+.container-total {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+} 
+
+.container-total .lista-opcoes {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    padding: 0 20px;
+    top: 12%;
+}
+
+.container-total .lista-opcoes .item {
+    width: 25%;
+    height: auto;
+    padding: 0 10px;
+    display: inline-block;
+    margin-top: 3%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-home {
+    width: 7%;
+    max-height: 124px;
+    top: 2%;
+    right: 9%;
+}
+
+.btn-voltar {
+    width: 7%;
+    max-height: 124px;
+    top: 2%;
+    right: 2%;
+}
+
+.buttons {
+    height: auto;
+    position: absolute;
+    z-index: 1;
+    display: block;
+}
+
+.principal {
+    max-width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+

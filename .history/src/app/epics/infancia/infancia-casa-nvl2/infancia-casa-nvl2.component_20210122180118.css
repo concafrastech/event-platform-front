@@ -1,0 +1,60 @@
+.casa-nvl2 {
+    height: 100%;
+}
+
+.container-total {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+} 
+
+.casa-nvl2 .porta1 {
+    width: 29.9%;
+    top: 22%;
+    left: 2%;
+}
+.casa-nvl2 .porta2 {
+    width: 29.9%;
+    top: 22%;
+    left: 35%;
+}
+
+.casa-nvl2 .porta3 {
+    width: 29.9%;
+    top: 22%;
+    right: 2%;
+}
+
+.buttons {
+    height: auto;
+    position: absolute;
+    z-index: 1;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-voltar {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 10%;
+    height: auto;
+}
+
+.btn-upload {
+    width: 9.5%;
+    max-height: 124px;
+    top: 2%;
+    left: 2%;
+}
+
+.principal {
+    max-width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+

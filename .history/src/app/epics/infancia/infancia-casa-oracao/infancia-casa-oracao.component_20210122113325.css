@@ -1,0 +1,55 @@
+.casa-oracao .fundo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.trat-espiritual {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: auto;
+}
+
+.btn-voltar {
+    width: 7%;
+    max-height: 124px;
+    top: 2%;
+    right: 2%;
+}
+
+.my-modal-content {
+    background-color: #d7963a;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+/* Video */
+.modal-body {
+    width: 900px;
+    height: 600px;
+}
+
+/* iframe css */
+.embed-responsive-item { 
+    width: 100%;
+    height: 100%;
+}
+
+button.my-close {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    background: red;
+    border-radius: 50%;
+    z-index: 1;
+    right: -10px;
+    color: white;
+    top: -10px;
+    opacity: 1;
+    outline: none;
+}
+

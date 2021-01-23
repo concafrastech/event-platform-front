@@ -1,0 +1,47 @@
+.parquinho {
+    height: 100%;
+}
+
+.container-total {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+} 
+
+.parquinho .jogos {
+    width: 29.9%;
+    top: 22%;
+    left: 18%;
+}
+.parquinho .brincadeiras {
+    width: 29.9%;
+    top: 22%;
+    right: 18%;
+}
+
+.buttons {
+    height: auto;
+    position: absolute;
+    z-index: 1;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-voltar {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 10%;
+    height: auto;
+}
+
+.principal {
+    max-width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+

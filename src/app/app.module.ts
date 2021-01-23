@@ -86,7 +86,7 @@ import { StageAddComponent } from './admin/stage/stage-add/stage-add.component';
 import { ActivityListComponent } from './admin/activity/activity-list/activity-list.component';
 import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
 import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
-import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
+// import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
 import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
@@ -146,6 +146,13 @@ import { InfanciaCasaNvl2Component } from './epics/infancia/infancia-casa-nvl2/i
 import { InfanciaRodaAlegriaComponent } from './epics/infancia/infancia-roda-alegria/infancia-roda-alegria.component';
 import { InfanciaBomSamaritanoComponent } from './epics/infancia/infancia-bom-samaritano/infancia-bom-samaritano.component';
 import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/infancia-circo-concafrinhas/infancia-circo-concafrinhas.component';
+import { JogosDigitaisComponent } from './epics/infancia/infancia-parquinho/jogos-digitais/jogos-digitais.component';
+import { BrincadeirasComponent } from './epics/infancia/infancia-parquinho/brincadeiras/brincadeiras.component';
+import { LaborterapiasComponent } from './epics/infancia/infancia-atividades/laborterapias/laborterapias.component';
+import { DesenhosImprimirComponent } from './epics/infancia/infancia-atividades/desenhos-imprimir/desenhos-imprimir.component';
+import { BercarioComponent } from './epics/infancia/infancia-casa-nvl1/bercario/bercario.component';
+import { MaternalComponent } from './epics/infancia/infancia-casa-nvl1/maternal/maternal.component';
+import { JardimComponent } from './epics/infancia/infancia-casa-nvl1/jardim/jardim.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -232,7 +239,7 @@ const GamificationConfig = {
     InfanciaHomeComponent,
     InfanciaDashboardComponent,
     ContentTimeDirective,
-    InfanciaLevelComponent,
+    // InfanciaLevelComponent,
     InfanciaAudithoriumComponent,
     InfanciaGeralComponent,
     SelectConferenceComponent,
@@ -287,7 +294,14 @@ const GamificationConfig = {
     InfanciaCasaNvl2Component,
     InfanciaRodaAlegriaComponent,
     InfanciaBomSamaritanoComponent,
-    InfanciaCircoConcafrinhasComponent
+    InfanciaCircoConcafrinhasComponent,
+    JogosDigitaisComponent,
+    BrincadeirasComponent,
+    LaborterapiasComponent,
+    DesenhosImprimirComponent,
+    BercarioComponent,
+    MaternalComponent,
+    JardimComponent
   ],
   imports: [
     BrowserModule,

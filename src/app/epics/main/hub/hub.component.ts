@@ -22,6 +22,7 @@ export class HubComponent implements OnInit, AfterViewInit {
   public lectures: Lecture[] = []; 
   public trails: Trail[] = [];
   public stages: Stage[] = [];
+  public elementos: any;
 
   options = { 
     zoomEnabled: true,

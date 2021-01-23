@@ -12,6 +12,10 @@
   font-weight: bold;
 }
 
+input[type='file'] {
+  display: none;
+}
+
 .d-inline-block {
   display: inline-block;
 }
@@ -72,6 +76,7 @@
   /*background-color: #2196F3;
   padding: 10px;*/
 }
+
 .grid-item {
     margin-top: 10px;
     margin-right: 10px;

@@ -1,0 +1,30 @@
+<div *ngIf="actualContent" style="height: inherit">
+    <div *ngIf="actualContent.type == 'img'" style="height: inherit">
+        <img
+        [src]="actualContent.file.fileLink"
+        alt="image slide"
+        style="display: block; width: 100%; max-height: 650px"
+        />
+    </div>
+
+    <div *ngIf="actualContent.type == 'youtube'" style="height: inherit">
+        <app-videojs [vContent]="actualContent"></app-videojs>
+    </div>
+
+    <div *ngIf="actualContent.type == 'externo'" style="height: inherit">
+        <app-iframe [sourceUrl]="actualContent.url"></app-iframe>
+    </div>
+
+    <div *ngIf="actualContent.type == 'doc'" style="height: inherit">
+        <app-iframe [sourceUrl]="actualContent.file.fileLink"></app-iframe>
+    </div>
+
+    <div *ngIf="actualContent.type == 'zoom'">
+        <app-zoomus [vContent]="actualContent"></app-zoomus>
+    </div>
+
+    <h4 *ngIf="contents.length > 1">
+        Conteúdo {{ index + 1 }} de {{ contents.length }}
+    </h4>
+    <p>{{ actualContent.name }}</p>
+</div>

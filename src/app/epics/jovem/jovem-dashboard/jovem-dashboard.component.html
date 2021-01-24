@@ -3,16 +3,16 @@
   <nav id="sidebar">
     <ul class="list-unstyled components">
       <li class="text-center">
-        <a class="nav-link text-center" [routerLink]="['/jovem/meus-dados']" >
+        <a class="nav-link text-center" [routerLink]="['/jovem/meus-dados']">
           <img class="img-fluid rounded-circle px-4" src="assets/jovem/img/user.jpg">
           <p >Bem vindo(a),<br/>{{identity.name}}!</p>
         </a>
       </li>
 
       <li class="text-center">
-        <a class="nav-link text-center disabled" [routerLink]="" >
-          <svg-icon src="{{user.level.icon}}" class="img-fluid py-0"></svg-icon>
-          <p>Nivel {{user.level.badge}}<br/>{{user.points}} pontos</p>
+        <a class="nav-link text-center disabled" [routerLink]="">
+          <img class="img-fluid" src="{{user.level.icon}}">
+          <p>Nível {{user.level.badge}}<br/>{{user.points}} pontos</p>
         </a>
       </li>
       <li class="text-center">
@@ -23,7 +23,7 @@
       </li>
       <li class="text-center">
         <a [routerLink]="['/jovem/home']">
-          <img class="img-fluid" src="assets/jovem/icons/auta.svg"  >
+          <img class="img-fluid" src="assets/jovem/icons/auta.svg">
           <p >Acesso inicial</p>
         </a>
       </li>
@@ -43,6 +43,12 @@
         <a href="#" data-toggle="modal" data-target="#navegar">
           <img class="img-fluid" src="assets/jovem/icons/duvida.svg" >
           <p>Como navegar</p>
+        </a>
+      </li>
+      <li class="text-center">
+        <a href="#" data-toggle="modal" data-target="#navegar">
+          <img class="img-fluid" src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" >
+          <p>Dúvidas?</p>
         </a>
       </li>
       <li class="text-center">

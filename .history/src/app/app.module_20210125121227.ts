@@ -138,34 +138,23 @@ import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.componen
 import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
 import { InfanciaInicioComponent } from './epics/infancia/infancia-inicio/infancia-inicio.component';
 import { InfanciaCasaOracaoComponent } from './epics/infancia/pages/infancia-casa-oracao/infancia-casa-oracao.component';
-
+import { InfanciaParquinhoComponent } from './epics/infancia/infancia-parquinho/infancia-parquinho.component';
 import { InfanciaCantinhoHistoriaComponent } from './epics/infancia/pages/infancia-cantinho-historia/infancia-cantinho-historia.component';
-
-
+import { InfanciaAtividadesComponent } from './epics/infancia/infancia-atividades/infancia-atividades.component';
+import { InfanciaCasaNvl1Component } from './epics/infancia/infancia-casa-nvl1/infancia-casa-nvl1.component';
 import { InfanciaCasaNvl2Component } from './epics/infancia/pages/infancia-casa-nvl2/infancia-casa-nvl2.component';
 import { InfanciaRodaAlegriaComponent } from './epics/infancia/pages/infancia-roda-alegria/infancia-roda-alegria.component';
 import { InfanciaBomSamaritanoComponent } from './epics/infancia/pages/infancia-bom-samaritano/infancia-bom-samaritano.component';
 import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/pages/infancia-circo-concafrinhas/infancia-circo-concafrinhas.component';
-
-
-
-
-
-
-
+import { JogosDigitaisComponent } from './epics/infancia/infancia-parquinho/jogos-digitais/jogos-digitais.component';
+import { BrincadeirasComponent } from './epics/infancia/infancia-parquinho/brincadeiras/brincadeiras.component';
+import { LaborterapiasComponent } from './epics/infancia/infancia-atividades/laborterapias/laborterapias.component';
+import { DesenhosImprimirComponent } from './epics/infancia/infancia-atividades/desenhos-imprimir/desenhos-imprimir.component';
+import { BercarioComponent } from './epics/infancia/infancia-casa-nvl1/bercario/bercario.component';
+import { MaternalComponent } from './epics/infancia/infancia-casa-nvl1/maternal/maternal.component';
+import { JardimComponent } from './epics/infancia/infancia-casa-nvl1/jardim/jardim.component';
 import { PadletComponent } from './components/channels/padlet/padlet.component';
-import { InfanciaParquinhoComponent } from './epics/infancia/pages/infancia-parquinho/infancia-parquinho.component';
-import { InfanciaAtividadesComponent } from './epics/infancia/pages/infancia-atividades/infancia-atividades.component';
-import { InfanciaCasaNvl1Component } from './epics/infancia/pages/infancia-casa-nvl1/infancia-casa-nvl1.component';
-import { JogosDigitaisComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/jogos-digitais.component';
-import { BrincadeirasComponent } from './epics/infancia/pages/infancia-parquinho/brincadeiras/brincadeiras.component';
-import { LaborterapiasComponent } from './epics/infancia/pages/infancia-atividades/laborterapias/laborterapias.component';
-import { DesenhosImprimirComponent } from './epics/infancia/pages/infancia-atividades/desenhos-imprimir/desenhos-imprimir.component';
-import { BercarioComponent } from './epics/infancia/pages/infancia-casa-nvl1/bercario/bercario.component';
-import { MaternalComponent } from './epics/infancia/pages/infancia-casa-nvl1/maternal/maternal.component';
-import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardim/jardim.component';
-import { InfanciaGamesComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
-
+import { InfanciaGamesComponent } from './epics/infancia/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
 // import { InfanciaBrincadeirasComponent } from './epics/infancia/infancia-parquinho/brincadeiras/infancia-brincadeiras/infancia-brincadeiras.component';
 
 const levels = [

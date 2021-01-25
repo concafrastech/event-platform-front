@@ -105,7 +105,6 @@ import { BercarioComponent } from './epics/infancia/pages/infancia-casa-nvl1/ber
 import { MaternalComponent } from './epics/infancia/pages/infancia-casa-nvl1/maternal/maternal.component';
 import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardim/jardim.component';
 import { JogosDigitaisComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/jogos-digitais.component';
-import { InfanciaGamesComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
 
 
 const appRoutes: Routes = [
@@ -260,7 +259,7 @@ const appRoutes: Routes = [
             // { path: 'parquinho/brincadeiras/:id', component: BrincadeirasComponent, canActivate: [UserGuard] },
 
             { path: 'parquinho/jogos-digitais', component: JogosDigitaisComponent, canActivate: [UserGuard] },
-            { path: 'parquinho/jogos-digitais/:id', component: InfanciaGamesComponent, canActivate: [UserGuard] },
+            // { path: 'parquinho/jogos-digitais/:id', component: InfanciaGamesComponent, canActivate: [UserGuard] },
 
             // {
             //     path: 'parquinho',

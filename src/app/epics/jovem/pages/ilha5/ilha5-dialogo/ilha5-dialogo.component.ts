@@ -13,6 +13,8 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
   import { TrailService } from 'src/app/services/trail.service';
   import * as SvgPanZoom from 'svg-pan-zoom';
   import * as $ from 'jquery';
+  import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+  import { BookClubComponent } from 'src/app/epics/main/book-club/book-club.component';
   
   @Component({
     selector: 'app-ilha5-dialogo',
@@ -32,6 +34,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
     public stages: Stage[] = [];
     public trailsFilteredList: Trail[] = [];
     public stagesFilteredList: Stage[] = [];
+    public bsModalRef: BsModalRef;
   
     options = { 
       zoomEnabled: true,
@@ -50,7 +53,8 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
       private _trailService: TrailService,
       private _stageService: StageService,
       private _activityService: ActivityService,
-      private _classroomService: ClassroomService
+      private _classroomService: ClassroomService,
+      private _modalService: BsModalService
     ) { }
   
     ngOnInit(): void {
@@ -192,5 +196,18 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
       );
     }
   
+    openBookClubComponent() {
+      const initialState = {
+        title: "Escolha como deseja acessar o nosso curso:",
+      };
+      this.bsModalRef = this._modalService.show(BookClubComponent, {
+        initialState,
+        class: "modal-lg",
+      });
+      this.bsModalRef.content.closeBtnName = "Fechar";
+    }
+
+
+
   }
   

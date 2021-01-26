@@ -1,12 +1,42 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
-  <p class="text-left">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!</p>
+  <p class="text-left">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Acesse os eventos ao vivo de hoje pelos links abaixo:</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem ao Vivo</a></li>
-    <li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>
-    <li class="list-group-item color-red" *ngFor="let lecture of lectures">
-      <a ckass="color-red" [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}} ({{lecture.start_time | date: "dd/MM" }} {{lecture.start_time | date: "HH:mm" }}-{{lecture.end_time | date: "HH:mm" }})</a>
+    <!--<li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>-->
+    <li
+      style="display: block; padding: 1rem; color: #474747; background-color: rgba(255, 255, 255, .9);"
+      *ngFor="let lecture of lectures"
+    >
+      <div style="float: left">
+        <div>
+          <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{ lecture.name }}</a>
+        </div>
+        <div style="display: block">
+          <div style="float: left">
+            <span style="font-size: 0.8rem; color: #a2a2a2">{{
+              lecture.description
+            }}</span>
+          </div>
+          <div style="float: right">
+            <img
+              style="margin-left: 5rem"
+              src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg"
+            />
+            <img
+              style="margin-left: 0.5rem"
+              src="assets/concafras2021/concafronas/icones/libras.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div style="float: right; font-weight: 500">
+        {{ lecture.start_time | date: "HH:mm" }} -
+        {{ lecture.end_time | date: "HH:mm" }}
+      </div>
+
+      <!--<a class="color-red" [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}} ({{lecture.start_time | date: "dd/MM" }} {{lecture.start_time | date: "HH:mm" }}-{{lecture.end_time | date: "HH:mm" }})</a>-->
     </li>
     <!--<li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/ao-vivo']" [routerLinkActive]="['active']">AO VIVO</a></li>-->
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem ao Vivo</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
   </ul>
 </div>

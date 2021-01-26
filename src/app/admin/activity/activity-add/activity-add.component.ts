@@ -119,18 +119,22 @@ export class ActivityAddComponent implements OnInit {
 
   //Salva thumbnail
   saveThumbnail() {
-    this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
-      next: (response) => {
-        //Final do upload
-        if (response.type == HttpEventType.Response) {
-          this.activity.thumbnail = response.body.document;
-        }
-      },
-      error: null,
-      complete: () => {
-        this.saveDocuments();
-      },
-    });
+    if (this.thumbnailToUpload) {
+      this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+        next: (response) => {
+          //Final do upload
+          if (response.type == HttpEventType.Response) {
+            this.activity.thumbnail = response.body.document;
+          }
+        },
+        error: null,
+        complete: () => {
+          this.saveDocuments();
+        },
+      });
+    } else {
+      this.saveDocuments();
+    }
   }
 
   //Realiza upload e salva os documentos
@@ -219,13 +223,11 @@ export class ActivityAddComponent implements OnInit {
     this.thumbnailToUpload = <File>fileInput.target.files[0];
   }
 
-  onRemoveFile(doc: Document){
+  onRemoveFile(doc: Document) {
     this._spinner.show();
-    this._documentService
-      .deleteDocument(doc._id)
-      .subscribe((response) => {
-        this._spinner.hide();
-        this.activity.thumbnail = null;
-      });
+    this._documentService.deleteDocument(doc._id).subscribe((response) => {
+      this._spinner.hide();
+      this.activity.thumbnail = null;
+    });
   }
 }

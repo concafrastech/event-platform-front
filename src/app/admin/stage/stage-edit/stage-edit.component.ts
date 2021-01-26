@@ -151,18 +151,22 @@ export class StageEditComponent implements OnInit {
 
   //Salva thumbnail
   saveThumbnail() {
-    this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
-      next: (response) => {
-        //Final do upload
-        if (response.type == HttpEventType.Response) {
-          this.stage.thumbnail = response.body.document;
-        }
-      },
-      error: null,
-      complete: () => {
-        this.saveStage();
-      },
-    });
+    if (this.thumbnailToUpload) {
+      this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+        next: (response) => {
+          //Final do upload
+          if (response.type == HttpEventType.Response) {
+            this.stage.thumbnail = response.body.document;
+          }
+        },
+        error: null,
+        complete: () => {
+          this.saveStage();
+        },
+      });
+    } else {
+      this.saveStage();
+    }
   }
 
   saveStage() {

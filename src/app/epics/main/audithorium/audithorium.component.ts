@@ -61,14 +61,14 @@ export class AudithoriumComponent implements OnInit {
         case "classroom": {
           this._classroomService.getClassroom(id).subscribe((response) => {
             this.classroom = response.classroom;
-            this.handleDisplay(this.lecture.contents);
+            this.handleDisplay(this.classroom.contents);
           });
           break;
         }
         case "activity": {
           this._activityService.getActivity(id).subscribe((response) => {
-            this.activity = response.acitivity;
-            this.handleDisplay(this.lecture.contents);
+            this.activity = response.activity;
+            this.handleDisplay(this.activity.contents);
           });
           break;
         }
@@ -79,7 +79,7 @@ export class AudithoriumComponent implements OnInit {
   //Prepara exibição inicial
   handleDisplay(contents: Content[]) {
     this.contents = contents;
-    this.actualContent = this.lecture.contents[0];
+    this.actualContent = this.contents[0];
     if(this.actualContent.type == 'doc'){
       this.actualContent.url = this.actualContent.file.fileLink
     }

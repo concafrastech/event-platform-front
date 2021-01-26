@@ -1,3 +1,4 @@
+import { NdcActivitiesComponent } from './epics/main/feira/ndc-activities/ndc-activities.component';
 import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 import { ModuleWithProviders } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
@@ -264,6 +265,7 @@ const appRoutes: Routes = [
             {path: 'editora', component: EditoraComponent, canActivate:[UserGuard]},
             {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
             {path: 'ndc', component: NdcComponent, canActivate:[UserGuard]},
+            {path: 'ndc-activities', component: NdcActivitiesComponent, canActivate:[UserGuard]},
         ],
     },
     {

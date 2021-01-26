@@ -11,7 +11,7 @@
             <div class="card-body">
                <h5 class="card-title">{{activity.name}}</h5>
                <p class="card-text">{{activity.description}}</p>
-               <p class="card-text"><small class="text-muted small-text">{{activity.type}}</small></p>
+               <p class="card-text"><small class="text-muted small-text">Painel</small></p>
             </div>
          </div>
       </li>
@@ -21,11 +21,12 @@
  <button class="btn-lg btn-primary" onclick="window.history.back()">Voltar</button>
 </div>
 
-<div *ngIf="stages[0].type === 'Ilha catedral do som'" class="fundo-som"></div>
+<div *ngIf="stages[0].type === 'Ilha casa do escritor'" class="fundo-escritor"></div>
 <div *ngIf="stages[0].type === 'Ilha casa do caminho'" class="fundo-caminho"></div>
 <div *ngIf="stages[0].type === 'Ilha instituto almas irmãs'" class="fundo-irmas"></div>
 <div *ngIf="stages[0].type === 'Ilha estação jovem ao vivo'" class="fundo-vivo"></div>
 <div *ngIf="stages[0].type === 'Ilha catedral do som'" class="fundo-som"></div>
+<div *ngIf="stages[0].type === 'Novas Dimensões'" class="fundo-escritor"></div>
 <!--
    sintaxe alternativa
 <div [ngStyle]="{'background-image': 'url(' + stages[0].name + ')'}" class="fundo"></div>

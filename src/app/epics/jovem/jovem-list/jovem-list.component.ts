@@ -62,9 +62,14 @@ export class JovemListComponent implements OnInit, AfterViewInit {
     let epic = JSON.parse(localStorage.getItem('currentEpic'));
     this.identity = this._userService.getIdentity();
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
-    this.getLectures(1, epic._id);
-    this.getTrails(1,  epic._id);
+    //this.getLectures(1, epic._id);
+    //this.getTrails(1,  epic._id);
     this.getStages(1,  epic._id);
+    /*console.log(this.stages[0].activities);
+    if (this.stages[0].activities.length === 1) {
+      console.log("somente 1 activity");
+     this._router.navigate(["/jovem/audithorium/activity/"+this.stages[0].activities[0]._id]);
+    };*/
   }
 
   

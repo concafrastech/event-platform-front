@@ -153,7 +153,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
           this.stages = response.stages;
 
           //incluido filtro das trilhas da ilha
-          this.stagesFilteredList = this.stages.filter((stage: Stage) => stage.type === "Novas Dimensões");
+          this.stagesFilteredList = this.stages.filter((stage: Stage) => (stage.type === "Novas Dimensões" || stage.type === "Ilha casa do escritor"));
           this.stages = this.stagesFilteredList;
 
           this.stages.forEach((stage, index) => {

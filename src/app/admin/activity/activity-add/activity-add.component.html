@@ -14,100 +14,58 @@
       <div class="row">
         <div class="form-group col-md-12">
           <label>Nome</label>
-          <input
-            type="text"
-            name="name"
-            #name="ngModel"
-            [(ngModel)]="activity.name"
-            class="form-control"
-            required
-          />
+          <input type="text" name="name" #name="ngModel" [(ngModel)]="activity.name" class="form-control" required />
           <span *ngIf="!name.value && name.touched">O nome é obrigatório!</span>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
           <label>Descrição</label>
-          <input
-            type="text"
-            name="description"
-            #description="ngModel"
-            [(ngModel)]="activity.description"
-            class="form-control"
-          />
+          <input type="text" name="description" #description="ngModel" [(ngModel)]="activity.description"
+            class="form-control" />
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
           <label>Palestrante</label>
-          <input
-            type="text"
-            name="speecher"
-            #speecher="ngModel"
-            [(ngModel)]="activity.speecher"
-            class="form-control"
-          />
+          <input type="text" name="speecher" #speecher="ngModel" [(ngModel)]="activity.speecher" class="form-control" />
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
-            <label>Agendado</label>
-            <input type="checkbox" name="scheduled" #scheduled="ngModel" [(ngModel)]="activity.scheduled" class="form-control"/>
+          <label>Agendado</label>
+          <input type="checkbox" name="scheduled" #scheduled="ngModel" [(ngModel)]="activity.scheduled"
+            class="form-control" />
         </div>
-    </div>
+      </div>
       <div class="row" [ngStyle]="{'visibility': activity.scheduled ? 'visible' : 'hidden'}">
         <div class="form-group col-md-3">
           <label>Data de Início</label>
-          <input
-            type="text"
-            name="start_time"
-            #start_time="ngModel"
-            [(ngModel)]="activity.start_time"
-            class="form-control"
-            bsDatepicker
-          />
+          <input type="text" name="start_time" #start_time="ngModel" [(ngModel)]="activity.start_time"
+            class="form-control" bsDatepicker />
         </div>
         <div class="form-group col-md-3">
           <label>Horário de Início</label>
-          <timepicker
-            #start_time="ngModel"
-            name="start_time_hour"
-            [(ngModel)]="activity.start_time"
-            [showMeridian]="false"
-          ></timepicker>
+          <timepicker #start_time="ngModel" name="start_time_hour" [(ngModel)]="activity.start_time"
+            [showMeridian]="false"></timepicker>
         </div>
         <div class="form-group col-md-3">
           <label>Data de Término</label>
-          <input
-            type="text"
-            name="end_time"
-            #end_time="ngModel"
-            [(ngModel)]="activity.end_time"
-            class="form-control"
-            bsDatepicker
-          />
+          <input type="text" name="end_time" #end_time="ngModel" [(ngModel)]="activity.end_time" class="form-control"
+            bsDatepicker />
         </div>
         <div class="form-group col-md-3">
           <label>Horário de Término</label>
-          <timepicker
-            #end_time="ngModel"
-            name="end_time_hour"
-            [(ngModel)]="activity.end_time"
-            [showMeridian]="false"
-          ></timepicker>
+          <timepicker #end_time="ngModel" name="end_time_hour" [(ngModel)]="activity.end_time" [showMeridian]="false">
+          </timepicker>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
           <fieldset class="form-group">
             <label>Trilha</label>
-            <select
-              [compareWith]="compareByOptionId"
-              name="stage"
-              #stage="ngModel"
-              [(ngModel)]="activity.stage"
-              class="form-control"
-            >
+            <select [compareWith]="compareByOptionId" name="stage" #stage="ngModel" [(ngModel)]="activity.stage"
+              class="form-control">
               <option value="">-- Selecione --</option>
               <option *ngFor="let stage of stages" [ngValue]="stage">
                 {{ stage.name }}
@@ -116,16 +74,29 @@
           </fieldset>
         </div>
       </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <fieldset class="form-group">
+            <label>Imagem</label>
+            <input *ngIf="!activity.thumbnail" class="form-control" type="file" name="image"
+              accept="image/x-png,image/gif,image/jpeg" (change)="onSelectFile($event)" required />
+            <div *ngIf="activity.thumbnail">
+              <a [href]="activity.thumbnail.fileLink">{{
+                activity.thumbnail.description
+                }}</a>
+              <button class="btn btn-danger" (click)="onRemoveFile(activity.thumbnail)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </fieldset>
+        </div>
+      </div>
 
       <app-content [(vContent)]="activity.contents" (contentFormIsValid)="contentFormIsValid($event)"></app-content>
       <div class="row">
         <div class="form-group col-md-12">
-          <input
-            type="submit"
-            value="{{ title }}"
-            class="btn btn-warning"
-            [disabled]="!activityAddForm.form.valid || !contentIsValid"
-          />
+          <input type="submit" value="{{ title }}" class="btn btn-warning"
+            [disabled]="!activityAddForm.form.valid || !contentIsValid" />
         </div>
       </div>
       <br />

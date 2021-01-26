@@ -11,6 +11,7 @@ import { UserService } from "src/app/services/user.service";
 import { HttpEventType } from "@angular/common/http";
 import { DocumentService } from "src/app/services/document.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Document } from "src/app/models/document";
 
 @Component({
   selector: "app-lecture-add",
@@ -34,6 +35,7 @@ export class LectureAddComponent implements OnInit {
   public epics = [];
   public alturaTela: number;
   public contentIsValid: boolean = false;
+  public thumbnailToUpload: File;
 
   constructor(
     private _route: ActivatedRoute,
@@ -66,7 +68,8 @@ export class LectureAddComponent implements OnInit {
       null,
       [],
       new Date(),
-      new Date()
+      new Date(),
+      null
     );
     this.lecture.epic = new Epic(
       "",
@@ -107,14 +110,29 @@ export class LectureAddComponent implements OnInit {
 
   onSubmit() {
     this._spinner.show();
-    this.saveDocuments();
+    this.saveThumbnail();
+  }
+
+  //Salva thumbnail
+  saveThumbnail() {
+    this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+      next: (response) => {
+        //Final do upload
+        if (response.type == HttpEventType.Response) {
+          this.lecture.thumbnail = response.body.document;
+        }
+      },
+      error: null,
+      complete: () => {
+        this.saveDocuments();
+      },
+    });
   }
 
   //Realiza upload e salva os documentos
   saveDocuments() {
     this._contentService.uploadContents(this.lecture.contents).subscribe({
-      next: (response) => {
-      },
+      next: (response) => {},
       error: (error) => {
         this._spinner.hide();
         var errorMessage = <any>error;
@@ -190,4 +208,15 @@ export class LectureAddComponent implements OnInit {
     });
   }
 
+  onSelectFile(fileInput: any) {
+    this.thumbnailToUpload = <File>fileInput.target.files[0];
+  }
+
+  onRemoveFile(doc: Document) {
+    this._spinner.show();
+    this._documentService.deleteDocument(doc._id).subscribe((response) => {
+      this._spinner.hide();
+      this.lecture.thumbnail = null;
+    });
+  }
 }

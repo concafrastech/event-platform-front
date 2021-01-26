@@ -1,7 +1,7 @@
+import { ContentService } from "src/app/services/content.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
-import { Epic } from "src/app/models/epic";
 import { Stage } from "src/app/models/stage";
 import { EpicService } from "src/app/services/epic.service";
 import { StageService } from "src/app/services/stage.service";
@@ -10,12 +10,22 @@ import { UserService } from "src/app/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ActivityService } from "src/app/services/activity.service";
 import { Activity } from "src/app/models/activity";
+import { Document } from "src/app/models/document";
+import { DocumentService } from "src/app/services/document.service";
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: "app-stage-add",
   templateUrl: "./stage-add.component.html",
   styleUrls: ["./stage-add.component.css"],
-  providers: [UserService, StageService, EpicService, ActivityService],
+  providers: [
+    UserService,
+    StageService,
+    EpicService,
+    ActivityService,
+    ContentService,
+    DocumentService,
+  ],
 })
 export class StageAddComponent implements OnInit {
   public title: string;
@@ -26,6 +36,7 @@ export class StageAddComponent implements OnInit {
   public identity: string;
   public epics = [];
   public activities: Activity[] = [];
+  public thumbnailToUpload: File;
 
   constructor(
     private _route: ActivatedRoute,
@@ -35,6 +46,8 @@ export class StageAddComponent implements OnInit {
     private _epicService: EpicService,
     private _activityService: ActivityService,
     private _bsLocaleService: BsLocaleService,
+    private _contentService: ContentService,
+    private _documentService: DocumentService,
     private _spinner: NgxSpinnerService
   ) {
     this.title = "Adicionar Trilha";
@@ -46,9 +59,20 @@ export class StageAddComponent implements OnInit {
     console.log("[OK] Component: stage-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.stage = new Stage("", 0, "", "", "", null, [], new Date(), new Date());
+    this.stage = new Stage(
+      "",
+      0,
+      "",
+      "",
+      "",
+      null,
+      [],
+      new Date(),
+      new Date(),
+      null
+    );
     this.stage.activities = [];
-    this.stage.epic = null/*new Epic(
+    this.stage.epic = null; /*new Epic(
       "",
       "",
       "",
@@ -79,7 +103,7 @@ export class StageAddComponent implements OnInit {
     this._activityService.getActivities().subscribe(
       (response) => {
         this._spinner.hide();
-        this.activities = response.activities
+        this.activities = response.activities;
       },
       (error) => {
         this._spinner.hide();
@@ -107,6 +131,26 @@ export class StageAddComponent implements OnInit {
 
   onSubmit() {
     this._spinner.show();
+    this.saveThumbnail();
+  }
+
+  //Salva thumbnail
+  saveThumbnail() {
+    this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+      next: (response) => {
+        //Final do upload
+        if (response.type == HttpEventType.Response) {
+          this.stage.thumbnail = response.body.document;
+        }
+      },
+      error: null,
+      complete: () => {
+        this.saveStage();
+      },
+    });
+  }
+
+  saveStage() {
     this._stageService.addStage(this.stage).subscribe(
       (response) => {
         if (!response.stage) {
@@ -127,5 +171,17 @@ export class StageAddComponent implements OnInit {
         }
       }
     );
+  }
+
+  onSelectFile(fileInput: any) {
+    this.thumbnailToUpload = <File>fileInput.target.files[0];
+  }
+
+  onRemoveFile(doc: Document) {
+    this._spinner.show();
+    this._documentService.deleteDocument(doc._id).subscribe((response) => {
+      this._spinner.hide();
+      this.stage.thumbnail = null;
+    });
   }
 }

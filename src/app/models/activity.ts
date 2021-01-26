@@ -1,5 +1,6 @@
 import { Content } from './content';
 import { Stage } from './stage';
+import { Document } from './document';
 
 export class Activity {
     constructor(
@@ -15,6 +16,7 @@ export class Activity {
         public stage: Stage,
         public contents: Content[],
         public created_at: Date,
-        public updated_at: Date
+        public updated_at: Date,
+        public thumbnail: Document
     ) {}
 }

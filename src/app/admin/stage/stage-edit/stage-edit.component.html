@@ -39,6 +39,23 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Imagem</label>
+                    <input *ngIf="!stage.thumbnail" class="form-control" type="file" name="image"
+                        accept="image/x-png,image/gif,image/jpeg" (change)="onSelectFile($event)" required />
+                    <div *ngIf="stage.thumbnail">
+                        <a [href]="stage.thumbnail.fileLink">{{
+                            stage.thumbnail.description
+                            }}</a>
+                        <button class="btn btn-danger" (click)="onRemoveFile(stage.thumbnail)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
                 <label>Adicionar Painel?</label>
                 <button class="btn btn-success" type="button" (click)="addActivity()"><i class="fa fa-plus"></i></button>
             </div>

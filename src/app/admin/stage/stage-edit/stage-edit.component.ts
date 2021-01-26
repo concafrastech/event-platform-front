@@ -9,12 +9,23 @@ import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Activity } from "src/app/models/activity";
+import { HttpEventType } from "@angular/common/http";
+import { Document } from "src/app/models/document";
+import { DocumentService } from "src/app/services/document.service";
+import { ContentService } from "src/app/services/content.service";
 
 @Component({
   selector: "app-stage-edit",
   templateUrl: "./stage-edit.component.html",
   styleUrls: ["./stage-edit.component.css"],
-  providers: [UserService, StageService, EpicService, ActivityService],
+  providers: [
+    UserService,
+    StageService,
+    EpicService,
+    ActivityService,
+    ContentService,
+    DocumentService,
+  ],
 })
 export class StageEditComponent implements OnInit {
   public title: string;
@@ -25,6 +36,7 @@ export class StageEditComponent implements OnInit {
   public identity: string;
   public epics = [];
   public activities: Activity[] = [];
+  public thumbnailToUpload: File;
 
   constructor(
     private _route: ActivatedRoute,
@@ -34,6 +46,8 @@ export class StageEditComponent implements OnInit {
     private _epicService: EpicService,
     private _activityService: ActivityService,
     private _bsLocaleService: BsLocaleService,
+    private _contentService: ContentService,
+    private _documentService: DocumentService,
     private _spinner: NgxSpinnerService
   ) {
     this.title = "Editar Trilha";
@@ -45,7 +59,18 @@ export class StageEditComponent implements OnInit {
     console.log("[OK] Component: stage-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.stage = new Stage("", 0, "", "", "", null, [], new Date(), new Date());
+    this.stage = new Stage(
+      "",
+      0,
+      "",
+      "",
+      "",
+      null,
+      [],
+      new Date(),
+      new Date(),
+      null
+    );
     this.stage.epic = null; // new Epic('', '', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }
@@ -84,6 +109,11 @@ export class StageEditComponent implements OnInit {
         if (response.stage) {
           this._spinner.hide();
           this.stage = response.stage;
+          this._documentService
+            .getDocument(this.stage.thumbnail)
+            .subscribe((response) => {
+              this.stage.thumbnail = response.document;
+            });
         } else {
           this._spinner.hide();
           this.status = "error";
@@ -116,27 +146,57 @@ export class StageEditComponent implements OnInit {
 
   onSubmit() {
     this._spinner.show();
-    this._stageService
-      .updateStage(this.stage)
-      .subscribe(
-        (response) => {
-          if (!response.stage) {
-            this._spinner.hide();
-            this.status = "error";
-          } else {
-            this._spinner.hide();
-            this.status = "success";
-            this.getStage(this.stageId);
-          }
-        },
-        (error) => {
-          this._spinner.hide();
-          var errorMessage = <any>error;
-          console.log(errorMessage);
-          if (errorMessage != null) {
-            this.status = "error";
-          }
+    this.saveThumbnail();
+  }
+
+  //Salva thumbnail
+  saveThumbnail() {
+    this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+      next: (response) => {
+        //Final do upload
+        if (response.type == HttpEventType.Response) {
+          this.stage.thumbnail = response.body.document;
         }
-      );
+      },
+      error: null,
+      complete: () => {
+        this.saveStage();
+      },
+    });
+  }
+
+  saveStage() {
+    this._stageService.updateStage(this.stage).subscribe(
+      (response) => {
+        if (!response.stage) {
+          this._spinner.hide();
+          this.status = "error";
+        } else {
+          this._spinner.hide();
+          this.status = "success";
+          this.getStage(this.stageId);
+        }
+      },
+      (error) => {
+        this._spinner.hide();
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = "error";
+        }
+      }
+    );
+  }
+
+  onSelectFile(fileInput: any) {
+    this.thumbnailToUpload = <File>fileInput.target.files[0];
+  }
+
+  onRemoveFile(doc: Document) {
+    this._spinner.show();
+    this._documentService.deleteDocument(doc._id).subscribe((response) => {
+      this._spinner.hide();
+      this.stage.thumbnail = null;
+    });
   }
 }

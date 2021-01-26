@@ -1,5 +1,6 @@
 import { Activity } from './activity';
 import { Epic } from './epic';
+import { Document } from './document';
 
 export class Stage {
     constructor(
@@ -11,6 +12,7 @@ export class Stage {
         public epic: Epic,
         public activities: Activity[],
         public created_at: Date,
-        public updated_at: Date
+        public updated_at: Date,
+        public thumbnail: Document
     ) {}
 }

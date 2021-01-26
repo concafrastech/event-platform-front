@@ -10,8 +10,9 @@ import { UserService } from "src/app/services/user.service";
 import { ContentService } from "src/app/services/content.service";
 import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
-import { HttpEventType } from "@angular/common/http";
 import { NgxSpinnerService } from "ngx-spinner";
+import { HttpEventType } from "@angular/common/http";
+import { Document } from "src/app/models/document";
 
 @Component({
   selector: "app-activity-edit",
@@ -36,6 +37,7 @@ export class ActivityEditComponent implements OnInit {
   public alturaTela;
   public isLoading: boolean = true;
   public stages = [];
+  public thumbnailToUpload: File;
 
   constructor(
     private _route: ActivatedRoute,
@@ -70,7 +72,8 @@ export class ActivityEditComponent implements OnInit {
       null,
       [],
       new Date(),
-      new Date()
+      new Date(),
+      null
     );
     this.activity.stage = new Stage(
       "",
@@ -81,7 +84,8 @@ export class ActivityEditComponent implements OnInit {
       null,
       [],
       new Date(),
-      new Date()
+      new Date(),
+      null
     );
     this.loadPage();
     //Adicionado altura da tela apenas para forçar a criação da barra de rolagem, rever css
@@ -114,6 +118,12 @@ export class ActivityEditComponent implements OnInit {
           activity.start_time = new Date(activity.start_time);
           activity.end_time = new Date(activity.end_time);
           this.activity = activity;
+          this._documentService
+            .getDocument(this.activity.thumbnail)
+            .subscribe((response) => {
+              this.activity.thumbnail = response.document;
+            });
+
           if (this.activity.contents) {
             this.getContents();
           } else {
@@ -171,7 +181,23 @@ export class ActivityEditComponent implements OnInit {
 
   onSubmit() {
     this._spinner.show();
-    this.saveDocuments();
+    this.saveThumbnail();
+  }
+
+  //Salva thumbnail
+  saveThumbnail() {
+    this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+      next: (response) => {
+        //Final do upload
+        if (response.type == HttpEventType.Response) {
+          this.activity.thumbnail = response.body.document;
+        }
+      },
+      error: null,
+      complete: () => {
+        this.saveDocuments();
+      },
+    });
   }
 
   //Realiza upload e salva os documentos
@@ -230,5 +256,17 @@ export class ActivityEditComponent implements OnInit {
         }
       }
     );
+  }
+
+  onSelectFile(fileInput: any) {
+    this.thumbnailToUpload = <File>fileInput.target.files[0];
+  }
+
+  onRemoveFile(doc: Document) {
+    this._spinner.show();
+    this._documentService.deleteDocument(doc._id).subscribe((response) => {
+      this._spinner.hide();
+      this.activity.thumbnail = null;
+    });
   }
 }

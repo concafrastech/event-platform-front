@@ -11,13 +11,14 @@
             <div class="form-group col-md-12">
                 <label>Nome</label>
                 <input type="text" name="name" #name="ngModel" [(ngModel)]="stage.name" class="form-control" required />
-                <span *ngIf="!name.value && name.touched" >O nome é obrigatório!</span>
+                <span *ngIf="!name.value && name.touched">O nome é obrigatório!</span>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <label>Descrição</label>
-                <input type="text" name="description" #description="ngModel" [(ngModel)]="stage.description" class="form-control" />
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="stage.description"
+                    class="form-control" />
             </div>
         </div>
         <div class="row">
@@ -30,7 +31,8 @@
             <div class="form-group col-md-12">
                 <fieldset class="form-group">
                     <label>Épico</label>
-                    <select [compareWith]="compareByOptionId" name="epic" #epic="ngModel" [(ngModel)]="stage.epic" class="form-control">
+                    <select [compareWith]="compareByOptionId" name="epic" #epic="ngModel" [(ngModel)]="stage.epic"
+                        class="form-control">
                         <option [ngValue]="null" [value]="null">-- Selecione --</option>
                         <option *ngFor="let epic of epics" [ngValue]="epic">{{epic.name}}</option>
                     </select>
@@ -39,16 +41,36 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <label>Adicionar Painel?</label>
-                <button class="btn btn-success" type="button" (click)="addActivity()"><i class="fa fa-plus"></i></button>
+                <fieldset class="form-group">
+                    <label>Imagem</label>
+                    <input *ngIf="!stage.thumbnail" class="form-control" type="file" name="image"
+                        accept="image/x-png,image/gif,image/jpeg" (change)="onSelectFile($event)" required />
+                    <div *ngIf="stage.thumbnail">
+                        <a [href]="stage.thumbnail.fileLink">{{
+                            stage.thumbnail.description
+                            }}</a>
+                        <button class="btn btn-danger" (click)="onRemoveFile(stage.thumbnail)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </fieldset>
             </div>
         </div>
-        <div class="row"*ngFor="let activity of stage.activities; let i=index; trackBy: trackByFn">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Adicionar Painel?</label>
+                <button class="btn btn-success" type="button" (click)="addActivity()"><i
+                        class="fa fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="row" *ngFor="let activity of stage.activities; let i=index; trackBy: trackByFn">
             <div class="form-group col-md-12">
                 <fieldset class="form-group">
                     <label>Painel {{i+1}}</label>
-                    <button class="btn btn-danger" type="button" (click)="removeActivity(i)"><i class="fa fa-trash"></i></button>
-                    <select [name]="'painel'+i" #pactivity="ngModel" [(ngModel)]="stage.activities[i]" class="form-control">
+                    <button class="btn btn-danger" type="button" (click)="removeActivity(i)"><i
+                            class="fa fa-trash"></i></button>
+                    <select [name]="'painel'+i" #pactivity="ngModel" [(ngModel)]="stage.activities[i]"
+                        class="form-control">
                         <option [ngValue]="null" [value]="null">-- Selecione --</option>
                         <option *ngFor="let option of activities" [ngValue]="option">{{option.name}}</option>
                     </select>
@@ -60,8 +82,8 @@
                 <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!stageAddForm.form.valid" />
             </div>
         </div>
-        <br/>
-        <br/>
+        <br />
+        <br />
     </form>
 </div>
 

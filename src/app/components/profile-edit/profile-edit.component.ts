@@ -35,6 +35,7 @@ export class ProfileEditComponent implements OnInit {
     private _userService: UserService,
     private _uploadService: UploadService,
     private _contentService: ContentService,
+    private _documentService: DocumentService,
     private _bsLocaleService: BsLocaleService
   ) {
     this.title = "Meu Perfil";
@@ -47,19 +48,33 @@ export class ProfileEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: profile-edit.");
-    
+    this.loadUserImage();
+  }
+
+  loadUserImage() {
+    if (this.user.image) {
+      this._documentService
+        .getDocument(this.user.image)
+        .subscribe((response) => {
+          this.user.image = response.document;
+        });
+    }
   }
 
   onSubmit() {
     if (this.fileToUpload) {
-      this._contentService
-        .uploadFile(this.fileToUpload)
-        .subscribe({next: (response) => {
+      this._contentService.uploadFile(this.fileToUpload).subscribe({
+        next: (response) => {
           //Final do upload
           if (response.type == HttpEventType.Response) {
             this.user.image = response.body.document;
           }
-        }, error: null, complete: () => {this.updateUser()}});
+        },
+        error: null,
+        complete: () => {
+          this.updateUser();
+        },
+      });
     } else {
       console.log("Sem upload");
     }
@@ -92,8 +107,8 @@ export class ProfileEditComponent implements OnInit {
     );
   }
 
-  selectFile(){
-    document.getElementById('select-img').click();
+  selectFile() {
+    document.getElementById("select-img").click();
   }
 
   fileChangeEvent(fileInput: any) {

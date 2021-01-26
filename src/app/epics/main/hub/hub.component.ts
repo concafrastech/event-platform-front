@@ -74,7 +74,7 @@ export class HubComponent implements OnInit, AfterViewInit {
       let svgPanZoom: SvgPanZoom.Instance = SvgPanZoom('#svgMap', this.options);
       svgPanZoom.zoom(0.6);
     });*/
-    
+
     this.svgMap = <HTMLObjectElement>(
       this.elementRef.nativeElement.querySelector("#svgMap")
     );
@@ -138,6 +138,7 @@ export class HubComponent implements OnInit, AfterViewInit {
     switch (id) {
       case "PALESTRAS":
         console.log("palestras");
+        this.redirectToFromSvg("/palestras");
         break;
 
       case "ndc":
@@ -160,7 +161,7 @@ export class HubComponent implements OnInit, AfterViewInit {
       case "stand_voluntario":
         console.log("stand_voluntario");
         break;
-        
+
       case "jovem":
         this.redirectToFromSvg("/jovem/home");
         break;

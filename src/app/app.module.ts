@@ -144,6 +144,7 @@ import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-cla
 import { BookClubComponent } from './epics/main/book-club/book-club.component';
 import { FraternalSupportComponent } from './epics/main/fraternal-support/fraternal-support.component';
 import { NdcActivitiesComponent } from './epics/main/feira/ndc-activities/ndc-activities.component';
+import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -283,7 +284,8 @@ const GamificationConfig = {
     JovemClassroomComponent,
     BookClubComponent,
     FraternalSupportComponent,
-    NdcActivitiesComponent
+    NdcActivitiesComponent,
+    AudithoriumSpecialComponent
   ],
   imports: [
     BrowserModule,

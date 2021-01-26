@@ -1,0 +1,48 @@
+#audithorium-special-header .audithorium-special-header-title {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#audithorium-special-header .audithorium-special-header-item {
+    margin: 1rem 0;
+}
+
+/* ==== CONTAINER ==== */
+.audithorium-special-container {
+    margin: 1rem .5rem;
+}
+
+/* ==== DIV INFO ==== */
+#audithorium-special-header .audithorium-special-header-item.audithorium-special-header-div-info {
+    display: grid;
+    grid-template-columns: 2fr .5fr;
+    gap: 2rem;
+}
+
+#audithorium-special-header .audithorium-special-header-item .audithorium-special-header-text {
+    color: #FFF;
+    font-size: 14px;
+}
+
+/* ==== BUTTONS ==== */
+.btn-info {
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: solid white 1px;
+    transition: 0.2s;
+}
+
+.btn-info:hover {
+    background-color: #1EA6EC;
+    border-color: #1EA6EC;
+}
+
+@media (max-width: 1400px) {
+}

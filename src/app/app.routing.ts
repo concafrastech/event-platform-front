@@ -92,6 +92,7 @@ import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.
 import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
 import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
 import { NdcComponent } from './epics/main/feira/ndc/ndc.component';
+import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -266,6 +267,7 @@ const appRoutes: Routes = [
             {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
             {path: 'ndc', component: NdcComponent, canActivate:[UserGuard]},
             {path: 'ndc-activities', component: NdcActivitiesComponent, canActivate:[UserGuard]},
+            {path: 'audithorium-special', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
         ],
     },
     {

@@ -4,6 +4,9 @@ import {User} from '../../../models/user';
 import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 import { NgxSpinnerService } from "ngx-spinner";
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
+import { ConfirmComponent } from 'src/app/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-user-list',
@@ -25,11 +28,13 @@ export class UserListComponent implements OnInit {
   public follows;
   public follow_me;
   public status: string;
+  public bsModalRef: BsModalRef;
 
   constructor(
       private _route: ActivatedRoute,
       private _router: Router,
       private _userService: UserService,
+      private modalService: BsModalService,
       private _spinner: NgxSpinnerService
   ) {
       this.title = 'Lista de Usuários';
@@ -95,5 +100,20 @@ export class UserListComponent implements OnInit {
               }
           }
       );
+  }
+
+  canDeleteUser(user: User) {
+      this.errorDeleteModal();
+  }
+
+  errorDeleteModal() {
+    const initialState = {
+      title: "Não é possível excluir usuário!",
+      message: "Operação não permitida.",
+    };
+    this.bsModalRef = this.modalService.show(ConfirmComponent, {
+      initialState,
+    });
+    this.bsModalRef.content.actionBtnName = "OK";
   }
 }

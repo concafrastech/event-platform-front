@@ -112,6 +112,7 @@ export class LectureEditComponent implements OnInit {
           lecture.start_time = new Date(lecture.start_time);
           lecture.end_time = new Date(lecture.end_time);
           this.lecture = lecture;
+          this._spinner.hide();
           this._documentService
             .getDocument(this.lecture.thumbnail)
             .subscribe((response) => {

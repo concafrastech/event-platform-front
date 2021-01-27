@@ -118,6 +118,7 @@ export class ActivityEditComponent implements OnInit {
           activity.start_time = new Date(activity.start_time);
           activity.end_time = new Date(activity.end_time);
           this.activity = activity;
+          this._spinner.hide();
           this._documentService
             .getDocument(this.activity.thumbnail)
             .subscribe((response) => {

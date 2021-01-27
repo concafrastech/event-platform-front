@@ -136,6 +136,22 @@ Left Navigation Sidebar
     border-radius: .25rem;
 }
 
+.fixed-div {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    z-index: 5000;
+}
+
+.chat-container {
+    height: 520px;
+    width: 320px;
+}
+
+.hide-container {
+    visibility: hidden;
+}
+
 /* Large Devices, Wide Screens */
 
 @media only screen and (max-width:1400px) {

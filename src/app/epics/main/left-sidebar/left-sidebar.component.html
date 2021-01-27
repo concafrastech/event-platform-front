@@ -15,7 +15,7 @@
                          Bem vindo,<br/>{{identity.name}}!</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" [routerLink]="" ><svg-icon src="{{user.level.icon}}" class="sidebar-icon"></svg-icon> Nivel {{user.level.badge}}<br/>{{user.points}} pontos</a>
+                    <a class="nav-link disabled" [routerLink]="" ><svg-icon src="{{user.level.icon}}" class="sidebar-icon"></svg-icon> Nivel {{user.level.badge}}<br/>{{this._gamificationService.getPoints() ? this._gamificationService.getPoints() : 0}} pontos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/hub']" ><svg-icon src="assets/concafras2021/concafronas/icones/home.svg" class="sidebar-icon"></svg-icon> Página Inicial</a>
@@ -27,13 +27,13 @@
                     <a class="nav-link" (click)="openMagneticPassDistanceComponent()" ><svg-icon src="assets/concafras2021/concafronas/icones/passe-virtual-menu-item.svg" class="sidebar-icon"></svg-icon>  Passe a Distância</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="openFraternalSupportChat()" ><svg-icon src="assets/concafras2021/concafronas/icones/amparo-fraterno-menu-item.svg" class="sidebar-icon"></svg-icon>  Amparo Fraterno: <br/> Quer conversar</a>
+                    <a class="nav-link" (click)="openFraternalSupportComponent()" ><svg-icon src="assets/concafras2021/concafronas/icones/amparo-fraterno-menu-item.svg" class="sidebar-icon"></svg-icon>  Amparo Fraterno: <br/> Quer conversar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/about']" ><svg-icon src="assets/concafras2021/concafronas/icones/como-navegar-menu-item.svg" class="sidebar-icon"></svg-icon>  Como Navegar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/home']" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Dúvidas?</a>
+                    <a class="nav-link" (click)="openCloseFraternalSupportChat()" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Dúvidas?</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" (click)="logout()"><svg-icon src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" class="sidebar-icon"></svg-icon>  Sair</a>
@@ -78,5 +78,11 @@
             </ul>
             </div>
         </nav>
+    </div>
+</div>
+
+<div class="fixed-div" [ngClass]="showChat ? '' : 'hide-container'">
+    <div class="chat-container">
+        <embed style="height: 100%; width: 100%;" src="https://tawk.to/chat/5ff34731c31c9117cb6b5dbb/1er74s6at">
     </div>
 </div>

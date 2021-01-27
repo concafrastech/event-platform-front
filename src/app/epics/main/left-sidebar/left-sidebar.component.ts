@@ -21,13 +21,14 @@ import { TawkService } from "src/app/services/tawk-service";
   selector: "app-left-sidebar",
   templateUrl: "./left-sidebar.component.html",
   styleUrls: ["./left-sidebar.component.css"],
-  providers: [UserService, TawkService, DocumentService],
+  providers: [UserService, DocumentService, TawkService],
 })
 export class LeftSidebarComponent implements OnInit {
   public identity;
   public user;
   public progress;
   public bsModalRef: BsModalRef;
+  public showChat: boolean = false;
 
   public faUserCircle = faUserCircle;
 
@@ -37,7 +38,6 @@ export class LeftSidebarComponent implements OnInit {
     public _gamificationService: GamificationService,
     public _bootstrapAlertService: NgBootstrapAlertService,
     private _modalService: BsModalService,
-    private _tawkService: TawkService,
     private _documentService: DocumentService
   ) {
     /*this.user = {
@@ -51,13 +51,12 @@ export class LeftSidebarComponent implements OnInit {
     };
     this.user = this._userService.getIdentity();
     this.initGamefication();
-    
-    //console.log(this.user);
   }
 
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
     console.log("[OK] left sidebar");
+    
     this._documentService
       .getDocument(this.user.image)
       .subscribe((response) => {
@@ -285,7 +284,8 @@ export class LeftSidebarComponent implements OnInit {
     this.bsModalRef.content.closeBtnName = "Fechar";
   }
 
-  openFraternalSupportChat() {
-    this._tawkService.ExpandChatWindow(true);
+  openCloseFraternalSupportChat() {
+    this.showChat = !this.showChat;
+    //this._tawkService.ExpandChatWindow(true);
   }
 }

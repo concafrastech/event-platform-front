@@ -64,7 +64,6 @@ export class JovemListComponent implements OnInit, AfterViewInit {
     //this.getLectures(1, epic._id);
     //this.getTrails(1,  epic._id);
     this.getStages(1,  epic._id);
-    /*console.log(this.stages[0].activities);
   }
 
   

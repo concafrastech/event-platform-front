@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         console.log('[OK] Component: home.');
         console.log('event-platform-concafras App Version: 0.2.0');
+        this._router.navigate(['/hub']);
 
         // Como pegar usuário logado
         this.identity = this._userService.getIdentity();

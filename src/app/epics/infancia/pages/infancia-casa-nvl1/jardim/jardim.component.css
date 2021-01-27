@@ -37,6 +37,8 @@ img {
     height: auto;
 }
 
+
+
 .btn-voltar {
     width: 7%;
     max-height: 124px;
@@ -64,3 +66,130 @@ img {
     vertical-align: middle;
 }
 
+
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-body iframe {
+    border: 0;
+    box-shadow: inherit;
+    width: -moz-available;
+    height: 450px;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: transparent;
+    background-clip: padding-box;
+}
+
+.modal-content-video {
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    outline: none;
+    background-color: #d7963a;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , 0);
+}
+
+button.close {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    background: red;
+    border-radius: 50%;
+    z-index: 1;
+    right: 0px;
+    color: white;
+    top: 0px;
+    opacity: 1;
+    outline: none;
+    
+    display: flex;
+    align-items: center;
+}
+
+button.close span {
+    position: absolute; 
+    top: 5px; 
+    right: 10px;
+}
+
+.modal-body {
+
+    padding: 20px;
+    width: 900px;
+    height: 500px;
+}
+
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #d7963a;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.dialogo p{
+	color:#fff;
+	font-size: 1.5rem;
+}
+
+.list-group-item{
+	background-color: #fff0 !important;
+	color:#fff;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.list-group-item a{
+	color:#fff;
+	text-decoration: none;
+}
+
+.list-group-item a:hover{
+	color:#fff;
+	font-weight: 400;
+}
+
+.list-group-item:hover{
+	background-color: #494a4ca6 !important;
+	transition: 0.3s;
+	cursor: url();
+}
+
+ul.list-group > li:hover:before {
+  content: ">";
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+	.dialogo p{
+		color:#fff;
+		font-size: 1.2rem;
+	}
+	
+	.list-group-item{
+		background-color: #fff0 !important;
+		color:#fff;
+		font-size: 1rem;
+	}
+}

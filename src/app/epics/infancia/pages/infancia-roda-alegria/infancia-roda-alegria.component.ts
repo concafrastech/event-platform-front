@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-infancia-roda-alegria',
   templateUrl: './infancia-roda-alegria.component.html',
   styleUrls: ['./infancia-roda-alegria.component.css']
 })
-export class InfanciaRodaAlegriaComponent implements OnInit {
+export class InfanciaRodaAlegriaComponent {
 
-  constructor() { }
+  modalRef: BsModalRef;
 
-  ngOnInit(): void {
+  constructor(private modalService: BsModalService) { }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
-
 }

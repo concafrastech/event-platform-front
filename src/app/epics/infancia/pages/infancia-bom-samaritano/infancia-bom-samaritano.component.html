@@ -10,69 +10,58 @@
         <div class="lista-opcoes">
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv01.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv01.png"
+                    (click)="openModal(template01)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv02.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv02.png"
+                    (click)="openModal(template02)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv03.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv03.png"
+                    (click)="openModal(template03)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv04.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv04.png"
+                    (click)="openModal(template04)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv05.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv05.png"
+                    (click)="openModal(template05)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv06.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv06.png"
+                    (click)="openModal(template06)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv07.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv07.png"
+                    (click)="openModal(template07)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv08.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv08.png"
+                    (click)="openModal(template08)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv09.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv09.png"
+                    (click)="openModal(template09)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv10.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv10.png"
+                    (click)="openModal(template10)">
             </div>
 
             <div class="item">
-                <a href="/jovem/audithorium">
-                    <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv11.png">
-                </a>
+                <img src="assets/concafras2021/concafrinhas/BomSamaritano/BomSamaritano-atv11.png"
+                    (click)="openModal(template11)">
             </div>
 
         </div>
@@ -82,3 +71,201 @@
     </div>
 
 </div>
+
+<ng-template #template01>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Culto no Lar</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/4526d4ac67934561838eb5b02985440c?themeId=2&templateId=3"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template02>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Relacione os cursos do Bom Samaritano Infantil</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/c6154403968f48dd85cbe03eb06faea8?themeId=41&templateId=3"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template03>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Caça-Palavras</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/3e68a5936ae6406cbcd97723d9fb46d8?themeId=2&templateId=10"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template04>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Livro do Pequeno Morto</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/82948ca48a074e5cb5886a49346ef58c?themeId=31&templateId=69"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template05>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">O quê um Bom Samaritano Infantil precisa ter?</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/23188cb7b71a49718332b17214d287a9?themeId=23&templateId=35"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template06>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Organize a frase</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/973a4721ecbb45f5ae85a6fba705ec5f?themeId=44&templateId=72"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template07>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Jogo do Labirinto</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/e124d279d6fd42b687c3d21c113ef3bf?themeId=53&templateId=49"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template08>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Obras Básicas do Espiritísmo</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://wordwall.net/pt/embed/360a2d81540c495aa500b200f44f3d68?themeId=51&templateId=48"
+                    width="500" height="380" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template09>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">A cura do Leozinho</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/_H-lBTn2uHQ" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template10>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Amigo importuno</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/J8gPN03yKLg" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template11>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Suicídio Nunca</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/h0pUSqZgj-0" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,30 +1,48 @@
-<!-- <div *ngIf="actualContent" style="height: inherit">
-    <div *ngIf="actualContent.type == 'img'" style="height: inherit">
-        <img
-        [src]="actualContent.file.fileLink"
-        alt="image slide"
-        style="display: block; width: 100%; max-height: 650px"
-        />
-    </div>
+<div class="modal-open" style="overflow: hidden; padding-right: 17px;">
+    <div class="modal fade show" role="dialog" tabindex="-1" style="display: block;" aria-modal="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"
+                style="position: relative; display: flex; flex-direction: column; width: 100%; pointer-events: auto; background-color: transparent; background-clip: padding-box; border: 1px solid rgba(0,0,0,.2); border-radius: .3rem; outline: 0;">
+                <div class="modal-conteudo"
+                    style="background-clip: padding-box; border: 1px solid rgba(0, 0, 0, .2); border-radius: 6px; outline: none; background-color: #d7963a; position: relative; width: fit-content; height: fit-content; top: 50%; left: 50%; transform: translate(-50% , 0);">
+                    <div class="modal-body"
+                        style="padding: 20px; width: fit-content; height: fit-content; position: relative;">
+                        <button class="close" data-dismiss="modal" aria-label="Close"
+                            style="position: absolute; height: 35px; width: 35px; background: red; border-radius: 50%; z-index: 1; right: -10px; color: white; top: -10px; opacity: 1; outline: none;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
 
-    <div *ngIf="actualContent.type == 'youtube'" style="height: inherit">
-        <app-videojs [vContent]="actualContent"></app-videojs>
-    </div>
+                        <div *ngIf="actualContent" style="height: inherit">
+                            <div *ngIf="actualContent.type == 'img'" style="height: inherit">
+                                <img [src]="actualContent.file.fileLink" alt="image slide"
+                                    style="display: block; width: 100%; max-height: 650px" />
+                            </div>
 
-    <div *ngIf="actualContent.type == 'externo'" style="height: inherit">
-        <app-iframe [sourceUrl]="actualContent.url"></app-iframe>
-    </div>
+                            <div *ngIf="actualContent.type == 'youtube'" style="height: inherit">
+                                <app-videojs [vContent]="actualContent"></app-videojs>
+                            </div>
 
-    <div *ngIf="actualContent.type == 'doc'" style="height: inherit">
-        <app-iframe [sourceUrl]="actualContent.file.fileLink"></app-iframe>
-    </div>
+                            <div *ngIf="actualContent.type == 'externo'" style="height: inherit">
+                                <app-iframe [sourceUrl]="actualContent.url"></app-iframe>
+                            </div>
 
-    <div *ngIf="actualContent.type == 'zoom'">
-        <app-zoomus [vContent]="actualContent"></app-zoomus>
-    </div>
+                            <div *ngIf="actualContent.type == 'doc'" style="height: inherit">
+                                <app-iframe [sourceUrl]="actualContent.file.fileLink"></app-iframe>
+                            </div>
 
-    <h4 *ngIf="contents.length > 1">
-        Conteúdo {{ index + 1 }} de {{ contents.length }}
-    </h4>
-    <p>{{ actualContent.name }}</p>
-</div> -->
+                            <div *ngIf="actualContent.type == 'zoom'">
+                                <app-zoomus [vContent]="actualContent"></app-zoomus>
+                            </div>
+
+                            <h4>{{ actualContent.name }}</h4>
+                            <p *ngIf="contents.length > 1">
+                                Conteúdo {{ index + 1 }} de {{ contents.length }}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

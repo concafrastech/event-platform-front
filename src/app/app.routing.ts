@@ -1,7 +1,7 @@
 import { InfanciaParquinhoComponent } from './epics/infancia/pages/infancia-parquinho/infancia-parquinho.component';
 // import { InfanciaGamesComponent } from './../../.history/src/app/epics/infancia/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component_20210123190848';
 // import { InfanciaGamesComponent } from './epics/infancia/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
-import { PadletComponent } from './components/channels/padlet/padlet.component';
+import { PadletComponent } from './epics/infancia/embed-utils/padlet/padlet.component';
 import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/pages/infancia-circo-concafrinhas/infancia-circo-concafrinhas.component';
 import { InfanciaRodaAlegriaComponent } from './epics/infancia/pages/infancia-roda-alegria/infancia-roda-alegria.component';
 import { InfanciaCasaNvl2Component } from './epics/infancia/pages/infancia-casa-nvl2/infancia-casa-nvl2.component';
@@ -105,7 +105,7 @@ import { BercarioComponent } from './epics/infancia/pages/infancia-casa-nvl1/ber
 import { MaternalComponent } from './epics/infancia/pages/infancia-casa-nvl1/maternal/maternal.component';
 import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardim/jardim.component';
 import { JogosDigitaisComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/jogos-digitais.component';
-import { InfanciaGamesComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
+import { FlipsnackComponent } from './epics/infancia/embed-utils/flipsnack/flipsnack.component';
 
 
 const appRoutes: Routes = [
@@ -257,40 +257,9 @@ const appRoutes: Routes = [
 
             { path: 'parquinho', component: InfanciaParquinhoComponent, canActivate: [UserGuard] },
             { path: 'parquinho/brincadeiras', component: BrincadeirasComponent, canActivate: [UserGuard] },
-            // { path: 'parquinho/brincadeiras/:id', component: BrincadeirasComponent, canActivate: [UserGuard] },
-
             { path: 'parquinho/jogos-digitais', component: JogosDigitaisComponent, canActivate: [UserGuard] },
-            { path: 'parquinho/jogos-digitais/:id', component: InfanciaGamesComponent, canActivate: [UserGuard] },
 
-            // {
-            //     path: 'parquinho',
-            //     component: InfanciaParquinhoComponent,
-            //     canActivate: [UserGuard],
-            //     children: [
-            //         { path: '', redirectTo: 'parquinho', pathMatch: 'full' },
-            //         {
-            //             path: 'jogos-digitais',
-            //             component: JogosDigitaisComponent,
-            //             canActivate: [UserGuard],
-            //             children: [
-            //                 { path: '', redirectTo: 'jogos-digitais', pathMatch: 'full' },
-            //                 { path: 'jogos-digitais/:jogo', component: InfanciaGamesComponent, canActivate: [UserGuard] }
-            //             ]
-            //         },
-            //         {
-            //             path: 'brincadeiras',
-            //             component: JogosDigitaisComponent,
-            //             canActivate: [UserGuard],
-            //             children: [
-            //                 { path: '', redirectTo: 'brincadeiras', pathMatch: 'full' },
-            //                 { path: 'brincadeiras/:brincadeira', component: InfanciaBrincadeirasComponent, canActivate: [UserGuard] }
-            //             ]
-            //         }
-
-            //     ],
-            // },
-
-
+            
             { path: 'atividades', component: InfanciaAtividadesComponent, canActivate: [UserGuard], },
             { path: 'atividades/laborterapias', component: LaborterapiasComponent, canActivate: [UserGuard] },
             { path: 'atividades/desenhos-imprimir', component: DesenhosImprimirComponent, canActivate: [UserGuard] },
@@ -306,12 +275,13 @@ const appRoutes: Routes = [
             { path: 'bom-samaritano', component: InfanciaBomSamaritanoComponent, canActivate: [UserGuard] },
             { path: 'circo-concafrinhas', component: InfanciaCircoConcafrinhasComponent, canActivate: [UserGuard] },
             { path: 'nosso-mural', component: PadletComponent, canActivate: [UserGuard] },
+            { path: 'flipsnack/:hash', component: FlipsnackComponent, canActivate: [UserGuard] },
 
 
             // {path: 'nivel', component: InfanciaLevelComponent, canActivate:[UserGuard]},
             // {path: 'nivel/:level', component: InfanciaLevelComponent, canActivate:[UserGuard]},
             { path: 'geral', component: InfanciaGeralComponent, canActivate: [UserGuard] },
-            { path: 'audithorium', component: InfanciaAudithoriumComponent, canActivate: [UserGuard] },
+            { path: 'audithorium/:type/:id', component: InfanciaAudithoriumComponent, canActivate: [UserGuard] },
         ],
     },
     {

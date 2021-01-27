@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-laborterapias',
   templateUrl: './laborterapias.component.html',
   styleUrls: ['./laborterapias.component.css']
 })
-export class LaborterapiasComponent implements OnInit {
+export class LaborterapiasComponent {
 
-  constructor() { }
+  modalRef: BsModalRef;
 
-  ngOnInit(): void {
+  constructor(private modalService: BsModalService) { }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

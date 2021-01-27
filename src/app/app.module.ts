@@ -153,7 +153,7 @@ import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/pages/infan
 
 
 
-import { PadletComponent } from './components/channels/padlet/padlet.component';
+import { PadletComponent } from './epics/infancia/embed-utils/padlet/padlet.component';
 import { InfanciaParquinhoComponent } from './epics/infancia/pages/infancia-parquinho/infancia-parquinho.component';
 import { InfanciaAtividadesComponent } from './epics/infancia/pages/infancia-atividades/infancia-atividades.component';
 import { InfanciaCasaNvl1Component } from './epics/infancia/pages/infancia-casa-nvl1/infancia-casa-nvl1.component';
@@ -164,9 +164,7 @@ import { DesenhosImprimirComponent } from './epics/infancia/pages/infancia-ativi
 import { BercarioComponent } from './epics/infancia/pages/infancia-casa-nvl1/bercario/bercario.component';
 import { MaternalComponent } from './epics/infancia/pages/infancia-casa-nvl1/maternal/maternal.component';
 import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardim/jardim.component';
-import { InfanciaGamesComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
 
-// import { InfanciaBrincadeirasComponent } from './epics/infancia/infancia-parquinho/brincadeiras/infancia-brincadeiras/infancia-brincadeiras.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -317,8 +315,6 @@ const GamificationConfig = {
     MaternalComponent,
     JardimComponent,
     PadletComponent,
-    InfanciaGamesComponent,
-    // InfanciaBrincadeirasComponent
   ],
   imports: [
     BrowserModule,

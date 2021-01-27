@@ -92,11 +92,20 @@ button.close {
     background: red;
     border-radius: 50%;
     z-index: 1;
-    right: -10px;
+    right: 0px;
     color: white;
-    top: -10px;
+    top: 0px;
     opacity: 1;
     outline: none;
+    
+    display: flex;
+    align-items: center;
+}
+
+button.close span {
+    position: absolute; 
+    top: 5px; 
+    right: 10px;
 }
 
 .modal-body {

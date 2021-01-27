@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -7,11 +8,14 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ['./jogos-digitais.component.css']
 })
 
-export class JogosDigitaisComponent implements OnInit {
+export class JogosDigitaisComponent {
 
-  constructor() { }
+  modalRef: BsModalRef;
 
-  ngOnInit(): void {
+  constructor(private modalService: BsModalService) { }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

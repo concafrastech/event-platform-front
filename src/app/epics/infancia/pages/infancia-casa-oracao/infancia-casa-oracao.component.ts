@@ -16,7 +16,6 @@ export class InfanciaCasaOracaoComponent {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-
   }
 
 }

@@ -8,32 +8,37 @@
         </a>
 
         <a href="/concafrinhas/home">
-            <img class="btn-home buttons" src="assets/concafras2021/concafrinhas/btn-home.png"
-                title="Circo">
+            <img class="btn-home buttons" src="assets/concafras2021/concafrinhas/btn-home.png" title="Circo">
         </a>
 
-        <a href="/concafrinhas/audithorium">
+        <a href="/concafrinhas/nosso-mural" target="_blank" rel="noopener noreferrer">
             <img class="btn-upload buttons" src="assets/concafras2021/concafrinhas/btn-upload.png" alt="Enviar arquivos"
                 title="Enviar arquivos">
         </a>
 
-        <a href="/concafrinhas/audithorium">
+        <a [routerLink]="['/concafrinhas/audithorium/']">
             <img class="t1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioTemaCentral.png"
                 title="Tema Central">
         </a>
 
-        <a href="/concafrinhas/audithorium">
+        <a [routerLink]="['/concafrinhas/audithorium/']">
             <img class="t2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioOficinaArte.png"
                 title="Oficina de Arte">
         </a>
 
-        <a href="/concafrinhas/audithorium">
-            <img class="t3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioTemaEspecifico.png"
+        <a [routerLink]="['/concafrinhas/audithorium/']">
+            <img class="t3 buttons"
+                src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioTemaEspecifico.png"
                 title="Tema Especifico">
         </a>
+
+        <router-outlet></router-outlet>
 
         <img class="principal" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioInterior.jpg">
 
     </div>
 
 </div>
+
+
+

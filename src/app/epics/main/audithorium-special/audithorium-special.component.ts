@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AudithoriumComponent } from './../audithorium/audithorium.component';
 
 @Component({
   selector: 'app-audithorium-special',

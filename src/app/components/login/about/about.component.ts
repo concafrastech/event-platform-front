@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, OnInit } from "@angular/core";
+import { Location } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: "app-about",
+  templateUrl: "./about.component.html",
+  styleUrls: ["./about.component.css"],
 })
 export class AboutComponent implements OnInit {
+  constructor(private location: Location, private _router: Router) {}
 
-  constructor(private location: Location) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  goToEvent() {
+    this._router.navigate(["/hub"]);
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 }

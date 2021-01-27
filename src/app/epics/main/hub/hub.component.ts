@@ -152,17 +152,17 @@ export class HubComponent implements OnInit, AfterViewInit {
 
       case "ccex":
         console.log("ccex");
-        this.redirectToFromSvg("/audithorium-special");
+        this.redirectToFromSvg("/audithorium-special/ccex");
         break;
 
       case "cfas":
         console.log("cfas");
-        this.redirectToFromSvg("/audithorium-special");
+        this.redirectToFromSvg("/audithorium-special/cfas");
         break;
 
       case "stand_voluntario":
         console.log("stand_voluntario");
-        this.redirectToFromSvg("/audithorium-special");
+        this.redirectToFromSvg("/audithorium-special/clube");
         break;
 
       case "jovem":
@@ -171,7 +171,7 @@ export class HubComponent implements OnInit, AfterViewInit {
 
       case "stand_editora":
         console.log("stand_editora");
-        this.redirectToFromSvg("/audithorium-special");
+        this.redirectToFromSvg("/audithorium-special/editora");
         break;
 
       case "EVENTO_AO_VIVO":

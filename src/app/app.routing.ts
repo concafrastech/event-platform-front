@@ -267,7 +267,8 @@ const appRoutes: Routes = [
             {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
             {path: 'ndc', component: NdcComponent, canActivate:[UserGuard]},
             {path: 'ndc-activities', component: NdcActivitiesComponent, canActivate:[UserGuard]},
-            {path: 'audithorium-special', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
+            {path: 'audithorium-special/:type', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
+            {path: 'audithorium-special/:type/:contentId', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
         ],
     },
     {

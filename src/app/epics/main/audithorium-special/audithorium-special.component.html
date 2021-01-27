@@ -5,8 +5,8 @@
         <a href="{{ pageTarget }}" target="_blank" class="btn btn-primary btn-info">Obter maiores informações</a>
     </div>
 </section>
-<section id="audithorium-special-content" class="audithorium-special-container">
-    <app-audithorium></app-audithorium>
+<section *ngIf="actualContent" id="audithorium-special-content" class="audithorium-special-container">
+    <app-videojs [vContent]="actualContent"></app-videojs>
 </section>
 <!-- <section id="audithorium-special-forms" class="audithorium-special-container">
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNUzA8FGb7tB7w3OW4E50I_OIBF_N1K5wcIsuOWLDW7OtQJg/viewform?embedded=true" width="640" height="1073" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>

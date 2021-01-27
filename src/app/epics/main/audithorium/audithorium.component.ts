@@ -37,7 +37,7 @@ export class AudithoriumComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
+
   }
 
   ngAfterContentInit(): void {
@@ -84,7 +84,7 @@ export class AudithoriumComponent implements OnInit {
       this.actualContent.url = this.actualContent.file.fileLink
     }
     console.log(this.contents);
-    
+
     this.index = 0;
     this.timeToMoveForward();
   }
@@ -94,7 +94,7 @@ export class AudithoriumComponent implements OnInit {
     this.actualContent = null;
     if (this.contents) {
       if (this.index < this.contents.length - 1) {
-        
+
         this.canMoveForward = false;
         this.index += 1;
         this.actualContent = this.contents[this.index];

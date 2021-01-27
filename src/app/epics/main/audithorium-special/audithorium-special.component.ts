@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/services/navbar.service';
 import { AudithoriumComponent } from './../audithorium/audithorium.component';
 
 @Component({
@@ -11,7 +12,9 @@ export class AudithoriumSpecialComponent implements OnInit {
   public pageTarget: String;
   public typeAudithorium: String;
 
-  constructor() { }
+  constructor(
+    private _navbarService: NavbarService,
+  ) { }
 
   ngOnInit(): void {
     this.typeAudithorium = "CFAS";
@@ -27,6 +30,7 @@ export class AudithoriumSpecialComponent implements OnInit {
 
     console.log(this.pageTarget);
 
+    this._navbarService.setButtonBack(true);
   }
 
 }

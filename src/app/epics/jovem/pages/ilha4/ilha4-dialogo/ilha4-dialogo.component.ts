@@ -30,9 +30,6 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
     public lectures: Lecture[] = []; 
     public trails: Trail[] = [];
     public stages: Stage[] = [];
-    public trailsFilteredList: Trail[] = [];
-    public stagesFilteredList: Stage[] = [];
-    public lecturesFilteredList: Lecture[] = []; 
   
     options = { 
       zoomEnabled: true,
@@ -84,8 +81,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
             this.lectures = response.lectures;
 
             //incluido filtro das trilhas da ilha
-            this.lecturesFilteredList = this.lectures.filter((lecture: Lecture) => lecture.type === "Ilha instituto almas irmãs");
-            this.lectures = this.lecturesFilteredList;
+            this.lectures = this.lectures.filter((lecture: Lecture) => lecture.type.toLowerCase() === "ilha instituto almas irmãs");
 
           }
         },
@@ -110,9 +106,8 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
   
             //incluido filtro das trilhas da ilha
             // forcei um id 600757276f6f1200bda3c426 para funcionar pois o cadastro de teste chamava um curso inexistente
-            this.trailsFilteredList = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
-            // this.trailsFilteredList = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
-            this.trails = this.trailsFilteredList;
+            this.trails = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
+            // this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
   
             this.trails.forEach((trail, index) => {
               this.getClassrooms(page, trail, index);
@@ -159,8 +154,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
             this.stages = response.stages;
   
             //incluido filtro das trilhas da ilha
-            this.stagesFilteredList = this.stages.filter((stage: Stage) => stage.type === "Ilha instituto almas irmãs");
-            this.stages = this.stagesFilteredList;
+            this.stages = this.stages.filter((stage: Stage) => stage.type.toLowerCase() === "ilha instituto almas irmãs");
   
             this.stages.forEach((stage, index) => {
               this.getActivities(page, stage, index);

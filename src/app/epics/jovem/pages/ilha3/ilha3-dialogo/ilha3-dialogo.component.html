@@ -6,7 +6,9 @@
       <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Prática Tema Específico: {{trail.name}}</a>
     </li>
     <li class="list-group-item" *ngFor="let stage of stages">
-      <a [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+      <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+      <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+      <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
   </ul>

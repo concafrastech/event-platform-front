@@ -3,7 +3,9 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><a [routerLink]="['/jovem/ilha-irmas/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo o Instituto Almas Irmãs</a></li>
       <li class="list-group-item" *ngFor="let stage of stages">
-        <a [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+        <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+        <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+        <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
       </li>
       <li class="list-group-item color-red" *ngFor="let lecture of lectures">
         <a class="color-red" [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}} ({{lecture.start_time | date: "dd/MM" }} {{lecture.start_time | date: "HH:mm" }}-{{lecture.end_time | date: "HH:mm" }})</a>

@@ -4,7 +4,9 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-som/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Catedral do Som</a></li>
     <li class="list-group-item" *ngFor="let stage of stages">
-        <a [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+      <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+      <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+      <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/alegria-crista-musicas']" [routerLinkActive]="['active']">Alegria cristã</a></li>
     <!--<li class="list-group-item"><a [routerLink]="['/jovem/mural-artistico']" [routerLinkActive]="['active']">Mural Artístico</a></li>-->

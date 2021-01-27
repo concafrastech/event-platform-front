@@ -31,7 +31,6 @@ export class JovemListComponent implements OnInit, AfterViewInit {
   public lectures: Lecture[] = []; 
   public trails: Trail[] = [];
   public stages: Stage[] = [];
-  public stagesFilteredList: Stage[] = [];
   public classrooms: Classroom[] = [];
 
   options = { 
@@ -66,10 +65,6 @@ export class JovemListComponent implements OnInit, AfterViewInit {
     //this.getTrails(1,  epic._id);
     this.getStages(1,  epic._id);
     /*console.log(this.stages[0].activities);
-    if (this.stages[0].activities.length === 1) {
-      console.log("somente 1 activity");
-     this._router.navigate(["/jovem/audithorium/activity/"+this.stages[0].activities[0]._id]);
-    };*/
   }
 
   
@@ -153,8 +148,7 @@ export class JovemListComponent implements OnInit, AfterViewInit {
           this.stages = response.stages;
 
           //incluido filtro das trilhas da ilha
-          this.stagesFilteredList = this.stages.filter((stage: Stage) => stage._id === this.id);
-          this.stages = this.stagesFilteredList;
+          this.stages = this.stages.filter((stage: Stage) => stage._id === this.id);
 
           this.stages.forEach((stage, index) => {
             this.getActivities(page, stage, index);

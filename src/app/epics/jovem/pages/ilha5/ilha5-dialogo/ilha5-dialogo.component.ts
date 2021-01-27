@@ -32,8 +32,6 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
     public lectures: Lecture[] = []; 
     public trails: Trail[] = [];
     public stages: Stage[] = [];
-    public trailsFilteredList: Trail[] = [];
-    public stagesFilteredList: Stage[] = [];
     public bsModalRef: BsModalRef;
   
     options = { 
@@ -108,9 +106,8 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
   
             //incluido filtro das trilhas da ilha
             // forcei um id 600757276f6f1200bda3c426 para funcionar pois o cadastro de teste chamava um curso inexistente
-            this.trailsFilteredList = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
-            // this.trailsFilteredList = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
-            this.trails = this.trailsFilteredList;
+            this.trails = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
+            // this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
   
             this.trails.forEach((trail, index) => {
               this.getClassrooms(page, trail, index);
@@ -157,8 +154,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
             this.stages = response.stages;
   
             //incluido filtro das trilhas da ilha
-            this.stagesFilteredList = this.stages.filter((stage: Stage) => stage.type === "Ilha estação ao vivo");
-            this.stages = this.stagesFilteredList;
+            this.stages = this.stages.filter((stage: Stage) => stage.type.toLowerCase() === "ilha estação ao vivo");
   
             this.stages.forEach((stage, index) => {
               this.getActivities(page, stage, index);

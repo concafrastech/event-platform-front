@@ -4,14 +4,16 @@ import { Router } from "@angular/router";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { UserService } from "src/app/services/user.service";
 import { ShareMessage } from "src/app/models/share-message";
+import { Instagram } from "src/app/models/instagram";
 import { ShareMessageService } from "src/app/services/share-message.service";
 import { Subscription } from "rxjs";
+import { SocialFeedService } from "src/app/services/social-feed.service";
 
 @Component({
   selector: "app-caravan-space",
   templateUrl: "./caravan-space.component.html",
   styleUrls: ["./caravan-space.component.css"],
-  providers: [ UserService, ShareMessageService, BsModalService ]
+  providers: [ UserService, ShareMessageService, SocialFeedService, BsModalService ]
 })
 export class CaravanSpaceComponent implements OnInit {
   public bsModalRef: BsModalRef;
@@ -21,12 +23,14 @@ export class CaravanSpaceComponent implements OnInit {
   public groupsCarousel: number[] = [];
   public groupMessages: ShareMessage[] = [];
   public modalSub: Subscription;
+  public feeds: Instagram[] = [];
 
   constructor(
     private _router: Router,
     private _userService: UserService,
     private _modalService: BsModalService,
-    private _shareMessageService: ShareMessageService
+    private _shareMessageService: ShareMessageService,
+    private _socialFeedService: SocialFeedService, 
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +38,15 @@ export class CaravanSpaceComponent implements OnInit {
       this.loadCarousel();
     });
     this.loadCarousel();
+    this.loadSocialFeed();
+  }
+
+  loadSocialFeed(){
+    this._socialFeedService.getSocialFeeds().subscribe(
+      (resposta) => {
+        this.feeds = resposta;
+      }
+    ) 
   }
 
   loadCarousel(){

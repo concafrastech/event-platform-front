@@ -9,6 +9,15 @@
 </section>
 <section id="recent-messages" class="caravan-container">
     <div>
+        <h3 class="caravan-header-title">Postagens mais recentes</h3>
+    </div>
+    <div *ngFor="let post of feeds; let i=index">
+        <img src="{{post.thumbnail}}">
+        <sub>{{post.text}}</sub>
+    </div>
+</section>
+<section id="recent-messages" class="caravan-container">
+    <div>
         <h3 class="caravan-header-title">Mensagens mais recentes</h3>
     </div>
     <div id="carouselControlsRecentMessage" class="carousel slide caravan-carousel-recent">

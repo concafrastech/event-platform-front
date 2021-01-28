@@ -1,7 +1,4 @@
-<div
-  class="col-md-12"
-  [style]="'height:' + (alturaTela - 50) + 'px; overflow: auto; width: 100%;'"
->
+<div class="col-md-12" [style]="'height:' + (alturaTela - 50) + 'px; overflow: auto; width: 100%;'">
   <h1 class="h1-strong">{{ title }}</h1>
   <div class="alert alert-success" *ngIf="status == 'success'">
     Dados atualizados com sucesso!
@@ -15,98 +12,51 @@
       <div class="row">
         <div class="form-group col-md-12">
           <label>Nome</label>
-          <input
-            type="text"
-            name="name"
-            #name="ngModel"
-            [(ngModel)]="lecture.name"
-            class="form-control"
-            required
-          />
+          <input type="text" name="name" #name="ngModel" [(ngModel)]="lecture.name" class="form-control" required />
           <span *ngIf="!name.value && name.touched">O nome é obrigatório!</span>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
           <label>Descrição</label>
-          <input
-            type="text"
-            name="description"
-            #description="ngModel"
-            [(ngModel)]="lecture.description"
-            class="form-control"
-          />
+          <input type="text" name="description" #description="ngModel" [(ngModel)]="lecture.description"
+            class="form-control" />
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
           <label>Palestrante</label>
-          <input
-            type="text"
-            name="speecher"
-            #speecher="ngModel"
-            [(ngModel)]="lecture.speecher"
-            class="form-control"
-          />
+          <input type="text" name="speecher" #speecher="ngModel" [(ngModel)]="lecture.speecher" class="form-control" />
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-3">
           <label>Data de Início</label>
-          <input
-            type="text"
-            name="start_time"
-            #start_time="ngModel"
-            [(ngModel)]="lecture.start_time"
-            class="form-control"
-            bsDatepicker
-          />
+          <input type="text" name="start_time" #start_time="ngModel" [(ngModel)]="lecture.start_time"
+            class="form-control" bsDatepicker />
         </div>
         <div class="form-group col-md-3">
           <label>Horário de Início</label>
-          <timepicker
-            #start_time="ngModel"
-            name="start_time_hour"
-            [(ngModel)]="lecture.start_time"
-            [minuteStep]="5"
-            [showSpinners]="false"
-            [showMeridian]="false"
-          ></timepicker>
+          <timepicker #start_time="ngModel" name="start_time_hour" [(ngModel)]="lecture.start_time" [minuteStep]="5"
+            [showSpinners]="false" [showMeridian]="false"></timepicker>
         </div>
         <div class="form-group col-md-3">
           <label>Data de Término</label>
-          <input
-            type="text"
-            name="end_time"
-            #end_time="ngModel"
-            [(ngModel)]="lecture.end_time"
-            class="form-control"
-            bsDatepicker
-          />
+          <input type="text" name="end_time" #end_time="ngModel" [(ngModel)]="lecture.end_time" class="form-control"
+            bsDatepicker />
         </div>
         <div class="form-group col-md-3">
           <label>Horário de Término</label>
-          <timepicker
-            #end_time="ngModel"
-            name="end_time_hour"
-            [(ngModel)]="lecture.end_time"
-            [minuteStep]="5"
-            [showSpinners]="false"
-            [showMeridian]="false"
-          ></timepicker>
+          <timepicker #end_time="ngModel" name="end_time_hour" [(ngModel)]="lecture.end_time" [minuteStep]="5"
+            [showSpinners]="false" [showMeridian]="false"></timepicker>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-12">
           <fieldset class="form-group">
             <label>Tipo</label>
-            <select
-              [compareWith]="compareByOptionId"
-              name="tipo"
-              #type="ngModel"
-              [(ngModel)]="lecture.type"
-              class="form-control"
-            >
+            <select [compareWith]="compareByOptionId" name="tipo" #type="ngModel" [(ngModel)]="lecture.type"
+              class="form-control">
               <option value="">-- Selecione --</option>
               <option value="palestra">Palestra</option>
               <option value="momento_coletivo">Momento Coletivo</option>
@@ -121,13 +71,8 @@
         <div class="form-group col-md-12">
           <fieldset class="form-group">
             <label>Épico</label>
-            <select
-              [compareWith]="compareByOptionId"
-              name="epic"
-              #epic="ngModel"
-              [(ngModel)]="lecture.epic"
-              class="form-control"
-            >
+            <select [compareWith]="compareByOptionId" name="epic" #epic="ngModel" [(ngModel)]="lecture.epic"
+              class="form-control">
               <option value="">-- Selecione --</option>
               <option *ngFor="let epic of epics" [ngValue]="epic">
                 {{ epic.name }}
@@ -137,18 +82,29 @@
         </div>
       </div>
 
-      <app-content
-        [(vContent)]="lecture.contents"
-        (contentFormIsValid)="contentFormIsValid($event)"
-      ></app-content>
       <div class="row">
         <div class="form-group col-md-12">
-          <input
-            type="submit"
-            value="{{ title }}"
-            class="btn btn-warning"
-            [disabled]="!lectureAddForm.form.valid || !contentIsValid"
-          />
+          <fieldset class="form-group">
+            <label>Imagem</label>
+            <input *ngIf="!lecture.thumbnail" class="form-control" type="file" name="image"
+              accept="image/x-png,image/gif,image/jpeg" (change)="onSelectFile($event)" required />
+            <div *ngIf="lecture.thumbnail">
+              <a [href]="lecture.thumbnail.fileLink">{{
+                lecture.thumbnail.description
+                }}</a>
+              <button type="button" class="btn btn-danger" (click)="onRemoveFile(lecture.thumbnail)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <app-content [(vContent)]="lecture.contents" (contentFormIsValid)="contentFormIsValid($event)"></app-content>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <input type="submit" value="{{ title }}" class="btn btn-warning"
+            [disabled]="!lectureAddForm.form.valid || !contentIsValid" />
         </div>
       </div>
       <br />

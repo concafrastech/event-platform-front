@@ -1,19 +1,64 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
-  <p class="text-left">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!</p>
+  <p class="text-left">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Acesse os eventos ao vivo de hoje pelos links abaixo:</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/lancamentos']" [routerLinkActive]="['active']">Lançamentos</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/ao-vivo']" [routerLinkActive]="['active']">AO VIVO</a></li>
+    <!--<li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>-->
+    <li
+      style="display: block; padding: 1rem; color: #474747; background-color: rgba(255, 255, 255, .9);"
+      *ngFor="let lecture of lectures"
+    >
+      <div style="float: left">
+        <div>
+          <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{ lecture.name }}</a>
+        </div>
+        <div style="display: block">
+          <div style="float: left">
+            <span style="font-size: 0.8rem; color: #a2a2a2">{{
+              lecture.description
+            }}</span>
+          </div>
+          <div style="float: right">
+            <img
+              style="margin-left: 5rem"
+              src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg"
+            />
+            <img
+              style="margin-left: 0.5rem"
+              src="assets/concafras2021/concafronas/icones/libras.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div style="float: right; font-weight: 500">
+        {{ lecture.start_time | date: "HH:mm" }} -
+        {{ lecture.end_time | date: "HH:mm" }}
+      </div>
+
+    </li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem ao Vivo</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
   </ul>
 </div>
 
-<div class="dialogo" *ngIf="dialog == 'ao-vivo'">
-  <p class="text-left">Qual evento ao vivo você deseja acessar?</p>
+<div class="dialogo2" *ngIf="dialog == 'conhecendo'">
+  <p class="justify-left">Olá! Meu nome é Auta de Souza.<br/>
+    A Estação Jovem AO VIVO foi criada para lembrarmos dos momentos de interação e confraternização coletiva na CONCAFRAS!<br/>
+    O palco, a decoração, o sentimento de fraternidade, as rodas de Alergia Cristã, apresentações artísticas, palestras e toda a energia que estes momentos nos inspiram.<br/>
+    E aí, já deu saudade de abraçar os amigos ao som da Canção da Alegria Cristã?<br/>
+    Então não perca nenhum segundo das nossas lives interativas aqui na Estação!</p>
+  <div class="row  align-items-center justify-content-center">
+    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/conhecendo_vivo_5.jpeg"></div>
+    <div class="col-8 col-lg-9 my-1">
+      <div class="row  align-items-center justify-content-center">
+        <div class="col-8 col-lg-4 my-1"><img class="img-fluid" src="/assets/jovem/img/conhecendo_vivo_1.jpg"></div>
+        <div class="col-8 col-lg-4 my-1"><img class="img-fluid" src="/assets/jovem/img/conhecendo_vivo_2.jpg"></div>
+        <div class="col-8 col-lg-4 my-1"><img class="img-fluid" src="/assets/jovem/img/conhecendo_vivo_3.jpg"></div>
+        <div class="col-8 col-lg-4 my-1"><img class="img-fluid" src="/assets/jovem/img/conhecendo_vivo_4.png"></div>
+        <div class="col-8 col-lg-4 my-1"><img class="img-fluid" src="/assets/jovem/img/conhecendo_vivo_6.jpg"></div>
+        <div class="col-8 col-lg-4 my-1"><img class="img-fluid" src="/assets/jovem/img/conhecendo_vivo_7.jpeg"></div>
+      </div>
+    </div>
+  </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let lecture of lectures">
-        <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>
-    </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>  
+  </ul>
 </div>

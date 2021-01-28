@@ -57,7 +57,7 @@ export class ClassroomService {
   getClassrooms(page = null, trailId = null): Observable<any> {
     let params = {
       page: page,
-      trail: trailId != null ? trailId : "",
+      trail: trailId != null ? trailId : ''
     };
     let headers = new HttpHeaders()
       .set("Content-Type", "application/json")
@@ -65,7 +65,7 @@ export class ClassroomService {
 
     return this._http.get(this.url + "classrooms/", {
       headers: headers,
-      params: params,
+      params: params
     });
   }
 

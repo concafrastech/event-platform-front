@@ -8,6 +8,8 @@ import { InfanciaCasaNvl2Component } from './epics/infancia/pages/infancia-casa-
 import { InfanciaCantinhoHistoriaComponent } from './epics/infancia/pages/infancia-cantinho-historia/infancia-cantinho-historia.component';
 import { InfanciaCasaOracaoComponent } from './epics/infancia/pages/infancia-casa-oracao/infancia-casa-oracao.component';
 import { InfanciaInicioComponent } from './epics/infancia/infancia-inicio/infancia-inicio.component';
+import { NdcActivitiesComponent } from './epics/main/feira/ndc-activities/ndc-activities.component';
+import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -107,6 +109,12 @@ import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardi
 import { JogosDigitaisComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/jogos-digitais.component';
 import { FlipsnackComponent } from './epics/infancia/embed-utils/flipsnack/flipsnack.component';
 
+import { MissionAddComponent } from './admin/mission/mission-add/mission-add.component';
+import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
+import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
+import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
+import { NdcComponent } from './epics/main/feira/ndc/ndc.component';
+import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -121,41 +129,45 @@ const appRoutes: Routes = [
         component: DashboardComponent,
         canActivate: [UserGuard],
         children: [
-            { path: '', component: ChartComponent },
-            { path: 'conference/add', component: ConferenceAddComponent },
-            { path: 'conference/edit/:id', component: ConferenceEditComponent },
-            { path: 'conference/list', component: ConferenceListComponent },
-            { path: 'conference/list/:page', component: ConferenceListComponent },
-            { path: 'epic/add', component: EpicAddComponent },
-            { path: 'epic/edit/:id', component: EpicEditComponent },
-            { path: 'epic/list', component: EpicListComponent },
-            { path: 'epic/list/:page', component: EpicListComponent },
-            { path: 'lecture/add', component: LectureAddComponent },
-            { path: 'lecture/edit/:id', component: LectureEditComponent },
-            { path: 'lecture/list', component: LectureListComponent },
-            { path: 'lecture/list/:page', component: LectureListComponent },
-            { path: 'trail/add', component: TrailAddComponent },
-            { path: 'trail/edit/:id', component: TrailEditComponent },
-            { path: 'trail/list', component: TrailListComponent },
-            { path: 'trail/list/:page', component: TrailListComponent },
-            { path: 'classroom/add', component: ClassroomAddComponent },
-            { path: 'classroom/edit/:id', component: ClassroomEditComponent },
-            { path: 'classroom/list', component: ClassroomListComponent },
-            { path: 'classroom/list/:page', component: ClassroomListComponent },
-            { path: 'document/edit/:id', component: DocumentEditComponent },
-            { path: 'document/list', component: DocumentListComponent },
-            { path: 'document/list/:page', component: DocumentListComponent },
-            { path: 'stage/add', component: StageAddComponent },
-            { path: 'stage/edit/:id', component: StageEditComponent },
-            { path: 'stage/list', component: StageListComponent },
-            { path: 'stage/list/:page', component: StageListComponent },
-            { path: 'activity/add', component: ActivityAddComponent },
-            { path: 'activity/edit/:id', component: ActivityEditComponent },
-            { path: 'activity/list', component: ActivityListComponent },
-            { path: 'activity/list/:page', component: ActivityListComponent },
-            { path: 'user/edit/:id', component: UserEditComponent },
-            { path: 'user/list', component: UserListComponent },
-            { path: 'content', component: ContentComponent },
+            {path: '', component: ChartComponent},
+            {path: 'conference/add', component: ConferenceAddComponent},
+            {path: 'conference/edit/:id', component: ConferenceEditComponent},
+            {path: 'conference/list', component: ConferenceListComponent},
+            {path: 'conference/list/:page', component: ConferenceListComponent},
+            {path: 'epic/add', component: EpicAddComponent},
+            {path: 'epic/edit/:id', component: EpicEditComponent},
+            {path: 'epic/list', component: EpicListComponent},
+            {path: 'epic/list/:page', component: EpicListComponent},
+            {path: 'lecture/add', component: LectureAddComponent},
+            {path: 'lecture/edit/:id', component: LectureEditComponent},
+            {path: 'lecture/list', component: LectureListComponent},
+            {path: 'lecture/list/:page', component: LectureListComponent},
+            {path: 'trail/add', component: TrailAddComponent},
+            {path: 'trail/edit/:id', component: TrailEditComponent},
+            {path: 'trail/list', component: TrailListComponent},
+            {path: 'trail/list/:page', component: TrailListComponent},
+            {path: 'classroom/add', component: ClassroomAddComponent},
+            {path: 'classroom/edit/:id', component: ClassroomEditComponent},
+            {path: 'classroom/list', component: ClassroomListComponent},
+            {path: 'classroom/list/:page', component: ClassroomListComponent},
+            {path: 'document/edit/:id', component: DocumentEditComponent},
+            {path: 'document/list', component: DocumentListComponent},
+            {path: 'document/list/:page', component: DocumentListComponent},
+            {path: 'stage/add', component: StageAddComponent},
+            {path: 'stage/edit/:id', component: StageEditComponent},
+            {path: 'stage/list', component: StageListComponent},
+            {path: 'stage/list/:page', component: StageListComponent},
+            {path: 'activity/add', component: ActivityAddComponent},
+            {path: 'activity/edit/:id', component: ActivityEditComponent},
+            {path: 'activity/list', component: ActivityListComponent},
+            {path: 'activity/list/:page', component: ActivityListComponent},
+            {path: 'mission/add', component: MissionAddComponent},
+            {path: 'mission/edit/:id', component: MissionEditComponent},
+            {path: 'mission/list', component: MissionListComponent},
+            {path: 'mission/list/:page', component: MissionListComponent},
+            {path: 'user/edit/:id', component: UserEditComponent},
+            {path: 'user/list', component: UserListComponent},
+            {path: 'content', component: ContentComponent},
         ],
     },
     {
@@ -192,10 +204,10 @@ const appRoutes: Routes = [
             {
                 path: 'jogos-tematicos',
                 component: JogosTematicosComponent,
-                canActivate: [UserGuard],
-                children: [
-                    { path: '', redirectTo: 'games/inicial', pathMatch: 'full' },
-                    { path: 'games/:jogo', component: GamesComponent, canActivate: [UserGuard] }
+                canActivate:[UserGuard],
+                children:[
+                {path:'', redirectTo: 'games/inicial', pathMatch: 'full'},
+                {path:'games/:jogo', component: GamesComponent, canActivate:[UserGuard]}
 
                 ],
             },
@@ -238,9 +250,11 @@ const appRoutes: Routes = [
                     { path: 'dialogo/:dialog', component: Ilha5DialogoComponent, canActivate: [UserGuard] }
                 ],
             },
-            { path: 'lancamentos', component: LancamentosComponent, canActivate: [UserGuard] },
-            { path: 'jovem-list/:id', component: JovemListComponent, canActivate: [UserGuard] },
-            { path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate: [UserGuard] },
+            {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
+            {path: 'jovem-list/:id', component: JovemListComponent, canActivate:[UserGuard]},
+            {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'jovem-classroom/:type/:id', component: JovemClassroomComponent, canActivate:[UserGuard]},
+            {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
         ],
     },
 
@@ -288,19 +302,22 @@ const appRoutes: Routes = [
         path: '',
         component: EventComponent,
         children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent, canActivate: [UserGuard] },
-            { path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate: [UserGuard] },
-            { path: 'schedule', component: ScheduleComponent, canActivate: [UserGuard] },
-            { path: 'cfas', component: CfasComponent, canActivate: [UserGuard] },
-            { path: 'cecx', component: CecxComponent, canActivate: [UserGuard] },
-            { path: 'voluntarios', component: VoluntariosComponent, canActivate: [UserGuard] },
-            { path: 'livros', component: LivrosComponent, canActivate: [UserGuard] },
-            { path: 'clube-do-livro', component: ClubeDoLivroComponent, canActivate: [UserGuard] },
-            { path: 'palestras', component: PalestrasComponent, canActivate: [UserGuard] },
-            { path: 'editora', component: EditoraComponent, canActivate: [UserGuard] },
-            { path: 'caravan-space', component: CaravanSpaceComponent, canActivate: [UserGuard] },
-
+            {path: '',  redirectTo: 'home', pathMatch: 'full'},
+            {path: 'home', component: HomeComponent, canActivate:[UserGuard]},
+            {path: 'audithorium/:type/:id', component: AudithoriumComponent, canActivate:[UserGuard]},
+            {path: 'schedule', component: ScheduleComponent, canActivate:[UserGuard]},
+            {path: 'cfas', component: CfasComponent, canActivate:[UserGuard]},
+            {path: 'cecx', component: CecxComponent, canActivate:[UserGuard]},
+            {path: 'voluntarios', component: VoluntariosComponent, canActivate:[UserGuard]},
+            {path: 'livros', component: LivrosComponent, canActivate:[UserGuard]},
+            {path: 'clube-do-livro', component: ClubeDoLivroComponent, canActivate:[UserGuard]},
+            {path: 'palestras', component: PalestrasComponent, canActivate:[UserGuard]},
+            {path: 'editora', component: EditoraComponent, canActivate:[UserGuard]},
+            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
+            {path: 'ndc', component: NdcComponent, canActivate:[UserGuard]},
+            {path: 'ndc-activities', component: NdcActivitiesComponent, canActivate:[UserGuard]},
+            {path: 'audithorium-special/:type', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
+            {path: 'audithorium-special/:type/:contentId', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
         ],
     },
     {

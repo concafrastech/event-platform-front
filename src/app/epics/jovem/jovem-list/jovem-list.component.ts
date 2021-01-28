@@ -6,6 +6,7 @@ import { Epic } from 'src/app/models/epic';
 import { Lecture } from 'src/app/models/lecture';
 import { Stage } from 'src/app/models/stage';
 import { Trail } from 'src/app/models/trail';
+import { Classroom } from 'src/app/models/classroom';
 import { ActivityService } from 'src/app/services/activity.service';
 import { ClassroomService } from 'src/app/services/classroom.service';
 import { LectureService } from 'src/app/services/lecture.service';
@@ -30,7 +31,7 @@ export class JovemListComponent implements OnInit, AfterViewInit {
   public lectures: Lecture[] = []; 
   public trails: Trail[] = [];
   public stages: Stage[] = [];
-  public stagesFilteredList: Stage[] = [];
+  public classrooms: Classroom[] = [];
 
   options = { 
     zoomEnabled: true,
@@ -60,8 +61,8 @@ export class JovemListComponent implements OnInit, AfterViewInit {
     let epic = JSON.parse(localStorage.getItem('currentEpic'));
     this.identity = this._userService.getIdentity();
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
-    this.getLectures(1, epic._id);
-    this.getTrails(1,  epic._id);
+    //this.getLectures(1, epic._id);
+    //this.getTrails(1,  epic._id);
     this.getStages(1,  epic._id);
   }
 
@@ -146,8 +147,7 @@ export class JovemListComponent implements OnInit, AfterViewInit {
           this.stages = response.stages;
 
           //incluido filtro das trilhas da ilha
-          this.stagesFilteredList = this.stages.filter((stage: Stage) => stage._id === this.id);
-          this.stages = this.stagesFilteredList;
+          this.stages = this.stages.filter((stage: Stage) => stage._id === this.id);
 
           this.stages.forEach((stage, index) => {
             this.getActivities(page, stage, index);
@@ -186,3 +186,5 @@ export class JovemListComponent implements OnInit, AfterViewInit {
   }
 
 }
+
+

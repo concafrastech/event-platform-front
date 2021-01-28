@@ -1,12 +1,22 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.grid-container-item {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
 .grid-ranking {
   display: grid;
   grid-template-columns: 70% 30%;
   background-color: white;
-
+  align-items: center;
 }
+
 .grid-item-position {
-  background-color: #1EA6EC;
-  border: 1px solid #1EA6EC;
+  background-color: #1ea6ec;
+  border: 1px solid #1ea6ec;
   padding: 20px;
   font-size: 30px;
   font-weight: bold;
@@ -14,23 +24,30 @@
   border-radius: 0px 5px 5px 0px;
   color: white;
 }
+
 .grid-item-user {
-    display: flex;
-  background-image: linear-gradient(to bottom, white,#DCDCDC);
+  background-image: linear-gradient(to bottom, white, #dcdcdc);
   border-radius: 5px 0px 0px 5px;
-  border: 1px solid white;
+  border: 0px solid white;
+  height: 100%;
+  width: 100%;
 }
 
-.flex-item-img{
-    flex: 3;
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
+.flex-item-img {
+  /* flex: 3; */
+  display: inline-block;
+  width: 40%;
+  /* height: 100%;
+  vertical-align: middle; */
+  text-align: center;
 }
 
-.flex-item-info{
-    flex: 4;
-    height: 100%;
-    padding-left: 5px;
-    text-align: left;
+.flex-item-info {
+  /* flex: 4; */
+  
+  display: inline-block;
+  width: 60%;
+  height: 100%;
+  padding-left: 5px;
+  text-align: left;
 }

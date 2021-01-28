@@ -1,31 +1,56 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
   <p class="text-left">Olá, eu sou a Patrícia. Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
   <ul class="list-group list-group-flush">
-    <!-- forcei um id para funcionar pois o cadastro de teste chamava um curso inexistente-->
-    <!-- <li class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'trail', subscription.trails[0]._id]" [routerLinkActive]="['active']">Tema Específico: {{subscription.trails[0].name}}</a></li> -->
-    <li class="list-group-item"><a [routerLink]="['/jovem/jovem-list/', '600757276f6f1200bda3c426']" [routerLinkActive]="['active']">Tema Específico: Arte e Assistência</a></li>
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Escritor</a></li>
+    <!--
+    <li class="list-group-item" *ngFor="let trail of trails">
+      <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Tema Específico: {{trail.name}}</a>
+    </li>
+    -->
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico</a></li>
     <li class="list-group-item" *ngFor="let stage of stages">
-      <a [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
+      <a *ngIf="stage.type.toLowerCase() === 'novas dimensões'" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
+      <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+      <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
     </li>
     <li class="list-group-item"><a [routerLink]="['/jovem/jogos-tematicos']" [routerLinkActive]="['active']">Jogos</a></li>
     <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+    
+  </ul>
+</div>
+   
+<div class="dialogo2" *ngIf="dialog == 'conhecendo'">
+  <p class="justify-left">Olá! Meu nome é Patrícia.<br/>
+    Nasci em um lar espírita, e o Espiritismo me ajudou a entender diversas perguntas que eu tinha sobre a vida, e o mais legal de tudo: aprendi que ela não termina com a morte aqui na Terra.<br/>
+    Eu desencarnei (morri) muito jovem e vim para o mundo espiritual. Aqui eu conheci diversas pessoas, lugares, e você está em um deles agora! Seja bem vindo(a) à ilha da Casa do Escritor!<br/>
+    Tudo aqui foi inspirado no livro que psicografei pelas mãos da médium Vera Lúcia Marinzeck de Carvalho, relatando minhas experiências e conhecimentos recebidos na colônia espiritual A Casa do Escritor.<br/>
+    Aqui, nesta Ilha, assim como na Colônia Espiritual, vamos entrar em contato com muitos conhecimentos valiosos para nossa alma e acessaremos os nossos cursos da CONCAFRAS, os jogos das Novas Dimensões do Conhecimento, os Lançamentos da Mocidade Espírita e muito mais! Legal, né?<br/>
+    Ahh, você pode conhecer mais sobre a minha história e o sobre o mundo espiritual nos livros: "Violetas na janela", "Vivendo no mundo dos espíritos", "A casa do escritor" e "O vôo da gaivota", todos psicografados pela Vera. Te garanto que você vai adorar!</p>
+  <div class="row  align-items-center justify-content-center">
+    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/Violetas Na Janela.jpg"></div>
+    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/Vivendo no Mundo dos Espíritos.jpg"></div>
+    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/A Casa do Escritor.jpg"></div>
+    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/O Vôo da Gaivota.jpg"></div>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
   </ul>
 </div>
 
-<!--
-<div class="dialogo" *ngIf="dialog == 'novas-dimensoes'">
-  <p class="text-left">Qual trilha/atividade você deseja acessar?</p>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let stage of stages">
-      {{stage.name}}
-      <ul>
-          <li class="list-group-item" *ngFor="let activity of stage.activities">
-              <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
-          </li>
-      </ul>
-    </li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>  
-</div>
--->
 
+<div class="dialogo2" *ngIf="dialog == 'temaespecifico'">
+  <p class="justify-left">
+    No momento da inscrição você escolheu um Curso, se lembra?<br/>
+    O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.<br/>
+    Este curso compõe nosso quadro de Temas Específicos da CONCAFRAS!<br/>
+    Estes temas são aulas com trocas de experiências em torno de aspectos doutrinários e metodológicos do trabalho no Centro Espírita e m suas diversas áreas, tais como o trabalho de prática assistencial, reforma íntima, e aqueles realizados por você, jovem!<br/>
+    Sempre associado às aulas teóricas, haverá um momento de aplicação prática dos conhecimentos adquiridos.<br/>
+    Confira os detalhes dos seu Tema Específico abaixo:<br/>
+    <br/>
+    <b>{{this.trails[0].name}}</b><br/>
+    {{this.trails[0].description}}
+  </p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+  </ul>
+</div>

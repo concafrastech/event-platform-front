@@ -1,49 +1,25 @@
-:root {
-    --white: #ffffff;
-    --gray: #212121;
-    --primary: #05668D;
-    --secondary: #028090;
-    --border-radius: 10px;
-    --card-social-item-size: 40px;
-  }
-
-  .nobull {
-      list-style: none;
-  }
- 
- .card5 {
-    border: 0;
-    border-radius: var(--border-radius) 0 var(--border-radius) 0;
-    box-shadow: 0px 5px 10px -5px rgba(0,0,0,0.75);
-    background-color: rgba(128, 128, 128, .5);
-    color: var(--white);
+.nobull {
+   list-style: none;
 }
 
-    .card5 .card-img {
-       border-radius: var(--border-radius) 0 0 0;
-       height: 100%;
-       object-fit: cover;
-    }
+.card {
+   background-color: rgba(47, 47, 47, .9);
+   padding: 5px;
+   border: none;
+   border-radius: 10px;
+   color: white;
+   overflow: hidden;
+}
 
-    .card5 .card-buttons {
-       display: flex;
-       flex-wrap: wrap;
+.card h5 {
+   color: rgb(109, 182, 109);
+   font-weight: bold;;
+}
+
+.small-text {
+   color: lightgray !important;
+}
  
-    }
-    .card5 .card-btn {
-       margin-left: calc(-20px - 2rem);
-       border-radius: 99px;
-       padding: .375rem 2rem;
-       background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-       color: var(--white);
-       transition: .3s;
-    }
-
-    .card5 .card-btn:hover {
-          transform: scale(1.15);
-       }
-    
-
 .fundo {
     background-image: url(/assets/jovem/img/back-game.png);
     position: fixed;
@@ -55,4 +31,126 @@
     background-size: cover;  
     background-repeat: no-repeat;
     z-index: -1;
+}
+
+.fundo {
+   background-image: url(/assets/jovem/img/back-game.png);
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background-position: right top;  
+   background-size: cover;  
+   background-repeat: no-repeat;
+   z-index: -1;
+}
+
+.fundo-escritor {
+   background-image: url(/assets/jovem/img/fundo_escritor_lista.png);
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background-position: right top;  
+   background-size: cover;  
+   background-repeat: no-repeat;
+   z-index: -1;
+}
+
+.fundo-irmas {
+   background-image: url(/assets/jovem/img/fundo_irmas_lista.png);
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background-position: right top;  
+   background-size: cover;  
+   background-repeat: no-repeat;
+   z-index: -1;
+}
+
+.fundo-caminho {
+   background-image: url(/assets/jovem/img/fundo_caminho_lista.png);
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background-position: right top;  
+   background-size: cover;  
+   background-repeat: no-repeat;
+   z-index: -1;
+}
+
+.fundo-vivo {
+   background-image: url(/assets/jovem/img/fundo_vivo_lista.png);
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background-position: right top;  
+   background-size: cover;  
+   background-repeat: no-repeat;
+   z-index: -1;
+}
+
+.fundo-som {
+   background-image: url(/assets/jovem/img/fundo_som_lista.png);
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background-position: right top;  
+   background-size: cover;  
+   background-repeat: no-repeat;
+   z-index: -1;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.img-container {
+   display: inline-block;
+}
+
+.img-container:hover a span {
+   display: block;
+   position: absolute;
+   top: calc(50% - 1.5em);
+   opacity: 1;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   text-align: center;
+   color: #fff;
+   font-size: 3em;
+   z-index: 500;
+}
+
+.img-container a span {
+   display: block;
+   position: absolute;
+   top: -100%;
+   opacity: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   text-align: center;
+   color: #fff;
+   font-size: 3em;
+   z-index: 500;
+}
+
+h1 {
+   color: #fff;
+}
+
+h2 {
+   color: #fff;
 }

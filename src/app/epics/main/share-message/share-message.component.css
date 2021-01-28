@@ -1,0 +1,26 @@
+.btn-main {
+  background: transparent;
+  color: #273b87;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 10px;
+  /* margin: 10px; */
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: solid #273b87 2px;
+  transition: 0.2s;
+}
+
+.btn-main:hover {
+  color: white;
+  background-color: #273b87;
+  border-color: white;
+}
+
+.margin-body:first-child {
+  margin: 0;
+}
+
+.margin-body {
+  margin: 1.5rem 0;
+}

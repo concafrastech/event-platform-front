@@ -7,6 +7,7 @@
     <!-- ============================================================== -->
     <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top background-navbar" role="navigation">
+            <a [routerLink]="" class="back" *ngIf="this._navbarService.ButtonBackIsVisible()" (click)="back()">&lt;Voltar</a>
         </nav>
     </div>
     <!-- ============================================================== -->
@@ -41,7 +42,7 @@
     <!-- ============================================================== -->
     <!-- end wrapper  -->
     <!-- ============================================================== -->
-    
+
 </div>
 <!-- ============================================================== -->
 <!-- end main wrapper  -->

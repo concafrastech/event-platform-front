@@ -11,6 +11,7 @@ import { UserService } from "src/app/services/user.service";
 import { HttpEventType } from "@angular/common/http";
 import { DocumentService } from "src/app/services/document.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Document } from "src/app/models/document";
 
 @Component({
   selector: "app-activity-add",
@@ -35,6 +36,7 @@ export class ActivityAddComponent implements OnInit {
   public alturaTela: number;
   public contentIsValid: boolean = false;
   public isLoading: boolean = true;
+  public thumbnailToUpload: File;
 
   constructor(
     private _route: ActivatedRoute,
@@ -69,7 +71,8 @@ export class ActivityAddComponent implements OnInit {
       null,
       [],
       new Date(),
-      new Date()
+      new Date(),
+      null
     );
     this.activity.stage = new Stage(
       "",
@@ -80,10 +83,10 @@ export class ActivityAddComponent implements OnInit {
       null,
       [],
       new Date(),
-      new Date()
+      new Date(),
+      null
     );
     this.loadPage();
-    
   }
 
   loadPage() {
@@ -111,21 +114,33 @@ export class ActivityAddComponent implements OnInit {
 
   onSubmit() {
     this._spinner.show();
-    this.saveDocuments();
+    this.saveThumbnail();
+  }
+
+  //Salva thumbnail
+  saveThumbnail() {
+    if (this.thumbnailToUpload) {
+      this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+        next: (response) => {
+          //Final do upload
+          if (response.type == HttpEventType.Response) {
+            this.activity.thumbnail = response.body.document;
+          }
+        },
+        error: null,
+        complete: () => {
+          this.saveDocuments();
+        },
+      });
+    } else {
+      this.saveDocuments();
+    }
   }
 
   //Realiza upload e salva os documentos
   saveDocuments() {
-    let index = 0;
     this._contentService.uploadContents(this.activity.contents).subscribe({
-      next: (response) => {
-        //Final do upload
-        if (response.type == HttpEventType.Response) {
-          this.activity.contents[index].file = response.body.document;
-          this.activity.contents[index].fileToUpload = null;
-          index += 1;
-        }
-      },
+      next: (response) => {},
       error: (error) => {
         this._spinner.hide();
         var errorMessage = <any>error;
@@ -167,7 +182,10 @@ export class ActivityAddComponent implements OnInit {
           this.status = "error";
         } else {
           this.status = "success";
-          this._router.navigate(["/admin/activity/edit", response.activity._id]);
+          this._router.navigate([
+            "/admin/activity/edit",
+            response.activity._id,
+          ]);
         }
       },
       (error) => {
@@ -198,6 +216,18 @@ export class ActivityAddComponent implements OnInit {
       if (content.file) {
         this._contentService.deleteContent(content._id).subscribe();
       }
+    });
+  }
+
+  onSelectFile(fileInput: any) {
+    this.thumbnailToUpload = <File>fileInput.target.files[0];
+  }
+
+  onRemoveFile(doc: Document) {
+    this._spinner.show();
+    this._documentService.deleteDocument(doc._id).subscribe((response) => {
+      this._spinner.hide();
+      this.activity.thumbnail = null;
     });
   }
 }

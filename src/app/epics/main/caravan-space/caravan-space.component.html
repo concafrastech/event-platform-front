@@ -9,71 +9,40 @@
 </section>
 <section id="recent-messages" class="caravan-container">
     <div>
+        <h3 class="caravan-header-title">Postagens mais recentes</h3>
+    </div>
+    <div *ngFor="let post of feeds; let i=index">
+        <img src="{{post.thumbnail}}">
+        <sub>{{post.text}}</sub>
+    </div>
+</section>
+<section id="recent-messages" class="caravan-container">
+    <div>
         <h3 class="caravan-header-title">Mensagens mais recentes</h3>
     </div>
-    <div id="carouselControlsRecentMessage" class="carousel slide caravan-carousel-recent" data-ride="carousel">
+    <div id="carouselControlsRecentMessage" class="carousel slide caravan-carousel-recent">
         <ol class="carousel-indicators">
-            <li data-target="#carouselControlsRecentMessage" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselControlsRecentMessage" data-slide-to="1"></li>
-            <!-- <li data-target="#carouselControlsRecentMessage" data-slide-to="2"></li> -->
+            <li *ngFor="let carousel of groupsCarousel; let i=index" [ngClass]="i == actualCarousel ? 'active' : ''"></li>
         </ol>
         <div id="carousel-recent-messages" class="carousel-inner">
-            <div class="carousel-item card-height active">
+            <div class="carousel-item card-height" *ngFor="let carousel of groupsCarousel; let i=index"[ngClass]="i==actualCarousel ? 'active' : ''">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" *ngFor="let message of groupMessages">
                         <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
+                            <span>{{message.message}}</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item card-height">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselControlsRecentMessage" role="button"
-            data-slide="prev">
+        <a class="carousel-control-prev" [routerLink]="" role="button"
+             (click)="previousCarousel()">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselControlsRecentMessage" role="button"
-            data-slide="next">
+        <a class="carousel-control-next" [routerLink]="" role="button"
+             (click)="nextCarousel()">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -82,9 +51,9 @@
 <section id="post-concafras" class="caravan-container">
     <div class="post-content">
         <span class="post-text">
-            Use a <span class="marker-highlight hashtag-text">#concafras</span> no seu post e apareça por aqui!
+            Nos dê o seu <span class="marker-highlight hashtag-text">feedback</span>!!!
         </span>
-        <a class="btn btn-primary btn-post">Deixe seu recado!</a>
+        <a (click)="openShareMessageComponent()" class="btn btn-primary btn-post">Deixe seu recado!</a>
     </div>
 </section>
 <section id="sing-with-us" class="caravan-container">

@@ -1,5 +1,7 @@
+import { NavbarService } from './../../../services/navbar.service';
 import {Component, OnInit, DoCheck, ElementRef, Renderer2} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Location } from '@angular/common';
 import {UserService} from '../../../services/user.service';
 import {GLOBAL} from '../../../services/global';
 import * as $ from 'jquery';
@@ -28,7 +30,7 @@ import {
     selector: 'app-event',
     templateUrl: './event.component.html',
     styleUrls: ['./event.component.css'],
-    providers: [UserService]
+    providers: [UserService, NavbarService]
 })
 export class EventComponent implements OnInit, DoCheck {
     public title: string;
@@ -44,7 +46,7 @@ export class EventComponent implements OnInit, DoCheck {
     public faDoorOpen = faDoorOpen;
     public faQuestionCircle = faQuestionCircle;
     public faUserCircle = faUserCircle;
-    public faHome = faHome;  
+    public faHome = faHome;
     
 
     constructor(
@@ -52,7 +54,9 @@ export class EventComponent implements OnInit, DoCheck {
         private _router: Router,
         private _userService: UserService,
         public _bootstrapAlertService: NgBootstrapAlertService,
-        private _modalService: BsModalService
+        private _modalService: BsModalService,
+        public _navbarService: NavbarService,
+        private location: Location
     ) {
       var epic = localStorage.getItem("epic");
         
@@ -91,5 +95,9 @@ export class EventComponent implements OnInit, DoCheck {
       this.bsModalRef.onHide.subscribe((e) => {
           localStorage.setItem("tutorial", "true");
       });
+    }
+
+    back(){
+      this.location.back();
     }
 }

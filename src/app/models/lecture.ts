@@ -1,5 +1,6 @@
 import { Content } from './content';
 import { Epic } from './epic';
+import { Document } from './document';
 
 export class Lecture {
     constructor(
@@ -13,6 +14,7 @@ export class Lecture {
         public epic: Epic,
         public contents: Content[],
         public created_at: Date,
-        public updated_at: Date
+        public updated_at: Date,
+        public thumbnail: Document
     ) {}
 }

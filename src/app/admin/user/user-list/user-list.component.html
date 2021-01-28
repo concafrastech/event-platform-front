@@ -40,11 +40,11 @@
                         <td>{{user.name}}</td>
                         <td>{{user.nick}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.cidade}}/{{user.uf}}</td>
+                        <td>{{user.city}}/{{user.state}}</td>
                         <td class="actions">
                             <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
                             <a class="btn btn-warning btn-xs" [routerLink]="['/admin/user/edit', user._id]">Editar</a>
-                            <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(user)">Excluir</a>
+                            <a class="btn btn-danger btn-xs" (click)="canDeleteUser(user)">Excluir</a>
                         </td>
                     </tr>
 

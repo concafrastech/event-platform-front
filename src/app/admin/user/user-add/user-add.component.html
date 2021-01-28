@@ -36,7 +36,7 @@
             <input type="text" name="whatsapp" #nick="ngModel" [(ngModel)]="user.whatsapp" class="form-control" />
         </p>
         <div class="user-image-for-edit" *ngIf="user.image">
-            <img src="{{ url + 'get-image-user/' + user.image}}" />
+            <img src="{{ url + 'get-image-user/' + user.image.fileLink}}" />
         </div>
         <p>
             <label>Pais</label>

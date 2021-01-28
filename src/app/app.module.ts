@@ -136,6 +136,9 @@ import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.
 import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
 import { MagneticPassDistanceComponent } from './epics/main/magnetic-pass-distance/magnetic-pass-distance.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
+import { MissionAddComponent } from './admin/mission/mission-add/mission-add.component';
+import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
+import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
 import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
 import { InfanciaInicioComponent } from './epics/infancia/infancia-inicio/infancia-inicio.component';
 import { InfanciaCasaOracaoComponent } from './epics/infancia/pages/infancia-casa-oracao/infancia-casa-oracao.component';
@@ -167,7 +170,12 @@ import { DesenhosImprimirComponent } from './epics/infancia/pages/infancia-ativi
 import { BercarioComponent } from './epics/infancia/pages/infancia-casa-nvl1/bercario/bercario.component';
 import { MaternalComponent } from './epics/infancia/pages/infancia-casa-nvl1/maternal/maternal.component';
 import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardim/jardim.component';
-
+import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
+import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
+import { BookClubComponent } from './epics/main/book-club/book-club.component';
+import { FraternalSupportComponent } from './epics/main/fraternal-support/fraternal-support.component';
+import { NdcActivitiesComponent } from './epics/main/feira/ndc-activities/ndc-activities.component';
+import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -246,6 +254,9 @@ const GamificationConfig = {
     ActivityListComponent,
     ActivityEditComponent,
     ActivityAddComponent,
+    MissionAddComponent,
+    MissionListComponent,
+    MissionEditComponent,
     DashboardComponent,
     DeleteConfirmComponent,
     JovemHomeComponent,
@@ -319,6 +330,12 @@ const GamificationConfig = {
     JardimComponent,
     PadletComponent,
     FlipsnackComponent,
+    ShareMessageComponent,
+    JovemClassroomComponent,
+    BookClubComponent,
+    FraternalSupportComponent,
+    NdcActivitiesComponent,
+    AudithoriumSpecialComponent,
   ],
   imports: [
     BrowserModule,

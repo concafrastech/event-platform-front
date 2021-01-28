@@ -1,0 +1,108 @@
+#ndc-header {
+    background-color: #1EA6EC;
+    background-image: linear-gradient(to right, #A7E0FF, #1EA6EC);
+    padding: 0.2rem 6rem;
+    width: 100%;
+    border-radius: 0.3rem;
+    box-shadow: 4px 2px 10px 0px #3b3b3b;
+}
+
+#ndc-header .ndc-header-card {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#ndc-header .ndc-header-card.ndc-header-item {
+    width: 60%;
+}
+
+#ndc-header .ndc-header-card.ndc-header-img {
+    width: 40%;
+    text-align: right;
+}
+
+.ndc-header-title {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.ndc-header-text {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.ndc-container:first-child {
+    margin-top: 0;
+}
+
+.ndc-container {
+    margin: 2rem 0;
+}
+
+.ndc-row {
+    display: block;
+}
+
+/* ==== IMG ==== */
+.img-size {
+    width: 150px;
+    height: 150px;
+    margin: 0.5rem;
+}
+
+/* ==== NDC CONTENT ==== */
+.margin-card {
+    margin: 0.3rem;
+}
+
+.card {
+    background-image: linear-gradient(#fbfbfb, #dcdcdc);
+    box-shadow: 4px 2px 10px 0px #3b3b3b;
+}
+
+.card .card-div-img {
+    height: 8rem;
+    background-color: blue;
+}
+
+.card .card-div-img .card-div-img-size {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.2rem;
+}
+
+.card .card-div-text {
+    height: 6rem;
+    padding: 0.8rem 0;
+}
+
+.card .card-div-text .card-div-text-content {
+    display: block;
+    color: #273B87;
+    text-align: center;
+}
+
+/* ==== RESPONSIVE ==== */
+@media only screen and (max-width:1400px) {
+    /* ==== GERAL ==== */
+    .ndc-header-title {
+        font-size: 18px;
+    }
+
+    .ndc-header-text {
+        font-size: 10px;
+    }
+
+    /* ==== IMG ==== */
+    .img-size {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* ==== NDC CONTENT ==== */
+    .card .card-div-text {
+        height: 8rem;
+    }
+}

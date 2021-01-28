@@ -4,7 +4,7 @@
     background-image: url('/assets/concafras2021/concafronas/fundo_tenda.png') !important ;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    background-position: center !important ; 
+    background-position: center !important ;
 }
 
 .welcome {
@@ -40,8 +40,25 @@
 }
 
 #svgMap {
-    padding: 10px;
-    float: right;
-    width: 70%;
-    right: 0px;
+    position: relative;
+    width: 100%;
+    right: -2rem;
+    top: -11rem;
+}
+
+.pisca {
+    opacity: 0.6;
+}
+
+.pisca:hover {
+    opacity: 1;
+}
+
+/* ==== RESPONSIVE ==== */
+@media only screen and (max-width:1400px) {
+    #svgMap {
+        height: 30rem;
+        right: -4rem;
+        top: -4rem;
+    }
 }

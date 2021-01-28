@@ -1,9 +1,33 @@
 <div class="dialogo" *ngIf="dialog == 'inicial'">
     <p class="text-left">Olá, eu sou a Marita! Que alegria te receber no Instituto Almas Irmãs! Aqui vamos aprender um pouco mais sobre as nossas relações e interagir uns com os outros! Escolha uma das opções abaixo:</p>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item"><a [routerLink]="['/jovem/ilha-irma/dialogo/historias']" [routerLinkActive]="['active']">Histórias</a></li>
-      <li class="list-group-item"><a [routerLink]="['/jovem/ilha-irma/dialogo/de-jovem-para-jovem']" [routerLinkActive]="['active']">De Jovem para Jovem</a></li>
-      <li class="list-group-item"><a [routerLink]="['/jovem/ilha-irma/dialogo/confraternizacao']" [routerLinkActive]="['active']">Confraternização e Tira Dúvidas da Mocidade</a></li>
+      <li class="list-group-item"><a [routerLink]="['/jovem/ilha-irmas/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo o Instituto Almas Irmãs</a></li>
+      <li class="list-group-item" *ngFor="let stage of stages">
+        <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+        <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+        <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
+      </li>
+      <li class="list-group-item color-red" *ngFor="let lecture of lectures">
+        <a class="color-red" [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}} ({{lecture.start_time | date: "dd/MM" }} {{lecture.start_time | date: "HH:mm" }}-{{lecture.end_time | date: "HH:mm" }})</a>
+      </li>
       <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
     </ul>
   </div>
+
+     
+<div class="dialogo2" *ngIf="dialog == 'conhecendo'">
+  <p class="justify-left">
+    Olá, me chamo Marita, sou estudante aqui do Instituto Almas Irmãs, relatado pelo espírito de André Luiz no livro Sexo e Destino, psicografia de Chico Xavier.<br/>
+    O Instituto Almas Irmãs foi construído no plano espiritual por Mentores elevados, a fim de levarem socorro à pessoas necessitados de reeducação sexual e que, após a desencarnação (morte), exibiam diversos comprometimentos neste campo da vida.<br/>
+    A energia sexual é uma energia poderosa de criação e alimentação da vida, mas a maioria de nós, quando encarnados, "vivos" aí na Terra, utiliza mal esse instrumento.<br/>
+    Assim, no Instituto temos diversos cursos como: "Sexo e amor", "Sexo e matrimônio", "Sexo e maternidade", "Sexo e estímulo", Sexo e equilíbrio", "Sexo e medicina",. "Sexo e evolução", "Sexo e penalogia", ufa, muita coisa né!? Tudo isso a fim de nos ensinar e equilibrar.<br/>
+    Mas já digo, ninguém precisa morrer para poder aprender e se reeducar no campo do sexo. Graças a Deus temos o Espiritismo, que nos esclarece e orienta como melhor proceder em todos os setores da vida.<br/>
+    E aqui, na Ilha da Estação Jovem da CONCAFRAS, vamos ter a oportunidade de conhecer histórias de alguns jovens e aprender com elas, e também interagir com conteúdos produzidos por diversas Mocidades Espíritas sobre estes e outros assuntos. Vamos lá?
+  </p>
+  <div class="row  align-items-center justify-content-center">
+    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/Sexo e Destino.jpg"></div>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-irmas/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+  </ul>
+</div>

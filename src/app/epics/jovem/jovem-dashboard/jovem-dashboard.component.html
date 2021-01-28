@@ -1,28 +1,30 @@
 <div class="wrapper">
   <!-- Sidebar Holder -->
   <nav id="sidebar">
-    <div class="sidebar-header">
-
-      <a class="nav-link text-center" [routerLink]="['/jovem/home']" ><img class="img-fluid rounded-circle col mx-auto text-center" src="assets/jovem/img/user.jpg" width="50px" height="50px" > Bem vindo,<br/>{{identity.name}}!</a>
-      
-      <div class="text-center mx-auto" >
-        <img src="assets/jovem/icons/terra.svg" >
-        <p class="text-center" style="color: #fff;">Nível Terra <br>0 pontos</p>
-      </div>
-
-    </div>
-
     <ul class="list-unstyled components">
+      <li class="text-center">
+        <a class="nav-link text-center" [routerLink]="['/jovem/meus-dados']">
+          <img class="img-fluid rounded-circle px-4" src="assets/jovem/img/user.jpg">
+          <p >Bem vindo(a),<br/>{{identity.name}}!</p>
+        </a>
+      </li>
+
+      <li class="text-center">
+        <a class="nav-link text-center disabled" [routerLink]="">
+          <img class="img-fluid" src="{{user.level.icon}}">
+          <p>Nível {{user.level.badge}}<br/>{{user.points}} pontos</p>
+        </a>
+      </li>
+      <li class="text-center">
+        <a [routerLink]="['/jovem/home']">
+          <img class="img-fluid" src="assets/concafras2021/concafronas/icones/home.svg">
+          <p >Página inicial</p>
+        </a>
+      </li>
       <li class="text-center">
         <a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">
           <img class="img-fluid" src="assets/jovem/icons/calendar.svg">
           <p >Programação</p>
-        </a>          
-      </li>
-      <li class="text-center">
-        <a [routerLink]="['/jovem/home']">
-          <img class="img-fluid" src="assets/jovem/icons/auta.svg"  >
-          <p >Acesso inicial</p>
         </a>
       </li>
       <li class="text-center">
@@ -34,19 +36,24 @@
       <li class="text-center">
         <a href="">
           <img class="img-fluid" src="assets/jovem/icons/coracao.svg" >
-          <p >Amparo Fraterno: Quer conversar?</p>
+          <p >Amparo Fraterno:<br/>Quer conversar?</p>
         </a>
       </li>
       <li class="text-center">
         <a href="#" data-toggle="modal" data-target="#navegar">
           <img class="img-fluid" src="assets/jovem/icons/duvida.svg" >
-          <p >Como navegar</p>
+          <p>Como navegar</p>
         </a>
       </li>
       <li class="text-center">
-
+        <a href="#" data-toggle="modal" data-target="#navegar">
+          <img class="img-fluid" src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" >
+          <p>Dúvidas?</p>
+        </a>
+      </li>
+      <li class="text-center">
         <a [routerLink]="['/select-journey']">
-          <img class="img-fluid" src="assets/jovem/icons/sair.svg" >
+          <img class="img-fluid" src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" >
           <p >Sair</p>
         </a>
       </li>
@@ -107,47 +114,6 @@
 
 
     <!-- final do conteúdo -->
-  </div>
-</div>
-
-
-<!-- Modal programação -->
-<div class="modal fade" id="programacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Programação</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Programação
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Passe a Distância -->
-<div class="modal fade" id="passedistancia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Passe a Distância</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Passe a Distância
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
   </div>
 </div>
 

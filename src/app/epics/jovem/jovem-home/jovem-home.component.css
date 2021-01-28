@@ -80,6 +80,15 @@
  .ilha:hover .titulo-ilha{
   visibility: visible;
 }
+
+.ilha:hover img {
+  cursor: url(/assets/jovem/img/aerobus_med.cur), auto;
+}
+
+.container {
+cursor: url(/assets/jovem/img/aerobus_med.cur), auto;
+}
+
 }
 
 

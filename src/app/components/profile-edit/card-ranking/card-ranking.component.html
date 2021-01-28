@@ -1,13 +1,19 @@
-<div class="grid-ranking">
-    <div class="grid-item-user">
-        <div class="flex-item-img" style="background-color: teal;">
-            <span>imagem</span>
+<div class="grid-container">
+    <div class="grid-container-item" *ngFor="let item of rankingList; let i=index">
+        <div class="grid-ranking">
+            <div class="grid-item-user align-items-center">
+                <div class="flex-item-img">
+                    <fa-icon [icon]="faUserCircle" size="3x"></fa-icon>
+                </div>
+                <div class="flex-item-info">
+                    <span>laura</span><br>
+                    <span>laura</span><br>
+                    <span>laura</span>
+                </div>
+            </div>
+            <div class="grid-item-position">
+                <span>{{i+1}}º</span>
+            </div>
         </div>
-        <div class="flex-item-info" style="background-color: thistle">
-            <span>laura</span>
-        </div>
-    </div>
-    <div class="grid-item-position">
-        <span>1º</span>
     </div>
 </div>

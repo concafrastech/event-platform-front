@@ -37,7 +37,7 @@ export class AudithoriumComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
+
   }
 
   ngAfterContentInit(): void {
@@ -61,7 +61,7 @@ export class AudithoriumComponent implements OnInit {
         case "classroom": {
           this._classroomService.getClassroom(id).subscribe((response) => {
             this.classroom = response.classroom;
-            this.handleDisplay(this.lecture.contents);
+            this.handleDisplay(this.classroom.contents);
           });
           break;
         }
@@ -79,12 +79,12 @@ export class AudithoriumComponent implements OnInit {
   //Prepara exibição inicial
   handleDisplay(contents: Content[]) {
     this.contents = contents;
-    this.actualContent = this.lecture.contents[0];
+    this.actualContent = this.contents[0];
     if(this.actualContent.type == 'doc'){
       this.actualContent.url = this.actualContent.file.fileLink
     }
     console.log(this.contents);
-    
+
     this.index = 0;
     this.timeToMoveForward();
   }
@@ -94,7 +94,7 @@ export class AudithoriumComponent implements OnInit {
     this.actualContent = null;
     if (this.contents) {
       if (this.index < this.contents.length - 1) {
-        
+
         this.canMoveForward = false;
         this.index += 1;
         this.actualContent = this.contents[this.index];

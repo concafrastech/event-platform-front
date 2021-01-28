@@ -12,6 +12,7 @@ import { DocumentService } from "src/app/services/document.service";
 import { Content } from "src/app/models/content";
 import { HttpEventType } from "@angular/common/http";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Document } from "src/app/models/document";
 
 @Component({
   selector: "app-lecture-edit",
@@ -36,6 +37,7 @@ export class LectureEditComponent implements OnInit {
   public contentIsValid: boolean = false;
   public alturaTela;
   public isLoading: boolean = true;
+  public thumbnailToUpload: File;
 
   constructor(
     private _route: ActivatedRoute,
@@ -68,7 +70,8 @@ export class LectureEditComponent implements OnInit {
       null,
       [],
       new Date(),
-      new Date()
+      new Date(),
+      null
     );
     this.lecture.epic = new Epic(
       "",
@@ -109,6 +112,13 @@ export class LectureEditComponent implements OnInit {
           lecture.start_time = new Date(lecture.start_time);
           lecture.end_time = new Date(lecture.end_time);
           this.lecture = lecture;
+          this._spinner.hide();
+          this._documentService
+            .getDocument(this.lecture.thumbnail)
+            .subscribe((response) => {
+              this.lecture.thumbnail = response.document;
+            });
+
           if (this.lecture.contents) {
             this.getContents();
           } else {
@@ -129,17 +139,19 @@ export class LectureEditComponent implements OnInit {
 
   getContents() {
     this.lecture.contents.forEach((content, index) => {
-      this._contentService.getContent(content._id).subscribe((response) => {
-        this.lecture.contents[index] = response.content;
-        this._spinner.hide();
-        if (this.lecture.contents[index].file) {
-          let idFile = this.lecture.contents[index].file;
-          this.getDocuments(this.lecture.contents[index], idFile);
+      this._contentService.getContent(content._id).subscribe(
+        (response) => {
+          this.lecture.contents[index] = response.content;
+          this._spinner.hide();
+          if (this.lecture.contents[index].file) {
+            let idFile = this.lecture.contents[index].file;
+            this.getDocuments(this.lecture.contents[index], idFile);
+          }
+        },
+        (error) => {
+          this._spinner.hide();
         }
-      }, 
-      (error) => {
-        this._spinner.hide();
-      });
+      );
     });
   }
 
@@ -170,28 +182,33 @@ export class LectureEditComponent implements OnInit {
 
   onSubmit() {
     this._spinner.show();
-    this.saveDocuments();
+    this.saveThumbnail();
+  }
+
+  //Salva thumbnail
+  saveThumbnail() {
+    if (this.thumbnailToUpload) {
+      this._contentService.uploadFile(this.thumbnailToUpload).subscribe({
+        next: (response) => {
+          //Final do upload
+          if (response.type == HttpEventType.Response) {
+            this.lecture.thumbnail = response.body.document;
+          }
+        },
+        error: null,
+        complete: () => {
+          this.saveDocuments();
+        },
+      });
+    }else{
+      this.saveDocuments();
+    }
   }
 
   //Realiza upload e salva os documentos
   saveDocuments() {
-    let index = 0;
     this._contentService.uploadContents(this.lecture.contents).subscribe({
-      next: (response) => {
-        //Uploads anteriores retornam Documents como resposta
-        if (response.document) {
-          this.lecture.contents[index].file = response.document;
-          this.lecture.contents[index].fileToUpload = null;
-          index += 1;
-        }
-
-        //Novos uploads retornam HttpEventType como resposta
-        if (response.type == HttpEventType.Response) {
-          this.lecture.contents[index].file = response.body.document;
-          this.lecture.contents[index].fileToUpload = null;
-          index += 1;
-        }
-      },
+      next: (response) => {},
       error: (error) => {
         this._spinner.hide();
         var errorMessage = <any>error;
@@ -244,5 +261,17 @@ export class LectureEditComponent implements OnInit {
         }
       }
     );
+  }
+
+  onSelectFile(fileInput: any) {
+    this.thumbnailToUpload = <File>fileInput.target.files[0];
+  }
+
+  onRemoveFile(doc: Document) {
+    this._spinner.show();
+    this._documentService.deleteDocument(doc._id).subscribe((response) => {
+      this._spinner.hide();
+      this.lecture.thumbnail = null;
+    });
   }
 }

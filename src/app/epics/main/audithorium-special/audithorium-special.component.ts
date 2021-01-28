@@ -54,6 +54,7 @@ export class AudithoriumSpecialComponent implements OnInit {
         this.title = "Campanha de Fraternidade Auta de Souza";
         this.description = "Uma campanha de arrecadação de alimentos.";
         this.pageTarget = "https://forms.gle/5VfA4iy2nk7EHjk36";
+        // this.pageTarget = "https://docs.google.com/forms/d/e/1FAIpQLSfNUzA8FGb7tB7w3OW4E50I_OIBF_N1K5wcIsuOWLDW7OtQJg/viewform?embedded=true";
         this.actualContent = this.temporaryContent(
           "https://youtu.be/OaVJTAvHSXk"
         );

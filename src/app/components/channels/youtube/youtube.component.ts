@@ -16,6 +16,9 @@ export class YoutubeComponent {
   constructor(private modalService: BsModalService) { }
 
   openModal(template: TemplateRef<any>, linkvideo: string) {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
     this.modalRef = this.modalService.show(template);
     
     this.linkvideo = linkvideo;

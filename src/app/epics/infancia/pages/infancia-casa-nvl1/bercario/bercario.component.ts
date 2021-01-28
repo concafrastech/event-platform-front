@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-bercario',
   templateUrl: './bercario.component.html',
   styleUrls: ['./bercario.component.css']
 })
-export class BercarioComponent implements OnInit {
+export class BercarioComponent {
+  modalRef: BsModalRef;
 
-  constructor() { }
+  constructor(private modalService: BsModalService) { }
 
-  ngOnInit(): void {
+  openModal(template: TemplateRef<any>) {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+    this.modalRef = this.modalService.show(template);
   }
-
 }

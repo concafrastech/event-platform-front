@@ -13,6 +13,9 @@ export class InfanciaBomSamaritanoComponent {
   constructor(private modalService: BsModalService) { }
 
   openModal(template: TemplateRef<any>) {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
     this.modalRef = this.modalService.show(template);
   }
 }

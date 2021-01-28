@@ -18,6 +18,9 @@ export class InfanciaCasaOracaoComponent {
 
   // openModal(template: TemplateRef<any>, linkvideo: string) {
   openModal(template: TemplateRef<any>) {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
     this.modalRef = this.modalService.show(template);
     // this.linkvideo = linkvideo;
   }

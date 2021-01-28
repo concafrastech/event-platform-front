@@ -8,8 +8,7 @@
         </a>
 
         <a href="/concafrinhas/home">
-            <img class="btn-home buttons" src="assets/concafras2021/concafrinhas/btn-home.png"
-                title="Circo">
+            <img class="btn-home buttons" src="assets/concafras2021/concafrinhas/btn-home.png" title="Circo">
         </a>
 
         <a href="/concafrinhas/audithorium">
@@ -17,23 +16,218 @@
                 title="Enviar arquivos">
         </a>
 
-        <a href="/concafrinhas/audithorium">
-            <img class="t1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalTemaCentral.png"
-                title="Tema Central">
-        </a>
+        <img class="t1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalTemaCentral.png"
+            (click)="openModal(templateTC)" title="Tema Central">
 
-        <a href="/concafrinhas/audithorium">
-            <img class="t2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalOficinaArte.png"
-                title="Oficina de Arte">
-        </a>
+        <img class="t2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalOficinaArte.png"
+            (click)="openModal(templateOA)" title="Oficina de Arte">
 
-        <a href="/concafrinhas/audithorium">
-            <img class="t3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalTemaEspecifico.png"
-                title="Tema Especifico">
-        </a>
+        <img class="t3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalTemaEspecifico.png"
+            (click)="openModal(templateListaTE)" title="Tema Especifico">
 
         <img class="principal" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalInterior.jpg">
 
     </div>
 
 </div>
+
+
+<ng-template #templateTC>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema Central</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/QtVC6hDadQI" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/c9y1seqjiq" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Central - Maternal e Jardim.pdf" download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #templateOA>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Arte: Recorte e Colagem</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/YbgFJ6Kx6oY" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #templateListaTE>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left" style="color: white;">Selecione abaixo o tema escolhido na inscrição:</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body-list">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" (click)="openModal(templateTE1)">Lar de Idosos</li>
+                <li class="list-group-item" (click)="openModal(templateTE2)">Amor à natureza</li>
+                <li class="list-group-item" (click)="openModal(templateTE3)">Jesus no Lar</li>
+            </ul>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE1>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Lar de Idosos</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/rhJXO9tuzXg" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/x9eo80apma" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Lar de idosos.pdf" download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE2>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Amor à Natureza</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/R7mBtNTUfCY" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/vc30c9jd1j" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Amor à Natureza.pdf" download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE3>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Jesus no lar</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/lUJ0fGcio9A" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/tn0xe645s4" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Jesus no lar.pdf" download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

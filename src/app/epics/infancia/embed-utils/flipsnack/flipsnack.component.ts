@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { SafePipe } from '../../../../utils/safe.pipe';
+
 
 @Component({
   selector: 'app-flipsnack',
@@ -8,8 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FlipsnackComponent implements OnInit {
 
-  @Input() public hash: string;
-	
+  public linkUrl: string;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -19,7 +20,8 @@ export class FlipsnackComponent implements OnInit {
 	ngOnInit(): void {
 		this._route.params.subscribe(params => {
 			let hash: string = params['hash'];
-			this.hash = hash;
+
+			this.linkUrl = `https://cdn.flipsnack.com/widget/v2/widget.html?hash=${hash}`;
 		});
 	}
 

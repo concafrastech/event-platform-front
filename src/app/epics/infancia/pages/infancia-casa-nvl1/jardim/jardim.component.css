@@ -37,7 +37,14 @@ img {
     height: auto;
 }
 
+.btns-opts {
+    width: stretch;
+    height: auto;
+}
 
+.options-item {
+    padding-bottom: 15px;
+}
 
 .btn-voltar {
     width: 7%;
@@ -62,7 +69,7 @@ img {
 
 .principal {
     max-width: 100%;
-    height: 100%;
+    height: auto;
     vertical-align: middle;
 }
 
@@ -76,7 +83,7 @@ img {
 .modal-body iframe {
     border: 0;
     box-shadow: inherit;
-    width: -moz-available;
+    width: stretch;
     height: 450px;
 }
 
@@ -148,10 +155,7 @@ button.close span {
     outline: 0;
 }
 
-.dialogo p{
-	color:#fff;
-	font-size: 1.5rem;
-}
+
 
 .list-group-item{
 	background-color: #fff0 !important;

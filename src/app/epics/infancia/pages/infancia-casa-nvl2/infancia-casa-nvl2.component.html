@@ -12,23 +12,642 @@
                 title="Enviar arquivos">
         </a>
 
-        <a href="/concafrinhas/audithorium">
-            <img class="porta1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2TemaCentral.png"
-                title="Tema Central">
-        </a>
+        <img class="porta1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2TemaCentral.png"
+            (click)="openModal(templateTC)" title="Tema Central">
 
-        <a href="/concafrinhas/audithorium">
-            <img class="porta2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2OficinaArte.png"
-                title="Oficina de Arte">
-        </a>
+        <img class="porta2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2OficinaArte.png"
+            (click)="openModal(templateListaOA)" title="Oficina de Arte">
 
-        <a href="/concafrinhas/audithorium">
-            <img class="porta3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2TemaEspecifico.png"
-                title="Tema Especifico">
-        </a>
+        <img class="porta3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2TemaEspecifico.png"
+            (click)="openModal(templateListaTE)" title="Tema Especifico">
 
         <img class="principal" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2Interior.jpg">
 
     </div>
 
 </div>
+
+
+
+<ng-template #templateTC>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema Central</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/6A9N_e0piNE" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/h9exlq0n30" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Central - Nível2.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #templateListaOA>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left" style="color: white;">Selecione abaixo o tema escolhido na inscrição:</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body-list">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" (click)="openModal(templateOA1)">Oficina de Música</li>
+                <li class="list-group-item" (click)="openModal(templateOA2)">Oficina de Cartão</li>
+                <li class="list-group-item" (click)="openModal(templateOA3)">Oficina de Fantoche: Boneco de Meia</li>
+                <li class="list-group-item" (click)="openModal(templateOA4)">Oficina de Poesia</li>
+                <li class="list-group-item" (click)="openModal(templateOA5)">Oficina de Dobradura</li>
+                <li class="list-group-item" (click)="openModal(templateOA6)">Oficina de Brinquedos: Carrinho e Trilha
+                </li>
+            </ul>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateOA1>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Música</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/50YSiOZzXGU" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateOA2>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Cartão</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/--2-5_m_POQ" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateOA3>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Fantoche - Boneco de Meia</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/t2lsqdq4LsI" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateOA4>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Poesia</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/M952qepUERI" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateOA5>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Dobradura</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/ZmTm5Ptr1Q" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateOA6>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Brinquedos: Carrinho e Trilha</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Qf6lhS6d170" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
+
+
+<ng-template #templateListaTE>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left" style="color: white;">Selecione abaixo o tema escolhido na inscrição:</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body-list">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" (click)="openModal(templateTE1)">Alegria de viver: Suicídio Nunca</li>
+                <li class="list-group-item" (click)="openModal(templateTE2)">Família</li>
+                <li class="list-group-item" (click)="openModal(templateTE3)">Arte e Assistência</li>
+                <li class="list-group-item" (click)="openModal(templateTE4)">CFAS</li>
+                <li class="list-group-item" (click)="openModal(templateTE5)">Drogas Não!</li>
+                <li class="list-group-item" (click)="openModal(templateTE6)">Em defesa da vida - Campanha Madre Tereza
+                    de Calcutá</li>
+                <li class="list-group-item" (click)="openModal(templateTE7)">Culto do Evangelho no lar</li>
+                <li class="list-group-item" (click)="openModal(templateTE8)">Conduta Cristã</li>
+                <li class="list-group-item" (click)="openModal(templateTE9)">Alcoolismo como evitar</li>
+                <li class="list-group-item" (click)="openModal(templateTE10)">Comunicação Social Espírita</li>
+            </ul>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE1>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Alegria de viver, Suicídio Nunca</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/_Ou73OKXeKA" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/dp52j3mzhm" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Alegria de Viver.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE2>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Família</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/m3LyThCKhiE" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/c827aeqjiq" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Família.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE3>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Arte e Assistência</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/UgwCx5I7LBI" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/19yvl0apma" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Arte e Assistência.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE4>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: CFAS</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/8pNX2iASwC0" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/dpad5slcjl" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - CFAS.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE5>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Drogas Não!</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/zckOiw2X00k" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/v7cfd1x2gx" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Drogas Não.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE6>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Em defesa da vida - Campanha Madre Tereza de Calcutá</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/k7AgG3WluVQ" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/1p0b5lfunf" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Campanha em Defesa da Vida - Madre Tereza.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE7>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Culto do Evangelho no lar</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/tXG7HR-kwXU" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/7kf29i3xu3" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Culto do Evangelho no lar.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE8>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Conduta Cristã</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/6s3GxAnjSoY" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/xhfrfask9s" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Conduta Cristã.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE9>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Alcoolismo como evitar</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/J-aInkAsvUk" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/h90b5lfunf" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Alcoolismo como evitar.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE10>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Comunicação Social Espírita</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ehGyoDOWaRo" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/h5qrfask9s" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Nivel2 - Comunicação Social Espirita.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>

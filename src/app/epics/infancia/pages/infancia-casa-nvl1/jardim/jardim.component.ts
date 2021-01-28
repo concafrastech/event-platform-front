@@ -13,7 +13,17 @@ export class JardimComponent {
   constructor(private modalService: BsModalService) { }
 
   openModal(template: TemplateRef<any>) {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
     this.modalRef = this.modalService.show(template);
   }
 
+
+
+  closeAllModals() {
+    for (let i = 1; i <= this.modalService.getModalsCount(); i++) {
+      this.modalService.hide(i);
+    }
+  }
 }

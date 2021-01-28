@@ -1,3 +1,4 @@
+
 // Modules
 import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
@@ -152,6 +153,8 @@ import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/pages/infan
 
 
 
+
+import { FlipsnackComponent } from './epics/infancia/embed-utils/flipsnack/flipsnack.component';
 
 import { PadletComponent } from './epics/infancia/embed-utils/padlet/padlet.component';
 import { InfanciaParquinhoComponent } from './epics/infancia/pages/infancia-parquinho/infancia-parquinho.component';
@@ -315,6 +318,7 @@ const GamificationConfig = {
     MaternalComponent,
     JardimComponent,
     PadletComponent,
+    FlipsnackComponent,
   ],
   imports: [
     BrowserModule,

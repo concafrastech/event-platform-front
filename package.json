@@ -55,7 +55,7 @@
     "rxjs-compat": "^6.3.3",
     "social-feed-api": "^1.1.3",
     "svg-pan-zoom": "^3.6.1",
-    "tslib": "^2.0.0",
+    "tslib": "^2.1.0",
     "video.js": "^7.9.7",
     "videojs-resolution-switcher": "^0.4.2",
     "videojs-youtube": "^2.6.1",

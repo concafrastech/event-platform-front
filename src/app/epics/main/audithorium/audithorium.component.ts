@@ -68,7 +68,7 @@ export class AudithoriumComponent implements OnInit {
         case "activity": {
           this._activityService.getActivity(id).subscribe((response) => {
             this.activity = response.activity;
-            this.handleDisplay(this.activity.contents);
+            this.handleDisplay(this.lecture.contents);
           });
           break;
         }

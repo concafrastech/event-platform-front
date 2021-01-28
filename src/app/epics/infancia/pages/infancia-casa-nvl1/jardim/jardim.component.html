@@ -1,0 +1,238 @@
+<div class="jardim">
+
+    <div class="container-total">
+
+        <a href="/concafrinhas/casa-nvl-1">
+            <img class="btn-voltar buttons" src="assets/concafras2021/concafrinhas/btn-voltar.png" alt="Voltar"
+                title="Voltar">
+        </a>
+
+        <a href="/concafrinhas/home">
+            <img class="btn-home buttons" src="assets/concafras2021/concafrinhas/btn-home.png" title="Circo">
+        </a>
+
+        <a href="/concafrinhas/nosso-mural" target="_blank" rel="noopener noreferrer">
+            <img class="btn-upload buttons" src="assets/concafras2021/concafrinhas/btn-upload.png" alt="Enviar arquivos"
+                title="Enviar arquivos">
+        </a>
+
+
+        <img class="t1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Jardim/JardimTemaCentral.png"
+            title="Tema Central" (click)="openModal(templateTC)">
+
+        <img class="t2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Jardim/JardimOficinaArte.png"
+            title="Oficina de Arte" (click)="openModal(templateOA)">
+
+        <img class="t3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Jardim/JardimTemaEspecifico.png"
+            title="Tema Especifico" (click)="openModal(templateListaTE)">
+
+
+        <img class="principal" src="assets/concafras2021/concafrinhas/CasaNivel1/Jardim/JardimInterior.jpg">
+
+    </div>
+
+</div>
+
+
+<ng-template #templateTC>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema Central</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/HwTt7uap7aI" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/c9y1seqjiq" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Central - Maternal e Jardim.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #templateOA>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Arte: Boneco De Graveto</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/nInIFIAAxmI" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #templateListaTE>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left" style="color: white;">Selecione abaixo o tema escolhido na inscrição:</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body-list">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" (click)="openModal(templateTE1)">Paz no Lar/ Paz no Mundo</li>
+                <li class="list-group-item" (click)="openModal(templateTE2)">Arte a Assistência</li>
+                <li class="list-group-item" (click)="openModal(templateTE3)">CFAS</li>
+            </ul>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE1>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Paz no Lar/ Paz no Mundo</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Txc1Kp9r-fo" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/1k30c9jd1j" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Jardim - Paz no lar, paz no mundo.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE2>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Arte e Assistência</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ZRVBsgwH2W0" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/x90xfq0n30" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Jardim - Arte e Assistência.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE3>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: CFAS</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/TifJiT07Mjs" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/1n3b80apma" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Jardim - Campanha da Fraternidade Auta de Souza.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

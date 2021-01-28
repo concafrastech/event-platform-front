@@ -166,7 +166,7 @@ export class HubComponent implements OnInit, AfterViewInit {
 
       case "ccex":
         console.log("ccex");
-        this.redirectToFromSvg("/audithorium-special/ccex");
+        this.redirectToFromSvg("/audithorium-special/cecx");
         break;
 
       case "cfas":

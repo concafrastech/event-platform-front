@@ -1,7 +1,17 @@
+import { InfanciaParquinhoComponent } from './epics/infancia/pages/infancia-parquinho/infancia-parquinho.component';
+// import { InfanciaGamesComponent } from './../../.history/src/app/epics/infancia/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component_20210123190848';
+// import { InfanciaGamesComponent } from './epics/infancia/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
+import { PadletComponent } from './epics/infancia/embed-utils/padlet/padlet.component';
+import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/pages/infancia-circo-concafrinhas/infancia-circo-concafrinhas.component';
+import { InfanciaRodaAlegriaComponent } from './epics/infancia/pages/infancia-roda-alegria/infancia-roda-alegria.component';
+import { InfanciaCasaNvl2Component } from './epics/infancia/pages/infancia-casa-nvl2/infancia-casa-nvl2.component';
+import { InfanciaCantinhoHistoriaComponent } from './epics/infancia/pages/infancia-cantinho-historia/infancia-cantinho-historia.component';
+import { InfanciaCasaOracaoComponent } from './epics/infancia/pages/infancia-casa-oracao/infancia-casa-oracao.component';
+import { InfanciaInicioComponent } from './epics/infancia/infancia-inicio/infancia-inicio.component';
 import { NdcActivitiesComponent } from './epics/main/feira/ndc-activities/ndc-activities.component';
 import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 import { ModuleWithProviders } from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -49,7 +59,7 @@ import { StageAddComponent } from './admin/stage/stage-add/stage-add.component';
 import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
 import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
 import { ActivityListComponent } from './admin/activity/activity-list/activity-list.component';
-import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
+// import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
 import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
@@ -64,7 +74,7 @@ import { Ilha2Component } from './epics/jovem/pages/ilha2/ilha2.component';
 import { Ilha3Component } from './epics/jovem/pages/ilha3/ilha3.component';
 import { Ilha4Component } from './epics/jovem/pages/ilha4/ilha4.component';
 import { Ilha5Component } from './epics/jovem/pages/ilha5/ilha5.component';
-import { Ilha1DialogoComponent} from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
+import { Ilha1DialogoComponent } from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { Ilha2DialogoComponent } from './epics/jovem/pages/ilha2/ilha2-dialogo/ilha2-dialogo.component';
 import { Ilha3DialogoComponent } from './epics/jovem/pages/ilha3/ilha3-dialogo/ilha3-dialogo.component';
@@ -87,6 +97,18 @@ import { CfasComponent } from './epics/main/feira/cfas/cfas.component';
 import { CaravanSpaceComponent } from './epics/main/caravan-space/caravan-space.component';
 import { GamesComponent } from './epics/jovem/pages/ilha1/jogos-tematicos/games/games.component';
 import { JovemListComponent } from './epics/jovem/jovem-list/jovem-list.component';
+import { InfanciaBomSamaritanoComponent } from './epics/infancia/pages/infancia-bom-samaritano/infancia-bom-samaritano.component';
+import { BrincadeirasComponent } from './epics/infancia/pages/infancia-parquinho/brincadeiras/brincadeiras.component';
+import { InfanciaAtividadesComponent } from './epics/infancia/pages/infancia-atividades/infancia-atividades.component';
+import { LaborterapiasComponent } from './epics/infancia/pages/infancia-atividades/laborterapias/laborterapias.component';
+import { DesenhosImprimirComponent } from './epics/infancia/pages/infancia-atividades/desenhos-imprimir/desenhos-imprimir.component';
+import { InfanciaCasaNvl1Component } from './epics/infancia/pages/infancia-casa-nvl1/infancia-casa-nvl1.component';
+import { BercarioComponent } from './epics/infancia/pages/infancia-casa-nvl1/bercario/bercario.component';
+import { MaternalComponent } from './epics/infancia/pages/infancia-casa-nvl1/maternal/maternal.component';
+import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardim/jardim.component';
+import { JogosDigitaisComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/jogos-digitais.component';
+import { FlipsnackComponent } from './epics/infancia/embed-utils/flipsnack/flipsnack.component';
+
 import { MissionAddComponent } from './admin/mission/mission-add/mission-add.component';
 import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
 import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
@@ -95,17 +117,17 @@ import { NdcComponent } from './epics/main/feira/ndc/ndc.component';
 import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
 
 const appRoutes: Routes = [
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: 'termos', component: TermosComponent},
-    {path: 'about', component: AboutComponent},
-    {path: 'chat', component: ChatComponent},
-    {path: 'select-journey', component: SelectJourneyComponent, canActivate:[UserGuard]},
-    {path: 'select-conference', component: SelectConferenceComponent, canActivate:[UserGuard]},
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'termos', component: TermosComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'chat', component: ChatComponent },
+    { path: 'select-journey', component: SelectJourneyComponent, canActivate: [UserGuard] },
+    { path: 'select-conference', component: SelectConferenceComponent, canActivate: [UserGuard] },
     {
         path: 'admin',
         component: DashboardComponent,
-        canActivate:[UserGuard],
+        canActivate: [UserGuard],
         children: [
             {path: '', component: ChartComponent},
             {path: 'conference/add', component: ConferenceAddComponent},
@@ -151,32 +173,32 @@ const appRoutes: Routes = [
     {
         path: 'social',
         component: SocialDashboardComponent,
-        canActivate:[UserGuard],
+        canActivate: [UserGuard],
         children: [
-            {path: '',  redirectTo: 'home', pathMatch: 'full'},
-            {path: 'home', component: SocialHomeComponent, canActivate:[UserGuard]},
-            {path: 'pessoas', component: UsersComponent, canActivate:[UserGuard]},
-            {path: 'pessoas/:page', component: UsersComponent, canActivate:[UserGuard]},
-            {path: 'timeline', component: TimelineComponent, canActivate:[UserGuard]},
-            {path: 'perfil/:id', component: ProfileComponent, canActivate:[UserGuard]},
-            {path: 'seguindo/:id/:page', component: FollowingComponent, canActivate:[UserGuard]},
-            {path: 'seguidores/:id/:page', component: FollowedComponent, canActivate:[UserGuard]},
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', component: SocialHomeComponent, canActivate: [UserGuard] },
+            { path: 'pessoas', component: UsersComponent, canActivate: [UserGuard] },
+            { path: 'pessoas/:page', component: UsersComponent, canActivate: [UserGuard] },
+            { path: 'timeline', component: TimelineComponent, canActivate: [UserGuard] },
+            { path: 'perfil/:id', component: ProfileComponent, canActivate: [UserGuard] },
+            { path: 'seguindo/:id/:page', component: FollowingComponent, canActivate: [UserGuard] },
+            { path: 'seguidores/:id/:page', component: FollowedComponent, canActivate: [UserGuard] },
         ],
     },
     {
         path: 'jovem',
         component: JovemDashboardComponent,
-        canActivate:[UserGuard],
+        canActivate: [UserGuard],
         children: [
-            {path: '',  redirectTo: 'home', pathMatch: 'full'},
-            {path: 'home', component: JovemHomeComponent, canActivate:[UserGuard]},
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', component: JovemHomeComponent, canActivate: [UserGuard] },
             {
                 path: 'ilha-escritor',
                 component: Ilha1Component,
-                canActivate:[UserGuard],
+                canActivate: [UserGuard],
                 children: [
-                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
-                    {path: 'dialogo/:dialog', component: Ilha1DialogoComponent, canActivate:[UserGuard]}
+                    { path: '', redirectTo: 'dialogo/inicial', pathMatch: 'full' },
+                    { path: 'dialogo/:dialog', component: Ilha1DialogoComponent, canActivate: [UserGuard] }
                 ],
             },
             {
@@ -193,39 +215,39 @@ const appRoutes: Routes = [
             {
                 path: 'ilha-som',
                 component: Ilha2Component,
-                canActivate:[UserGuard],
+                canActivate: [UserGuard],
                 children: [
-                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
-                    {path: 'dialogo/:dialog', component: Ilha2DialogoComponent, canActivate:[UserGuard]}
+                    { path: '', redirectTo: 'dialogo/inicial', pathMatch: 'full' },
+                    { path: 'dialogo/:dialog', component: Ilha2DialogoComponent, canActivate: [UserGuard] }
                 ],
             },
-            {path: 'mural-artistico', component: MuralArtisticoComponent, canActivate:[UserGuard]},
-            {path: 'alegria-crista-musicas', component: AlegriaCristaMusicasComponent, canActivate:[UserGuard]},
+            { path: 'mural-artistico', component: MuralArtisticoComponent, canActivate: [UserGuard] },
+            { path: 'alegria-crista-musicas', component: AlegriaCristaMusicasComponent, canActivate: [UserGuard] },
             {
                 path: 'ilha-caminho',
                 component: Ilha3Component,
-                canActivate:[UserGuard],
+                canActivate: [UserGuard],
                 children: [
-                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
-                    {path: 'dialogo/:dialog', component: Ilha3DialogoComponent, canActivate:[UserGuard]}
+                    { path: '', redirectTo: 'dialogo/inicial', pathMatch: 'full' },
+                    { path: 'dialogo/:dialog', component: Ilha3DialogoComponent, canActivate: [UserGuard] }
                 ],
             },
             {
                 path: 'ilha-irmas',
                 component: Ilha4Component,
-                canActivate:[UserGuard],
+                canActivate: [UserGuard],
                 children: [
-                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
-                    {path: 'dialogo/:dialog', component: Ilha4DialogoComponent, canActivate:[UserGuard]}
+                    { path: '', redirectTo: 'dialogo/inicial', pathMatch: 'full' },
+                    { path: 'dialogo/:dialog', component: Ilha4DialogoComponent, canActivate: [UserGuard] }
                 ],
             },
             {
                 path: 'ilha-vivo',
                 component: Ilha5Component,
-                canActivate:[UserGuard],
+                canActivate: [UserGuard],
                 children: [
-                    {path: '',  redirectTo: 'dialogo/inicial', pathMatch: 'full'},
-                    {path: 'dialogo/:dialog', component: Ilha5DialogoComponent, canActivate:[UserGuard]}
+                    { path: '', redirectTo: 'dialogo/inicial', pathMatch: 'full' },
+                    { path: 'dialogo/:dialog', component: Ilha5DialogoComponent, canActivate: [UserGuard] }
                 ],
             },
             {path: 'lancamentos', component: LancamentosComponent, canActivate:[UserGuard]},
@@ -239,14 +261,41 @@ const appRoutes: Routes = [
     {
         path: 'concafrinhas',
         component: InfanciaDashboardComponent,
-        canActivate:[UserGuard],
+        canActivate: [UserGuard],
         children: [
-            {path: '',  redirectTo: 'home', pathMatch: 'full'},
-            {path: 'home', component: InfanciaHomeComponent, canActivate:[UserGuard]},
-            {path: 'nivel', component: InfanciaLevelComponent, canActivate:[UserGuard]},
-            {path: 'nivel/:level', component: InfanciaLevelComponent, canActivate:[UserGuard]},
-            {path: 'geral', component: InfanciaGeralComponent, canActivate:[UserGuard]},
-            {path: 'audithorium', component: InfanciaAudithoriumComponent, canActivate:[UserGuard]},
+
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'inicio', component: InfanciaInicioComponent, canActivate: [UserGuard] },
+            { path: 'home', component: InfanciaHomeComponent, canActivate: [UserGuard] },
+            { path: 'casa-oracao', component: InfanciaCasaOracaoComponent, canActivate: [UserGuard] },
+
+            { path: 'parquinho', component: InfanciaParquinhoComponent, canActivate: [UserGuard] },
+            { path: 'parquinho/brincadeiras', component: BrincadeirasComponent, canActivate: [UserGuard] },
+            { path: 'parquinho/jogos-digitais', component: JogosDigitaisComponent, canActivate: [UserGuard] },
+
+            
+            { path: 'atividades', component: InfanciaAtividadesComponent, canActivate: [UserGuard], },
+            { path: 'atividades/laborterapias', component: LaborterapiasComponent, canActivate: [UserGuard] },
+            { path: 'atividades/desenhos-imprimir', component: DesenhosImprimirComponent, canActivate: [UserGuard] },
+
+            { path: 'casa-nvl-1', component: InfanciaCasaNvl1Component, canActivate: [UserGuard] },
+            { path: 'casa-nvl-1/bercario', component: BercarioComponent, canActivate: [UserGuard] },
+            { path: 'casa-nvl-1/maternal', component: MaternalComponent, canActivate: [UserGuard] },
+            { path: 'casa-nvl-1/jardim', component: JardimComponent, canActivate: [UserGuard] },
+
+            { path: 'cantinho-historia', component: InfanciaCantinhoHistoriaComponent, canActivate: [UserGuard] },
+            { path: 'casa-nvl-2', component: InfanciaCasaNvl2Component, canActivate: [UserGuard] },
+            { path: 'roda-alegria', component: InfanciaRodaAlegriaComponent, canActivate: [UserGuard] },
+            { path: 'bom-samaritano', component: InfanciaBomSamaritanoComponent, canActivate: [UserGuard] },
+            { path: 'circo-concafrinhas', component: InfanciaCircoConcafrinhasComponent, canActivate: [UserGuard] },
+            { path: 'nosso-mural', component: PadletComponent, canActivate: [UserGuard] },
+            { path: 'flipsnack/:hash', component: FlipsnackComponent, canActivate: [UserGuard] },
+
+
+            // {path: 'nivel', component: InfanciaLevelComponent, canActivate:[UserGuard]},
+            // {path: 'nivel/:level', component: InfanciaLevelComponent, canActivate:[UserGuard]},
+            { path: 'geral', component: InfanciaGeralComponent, canActivate: [UserGuard] },
+            { path: 'audithorium/:type/:id', component: InfanciaAudithoriumComponent, canActivate: [UserGuard] },
         ],
     },
     {
@@ -275,17 +324,17 @@ const appRoutes: Routes = [
         path: '',
         component: EventCleanComponent,
         children: [
-            {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
+            { path: 'meus-dados', component: ProfileEditComponent, canActivate: [UserGuard] },
         ],
     },
     {
         path: '',
         component: TendaComponent,
         children: [
-            {path: 'hub', component: HubComponent, canActivate:[UserGuard]},
+            { path: 'hub', component: HubComponent, canActivate: [UserGuard] },
         ],
     },
-    {path: '**', redirectTo: 'home', pathMatch: 'full'},
+    { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 export const appRoutingProviders: any[] = [];

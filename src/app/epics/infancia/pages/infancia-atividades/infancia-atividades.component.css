@@ -1,0 +1,47 @@
+.atividades {
+    height: 100%;
+}
+
+.container-total {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+} 
+
+.atividades .laborterapia {
+    width: 29.9%;
+    top: 22%;
+    left: 18%;
+}
+
+.atividades .desenhos {
+    width: 29.9%;
+    top: 22%;
+    right: 18%;
+}
+
+.buttons {
+    height: auto;
+    position: absolute;
+    z-index: 1;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-voltar {
+    width: 7%;
+    max-height: 124px;
+    top: 2%;
+    right: 2%;
+}
+
+.principal {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+

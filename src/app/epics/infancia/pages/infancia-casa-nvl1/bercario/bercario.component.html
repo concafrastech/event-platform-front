@@ -1,0 +1,144 @@
+<div class="bercario">
+
+    <div class="container-total">
+
+        <a href="/concafrinhas/casa-nvl-1">
+            <img class="btn-voltar buttons" src="assets/concafras2021/concafrinhas/btn-voltar.png" alt="Voltar"
+                title="Voltar">
+        </a>
+
+        <a href="/concafrinhas/home">
+            <img class="btn-home buttons" src="assets/concafras2021/concafrinhas/btn-home.png" title="Circo">
+        </a>
+
+        <a href="/concafrinhas/nosso-mural" target="_blank" rel="noopener noreferrer">
+            <img class="btn-upload buttons" src="assets/concafras2021/concafrinhas/btn-upload.png" alt="Enviar arquivos"
+                title="Enviar arquivos">
+        </a>
+
+
+        <img class="t1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioTemaCentral.png"
+            (click)="openModal(templateTC)" title="Tema Central">
+
+
+
+        <img class="t2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioOficinaArte.png"
+            (click)="openModal(templateOA)" title="Oficina de Arte">
+
+
+
+        <img class="t3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioTemaEspecifico.png"
+            (click)="openModal(templateTE)" title="Tema Especifico">
+
+
+        <router-outlet></router-outlet>
+
+        <img class="principal" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioInterior.jpg">
+
+    </div>
+
+</div>
+
+
+<ng-template #templateTC>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema Central</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/TvZ_H_VMFfM" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/7t8rmnnvxn" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Central - Berçário.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #templateOA>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Oficina de Arte: Pintura com as mãos</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/s_ZmXpArk6w" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateTE>
+    <div class="modal-content-video">
+        <div class="modal-header">
+            <h4 style="color: white;">Tema: Caridade no lar</h4>
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-11 form-group">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/_SmWqKp0u7w" frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                    <div class="options">
+                        <div class="options-item">
+                            <a href="/concafrinhas/flipsnack/7h3gf0apma" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-cartilha btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                            </a>
+                        </div>
+
+                        <div class="options-item">
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Berçário - Caridade no lar.pdf"
+                                download>
+                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                    title="Baixar Cartilha">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>

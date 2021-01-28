@@ -1,3 +1,4 @@
+
 // Modules
 import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
@@ -86,7 +87,7 @@ import { StageAddComponent } from './admin/stage/stage-add/stage-add.component';
 import { ActivityListComponent } from './admin/activity/activity-list/activity-list.component';
 import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
 import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
-import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
+// import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
 import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
@@ -139,6 +140,36 @@ import { MissionAddComponent } from './admin/mission/mission-add/mission-add.com
 import { MissionListComponent } from './admin/mission/mission-list/mission-list.component';
 import { MissionEditComponent } from './admin/mission/mission-edit/mission-edit.component';
 import { CardRankingComponent } from './components/profile-edit/card-ranking/card-ranking.component';
+import { InfanciaInicioComponent } from './epics/infancia/infancia-inicio/infancia-inicio.component';
+import { InfanciaCasaOracaoComponent } from './epics/infancia/pages/infancia-casa-oracao/infancia-casa-oracao.component';
+
+import { InfanciaCantinhoHistoriaComponent } from './epics/infancia/pages/infancia-cantinho-historia/infancia-cantinho-historia.component';
+
+
+import { InfanciaCasaNvl2Component } from './epics/infancia/pages/infancia-casa-nvl2/infancia-casa-nvl2.component';
+import { InfanciaRodaAlegriaComponent } from './epics/infancia/pages/infancia-roda-alegria/infancia-roda-alegria.component';
+import { InfanciaBomSamaritanoComponent } from './epics/infancia/pages/infancia-bom-samaritano/infancia-bom-samaritano.component';
+import { InfanciaCircoConcafrinhasComponent } from './epics/infancia/pages/infancia-circo-concafrinhas/infancia-circo-concafrinhas.component';
+
+
+
+
+
+
+
+import { FlipsnackComponent } from './epics/infancia/embed-utils/flipsnack/flipsnack.component';
+
+import { PadletComponent } from './epics/infancia/embed-utils/padlet/padlet.component';
+import { InfanciaParquinhoComponent } from './epics/infancia/pages/infancia-parquinho/infancia-parquinho.component';
+import { InfanciaAtividadesComponent } from './epics/infancia/pages/infancia-atividades/infancia-atividades.component';
+import { InfanciaCasaNvl1Component } from './epics/infancia/pages/infancia-casa-nvl1/infancia-casa-nvl1.component';
+import { JogosDigitaisComponent } from './epics/infancia/pages/infancia-parquinho/jogos-digitais/jogos-digitais.component';
+import { BrincadeirasComponent } from './epics/infancia/pages/infancia-parquinho/brincadeiras/brincadeiras.component';
+import { LaborterapiasComponent } from './epics/infancia/pages/infancia-atividades/laborterapias/laborterapias.component';
+import { DesenhosImprimirComponent } from './epics/infancia/pages/infancia-atividades/desenhos-imprimir/desenhos-imprimir.component';
+import { BercarioComponent } from './epics/infancia/pages/infancia-casa-nvl1/bercario/bercario.component';
+import { MaternalComponent } from './epics/infancia/pages/infancia-casa-nvl1/maternal/maternal.component';
+import { JardimComponent } from './epics/infancia/pages/infancia-casa-nvl1/jardim/jardim.component';
 import { ShareMessageComponent } from './epics/main/share-message/share-message.component';
 import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
 import { BookClubComponent } from './epics/main/book-club/book-club.component';
@@ -234,7 +265,7 @@ const GamificationConfig = {
     InfanciaHomeComponent,
     InfanciaDashboardComponent,
     ContentTimeDirective,
-    InfanciaLevelComponent,
+    // InfanciaLevelComponent,
     InfanciaAudithoriumComponent,
     InfanciaGeralComponent,
     SelectConferenceComponent,
@@ -280,12 +311,31 @@ const GamificationConfig = {
     MagneticPassDistanceComponent,
     JovemListComponent,
     CardRankingComponent,
+    InfanciaInicioComponent,
+    InfanciaCasaOracaoComponent,
+    InfanciaParquinhoComponent,
+    InfanciaCantinhoHistoriaComponent,
+    InfanciaAtividadesComponent,
+    InfanciaCasaNvl1Component,
+    InfanciaCasaNvl2Component,
+    InfanciaRodaAlegriaComponent,
+    InfanciaBomSamaritanoComponent,
+    InfanciaCircoConcafrinhasComponent,
+    JogosDigitaisComponent,
+    BrincadeirasComponent,
+    LaborterapiasComponent,
+    DesenhosImprimirComponent,
+    BercarioComponent,
+    MaternalComponent,
+    JardimComponent,
+    PadletComponent,
+    FlipsnackComponent,
     ShareMessageComponent,
     JovemClassroomComponent,
     BookClubComponent,
     FraternalSupportComponent,
     NdcActivitiesComponent,
-    AudithoriumSpecialComponent
+    AudithoriumSpecialComponent,
   ],
   imports: [
     BrowserModule,

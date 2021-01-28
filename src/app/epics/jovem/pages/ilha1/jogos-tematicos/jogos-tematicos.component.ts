@@ -14,7 +14,6 @@ export class JogosTematicosComponent implements OnInit {
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
-
 		) { }
 
 	ngOnInit(): void {

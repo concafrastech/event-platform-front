@@ -79,14 +79,20 @@ export class HubComponent implements OnInit, AfterViewInit {
       this.elementRef.nativeElement.querySelector("#svgMap")
     );
     this.svgMap.addEventListener("load", this.loadSvgMapEvents.bind(this));
+    
   }
 
   loadSvgMapEvents() {
     let eventType = "click";
     let svgDoc = this.svgMap.contentDocument;
-    svgDoc
-      .getElementById("PALESTRAS")
-      .addEventListener(eventType, this.eventClickSvg.bind(this, "PALESTRAS"));
+    svgDoc.getElementById("PALESTRAS").addEventListener(eventType, this.eventClickSvg.bind(this, "PALESTRAS"));
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseover", ()=>{
+    })
+
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseleave", ()=>{
+      
+    })
+    
     svgDoc
       .getElementById("ndc")
       .addEventListener(eventType, this.eventClickSvg.bind(this, "ndc"));
@@ -132,6 +138,14 @@ export class HubComponent implements OnInit, AfterViewInit {
         eventType,
         this.eventClickSvg.bind(this, "concafrinhas")
       );
+  }
+
+  eventMouseLeave(item){
+
+  }
+
+  eventMouseOver(item){
+
   }
 
   eventClickSvg(id: string) {

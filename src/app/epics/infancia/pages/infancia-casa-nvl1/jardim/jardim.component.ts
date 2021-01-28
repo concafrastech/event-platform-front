@@ -20,10 +20,4 @@ export class JardimComponent {
   }
 
 
-
-  closeAllModals() {
-    for (let i = 1; i <= this.modalService.getModalsCount(); i++) {
-      this.modalService.hide(i);
-    }
-  }
 }

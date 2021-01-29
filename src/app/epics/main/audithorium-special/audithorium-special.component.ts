@@ -12,10 +12,10 @@ import { ActivatedRoute } from "@angular/router";
   providers: [ContentService, DocumentService],
 })
 export class AudithoriumSpecialComponent implements OnInit {
-  public title: String;
-  public description: String;
-  public pageTarget: String;
-  public typeAudithorium: String;
+  public title: string;
+  public pageTarget: string;
+  public description: string;
+  public typeAudithorium: string;
   public contentWorkshopId: any;
   public actualContent: Content;
 
@@ -32,30 +32,14 @@ export class AudithoriumSpecialComponent implements OnInit {
       this.loadAudithorium();
     });
 
-    /*
-    if (this.typeAudithorium == "CFAS"){
-
-      }
-    else if (this.typeAudithorium == "CECX"){
-      this.pageTarget = "https://forms.gle/2RPsHWcfDistBuFX8";}
-    else if (this.typeAudithorium == "Clube")
-      this.pageTarget = "https://forms.gle/ztEy9xRVLKCiBA6Z6";
-    else if (this.typeAudithorium == "Editora")
-      this.pageTarget = "https://forms.gle/QPFkjtDedsrnen5A9";
-*/
     this._navbarService.setButtonBack(true);
   }
 
   loadAudithorium() {
-    console.log(this.contentWorkshopId);
-    console.log(this.typeAudithorium);
-    
     switch (this.typeAudithorium) {
       case "cfas":
         this.title = "Campanha de Fraternidade Auta de Souza";
-        this.description = "Uma campanha de arrecadação de alimentos.";
         this.pageTarget = "https://forms.gle/5VfA4iy2nk7EHjk36";
-        // this.pageTarget = "https://docs.google.com/forms/d/e/1FAIpQLSfNUzA8FGb7tB7w3OW4E50I_OIBF_N1K5wcIsuOWLDW7OtQJg/viewform?embedded=true";
         this.actualContent = this.temporaryContent(
           "https://youtu.be/OaVJTAvHSXk"
         );
@@ -63,19 +47,16 @@ export class AudithoriumSpecialComponent implements OnInit {
 
       case "cecx":
         this.title = "Campanha de Esclarecimento Chico Xavier";
-        this.description = "Uma campanha de empréstimo de livros.";
         this.pageTarget = "https://forms.gle/2RPsHWcfDistBuFX8";
         break;
 
       case "clube":
         this.title = "Clube do Livro Espírita";
-        this.description = "Um clube do livro espírita.";
         this.pageTarget = "https://forms.gle/ztEy9xRVLKCiBA6Z6";
         break;
 
       case "editora":
         this.title = "Editora Auta de Souza";
-        this.description = "Uma editora de livros espírita do movimento.";
         this.pageTarget = "https://forms.gle/QPFkjtDedsrnen5A9";
         break;
 
@@ -90,7 +71,7 @@ export class AudithoriumSpecialComponent implements OnInit {
               this.actualContent = response.content;
             });
         });
-        
+
         break;
     }
   }

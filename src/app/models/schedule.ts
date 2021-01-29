@@ -1,7 +1,7 @@
 export class Schedule {
     constructor(
-        public _id: string,
-        public type: number,
+        public id: string,
+        public type: string,
         public name: string,
         public description: string,
         public start_time: Date,

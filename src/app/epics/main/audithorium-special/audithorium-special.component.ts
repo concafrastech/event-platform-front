@@ -16,7 +16,7 @@ export class AudithoriumSpecialComponent implements OnInit {
   public description: String;
   public pageTarget: String;
   public typeAudithorium: String;
-  public contentWorkshopId: string;
+  public contentWorkshopId: any;
   public actualContent: Content;
 
   constructor(
@@ -43,12 +43,13 @@ export class AudithoriumSpecialComponent implements OnInit {
     else if (this.typeAudithorium == "Editora")
       this.pageTarget = "https://forms.gle/QPFkjtDedsrnen5A9";
 */
-    console.log(this.pageTarget);
-
     this._navbarService.setButtonBack(true);
   }
 
   loadAudithorium() {
+    console.log(this.contentWorkshopId);
+    console.log(this.typeAudithorium);
+    
     switch (this.typeAudithorium) {
       case "cfas":
         this.title = "Campanha de Fraternidade Auta de Souza";
@@ -79,14 +80,17 @@ export class AudithoriumSpecialComponent implements OnInit {
         break;
 
       case "workshop":
-        this.title = "Campanha de Fraternidade Auta de Souza";
-        this.description = "Descrição da oficina.";
-        this.pageTarget = "#";
-        this._contentService
-          .getContent(this.contentWorkshopId)
-          .subscribe((response) => {
-            this.actualContent = response.content;
-          });
+        this._route.queryParams.subscribe((params) => {
+          this.title = params.name;
+          this.description = params.description;
+          this.pageTarget = "#";
+          this._contentService
+            .getContent(this.contentWorkshopId)
+            .subscribe((response) => {
+              this.actualContent = response.content;
+            });
+        });
+        
         break;
     }
   }

@@ -38,7 +38,7 @@ export class LeftSidebarComponent implements OnInit {
     public _gamificationService: GamificationService,
     public _bootstrapAlertService: NgBootstrapAlertService,
     private _modalService: BsModalService,
-    private _documentService: DocumentService
+    private _documentService: DocumentService,
   ) {
     /*this.user = {
       name: "Gui",

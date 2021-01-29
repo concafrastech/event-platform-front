@@ -18,6 +18,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DatetimePopupModule } from 'ngx-bootstrap-datetime-popup';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 // Module Custom
 import { MessagesModule} from './messages/messages.module';
@@ -361,7 +362,8 @@ const GamificationConfig = {
     ChartsModule,
     FontAwesomeModule,
     AngularSvgIconModule.forRoot(),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    TooltipModule.forRoot()
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

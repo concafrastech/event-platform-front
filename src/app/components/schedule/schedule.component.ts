@@ -4,7 +4,6 @@ import { Epic } from 'src/app/models/epic';
 import { Schedule } from 'src/app/models/schedule';
 import { EpicService } from 'src/app/services/epic.service';
 import { UserService } from 'src/app/services/user.service';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @Component({
   selector: 'app-schedule',

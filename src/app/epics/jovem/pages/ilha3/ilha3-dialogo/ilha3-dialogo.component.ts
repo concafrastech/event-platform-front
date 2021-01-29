@@ -101,9 +101,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
             this.trails = response.trails;
   
             //incluido filtro das trilhas da ilha
-            // forcei um id 600757276f6f1200bda3c426 para funcionar pois o cadastro de teste chamava um curso inexistente
-            this.trails = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
-            // this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
+            this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
   
             this.trails.forEach((trail, index) => {
               this.getClassrooms(page, trail, index);

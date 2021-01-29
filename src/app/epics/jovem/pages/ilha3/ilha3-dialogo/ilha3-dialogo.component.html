@@ -37,10 +37,14 @@
   <p class="justify-left">
     No momento da inscrição você escolheu um Curso, se lembra?<br/>
     O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.<br/>
-    Domingo, às 10h00 você terá a oportunidade de viver, na prática, o que você aprendeu no seu curso.<br/>
+    Você terá a oportunidade de viver, na prática, o que você aprendeu no seu curso.<br/>
     Será o momento de aliar a teoria espírita à uma proposta de atividade que você vai aprender a realizar, podendo, inclusive, fazer na sua Mocidade Espírita depois!<br/>
     Sempre associado às aulas teóricas, haverá um momento de aplicação prática dos conhecimentos adquiridos.<br/>
-    Não Perca! Será emocionante!
+    Não Perca! Será emocionante!<br/>
+    Confira os detalhes da sua prática abaixo:<br/>
+    <br/>
+    <b>{{this.trails[0].name}}</b><br/>
+    {{this.trails[0].description}}
   </p>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>

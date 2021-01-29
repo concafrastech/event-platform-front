@@ -17,6 +17,7 @@ import { UserService } from "src/app/services/user.service";
 export class NdcActivitiesComponent implements OnInit {
   public activityList: Activity[] = [];
   public stage: Stage;
+  public title: String;
 
   constructor(
     private _route: ActivatedRoute,
@@ -33,6 +34,7 @@ export class NdcActivitiesComponent implements OnInit {
       let stageId = params["id"];
       this._stageService.getStage(stageId).subscribe((response) => {
         this.stage = response.stage;
+        this.title = this.stage.name;
         this.activityList = response.stage.activities;
         this.loadThumbnails();
       });

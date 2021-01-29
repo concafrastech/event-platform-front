@@ -48,3 +48,31 @@
     color: #273B87;
     text-align: center;
 }
+
+.row .card-content-ndc {
+    display: flex;
+    align-items: center;
+}
+
+.card-content-ndc.card-content-background {
+    background-color: #1EA6EC;
+    background-image: linear-gradient(to right, #A7E0FF, #1EA6EC);
+    padding: 4rem;
+    margin: .3rem 0;
+    width: 100%;
+    border-radius: 0.3rem;
+    box-shadow: 4px 2px 10px 0px #3b3b3b;
+}
+
+.card-content-ndc .card-content-ndc-title {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ==== RESPONSIVE ==== */
+@media only screen and (max-width: 1400px) {
+    .card-content-ndc.card-content-background {
+        padding: 2rem;
+    }
+}

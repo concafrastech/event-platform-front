@@ -131,23 +131,6 @@ button.close span {
     transform: translate(-50% , 0);
 }
 
-/* button.close {
-    position: absolute;
-    height: 35px;
-    width: 35px;
-    background: red;
-    border-radius: 50%;
-    z-index: 1;
-    right: 0px;
-    color: white;
-    top: 0px;
-    opacity: 1;
-    outline: none;
-
-    display: flex;
-    align-items: center;
-} */
-
 .modal-body {
 
     padding: 20px;

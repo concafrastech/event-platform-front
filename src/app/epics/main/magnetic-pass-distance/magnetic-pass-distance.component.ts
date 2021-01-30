@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Content } from 'src/app/models/content';
 import { UserService } from 'src/app/services/user.service';
 import { FraternalSupportComponent } from '../fraternal-support/fraternal-support.component';
 
@@ -10,15 +11,21 @@ import { FraternalSupportComponent } from '../fraternal-support/fraternal-suppor
 })
 export class MagneticPassDistanceComponent implements OnInit {
 
-  public closeBtnName : string;
-  public title : string;
+  public closeBtnName: string;
+  public title: string;
   public bsModalRefFraternal: BsModalRef;
-  
-  constructor(private _userService : UserService,
+  public actualContent: Content;
+
+  constructor(
+    private _userService: UserService,
     private _modalService: BsModalService,
-    public bsModalRef: BsModalRef,) { }
+    public bsModalRef: BsModalRef
+  ) { }
 
   ngOnInit(): void {
+    this.actualContent = this.temporaryContent(
+      "https://youtu.be/g8bbxd1Gws4"
+    );
   }
 
   openFraternalSupportComponent() {
@@ -31,5 +38,31 @@ export class MagneticPassDistanceComponent implements OnInit {
       class: "modal-lg",
     });
     this.bsModalRef.content.closeBtnName = "Fechar";
+  }
+
+  private temporaryContent(url: string) {
+    return new Content(
+      null,
+      null,
+      0,
+      null,
+      null,
+      true,
+      true,
+      url,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
   }
 }

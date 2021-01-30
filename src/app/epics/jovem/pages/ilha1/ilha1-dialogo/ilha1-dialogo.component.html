@@ -1,56 +1,188 @@
-<div class="dialogo" *ngIf="dialog == 'inicial'">
-  <p class="text-left">Olá, eu sou a Patrícia. Bem vindo(a) à Ilha da Casa do Escritor! O que você deseja acessar?</p>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Escritor</a></li>
-    <!--
-    <li class="list-group-item" *ngFor="let trail of trails">
-      <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Tema Específico: {{trail.name}}</a>
-    </li>
-    -->
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico</a></li>
-    <li class="list-group-item" *ngFor="let stage of stages">
-      <a *ngIf="stage.type.toLowerCase() === 'novas dimensões'" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
-      <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
-      <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
-    </li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/jogos-tematicos']" [routerLinkActive]="['active']">Jogos</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
-    
-  </ul>
+<meta charset="UTF-8">
+<div *ngIf="dialog == 'inicial'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Patrícia</div>
+      <div class="MessageText">Olá, eu sou a Patrícia.🥰❤️❤️</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Bem vindo(a) à Ilha da Casa do Escritor!🏠📚</div>
+      <div class="MessageDate">{{getTime(1)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">O que você deseja acessar?</div>
+      <div class="MessageDate">{{getTime(2)}}</div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/conhecendo']" [routerLinkActive]="['active']">🎉Conhecendo a Casa do Escritor📚</a></li>
+        <!--
+        <li class="list-group-item" *ngFor="let trail of trails">
+          <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Tema Específico: {{trail.name}}</a>
+        </li>
+        -->
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico👩🏽‍🏫</a></li>
+        <li class="list-group-item" *ngFor="let stage of stages">
+          <a *ngIf="stage.type.toLowerCase() === 'novas dimensões'" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
+          <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+          <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+        </li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">🚀Sair da Ilha</a></li>
+        
+      </ul>
+      <div class="MessageDate">{{getTime(3)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>
    
-<div class="dialogo2" *ngIf="dialog == 'conhecendo'">
-  <p class="justify-left">Olá! Meu nome é Patrícia.<br/>
-    Nasci em um lar espírita, e o Espiritismo me ajudou a entender diversas perguntas que eu tinha sobre a vida, e o mais legal de tudo: aprendi que ela não termina com a morte aqui na Terra.<br/>
-    Eu desencarnei (morri) muito jovem e vim para o mundo espiritual. Aqui eu conheci diversas pessoas, lugares, e você está em um deles agora! Seja bem vindo(a) à ilha da Casa do Escritor!<br/>
-    Tudo aqui foi inspirado no livro que psicografei pelas mãos da médium Vera Lúcia Marinzeck de Carvalho, relatando minhas experiências e conhecimentos recebidos na colônia espiritual A Casa do Escritor.<br/>
-    Aqui, nesta Ilha, assim como na Colônia Espiritual, vamos entrar em contato com muitos conhecimentos valiosos para nossa alma e acessaremos os nossos cursos da CONCAFRAS, os jogos das Novas Dimensões do Conhecimento, os Lançamentos da Mocidade Espírita e muito mais! Legal, né?<br/>
-    Ahh, você pode conhecer mais sobre a minha história e o sobre o mundo espiritual nos livros: "Violetas na janela", "Vivendo no mundo dos espíritos", "A casa do escritor" e "O vôo da gaivota", todos psicografados pela Vera. Te garanto que você vai adorar!</p>
-  <div class="row  align-items-center justify-content-center">
-    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/Violetas Na Janela.jpg"></div>
-    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/Vivendo no Mundo dos Espíritos.jpg"></div>
-    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/A Casa do Escritor.jpg"></div>
-    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/O Vôo da Gaivota.jpg"></div>
+<div *ngIf="dialog == 'conhecendo'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Patrícia</div>
+      <div class="MessageText">Olá! Meu nome é Patrícia.🥰❤️❤️</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Nasci em um lar espírita🙏, e o Espiritismo me ajudou a entender diversas perguntas que eu tinha sobre a vida, e o mais legal de tudo: aprendi que ela não termina com a morte aqui na Terra.🤔</div>
+      <div class="MessageDate">{{getTime(1)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Eu desencarnei😵 (morri) muito jovem e vim para o mundo espiritual. Aqui eu conheci diversas pessoas, lugares, e você está em um deles agora! Seja bem vindo(a) à ilha da Casa do Escritor!</div>
+      <div class="MessageDate">{{getTime(2)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Tudo aqui foi inspirado no livro📚 que psicografei pelas mãos✍️ da médium Vera Lúcia Marinzeck de Carvalho, relatando minhas experiências e conhecimentos recebidos na colônia espiritual A Casa do Escritor.</div>
+      <div class="MessageDate">{{getTime(4)}}</div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Patrícia</div>
+      <img class="MessageImage" src="/assets/jovem/img/Violetas Na Janela.jpg">
+      <div class="MessageDate">{{getTime(7)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Patrícia</div>
+      <div class="MessageText">Aqui, nesta Ilha, assim como na Colônia Espiritual, vamos entrar em contato com muitos conhecimentos valiosos para nossa alma e acessaremos os nossos cursos da CONCAFRAS, os jogos das Novas Dimensões do Conhecimento, os Lançamentos da Mocidade Espírita e muito mais! 😎Legal, né?</div>
+      <div class="MessageDate">{{getTime(9)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Ahh, você pode conhecer mais sobre a minha história e o sobre o mundo espiritual nos livros📚: "Violetas na janela", "Vivendo no mundo dos espíritos", "A casa do escritor" e "O vôo da gaivota", todos psicografados pela Vera. Te garanto que você vai adorar!</div>
+      <div class="MessageDate">{{getTime(11)}}</div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Patrícia</div>
+      <img class="MessageImage" src="/assets/jovem/img/Vivendo no Mundo dos Espíritos.jpg">
+      <img class="MessageImage" src="/assets/jovem/img/A Casa do Escritor.jpg">
+      <img class="MessageImage" src="/assets/jovem/img/O Vôo da Gaivota.jpg">
+      <div class="MessageDate">{{getTime(12)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(13)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>
 
 
-<div class="dialogo2" *ngIf="dialog == 'temaespecifico'">
-  <p class="justify-left">
-    No momento da inscrição você escolheu um Curso, se lembra?<br/>
-    O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.<br/>
-    Este curso compõe nosso quadro de Temas Específicos da CONCAFRAS!<br/>
-    Estes temas são aulas com trocas de experiências em torno de aspectos doutrinários e metodológicos do trabalho no Centro Espírita e m suas diversas áreas, tais como o trabalho de prática assistencial, reforma íntima, e aqueles realizados por você, jovem!<br/>
-    Sempre associado às aulas teóricas, haverá um momento de aplicação prática dos conhecimentos adquiridos.<br/>
-    Confira os detalhes dos seu Tema Específico abaixo:<br/>
-    <br/>
-    <b>{{this.trails[0].name}}</b><br/>
-    {{this.trails[0].description}}
-  </p>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>
+<div *ngIf="dialog == 'temaespecifico'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Patrícia</div>
+      <div class="MessageText">No momento da inscrição você escolheu um Curso, se lembra?</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.</div>
+      <div class="MessageDate">{{getTime(1)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Este curso compõe nosso quadro de Temas Específicos da CONCAFRAS!</div>
+      <div class="MessageDate">{{getTime(3)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Estes temas são aulas com trocas de experiências em torno de aspectos doutrinários e metodológicos do trabalho no Centro Espírita em suas diversas áreas, tais como o trabalho de prática assistencial, reforma íntima, e aqueles realizados por você, jovem!</div>
+      <div class="MessageDate">{{getTime(5)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Sempre associado às aulas teóricas, haverá um momento de aplicação prática dos conhecimentos adquiridos.</div>
+      <div class="MessageDate">{{getTime(6)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Confira os detalhes dos seu Tema Específico abaixo!</div>
+      <div class="MessageDate">{{getTime(8)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">
+        <b>{{this.trails[0].name}}</b><br/>
+        {{this.trails[0].description}}
+      </div>
+      <div class="MessageDate">{{getTime(9)}}</div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime11}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>
+

@@ -1,34 +1,40 @@
 <div id="bg">
-  <img
-    src="../../../assets/concafras2021/concafronas/acesso/Retangulo_1.png"
-    alt=""
-  />
+  <img src="../../../assets/concafras2021/concafronas/acesso/Retangulo_1.png" alt="" />
 </div>
 <div class="retangulo-2">
   <div class="text-center">
     <span>Termos de uso de dados e imagem</span>
-    <button type="button" class="close icon-close" aria-label="Close">
+    <button type="button" class="close icon-close" (click)="back()" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="section-termos">
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    <p style="margin: 0px 50px;">
+      Autorizo a CONCAFRAS, a título gratuito, em caráter definitivo,
+      irrevogável, irretratável e por prazo indeterminado, a utilizar meu nome,
+      imagem e voz, inclusive na divulgação prévia do evento CONCAFRAS 2021 e na
+      gravação, reprodução e divulgação simultânea ou futura das
+      imagens/fotografias/vídeos realizadas e captadas por qualquer meio virtual
+      disponível durante o evento de mesmo nome. Renuncio assim, desta data a
+      qualquer tempo, ao recebimento de quaisquer remunerações pela autorização
+      objeto deste termo de consentimento, comprometendo-me livremente a nada
+      exigir da CONCAFRAS em tempo algum e a qualquer título.
+    </p>
   </div>
-  <div class="form-check check-termos">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Estou de acordo com o Termo de Uso de Dados e de Imagem e autorizo o uso.</label>
+
+  <div class="form-check">
+    <input class="form-check-input" style="font-size: 14px" type="checkbox" [(ngModel)]="check" id="flexCheckDefault" />
+    <label class="form-check-label" for="flexCheckDefault">
+      Estou de acordo com o Termo de Uso de Dados e de Imagem e autorizo o uso.
+    </label>
   </div>
+  <!-- <div class="form-check check-termos">
+    <input [(ngModel)]="check" type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1"></label>
+  </div> -->
+  <br>
+  <br>
   <div>
-    <input type="submit" value="Continuar" class="btn btn-primary btn-sm btn-termos">
+    <input type="button" (click)="confirmar()" value="Continuar" class="btn btn-primary btn-sm btn-termos disabled" />
   </div>
 </div>

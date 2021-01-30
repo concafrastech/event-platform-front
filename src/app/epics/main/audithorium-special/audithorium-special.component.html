@@ -1,13 +1,17 @@
 <section id="audithorium-special-header" class="audithorium-special-container">
     <h2 class="audithorium-special-header-item audithorium-special-header-title">{{ this.title }}</h2>
     <div class="audithorium-special-header-item audithorium-special-header-div-info">
-        <span class="audithorium-special-header-text">{{ this.description }}</span>
-        <a href="{{ pageTarget }}" target="_blank" class="btn btn-primary btn-info">Obter maiores informações</a>
+        <span *ngIf="typeAudithorium == 'cfas'" class="audithorium-special-header-text">A Campanha Fraternidade Auta de Souza é uma atividade do centro espírita que tem por objetivos divulgar a doutrina espírita e colocar em prática os ensinos de Jesus.<br>Para isso, são realizadas visitas domiciliares para entrega de mensagens espíritas de consolo e esclarecimento e arrecadação de donativos para famílias carentes.<br>Com isso, todos se beneficiam: os doadores recebem o bálsamo do conhecimento espírita e tem a oportunidade de exercer a caridade contribuindo com sua doação; o caravaneiro nessa tarefa servidora, exercita a humildade e tolerância; e a casa espírita divulga suas atividades e forma trabalhadores.<br>Confira todos os benefícios dessa campanha sublime e sua metodologia nesse curso, assim como implementar em seu centro espírita. Esperamos você!</span>
+        <span *ngIf="typeAudithorium == 'workshop'" class="audithorium-special-header-text">{{ this.description }}</span>
+        <!-- <a href="{{ pageTarget }}" target="_blank" class="btn btn-primary btn-info">Obter maiores informações</a> -->
     </div>
 </section>
 <section *ngIf="actualContent" id="audithorium-special-content" class="audithorium-special-container">
     <app-videojs [vContent]="actualContent"></app-videojs>
 </section>
-<!-- <section id="audithorium-special-forms" class="audithorium-special-container">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNUzA8FGb7tB7w3OW4E50I_OIBF_N1K5wcIsuOWLDW7OtQJg/viewform?embedded=true" width="640" height="1073" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
-</section> -->
+<section id="audithorium-special-forms" class="audithorium-special-container">
+    <iframe *ngIf="typeAudithorium == 'cfas'" src="https://docs.google.com/forms/d/e/1FAIpQLSfNUzA8FGb7tB7w3OW4E50I_OIBF_N1K5wcIsuOWLDW7OtQJg/viewform?embedded=true" width="720" height="1100" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+    <iframe *ngIf="typeAudithorium == 'cecx'" src="https://docs.google.com/forms/d/e/1FAIpQLSenSZw1etxyWlXoILEg3PnYs7WLTPjZEc3QJhIFW92X1qWo9A/viewform?embedded=true" width="720" height="1100" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+    <iframe *ngIf="typeAudithorium == 'clube'" src="https://docs.google.com/forms/d/e/1FAIpQLSedBD1ugc11u2GcK1hCEOFfsOwvPrVgGM8E1Gn8M9ewajBJsw/viewform?embedded=true" width="720" height="1100" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+    <iframe *ngIf="typeAudithorium == 'editora'" src="https://docs.google.com/forms/d/e/1FAIpQLSepXQQflMMm7eHwLAzv0oM7vtRPRJl8wuD44kVgQ24E4AWkWg/viewform?embedded=true" width="720" height="1100" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+</section>

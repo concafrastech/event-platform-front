@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -15,9 +15,9 @@ export class DeleteConfirmComponent implements OnInit {
   public message: string;
   public actionBtnName: string;
   public closeBtnName: string;
- 
+
   constructor(public _bsModalRef: BsModalRef) {}
- 
+
   public ngOnInit(){}
 
   public onConfirm(): void {

@@ -48,22 +48,33 @@ export class SelectJourneyComponent implements OnInit {
     );
   }
 
-  gotoInfancia(epic){
+  selectEpic(epic){
     localStorage.setItem('currentEpic', JSON.stringify(epic));
-    localStorage.setItem('epic', 'infancia');
-    this._router.navigate(['/concafrinhas/home']);
+    if(epic.type == 'adulto'){
+      localStorage.setItem('epic', null);
+    }else{
+      localStorage.setItem('epic', epic.type);
+    }
+    console.log(localStorage.getItem('currentEpic'));
+    this._router.navigate(['/termos'])
   }
 
-  gotoJovem(epic){
-    localStorage.setItem('currentEpic', JSON.stringify(epic));
-    localStorage.setItem('epic', 'jovem');
-    this._router.navigate(['/jovem/home']);
-  }
+  // gotoInfancia(epic){
+  //   localStorage.setItem('currentEpic', JSON.stringify(epic));
+  //   localStorage.setItem('epic', 'infancia');
+  //   this._router.navigate(['/concafrinhas/home']);
+  // }
 
-  gotoPrincipal(epic){
-    localStorage.setItem('currentEpic', JSON.stringify(epic));
-    localStorage.setItem('epic', null);
-    this._router.navigate(['/home']);
-  }
+  // gotoJovem(epic){
+  //   localStorage.setItem('currentEpic', JSON.stringify(epic));
+  //   localStorage.setItem('epic', 'jovem');
+  //   this._router.navigate(['/jovem/home']);
+  // }
+
+  // gotoPrincipal(epic){
+  //   localStorage.setItem('currentEpic', JSON.stringify(epic));
+  //   localStorage.setItem('epic', null);
+  //   this._router.navigate(['/home']);
+  // }
 
 }

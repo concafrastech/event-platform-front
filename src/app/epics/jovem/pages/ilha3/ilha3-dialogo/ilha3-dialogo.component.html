@@ -1,48 +1,133 @@
-<div class="dialogo" *ngIf="dialog == 'inicial'">
-  <p class="text-left">Olá, eu sou o João Marcos. Bem vindo(a) à Casa do Caminho! Aqui vamos por em prática tudo que temos aprendido na CONCAFRAS! Você também pode conferir como acontecem as atividades práticas nas Mocidades Espíritas:</p>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Caminho</a></li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/pratica']" [routerLinkActive]="['active']">Minha Prática na CONCAFRAS</a></li>
-    <li class="list-group-item" *ngFor="let trail of trails">
-      <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Prática Tema Específico: {{trail.name}}</a>
-    </li>
-    <li class="list-group-item" *ngFor="let stage of stages">
-      <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
-      <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
-      <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
-    </li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
-  </ul>
+<div *ngIf="dialog == 'inicial'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">João Marcos</div>
+      <div class="MessageText">Olá, eu sou o João Marcos. Bem vindo(a) à Casa do Caminho! Aqui vamos por em prática tudo que temos aprendido na CONCAFRAS! Você também pode conferir como acontecem as atividades práticas nas Mocidades Espíritas:</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Caminho</a></li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/pratica']" [routerLinkActive]="['active']">Minha Prática na CONCAFRAS</a></li>
+        <li class="list-group-item" *ngFor="let trail of trails">
+          <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Prática Tema Específico: {{trail.name}}</a>
+        </li>
+        <li class="list-group-item" *ngFor="let stage of stages">
+          <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+          <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+          <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
+        </li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(3)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>
 
    
-<div class="dialogo2" *ngIf="dialog == 'conhecendo'">
-  <p class="justify-left">
-      Olá, meu nome é João Marcos, sobrinho do discípulo de Jesus, Barnabé.<br/>
-      Quando eu tinha mais ou menos a sua idade, assim, bem jovenzinho, fui convidado por Paulo de Tarso a colaborar nos trabalhos da Casa do Caminho. Lugar onde esta ilha foi inspirada!<br/>
-      A Casa do Caminho foi erguida à beira da estrada, próximo à entrada de Jerusalém, por Pedro e outros apóstolos após a crucificação de Jesus.<br/>
-      Ali eles socorriam pobres, ricos, doentes, desesperados, viajantes, enfim, pessoas de todas as idades e origens, qualquer um que precisasse de socorro material e espiritual, oferecendo alimento, repouso, orações e estudo do Evangelho de Jesus.<br/>
-      É claro que eu fiquei bem empolgado no começo, e que houveram vezes em que eu pensei em desistir... maaaaas, com o tempo, entendi que a caridade é o exercício do amor que o Cristo nos ensinou, e que, quando fazemos de coração a alegria que sentimos compensa toda renúncia que fazemos em benefício do nosso próximo.<br/>
-      Para saber um pouco mais sobre a história dos apóstolos, Paulo de Tarso e sobre a Casa do Caminho, leia o livro Paulo e Estevão, ditado pelo espírito Emmanuel, pela psicografia de Chico Xavier. Tenho certeza que você vai se emocionar muuuito, assim como eu.
-  </p>
-  <div class="row  align-items-center justify-content-center">
-    <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/Paulo e Estêvão.jpg"></div>
+<div *ngIf="dialog == 'conhecendo'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">João Marcos</div>
+      <div class="MessageText">Olá, meu nome é João Marcos, sobrinho do discípulo de Jesus, Barnabé.<br/>
+        Quando eu tinha mais ou menos a sua idade, assim, bem jovenzinho, fui convidado por Paulo de Tarso a colaborar nos trabalhos da Casa do Caminho. Lugar onde esta ilha foi inspirada!<br/>
+        A Casa do Caminho foi erguida à beira da estrada, próximo à entrada de Jerusalém, por Pedro e outros apóstolos após a crucificação de Jesus.<br/>
+        Ali eles socorriam pobres, ricos, doentes, desesperados, viajantes, enfim, pessoas de todas as idades e origens, qualquer um que precisasse de socorro material e espiritual, oferecendo alimento, repouso, orações e estudo do Evangelho de Jesus.<br/>
+        É claro que eu fiquei bem empolgado no começo, e que houveram vezes em que eu pensei em desistir... maaaaas, com o tempo, entendi que a caridade é o exercício do amor que o Cristo nos ensinou, e que, quando fazemos de coração a alegria que sentimos compensa toda renúncia que fazemos em benefício do nosso próximo.<br/>
+        Para saber um pouco mais sobre a história dos apóstolos, Paulo de Tarso e sobre a Casa do Caminho, leia o livro Paulo e Estevão, ditado pelo espírito Emmanuel, pela psicografia de Chico Xavier. Tenho certeza que você vai se emocionar muuuito, assim como eu.
+      </div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">João Marcos</div>
+      <img class="MessageImage" src="/assets/jovem/img/Paulo e Estêvão.jpg">
+      <div class="MessageDate">{{getTime(7)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(9)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>
 
-<div class="dialogo2" *ngIf="dialog == 'pratica'">
-  <p class="justify-left">
-    No momento da inscrição você escolheu um Curso, se lembra?<br/>
-    O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.<br/>
-    Domingo, às 10h00 você terá a oportunidade de viver, na prática, o que você aprendeu no seu curso.<br/>
-    Será o momento de aliar a teoria espírita à uma proposta de atividade que você vai aprender a realizar, podendo, inclusive, fazer na sua Mocidade Espírita depois!<br/>
-    Sempre associado às aulas teóricas, haverá um momento de aplicação prática dos conhecimentos adquiridos.<br/>
-    Não Perca! Será emocionante!
-  </p>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>
+<div *ngIf="dialog == 'temaespecifico'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">João Marcos</div>
+      <div class="MessageText">No momento da inscrição você escolheu um Curso, se lembra?</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.</div>
+      <div class="MessageDate">{{getTime(1)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Você terá a oportunidade de viver, na prática, o que você aprendeu no seu curso.</div>
+      <div class="MessageDate">{{getTime(3)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Será o momento de aliar a teoria espírita à uma proposta de atividade que você vai aprender a realizar, podendo, inclusive, fazer na sua Mocidade Espírita depois!</div>
+      <div class="MessageDate">{{getTime(5)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Sempre associado às aulas teóricas, haverá um momento de aplicação prática dos conhecimentos adquiridos. Não Perca! Será emocionante!</div>
+      <div class="MessageDate">{{getTime(6)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">Confira os detalhes da sua prática abaixo!</div>
+      <div class="MessageDate">{{getTime(8)}}</div>
+    </div>
+  </div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageText">
+        <b>{{this.trails[0].name}}</b><br/>
+        {{this.trails[0].description}}
+      </div>
+      <div class="MessageDate">{{getTime(9)}}</div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime11}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>

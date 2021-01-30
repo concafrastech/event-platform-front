@@ -90,3 +90,26 @@
   left: 40%;
   top: -80px;
 }
+
+@media only screen and (max-width: 425px) {
+  #bg {
+    display: none;
+  }
+
+  .retangulo-2 {
+    width: 21.3rem;
+    height: 35rem;
+    margin: 0;
+    padding: 100px 0px;
+  }
+
+  .send-login {
+    margin: .5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .icon-close {
+    left: -5%;
+  }
+}

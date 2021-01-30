@@ -101,9 +101,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
             this.trails = response.trails;
   
             //incluido filtro das trilhas da ilha
-            // forcei um id 600757276f6f1200bda3c426 para funcionar pois o cadastro de teste chamava um curso inexistente
-            this.trails = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
-            // this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
+            this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
   
             this.trails.forEach((trail, index) => {
               this.getClassrooms(page, trail, index);
@@ -187,6 +185,26 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
         }
       );
     }
-  
+    
+    getTime(addValue) : string {
+      var today = new Date();
+      var hours = today.getHours();
+      var minutes = today.getMinutes() + addValue;
+      if(minutes >= 60) {
+        hours = hours + Math.floor(minutes/60);
+        minutes = minutes % 60;
+        if(hours >= 24) {
+          hours = hours - 24;
+        }
+      }
+      if(minutes > 10) {
+        var time = hours + ":" + minutes;
+      }
+      else {
+        var time = hours + ":0" + minutes;
+      }
+      
+      return time;
+    }
   }
   

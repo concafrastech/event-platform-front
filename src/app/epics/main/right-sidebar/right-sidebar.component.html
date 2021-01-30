@@ -4,7 +4,7 @@
       <div class="collapse navbar-collapse" id="navbarNavRight">
         <ul class="navbar-nav flex-column">
           <li class="nav-item">
-            <h3 class="nav-header">Fique Atento!</h3>
+            <h3 class="nav-header">{{now ? 'Acontecendo agora' : 'Fique Atento!'}}</h3>
             <div id="carouselControlsNow" class="carousel slide">
               <div *ngIf="todaySchedule.length > 0">
                 <ol class="carousel-indicators">
@@ -12,8 +12,10 @@
                     [ngClass]="i == currentCarouselSchedule ? 'active' : ''"></li>
                 </ol>
                 <div class="carousel-inner">
-                  <div class="carousel-item card-height active">
+                  <div class="carousel-item card-height active " [ngClass]="now ? 'now' : ''">
                     <div class="card">
+                      <img style="width: 100%; height: 100%" (click)="goToAudithorium()" *ngIf="currentItem?.thumbnail" [src]="currentItem.thumbnail.fileLink" alt="">
+                      <img style="width: 100%; height: 100%" (click)="goToAudithorium()" *ngIf="!currentItem?.thumbnail" src="assets/concafras2021/concafronas/paisagem.jpg" alt="">
                       <span style="color: black">{{
                         todaySchedule[currentCarouselSchedule].name
                         }}</span>
@@ -21,7 +23,7 @@
                         todaySchedule[currentCarouselSchedule].type
                         }}</span>
 
-                      <span style="color: black">Hoje às {{formatScheduleStartHour(todaySchedule[currentCarouselSchedule])}}</span>
+                      <span style="color: black">{{strTime}}</span>
                     </div>
                   </div>
                 </div>

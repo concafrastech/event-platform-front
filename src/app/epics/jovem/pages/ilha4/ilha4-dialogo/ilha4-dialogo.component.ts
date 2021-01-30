@@ -191,6 +191,27 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
         }
       );
     }
+
+    getTime(addValue) : string {
+      var today = new Date();
+      var hours = today.getHours();
+      var minutes = today.getMinutes() + addValue;
+      if(minutes >= 60) {
+        hours = hours + Math.floor(minutes/60);
+        minutes = minutes % 60;
+        if(hours >= 24) {
+          hours = hours - 24;
+        }
+      }
+      if(minutes > 10) {
+        var time = hours + ":" + minutes;
+      }
+      else {
+        var time = hours + ":0" + minutes;
+      }
+      
+      return time;
+    }
   
   }
   

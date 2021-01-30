@@ -1,29 +1,68 @@
-<div class="dialogo" *ngIf="dialog == 'inicial'">
-  <p class="text-left">Olá, eu sou o Luiz Sérgio e juntos vamos interagir com muita Arte aqui na Catedral do Som! Vamos
-    começar? Selecione uma das opções abaixo:</p>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-som/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Catedral do Som</a></li>
-    <li class="list-group-item" *ngFor="let stage of stages">
-      <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
-      <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
-      <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
-    </li>
-    <li class="list-group-item"><a [routerLink]="['/jovem/alegria-crista-musicas']" [routerLinkActive]="['active']">Alegria cristã</a></li>
-    <!--<li class="list-group-item"><a [routerLink]="['/jovem/mural-artistico']" [routerLinkActive]="['active']">Mural Artístico</a></li>-->
-    <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
-  </ul>
+<div *ngIf="dialog == 'inicial'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Luiz Sérgio</div>
+      <div class="MessageText">Olá, eu sou o Luiz Sérgio e juntos vamos interagir com muita Arte aqui na Catedral do Som! Vamos
+        começar? Selecione uma das opções abaixo:</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-som/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Catedral do Som</a></li>
+        <li class="list-group-item" *ngFor="let stage of stages">
+          <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+          <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
+          <a *ngIf="stage.activities.length === 0" [routerLink]="" [routerLinkActive]="['inactive']">{{stage.name}}</a>
+        </li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/alegria-crista-musicas']" [routerLinkActive]="['active']">Alegria cristã</a></li>
+        <!--<li class="list-group-item"><a [routerLink]="['/jovem/mural-artistico']" [routerLinkActive]="['active']">Mural Artístico</a></li>-->
+        <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(3)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>
 
-<div class="dialogo2" *ngIf="dialog == 'conhecendo'">
-  <p class="justify-left">Olá, é uma alegria receber você aqui na Catedral do Som!<br/>
-    Meu nome é Luiz Sérgio, sou autor espiritual de diversos livros espíritas para jovens e vou te acompanhar nesta ilha fantástica!<br/>
-    A Catedral do Som foi visitada e relatada por mim no livro “O mundo que eu encontrei”, pela psicografia da médium Alayde de Assunção. Este foi o primeiro livro que escrevi contando como é o lado de “cá” depois que a gente “bate as botas”, e visitar a Catedral do Som foi uma das experiências mais sensacionais que já vivi no mundo espiritual.<br/>
-    A Catedral foi feita pela mente de Espíritos de grande capacidade artística e de grande conhecimento.  Ela tem esse nome porque ali tudo é transmitido através de sons harmoniosos, suaves, que nos dizem ou nos fazem sentir exatamente o que querem exprimir, sem precisar de palavras! Doido né? Mas isso é porque a música é um tipo de linguagem universal utilizada pelos espíritos (encarnados e desencarnados).<br/>
-    Chega de papo! Estou louco pra você conhecer a nossa ilha inspirada nesse lugar. Além de curiosidades, aqui você vai encontrar músicas para baixar, painéis interativos para deixar sua contribuição artística e acessar diversos conteúdos sobre Arte e Espiritismo. Vamos lá?</p>
-    <div class="row  align-items-center justify-content-center">
-      <div class="col-8 col-lg-3 my-1"><img class="img-fluid" src="/assets/jovem/img/O Mundo que Eu Encontrei.jpg"></div>
+<div *ngIf="dialog == 'conhecendo'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Luiz Sérgio</div>
+      <div class="MessageText">Olá, é uma alegria receber você aqui na Catedral do Som!<br/>
+        Meu nome é Luiz Sérgio, sou autor espiritual de diversos livros espíritas para jovens e vou te acompanhar nesta ilha fantástica!<br/>
+        A Catedral do Som foi visitada e relatada por mim no livro “O mundo que eu encontrei”, pela psicografia da médium Alayde de Assunção. Este foi o primeiro livro que escrevi contando como é o lado de “cá” depois que a gente “bate as botas”, e visitar a Catedral do Som foi uma das experiências mais sensacionais que já vivi no mundo espiritual.<br/>
+        A Catedral foi feita pela mente de Espíritos de grande capacidade artística e de grande conhecimento.  Ela tem esse nome porque ali tudo é transmitido através de sons harmoniosos, suaves, que nos dizem ou nos fazem sentir exatamente o que querem exprimir, sem precisar de palavras! Doido né? Mas isso é porque a música é um tipo de linguagem universal utilizada pelos espíritos (encarnados e desencarnados).<br/>
+        Chega de papo! Estou louco pra você conhecer a nossa ilha inspirada nesse lugar. Além de curiosidades, aqui você vai encontrar músicas para baixar, painéis interativos para deixar sua contribuição artística e acessar diversos conteúdos sobre Arte e Espiritismo. Vamos lá?
+      </div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
     </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a [routerLink]="['/jovem/ilha-som/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
-  </ul>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Luiz Sérgio</div>
+      <img class="MessageImage" src="/assets/jovem/img/O Mundo que Eu Encontrei.jpg">
+      <div class="MessageDate">{{getTime(7)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-som/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(9)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>

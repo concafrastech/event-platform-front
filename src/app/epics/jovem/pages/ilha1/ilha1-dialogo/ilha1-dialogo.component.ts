@@ -189,7 +189,22 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
 
   getTime(addValue) : string {
     var today = new Date();
-    var time = today.getHours() + ":" + (today.getMinutes() + addValue);
+    var hours = today.getHours();
+    var minutes = today.getMinutes() + addValue;
+    if(minutes >= 60) {
+      hours = hours + Math.floor(minutes/60);
+      minutes = minutes % 60;
+      if(hours >= 24) {
+        hours = hours - 24;
+      }
+    }
+    if(minutes > 10) {
+      var time = hours + ":" + minutes;
+    }
+    else {
+      var time = hours + ":0" + minutes;
+    }
+    
     return time;
   }
 

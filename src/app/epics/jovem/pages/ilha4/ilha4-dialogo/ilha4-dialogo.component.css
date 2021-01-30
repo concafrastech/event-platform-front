@@ -1,28 +1,13 @@
-.dialogo p{
-	color:#fff;
-	font-size: 1.5rem;
-}
-
-.dialogo2 p {
-	color:#fff;
-	font-size: 1.2rem;
-}
-
-.list-group-item{
-	background-color: #fff0 !important;
-}
-
-.list-group-item{
-	color:#fff;
-	font-size: 1.2rem;
-}
-
 .list-group-item a{
-	color:#fff;
 	text-decoration: none;
+	display: block;
 }
 
-.list-group-item a:hover{
+.list-group li {
+	background-color: #DCF8C6;
+}
+
+.list-group-item:hover a{
 	color:#fff;
 	font-weight: 400;
 }
@@ -33,20 +18,104 @@
 	cursor: url();
 }
 
-ul.list-group > li:hover:before {
-  content: ">";
-  padding: 5px;
+.Space {
+	height: 10px;
 }
 
-@media (max-width: 768px) {
-	.dialogo p{
-		color:#fff;
-		font-size: 1.2rem;
-	}
-	
-	.list-group-item{
-		background-color: #fff0 !important;
-		color:#fff;
-		font-size: 1rem;
-	}
+.MyMessageLine {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 6px;
+	position: relative;
+}
+
+.YourMessageLine {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 6px;
+	position: relative;
+}
+
+.MyMessageItem {
+	background-color: #DCF8C6;
+	border-radius: 6px;
+	box-shadow: 0 1px 1px #CCC;
+	display: flex;
+	flex-direction: column;
+	padding: 3px;
+	max-width: 90%;
+}
+
+.YourMessageItem {
+	background-color: #FFF;
+	border-radius: 6px;
+	box-shadow: 0 1px 1px #CCC;
+	display: flex;
+	flex-direction: column;
+	padding: 3px;
+	max-width: 90%;
+}
+
+.YourBubbleArrow {
+	position: absolute;
+	float:left;
+	left: -10px;
+	top: 0px;
+}
+
+.YourBubbleArrow:after {
+	content: "";
+	position: absolute;
+	border-top: 20px solid #FFF;
+	border-left: 16px solid transparent;           
+	border-radius: 4px 0 0 0px;
+	width: 0;
+	height: 0;
+}
+
+.MyBubbleArrow {
+	position: absolute;
+	float: right;
+	right: 6px;
+	top: 0px;
+}
+
+.MyBubbleArrow:after {
+	content: "";
+	position: absolute;
+	border-top: 20px solid #DCF8C6;
+	border-left: 16px solid transparent;           
+	border-radius: 4px 0 0 0px;
+	width: 0;
+	height: 0;
+	transform: scaleX(-1);
+	/* DCF8C6 */
+  }
+
+
+.MessageAuthor {
+	font-size: 1rem;
+	font-weight: 450;
+	margin: 5px 0px 0px 5px;
+	color: rgb(0, 165, 65);
+}
+
+.MessageText {
+	font-size: 1rem;
+	margin: 5px 40px 5px 5px;
+}
+
+.MessageImage {
+	max-height: 400px;
+	border-radius: 5px;
+}
+
+.MessageDate {
+	font-size: .9rem;
+	color: #999;
+	margin-right: 5px;
+	text-align: right;
+	height: 15px;
+	margin-top: -15px;
+	z-index: 100;
 }

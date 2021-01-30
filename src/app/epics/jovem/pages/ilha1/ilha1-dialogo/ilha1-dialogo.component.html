@@ -1,10 +1,12 @@
 <meta charset="UTF-8">
 <div *ngIf="dialog == 'inicial'">
+  <div class="Space"></div>
   <div class="YourMessageLine">
-    <div class="YourMessageItem FirstMessage">
+    <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
       <div class="MessageText">Olá, eu sou a Patrícia.🥰❤️❤️</div>
       <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
     </div>
   </div>
   <div class="YourMessageLine">
@@ -19,7 +21,8 @@
       <div class="MessageDate">{{getTime(2)}}</div>
     </div>
   </div>
-  <div class="MyMessageLine FirstMessage">
+  <div class="Space"></div>
+  <div class="MyMessageLine">
     <div class="MyMessageItem">
       <div class="MessageAuthor">{{identity.name}}</div>
       <ul class="list-group list-group-flush">
@@ -39,13 +42,15 @@
         
       </ul>
       <div class="MessageDate">{{getTime(3)}}</div>
+      <div class="MyBubbleArrow"></div>
     </div>
   </div>
 </div>
    
 <div *ngIf="dialog == 'conhecendo'">
+  <div class="Space"></div>
   <div class="YourMessageLine">
-    <div class="YourMessageItem FirstMessage">
+    <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
       <div class="MessageText">Olá! Meu nome é Patrícia.🥰❤️❤️</div>
       <div class="MessageDate">{{getTime(0)}}</div>
@@ -70,16 +75,18 @@
       <div class="MessageDate">{{getTime(4)}}</div>
     </div>
   </div>
+  <div class="Space"></div>
   <div class="YourMessageLine">
-    <div class="YourMessageItem FirstMessage">
+    <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
       <img class="MessageImage" src="/assets/jovem/img/Violetas Na Janela.jpg">
       <div class="MessageDate">{{getTime(7)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
   </div>
+  <div class="Space"></div>
   <div class="YourMessageLine">
-    <div class="YourMessageItem FirstMessage">
+    <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
       <div class="MessageText">Aqui, nesta Ilha, assim como na Colônia Espiritual, vamos entrar em contato com muitos conhecimentos valiosos para nossa alma e acessaremos os nossos cursos da CONCAFRAS, os jogos das Novas Dimensões do Conhecimento, os Lançamentos da Mocidade Espírita e muito mais! 😎Legal, né?</div>
       <div class="MessageDate">{{getTime(9)}}</div>
@@ -92,8 +99,9 @@
       <div class="MessageDate">{{getTime(11)}}</div>
     </div>
   </div>
+  <div class="Space"></div>
   <div class="YourMessageLine">
-    <div class="YourMessageItem FirstMessage">
+    <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
       <img class="MessageImage" src="/assets/jovem/img/Vivendo no Mundo dos Espíritos.jpg">
       <img class="MessageImage" src="/assets/jovem/img/A Casa do Escritor.jpg">
@@ -102,8 +110,9 @@
       <div class="YourBubbleArrow"></div>
     </div>
   </div>
+  <div class="Space"></div>
   <div class="MyMessageLine">
-    <div class="MyMessageItem FirstMessage">
+    <div class="MyMessageItem">
       <div class="MessageAuthor">{{identity.name}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
@@ -115,9 +124,10 @@
 </div>
 
 
-<div class="dialogo2" *ngIf="dialog == 'temaespecifico'">
+<div *ngIf="dialog == 'temaespecifico'">
+  <div class="Space"></div>
   <div class="YourMessageLine">
-    <div class="YourMessageItem FirstMessage">
+    <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
       <div class="MessageText">No momento da inscrição você escolheu um Curso, se lembra?</div>
       <div class="MessageDate">{{getTime(0)}}</div>
@@ -163,8 +173,9 @@
       <div class="MessageDate">{{getTime(9)}}</div>
     </div>
   </div>
+  <div class="Space"></div>
   <div class="MyMessageLine">
-    <div class="MyMessageItem FirstMessage">
+    <div class="MyMessageItem">
       <div class="MessageAuthor">{{identity.name}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>

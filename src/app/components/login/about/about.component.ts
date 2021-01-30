@@ -13,7 +13,15 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {}
 
   goToEvent() {
-    this._router.navigate(["/hub"]);
+    let epic = JSON.parse(localStorage.getItem("currentEpic"));
+
+    if (epic.type == "adulto") {
+      this._router.navigate(["/hub"]);
+    } else if (epic.type == "jovem") {
+      this._router.navigate(["/jovem/home"]);
+    } else {
+      this._router.navigate(["/concafrinhas/home"]);
+    }
   }
 
   back() {

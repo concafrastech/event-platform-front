@@ -181,6 +181,8 @@ ol.carousel-indicators li.active {
 
 .active.now{
     border: 2px solid red !important;
+    cursor: pointer;
+    border-radius: 0.4rem;
 }
 
 /* Large Devices, Wide Screens */

@@ -9,6 +9,7 @@ import { ShareMessageService } from "src/app/services/share-message.service";
 import { UserService } from "src/app/services/user.service";
 import { Lecture } from "src/app/models/lecture";
 import { DocumentService } from "src/app/services/document.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-right-sidebar",
@@ -25,6 +26,7 @@ import { DocumentService } from "src/app/services/document.service";
 })
 export class RightSidebarComponent implements OnInit {
   constructor(
+    private _router: Router,
     private _userService: UserService,
     private _epicService: EpicService,
     private _lectureService: LectureService,
@@ -42,7 +44,8 @@ export class RightSidebarComponent implements OnInit {
   public currentCarouselSchedule: number = 0;
   public sizeCarouselSchedule: number = 0;
   public currentItem: Lecture | Activity;
-  public now: boolean = false;
+  public now: boolean;
+  public strTime: string;
 
   ngOnInit(): void {
     this.loadCarouselSchedule();
@@ -64,8 +67,6 @@ export class RightSidebarComponent implements OnInit {
           for (let i = 0; i < this.schedules.length; i++) {
             this.createTodaySchedule(this.schedules[i]);
           }
-
-          console.log(this.todaySchedule);
 
           this.currentCarouselSchedule = 0;
           this.loadThumbnail();
@@ -138,11 +139,6 @@ export class RightSidebarComponent implements OnInit {
       today.getFullYear() == startDay.getFullYear()
     ) {
       //Verifica se o horário ainda não passou
-
-      //Está acontecendo
-      if (todayTime >= startTime && todayTime <= endTime) {
-      }
-
       if (
         today.getHours() < startDay.getHours() ||
         (today.getHours() == startDay.getHours() &&
@@ -165,7 +161,9 @@ export class RightSidebarComponent implements OnInit {
   }
 
   formatScheduleStartHour(schedule: Schedule) {
-    this.now = false;
+    let messageTime = "";
+    let isNow = false;
+
     if (schedule) {
       let today = new Date();
 
@@ -178,29 +176,35 @@ export class RightSidebarComponent implements OnInit {
       if (remainingTime < milis15 && remainingTime > 0) {
         remainingTime = remainingTime / 1000;
         let minute = Math.trunc(remainingTime / 60);
-        return `Começa em ${minute} minutos`;
-      }else{
-        if(remainingTime < 0){
-          this.now = true;
-          return "Acontecendo agora"
+        messageTime = `Começa em ${minute} minutos`;
+      } else {
+        if (remainingTime < 0) {
+          isNow = true;
+          messageTime = "Acontecendo agora";
+        } else {
+          messageTime =
+            "Hoje às " +
+            ("00" + start.getHours()).slice(-2) +
+            ":" +
+            ("00" + start.getMinutes()).slice(-2);
         }
       }
-
-      return (
-        "Hoje às " +
-        ("00" + start.getHours()).slice(-2) +
-        ":" +
-        ("00" + start.getMinutes()).slice(-2)
-      );
     } else {
-      return "";
+      messageTime = "";
     }
+
+    this.now = isNow;
+    this.strTime = messageTime;
   }
 
   loadThumbnail() {
     if (this.todaySchedule && this.todaySchedule.length > 0) {
       let id = this.todaySchedule[this.currentCarouselSchedule].id;
       this.currentItem = null;
+
+      this.formatScheduleStartHour(
+        this.todaySchedule[this.currentCarouselSchedule]
+      );
 
       if (this.todaySchedule[this.currentCarouselSchedule].type == "lecture") {
         this._lectureService.getLecture(id).subscribe((response) => {
@@ -228,7 +232,13 @@ export class RightSidebarComponent implements OnInit {
     }
   }
 
-  goToAudithorium(item: Lecture | Activity){
-    //this.router.navigate['/audithorium']
+  goToAudithorium() {
+    if (this.now) {
+      this._router.navigate([
+        "/audithorium",
+        this.todaySchedule[this.currentCarouselSchedule].type,
+        this.todaySchedule[this.currentCarouselSchedule].id,
+      ]);
+    }
   }
 }

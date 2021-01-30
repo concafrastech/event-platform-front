@@ -90,3 +90,14 @@
   left: 40%;
   top: -80px;
 }
+
+@media only screen and (max-width: 425px) {
+  #bg {
+    display: none;
+  }
+
+  .retangulo-2 {
+    height: 100rem;
+    margin: 0;
+  }
+}

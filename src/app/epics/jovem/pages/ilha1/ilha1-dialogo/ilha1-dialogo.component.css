@@ -18,15 +18,22 @@
 	cursor: url();
 }
 
+.FirstMessage {
+	margin-top: 10px;
+}
+
 .MyMessageLine {
 	display: flex;
 	justify-content: flex-end;
+	margin-bottom: 2px;
+	position: relative;
 }
 
 .YourMessageLine {
-	margin-bottom: 10px;
 	display: flex;
 	justify-content: flex-start;
+	margin-bottom: 2px;
+	position: relative;
 }
 
 .MyMessageItem {
@@ -41,7 +48,7 @@
 
 .YourMessageItem {
 	background-color: #FFF;
-	border-radius: 3px;
+	border-radius: 6px;
 	box-shadow: 0 1px 1px #CCC;
 	display: flex;
 	flex-direction: column;
@@ -49,10 +56,49 @@
 	max-width: 90%;
 }
 
+.YourBubbleArrow {
+	position: absolute;
+	float:left;
+	left: -10px;
+	top: 10px;
+}
+
+.YourBubbleArrow:after {
+	content: "";
+	position: absolute;
+	border-top: 20px solid #FFF;
+	border-left: 16px solid transparent;           
+	border-radius: 4px 0 0 0px;
+	width: 0;
+	height: 0;
+}
+
+.MyBubbleArrow {
+	position: absolute;
+	float: right;
+	right: 6px;
+	top: 10px;
+}
+
+.MyBubbleArrow:after {
+	content: "";
+	position: absolute;
+	border-top: 20px solid #DCF8C6;
+	border-left: 16px solid transparent;           
+	border-radius: 4px 0 0 0px;
+	width: 0;
+	height: 0;
+	transform: scaleX(-1);
+	/* DCF8C6 */
+  }
+
+
+
 .MessageAuthor {
 	font-size: 1rem;
+	font-weight: 450;
 	margin: 5px 0px 0px 5px;
-	color: turquoise;
+	color: rgb(0, 165, 65);
 }
 
 .MessageText {
@@ -62,6 +108,7 @@
 
 .MessageImage {
 	max-height: 400px;
+	border-radius: 5px;
 }
 
 .MessageDate {

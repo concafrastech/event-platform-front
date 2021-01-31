@@ -55,7 +55,7 @@ Left Navigation Sidebar
 .nav-left-sidebar .navbar-nav .nav-link {
     font-size: 12px;
     padding: 12px;
-    /* margin-bottom: 2px; */
+    cursor: pointer;
     color: #ffffff;
     transition: 0.3s;
     text-align: center;

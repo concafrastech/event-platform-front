@@ -3,7 +3,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
-      <div class="MessageText">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Acesse os eventos ao vivo de hoje pelos links abaixo:</div>
+      <div class="MessageText">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Acesse os eventos ao vivo pelos links abaixo:</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -12,48 +12,98 @@
   <div class="MyMessageLine">
     <div class="MyMessageItem">
       <div class="MessageAuthor">{{identity.name}}</div>
-      <ul class="list-group list-group-flush">
-        <!--<li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>-->
-        <li
-          style="display: block; padding: 1rem; color: #474747; background-color: rgba(255, 255, 255, .9);"
-          *ngFor="let lecture of lectures"
-        >
-          <div style="float: left">
-            <div>
-              <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{ lecture.name }}</a>
-            </div>
-            <div style="display: block">
+      
+      <div *ngFor="let group of groupSchedules; let i = index">
+        <div class="card" style="width: 100%">
+          <div class="card-header" style="
+              text-align: center;
+              background-color: #273b87;
+              text-align: center;
+              color: white;
+              font-weight: 500;
+            ">
+            Dia {{ i + 1 }} - {{ group.group }}
+          </div>
+          <ul class="list-group list-group-flush">
+            <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule">
+              <a [routerLink]="['/jovem/audithorium/', 'lecture', schedule.id]" [routerLinkActive]="['active']">
               <div style="float: left">
-                <span style="font-size: 0.8rem; color: #a2a2a2">{{
-                  lecture.description
-                }}</span>
+                <div [tooltip]="schedule.description" placement="left">
+                  {{ schedule.name }}
+                </div>
+                <div style="display: block">
+                  <div style="float: left">
+                    <span style="font-size: 0.8rem; color: #a2a2a2">{{
+                      schedule.description
+                      }}</span>
+                  </div>
+                  <div style="float: right">
+                    <img style="margin-left: 5rem" src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg" />
+                    <img style="margin-left: 0.5rem" src="assets/concafras2021/concafronas/icones/libras.svg" />
+                  </div>
+                </div>
               </div>
-              <div style="float: right">
-                <img
-                  style="margin-left: 5rem"
-                  src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg"
-                />
-                <img
-                  style="margin-left: 0.5rem"
-                  src="assets/concafras2021/concafronas/icones/libras.svg"
-                />
+              <div style="float: right; font-weight: 500">
+                {{ schedule.start_time | date: "HH:mm" }} -
+                {{ schedule.end_time | date: "HH:mm" }}
               </div>
-            </div>
-          </div>
-          <div style="float: right; font-weight: 500">
-            {{ lecture.start_time | date: "HH:mm" }} -
-            {{ lecture.end_time | date: "HH:mm" }}
-          </div>
-
-        </li>
-        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem ao Vivo</a></li>
-        <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
-      </ul>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
       <div class="MessageDate">{{getTime(3)}}</div>
       <div class="MyBubbleArrow"></div>
     </div>
   </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine" *ngIf="eventoSelecionado">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Auta de Souza</div>
+      <div class="MessageText">Como você quer assistir a este e evento ao vivo?</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine" *ngIf="eventoSelecionado">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <div class="MessageText">YouTube<br/>Zoom<br/>Áudio</div>
+      <div class="MessageDate">{{getTime(3)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da ilha</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(9)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
 </div>
+
+<!--
+  Esta tela deveria exibir apenas as palestras abaixo
+  
+Sexta Feira
+  20h às 21h30 - Revista Eletrônica - Há Vida após a Morte
+
+Sábado
+  09h às 10h45 - Tema CFAS
+  14h às 15h - Tema Especial: Juventude Sublime Esperança do Cristo!
+  20h às 21h30 - Revista Eletrônica - Reencarnação
+  20h às 21h30 - Fora da Caridade não há salvação
+  22h às 22h40 - Estação Jovem Ao Vivo
+
+Domingo
+  17h - A Favor da Vida e Pela Paz!
+-->
 
 <div *ngIf="dialog == 'conhecendo'">
   <div class="Space"></div>

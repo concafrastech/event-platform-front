@@ -198,7 +198,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
         hours = hours - 24;
       }
     }
-    if(minutes > 10) {
+    if(minutes >= 10) {
       var time = hours + ":" + minutes;
     }
     else {

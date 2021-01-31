@@ -197,7 +197,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
           hours = hours - 24;
         }
       }
-      if(minutes > 10) {
+      if(minutes >= 10) {
         var time = hours + ":" + minutes;
       }
       else {

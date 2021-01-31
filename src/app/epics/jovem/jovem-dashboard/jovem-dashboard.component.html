@@ -4,7 +4,8 @@
     <ul class="list-unstyled components">
       <li class="text-center">
         <a class="nav-link text-center" [routerLink]="['/jovem/meus-dados']">
-          <img class="img-fluid rounded-circle px-4" src="assets/jovem/img/user.jpg">
+          <img *ngIf="user.image" [src]="user.image.fileLink" class="img-fluid rounded-circle px-4" />
+          <fa-icon *ngIf="!user.image" [icon]="faUserCircle" class="sidebar-icon" size="4x"></fa-icon>
           <p >Bem vindo(a),<br/>{{identity.name}}!</p>
         </a>
       </li>
@@ -12,7 +13,7 @@
       <li class="text-center">
         <a class="nav-link text-center disabled" [routerLink]="">
           <img class="img-fluid" src="{{user.level.icon}}">
-          <p>Nível {{user.level.badge}}<br/>{{user.points}} pontos</p>
+          <p>Nível {{user.level.badge}}<br/>{{this._gamificationService.getPoints() ? this._gamificationService.getPoints() : 0}} pontos</p>
         </a>
       </li>
       <li class="text-center">
@@ -34,25 +35,25 @@
         </a>
       </li>
       <li class="text-center">
-        <a href="">
+        <a href="#" data-toggle="modal" (click)="openFraternalSupportComponent()">
           <img class="img-fluid" src="assets/jovem/icons/coracao.svg" >
           <p >Amparo Fraterno:<br/>Quer conversar?</p>
         </a>
       </li>
       <li class="text-center">
-        <a href="#" data-toggle="modal" data-target="#navegar">
+        <a [routerLink]="['/about']" data-toggle="modal" data-target="#navegar">
           <img class="img-fluid" src="assets/jovem/icons/duvida.svg" >
           <p>Como navegar</p>
         </a>
       </li>
       <li class="text-center">
-        <a href="#" data-toggle="modal" data-target="#navegar">
+        <a href="#" data-toggle="modal" (click)="openCloseFraternalSupportChat()">
           <img class="img-fluid" src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" >
           <p>Dúvidas?</p>
         </a>
       </li>
       <li class="text-center">
-        <a [routerLink]="['/select-journey']">
+        <a href="#" data-toggle="modal" (click)="logout()">
           <img class="img-fluid" src="assets/concafras2021/concafronas/icones/sair-menu-item.svg" >
           <p >Sair</p>
         </a>
@@ -117,22 +118,8 @@
   </div>
 </div>
 
-<!-- Modal Como navegar -->
-<div class="modal fade bd-example-modal-lg" id="navegar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Como Navegar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rw2LoqWb9XA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
+<div class="fixed-div" [ngClass]="showChat ? '' : 'hide-container'">
+  <div class="chat-container">
+      <embed style="height: 100%; width: 100%;" src="https://tawk.to/chat/5ff34731c31c9117cb6b5dbb/1er74s6at">
   </div>
 </div>

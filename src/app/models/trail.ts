@@ -5,6 +5,8 @@ export class Trail {
     constructor(
         public _id: string,
         public name: string,
+        public remote: boolean,
+        public remoteId: string,
         public description: string,
         public type: string,
         public subject: string,

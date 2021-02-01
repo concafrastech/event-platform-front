@@ -73,6 +73,8 @@ export class ClassroomAddComponent implements OnInit {
       this.classroom.trail = new Trail(
         "",
         "",
+        false,
+        "",
         "",
         "",
         "",

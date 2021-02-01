@@ -46,6 +46,8 @@ export class EpicAddComponent implements OnInit {
     this.epic.conference = new Conference(
       null,
       "",
+      false,
+      "",
       "",
       new Date(),
       new Date(),

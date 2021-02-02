@@ -92,6 +92,8 @@ export class TrailEditComponent implements OnInit {
     this.trail = new Trail(
       "",
       "",
+      false, 
+      "",
       "",
       "",
       "",

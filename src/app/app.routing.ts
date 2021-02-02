@@ -262,6 +262,7 @@ const appRoutes: Routes = [
             {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
             {path: 'jovem-classroom/:type/:id', component: JovemClassroomComponent, canActivate:[UserGuard]},
             {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
+            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
         ],
     },
 

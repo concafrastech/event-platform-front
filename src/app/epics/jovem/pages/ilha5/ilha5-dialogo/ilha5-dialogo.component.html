@@ -3,7 +3,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
-      <div class="MessageText">Olá, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Acesse os eventos ao vivo de hoje pelos links abaixo:</div>
+      <div class="MessageText">Olá {{identity.name}}, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Escolha uma opção a seguir.</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -13,58 +13,105 @@
     <div class="MyMessageItem">
       <div class="MessageAuthor">{{identity.name}}</div>
       <ul class="list-group list-group-flush">
-        <!--<li class="list-group-item"><a href="#" data-toggle="modal" (click)="openProgramacaoComponent()">Programação</a></li>-->
-        <li
-          style="display: block; padding: 1rem; color: #474747; background-color: rgba(255, 255, 255, .9);"
-          *ngFor="let lecture of lectures"
-        >
-          <div style="float: left">
-            <div>
-              <a [routerLink]="['/jovem/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{ lecture.name }}</a>
-            </div>
-            <div style="display: block">
-              <div style="float: left">
-                <span style="font-size: 0.8rem; color: #a2a2a2">{{
-                  lecture.description
-                }}</span>
-              </div>
-              <div style="float: right">
-                <img
-                  style="margin-left: 5rem"
-                  src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg"
-                />
-                <img
-                  style="margin-left: 0.5rem"
-                  src="assets/concafras2021/concafronas/icones/libras.svg"
-                />
-              </div>
-            </div>
-          </div>
-          <div style="float: right; font-weight: 500">
-            {{ lecture.start_time | date: "HH:mm" }} -
-            {{ lecture.end_time | date: "HH:mm" }}
-          </div>
-
-        </li>
-        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem ao Vivo</a></li>
-        <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da Ilha</a></li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem AO VIVO</a></li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/programacao']" [routerLinkActive]="['active']">Programação AO VIVO</a></li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/home']" [routerLinkActive]="['active']">Sair da ilha</a></li>
       </ul>
+      <div class="MessageDate">{{getTime(9)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dialog == 'programacao'">
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Auta de Souza</div>
+      <div class="MessageText">{{identity.name}}, selecione um evento que esteja ocorrendo neste momento para assistí-lo.
+      </div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{identity.name}}</div>
+      <div *ngFor="let group of groupSchedules; let i = index">
+        <div class="card" style="width: 100%">
+          <div class="card-header" style="
+              text-align: center;
+              background-color: #273b87;
+              text-align: center;
+              color: white;
+              font-weight: 500;
+            ">
+            Dia {{ i + 1 }} - {{ group.group }}
+          </div>
+          <ul class="list-group list-group-flush">
+            <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule">
+              <a [routerLink]="['/jovem/audithorium/', 'lecture', schedule.id]" [routerLinkActive]="['active']">
+              <div style="float: left">
+                <div [tooltip]="schedule.description" placement="left">
+                  {{ schedule.name }}
+                </div>
+                <div style="display: block">
+                  <div style="float: left">
+                    <span style="font-size: 0.8rem; color: #a2a2a2">{{
+                      schedule.description
+                      }}</span>
+                  </div>
+                  <div style="float: right">
+                    <img style="margin-left: 5rem" src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg" />
+                    <img style="margin-left: 0.5rem" src="assets/concafras2021/concafronas/icones/libras.svg" />
+                  </div>
+                </div>
+              </div>
+              <div style="float: right; font-weight: 500">
+                {{ schedule.start_time | date: "HH:mm" }} -
+                {{ schedule.end_time | date: "HH:mm" }}
+              </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+      </ul>
+      
       <div class="MessageDate">{{getTime(3)}}</div>
       <div class="MyBubbleArrow"></div>
     </div>
   </div>
 </div>
 
+
+<!--
+  Esta tela deveria exibir apenas as palestras abaixo
+  
+Sexta Feira
+  20h às 21h30 - Revista Eletrônica - Há Vida após a Morte
+
+Sábado
+  09h às 10h45 - Tema CFAS
+  14h às 15h - Tema Especial: Juventude Sublime Esperança do Cristo!
+  20h às 21h30 - Revista Eletrônica - Reencarnação
+  20h às 21h30 - Fora da Caridade não há salvação
+  22h às 22h40 - Estação Jovem Ao Vivo
+
+Domingo
+  17h - A Favor da Vida e Pela Paz!
+-->
+
 <div *ngIf="dialog == 'conhecendo'">
   <div class="Space"></div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
-      <div class="MessageText">Olá! Meu nome é Auta de Souza.<br/>
-        A Estação Jovem AO VIVO foi criada para lembrarmos dos momentos de interação e confraternização coletiva na CONCAFRAS!<br/>
-        O palco, a decoração, o sentimento de fraternidade, as rodas de Alergia Cristã, apresentações artísticas, palestras e toda a energia que estes momentos nos inspiram.<br/>
-        E aí, já deu saudade de abraçar os amigos ao som da Canção da Alegria Cristã?<br/>
-        Então não perca nenhum segundo das nossas lives interativas aqui na Estação!
+      <div class="MessageText">Olá {{identity.name}}, você já me conhece, né? Eu me chamo Auta de Souza!<br/>
+        A Estação Jovem AO VIVO foi criada para lembrarmos dos momentos de interação e confraternização coletiva na CONCAFRAS!
       </div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
@@ -76,8 +123,18 @@
       <div class="MessageAuthor">Auta de Souza</div>
       <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_1.jpg">
       <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_2.jpg">
-      <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_3.jpg">
-      <div class="MessageDate">{{getTime(7)}}</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Auta de Souza</div>
+      <div class="MessageText">
+        O palco, a decoração, o sentimento de fraternidade, as rodas de Alegria Cristã, apresentações artísticas, palestras e toda a energia que estes momentos nos inspiram.
+      </div>
+      <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
   </div>
@@ -86,7 +143,6 @@
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
       <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_4.png">
-      <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_5.png">
       <div class="MessageDate">{{getTime(7)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -95,8 +151,39 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
+      <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_5.jpeg">
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Auta de Souza</div>
+      <div class="MessageText">
+        E aí, {{identity.name}}, já deu saudade de abraçar os amigos ao som da Canção da Alegria Cristã?<br/>
+        Então não perca nem um segundo das nossas lives interativas aqui na Estação!
+      </div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Auta de Souza</div>
+      <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_3.jpg">
       <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_6.jpg">
+      <div class="MessageDate">{{getTime(7)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div class="Space"></div>
+  <div class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Auta de Souza</div>
       <img class="MessageImage" src="/assets/jovem/img/conhecendo_vivo_7.jpeg">
+      
       <div class="MessageDate">{{getTime(7)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>

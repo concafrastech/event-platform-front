@@ -41,12 +41,24 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <fieldset class="form-group">
-                    <label>Evento</label>
+                    <label>Épico</label>
                     <select [compareWith]="compareByOptionId" name="epic" #conference="ngModel" [(ngModel)]="trail.epic" class="form-control">
                         <option value="">-- Selecione --</option>
                         <option *ngFor="let epic of epics" [ngValue]="epic">{{epic.name}}</option>
                     </select>
                 </fieldset>
+            </div>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" style="font-size: 14px" type="checkbox" name="remote" #remote="ngModel" [(ngModel)]="trail.remote"/>
+            <label class="form-check-label" for="flexCheckDefault">
+              Remoto
+            </label>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Código Remoto</label>
+                <input type="text" name="remoteId" #remoteId="ngModel" [(ngModel)]="trail.remoteId" class="form-control" />
             </div>
         </div>
         <div class="row">

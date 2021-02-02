@@ -4,7 +4,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
-      <div class="MessageText">Olá, eu sou a Patrícia.🥰❤️❤️</div>
+      <div class="MessageText">Olá {{identity.name}}, eu sou a Patrícia.🥰❤️❤️</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -34,7 +34,7 @@
         -->
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico👩🏽‍🏫</a></li>
         <li class="list-group-item" *ngFor="let stage of stages">
-          <a *ngIf="stage.type.toLowerCase() === 'novas dimensões'" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
+          <a *ngIf="stage.type.toLowerCase() === 'novas dimensões do conhecimento' || stage.type.toLowerCase() === 'novas dimensões'" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
           <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
           <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
         </li>
@@ -52,7 +52,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
-      <div class="MessageText">Olá! Meu nome é Patrícia.🥰❤️❤️</div>
+      <div class="MessageText">Olá {{identity.name}}! Meu nome é Patrícia.🥰❤️❤️</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -79,7 +79,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
-      <img class="MessageImage" src="/assets/jovem/img/Violetas Na Janela.jpg">
+      <img class="MessageImage" src="/assets/jovem/img/A Casa do Escritor.jpg">
       <div class="MessageDate">{{getTime(7)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -95,7 +95,7 @@
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">Ahh, você pode conhecer mais sobre a minha história e o sobre o mundo espiritual nos livros📚: "Violetas na janela", "Vivendo no mundo dos espíritos", "A casa do escritor" e "O vôo da gaivota", todos psicografados pela Vera. Te garanto que você vai adorar!</div>
+      <div class="MessageText">Ahh, você pode conhecer mais sobre a minha história e o sobre o mundo espiritual nos livros📚: "Violetas na janela", "Vivendo no mundo dos espíritos", "A casa do escritor" e "O vôo da gaivota", todos psicografados pela Vera. Te garanto que você vai adorar, {{identity.name}}!</div>
       <div class="MessageDate">{{getTime(11)}}</div>
     </div>
   </div>
@@ -103,8 +103,8 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
+      <img class="MessageImage" src="/assets/jovem/img/Violetas Na Janela.jpg">
       <img class="MessageImage" src="/assets/jovem/img/Vivendo no Mundo dos Espíritos.jpg">
-      <img class="MessageImage" src="/assets/jovem/img/A Casa do Escritor.jpg">
       <img class="MessageImage" src="/assets/jovem/img/O Vôo da Gaivota.jpg">
       <div class="MessageDate">{{getTime(12)}}</div>
       <div class="YourBubbleArrow"></div>
@@ -129,14 +129,14 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
-      <div class="MessageText">No momento da inscrição você escolheu um Curso, se lembra?</div>
+      <div class="MessageText">{{identity.name}}, no momento da inscrição você escolheu um Curso, se lembra?</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.</div>
+      <div class="MessageText">O curso escolhido por você é: <b>{{trail.name}}</b>.</div>
       <div class="MessageDate">{{getTime(1)}}</div>
     </div>
   </div>
@@ -160,15 +160,15 @@
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">Confira os detalhes dos seu Tema Específico abaixo!</div>
+      <div class="MessageText">{{identity.name}}, confira os detalhes dos seu Tema Específico abaixo!</div>
       <div class="MessageDate">{{getTime(8)}}</div>
     </div>
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageText">
-        <b>{{this.trails[0].name}}</b><br/>
-        {{this.trails[0].description}}
+        <b>{{trail.name}}</b><br/>
+        {{trail.description}}
       </div>
       <div class="MessageDate">{{getTime(9)}}</div>
     </div>

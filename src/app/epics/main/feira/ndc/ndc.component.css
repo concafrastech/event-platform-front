@@ -60,6 +60,7 @@
 .card {
     background-image: linear-gradient(#fbfbfb, #dcdcdc);
     box-shadow: 4px 2px 10px 0px #3b3b3b;
+    cursor: pointer;
 }
 
 .card .card-div-img {

@@ -16,7 +16,7 @@
 /* ==== DIV INFO ==== */
 #audithorium-special-header .audithorium-special-header-item.audithorium-special-header-div-info {
     display: grid;
-    grid-template-columns: 2fr;
+    grid-template-columns: 2fr .5fr;
 }
 
 #audithorium-special-header .audithorium-special-header-item .audithorium-special-header-text {

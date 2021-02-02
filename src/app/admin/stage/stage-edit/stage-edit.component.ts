@@ -76,7 +76,7 @@ export class StageEditComponent implements OnInit {
   }
 
   loadPage() {
-    this._activityService.getActivities().subscribe(
+    this._activityService.getFullActivities().subscribe(
       (response) => {
         this._spinner.hide();
         this.activities = response.activities;

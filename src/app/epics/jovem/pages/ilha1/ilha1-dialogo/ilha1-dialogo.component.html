@@ -34,7 +34,7 @@
         -->
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/temaespecifico']" [routerLinkActive]="['active']">Tema Específico👩🏽‍🏫</a></li>
         <li class="list-group-item" *ngFor="let stage of stages">
-          <a *ngIf="stage.type.toLowerCase() === 'novas dimensões'" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
+          <a *ngIf="stage.type.toLowerCase() === 'novas dimensões do conhecimento' || stage.type.toLowerCase() === 'novas dimensões'" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">Novas Dimensões do Conhecimento: {{stage.name}}</a>
           <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
           <a *ngIf="stage.type.toLowerCase() === 'ilha casa do escritor' && stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
         </li>
@@ -136,7 +136,7 @@
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.</div>
+      <div class="MessageText">O curso escolhido por você é: <b>{{trail.name}}</b>.</div>
       <div class="MessageDate">{{getTime(1)}}</div>
     </div>
   </div>
@@ -167,8 +167,8 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageText">
-        <b>{{this.trails[0].name}}</b><br/>
-        {{this.trails[0].description}}
+        <b>{{trail.name}}</b><br/>
+        {{trail.description}}
       </div>
       <div class="MessageDate">{{getTime(9)}}</div>
     </div>

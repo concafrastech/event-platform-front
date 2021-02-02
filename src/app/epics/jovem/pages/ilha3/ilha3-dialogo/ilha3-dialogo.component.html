@@ -15,9 +15,6 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Caminho</a></li>
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/pratica']" [routerLinkActive]="['active']">Minha Prática na CONCAFRAS</a></li>
-        <li class="list-group-item" *ngFor="let trail of trails">
-          <a [routerLink]="['/jovem/jovem-classroom/', 'Teórico', trail._id]" [routerLinkActive]="['active']">Prática Tema Específico: {{trail.name}}</a>
-        </li>
         <li class="list-group-item" *ngFor="let stage of stages">
           <a *ngIf="stage.activities.length > 1" [routerLink]="['/jovem/jovem-list/', stage._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
           <a *ngIf="stage.activities.length === 1" [routerLink]="['/jovem/audithorium/', 'activity', stage.activities[0]._id]" [routerLinkActive]="['active']">{{stage.name}}</a>
@@ -106,7 +103,7 @@
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">O curso escolhido por você é: <b>{{this.trails[0].name}}</b>.</div>
+      <div class="MessageText">O curso escolhido por você é: <b>{{trail.name}}</b>.</div>
       <div class="MessageDate">{{getTime(1)}}</div>
     </div>
   </div>
@@ -137,8 +134,8 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageText">
-        <b>{{this.trails[0].name}}</b><br/>
-        {{this.trails[0].description}}
+        <b>{{trail.name}}</b><br/>
+        {{trail.description}}
       </div>
       <div class="MessageDate">{{getTime(9)}}</div>
     </div>

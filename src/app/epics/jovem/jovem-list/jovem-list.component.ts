@@ -12,7 +12,7 @@
     selector: 'app-jovem-list',
     templateUrl: './jovem-list.component.html',
     styleUrls: ['./jovem-list.component.css'],
-    providers: [StageService, ActivityService, UserService, DocumentService],
+    providers: [StageService, ActivityService, UserService, DocumentService, NavbarService],
   })
   export class JovemListComponent implements OnInit {
     @Input() public id: string;
@@ -35,7 +35,6 @@
       this._route.params.subscribe(params => {
         let id = params['id'];
         this.id = id;
-        console.log(id);
         this._stageService.getStage(id).subscribe((response) => {
           this.stage = response.stage;
           this.title = response.stage.name;
@@ -69,6 +68,7 @@
     ngOnDestroy(): void {
       this._navbarService.setButtonBack(false);
     }
+
   }
 
 

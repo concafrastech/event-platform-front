@@ -15,13 +15,15 @@
   import { ScheduleComponent } from 'src/app/components/schedule/schedule.component';
   import { FraternalSupportComponent } from "src/app/epics/main/fraternal-support/fraternal-support.component";
   import { TawkService } from "src/app/services/tawk-service";
+  import { Location } from '@angular/common';
+  import { NavbarService } from "src/app/services/navbar.service";
 
   
   @Component({
     selector: 'app-jovem-dashboard',
     templateUrl: './jovem-dashboard.component.html',
     styleUrls: ['./jovem-dashboard.component.css'],
-    providers: [UserService, DocumentService, TawkService]
+    providers: [UserService, DocumentService, TawkService, NavbarService]
   })
   export class JovemDashboardComponent implements OnInit {
   
@@ -39,7 +41,9 @@
       public _gamificationService: GamificationService,
       public _bootstrapAlertService: NgBootstrapAlertService,
       private _modalService: BsModalService,
-      private _documentService: DocumentService
+      private _documentService: DocumentService,
+      private location: Location,
+      public _navbarService: NavbarService
     ) { 
 
       this.progress = {
@@ -287,6 +291,10 @@
     openCloseFraternalSupportChat() {
       this.showChat = !this.showChat;
       //this._tawkService.ExpandChatWindow(true);
+    }
+
+    back() {
+      this.location.back();
     }
 
     sidebarCollapse() {

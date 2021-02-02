@@ -141,6 +141,8 @@ export class TrailEditComponent implements OnInit {
         if (response.trail) {
           this.trail = response.trail;
           for (let i = 0; i < this.trail.classrooms.length; i++) {
+            console.log(this.trail);
+            
             if (this.trail.classrooms[i].type == "teorico") {
               if (!this.momentOne || this.momentOne._id == "") {
                 this.momentOne = this.trail.classrooms[i];

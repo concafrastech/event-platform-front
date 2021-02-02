@@ -2,8 +2,7 @@ import { DocumentService } from "src/app/services/document.service";
 import { MagneticPassDistanceComponent } from "./../magnetic-pass-distance/magnetic-pass-distance.component";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { GamificationService } from "angular-gamification";
-import { NgBootstrapAlert, NgBootstrapAlertService } from "ng-bootstrap-alert";
+import { NgBootstrapAlertService } from "ng-bootstrap-alert";
 import { UserService } from "src/app/services/user.service";
 
 import {
@@ -16,6 +15,7 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { ScheduleComponent } from "src/app/components/schedule/schedule.component";
 import { FraternalSupportComponent } from "../fraternal-support/fraternal-support.component";
 import { TawkService } from "src/app/services/tawk-service";
+import { UserGamificationService } from "src/app/services/user-gamification.service";
 
 @Component({
   selector: "app-left-sidebar",
@@ -35,10 +35,10 @@ export class LeftSidebarComponent implements OnInit {
   constructor(
     private _router: Router,
     private _userService: UserService,
-    public _gamificationService: GamificationService,
     public _bootstrapAlertService: NgBootstrapAlertService,
     private _modalService: BsModalService,
     private _documentService: DocumentService,
+    public _userGamification: UserGamificationService
   ) {
     /*this.user = {
       name: "Gui",
@@ -51,6 +51,7 @@ export class LeftSidebarComponent implements OnInit {
     };
     this.user = this._userService.getIdentity();
     this.initGamefication();
+    
   }
 
   ngOnInit(): void {
@@ -71,57 +72,59 @@ export class LeftSidebarComponent implements OnInit {
   }
 
   initGamefication() {
-    console.log("gamification: ", this._gamificationService);
+    this.user.level = this._userGamification.getLevel();
+    this.user.points = this._userGamification.getPoints();
+    //console.log("gamification: ", this._gamificationService);
 
-    this._gamificationService.addBreakpoint(100, () => {
-      console.log(
-        "breakpoint 100 callback: ",
-        this._gamificationService.getPoints()
-      );
-      this._bootstrapAlertService.alert(
-        new NgBootstrapAlert(
-          "Parabéns você está em novo nível!",
-          "alert-success"
-        )
-      );
-    });
-    this._gamificationService.addBreakpoint(200, () => {
+    /*this._gamificationService.addBreakpoint(200, () => {
       console.log(
         "breakpoint 200 callback: ",
         this._gamificationService.getPoints()
       );
       this._bootstrapAlertService.alert(
         new NgBootstrapAlert(
-          "Parabéns você está em novo nível!",
+          "Parabéns você ao nível Marte!",
           "alert-success"
         )
       );
     });
-    this._gamificationService.addBreakpoint(300, () => {
+    this._gamificationService.addBreakpoint(450, () => {
+      console.log(
+        "breakpoint 200 callback: ",
+        this._gamificationService.getPoints()
+      );
+      this._bootstrapAlertService.alert(
+        new NgBootstrapAlert(
+          "Parabéns você ao nível Vênus!",
+          "alert-success"
+        )
+      );
+    });
+    this._gamificationService.addBreakpoint(800, () => {
       console.log(
         "breakpoint 300 callback: ",
         this._gamificationService.getPoints()
       );
       this._bootstrapAlertService.alert(
         new NgBootstrapAlert(
-          "Parabéns você está em novo nível!",
+          "Parabéns você ao nível Júpiter!",
           "alert-success"
         )
       );
     });
-    this._gamificationService.addBreakpoint(400, () => {
+    this._gamificationService.addBreakpoint(1050, () => {
       console.log(
         "breakpoint 400 callback: ",
         this._gamificationService.getPoints()
       );
       this._bootstrapAlertService.alert(
         new NgBootstrapAlert(
-          "Parabéns você está em novo nível!",
+          "Parabéns você ao nível Sol!",
           "alert-success"
         )
       );
-    });
-
+    });*/
+/*
     let component = this._gamificationService.addComponent(
       400,
       () => {
@@ -140,7 +143,7 @@ export class LeftSidebarComponent implements OnInit {
     );
 
     this._gamificationService.addMission(
-      "add",
+      "my_profile",
       50,
       "",
       () => {
@@ -152,8 +155,8 @@ export class LeftSidebarComponent implements OnInit {
           this._gamificationService.getPoints()
         );
       }
-    );
-
+    );*/
+/*
     this._gamificationService.addMission(
       "timeline",
       10,
@@ -245,10 +248,10 @@ export class LeftSidebarComponent implements OnInit {
           this._gamificationService.getPoints()
         );
       }
-    );
+    );*/
 
-    console.log(this.user.level);
-    console.log(this.identity);
+    // console.log(this.user.level);
+    // console.log(this.identity);
   }
 
   openProgramacaoComponent() {

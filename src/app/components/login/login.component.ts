@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { Subscription } from 'src/app/models/subscription';
+import { SubscriptionService } from 'src/app/services/subscription.service';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
 
@@ -33,17 +34,14 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        this._userService.signup(this.user).subscribe(
+        this._userService.signup(this.user, 'true').subscribe(
             response => {
-                this.identity = response.user;
-                console.log(this.identity);
-                if (!this.identity || !this.identity._id) {
+                this.token = response.idToken;
+                if (this.token.length <= 0) {
                     this.status = 'error';
                 } else {
-                    this.status = 'success';
-                    localStorage.setItem('identity', JSON.stringify(this.identity));
-                    localStorage.setItem('subscriptions', JSON.stringify(this.identity.subscriptions));
-                    this.getToken();
+                    localStorage.setItem('token', JSON.stringify(this.token));
+                    this.getUser();
                 }
             },
             error => {
@@ -56,15 +54,17 @@ export class LoginComponent implements OnInit {
         );
     }
 
-    getToken() {
-        this._userService.signup(this.user, 'true').subscribe(
+    getUser() {
+        this._userService.signup(this.user, 'false').subscribe(
             response => {
-                this.token = response.token;
-                if (this.token.length <= 0) {
+                this.identity = response.user;
+                console.log(this.identity);
+                if (!this.identity || !this.identity._id) {
                     this.status = 'error';
                 } else {
-                    localStorage.setItem('token', JSON.stringify(this.token));
-                    this.getCounters();
+                    this.status = 'success';
+                    localStorage.setItem('identity', JSON.stringify(this.identity));
+                    this.getSubscription();
                 }
             },
             error => {
@@ -73,6 +73,17 @@ export class LoginComponent implements OnInit {
                 if (errorMessage != null) {
                     this.status = 'error';
                 }
+            }
+        );
+    }
+
+    getSubscription(){
+        this._userService.getSubscriptions(this.identity._id).subscribe(
+            response => {
+                this.identity.subscriptions = response.subscriptions;
+                console.log(response);
+                localStorage.setItem('subscriptions', JSON.stringify(response.subscriptions));
+                this.getCounters();
             }
         );
     }
@@ -82,8 +93,12 @@ export class LoginComponent implements OnInit {
             response => {
                 localStorage.setItem('stats', JSON.stringify(response));
                 this.status = "success";
-                if(this.identity.subscriptions.length == 1 && this.identity.subscriptions[0].active){
+                console.log(response);
+                if(this.identity.subscriptions.length == 1){
+                    console.log(this.identity.subscriptions[0]);
+                    localStorage.setItem('subscriptions', JSON.stringify(this.identity.subscriptions));
                     localStorage.setItem('currentSubscription', JSON.stringify(this.identity.subscriptions[0]));
+                    localStorage.setItem('currentConference', JSON.stringify(this.identity.subscriptions[0].conference));
                     this._router.navigate(['/select-journey']);
                 } else {
                     this._router.navigate(['/select-conference']);

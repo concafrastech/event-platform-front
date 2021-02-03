@@ -81,6 +81,14 @@ export class UserService {
         }
     }
 
+    getSubscriptions(userId = null): Observable<any> {
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', this.getToken());
+
+        return this._http.get(this.url + 'users/' + userId + '/subscriptions/', {headers: headers});
+    }
+
     getMockSubscription(userId = null): Observable<any> {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

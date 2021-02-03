@@ -18,20 +18,18 @@
 
 
         <img class="t1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioTemaCentral.png"
-            (click)="openModal(templateTC)" title="Tema Central">
+            (click)="openModalTemaCentral(templateTC)" title="Tema Central">
 
 
 
         <img class="t2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioOficinaArte.png"
-            (click)="openModal(templateOA)" title="Oficina de Arte">
+            (click)="openModalOficinaArte(templateOA)" title="Oficina de Arte">
 
 
 
         <img class="t3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioTemaEspecifico.png"
-            (click)="openModal(templateTE)" title="Tema Especifico">
+            (click)="openModalTemaEspecifico(templateTE)" title="Tema Especifico">
 
-
-        <router-outlet></router-outlet>
 
         <img class="principal" src="assets/concafras2021/concafrinhas/CasaNivel1/Bercario/BercarioInterior.jpg">
 
@@ -134,6 +132,17 @@
                                 <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
                                     title="Baixar Cartilha">
                             </a>
+                        </div>
+
+                        <div class="options-item" *ngIf="allowSalaVirtual">
+                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-practice btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
+                            </a>
+                        </div>
+                        <div class="options-item" *ngIf="!allowSalaVirtual">
+                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
+                                title="Realizar prática" (click)="openAlert()">
                         </div>
                     </div>
                 </div>

@@ -113,3 +113,35 @@ button.close span {
     width: fit-content;
     height: fit-content;
 }
+
+/* Large Devices */
+@media only screen and (max-width:1000px) { 
+    .modal-body iframe {
+        width: 690px;
+        height: 420px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .modal-header {
+        padding: 10px 10px 10px 10px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width:768px) {
+    .modal-body iframe {
+        width: 560px;
+        height: 250px;
+    }
+    
+    h4 {
+        font-size: 17px;
+    }
+    
+    .modal-header {
+        padding: 10px 10px 5px 10px;
+    }
+}

@@ -34,8 +34,8 @@
                 </thead>
                 <tbody>
                     <tr class="item-xp" *ngFor="let xp of xps">
-                        <td>{{xp.user.name }}</td>
-                        <td>{{xp.mission.name}}</td>
+                        <td>{{xp?.user?.name }}</td>
+                        <td>{{xp?.mission?.name}}</td>
                         <td class="actions">
                             <a class="btn btn-warning btn-xs" [routerLink]="['/admin/xps/edit', xp._id]">Editar</a>
                             <a class="btn btn-danger btn-xs" (click)="canDeleteXps(xp)">Excluir</a>

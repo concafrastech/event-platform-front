@@ -1,3 +1,6 @@
+import { concat } from "rxjs";
+import { concatMap, map } from "rxjs/operators";
+import { MissionService } from "./../../../services/mission.service";
 import { XpsService } from "./../../../services/xps.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -7,6 +10,7 @@ import { DeleteConfirmComponent } from "src/app/components/delete-confirm/delete
 import { Xps } from "src/app/models/xps";
 import { GLOBAL } from "src/app/services/global";
 import { UserService } from "src/app/services/user.service";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: "app-xps-list",
@@ -34,6 +38,7 @@ export class XpsListComponent implements OnInit {
     private _router: Router,
     private _xpsService: XpsService,
     private _userService: UserService,
+    private _missionService: MissionService,
     private modalService: BsModalService,
     private _spinner: NgxSpinnerService
   ) {
@@ -75,19 +80,26 @@ export class XpsListComponent implements OnInit {
   getXps(page) {
     this._xpsService.getXps(page).subscribe(
       (response) => {
-        console.log(response);
-        
+        this._spinner.hide();
+
         if (!response.xps) {
           this.status = "error";
-          this._spinner.hide();
         } else {
-          this._spinner.hide();
           this.total = response.total;
           this.xps = response.xps;
           this.pages = [];
           for (let i = 1; i <= response.pages; i++) {
             this.pages.push(i);
           }
+
+          this.xps.forEach((item) => {
+            this.loadUserAndMission(item).subscribe({
+              next: null,
+              error: null,
+              complete: () => {
+              },
+            });
+          });
 
           if (this.pages && page > this.pages.length) {
             this._router.navigate(["/admin/xps/list", 1]);
@@ -105,6 +117,33 @@ export class XpsListComponent implements OnInit {
           this.status = "error";
         }
       }
+    );
+  }
+
+  loadUserAndMission(xp: Xps) {
+    let obs$: Observable<any>[] = [];
+    if (xp.user) {
+      obs$.push(
+        this._userService.getUser(xp.user).pipe(
+          map((response) => {
+            xp.user = response.user;
+          })
+        )
+      );
+    }
+    if (xp.mission) {
+      obs$.push(
+        this._missionService.getMission(xp.mission).pipe(
+          map((response) => {
+            xp.mission = response.mission;
+          })
+        )
+      );
+    }
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
     );
   }
 

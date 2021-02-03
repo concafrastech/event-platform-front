@@ -16,7 +16,7 @@
                         <select [compareWith]="compareByOptionId" name="user" #user="ngModel" [(ngModel)]="userXp"
                             class="form-control">
                             <option value="">-- Selecione --</option>
-                            <option *ngFor="let user of users" [ngValue]="userXp">
+                            <option *ngFor="let user of users" [ngValue]="user">
                                 {{ user.name }}
                             </option>
                         </select>
@@ -31,7 +31,7 @@
                         <select [compareWith]="compareByOptionId" name="mission" #user="ngModel" [(ngModel)]="missionXp"
                             class="form-control">
                             <option value="">-- Selecione --</option>
-                            <option *ngFor="let mission of missions" [ngValue]="missionXp">
+                            <option *ngFor="let mission of missions" [ngValue]="mission">
                                 {{ mission.name }}
                             </option>
                         </select>

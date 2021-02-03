@@ -1,17 +1,21 @@
+import { Xps } from "./../models/xps";
 import { MissionService } from "./mission.service";
 import { Mission } from "src/app/models/mission";
 import { Injectable } from "@angular/core";
 import { GamificationService } from "angular-gamification";
 import { NgBootstrapAlert, NgBootstrapAlertService } from "ng-bootstrap-alert";
+import { XpsService } from "./xps.service";
+import { User } from "../models/user";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserGamificationService {
   constructor(
-    public _bootstrapAlertService: NgBootstrapAlertService,
-    public _gamificationService: GamificationService,
-    public _missionService: MissionService
+    private _bootstrapAlertService: NgBootstrapAlertService,
+    private _gamificationService: GamificationService,
+    private _missionService: MissionService,
+    private _xpsService: XpsService
   ) {
     this.setupBreakPoints();
     this.loadMissionsByEpic();
@@ -40,22 +44,55 @@ export class UserGamificationService {
   }
 
   private setupEpicMissions(missions: Mission[]) {
-    //this._gamificationService.missions = [];
+    console.log(missions);
 
-    missions.map((mission, index) => {
-      this._gamificationService.addMission(
-        mission.name,
-        mission.amount*20,
-        mission.description,
-        () => {
-          console.log("Mission start: " + mission.name);
-        },
-        () => {
-          console.log("Mission complete: " + mission.name);
-          this.removeMissionAchieved(mission)
-          this.checkLevel();
-        }
-      );
+    let user = JSON.parse(localStorage.getItem("identity"));
+    this._xpsService.getXps().subscribe({
+      next: (response) => {
+        //this._xpsService.getXpByUser(user._id).subscribe((response)=>{
+        console.log(response);
+
+        let missionXp = response.xps[0].mission;
+        let points = 0;
+        console.log(missionXp);
+        
+        let index = missions.findIndex((mission, i) => {
+          if (mission._id == missionXp) {
+            points += mission.amount;
+            return true;
+          }
+        });
+        console.log(index);
+        
+        if(index != -1){
+        missions.splice(index);
+        console.log(points);
+        this._gamificationService.addPoints(points);
+        this.checkLevel();
+      }
+      },
+      error: null,
+      complete: () => {
+        
+        console.log("oi");
+        
+        missions.map((mission, index) => {
+          this._gamificationService.addMission(
+            mission.name,
+            mission.amount,
+            mission.description,
+            () => {
+              console.log("Mission start: " + mission.name);
+            },
+            () => {
+              console.log("Mission complete: " + mission.name);
+              this.removeMissionAchieved(mission);
+              this.saveMissionUser(mission);
+              this.checkLevel();
+            }
+          );
+        });
+      },
     });
   }
 
@@ -81,16 +118,19 @@ export class UserGamificationService {
     });
   }
 
-  private removeMissionAchieved(missionAchieved){
+  private removeMissionAchieved(missionAchieved) {
     let arrayMissions = this._gamificationService.missions;
-    let index = arrayMissions.findIndex((mission, i)=>{
-      if(mission.name == missionAchieved.name){
-        
+    let index = arrayMissions.findIndex((mission, i) => {
+      if (mission.name == missionAchieved.name) {
         return true;
       }
-    })
+    });
     arrayMissions.splice(index);
     this._gamificationService.missions = arrayMissions;
-    
+  }
+
+  private saveMissionUser(mission: Mission) {
+    let user = JSON.parse(localStorage.getItem("identity"));
+    this._xpsService.addXp(new Xps("", user, mission)).subscribe();
   }
 }

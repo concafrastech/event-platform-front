@@ -45,7 +45,30 @@ export class XpsAddComponent implements OnInit {
     console.log("[OK] Component: xps-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-
+    this.userXp = new User(
+      "",
+      "",
+      "",
+      "",
+      "",
+      null,
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      null,
+      "",
+      "",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
+    this.missionXp = new Mission("", null, null, "", "", null, null, null);
     this.xps = new Xps("", null, null);
     this.loadPage();
   }
@@ -65,10 +88,7 @@ export class XpsAddComponent implements OnInit {
 
     this._missionService.getMissions().subscribe(
       (response) => {
-        console.log(response);
         this.missions = response.missions;
-        console.log(this.missions);
-        
         this._spinner.hide();
       },
       (error) => {
@@ -91,14 +111,18 @@ export class XpsAddComponent implements OnInit {
 
   //Salva Xp
   saveXp() {
+    console.log(this.xps);
+
     this._xpsService.addXp(this.xps).subscribe(
       (response) => {
         this._spinner.hide();
+        console.log(response);
+        
         if (!response.xp) {
           this.status = "error";
         } else {
           this.status = "success";
-          this._router.navigate(["/admin/xps/edit", response.xps._id]);
+          this._router.navigate(["/admin/xps/edit", response.xp._id]);
         }
       },
       (error) => {

@@ -58,6 +58,14 @@ export class XpsService {
     return this._http.get(this.url + "xps/" + id, { headers: headers });
   }
 
+  getXpByUser(idUser: string): Observable<any>{
+    let headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", getToken());
+
+    return this._http.get(this.url + "xps/" + idUser, { headers: headers });
+  }
+
   deleteXp(id): Observable<any> {
     let headers = new HttpHeaders()
       .set("Content-Type", "application/json")

@@ -42,7 +42,7 @@ export class XpsEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: xps-add.");
+    console.log("[OK] Component: xps-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
 
@@ -54,10 +54,15 @@ export class XpsEditComponent implements OnInit {
     this._route.params.subscribe((params) => {
       this.xpsId = params["id"];
       this._xpsService.getXp(this.xpsId).subscribe((response) => {
-        console.log(response);
-        this.xps = response.xps;
-        this.userXp = this.xps.user;
-        this.missionXp = this.xps.mission;
+        this.xps = response.xp;
+        this._userService.getUser(this.xps.user).subscribe((response) => {
+          this.userXp = response.user;
+        });
+        this._missionService
+          .getMission(this.xps.mission)
+          .subscribe((response) => {
+            this.missionXp = response.mission;
+          });
         this._spinner.hide();
       });
     });
@@ -76,7 +81,6 @@ export class XpsEditComponent implements OnInit {
 
     this._missionService.getMissions().subscribe(
       (response) => {
-        console.log(response);
         this.missions = response.missions;
       },
       (error) => {
@@ -94,6 +98,8 @@ export class XpsEditComponent implements OnInit {
     this.xps.user = this.userXp;
     this.xps.mission = this.missionXp;
     this._spinner.show();
+    console.log(this.xps);
+    
     this.updateXp();
   }
 

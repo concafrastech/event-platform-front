@@ -3,7 +3,7 @@
         <img
         [src]="actualContent.file.fileLink"
         alt="image slide"
-        style="display: block; width: 100%; max-height: 650px"
+        style="display: block; width: 100%; max-height: 650px; object-fit: contain"
         />
     </div>
 
@@ -24,6 +24,7 @@
     </div>
 
     <h4>{{ actualContent.name }}</h4>
+    <h2>{{ actualContent.description }}</h2>
     <p *ngIf="contents.length > 1">
         Conteúdo {{ index + 1 }} de {{ contents.length }}
     </p>

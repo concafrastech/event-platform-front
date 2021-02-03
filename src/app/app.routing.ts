@@ -1,3 +1,6 @@
+import { XpsListComponent } from './admin/xps/xps-list/xps-list.component';
+import { XpsEditComponent } from './admin/xps/xps-edit/xps-edit.component';
+import { XpsAddComponent } from './admin/xps/xps-add/xps-add.component';
 import { InfanciaParquinhoComponent } from './epics/infancia/pages/infancia-parquinho/infancia-parquinho.component';
 // import { InfanciaGamesComponent } from './../../.history/src/app/epics/infancia/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component_20210123190848';
 // import { InfanciaGamesComponent } from './epics/infancia/infancia-parquinho/jogos-digitais/infancia-games/infancia-games.component';
@@ -168,6 +171,10 @@ const appRoutes: Routes = [
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
             {path: 'content', component: ContentComponent},
+            {path: 'xps/add', component: XpsAddComponent},
+            {path: 'xps/edit/:id', component: XpsEditComponent},
+            {path: 'xps/list', component: XpsListComponent},
+            {path: 'xps/list/:page', component: XpsListComponent},
         ],
     },
     {
@@ -255,6 +262,7 @@ const appRoutes: Routes = [
             {path: 'audithorium/:type/:id', component: JovemAudithoriumComponent, canActivate:[UserGuard]},
             {path: 'jovem-classroom/:type/:id', component: JovemClassroomComponent, canActivate:[UserGuard]},
             {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
+            {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
         ],
     },
 

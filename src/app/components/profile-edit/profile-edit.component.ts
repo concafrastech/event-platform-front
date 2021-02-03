@@ -1,3 +1,4 @@
+import { UserGamificationService } from 'src/app/services/user-gamification.service';
 import { DocumentService } from "./../../services/document.service";
 import { ContentService } from "src/app/services/content.service";
 import { Component, OnInit } from "@angular/core";
@@ -36,7 +37,8 @@ export class ProfileEditComponent implements OnInit {
     private _uploadService: UploadService,
     private _contentService: ContentService,
     private _documentService: DocumentService,
-    private _bsLocaleService: BsLocaleService
+    private _bsLocaleService: BsLocaleService,
+    private _userGamificationService: UserGamificationService
   ) {
     this.title = "Meu Perfil";
     this.user = this._userService.getIdentity();
@@ -49,6 +51,7 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     console.log("[OK] Component: profile-edit.");
     this.loadUserImage();
+    this._userGamificationService.setMissionComplete("edit-profile");
   }
 
   loadUserImage() {

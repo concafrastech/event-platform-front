@@ -100,7 +100,7 @@ export class StageAddComponent implements OnInit {
       }
     );
 
-    this._activityService.getActivities().subscribe(
+    this._activityService.getFullActivities().subscribe(
       (response) => {
         this._spinner.hide();
         this.activities = response.activities;

@@ -20,7 +20,7 @@ export class SelectJourneyComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _epicService: EpicService
+    private _epicService: EpicService,
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +55,6 @@ export class SelectJourneyComponent implements OnInit {
     }else{
       localStorage.setItem('epic', epic.type);
     }
-    console.log(localStorage.getItem('currentEpic'));
     this._router.navigate(['/termos'])
   }
 

@@ -73,7 +73,7 @@ export class PalestrasComponent implements OnInit {
             );
           } else {
             //TODO colocar mensagem de que palestra não tem video;
-            console.log("PALESTRA SEM VIDEO DE YOUTUBE");
+            alert("Palestra sem video do YouTube.");
           }
         },
       });

@@ -177,6 +177,9 @@ import { BookClubComponent } from './epics/main/book-club/book-club.component';
 import { FraternalSupportComponent } from './epics/main/fraternal-support/fraternal-support.component';
 import { NdcActivitiesComponent } from './epics/main/feira/ndc-activities/ndc-activities.component';
 import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
+import { XpsListComponent } from './admin/xps/xps-list/xps-list.component';
+import { XpsAddComponent } from './admin/xps/xps-add/xps-add.component';
+import { XpsEditComponent } from './admin/xps/xps-edit/xps-edit.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -192,11 +195,11 @@ const levels = [
 ];
 
 const levelsConcafras2021 = [
-  { badge: 'TERRA', icon: 'assets/concafras2021/concafronas/badges/terra.svg', range: { min: 1, max: 149 } },
-  { badge: 'MARTE', icon: 'assets/concafras2021/concafronas/badges/marte.svg', range: { min: 150, max: 299 } },
-  { badge: 'VENUS', icon: 'assets/concafras2021/concafronas/badges/venus.svg', range: { min: 300, max: 699 } },
-  { badge: 'JUPITER', icon: 'assets/concafras2021/concafronas/badges/jupiter.svg', range: { min: 700, max: 899 } },
-  { badge: 'SOL', icon: 'assets/concafras2021/concafronas/badges/sol.svg', range: { min: 900, max: 2000 } },
+  { badge: 'TERRA', icon: 'assets/concafras2021/concafronas/badges/terra.svg', range: { min: 0, max: 199 } },
+  { badge: 'MARTE', icon: 'assets/concafras2021/concafronas/badges/marte.svg', range: { min: 200, max: 449 } },
+  { badge: 'VENUS', icon: 'assets/concafras2021/concafronas/badges/venus.svg', range: { min: 450, max: 799 } },
+  { badge: 'JUPITER', icon: 'assets/concafras2021/concafronas/badges/jupiter.svg', range: { min: 800, max: 1049 } },
+  { badge: 'SOL', icon: 'assets/concafras2021/concafronas/badges/sol.svg', range: { min: 1050, max: 2000 } },
 ];
 
 const config: SocketIoConfig = { url: 'http://localhost:3800', options: {} };
@@ -337,6 +340,9 @@ const GamificationConfig = {
     FraternalSupportComponent,
     NdcActivitiesComponent,
     AudithoriumSpecialComponent,
+    XpsListComponent,
+    XpsAddComponent,
+    XpsEditComponent,
   ],
   imports: [
     BrowserModule,

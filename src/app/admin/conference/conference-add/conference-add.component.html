@@ -51,6 +51,18 @@
                 <input type="text" name="tutorial_page_content" #tutorial_page_content="ngModel" [(ngModel)]="conference.tutorial_page_content" class="form-control" />
             </div>
         </div>
+        <div class="form-check">
+            <input class="form-check-input" style="font-size: 14px" type="checkbox" name="remote" #remote="ngModel" [(ngModel)]="conference.remote"/>
+            <label class="form-check-label" for="flexCheckDefault">
+              Remoto
+            </label>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Código Remoto</label>
+                <input type="text" name="remoteId" #remoteId="ngModel" [(ngModel)]="conference.remoteId" class="form-control" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
             <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!conferenceAddForm.form.valid" />

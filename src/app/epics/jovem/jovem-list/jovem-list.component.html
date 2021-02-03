@@ -1,33 +1,53 @@
-<h1 class="text-center">{{stages[0].type}}</h1>
-<h2 class="text-center">{{stages[0].name}}</h2>
-<div class="card-deck">
-  <ul class="row card-columns">
-     <li class="col-md-12 col-lg-3 mt-4 nobull" *ngFor="let activity of stages[0].activities">
-         <div class="card">
-            <div class="img-container m-0 p-0">
-               <img class="card-img-top" src="/assets/jovem/img/card_img.jpg" alt="Imagem">
-               <a [routerLink]="['/jovem/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']"><span class="fa fa-play fa-5x"></span></a>
-            </div>
-            <div class="card-body">
-               <h5 class="card-title">{{activity.name}}</h5>
-               <p class="card-text">{{activity.description}}</p>
-               <p class="card-text"><small class="text-muted small-text">Painel</small></p>
-            </div>
-         </div>
-      </li>
-   </ul>
-</div>
+<section id="lecture-header" class="lecture-container">
+   <div class="lecture-header-card lecture-header-img">
+      <img *ngIf="type === 'ilha casa do escritor'" class="img-size" src="/assets/jovem/img/ilha_escritor.png">
+      <img *ngIf="type === 'ilha casa do caminho'" class="img-size" src="/assets/jovem/img/ilha_caminho.png">
+      <img *ngIf="type === 'ilha instituto almas irmãs'" class="img-size" src="/assets/jovem/img/ilha_irmas.png">
+      <img *ngIf="type === 'ilha estação jovem ao vivo'" class="img-size" src="/assets/jovem/img/ilha_vivo.png">
+      <img *ngIf="type === 'ilha catedral do som'" class="img-size" src="/assets/jovem/img/ilha_som.png">
+      <img *ngIf="type === 'novas dimensões'" class="img-size" src="/assets/jovem/img/ilha_escritor.png">
+      <img *ngIf="!type" class="img-size" src="assets/concafras2021/concafronas/icones/PALESTRAS.svg" alt="Lecture Icon">
+   </div>
+   <div class="lecture-header-card lecture-header-item">
+       <h3 class="lecture-header-title">{{type}}</h3>
+       <span class="lecture-header-text">{{title}}</span>
+   </div>
+</section>
+<section id="ndc-content" class="ndc-container" *ngIf="activityList.length > 0">
+   <div class="row no-gutters">
+       <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-content-ndc" *ngFor="let item of activityList; let i=index">
+         <a [routerLink]="['/jovem/audithorium/', 'activity', item._id]" [routerLinkActive]="['active']">
+           <div class="card margin-card">
+               <div class="card-div-img">
+                     <img class="card-div-img-size" *ngIf="item.thumbnail" [src]="item.thumbnail.fileLink" alt="">
+                     <img class="card-div-img-size" *ngIf="!item.thumbnail" src="assets/concafras2021/concafronas/paisagem.jpg" alt="">
+               </div>
+               <div class="card-div-text overflow-auto">
+                   <span class="card-div-text-content"><strong>{{item.name}}</strong></span>
+                   <small class="card-div-text-content">{{item.description}}</small>
+               </div>
+           </div>
+         </a>
+       </div>
+   </div>
+</section>
+
 <div class="row justify-content-center">
  <button class="btn-lg btn-primary" onclick="window.history.back()">Voltar</button>
 </div>
 
-<div *ngIf="stages[0].type.toLowerCase() === 'ilha casa do escritor'" class="fundo-escritor"></div>
-<div *ngIf="stages[0].type.toLowerCase() === 'ilha casa do caminho'" class="fundo-caminho"></div>
-<div *ngIf="stages[0].type.toLowerCase() === 'ilha instituto almas irmãs'" class="fundo-irmas"></div>
-<div *ngIf="stages[0].type.toLowerCase() === 'ilha estação jovem ao vivo'" class="fundo-vivo"></div>
-<div *ngIf="stages[0].type.toLowerCase() === 'ilha catedral do som'" class="fundo-som"></div>
-<div *ngIf="stages[0].type.toLowerCase() === 'novas dimensões'" class="fundo-escritor"></div>
+<div *ngIf="type === 'ilha casa do escritor'" class="fundo-escritor"></div>
+<div *ngIf="type === 'ilha casa do caminho'" class="fundo-caminho"></div>
+<div *ngIf="type === 'ilha instituto almas irmãs'" class="fundo-irmas"></div>
+<div *ngIf="type === 'ilha estação jovem ao vivo'" class="fundo-vivo"></div>
+<div *ngIf="type === 'ilha catedral do som'" class="fundo-som"></div>
+<div *ngIf="type === 'novas dimensões'" class="fundo-escritor"></div>
 <!--
+<div *ngIf="!type" class="fundo-generico"></div>
+-->
+
+<!--
+   <span class="fa fa-play fa-5x"></span>
    sintaxe alternativa
 <div [ngStyle]="{'background-image': 'url(' + stages[0].name + ')'}" class="fundo"></div>
 -->

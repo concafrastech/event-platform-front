@@ -107,6 +107,7 @@ Right Navigation Sidebar
 ol.carousel-indicators {
     position: absolute;
     margin: 0;
+    top: 9.8rem;
     bottom: 1rem;
     left: 0;
     right: 0;
@@ -190,6 +191,7 @@ ol.carousel-indicators li.active {
 @media only screen and (max-width:1400px) {
     /* ==== CAROUSEL ==== */
     ol.carousel-indicators {
+        top: 6.5rem;
         bottom: -0.8rem;
     }
 

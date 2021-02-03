@@ -3,12 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'src/app/models/subscription';
 import { UserService } from 'src/app/services/user.service';
 import { Epic } from 'src/app/models/epic';
-import { Lecture } from 'src/app/models/lecture';
+//import { Lecture } from 'src/app/models/lecture';
 import { Stage } from 'src/app/models/stage';
 import { Trail } from 'src/app/models/trail';
+import { Classroom } from 'src/app/models/classroom';
 import { ActivityService } from 'src/app/services/activity.service';
 import { ClassroomService } from 'src/app/services/classroom.service';
-import { LectureService } from 'src/app/services/lecture.service';
+//import { LectureService } from 'src/app/services/lecture.service';
 import { StageService } from 'src/app/services/stage.service';
 import { TrailService } from 'src/app/services/trail.service';
 import * as SvgPanZoom from 'svg-pan-zoom';
@@ -18,19 +19,21 @@ import * as $ from 'jquery';
   selector: 'app-ilha1-dialogo',
   templateUrl: './ilha1-dialogo.component.html',
   styleUrls: ['./ilha1-dialogo.component.css'],
-  providers: [LectureService, TrailService, StageService, ActivityService, ClassroomService]
+  providers: [TrailService, StageService, ActivityService, ClassroomService]
 })
 export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
 
-  @Input() public dialog: string;
+  @Input() public dialog: String;
   public identity;
   public subscription: Subscription;
   public epic: Epic;
-  public status: string;
-  public lectures: Lecture[] = []; 
-  public trails: Trail[] = [];
+  public status: String;
+  //public lectures: Lecture[] = []; 
+  //public trails: Trail[] = [];
   public stages: Stage[] = [];
-  public time: string;
+  public trail: Trail;
+  public classroomList: Classroom[] = [];
+  public time: String;
 
   options = { 
     zoomEnabled: true,
@@ -45,7 +48,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _lectureService: LectureService,
+    //private _lectureService: LectureService,
     private _trailService: TrailService,
     private _stageService: StageService,
     private _activityService: ActivityService,
@@ -56,13 +59,18 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
     this._route.params.subscribe(params => {
       let dialog = params['dialog'];
       this.dialog = dialog;
+
+      let epic = JSON.parse(localStorage.getItem('currentEpic'));
+      this.identity = this._userService.getIdentity();
+      this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
+      //this.getLectures(1, epic._id);
+      //this.getTrails(1,  epic._id);
+      this.getStages(1,  epic._id);
+      this._trailService.getTrail(this.subscription.trails[0]._id).subscribe((response) => {
+        this.trail = response.trail;
+        this.classroomList = response.trail.classrooms;
+      });
     });
-    let epic = JSON.parse(localStorage.getItem('currentEpic'));
-    this.identity = this._userService.getIdentity();
-    this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
-    this.getLectures(1, epic._id);
-    this.getTrails(1,  epic._id);
-    this.getStages(1,  epic._id);
   }
 
   ngAfterViewInit() {
@@ -73,6 +81,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
     });*/
   }
 
+  /*
   getLectures(page, epicId) {
     this._lectureService.getLectures(page, epicId).subscribe(
       (response) => {
@@ -92,7 +101,9 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  */
 
+  /*
   getTrails(page, epicId) {
     this._trailService.getTrails(page, epicId).subscribe(
       (response) => {
@@ -119,7 +130,9 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  */
 
+  /*
   getClassrooms(page, trail, index) {
     this._classroomService.getClassrooms(page, trail._id).subscribe(
       (response) => {
@@ -139,6 +152,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  */
 
   getStages(page, epicId) {
     this._stageService.getStages(page, epicId).subscribe(
@@ -198,7 +212,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
         hours = hours - 24;
       }
     }
-    if(minutes > 10) {
+    if(minutes >= 10) {
       var time = hours + ":" + minutes;
     }
     else {

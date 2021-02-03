@@ -53,7 +53,6 @@ export class ClassroomEditComponent implements OnInit {
 
   ngOnInit() {
     console.log("[OK] Component: classroom-edit.");
-    this._spinner.show();
     this.identity = this._userService.getIdentity();
     if (!this.classroom) {
       this.classroom = new Classroom(
@@ -89,7 +88,6 @@ export class ClassroomEditComponent implements OnInit {
           if (this.classroom.contents) {
             this.getContents();
           } else {
-            this._spinner.hide();
             this.classroom.contents = [];
           }
         } else {
@@ -107,7 +105,6 @@ export class ClassroomEditComponent implements OnInit {
       this._contentService.getContent(content).subscribe((response) => {
         let content = response.content;
         this.classroom.contents[index] = content;
-        this._spinner.hide();
         if (this.classroom.contents[index].file) {
           let idFile = this.classroom.contents[index].file;
           this.getDocuments(this.classroom.contents[index], idFile);

@@ -17,11 +17,11 @@ export class UserGamificationService {
     private _missionService: MissionService,
     private _xpsService: XpsService
   ) {
-    this.setupBreakPoints();
-    this.loadMissionsByEpic();
+    this.loadGamification();
   }
 
-  loadMissionsByEpic() {
+  loadGamification() {
+    //loadMissionsByEpic
     let epic = JSON.parse(localStorage.getItem("currentEpic"));
 
     if (epic) {
@@ -44,38 +44,42 @@ export class UserGamificationService {
   }
 
   private setupEpicMissions(missions: Mission[]) {
-    console.log(missions);
+    console.log("missions do épico: ");
+    console.log({missions: missions});
 
     let user = JSON.parse(localStorage.getItem("identity"));
     this._xpsService.getXps().subscribe({
       next: (response) => {
         //this._xpsService.getXpByUser(user._id).subscribe((response)=>{
-        console.log(response);
 
-        let missionXp = response.xps[0].mission;
-        let points = 0;
-        console.log(missionXp);
+        let xps = response.xps;
+        console.log(xps);
         
-        let index = missions.findIndex((mission, i) => {
-          if (mission._id == missionXp) {
-            points += mission.amount;
-            return true;
-          }
-        });
-        console.log(index);
-        
-        if(index != -1){
-        missions.splice(index);
-        console.log(points);
-        this._gamificationService.addPoints(points);
-        this.checkLevel();
-      }
+        if (xps && xps.length > 0) {
+          console.log("usuário COM missões completadas");
+          xps.map((xp) => {
+            let missionXp = xp.mission;
+            let points = 0;
+            let index = missions.findIndex((mission, i) => {
+              if (mission._id == missionXp) {
+                points += mission.amount;
+                return true;
+              }
+            });
+            if (index != -1) {
+              this._gamificationService.addPoints(points);
+              missions.splice(index, 1);
+              this.setupBreakPoints();
+              this.checkLevel();
+            }
+          });
+        }else{
+          console.log("usuário SEM missões completadas");
+          this.setupBreakPoints();
+        }
       },
       error: null,
       complete: () => {
-        
-        console.log("oi");
-        
         missions.map((mission, index) => {
           this._gamificationService.addMission(
             mission.name,
@@ -104,8 +108,9 @@ export class UserGamificationService {
   }
 
   private setupBreakPoints() {
+    this._gamificationService.breakpoints = []
     this._gamificationService.levels.map((level, index) => {
-      if (index > 0) {
+      if (index > 0 && level.range.max > this.getPoints()) {
         this._gamificationService.addBreakpoint(level.range.min, () => {
           this._bootstrapAlertService.alert(
             new NgBootstrapAlert(

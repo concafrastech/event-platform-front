@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { ShareMessage } from 'src/app/models/share-message';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { UserGamificationService } from 'src/app/services/user-gamification.service';
 
 @Component({
   selector: 'app-share-message',
@@ -23,6 +24,7 @@ export class ShareMessageComponent implements OnInit {
     private _userService: UserService,
     private _shareMessageService: ShareMessageService,
     public bsModalRef: BsModalRef,
+    private _userGamificationService: UserGamificationService
 ) {
     this.title = 'Compartilhar Mensagem';
     this.user = this._userService.getIdentity();
@@ -34,6 +36,7 @@ export class ShareMessageComponent implements OnInit {
   }
 
   onSubmit(){
+    this._userGamificationService.setMissionComplete('deixe-seu-recado')
     this.shareMessage.created_at = new Date();
     this._shareMessageService.addShareMessage(this.shareMessage).subscribe((resposta)=>{
       console.log(resposta);

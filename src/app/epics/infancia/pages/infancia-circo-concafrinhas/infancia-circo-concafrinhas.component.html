@@ -7,23 +7,59 @@
                 title="Voltar">
         </a>
 
-        <a href="/concafrinhas/audithorium">
-            <img class="porta1 buttons" src="assets/concafras2021/concafrinhas/Circo/CircoAberturaConcafrinhas.png"
-                title="Abertura Concafrinhas 2021">
-        </a>
+        <img class="porta1 buttons" src="assets/concafras2021/concafrinhas/Circo/CircoAberturaConcafrinhas.png"
+            title="Abertura Concafrinhas 2021" (click)="openModalOpening(templateAbertura)">
 
-        <a href="/concafrinhas/audithorium">
-            <img class="porta2 buttons" src="assets/concafras2021/concafrinhas/Circo/CircoFestivalArtes.png"
-                title="Festival de Artes">
-        </a>
+        <img class="porta2 buttons" src="assets/concafras2021/concafrinhas/Circo/CircoFestivalArtes.png"
+            title="Festival de Artes" (click)="openModalEnding(templateFechamento)">
 
-        <a href="/concafrinhas/nosso-mural" target="_blank" rel="noopener noreferrer">
+        <div *ngIf="allowMural">
+            <a href="/concafrinhas/nosso-mural" target="_blank" rel="noopener noreferrer">
+                <img class="porta3 buttons" src="assets/concafras2021/concafrinhas/Circo/CircoMuralArtes.png"
+                    title="Nosso Mural de Artes">
+            </a>
+        </div>
+
+        <div *ngIf="!allowMural">
             <img class="porta3 buttons" src="assets/concafras2021/concafrinhas/Circo/CircoMuralArtes.png"
-                title="Nosso Mural de Artes">
-        </a>
+                title="Nosso Mural de Artes" (click)="openAlert()">
+        </div>
 
         <img class="principal" src="assets/concafras2021/concafrinhas/Circo/CircoInterior.jpg">
 
     </div>
 
 </div>
+
+<ng-template #templateAbertura>
+    <div class="modal-content-video">
+        <div class="modal-body">
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/GGlr0STUfKc" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #templateFechamento>
+    <div class="modal-content-video">
+        <div class="modal-body">
+            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/GGlr0STUfKc" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</ng-template>

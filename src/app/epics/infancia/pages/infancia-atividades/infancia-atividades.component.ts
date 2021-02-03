@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./infancia-atividades.component.css']
 })
 export class InfanciaAtividadesComponent implements OnInit {
-
+  
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {  
   }
-
 }

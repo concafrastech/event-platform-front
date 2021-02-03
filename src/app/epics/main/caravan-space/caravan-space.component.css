@@ -41,6 +41,10 @@
     margin: 2rem 0;
 }
 
+.caravan-container:last-child {
+    margin: 4rem 0;
+}
+
 /* ==== IMG ==== */
 .img-size {
     width: 150px;
@@ -190,6 +194,32 @@ ol.carousel-indicators li.active {
 .sing-with-us-block-second {
     width: 30%;
     text-align: right;
+}
+
+/* ==== MEETING ==== */
+#meeting-header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 2rem;
+}
+
+#meeting-header .btn-meeting {
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: solid white 1px;
+    transition: 0.2s;
+}
+
+#meeting-header .btn-meeting:hover {
+    background-color: #1EA6EC;
+    border-color: #1EA6EC;
 }
 
 /* ==== RESPONSIVE ==== */

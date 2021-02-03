@@ -42,6 +42,19 @@ export class ActivityService {
         return this._http.get(this.url + 'activities/', {headers: headers, params: params});
     }
 
+    getFullActivities(page = null, stageId = null): Observable<any> {
+        let params = { 
+            full : '1',
+            page : page,
+            stage : stageId != null ? stageId : ''
+         };
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', getToken());
+
+        return this._http.get(this.url + 'activities/', {headers: headers, params: params});
+    }
+
     getActivity(id): Observable<any> {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

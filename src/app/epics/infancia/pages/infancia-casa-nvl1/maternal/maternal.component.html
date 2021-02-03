@@ -17,13 +17,13 @@
         </a>
 
         <img class="t1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalTemaCentral.png"
-            (click)="openModal(templateTC)" title="Tema Central">
+            (click)="openModalTemaCentral(templateTC)" title="Tema Central">
 
         <img class="t2 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalOficinaArte.png"
-            (click)="openModal(templateOA)" title="Oficina de Arte">
+            (click)="openModalOficinaArte(templateOA)" title="Oficina de Arte">
 
         <img class="t3 buttons" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalTemaEspecifico.png"
-            (click)="openModal(templateListaTE)" title="Tema Especifico">
+            (click)="openModalTemaEspecifico(templateListaTE)" title="Tema Especifico">
 
         <img class="principal" src="assets/concafras2021/concafrinhas/CasaNivel1/Maternal/MaternalInterior.jpg">
 
@@ -60,10 +60,22 @@
                         </div>
 
                         <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Central - Maternal e Jardim.pdf" download>
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Central - Maternal e Jardim.pdf"
+                                download>
                                 <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
                                     title="Baixar Cartilha">
                             </a>
+                        </div>
+
+                        <div class="options-item" *ngIf="allowSalaVirtual">
+                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-practice btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
+                            </a>
+                        </div>
+                        <div class="options-item" *ngIf="!allowSalaVirtual">
+                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
+                                title="Realizar prática" (click)="openAlert()">
                         </div>
                     </div>
                 </div>
@@ -139,10 +151,22 @@
                         </div>
 
                         <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Lar de idosos.pdf" download>
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Lar de idosos.pdf"
+                                download>
                                 <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
                                     title="Baixar Cartilha">
                             </a>
+                        </div>
+
+                        <div class="options-item" *ngIf="allowSalaVirtual">
+                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-practice btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
+                            </a>
+                        </div>
+                        <div class="options-item" *ngIf="!allowSalaVirtual">
+                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
+                                title="Realizar prática" (click)="openAlert()">
                         </div>
                     </div>
                 </div>
@@ -180,10 +204,22 @@
                         </div>
 
                         <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Amor à Natureza.pdf" download>
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Amor à Natureza.pdf"
+                                download>
                                 <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
                                     title="Baixar Cartilha">
                             </a>
+                        </div>
+
+                        <div class="options-item" *ngIf="allowSalaVirtual">
+                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-practice btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
+                            </a>
+                        </div>
+                        <div class="options-item" *ngIf="!allowSalaVirtual">
+                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
+                                title="Realizar prática" (click)="openAlert()">
                         </div>
                     </div>
                 </div>
@@ -220,10 +256,22 @@
                         </div>
 
                         <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Jesus no lar.pdf" download>
+                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Jesus no lar.pdf"
+                                download>
                                 <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
                                     title="Baixar Cartilha">
                             </a>
+                        </div>
+
+                        <div class="options-item" *ngIf="allowSalaVirtual">
+                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <img class="btn-practice btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
+                            </a>
+                        </div>
+                        <div class="options-item" *ngIf="!allowSalaVirtual">
+                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
+                                title="Realizar prática" (click)="openAlert()">
                         </div>
                     </div>
                 </div>

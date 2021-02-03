@@ -25,6 +25,12 @@ export class SelectJourneyComponent implements OnInit {
 
   ngOnInit(): void {
     this.conference = JSON.parse(localStorage.getItem('currentConference'));
+    if(this.conference == null){
+      var subscription = JSON.parse(localStorage.getItem('currentSubscription'));
+      if(subscription){
+        this.conference = subscription.conference;
+      }
+    }
     this.getEpics(1, this.conference._id);
   }
 

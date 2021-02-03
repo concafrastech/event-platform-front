@@ -72,3 +72,60 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.btn-adulto {
+    border-radius: 50px;
+    top: 2%;
+    left: 1%;
+}
+
+
+
+
+@media only screen and (min-width: 768px) { 
+    .btn-primary.rotate {
+        font-size: 30px;
+    }
+
+    .conteudo {
+        margin-top: 30%;
+    }
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50%;
+}
+
+.instrucaoRotate {
+    width: 100%;
+    height: 100%;
+    background: #13A8C7;
+    position: absolute;
+    z-index: 5000;
+}
+
+.btn-primary.rotate {
+    color: #13A8C7;
+    background-color: white;
+    border-color: white;
+    border-radius: 50px;
+    padding: 5px 40px 5px 40px;
+/* 
+    position: absolute;
+    top: 55%;
+    right: 50%;
+    transform: translate(50%, 50%); */
+}
+
+.img-instrucao {
+    width: 60%;
+    height: auto;
+/* 
+    position: absolute;
+    top: 20%;
+    right: 50%;
+    transform: translate(50%, 50%); */
+}

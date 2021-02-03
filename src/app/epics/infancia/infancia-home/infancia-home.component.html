@@ -1,13 +1,77 @@
+<div class="instrucaoRotate" *ngIf="portrait">
+
+    <div class="conteudo">
+
+        <img class="img-instrucao" src="assets/concafras2021/concafrinhas/instrucao-rotate.png">
+
+        <a class="btn btn-primary rotate" href="concafrinhas/home" role="button" style="margin-top: 20px;">Entrar</a>
+
+    </div>
+
+</div>
+
+
 <div class="cidade-concafrinhas">
 
     <div class="container-total">
-        <a href="/concafrinhas/bom-samaritano" class="escola botoes" title="Bom Samaritano Infantil">
-            <img src="assets/concafras2021/concafrinhas/Home/escola.png" />
-        </a>
+        
+        <div>
+            <a class="btn btn-primary btn-adulto botoes" (click)="gotoPrincipal('infancia')" role="button">Ir para adulto</a>
+        </div>
 
-        <a href="/concafrinhas/parquinho" class="playground botoes" title="Parquinho">
-            <img src="assets/concafras2021/concafrinhas/Home/playground.png" />
-        </a>
+        <div *ngIf="accessAllowed">
+            <a href="/concafrinhas/parquinho" class="playground botoes" title="Parquinho" style="z-index: 2000;">
+                <img src="assets/concafras2021/concafrinhas/Home/playground.png" />
+            </a>
+
+            <a href="/concafrinhas/bom-samaritano" class="escola botoes" title="Bom Samaritano Infantil">
+                <img src="assets/concafras2021/concafrinhas/Home/escola.png" />
+            </a>
+
+            <a href="/concafrinhas/atividades" class="laborterapia botoes" title="Atividades">
+                <img src="assets/concafras2021/concafrinhas/Home/laborterapia.png" />
+            </a>
+
+            <a href="/concafrinhas/cantinho-historia" class="arvore botoes" title="Cantinho da História">
+                <img src="assets/concafras2021/concafrinhas/Home/arvore.png" />
+            </a>
+
+            <a href="/concafrinhas/casa-oracao" class="rio botoes" title="Casa da Oração">
+                <img src="assets/concafras2021/concafrinhas/Home/rio.png" />
+            </a>
+
+            <a href="/concafrinhas/roda-alegria" class="alegria botoes" title="Roda da Alegria Cristã">
+                <img src="assets/concafras2021/concafrinhas/Home/alegria.png" />
+            </a>
+        </div>
+
+        <div *ngIf="!accessAllowed">
+            <div class="playground botoes" title="Parquinho" style="z-index: 2000;">
+                <img src="assets/concafras2021/concafrinhas/Home/playground.png" (click)="openAlert()" />
+            </div>
+
+            <div class="escola botoes" title="Bom Samaritano Infantil">
+                <img src="assets/concafras2021/concafrinhas/Home/escola.png" (click)="openAlert()" />
+            </div>
+
+            <div class="laborterapia botoes" title="Atividades">
+                <img src="assets/concafras2021/concafrinhas/Home/laborterapia.png" (click)="openAlert()" />
+            </div>
+
+            <div class="arvore botoes" title="Cantinho da História">
+                <img src="assets/concafras2021/concafrinhas/Home/arvore.png" (click)="openAlert()" />
+            </div>
+
+            <div class="rio botoes" title="Casa da Oração">
+                <img src="assets/concafras2021/concafrinhas/Home/rio.png" (click)="openAlert()" />
+            </div>
+
+            <div class="alegria botoes" title="Roda da Alegria Cristã">
+                <img src="assets/concafras2021/concafrinhas/Home/alegria.png" (click)="openAlert()" />
+            </div>
+        </div>
+
+
 
         <a href="/concafrinhas/circo-concafrinhas" class="circo botoes" title="Circo Concafrinhas">
             <img src="assets/concafras2021/concafrinhas/Home/circo.png" />
@@ -21,23 +85,6 @@
             <img src="assets/concafras2021/concafrinhas/Home/nivel-2.png" />
         </a>
 
-        <a href="/concafrinhas/atividades" class="laborterapia botoes" title="Atividades">
-            <img src="assets/concafras2021/concafrinhas/Home/laborterapia.png" />
-        </a>
-
-        <a href="/concafrinhas/cantinho-historia" class="arvore botoes" title="Cantinho da História">
-            <img src="assets/concafras2021/concafrinhas/Home/arvore.png" />
-        </a>
-
-
-        <a href="/concafrinhas/casa-oracao" class="rio botoes" title="Casa da Oração">
-            <img src="assets/concafras2021/concafrinhas/Home/rio.png" />
-        </a>
-
-
-        <a href="/concafrinhas/roda-alegria" class="alegria botoes" title="Roda da Alegria Cristã">
-            <img src="assets/concafras2021/concafrinhas/Home/alegria.png" />
-        </a>
 
         <img src="assets/concafras2021/concafrinhas/Home/completo-2.png" class="principal" />
 

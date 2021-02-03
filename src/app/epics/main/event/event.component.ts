@@ -12,14 +12,14 @@ import { TutorialComponent } from 'src/app/components/tutorial/tutorial.componen
 import { Subscription } from 'src/app/models/subscription';
 import { Conference } from 'src/app/models/conference';
 import { Trail } from 'src/app/models/trail';
-import { 
+import {
   faCalendarAlt,
   faPrayingHands,
   faDoorOpen,
   faHome
 } from '@fortawesome/free-solid-svg-icons';
 
-import { 
+import {
   faHeart,
   faLifeRing,
   faQuestionCircle,
@@ -47,7 +47,6 @@ export class EventComponent implements OnInit, DoCheck {
     public faQuestionCircle = faQuestionCircle;
     public faUserCircle = faUserCircle;
     public faHome = faHome;
-    
 
     constructor(
         private _route: ActivatedRoute,
@@ -59,7 +58,7 @@ export class EventComponent implements OnInit, DoCheck {
         private location: Location
     ) {
       var epic = localStorage.getItem("epic");
-        
+
       if(epic == 'jovem'){
           this._router.navigate(['/jovem/home']);
       }

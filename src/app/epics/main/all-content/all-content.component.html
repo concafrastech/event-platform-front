@@ -1,14 +1,22 @@
-<div class="row">
+<div class="jumbotron">
+    <div class="row">
         <div class="col-md-4">
             <h2>Momentos Coletivos</h2>
-            <ul>
-                <li *ngFor="let lecture of lectures">
-                    <a role="button" [routerLink]="['/audithorium/', 'lecture', lecture._id]" [routerLinkActive]="['active']">{{lecture.name}}</a>
-                </li>
-            </ul>
+
+            <div class="card" style="width: 18rem;" *ngFor="let lecture of lectures">
+                <div class="card-body">
+                    <h5 class="card-title">{{lecture.name}}</h5>
+                    <p class="card-text small">
+                        De: {{lecture.start_time | date: "dd/MM/yy HH:mm":"-0300" }}<br />
+                        Até: {{lecture.end_time | date: "dd/MM/yy HH:mm":"-0300"}}
+                    </p>
+                    <a role="button" class="btn btn-primary btn-xs" [routerLink]="['/audithorium/', 'lecture', lecture._id]" >{{lecture.name}}</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <h2>Temas Específicos</h2>
+            
             <ul>
                 <li *ngFor="let trail of trails">
                     {{trail.name}}
@@ -21,7 +29,7 @@
             </ul>
         </div>
         <div class="col-md-4">
-            <h2>Novas Dimensões do Conhecimento</h2>
+            <h2>NDC</h2>
             <ul>
                 <li *ngFor="let stage of stages">
                     {{stage.name}}
@@ -34,3 +42,4 @@
             </ul>
         </div>
     </div>
+</div>

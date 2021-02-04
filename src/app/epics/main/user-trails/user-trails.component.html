@@ -1,20 +1,28 @@
-<p>Meus Temas</p>
 
-Específico:
-<div *ngFor="let trail of trails">
-    Tema: {{trail.name}}<br />
-    Tipo: {{trail.type}}
-
-    <div *ngFor="let classroom of trail.classrooms; let i = index">
-        <div *ngIf="i == 0">
-            1º - Momento
+<div class="jumbotron">
+    <div class="row">
+        <h2>Meus Temas</h2>
+    </div>
+    <div class="row">
+        <h3>Específico:</h3>
+    </div>
+    <div class="row">
+        <div *ngFor="let trail of trails">
+            Tema: {{trail.name}}<br />
+            Tipo: {{trail.type}}
+        
+            <div *ngFor="let classroom of trail.classrooms; let i = index">
+                <div *ngIf="i == 0">
+                    1º - Momento
+                </div>
+                <div *ngIf="i == 1">
+                    2º - Momento
+                </div>
+                <div *ngIf="i > 1">
+                    Práticas
+                </div>
+                 - Título: {{classroom.name}}
+            </div>
         </div>
-        <div *ngIf="i == 1">
-            2º - Momento
-        </div>
-        <div *ngIf="i > 1">
-            Práticas
-        </div>
-         - Link: {{classroom.name}}
     </div>
 </div>

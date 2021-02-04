@@ -17,6 +17,7 @@ import { ConfirmComponent } from 'src/app/components/confirm/confirm.component';
 export class UserListComponent implements OnInit {
   public title: string;
   public url: string;
+  public search: string;
   public identity;
   public token;
   public page;
@@ -74,8 +75,12 @@ export class UserListComponent implements OnInit {
       });
   }
 
-  getUsers(page) {
-      this._userService.getUsers(page).subscribe(
+  searchUsers(){
+      this.getUsers(this.page, this.search);
+  }
+
+  getUsers(page, search = null) {
+      this._userService.getUsers(page, search).subscribe(
           response => {
               if (!response.users) {
                   this.status = 'error';

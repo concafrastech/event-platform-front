@@ -48,6 +48,9 @@ export class XpsAddComponent implements OnInit {
     this.userXp = new User(
       "",
       "",
+      false,
+      "",
+      "",
       "",
       "",
       "",

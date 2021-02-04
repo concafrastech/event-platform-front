@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
         private _userService: UserService
     ) {
         this.title = 'Cadastrar-se';
-        this.user = new User("", "", "", "", "", new Date(), "", "", "", "", "", "", false, "", "ROLE_USER", null, 0, false, [], {});
+        this.user = new User("", "", false, "", "", "", "", "", new Date(), "", "", "", "", "", "", false, "", "ROLE_USER", null, 0, false, [], {});
     }
 
     ngOnInit() {

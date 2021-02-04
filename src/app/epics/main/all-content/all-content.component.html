@@ -22,7 +22,7 @@
                     <h6 class="card-title">{{trail.name}}</h6>
                     <div class="card-text small">
                         <div *ngFor="let classroom of trail.classrooms">
-                            <h6>{{classroom.name}}</h6>
+                            <h6 style="color: gray">{{classroom.name}}</h6>
                             <a role="button" class="btn btn-primary btn-xs" [routerLink]="['/audithorium/', 'classroom', classroom._id]" >Conteúdo</a>
                         </div>
                     </div>

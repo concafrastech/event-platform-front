@@ -38,7 +38,7 @@ export class ProfileEditComponent implements OnInit {
     private _contentService: ContentService,
     private _documentService: DocumentService,
     private _bsLocaleService: BsLocaleService,
-    private _userGamificationService: UserGamificationService
+    public _userGamificationService: UserGamificationService
   ) {
     this.title = "Meu Perfil";
     this.user = this._userService.getIdentity();

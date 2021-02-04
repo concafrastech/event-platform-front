@@ -34,6 +34,7 @@ export class LectureService {
     getLectures(page = null, epicId = null): Observable<any> {
         let params = { 
             page : page,
+            full : '1',
             epic : epicId != null ? epicId : ''
          };
         let headers = new HttpHeaders()

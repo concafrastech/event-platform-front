@@ -44,19 +44,21 @@ export class UserGamificationService {
   }
 
   private setupEpicMissions(missions: Mission[]) {
-    console.log("missions do épico: ");
-    console.log({missions: missions});
+    // console.log("missions do épico: ");
+    // console.log({missions: missions});
 
     let user = JSON.parse(localStorage.getItem("identity"));
-    this._xpsService.getXps().subscribe({
+    this._xpsService.getXpByUser(user._id).subscribe({
       next: (response) => {
+        console.log(response);
+        
         //this._xpsService.getXpByUser(user._id).subscribe((response)=>{
 
         let xps = response.xps;
-        console.log(xps);
+        // console.log(xps);
         
         if (xps && xps.length > 0) {
-          console.log("usuário COM missões completadas");
+          // console.log("usuário COM missões completadas");
           xps.map((xp) => {
             let missionXp = xp.mission;
             let points = 0;
@@ -74,7 +76,7 @@ export class UserGamificationService {
             }
           });
         }else{
-          console.log("usuário SEM missões completadas");
+          // console.log("usuário SEM missões completadas");
           this.setupBreakPoints();
         }
       },
@@ -86,10 +88,10 @@ export class UserGamificationService {
             mission.amount,
             mission.description,
             () => {
-              console.log("Mission start: " + mission.name);
+              // console.log("Mission start: " + mission.name);
             },
             () => {
-              console.log("Mission complete: " + mission.name);
+              // console.log("Mission complete: " + mission.name);
               this.removeMissionAchieved(mission);
               this.saveMissionUser(mission);
               this.checkLevel();

@@ -114,12 +114,9 @@ export class XpsAddComponent implements OnInit {
 
   //Salva Xp
   saveXp() {
-    console.log(this.xps);
-
     this._xpsService.addXp(this.xps).subscribe(
       (response) => {
         this._spinner.hide();
-        console.log(response);
         
         if (!response.xp) {
           this.status = "error";

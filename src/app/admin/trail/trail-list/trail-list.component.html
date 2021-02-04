@@ -5,16 +5,17 @@
     </div>
 
     <div class="col-md-6">
-      <div class="input-group h2" *ngIf="false">
+      <div class="input-group h2">
         <input
-          name="data[search]"
-          class="form-control"
           id="search"
+          name="search"
+          [(ngModel)]="search"
+          class="form-control"
           type="text"
           placeholder="Pesquisar Itens"
         />
         <span class="input-group-btn">
-          <button class="btn btn-primary" type="submit">
+          <button class="btn btn-primary" (click)="searchTrails()">
             <span class="fa fa-search"></span>
           </button>
         </span>

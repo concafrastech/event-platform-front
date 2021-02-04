@@ -20,6 +20,7 @@ export class TrailListComponent implements OnInit {
   @Input() epicId: string = null;
   public title: string;
   public url: string;
+  public search: string;
   public identity;
   public token;
   public page;
@@ -89,8 +90,12 @@ export class TrailListComponent implements OnInit {
           this.prev_page = 1;
         }
       }
-      this.getTrails(page, this.epicId);
+      this.getTrails(page, this.epicId, this.search);
     });
+  }
+
+  searchTrails(){
+    this.getTrails(this.page, this.epicId, this.search);
   }
 
   epicChanged(event: any): void {
@@ -103,8 +108,8 @@ export class TrailListComponent implements OnInit {
     this.actualPage();
   }*/
 
-  getTrails(page, epicId) {
-    this._trailService.getTrails(page, epicId).subscribe(
+  getTrails(page, epicId, search = null) {
+    this._trailService.getTrails(page, epicId, search).subscribe(
       (response) => {
         if (!response.trails) {
           this.status = "error";

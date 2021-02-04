@@ -118,6 +118,7 @@ import { MissionListComponent } from './admin/mission/mission-list/mission-list.
 import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
 import { NdcComponent } from './epics/main/feira/ndc/ndc.component';
 import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
+import { SubscriptionListComponent } from './admin/subscription/subscription-list/subscription-list.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -175,6 +176,8 @@ const appRoutes: Routes = [
             {path: 'xps/edit/:id', component: XpsEditComponent},
             {path: 'xps/list', component: XpsListComponent},
             {path: 'xps/list/:page', component: XpsListComponent},
+            {path: 'subscription/list', component: SubscriptionListComponent},
+            {path: 'subscription/list/:page', component: SubscriptionListComponent},
         ],
     },
     {

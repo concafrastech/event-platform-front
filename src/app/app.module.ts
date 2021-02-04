@@ -180,6 +180,7 @@ import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/au
 import { XpsListComponent } from './admin/xps/xps-list/xps-list.component';
 import { XpsAddComponent } from './admin/xps/xps-add/xps-add.component';
 import { XpsEditComponent } from './admin/xps/xps-edit/xps-edit.component';
+import { SubscriptionListComponent } from './admin/subscription/subscription-list/subscription-list.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -343,6 +344,7 @@ const GamificationConfig = {
     XpsListComponent,
     XpsAddComponent,
     XpsEditComponent,
+    SubscriptionListComponent,
   ],
   imports: [
     BrowserModule,

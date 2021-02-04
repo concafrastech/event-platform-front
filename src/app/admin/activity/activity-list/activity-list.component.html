@@ -50,8 +50,10 @@
             <td>{{ activity.speecher }}</td>
             <td>{{ activity.scheduled ? "Sim" : "Não" }}</td>
             <td>
+              <div *ngIf="activity.scheduled">
               {{ activity.start_time | date: "dd/MM/yy HH:mm":"-0300" }} <br />
               {{ activity.end_time | date: "dd/MM/yy HH:mm":"-0300" }}
+              </div>
             </td>
             <td class="actions">
               <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
@@ -76,22 +78,22 @@
   <div id="bottom" class="row">
     <div class="col-md-12" *ngIf="pages.length > 1">
       <ul class="pagination">
-        <li [class.disabled]="page == 1">
-          <a
+        <li class="page-item" [class.disabled]="page == 1">
+          <a class="page-link" 
             [routerLink]="['/admin/activity/list', page - 1]"
             [routerLinkActive]="['active']"
             >&lt; Anterior</a
           >
         </li>
-        <li [class.disabled]="p == page" *ngFor="let p of pages">
-          <a
+        <li class="page-item" [class.disabled]="p == page" *ngFor="let p of pages">
+          <a class="page-link" 
             [routerLink]="['/admin/activity/list', p]"
             [routerLinkActive]="['active']"
             >{{ p }}</a
           >
         </li>
-        <li [class.disabled]="page == pages.length" class="next">
-          <a
+        <li class="page-item" [class.disabled]="page == pages.length" class="next">
+          <a class="page-link"
             [routerLink]="['/admin/activity/list', page + 1]"
             [routerLinkActive]="['active']"
             rel="next"

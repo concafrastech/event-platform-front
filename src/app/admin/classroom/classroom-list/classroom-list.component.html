@@ -74,21 +74,21 @@
     <div class="col-md-12" *ngIf="pages.length > 1">
       <ul class="pagination">
         <li [class.disabled]="page == 1">
-          <a
+          <a class="page-link" 
             [routerLink]="['/admin/classroom/list', page - 1]"
             [routerLinkActive]="['active']"
             >&lt; Anterior</a
           >
         </li>
         <li [class.disabled]="p == page" *ngFor="let p of pages">
-          <a
+          <a class="page-link" 
             [routerLink]="['/admin/classroom/list', p]"
             [routerLinkActive]="['active']"
             >{{ p }}</a
           >
         </li>
         <li [class.disabled]="page == pages.length" class="next">
-          <a
+          <a class="page-link" 
             [routerLink]="['/admin/classroom/list', page + 1]"
             [routerLinkActive]="['active']"
             rel="next"

@@ -181,6 +181,8 @@ import { XpsListComponent } from './admin/xps/xps-list/xps-list.component';
 import { XpsAddComponent } from './admin/xps/xps-add/xps-add.component';
 import { XpsEditComponent } from './admin/xps/xps-edit/xps-edit.component';
 import { SubscriptionListComponent } from './admin/subscription/subscription-list/subscription-list.component';
+import { UserTrailsComponent } from './epics/main/user-trails/user-trails.component';
+import { AllContentComponent } from './epics/main/all-content/all-content.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -345,6 +347,8 @@ const GamificationConfig = {
     XpsAddComponent,
     XpsEditComponent,
     SubscriptionListComponent,
+    UserTrailsComponent,
+    AllContentComponent,
   ],
   imports: [
     BrowserModule,

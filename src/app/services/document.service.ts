@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import { EMPTY } from "rxjs";
 import {GLOBAL} from './global';
 import {Document} from '../models/document';
 import { getToken } from '../utils/token';
@@ -43,6 +44,9 @@ export class DocumentService {
     }
 
     getDocument(id): Observable<any> {
+        if(id == undefined){
+            return EMPTY;
+        }
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Authorization', getToken());

@@ -3,43 +3,46 @@
         <div class="col-md-4">
             <h2>Momentos Coletivos</h2>
 
-            <div class="card" style="width: 18rem;" *ngFor="let lecture of lectures">
+            <div class="card" *ngFor="let lecture of lectures">
                 <div class="card-body">
-                    <h5 class="card-title">{{lecture.name}}</h5>
+                    <h6 class="card-title">{{lecture.name}}</h6>
                     <p class="card-text small">
                         De: {{lecture.start_time | date: "dd/MM/yy HH:mm":"-0300" }}<br />
                         Até: {{lecture.end_time | date: "dd/MM/yy HH:mm":"-0300"}}
                     </p>
-                    <a role="button" class="btn btn-primary btn-xs" [routerLink]="['/audithorium/', 'lecture', lecture._id]" >{{lecture.name}}</a>
+                    <a role="button" class="btn btn-primary btn-xs" [routerLink]="['/audithorium/', 'lecture', lecture._id]" >Conteúdo</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <h2>Temas Específicos</h2>
-            
-            <ul>
-                <li *ngFor="let trail of trails">
-                    {{trail.name}}
-                    <ul>
-                        <li *ngFor="let classroom of trail.classrooms">
-                            <a role="button" [routerLink]="['/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+
+            <div class="card" *ngFor="let trail of trails">
+                <div class="card-body">
+                    <h6 class="card-title">{{trail.name}}</h6>
+                    <div class="card-text small">
+                        <div *ngFor="let classroom of trail.classrooms">
+                            <h6 style="color: gray">{{classroom.name}}</h6>
+                            <a role="button" class="btn btn-primary btn-xs" [routerLink]="['/audithorium/', 'classroom', classroom._id]" >Conteúdo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
-            <h2>NDC</h2>
-            <ul>
-                <li *ngFor="let stage of stages">
-                    {{stage.name}}
-                    <ul>
-                        <li *ngFor="let activity of stage.activities">
-                            <a role="button" [routerLink]="['/audithorium/', 'activity', activity._id]" [routerLinkActive]="['active']">{{activity.name}}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            <h2>Nossas Dimensões</h2>
+
+            <div class="card" *ngFor="let stage of stages">
+                <div class="card-body">
+                    <h6 class="card-title">{{stage.name}}</h6>     
+                    <div class="card-text small">
+                        <div *ngFor="let activity of stage.activities">
+                            <h6>{{activity.name}}</h6>
+                            <a role="button" class="btn btn-primary btn-xs" [routerLink]="['/audithorium/', 'activity', activity._id]" >Conteúdo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

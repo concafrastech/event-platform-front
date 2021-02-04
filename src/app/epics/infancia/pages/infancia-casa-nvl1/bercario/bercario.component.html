@@ -99,54 +99,57 @@
     </div>
 </ng-template>
 
+
 <ng-template #templateTE>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Tema: Caridade no lar</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-xs-12 col-12 col-md-11 form-group">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/_SmWqKp0u7w" frameborder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
-                    <div class="options">
-                        <div class="options-item">
-                            <a href="/concafrinhas/flipsnack/7h3gf0apma" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-cartilha btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Berçário - Caridade no lar.pdf"
-                                download>
-                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
-                                    title="Baixar Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item" *ngIf="allowSalaVirtual">
-                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-practice btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
-                            </a>
-                        </div>
-                        <div class="options-item" *ngIf="!allowSalaVirtual">
-                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
-                                title="Realizar prática" (click)="openAlert()">
+    <div *ngIf="this.trails[0]._id == 5fda9596c11f1c0011b93bed">
+        <div class="modal-content-video">
+            <div class="modal-header">
+                <h4 style="color: white;">Tema: Caridade no lar</h4>
+                <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-12 col-md-11 form-group">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/_SmWqKp0u7w" frameborder="0"
+                                allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
+    
+                    <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
+                        <div class="options">
+                            <div class="options-item">
+                                <a href="/concafrinhas/flipsnack/7h3gf0apma" target="_blank" rel="noopener noreferrer">
+                                    <img class="btn-cartilha btns-opts"
+                                        src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
+                                </a>
+                            </div>
+    
+                            <div class="options-item">
+                                <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Berçário - Caridade no lar.pdf"
+                                    download>
+                                    <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
+                                        title="Baixar Cartilha">
+                                </a>
+                            </div>
+    
+                            <div class="options-item" *ngIf="allowSalaVirtual">
+                                <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                    <img class="btn-practice btns-opts"
+                                        src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
+                                </a>
+                            </div>
+                            <div class="options-item" *ngIf="!allowSalaVirtual">
+                                <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
+                                    title="Realizar prática" (click)="openAlert()">
+                            </div>
+                        </div>
+                    </div>
+    
                 </div>
-
             </div>
         </div>
     </div>

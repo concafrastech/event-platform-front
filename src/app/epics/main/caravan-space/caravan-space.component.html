@@ -131,7 +131,7 @@
                 [ngClass]="i==actualCarouselWorkshop ? 'active' : ''">
                 <div class="row">
                     <div class="col-sm-3" *ngFor="let workshop of groupWorkshop">
-                        <div class="card">
+                        <div class="card" style="cursor: pointer;" (click)="goToAudithorium(workshop)">
                             <span>{{workshop.name}}</span>
                         </div>
                     </div>

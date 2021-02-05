@@ -509,6 +509,10 @@ export class CaravanSpaceComponent implements OnInit {
     );
   }
 
+  goToAudithorium(item: Lecture) {
+    this._router.navigate(["/audithorium", "lecture", item._id]);
+  }
+
   OnDestroy() {
     this.modalSub.unsubscribe();
   }

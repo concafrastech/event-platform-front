@@ -222,6 +222,11 @@ ol.carousel-indicators li.active {
     border-color: #1EA6EC;
 }
 
+/* ==== MAIN VIDEO ==== */
+#main-video {
+    margin: 0px auto;
+}
+
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
     #caravan-header .caravan-header-card.caravan-header-item {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-infancia-home',
   templateUrl: './infancia-home.component.html',
@@ -25,6 +26,10 @@ export class InfanciaHomeComponent implements OnInit {
   public accessAllowed = true;
   public portrait = false;
 
+  
+  screenWidth: number = window.innerWidth;
+  screenHeight: number = window.innerHeight;
+  
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -35,7 +40,13 @@ export class InfanciaHomeComponent implements OnInit {
 
     this.verifyEntrance();
 
-    this.verifyPortrait();
+    this.verifyPortrait();   
+    
+    window.addEventListener('orientationchange', (e) => {
+      // console.log(e);
+      this.portrait = !this.portrait;
+      this._router.navigate(['/concafrinhas/home']);
+    });
   }
 
   verifyEntrance() {
@@ -45,7 +56,7 @@ export class InfanciaHomeComponent implements OnInit {
   }
 
   verifyPortrait() {
-    if (window.innerWidth < window.innerHeight) {
+    if (this.screenWidth < this.screenHeight) {
       this.portrait = true;
     }
   }

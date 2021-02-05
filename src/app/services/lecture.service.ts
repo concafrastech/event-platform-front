@@ -34,8 +34,18 @@ export class LectureService {
     getLectures(page = null, epicId = null): Observable<any> {
         let params = { 
             page : page,
-            full : '1',
             epic : epicId != null ? epicId : ''
+         };
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', getToken());
+
+        return this._http.get(this.url + 'lectures/', {headers: headers, params: params});
+    }
+
+    getFullLectures(): Observable<any> {
+        let params = { 
+            full : '1',
          };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

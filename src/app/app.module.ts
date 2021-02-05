@@ -183,6 +183,7 @@ import { XpsEditComponent } from './admin/xps/xps-edit/xps-edit.component';
 import { SubscriptionListComponent } from './admin/subscription/subscription-list/subscription-list.component';
 import { UserTrailsComponent } from './epics/main/user-trails/user-trails.component';
 import { AllContentComponent } from './epics/main/all-content/all-content.component';
+import { AudioPlayerComponent } from './components/channels/audio-player/audio-player.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -349,6 +350,7 @@ const GamificationConfig = {
     SubscriptionListComponent,
     UserTrailsComponent,
     AllContentComponent,
+    AudioPlayerComponent,
   ],
   imports: [
     BrowserModule,

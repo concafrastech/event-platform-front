@@ -50,10 +50,6 @@ export class UserGamificationService {
     let user = JSON.parse(localStorage.getItem("identity"));
     this._xpsService.getXpByUser(user._id).subscribe({
       next: (response) => {
-        console.log(response);
-        
-        //this._xpsService.getXpByUser(user._id).subscribe((response)=>{
-
         let xps = response.xps;
         // console.log(xps);
         

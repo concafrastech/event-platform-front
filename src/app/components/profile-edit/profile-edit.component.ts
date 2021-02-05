@@ -29,6 +29,7 @@ export class ProfileEditComponent implements OnInit {
   public token;
   public url: string;
   public fileToUpload: File;
+  public userInfoLevel;
 
   constructor(
     private _route: ActivatedRoute,
@@ -52,6 +53,7 @@ export class ProfileEditComponent implements OnInit {
     console.log("[OK] Component: profile-edit.");
     this.loadUserImage();
     this._userGamificationService.setMissionComplete("edit-profile");
+    this.userInfoLevel = this._userGamificationService.getInfoLevel();
   }
 
   loadUserImage() {

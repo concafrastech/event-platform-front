@@ -455,7 +455,9 @@ export class CaravanSpaceComponent implements OnInit {
 
   filterLecturesTypeWorkshop(lectures: Lecture[]) {
     this.workshops = lectures.filter((lecture, index) => {
-      if (lecture.type == "workshop") {
+      let now = new Date().getTime();
+      let endWorkshop = new Date(lecture.end_time).getTime()
+      if (lecture.type == "workshop" && now >= endWorkshop) {
         return true;
       }
       return false;

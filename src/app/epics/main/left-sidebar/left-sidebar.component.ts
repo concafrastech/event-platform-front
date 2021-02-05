@@ -1,6 +1,6 @@
 import { DocumentService } from "src/app/services/document.service";
 import { MagneticPassDistanceComponent } from "./../magnetic-pass-distance/magnetic-pass-distance.component";
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, Renderer2 } from "@angular/core";
 import { Router } from "@angular/router";
 import { NgBootstrapAlertService } from "ng-bootstrap-alert";
 import { UserService } from "src/app/services/user.service";
@@ -31,6 +31,7 @@ export class LeftSidebarComponent implements OnInit {
   public showChat: boolean = false;
 
   public faUserCircle = faUserCircle;
+  public jivoChat: ElementRef;
 
   constructor(
     private _router: Router,
@@ -38,13 +39,9 @@ export class LeftSidebarComponent implements OnInit {
     public _bootstrapAlertService: NgBootstrapAlertService,
     private _modalService: BsModalService,
     private _documentService: DocumentService,
-    public _userGamification: UserGamificationService
+    public _userGamification: UserGamificationService,
+    private renderer: Renderer2
   ) {
-    /*this.user = {
-      name: "Gui",
-      points: 0,
-      level: {},
-    };*/
     this.progress = {
       max: 0,
       value: 0,
@@ -57,201 +54,14 @@ export class LeftSidebarComponent implements OnInit {
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
     console.log("[OK] left sidebar");
-    
+
+    //this.initJivoChat();
+
     this._documentService
       .getDocument(this.user.image)
       .subscribe((response) => {
         this.user.image = response.document;
       });
-  }
-
-  logout() {
-    localStorage.clear();
-    this.identity = null;
-    this._router.navigate(["/login"]);
-  }
-
-  initGamefication() {
-    this.user.level = this._userGamification.getLevel();
-    this.user.points = this._userGamification.getPoints();
-    //console.log("gamification: ", this._gamificationService);
-
-    /*this._gamificationService.addBreakpoint(200, () => {
-      console.log(
-        "breakpoint 200 callback: ",
-        this._gamificationService.getPoints()
-      );
-      this._bootstrapAlertService.alert(
-        new NgBootstrapAlert(
-          "Parabéns você ao nível Marte!",
-          "alert-success"
-        )
-      );
-    });
-    this._gamificationService.addBreakpoint(450, () => {
-      console.log(
-        "breakpoint 200 callback: ",
-        this._gamificationService.getPoints()
-      );
-      this._bootstrapAlertService.alert(
-        new NgBootstrapAlert(
-          "Parabéns você ao nível Vênus!",
-          "alert-success"
-        )
-      );
-    });
-    this._gamificationService.addBreakpoint(800, () => {
-      console.log(
-        "breakpoint 300 callback: ",
-        this._gamificationService.getPoints()
-      );
-      this._bootstrapAlertService.alert(
-        new NgBootstrapAlert(
-          "Parabéns você ao nível Júpiter!",
-          "alert-success"
-        )
-      );
-    });
-    this._gamificationService.addBreakpoint(1050, () => {
-      console.log(
-        "breakpoint 400 callback: ",
-        this._gamificationService.getPoints()
-      );
-      this._bootstrapAlertService.alert(
-        new NgBootstrapAlert(
-          "Parabéns você ao nível Sol!",
-          "alert-success"
-        )
-      );
-    });*/
-/*
-    let component = this._gamificationService.addComponent(
-      400,
-      () => {
-        console.info("component update callback");
-        let points = this._gamificationService.getPoints();
-        this._gamificationService.getLevelByPoints(points);
-        this.user.points = points;
-        this.user.level = this._gamificationService.getLevel();
-        this.progress.value = points;
-      },
-      () => {
-        console.log("component 400 start callback");
-        this.progress.max = 3000;
-        this.user.level = this._gamificationService.getLevel();
-      }
-    );
-
-    this._gamificationService.addMission(
-      "my_profile",
-      50,
-      "",
-      () => {
-        console.log("add mission start");
-      },
-      () => {
-        console.log(
-          "add mission achieve: ",
-          this._gamificationService.getPoints()
-        );
-      }
-    );*/
-/*
-    this._gamificationService.addMission(
-      "timeline",
-      10,
-      "",
-      () => {
-        console.log("add mission start");
-      },
-      () => {
-        console.log(
-          "add mission achieve: ",
-          this._gamificationService.getPoints()
-        );
-        this._bootstrapAlertService.alert(
-          new NgBootstrapAlert(
-            "Você ganhou 10 pontos por acessar Timeline!",
-            "alert-success"
-          )
-        );
-      }
-    );
-
-    this._gamificationService.addMission(
-      "pessoas",
-      10,
-      "",
-      () => {
-        console.log("add mission start");
-      },
-      () => {
-        console.log(
-          "add mission achieve: ",
-          this._gamificationService.getPoints()
-        );
-        this._bootstrapAlertService.alert(
-          new NgBootstrapAlert(
-            "Você ganhou 10 pontos por acessar Pessoas!",
-            "alert-success"
-          )
-        );
-      }
-    );
-
-    this._gamificationService.addMission(
-      "mensagens",
-      10,
-      "",
-      () => {
-        console.log("add mission start");
-      },
-      () => {
-        console.log(
-          "add mission achieve: ",
-          this._gamificationService.getPoints()
-        );
-        this._bootstrapAlertService.alert(
-          new NgBootstrapAlert(
-            "Você ganhou 10 pontos por acessar Mensagens!",
-            "alert-success"
-          )
-        );
-      }
-    );
-
-    this._gamificationService.addMission(
-      "save",
-      30,
-      "",
-      () => {
-        console.log("save mission start");
-      },
-      () => {
-        console.log(
-          "save mission achieve: ",
-          this._gamificationService.getPoints()
-        );
-      }
-    );
-
-    this._gamificationService.addMission(
-      "delete",
-      10,
-      "",
-      () => {
-        console.log("delete mission start");
-      },
-      () => {
-        console.log(
-          "delete mission achieve: ",
-          this._gamificationService.getPoints()
-        );
-      }
-    );*/
-
-    // console.log(this.user.level);
-    // console.log(this.identity);
   }
 
   openProgramacaoComponent() {
@@ -290,5 +100,42 @@ export class LeftSidebarComponent implements OnInit {
   openCloseFraternalSupportChat() {
     this.showChat = !this.showChat;
     //this._tawkService.ExpandChatWindow(true);
+  }
+
+  initJivoChat(){
+    const tag = this.renderer.createElement("script");
+    this.renderer.setProperty(tag, 'src', "//code.jivosite.com/widget/aClpHxTFlf")
+    this.jivoChat = new ElementRef(tag);
+    this.renderer.appendChild(document.body, tag);
+    console.log(this.jivoChat);
+  }
+
+  closeJivoChat(){
+    //Recupera referências ao JivoChat
+    const tag = <HTMLScriptElement>this.jivoChat.nativeElement;
+    const divJivo = document.getElementsByTagName('jdiv')[0];
+    const iframeJivo = document.getElementById('jivo-iframe-container');
+
+    //Remove Jivo
+    divJivo.parentNode.removeChild(divJivo);
+    iframeJivo.remove();
+    tag.remove();
+
+    this.jivoChat = null;
+  }
+
+  logout() {
+    localStorage.clear();
+    this.identity = null;
+    this._router.navigate(["/login"]);
+  }
+
+  initGamefication() {
+    this.user.level = this._userGamification.getLevel();
+    this.user.points = this._userGamification.getPoints();
+  }
+
+  ngOnDestroy(): void {
+    //this.closeJivoChat();
   }
 }

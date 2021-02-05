@@ -129,6 +129,10 @@ ol.carousel-indicators li.active {
     font-weight: bold;
     color: #1EA6EC;
 }
+.carousel-control-next,
+.carousel-control-prev {
+    width: 0%;
+}
 
 /* ==== POST CONCAFRAS ==== */
 .post-content {
@@ -225,6 +229,20 @@ ol.carousel-indicators li.active {
 /* ==== MAIN VIDEO ==== */
 #main-video {
     margin: 0px auto;
+}
+
+/* ==== MUSIC ==== */
+.music-container {
+    text-align: center;
+}
+
+.music-content {
+    margin: .2rem 0;
+}
+
+.music-header-title {
+    color: #fff;
+    font-size: 1rem;
 }
 
 /* ==== RESPONSIVE ==== */

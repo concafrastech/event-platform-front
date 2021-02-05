@@ -100,8 +100,13 @@
                 [ngClass]="i==actualCarouselMusic ? 'active' : ''">
                 <div class="row">
                     <div class="col-sm-4" *ngFor="let music of groupMusic">
-                        <div class="card">
-                            <app-audio-player *ngIf="music.contents[0].file" [document]="music.contents[0].file"></app-audio-player>
+                        <div class="music-container">
+                            <div class="music-content">
+                                <span class="music-header-title">{{music.contents[0].name}}</span>
+                            </div>
+                            <div class="music-content">
+                                <app-audio-player *ngIf="music.contents[0].file" [document]="music.contents[0].file"></app-audio-player>
+                            </div>
                         </div>
                     </div>
                 </div>

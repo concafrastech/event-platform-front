@@ -293,6 +293,11 @@ ol.carousel-indicators li.active {
   color: #1EA6EC;
 }
 
+.row-container {
+  display: flex;
+  align-items: center;
+}
+
 
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {

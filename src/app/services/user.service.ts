@@ -106,12 +106,16 @@ export class UserService {
         return this._http.put(this.url + 'update-user/' + user._id, params, {headers: headers});
     }
 
-    getUsers(page = null): Observable<any> {
+    getUsers(page = null, search = null): Observable<any> {
+        let params = { 
+            page : page,
+            search : search != null ? search : ''
+         };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Authorization', this.getToken());
 
-        return this._http.get(this.url + 'users/' + page, {headers: headers});
+        return this._http.get(this.url + 'users/', {headers: headers, params: params});
     }
 
     getUser(id): Observable<any> {

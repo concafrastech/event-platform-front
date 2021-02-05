@@ -43,6 +43,17 @@ export class LectureService {
         return this._http.get(this.url + 'lectures/', {headers: headers, params: params});
     }
 
+    getFullLectures(): Observable<any> {
+        let params = { 
+            full : '1',
+         };
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', getToken());
+
+        return this._http.get(this.url + 'lectures/', {headers: headers, params: params});
+    }
+
     getLecture(id): Observable<any> {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

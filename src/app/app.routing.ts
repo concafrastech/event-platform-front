@@ -118,6 +118,9 @@ import { MissionListComponent } from './admin/mission/mission-list/mission-list.
 import { JovemClassroomComponent } from './epics/jovem/jovem-classroom/jovem-classroom.component';
 import { NdcComponent } from './epics/main/feira/ndc/ndc.component';
 import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/audithorium-special.component';
+import { SubscriptionListComponent } from './admin/subscription/subscription-list/subscription-list.component';
+import { UserTrailsComponent } from './epics/main/user-trails/user-trails.component';
+import { AllContentComponent } from './epics/main/all-content/all-content.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -175,6 +178,8 @@ const appRoutes: Routes = [
             {path: 'xps/edit/:id', component: XpsEditComponent},
             {path: 'xps/list', component: XpsListComponent},
             {path: 'xps/list/:page', component: XpsListComponent},
+            {path: 'subscription/list', component: SubscriptionListComponent},
+            {path: 'subscription/list/:page', component: SubscriptionListComponent},
         ],
     },
     {
@@ -326,6 +331,8 @@ const appRoutes: Routes = [
             {path: 'ndc-activities', component: NdcActivitiesComponent, canActivate:[UserGuard]},
             {path: 'audithorium-special/:type', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
             {path: 'audithorium-special/:type/:contentId', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
+            {path: 'me-trails', component: UserTrailsComponent, canActivate:[UserGuard]},
+            {path: 'all-content', component: AllContentComponent, canActivate:[UserGuard]},
         ],
     },
     {

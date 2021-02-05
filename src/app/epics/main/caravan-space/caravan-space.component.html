@@ -22,12 +22,14 @@
     </div>
     <div id="carouselControlsRecentMessage" class="carousel slide caravan-carousel-recent">
         <ol class="carousel-indicators">
-            <li *ngFor="let carousel of groupsCarousel; let i=index" [ngClass]="i == actualCarousel ? 'active' : ''"></li>
+            <li *ngFor="let carousel of groupsCarouselShareMessage; let i=index"
+                [ngClass]="i == actualCarouselShareMessage ? 'active' : ''"></li>
         </ol>
         <div id="carousel-recent-messages" class="carousel-inner">
-            <div class="carousel-item card-height" *ngFor="let carousel of groupsCarousel; let i=index"[ngClass]="i==actualCarousel ? 'active' : ''">
+            <div class="carousel-item card-height" *ngFor="let carousel of groupsCarouselShareMessage; let i=index"
+                [ngClass]="i==actualCarouselShareMessage ? 'active' : ''">
                 <div class="row">
-                    <div class="col-sm-3" *ngFor="let message of groupMessages">
+                    <div class="col-sm-3" *ngFor="let message of groupMessagesShareMessage">
                         <div class="card">
                             <span>{{message.message}}</span>
                         </div>
@@ -36,13 +38,11 @@
 
             </div>
         </div>
-        <a class="carousel-control-prev" [routerLink]="" role="button"
-             (click)="previousCarousel()">
+        <a class="carousel-control-prev" [routerLink]="" role="button" (click)="previousCarouselShareMessage()">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" [routerLink]="" role="button"
-             (click)="nextCarousel()">
+        <a class="carousel-control-next" [routerLink]="" role="button" (click)="nextCarouselShareMessage()">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -60,88 +60,58 @@
     <div id="sing-with-us-header">
         <h2 class="caravan-header-title">Vem cantar com a gente!</h2>
     </div>
-    <div class="sing-with-us-card">
-        <div id="main-video" class="sing-with-us-container sing-with-us-block-main">
-            <iframe class="sing-with-us-iframe" src="https://www.youtube.com/embed/-gAw_W4uzho" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="sing-with-us-container sing-with-us-block-second">
-            <div>
-                <iframe class="sing-with-us-iframe-thumbnail" src="https://www.youtube.com/embed/AT1N3VQ_eK0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div>
-                <iframe class="sing-with-us-iframe-thumbnail" src="https://www.youtube.com/embed/oKmTn-8zPYE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!-- AQUI TERÁ CAROUSEL VERTICAL -->
-        </div>
-    </div>
-</section>
-<section id="music" class="caravan-container">
-    <div>
-        <h3 class="caravan-header-title">Músicas</h3>
-    </div>
-    <div id="carouselMusic" class="carousel slide caravan-carousel-recent" data-ride="carousel">
+    <div id="carouselControlsRecentMessage" class="carousel slide caravan-carousel-recent">
         <ol class="carousel-indicators">
-            <li data-target="#carouselMusic" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselMusic" data-slide-to="1"></li>
-            <!-- <li data-target="#carouselMusic" data-slide-to="2"></li> -->
+            <li *ngFor="let singWithUs of groupsCarouselSingWithUs; let i=index"
+                [ngClass]="i == actualCarouselSingWithUs ? 'active' : ''"></li>
         </ol>
         <div id="carousel-recent-messages" class="carousel-inner">
             <div class="carousel-item card-height active">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
+                    <div id="main-video" class="sing-with-us-container sing-with-us-block-main">
+                        <app-videojs *ngIf="currentSongVideo" style="margin-left: 20px;" [vContent]="currentSongVideo">
+                        </app-videojs>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item card-height">
+        </div>
+        <a class="carousel-control-prev" [routerLink]="" role="button" (click)="previousCarouselSingWithUs()">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" [routerLink]="" role="button" (click)="nextCarouselSingWithUs()">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+
+<section id="music" class="caravan-container">
+    <div>
+        <h3 class="caravan-header-title">Músicas</h3>
+    </div>
+    <div id="carouselMusic" class="carousel slide caravan-carousel-recent">
+        <ol class="carousel-indicators">
+            <li *ngFor="let carousel of groupsCarouselMusic; let i=index" [ngClass]="i == actualCarouselMusic ? 'active' : ''">
+            </li>
+        </ol>
+        <div id="carousel-recent-messages" class="carousel-inner">
+            <div class="carousel-item card-height" *ngFor="let carousel of groupsCarouselMusic; let i=index"
+                [ngClass]="i==actualCarouselMusic ? 'active' : ''">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4" *ngFor="let music of groupMusic">
                         <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
+                            <app-audio-player *ngIf="music.contents[0].file" [document]="music.contents[0].file"></app-audio-player>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselMusic" role="button"
-            data-slide="prev">
+        <a class="carousel-control-prev" [routerLink]="" role="button" (click)="previousCarouselMusic()">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselMusic" role="button"
-            data-slide="next">
+        <a class="carousel-control-next" [routerLink]="" role="button" (click)="nextCarouselMusic()">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -151,69 +121,28 @@
     <div>
         <h3 class="caravan-header-title">Oficinas</h3>
     </div>
-    <div id="carouselWorkshops" class="carousel slide caravan-carousel-recent" data-ride="carousel">
+    <div id="carouselWorkshops" class="carousel slide caravan-carousel-recent">
         <ol class="carousel-indicators">
-            <li data-target="#carouselWorkshops" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselWorkshops" data-slide-to="1"></li>
-            <!-- <li data-target="#carouselWorkshops" data-slide-to="2"></li> -->
+            <li *ngFor="let carousel of groupsCarouselWorkshop; let i=index" [ngClass]="i == actualCarouselWorkshop ? 'active' : ''">
+            </li>
         </ol>
         <div id="carousel-recent-messages" class="carousel-inner">
-            <div class="carousel-item card-height active">
+            <div class="carousel-item card-height" *ngFor="let carousel of groupsCarouselWorkshop; let i=index"
+                [ngClass]="i==actualCarouselWorkshop ? 'active' : ''">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" *ngFor="let workshop of groupWorkshop">
                         <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item card-height">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <span>teste 2</span>
+                            <span>{{workshop.name}}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselWorkshops" role="button"
-            data-slide="prev">
+        <a class="carousel-control-prev" [routerLink]="" role="button" (click)="previousCarouselWorkshop()">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselWorkshops" role="button"
-            data-slide="next">
+        <a class="carousel-control-next" [routerLink]="" role="button" (click)="nextCarouselWorkshop()">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -222,6 +151,7 @@
 <section id="meeting" class="caravan-container">
     <div id="meeting-header">
         <h2 class="caravan-header-title">Reunião de trabalhadores:</h2>
-        <a href="https://sites.google.com/view/concafras-2021-reunioes/inicio" target="_blank" class="btn btn-primary btn-meeting">Lista das reuniões</a>
+        <a href="https://sites.google.com/view/concafras-2021-reunioes/inicio" target="_blank"
+            class="btn btn-primary btn-meeting">Lista das reuniões</a>
     </div>
 </section>

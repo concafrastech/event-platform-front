@@ -5,10 +5,10 @@
         </div>
 
         <div class="col-md-6">
-            <div class="input-group h2" *ngIf="false">
-                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
+            <div class="input-group h2">
+                <input id="search" name="search" [(ngModel)]="search" class="form-control" type="text" placeholder="Pesquisar Itens">
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" (click)="searchUsers()">
                         <span class="fa fa-search"></span>
                     </button>
                 </span>
@@ -28,7 +28,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Apelido</th>
+                        <th>Importado</th>
                         <th>Email</th>
                         <th>Cidade/UF</th>
                         <th class="actions">Ações</th>
@@ -37,8 +37,16 @@
                 <tbody>
 
                     <tr class="item-user" *ngFor="let user of users">
-                        <td>{{user.name}}</td>
-                        <td>{{user.nick}}</td>
+                        <td>
+                          <div *ngIf="user.fullname">
+                            {{user.fullname}}
+                          </div>
+                          <div *ngIf="!user.fullname">
+                            {{user.name}}
+                          </div>
+
+                        </td>
+                        <td>{{user.remote ? "Sim" : "Não"}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.city}}/{{user.state}}</td>
                         <td class="actions">
@@ -55,18 +63,35 @@
     </div> <!-- /#list -->
 
     <div id="bottom" class="row">
-        <div class="col-md-12" *ngIf="pages > 1">
-
-            <ul class="pagination">
-                <li class="disabled"><a>&lt; Anterior</a></li>
-                <li class="disabled"><a>1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-            </ul><!-- /.pagination -->
-
+        <div class="col-md-12" *ngIf="pages && pages.length > 1">
+          <ul class="pagination">
+            <li class="page-item" [class.disabled]="page == 1">
+              <a class="page-link" 
+                [routerLink]="['/admin/user/list', page - 1]"
+                [routerLinkActive]="['active']"
+                >&lt; Anterior</a
+              >
+            </li>
+            <li  class="page-item" [class.disabled]="p == page" *ngFor="let p of pages">
+              <a class="page-link" 
+                [routerLink]="['/admin/user/list', p]"
+                [routerLinkActive]="['active']"
+                >{{ p }}</a
+              >
+            </li>
+            <li  class="page-item" [class.disabled]="page == pages.length" class="next">
+              <a class="page-link" 
+                [routerLink]="['/admin/user/list', page + 1]"
+                [routerLinkActive]="['active']"
+                rel="next"
+                >Próximo &gt;</a
+              >
+            </li>
+          </ul>
         </div>
-    </div> <!-- /#bottom -->
+        <!-- /.pagination -->
+      </div>
+      <!-- /#bottom -->
 </div>
 
 <div class="clearfix"></div>

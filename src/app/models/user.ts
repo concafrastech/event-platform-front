@@ -4,6 +4,9 @@ import { Subscription } from './subscription';
 export class User {
     constructor(
         public _id: string,
+        public username: string,
+        public remote: boolean,
+        public remoteId: string,
         public name: string,
         public surname: string,
         public fullname: string,

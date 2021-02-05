@@ -5,16 +5,17 @@
     </div>
 
     <div class="col-md-6">
-      <div class="input-group h2" *ngIf="false">
+      <div class="input-group h2">
         <input
-          name="data[search]"
-          class="form-control"
           id="search"
+          name="search"
+          [(ngModel)]="search"
+          class="form-control"
           type="text"
           placeholder="Pesquisar Itens"
         />
         <span class="input-group-btn">
-          <button class="btn btn-primary" type="submit">
+          <button class="btn btn-primary" (click)="searchTrails()">
             <span class="fa fa-search"></span>
           </button>
         </span>
@@ -88,22 +89,22 @@
   <div id="bottom" class="row">
     <div class="col-md-12" *ngIf="pages.length > 1">
       <ul class="pagination">
-        <li [class.disabled]="page == 1">
-          <a
+        <li class="page-item" [class.disabled]="page == 1">
+          <a class="page-link" 
             [routerLink]="['/admin/trail/list', page - 1]"
             [routerLinkActive]="['active']"
             >&lt; Anterior</a
           >
         </li>
-        <li [class.disabled]="p == page" *ngFor="let p of pages">
-          <a
+        <li  class="page-item" [class.disabled]="p == page" *ngFor="let p of pages">
+          <a class="page-link" 
             [routerLink]="['/admin/trail/list', p]"
             [routerLinkActive]="['active']"
             >{{ p }}</a
           >
         </li>
-        <li [class.disabled]="page == pages.length" class="next">
-          <a
+        <li  class="page-item" [class.disabled]="page == pages.length" class="next">
+          <a class="page-link" 
             [routerLink]="['/admin/trail/list', page + 1]"
             [routerLinkActive]="['active']"
             rel="next"

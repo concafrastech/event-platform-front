@@ -23,19 +23,9 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
   selector: "app-hub",
   templateUrl: "./hub.component.html",
   styleUrls: ["./hub.component.css"],
-  providers: [
-    LectureService,
-    TrailService,
-    StageService,
-    ActivityService,
-    ClassroomService,
-  ],
 })
 export class HubComponent implements OnInit, AfterViewInit {
   public status: string;
-  public lectures: Lecture[] = [];
-  public trails: Trail[] = [];
-  public stages: Stage[] = [];
   public svgMap: HTMLObjectElement;
   public bsModalRef: BsModalRef;
 
@@ -51,21 +41,13 @@ export class HubComponent implements OnInit, AfterViewInit {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _lectureService: LectureService,
-    private _trailService: TrailService,
-    private _stageService: StageService,
-    private _activityService: ActivityService,
-    private _classroomService: ClassroomService,
     private _modalService: BsModalService,
     private elementRef: ElementRef,
     private zone: NgZone
   ) {}
 
   ngOnInit(): void {
-    let epic = JSON.parse(localStorage.getItem("currentEpic"));
-    this.getLectures(1, epic._id);
-    this.getTrails(1, epic._id);
-    this.getStages(1, epic._id);
+    
   }
 
   ngAfterViewInit() {
@@ -216,111 +198,5 @@ export class HubComponent implements OnInit, AfterViewInit {
       class: "modal-lg",
     });
     this.bsModalRef.content.closeBtnName = "Fechar";
-  }
-
-  getLectures(page, epicId) {
-    this._lectureService.getLectures(page, epicId).subscribe(
-      (response) => {
-        if (!response.lectures) {
-          this.status = "error";
-        } else {
-          this.lectures = response.lectures;
-        }
-      },
-      (error) => {
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      }
-    );
-  }
-
-  getTrails(page, epicId) {
-    this._trailService.getTrails(page, epicId).subscribe(
-      (response) => {
-        if (!response.trails) {
-          this.status = "error";
-        } else {
-          this.trails = response.trails;
-          this.trails.forEach((trail, index) => {
-            this.getClassrooms(page, trail, index);
-          });
-        }
-      },
-      (error) => {
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      }
-    );
-  }
-
-  getClassrooms(page, trail, index) {
-    this._classroomService.getClassrooms(page, trail._id).subscribe(
-      (response) => {
-        if (!response.classrooms) {
-          this.status = "error";
-        } else {
-          this.trails[index].classrooms = response.classrooms;
-        }
-      },
-      (error) => {
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      }
-    );
-  }
-
-  getStages(page, epicId) {
-    this._stageService.getStages(page, epicId).subscribe(
-      (response) => {
-        if (!response.stages) {
-          this.status = "error";
-        } else {
-          this.stages = response.stages;
-          this.stages.forEach((stage, index) => {
-            this.getActivities(page, stage, index);
-          });
-        }
-      },
-      (error) => {
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      }
-    );
-  }
-
-  getActivities(page, stage, index) {
-    this._activityService.getActivities(page, stage._id).subscribe(
-      (response) => {
-        if (!response.activities) {
-          this.status = "error";
-        } else {
-          this.stages[index].activities = response.activities;
-        }
-      },
-      (error) => {
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      }
-    );
   }
 }

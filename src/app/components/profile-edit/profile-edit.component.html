@@ -56,13 +56,13 @@
           <div class="col-lg-3">
             <p>
               <label>Cidade</label>
-              <input type="text" name="city" #nick="ngModel" [(ngModel)]="user.city" class="form-control" />
+              <input type="text" name="city" #nick="ngModel" [(ngModel)]="user.city" class="form-control" disabled />
             </p>
           </div>
           <div class="col-lg-1">
             <p>
               <label>Estado</label>
-              <input type="text" name="state" #nick="ngModel" [(ngModel)]="user.state" class="form-control" />
+              <input type="text" name="state" #nick="ngModel" [(ngModel)]="user.state" class="form-control" disabled />
             </p>
           </div>
           <div class="col-lg-2">
@@ -132,19 +132,19 @@
     <div class="col-lg-6">
       <span class="title">Meus níveis e pontos</span>
       <div class="container-level">
-        <div class="container-level-card">
+        <div class="container-level-card" *ngIf="userInfoLevel.nextLevel">
           <p class="container-level-basic container-level-card-points">
-            900 pontos
+            {{this._userGamificationService.getPoints()}} pontos
           </p>
-          <p class="container-level-basic container-level-card-text">
+          <!-- <p class="container-level-basic container-level-card-text">
             5º lugar no ranking
-          </p>
+          </p> -->
           <div>
-            <img class="badge-main" src="assets/concafras2021/concafronas/badges/sol.svg" alt="Badge" />
+            <img class="badge-main" [src]="userInfoLevel.nextLevel.icon" alt="Badge" />
           </div>
           <p class="container-level-basic container-level-card-text">
-            Faltam 100 pontos<br />para alcançar o
-            <strong class="container-level-card-text-strong">nível do sol</strong>
+            Faltam {{userInfoLevel.pointsToNextLevel}} pontos<br />para alcançar o
+            <strong class="container-level-card-text-strong">nível {{userInfoLevel.nextLevel.badge}}</strong>
           </p>
         </div>
         <hr class="divider" />
@@ -153,49 +153,22 @@
             Níveis alcançados
           </p>
           <div class="badge-level-row">
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/venus off.svg"
+            <div class="badge-level-container" *ngFor="let level of userInfoLevel.achievedLevels">
+              <img class="badge-level-img" [src]="level.icon"
                 alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/venus.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Vênus</figcaption>
+              <figcaption class="badge-level-img-text">{{level.badge}}</figcaption>
             </div>
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/marte off.svg"
+            <div class="badge-level-container" *ngFor="let level of userInfoLevel.notAchievedLevels">
+              <img class="badge-level-img" [src]="_userGamificationService.getIconOffByLevel(level)"
                 alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/marte.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Marte</figcaption>
+              <figcaption class="badge-level-img-text">{{level.badge}}</figcaption>
             </div>
           </div>
-          <div class="badge-level-row">
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/terra off.svg"
-                alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/terra.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Terra</figcaption>
-            </div>
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off"
-                src="assets/concafras2021/concafronas/badges/jupiter off.svg" alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/jupiter.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Júpiter</figcaption>
-            </div>
-          </div>
-          <div class="badge-level-row">
-            <div class="badge-level-container">
-              <img *ngIf="true" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/sol off.svg"
-                alt="Badge" />
-              <img *ngIf="false" class="badge-level-img" src="assets/concafras2021/concafronas/badges/sol.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Sol</figcaption>
-            </div>
-          </div>
+          
           <div class="badge-level-row">
             <a href="" class="btn btn-primary btn-progress">Ver progresso</a>
           </div>
+          
         </div>
       </div>
     </div>

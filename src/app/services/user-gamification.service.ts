@@ -6,11 +6,14 @@ import { GamificationService } from "angular-gamification";
 import { NgBootstrapAlert, NgBootstrapAlertService } from "ng-bootstrap-alert";
 import { XpsService } from "./xps.service";
 import { User } from "../models/user";
+import { Level } from "angular-gamification/src/interface/level.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserGamificationService {
+  iconsOff: Map<string, string>;
+
   constructor(
     private _bootstrapAlertService: NgBootstrapAlertService,
     private _gamificationService: GamificationService,
@@ -18,6 +21,27 @@ export class UserGamificationService {
     private _xpsService: XpsService
   ) {
     this.loadGamification();
+    this.iconsOff = new Map<string, string>();
+    this.iconsOff.set(
+      "TERRA",
+      "assets/concafras2021/concafronas/badges/terra off.svg"
+    );
+    this.iconsOff.set(
+      "MARTE",
+      "assets/concafras2021/concafronas/badges/marte off.svg"
+    );
+    this.iconsOff.set(
+      "VENUS",
+      "assets/concafras2021/concafronas/badges/venus off.svg"
+    );
+    this.iconsOff.set(
+      "JUPITER",
+      "assets/concafras2021/concafronas/badges/jupiter off.svg"
+    );
+    this.iconsOff.set(
+      "SOL",
+      "assets/concafras2021/concafronas/badges/sol off.svg"
+    );
   }
 
   loadGamification() {
@@ -43,20 +67,74 @@ export class UserGamificationService {
     return this.checkLevel();
   }
 
+  getIconOffByLevelName(level: string) {
+    return this.iconsOff.get(level);
+  }
+
+  getIconOffByLevel(level: Level) {
+    return this.iconsOff.get(level.badge);
+  }
+
+  //Retorna um objeto com todas as informações de níveis do usuário
+  getInfoLevel() {
+    let currentLevel: Level = this._gamificationService.getLevel();
+    let currentPoints: number = this.getPoints();
+    let achievedLevels: Level[] = [];
+    let notAchievedLevels: Level[] = [];
+    this._gamificationService.levels.map((level, index) => {
+      //Achieved Level
+      if (currentPoints > level.range.max) {
+        achievedLevels.push(level);
+      } else if (currentPoints < level.range.min) {
+        notAchievedLevels.push(level);
+      }
+    });
+
+    //Coloca level atual como alcançado
+    achievedLevels.push(currentLevel);
+
+    //Retorna objeto com todas as informações
+    return {
+      pointsToNextLevel: this.pointsToLevelUp(),
+      nextLevel: this.getNextLevel(),
+      achievedLevels: achievedLevels,
+      notAchievedLevels: notAchievedLevels,
+    };
+  }
+
+  //Pontos para o próximo nível se houver
+  private pointsToLevelUp(): number {
+    let currentLevel = this._gamificationService.getLevel();
+    if (currentLevel.badge == "SOL") {
+      return 0;
+    }
+    return currentLevel.range.max + 1 - this.getPoints();
+  }
+
+  //Retorna o próximo nível se houver
+  private getNextLevel(): Level {
+    let currentLevel = this._gamificationService.getLevel();
+    if (currentLevel.badge == "SOL") {
+      return null;
+    }
+
+    return this._gamificationService.getLevelByPoints(
+      currentLevel.range.max + 1
+    );
+  }
+
   private setupEpicMissions(missions: Mission[]) {
-    console.log("missions do épico: ");
-    console.log({missions: missions});
+    // console.log("missions do épico: ");
+    // console.log({missions: missions});
 
     let user = JSON.parse(localStorage.getItem("identity"));
-    this._xpsService.getXps().subscribe({
+    this._xpsService.getXpByUser(user._id).subscribe({
       next: (response) => {
-        //this._xpsService.getXpByUser(user._id).subscribe((response)=>{
-
         let xps = response.xps;
-        console.log(xps);
-        
+        // console.log(xps);
+
         if (xps && xps.length > 0) {
-          console.log("usuário COM missões completadas");
+          // console.log("usuário COM missões completadas");
           xps.map((xp) => {
             let missionXp = xp.mission;
             let points = 0;
@@ -73,8 +151,8 @@ export class UserGamificationService {
               this.checkLevel();
             }
           });
-        }else{
-          console.log("usuário SEM missões completadas");
+        } else {
+          // console.log("usuário SEM missões completadas");
           this.setupBreakPoints();
         }
       },
@@ -86,10 +164,10 @@ export class UserGamificationService {
             mission.amount,
             mission.description,
             () => {
-              console.log("Mission start: " + mission.name);
+              // console.log("Mission start: " + mission.name);
             },
             () => {
-              console.log("Mission complete: " + mission.name);
+              // console.log("Mission complete: " + mission.name);
               this.removeMissionAchieved(mission);
               this.saveMissionUser(mission);
               this.checkLevel();
@@ -108,7 +186,7 @@ export class UserGamificationService {
   }
 
   private setupBreakPoints() {
-    this._gamificationService.breakpoints = []
+    this._gamificationService.breakpoints = [];
     this._gamificationService.levels.map((level, index) => {
       if (index > 0 && level.range.max > this.getPoints()) {
         this._gamificationService.addBreakpoint(level.range.min, () => {

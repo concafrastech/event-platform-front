@@ -23,7 +23,7 @@
 
     <div class="col-md-3 text-right">
       <a
-        [routerLink]="['/admin/activity/add']"
+        [routerLink]="['/admin/subscription/add']"
         class="btn btn-success pull-right h2"
         >Novo Item</a
       >
@@ -37,34 +37,29 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Painel</th>
-            <th>Apresentação</th>
-            <th>Agendado</th>
-            <th>Início / Término</th>
+            <th>Usuário</th>
+            <th>Evento</th>
+            <th>Temas</th>
             <th class="actions">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="item-activity" *ngFor="let activity of activities">
-            <td>{{ activity.name }}</td>
-            <td>{{ activity.speecher }}</td>
-            <td>{{ activity.scheduled ? "Sim" : "Não" }}</td>
+          <tr class="item-subscription" *ngFor="let subscription of subscriptions">
+            <td>{{ subscription.user.fullname }}</td>
+            <td>{{ subscription.conference.name }}</td>
             <td>
-              <div *ngIf="activity.scheduled">
-              {{ activity.start_time | date: "dd/MM/yy HH:mm":"-0300" }} <br />
-              {{ activity.end_time | date: "dd/MM/yy HH:mm":"-0300" }}
+              <div *ngFor="let trail of subscription.trails">
+                {{ trail.name }}<sub>{{ trail.type }}</sub><br />
               </div>
             </td>
             <td class="actions">
               <!-- a class="btn btn-success btn-xs" href="view.html">Visualizar</ -->
               <a
                 class="btn btn-warning btn-xs"
-                [routerLink]="['/admin/activity/edit', activity._id]"
+                [routerLink]="['/admin/subscription/edit', subscription._id]"
                 >Editar</a
               >
-              <a
-                class="btn btn-danger btn-xs"
-                (click)="openDeleteConfirm(activity)"
+              <a class="btn btn-danger btn-xs" (click)="openDeleteConfirm(subscription)"
                 >Excluir</a
               >
             </td>
@@ -78,23 +73,23 @@
   <div id="bottom" class="row">
     <div class="col-md-12" *ngIf="pages.length > 1">
       <ul class="pagination">
-        <li class="page-item" [class.disabled]="page == 1">
+        <li [class.disabled]="page == 1">
           <a class="page-link" 
-            [routerLink]="['/admin/activity/list', page - 1]"
+            [routerLink]="['/admin/subscription/list', page - 1]"
             [routerLinkActive]="['active']"
             >&lt; Anterior</a
           >
         </li>
-        <li class="page-item" [class.disabled]="p == page" *ngFor="let p of pages">
+        <li [class.disabled]="p == page" *ngFor="let p of pages">
           <a class="page-link" 
-            [routerLink]="['/admin/activity/list', p]"
+            [routerLink]="['/admin/subscription/list', p]"
             [routerLinkActive]="['active']"
             >{{ p }}</a
           >
         </li>
-        <li class="page-item" [class.disabled]="page == pages.length" class="next">
-          <a class="page-link"
-            [routerLink]="['/admin/activity/list', page + 1]"
+        <li [class.disabled]="page == pages.length" class="next">
+          <a class="page-link" 
+            [routerLink]="['/admin/subscription/list', page + 1]"
             [routerLinkActive]="['active']"
             rel="next"
             >Próximo &gt;</a

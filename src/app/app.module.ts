@@ -184,6 +184,7 @@ import { SubscriptionListComponent } from './admin/subscription/subscription-lis
 import { UserTrailsComponent } from './epics/main/user-trails/user-trails.component';
 import { AllContentComponent } from './epics/main/all-content/all-content.component';
 import { AudioPlayerComponent } from './components/channels/audio-player/audio-player.component';
+import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -351,6 +352,7 @@ const GamificationConfig = {
     UserTrailsComponent,
     AllContentComponent,
     AudioPlayerComponent,
+    ConfirmPasswordComponent,
   ],
   imports: [
     BrowserModule,

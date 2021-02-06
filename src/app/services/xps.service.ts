@@ -64,6 +64,7 @@ export class XpsService {
 
   getXpByUser(idUser: string): Observable<any>{
     let params = {
+      full: '1',
       user: idUser,
     };
     let headers = new HttpHeaders()

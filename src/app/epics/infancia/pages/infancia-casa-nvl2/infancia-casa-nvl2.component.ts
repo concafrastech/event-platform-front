@@ -115,7 +115,7 @@ export class InfanciaCasaNvl2Component implements OnInit {
   }
 
   openAlert() {
-    alert("Sala Virtual fechada! Por favor, agurade até 17:30 conforme a programação do evento.");
+    alert("Sala Virtual fechada! Por favor, aguarde até 17:30 conforme a programação do evento.");
   }
 
   verifyAllowSalaVirtual() {

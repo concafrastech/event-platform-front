@@ -19,6 +19,10 @@
     <app-zoomus [vContent]="actualContent"></app-zoomus>
   </div>
 
+  <div *ngIf="actualContent.type == 'audio'">
+    <h2 class="lecture-header-title margin-top"><strong>Conteúdo de áudio, não será exibido.</strong></h2>
+  </div>
+
   <!-- <h4 *ngIf="contents.length > 1">
     Conteúdo {{ index + 1 }} de {{ contents.length }}
   </h4> -->

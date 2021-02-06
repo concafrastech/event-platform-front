@@ -37,6 +37,11 @@
     border-color: #1EA6EC;
 }
 
+.hinario-header-title {
+    font-size: 24px;
+    color: #fff;
+}
+
 .hinario-header-text {
     font-size: 14px;
     color: #fff;

@@ -1,6 +1,6 @@
 /* copiado de ndc-activities.component.css */
 #lecture-header {
-   background-image: linear-gradient(to right, rgb(167, 224, 255, .3), rgb(30, 166, 236, .3));
+   background-image: linear-gradient(to right, rgb(21, 121, 172, .7), rgba(53, 116, 150, 0.4), rgb(21, 121, 172, .7));
    padding: 0.2rem 6rem;
    width: 100%;
    border-radius: 0.3rem;
@@ -38,6 +38,7 @@
    width: 150px;
    height: 150px;
    margin: .5rem 2rem .5rem 0;
+   object-fit: contain;
 }
 
 /* ==== CONTAINER ==== */
@@ -55,8 +56,10 @@
 }
 
 .card {
-   /* background-color: lightblue; */
+   background-image: linear-gradient(to right, rgb(21, 121, 172, .7), rgba(53, 116, 150, 0.4), rgb(21, 121, 172, .7));
    box-shadow: 4px 2px 10px 0px #3b3b3b;
+   border-radius: .3rem;
+   overflow: hidden;
 }
 
 .card .card-div-img {
@@ -65,10 +68,10 @@
 }
 
 .card .card-div-img .card-div-img-size {
-   object-fit: contain;
+   object-fit: cover;
+   object-position: top center;
    width: 100%;
    height: 100%;
-   border-radius: 0.2rem;
 }
 
 .card .card-div-text {

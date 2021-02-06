@@ -1,4 +1,7 @@
-import { BookClubComponent } from './../book-club/book-club.component';
+import { UserService } from "src/app/services/user.service";
+import { EpicService } from "./../../../services/epic.service";
+import { Epic } from "src/app/models/epic";
+import { BookClubComponent } from "./../book-club/book-club.component";
 import {
   AfterViewInit,
   Component,
@@ -7,27 +10,25 @@ import {
   OnInit,
 } from "@angular/core";
 import { Lecture } from "src/app/models/lecture";
-import { Stage } from "src/app/models/stage";
-import { Trail } from "src/app/models/trail";
-import { ActivityService } from "src/app/services/activity.service";
-import { ClassroomService } from "src/app/services/classroom.service";
 import { LectureService } from "src/app/services/lecture.service";
-import { StageService } from "src/app/services/stage.service";
-import { TrailService } from "src/app/services/trail.service";
-import * as SvgPanZoom from "svg-pan-zoom";
-import * as $ from "jquery";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { Schedule } from "src/app/models/schedule";
 
 @Component({
   selector: "app-hub",
   templateUrl: "./hub.component.html",
   styleUrls: ["./hub.component.css"],
+  providers: [EpicService, UserService, LectureService],
 })
 export class HubComponent implements OnInit, AfterViewInit {
   public status: string;
   public svgMap: HTMLObjectElement;
   public bsModalRef: BsModalRef;
+  public currentEpic: Epic;
+  public identity;
+  public todaySchedule: Schedule[];
+  public todayEvents: Lecture[] = [];
 
   options = {
     zoomEnabled: true,
@@ -43,38 +44,35 @@ export class HubComponent implements OnInit, AfterViewInit {
     private _router: Router,
     private _modalService: BsModalService,
     private elementRef: ElementRef,
-    private zone: NgZone
+    private zone: NgZone,
+    private _epicService: EpicService,
+    private _userService: UserService,
+    private _lectureService: LectureService
   ) {}
 
   ngOnInit(): void {
-    
+    this.currentEpic = JSON.parse(localStorage.getItem("currentEpic"));
+    this.identity = this._userService.getIdentity();
+    this.loadScheduleEpic();
   }
 
   ngAfterViewInit() {
-    /*$( () => {
-      // initializing the function
-      let svgPanZoom: SvgPanZoom.Instance = SvgPanZoom('#svgMap', this.options);
-      svgPanZoom.zoom(0.6);
-    });*/
-
     this.svgMap = <HTMLObjectElement>(
       this.elementRef.nativeElement.querySelector("#svgMap")
     );
     this.svgMap.addEventListener("load", this.loadSvgMapEvents.bind(this));
-    
   }
 
   loadSvgMapEvents() {
     let eventType = "click";
     let svgDoc = this.svgMap.contentDocument;
-    svgDoc.getElementById("PALESTRAS").addEventListener(eventType, this.eventClickSvg.bind(this, "PALESTRAS"));
-    svgDoc.getElementById("PALESTRAS").addEventListener("mouseover", ()=>{
-    })
+    svgDoc
+      .getElementById("PALESTRAS")
+      .addEventListener(eventType, this.eventClickSvg.bind(this, "PALESTRAS"));
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseover", () => {});
 
-    svgDoc.getElementById("PALESTRAS").addEventListener("mouseleave", ()=>{
-      
-    })
-    
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseleave", () => {});
+
     svgDoc
       .getElementById("ndc")
       .addEventListener(eventType, this.eventClickSvg.bind(this, "ndc"));
@@ -122,14 +120,111 @@ export class HubComponent implements OnInit, AfterViewInit {
       );
   }
 
-  eventMouseLeave(item){
+  loadScheduleEpic() {
+    this.todaySchedule = [];
+    this._epicService
+      .getSchedules(this.currentEpic._id, this.identity._id)
+      .subscribe(
+        (response) => {
 
+          if (response) {
+            let schedules = response;
+            schedules.sort(this.sortSchedules);
+
+            //Monta agenda do dia
+            for (let i = 0; i < schedules.length; i++) {
+              this.createTodaySchedule(schedules[i]);
+            }
+          }
+        },
+        (error) => {
+          var errorMessage = <any>error;
+          console.log(errorMessage);
+
+          if (errorMessage != null) {
+            this.status = "error";
+          }
+        },
+        () => {
+          this.getTodayEvents();
+        }
+      );
   }
 
-  eventMouseOver(item){
-
+  //Ordena agenda
+  sortSchedules(obj1: Schedule, obj2: Schedule) {
+    if (obj1.start_time < obj2.start_time) {
+      return -1;
+    }
+    if (obj1.start_time > obj2.start_time) {
+      return 1;
+    }
+    return 0;
   }
 
+  //Cria agenda do dia
+  createTodaySchedule(schedule: Schedule) {
+    let today = new Date();
+    let startDay = new Date(schedule.start_time);
+    let todayTime = today.getTime();
+    let startTime = startDay.getTime();
+    let endTime = new Date(schedule.end_time).getTime();
+
+    //Só permite schedule do tipo lecture
+    if (schedule.type == "lecture") {
+      //Verifica se está agendado para hoje
+      if (
+        today.getDate() == startDay.getDate() &&
+        today.getMonth() == startDay.getMonth() &&
+        today.getFullYear() == startDay.getFullYear()
+      ) {
+        //Verifica se o horário ainda não passou
+        if (
+          today.getHours() < startDay.getHours() ||
+          (today.getHours() == startDay.getHours() &&
+            today.getMinutes() <= startDay.getMinutes()) ||
+          (todayTime >= startTime && todayTime <= endTime)
+        ) {
+          this.todaySchedule.push(schedule);
+        }
+      }
+    }
+  }
+
+  //Busca somente eventos do palco principal
+  getTodayEvents() {
+    this.todaySchedule.map((schedule) => {
+      this._lectureService.getLecture(schedule.id).subscribe((response) => {
+        if (
+          response.lecture.type == "workshop" ||
+          response.lecture.type == "momento_coletivo"
+        ) {
+          this.todayEvents.push(response.lecture);
+        }
+      });
+    });
+  }
+
+  //Busca evento que esteja acontecendo agora.
+  eventIsHappening(): string {
+    let today = new Date();
+
+    for (let i = 0; this.todayEvents.length; i++) {
+      let start = new Date(this.todayEvents[i].start_time);
+      let end = new Date(this.todayEvents[i].end_time);
+
+      //Ainda não acabou e já começou
+      if (
+        today.getTime() < end.getTime() &&
+        today.getTime() >= start.getTime()
+      ) {
+        return `/audithorium/lecture/${this.todayEvents[i]._id}`;
+      }
+    }
+    return '';
+  }
+
+  //Trata evento click no svg do hub
   eventClickSvg(id: string) {
     switch (id) {
       case "PALESTRAS":
@@ -172,6 +267,7 @@ export class HubComponent implements OnInit, AfterViewInit {
 
       case "EVENTO_AO_VIVO":
         console.log("EVENTO_AO_VIVO");
+        this.redirectToFromSvg(this.eventIsHappening());
         break;
 
       case "clube_do_livro":
@@ -185,10 +281,12 @@ export class HubComponent implements OnInit, AfterViewInit {
     }
   }
 
+  //Redireciona para uma url interna saindo do contexto do svg
   redirectToFromSvg(path: string) {
     this.zone.run(() => this._router.navigate([path]));
   }
 
+  //Modal
   openBookClubComponent() {
     const initialState = {
       title: "Escolha como deseja acessar o nosso curso:",

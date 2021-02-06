@@ -43,5 +43,10 @@
     border-color: #1EA6EC;
 }
 
+a.link-externo {
+    color: #fff;
+    background-color: #1EA6EC;
+}
+
 @media (max-width: 1400px) {
 }

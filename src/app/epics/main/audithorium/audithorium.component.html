@@ -26,7 +26,7 @@
   <h4 *ngIf="contents.length > 1">
     Conteúdo {{ index + 1 }} de {{ contents.length }}
   </h4>
-  <p>{{ actualContent.name }}</p>
+  <h4 class="lecture-header-text margin-top">Conteúdo: {{ actualContent.name }}</h4>
 </div>
 <div>
   <div
@@ -52,8 +52,12 @@
   </div>
 </div>
 <div>
-  <p>Tipo: {{ type }}</p>
-  <p>Qtde: {{ contents.length }}</p>
+  <!-- <p>Tipo: {{ type }}</p>
+  <p>Qtde: {{ contents.length }}</p> -->
 
-  <div *ngIf="lecture">Tema: {{ lecture.name }}</div>
+  <div *ngIf="lecture">
+    <h2 class="lecture-header-title">
+      Tema: {{ lecture.name }}
+    </h2>
+  </div>
 </div>

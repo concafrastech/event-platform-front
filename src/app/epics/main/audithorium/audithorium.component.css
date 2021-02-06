@@ -1,0 +1,15 @@
+.lecture-header-title {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.lecture-header-text {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.margin-top {
+    margin-top: 1.5rem;
+}

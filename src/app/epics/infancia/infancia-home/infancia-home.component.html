@@ -14,14 +14,20 @@
 <div class="cidade-concafrinhas">
 
     <div class="container-total">
-        
+
         <div>
-            <a class="btn btn-primary btn-adulto botoes" (click)="gotoPrincipal('infancia')" role="button">Ir para a plataforma do Adulto</a>
+            <a class="btn btn-primary btn-adulto botoes" (click)="gotoPrincipal('infancia')" role="button">Ir para a
+                plataforma do Adulto</a>
         </div>
 
         <div *ngIf="accessAllowed">
-            <a href="/concafrinhas/parquinho" class="playground botoes" title="Parquinho" style="z-index: 2000;">
-                <img src="assets/concafras2021/concafrinhas/Home/playground.png" />
+
+            <a href="/concafrinhas/roda-alegria" class="alegria botoes" title="Roda da Alegria Cristã" style="z-index: 100;">
+                <img src="assets/concafras2021/concafrinhas/Home/alegria.png" />
+            </a>
+
+            <a href="/concafrinhas/parquinho" class="playground botoes" title="Parquinho" style="z-index: 50;">
+                <img src="assets/concafras2021/concafrinhas/Home/playground.png" usemap="#parquinhoFree"/>
             </a>
 
             <a href="/concafrinhas/bom-samaritano" class="escola botoes" title="Bom Samaritano Infantil">
@@ -39,14 +45,15 @@
             <a href="/concafrinhas/casa-oracao" class="rio botoes" title="Casa da Oração">
                 <img src="assets/concafras2021/concafrinhas/Home/rio.png" />
             </a>
-
-            <a href="/concafrinhas/roda-alegria" class="alegria botoes" title="Roda da Alegria Cristã">
-                <img src="assets/concafras2021/concafrinhas/Home/alegria.png" />
-            </a>
         </div>
-
+        
         <div *ngIf="!accessAllowed">
-            <div class="playground botoes" title="Parquinho" style="z-index: 2000;">
+
+            <div class="alegria botoes" title="Roda da Alegria Cristã" style="z-index: 100;">
+                <img src="assets/concafras2021/concafrinhas/Home/alegria.png" (click)="openAlert()" />
+            </div>
+
+            <div class="playground botoes" title="Parquinho" style="z-index: 50;">
                 <img src="assets/concafras2021/concafrinhas/Home/playground.png" (click)="openAlert()" />
             </div>
 
@@ -66,9 +73,6 @@
                 <img src="assets/concafras2021/concafrinhas/Home/rio.png" (click)="openAlert()" />
             </div>
 
-            <div class="alegria botoes" title="Roda da Alegria Cristã">
-                <img src="assets/concafras2021/concafrinhas/Home/alegria.png" (click)="openAlert()" />
-            </div>
         </div>
 
 
@@ -90,3 +94,4 @@
 
     </div>
 </div>
+

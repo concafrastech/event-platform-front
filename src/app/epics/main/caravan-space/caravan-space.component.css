@@ -246,6 +246,25 @@ ol.carousel-indicators li.active {
     font-size: 1rem;
 }
 
+/* ==== BUTTONS ==== */
+.btn-hinario {
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: solid white 1px;
+    transition: 0.2s;
+}
+
+.btn-hinario:hover {
+    background-color: #1EA6EC;
+    border-color: #1EA6EC;
+}
+
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
     #caravan-header .caravan-header-card.caravan-header-item {

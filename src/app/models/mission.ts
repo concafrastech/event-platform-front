@@ -8,6 +8,7 @@ export class Mission {
         public name: string,
         public description: string,
         public amount: number,
+        public limit: number,
         public created_at: Date,
         public updated_at: Date
     ) {}

@@ -22,6 +22,7 @@ export class XpsService {
       .set("Content-Type", "application/json")
       .set("Authorization", getToken());
       
+      console.log("incluindo xp: " + this.url + "xps");
     return this._http.post(this.url + "xps", params, { headers: headers });
   }
 
@@ -31,6 +32,8 @@ export class XpsService {
       .set("Content-Type", "application/json")
       .set("Authorization", getToken());
 
+      console.log("atualizando xp: " + this.url + "xps/" + xp._id);
+      
     return this._http.put(this.url + "xps/" + xp._id, params, {
       headers: headers,
     });

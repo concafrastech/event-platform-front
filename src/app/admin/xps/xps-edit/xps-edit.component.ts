@@ -46,7 +46,7 @@ export class XpsEditComponent implements OnInit {
     this._spinner.show();
     this.identity = this._userService.getIdentity();
 
-    this.xps = new Xps("", null, null);
+    this.xps = new Xps("", 0, null, null);
     this.loadPage();
   }
 

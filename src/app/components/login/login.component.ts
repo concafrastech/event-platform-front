@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
         this._userService.signup(this.user, 'false').subscribe(
             response => {
                 this.identity = response.user;
-                console.log(this.identity);
                 if (!this.identity || !this.identity._id) {
                     this.status = 'error';
                 } else {
@@ -81,7 +80,6 @@ export class LoginComponent implements OnInit {
         this._userService.getSubscriptions(this.identity._id).subscribe(
             response => {
                 this.identity.subscriptions = response.subscriptions;
-                console.log(response);
                 localStorage.setItem('subscriptions', JSON.stringify(response.subscriptions));
                 this.getCounters();
             }

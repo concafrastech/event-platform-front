@@ -45,7 +45,7 @@ export class MissionEditComponent implements OnInit {
     console.log("[OK] Component: mission-edit.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
-    this.mission = new Mission("", 0, null, "", "", 0, new Date(), new Date());
+    this.mission = new Mission("", 0, null, "", "", 0, 0, new Date(), new Date());
     this.mission.epic = null; // new Epic('', '', '', '', '', '', null, new Date(), new Date());
     this.loadPage();
   }

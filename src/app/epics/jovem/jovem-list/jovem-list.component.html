@@ -1,16 +1,17 @@
 <section id="lecture-header" class="lecture-container">
    <div class="lecture-header-card lecture-header-img">
-      <img *ngIf="type === 'ilha casa do escritor'" class="img-size" src="/assets/jovem/img/ilha_escritor.png">
-      <img *ngIf="type === 'ilha casa do caminho'" class="img-size" src="/assets/jovem/img/ilha_caminho.png">
-      <img *ngIf="type === 'ilha instituto almas irmãs'" class="img-size" src="/assets/jovem/img/ilha_irmas.png">
-      <img *ngIf="type === 'ilha estação jovem ao vivo'" class="img-size" src="/assets/jovem/img/ilha_vivo.png">
-      <img *ngIf="type === 'ilha catedral do som'" class="img-size" src="/assets/jovem/img/ilha_som.png">
-      <img *ngIf="type === 'novas dimensões'" class="img-size" src="/assets/jovem/img/ilha_escritor.png">
-      <img *ngIf="!type" class="img-size" src="assets/concafras2021/concafronas/icones/PALESTRAS.svg" alt="Lecture Icon">
+      <img *ngIf="!stage.thumbnail && type === 'ilha casa do escritor'" class="img-size" src="/assets/jovem/img/icone_ilha_escritor.png">
+      <img *ngIf="!stage.thumbnail && type === 'ilha casa do caminho'" class="img-size" src="/assets/jovem/img/icone_ilha_caminho.png">
+      <img *ngIf="!stage.thumbnail && type === 'ilha instituto almas irmãs'" class="img-size" src="/assets/jovem/img/icone_ilha_irmas.png">
+      <img *ngIf="!stage.thumbnail && type === 'ilha estação jovem ao vivo'" class="img-size" src="/assets/jovem/img/icone_ilha_vivo.png">
+      <img *ngIf="!stage.thumbnail && type === 'ilha catedral do som'" class="img-size" src="/assets/jovem/img/icone_ilha_som.png">
+      <img *ngIf="!stage.thumbnail && type === 'novas dimensões'" class="img-size" src="/assets/jovem/img/icone_ilha_escritor.png">
+      <img *ngIf="!stage.thumbnail && !type" class="img-size" src="assets/concafras2021/concafronas/icones/PALESTRAS.svg" alt="">
+      <img *ngIf="stage.thumbnail && !type" class="img-size" src="stage.thumbnail.fileLink" alt="">
    </div>
    <div class="lecture-header-card lecture-header-item">
-       <h3 class="lecture-header-title">{{type}}</h3>
-       <span class="lecture-header-text">{{title}}</span>
+       <h3 class="lecture-header-title">{{stage.type}}</h3>
+       <span class="lecture-header-text">{{stage.name}}</span>
    </div>
 </section>
 <section id="ndc-content" class="ndc-container" *ngIf="activityList.length > 0">

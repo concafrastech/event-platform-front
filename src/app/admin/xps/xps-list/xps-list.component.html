@@ -34,6 +34,7 @@
                 </thead>
                 <tbody>
                     <tr class="item-xp" *ngFor="let xp of xps">
+                        <td>{{xp?.qty}}</td>
                         <td>{{xp?.user?.name }}</td>
                         <td>{{xp?.mission?.name}}</td>
                         <td class="actions">

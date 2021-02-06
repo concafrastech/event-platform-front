@@ -39,6 +39,12 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
+                <label>Quantidade de repetição</label>
+                <input type="text" name="limit" #limit="ngModel" [(ngModel)]="mission.limit" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
                 <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!missionAddForm.form.valid" />
             </div>
         </div>

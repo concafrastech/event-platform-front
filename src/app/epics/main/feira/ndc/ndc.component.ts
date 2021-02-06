@@ -1,3 +1,4 @@
+import { UserGamificationService } from 'src/app/services/user-gamification.service';
 import { DocumentService } from "./../../../../services/document.service";
 import { Activity } from "./../../../../models/activity";
 import { StageService } from "./../../../../services/stage.service";
@@ -22,7 +23,8 @@ export class NdcComponent implements OnInit {
     private _stageService: StageService,
     private _navbarService: NavbarService,
     private _documentService: DocumentService,
-    private _userService: UserService
+    private _userService: UserService,
+    private _userGamificationService: UserGamificationService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +32,6 @@ export class NdcComponent implements OnInit {
     this._stageService.getFullStages(null, epic._id).subscribe((response) => {
       this.stageList = response.stages;
       this.loadThumbnails();
-      console.log(this.stageList);
     });
     this._navbarService.setButtonBack(true);
   }
@@ -48,6 +49,7 @@ export class NdcComponent implements OnInit {
   }
 
   showActivities(item: Stage) {
+    this._userGamificationService.setMissionComplete("ndc");
     this._router.navigate(["/ndc-activities"], {
       queryParams: { id: item._id },
     });

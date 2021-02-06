@@ -1,9 +1,10 @@
 <div *ngIf="actualContent" style="height: inherit">
+    <h4 class="text-center">{{ actualContent.name }}</h4>
     <div *ngIf="actualContent.type == 'img'" style="height: inherit">
         <img
         [src]="actualContent.file.fileLink"
         alt="image slide"
-        style="display: block; width: 100%; max-height: 650px; object-fit: contain"
+        style="display: block; width: 100%; max-height: 600px; object-fit: contain"
         />
     </div>
 
@@ -23,8 +24,7 @@
         <app-zoomus [vContent]="actualContent"></app-zoomus>
     </div>
 
-    <h4>{{ actualContent.name }}</h4>
-    <h2>{{ actualContent.description }}</h2>
+    <p>{{ actualContent.text }}</p>
     <p *ngIf="contents.length > 1">
         Conteúdo {{ index + 1 }} de {{ contents.length }}
     </p>
@@ -53,3 +53,7 @@
         </button>
     </div>
 </div>
+<div class="row justify-content-center">
+    <button class="btn-lg btn-primary" onclick="window.history.back()">Voltar</button>
+</div>
+<div class="fundo"></div>

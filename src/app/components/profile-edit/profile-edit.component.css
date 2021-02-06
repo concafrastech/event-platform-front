@@ -102,6 +102,7 @@ input[type='file'] {
 .badge-level-row .badge-level-img-off {
   width: 60px;
   height: 60px;
+  padding-bottom: .2rem;
 }
 
 .badge-level-row .badge-level-container {
@@ -291,6 +292,11 @@ ol.carousel-indicators li.active {
   font-size: 1.2rem;
   font-weight: bold;
   color: #1EA6EC;
+}
+
+.row-container {
+  display: flex;
+  align-items: center;
 }
 
 

@@ -50,7 +50,9 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
   public schedule: Schedule;
   public eventoSelecionado: Boolean = true;
   //=false; falta implementar quando seleciona um evento para mudar este status para true//
-   
+  public todaySchedule: Schedule[];
+  public todayEvents: Lecture[] = [];
+
   options = { 
     zoomEnabled: true,
     controlIconsEnabled: true,
@@ -196,7 +198,7 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
   }
 
   getStages(page, epicId) {
-    this._stageService.getStages(page, epicId).subscribe(
+    this._stageService.getFullStages(page, epicId).subscribe(
       (response) => {
         if (!response.stages) {
           this.status = "error";
@@ -329,7 +331,114 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     );
   }
 
-  /* baseado em schedule.component.ts - início */
+  /* baseado em schedule.component.ts - fim */
   
+  /* baseado em hub.component.ts - inicio */
+  /*
+  loadScheduleEpic() {
+    this.todaySchedule = [];
+    this._epicService
+      .getSchedules(this.currentEpic._id, this.identity._id)
+      .subscribe(
+        (response) => {
+
+          if (response) {
+            let schedules = response;
+            schedules.sort(this.sortSchedules);
+
+            //Monta agenda do dia
+            for (let i = 0; i < schedules.length; i++) {
+              this.createTodaySchedule(schedules[i]);
+            }
+          }
+        },
+        (error) => {
+          var errorMessage = <any>error;
+          console.log(errorMessage);
+
+          if (errorMessage != null) {
+            this.status = "error";
+          }
+        },
+        () => {
+          this.getTodayEvents();
+        }
+      );
+  }
+  
+
+  //Ordena agenda
+  sortSchedules(obj1: Schedule, obj2: Schedule) {
+    if (obj1.start_time < obj2.start_time) {
+      return -1;
+    }
+    if (obj1.start_time > obj2.start_time) {
+      return 1;
+    }
+    return 0;
+  }
+  */
+
+  //Cria agenda do dia
+  createTodaySchedule(schedule: Schedule) {
+    let today = new Date();
+    let startDay = new Date(schedule.start_time);
+    let todayTime = today.getTime();
+    let startTime = startDay.getTime();
+    let endTime = new Date(schedule.end_time).getTime();
+
+    //Só permite schedule do tipo lecture
+    if (schedule.type == "lecture") {
+      //Verifica se está agendado para hoje
+      if (
+        today.getDate() == startDay.getDate() &&
+        today.getMonth() == startDay.getMonth() &&
+        today.getFullYear() == startDay.getFullYear()
+      ) {
+        //Verifica se o horário ainda não passou
+        if (
+          today.getHours() < startDay.getHours() ||
+          (today.getHours() == startDay.getHours() &&
+            today.getMinutes() <= startDay.getMinutes()) ||
+          (todayTime >= startTime && todayTime <= endTime)
+        ) {
+          this.todaySchedule.push(schedule);
+        }
+      }
+    }
+  }
+
+  //Busca somente eventos do palco principal
+  getTodayEvents() {
+    this.todaySchedule.map((schedule) => {
+      this._lectureService.getLecture(schedule.id).subscribe((response) => {
+        if (
+          response.lecture.type == "workshop" ||
+          response.lecture.type == "momento_coletivo"
+        ) {
+          this.todayEvents.push(response.lecture);
+        }
+      });
+    });
+  }
+
+   //Busca evento que esteja acontecendo agora.
+   eventIsHappening(): string {
+    let today = new Date();
+
+    for (let i = 0; this.todayEvents.length; i++) {
+      let start = new Date(this.todayEvents[i].start_time);
+      let end = new Date(this.todayEvents[i].end_time);
+
+      //Ainda não acabou e já começou
+      if (
+        today.getTime() < end.getTime() &&
+        today.getTime() >= start.getTime()
+      ) {
+        return `/audithorium/lecture/${this.todayEvents[i]._id}`;
+      }
+    }
+    return '';
+  }
 
 }

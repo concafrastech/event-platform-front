@@ -59,13 +59,13 @@
               <input type="text" name="city" #nick="ngModel" [(ngModel)]="user.city" class="form-control" disabled />
             </p>
           </div>
-          <div class="col-lg-1">
+          <div class="col-lg-3">
             <p>
               <label>Estado</label>
               <input type="text" name="state" #nick="ngModel" [(ngModel)]="user.state" class="form-control" disabled />
             </p>
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-3">
             <p>
               <label>Pais</label>
               <input type="text" name="country" #nick="ngModel" [(ngModel)]="user.country" class="form-control" />
@@ -79,14 +79,14 @@
                 bsDatuserker />
             </p>
           </div>
+        </div>
+        <div class="row row-container">
           <div class="col-lg-3">
             <p>
               <label>Telefone</label>
               <input type="text" name="whatsapp" #nick="ngModel" [(ngModel)]="user.whatsapp" class="form-control" />
             </p>
           </div>
-        </div>
-        <div class="row">
           <div class="col-lg-3">
             <p>
               <label>Centro Espírita</label>
@@ -95,18 +95,13 @@
           </div>
           <div class="col-lg-3">
             <p>
-              <label>E-mail (Esse é seu login)</label>
+              <label>E-mail</label>
               <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel"
                 [(ngModel)]="user.email" class="form-control" required />
               <span *ngIf="!email.value && email.touched">Email inválido!</span>
             </p>
           </div>
-        </div>
-        <div class="row justify-content-between">
-          <div class="col-lg-2">
-            <input type="button" value="voltar" class="btn-main" [disabled]="!userEditForm.form.valid" />
-          </div>
-          <div class="col-lg-2" style="text-align: right">
+          <div class="col-lg-3">
             <input type="submit" value="Salvar Alterações" class="btn-main" />
             <!-- [disabled]="!userEditForm.form.valid" -->
           </div>
@@ -131,14 +126,11 @@
   <div class="row">
     <div class="col-lg-6">
       <span class="title">Meus níveis e pontos</span>
-      <div class="container-level">
+      <div *ngIf="userInfoLevel" class="container-level">
         <div class="container-level-card" *ngIf="userInfoLevel.nextLevel">
           <p class="container-level-basic container-level-card-points">
             {{this._userGamificationService.getPoints()}} pontos
           </p>
-          <!-- <p class="container-level-basic container-level-card-text">
-            5º lugar no ranking
-          </p> -->
           <div>
             <img class="badge-main" [src]="userInfoLevel.nextLevel.icon" alt="Badge" />
           </div>
@@ -154,21 +146,19 @@
           </p>
           <div class="badge-level-row">
             <div class="badge-level-container" *ngFor="let level of userInfoLevel.achievedLevels">
-              <img class="badge-level-img" [src]="level.icon"
-                alt="Badge" />
+              <img class="badge-level-img" [src]="level.icon" alt="Badge" />
               <figcaption class="badge-level-img-text">{{level.badge}}</figcaption>
             </div>
             <div class="badge-level-container" *ngFor="let level of userInfoLevel.notAchievedLevels">
-              <img class="badge-level-img" [src]="_userGamificationService.getIconOffByLevel(level)"
-                alt="Badge" />
+              <img class="badge-level-img-off" [src]="_userGamificationService.getIconOffByLevel(level)" alt="Badge" />
               <figcaption class="badge-level-img-text">{{level.badge}}</figcaption>
             </div>
           </div>
-          
+
           <div class="badge-level-row">
             <a href="" class="btn btn-primary btn-progress">Ver progresso</a>
           </div>
-          
+
         </div>
       </div>
     </div>

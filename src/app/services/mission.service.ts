@@ -48,6 +48,20 @@ export class MissionService {
     });
   }
 
+  getFullMissions(): Observable<any> {
+    let params = {
+      full: '1'
+    };
+    let headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", getToken());
+
+    return this._http.get(this.url + "missions/", {
+      headers: headers,
+      params: params,
+    });
+  }
+
   getMission(id): Observable<any> {
     let headers = new HttpHeaders()
       .set("Content-Type", "application/json")

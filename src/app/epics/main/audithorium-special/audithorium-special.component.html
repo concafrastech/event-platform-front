@@ -2,13 +2,14 @@
     <h2 class="audithorium-special-header-item audithorium-special-header-title">{{ this.title }}</h2>
     <div class="audithorium-special-header-item audithorium-special-header-div-info">
         <span *ngIf="typeAudithorium == 'cfas'" class="audithorium-special-header-text">A Campanha Fraternidade Auta de Souza é uma atividade do centro espírita que tem por objetivos divulgar a doutrina espírita e colocar em prática os ensinos de Jesus.<br>Para isso, são realizadas visitas domiciliares para entrega de mensagens espíritas de consolo e esclarecimento e arrecadação de donativos para famílias carentes.<br>Com isso, todos se beneficiam: os doadores recebem o bálsamo do conhecimento espírita e tem a oportunidade de exercer a caridade contribuindo com sua doação; o caravaneiro nessa tarefa servidora, exercita a humildade e tolerância; e a casa espírita divulga suas atividades e forma trabalhadores.<br>Confira todos os benefícios dessa campanha sublime e sua metodologia nesse curso, assim como implementar em seu centro espírita. Esperamos você!</span>
+        <span *ngIf="typeAudithorium == 'clube'" class="audithorium-special-header-text">O Clube do Livro Espirita do Brasil existe há 15 anos e tem por objetivo a divulgação  a doutrina espirita . É o consolo, esclarecimentos, esperança , orientações que chegam a milhares de corações através do livro.<br>Livros que são analisados levando o melhor trabalho em forma de romances, estudo, auto ajuda. Chegam aos sócios de forma cômoda e com preços abaixo do valor de mercado. Proporciona a oportunidade de criar o hábito pela leitura , formar uma biblioteca espírita, emprestar livros aos parentes e amigos e também de auxiliar a casa espírita ou posto de assistência na sua manutenção e de sua Obras Sociais.<br>Para saber mais assista ao vídeo abaixo, preencha o formulário com seus dados que entraremos em contato.  Visite também nosso site: <a href="http://clubedolivroespirita.com" target="_blank" rel="noopener noreferrer" class="link-externo">clubedolivroespirita.com</a></span>
         <span *ngIf="typeAudithorium == 'workshop'" class="audithorium-special-header-text">{{ this.description }}</span>
         <!-- <a href="{{ pageTarget }}" target="_blank" class="btn btn-primary btn-info">Obter maiores informações</a> -->
     </div>
 </section>
-<section *ngIf="actualContent" id="audithorium-special-content" class="audithorium-special-container">
+<!-- <section *ngIf="actualContent" id="audithorium-special-content" class="audithorium-special-container">
     <app-videojs [vContent]="actualContent"></app-videojs>
-</section>
+</section> -->
 <section id="audithorium-special-forms" class="audithorium-special-container">
     <iframe *ngIf="typeAudithorium == 'cfas'" src="https://docs.google.com/forms/d/e/1FAIpQLSfNUzA8FGb7tB7w3OW4E50I_OIBF_N1K5wcIsuOWLDW7OtQJg/viewform?embedded=true" width="720" height="1100" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
     <iframe *ngIf="typeAudithorium == 'cecx'" src="https://docs.google.com/forms/d/e/1FAIpQLSenSZw1etxyWlXoILEg3PnYs7WLTPjZEc3QJhIFW92X1qWo9A/viewform?embedded=true" width="720" height="1100" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>

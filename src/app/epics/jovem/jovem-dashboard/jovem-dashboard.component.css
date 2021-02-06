@@ -43,6 +43,14 @@ body
     display: none;
 }
 
+#sidebar {
+  margin-left: -180px;
+}
+
+#sidebar.active_jovem {
+  margin-left: 0;
+}
+
 #menu_label
 {
     position: relative;

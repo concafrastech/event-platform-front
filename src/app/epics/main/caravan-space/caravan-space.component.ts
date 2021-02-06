@@ -1,3 +1,4 @@
+import { ConfirmPasswordComponent } from './../../../components/confirm-password/confirm-password.component';
 import { concatMap, map } from "rxjs/operators";
 import { DocumentService } from "src/app/services/document.service";
 import { ContentService } from "src/app/services/content.service";
@@ -507,6 +508,21 @@ export class CaravanSpaceComponent implements OnInit {
       "",
       null
     );
+  }
+
+  openConfirmPasswordComponent(){
+    const initialState = {
+      title: "Confirmação",
+    };
+    this.bsModalRef = this._modalService.show(ConfirmPasswordComponent, {
+      initialState,
+      class: "modal-lg",
+    });
+    this.bsModalRef.content.closeBtnName = "Fechar";
+  }
+
+  goToAudithorium(item: Lecture) {
+    this._router.navigate(["/audithorium", "lecture", item._id]);
   }
 
   OnDestroy() {

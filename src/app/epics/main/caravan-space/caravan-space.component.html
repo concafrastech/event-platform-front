@@ -59,6 +59,8 @@
 <section id="sing-with-us" class="caravan-container">
     <div id="sing-with-us-header">
         <h2 class="caravan-header-title">Vem cantar com a gente!</h2>
+        <a href="/assets/hinario/HINÁRIO ADULTO CONCAFRAS 2021.pdf" class="btn btn-primary btn-hinario" target="_blank"><i class="fas fa-download"></i> Hinário Adulto</a>
+        <a href="/assets/hinario/HINÁRIO INFANTIL CONCAFRAS 2021.pdf" class="btn btn-primary btn-hinario" target="_blank"><i class="fas fa-download"></i> Hinário Infantil</a>
     </div>
     <div id="carouselControlsRecentMessage" class="carousel slide caravan-carousel-recent">
         <ol class="carousel-indicators">
@@ -100,8 +102,13 @@
                 [ngClass]="i==actualCarouselMusic ? 'active' : ''">
                 <div class="row">
                     <div class="col-sm-4" *ngFor="let music of groupMusic">
-                        <div class="card">
-                            <app-audio-player *ngIf="music.contents[0].file" [document]="music.contents[0].file"></app-audio-player>
+                        <div class="music-container">
+                            <div class="music-content">
+                                <span class="music-header-title">{{music.contents[0].name}}</span>
+                            </div>
+                            <div class="music-content">
+                                <app-audio-player *ngIf="music.contents[0].file" [document]="music.contents[0].file"></app-audio-player>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,7 +138,7 @@
                 [ngClass]="i==actualCarouselWorkshop ? 'active' : ''">
                 <div class="row">
                     <div class="col-sm-3" *ngFor="let workshop of groupWorkshop">
-                        <div class="card">
+                        <div class="card" style="cursor: pointer;" (click)="goToAudithorium(workshop)">
                             <span>{{workshop.name}}</span>
                         </div>
                     </div>
@@ -151,7 +158,6 @@
 <section id="meeting" class="caravan-container">
     <div id="meeting-header">
         <h2 class="caravan-header-title">Reunião de trabalhadores:</h2>
-        <a href="https://sites.google.com/view/concafras-2021-reunioes/inicio" target="_blank"
-            class="btn btn-primary btn-meeting">Lista das reuniões</a>
+        <a (click)="openConfirmPasswordComponent()" class="btn btn-primary btn-meeting">Lista das reuniões</a>
     </div>
 </section>

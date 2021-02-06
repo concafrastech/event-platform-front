@@ -11,6 +11,12 @@
         <form #XpAddForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
             <div class="row">
                 <div class="form-group col-md-12">
+                    <label>Número de vezes completada</label>
+                    <input type="text" name="qty" #qty="ngModel" [(ngModel)]="xps.qty" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
                     <fieldset class="form-group">
                         <label>Usuário</label>
                         <select [compareWith]="compareByOptionId" name="user" #user="ngModel" [(ngModel)]="userXp"
@@ -23,7 +29,6 @@
                     </fieldset>
                 </div>
             </div>
-
             <div class="row">
                 <div class="form-group col-md-12">
                     <fieldset class="form-group">

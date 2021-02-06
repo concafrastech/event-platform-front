@@ -155,7 +155,7 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
   */
 
   getStages(page, epicId) {
-    this._stageService.getStages(page, epicId).subscribe(
+    this._stageService.getFullStages(page, epicId).subscribe(
       (response) => {
         if (!response.stages) {
           this.status = "error";
@@ -163,7 +163,7 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
           this.stages = response.stages;
 
           //incluido filtro das trilhas da ilha
-          this.stages = this.stages.filter((stage: Stage) => (stage.type.toLowerCase() === "novas dimensões" || stage.type.toLowerCase() === "ilha casa do escritor"));
+          this.stages = this.stages.filter((stage: Stage) => stage.type.toLowerCase() === "ilha casa do caminho");
 
           this.stages.forEach((stage, index) => {
             this.getActivities(page, stage, index);

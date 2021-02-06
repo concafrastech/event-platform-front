@@ -52,8 +52,16 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     console.log("[OK] Component: profile-edit.");
     this.loadUserImage();
-    this._userGamificationService.setMissionComplete("edit-profile");
-    this.userInfoLevel = this._userGamificationService.getInfoLevel();
+    this.userInfoLevel = null;
+  }
+
+  ngAfterViewInit(): void {
+
+    //TODO: Melhorar para emissão de eventos no serviço de gamificação quando terminar de carregar as informações do usuário
+    setTimeout(() => {
+      this.userInfoLevel = this._userGamificationService.getInfoLevel();
+    }, 2000);
+    
   }
 
   loadUserImage() {
@@ -67,6 +75,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this._userGamificationService.setMissionComplete("edit-profile");
     if (this.fileToUpload) {
       this._contentService.uploadFile(this.fileToUpload).subscribe({
         next: (response) => {

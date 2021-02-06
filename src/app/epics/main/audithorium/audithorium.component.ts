@@ -7,6 +7,7 @@ import { Content } from "src/app/models/content";
 import { LectureService } from "src/app/services/lecture.service";
 import { ClassroomService } from "./../../../services/classroom.service";
 import { ActivityService } from "src/app/services/activity.service";
+import { NavbarService } from "src/app/services/navbar.service";
 
 @Component({
   selector: "app-audithorium",
@@ -33,11 +34,12 @@ export class AudithoriumComponent implements OnInit {
     private _router: Router,
     private _lectureService: LectureService,
     private _classroomService: ClassroomService,
-    private _activityService: ActivityService
+    private _activityService: ActivityService,
+    private _navbarService: NavbarService
   ) {}
 
   ngOnInit() {
-
+    this._navbarService.setButtonBack(true);
   }
 
   ngAfterContentInit(): void {

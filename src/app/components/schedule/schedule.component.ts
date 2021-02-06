@@ -69,6 +69,8 @@ export class ScheduleComponent implements OnInit {
     this.groupSchedules = [];
     this._epicService.getSchedules(this.currentEpic._id, this.identity._id).subscribe(
       (response) => {
+        console.log(response);
+        
         if(response){
           this.schedules = response;
           console.log(response);

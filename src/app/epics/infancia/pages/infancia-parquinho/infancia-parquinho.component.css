@@ -26,6 +26,10 @@
     display: block;
 }
 
+.botao:hover {
+    filter: drop-shadow(0px 0px 25px #FFF82E);
+}
+
 img {
     max-width: 100%;
     height: auto;

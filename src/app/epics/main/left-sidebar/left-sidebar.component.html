@@ -10,7 +10,7 @@
                 <li class="nav-item">
                     <a class="nav-link" style="text-align: center;" [routerLink]="['/meus-dados']" >
                         <div style="width: 60%; margin: 0px auto">
-                            <img *ngIf="user.image" [src]="user.image.fileLink" style="width: 100%; height: 100%; border-radius: 50px;" />
+                            <img *ngIf="user.image" [src]="user.image.fileLink" class="img-user" />
                             <fa-icon *ngIf="!user.image" [icon]="faUserCircle" class="sidebar-icon" size="4x"></fa-icon></div>
                          Bem vindo,<br/>{{identity.name}}!</a>
                 </li>

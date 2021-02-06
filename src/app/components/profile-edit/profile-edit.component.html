@@ -10,15 +10,15 @@
   </div>
 
   <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
-    <div class="row">
+    <div class="row" style="text-align: center; display: flex; align-items: center;">
       <div class="col-lg-2">
         <div class="user-image-for-edit" *ngIf="user.image">
-          <img [src]="user.image.fileLink" style="width: 98%; height: 98%; border-radius: 50px;" />
+          <img [src]="user.image.fileLink" class="img-user" />
         </div>
         <div class="user-image-for-edit" *ngIf="!user.image">
           <fa-icon [icon]="faUserCircle" size="5x"></fa-icon>
         </div>
-        <div>
+        <div class="user-container">
           <button type="button" (click)="selectFile()" class="btn-main">
             Alterar foto
             <input id="select-img" type="file" accept="image/x-png,image/gif,image/jpeg" placeholder="Upload image"

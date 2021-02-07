@@ -18,13 +18,14 @@
                 <span *ngIf="!email.valid && email.touched" style="padding: 0px 5px; color: red;" ><small>Email não é válido!</small></span>
             </div>
             <div class="row login-row">
-                <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Senha" required />
+                <input id="senha" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Senha" required />
+                <span class="lnr lnr-eye"></span>
                 <span *ngIf="!password.valid && password.touched" style="padding: 0px 5px; color: red;" ><small>Senha é obrigatória!</small></span>
             </div>
             <div class="row login-row send-row">
                 <a href="" class="send-login text-link-login"><small>Esqueceu a senha?</small></a>
                 <input type="submit" value="Entrar" class="btn btn-primary btn-login send-login" [disabled]="!loginForm.form.valid">
-                <a href="" class="send-login text-link-login"><small>Precisa de ajuda?</small></a>
+                <a href="https://jivo.chat/UnEvHo1TLs" target="_blank" class="send-login text-link-login"><small>Precisa de ajuda?</small></a>
             </div>
         </form>
     </div>

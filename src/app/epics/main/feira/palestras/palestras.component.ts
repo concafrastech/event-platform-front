@@ -26,7 +26,16 @@ export class PalestrasComponent implements OnInit {
   ngOnInit(): void {
     let epic = JSON.parse(localStorage.getItem("currentEpic"));
     this._lectureService.getLectures(null, epic._id).subscribe((response) => {
-      this.lectureList = response.lectures;
+      response.lectures.forEach(lecture => {
+        if (
+          lecture.type != "workshop" ||
+          lecture.type != "momento_coletivo" ||
+          lecture.type != "alegria" ||
+          lecture.type != "alegria_music"
+        ) {
+          this.lectureList.push(lecture);
+        }
+      });
       this.loadThumbnails();
       this.loadContents();
     });
@@ -47,7 +56,8 @@ export class PalestrasComponent implements OnInit {
   }
 
   loadContents() {
-    this.lectureList.map((lecture, index) => {});
+    this.lectureList.map((lecture, index) => {
+    });
   }
 
   goToAudithorium(item: Lecture) {
@@ -55,6 +65,7 @@ export class PalestrasComponent implements OnInit {
     item.contents.map((content, index) => {
       this._contentService.getContent(content).subscribe({
         next: (response) => {
+          console.log("Conteúdo:");
           console.log(response.content);
           item.contents[index] = response.content;
         },

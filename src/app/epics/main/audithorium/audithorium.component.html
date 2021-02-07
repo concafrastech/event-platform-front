@@ -19,19 +19,23 @@
     <app-zoomus [vContent]="actualContent"></app-zoomus>
   </div>
 
-  <h4 *ngIf="contents.length > 1">
+  <div *ngIf="actualContent.type == 'audio'">
+    <h2 class="lecture-header-title margin-top"><strong>Conteúdo de áudio, não será exibido.</strong></h2>
+  </div>
+
+  <!-- <h4 *ngIf="contents.length > 1">
     Conteúdo {{ index + 1 }} de {{ contents.length }}
-  </h4>
+  </h4> -->
   <div class="audithorium-container">
     <h4 class="lecture-header-text margin-top">Conteúdo: {{ actualContent.name }}</h4>
   </div>
 </div>
 <div>
   <div style="display: flex; place-content: space-between" *ngIf="contents.length > 1">
-    <button [disabled]="index <= 0" class="btn btn-success" (click)="previousContent()" type="button">
+    <button [disabled]="index <= 0" class="btn btn-success btn-hinario" (click)="previousContent()" type="button">
       Anterior
     </button>
-    <button [disabled]="index >= contents.length - 1 || !canMoveForward" class="btn btn-success" (click)="nextContent()"
+    <button [disabled]="index >= contents.length - 1 || !canMoveForward" class="btn btn-success btn-hinario" (click)="nextContent()"
       type="button">
       Próximo
     </button>

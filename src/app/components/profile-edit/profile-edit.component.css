@@ -299,9 +299,41 @@ ol.carousel-indicators li.active {
   align-items: center;
 }
 
+.img-user {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 100px;
+}
+
+.user-container {
+  margin: 2rem 0;
+}
+
+/* ==== POINTS TABLE ==== */
+.container-points-table {
+  display: flex;
+  margin: 0.6rem 0;
+  height: 26rem;
+}
+
+.points-table {
+  margin: 0px auto;
+  width: 20rem;
+  height: 100%;
+}
 
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
+  /* ==== IMG USER ==== */
+  .img-user {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .user-container {
+    margin: .5rem 0;
+  }
+
   /* ==== GERAL ==== */
   .title {
     font-size: 20px;

@@ -265,6 +265,32 @@ ol.carousel-indicators li.active {
     border-color: #1EA6EC;
 }
 
+/* ==== CONSELHO ==== */
+#conselho-header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 2rem;
+}
+
+#conselho .btn-conselho {
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: solid white 1px;
+    transition: 0.2s;
+}
+
+#conselho .btn-conselho:hover {
+    background-color: #1EA6EC;
+    border-color: #1EA6EC;
+}
+
 /* ==== RESPONSIVE ==== */
 @media only screen and (max-width:1400px) {
     #caravan-header .caravan-header-card.caravan-header-item {

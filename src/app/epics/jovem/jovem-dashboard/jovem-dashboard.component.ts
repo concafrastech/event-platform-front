@@ -312,7 +312,6 @@
           classes.push("active_jovem");
           element.className = classes.join(" ");
       }
-      console.log(element.className);
     }
 
   }

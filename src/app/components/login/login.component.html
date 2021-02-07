@@ -18,7 +18,8 @@
                 <span *ngIf="!email.valid && email.touched" style="padding: 0px 5px; color: red;" ><small>Email não é válido!</small></span>
             </div>
             <div class="row login-row">
-                <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Senha" required />
+                <input id="senha" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Senha" required />
+                <span class="lnr lnr-eye"></span>
                 <span *ngIf="!password.valid && password.touched" style="padding: 0px 5px; color: red;" ><small>Senha é obrigatória!</small></span>
             </div>
             <div class="row login-row send-row">

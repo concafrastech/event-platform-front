@@ -91,6 +91,13 @@
   top: -80px;
 }
 
+.lnr-eye {
+  position: absolute;
+  top: 4.8rem;
+  right: 1.8rem;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 425px) {
   #bg {
     display: none;

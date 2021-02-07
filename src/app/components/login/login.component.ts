@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         console.log('[OK] Component: login.');
         localStorage.setItem('epic', null);
+        this.showPassword();
     }
 
     onSubmit() {
@@ -106,5 +107,17 @@ export class LoginComponent implements OnInit {
                 console.log(<any> error);
             }
         );
+    }
+
+    showPassword() {
+        let btn = document.querySelector('.lnr-eye');
+        btn.addEventListener('click', function() {
+            let input = document.querySelector('#senha');
+            if(input.getAttribute('type') == 'password') {
+                input.setAttribute('type', 'text');
+            } else {
+                input.setAttribute('type', 'password');
+            }
+        });
     }
 }

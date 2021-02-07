@@ -116,7 +116,7 @@
   </div>
   <div class="banner-card banner-item">
     <span>Ajude a CONCAFRAS respondendo nossa pesquisa e
-      <strong>ganhe 50 pontos!</strong></span>
+      <strong>ganhe 50 passos!</strong></span>
   </div>
   <div class="banner-card banner-button">
     <input type="button" value="Fazer Pesquisa" class="secondary-button" />
@@ -125,17 +125,17 @@
 <section id="levels" class="my-profile-container">
   <div class="row">
     <div class="col-lg-6">
-      <span class="title">Meus níveis e pontos</span>
+      <span class="title">Meus níveis e passos</span>
       <div *ngIf="userInfoLevel" class="container-level">
         <div class="container-level-card" *ngIf="userInfoLevel.nextLevel">
           <p class="container-level-basic container-level-card-points">
-            {{this._userGamificationService.getPoints()}} pontos
+            {{this._userGamificationService.getPoints()}} passos
           </p>
           <div>
             <img class="badge-main" [src]="userInfoLevel.nextLevel.icon" alt="Badge" />
           </div>
           <p class="container-level-basic container-level-card-text">
-            Faltam {{userInfoLevel.pointsToNextLevel}} pontos<br />para alcançar o
+            Faltam {{userInfoLevel.pointsToNextLevel}} passos<br />para alcançar o
             <strong class="container-level-card-text-strong">nível {{userInfoLevel.nextLevel.badge}}</strong>
           </p>
         </div>
@@ -163,7 +163,7 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <span class="title">Tabela de pontos</span>
+      <span class="title">Tabela de passos</span>
       <div class="container-points-table">
         <img class="points-table" src="assets/concafras2021/concafronas/tabela_pontos.jpeg" alt="Tabela_de_pontos">
       </div>
@@ -175,7 +175,7 @@
   </div>
 </section>
 <section id="change-my-points" class="my-profile-container">
-  <h2 class="title">Trocar meus pontos</h2>
+  <h2 class="title">Trocar meus passos</h2>
   <div id="carouselChangeMyPoints" class="carousel slide caravan-carousel-recent" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselChangeMyPoints" data-slide-to="0" class="active"></li>

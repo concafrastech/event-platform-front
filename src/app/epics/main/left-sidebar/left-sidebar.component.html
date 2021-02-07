@@ -15,7 +15,7 @@
                          Bem vindo,<br/>{{identity.name}}!</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" [routerLink]="" ><svg-icon [src]="this._userGamification.getLevel()?.icon" class="sidebar-icon"></svg-icon> Nivel {{this._userGamification.getLevel()?.badge}}<br/>{{this._userGamification.getPoints() ? this._userGamification.getPoints() : 0}} pontos</a>
+                    <a class="nav-link disabled" [routerLink]="" ><svg-icon [src]="this._userGamification.getLevel()?.icon" class="sidebar-icon"></svg-icon> Nivel {{this._userGamification.getLevel()?.badge}}<br/>{{this._userGamification.getPoints() ? this._userGamification.getPoints() : 0}} passos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/hub']" ><svg-icon src="assets/concafras2021/concafronas/icones/home.svg" class="sidebar-icon"></svg-icon> Página Inicial</a>
@@ -53,7 +53,7 @@
                     </div>
                     <div>
                         <img class="user-badge" src="../../../../assets/concafras2021/concafronas/icones/terra.png" alt="Terra">
-                        <span>Nível {{user.level.badge}}<br><b>{{user.points}}</b> pontos</span>
+                        <span>Nível {{user.level.badge}}<br><b>{{user.points}}</b> passos</span>
                     </div>
                 </li>
                 <hr class="nav-hr">

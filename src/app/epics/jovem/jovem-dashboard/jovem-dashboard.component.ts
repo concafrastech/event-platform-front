@@ -297,18 +297,24 @@
       this.location.back();
     }
 
-    sidebarCollapse() {
-      // transferir para aqui o collapse da side bar
+    toggleClass() {
+      var element = document.getElementById("sidebar");
+      if (element.classList) {
+        element.classList.toggle("active_jovem");
+      } else {
+        // For IE9
+        var classes = element.className.split(" ");
+        var i = classes.indexOf("active_jovem");
+      
+        if (i >= 0)
+          classes.splice(i, 1);
+        else
+          classes.push("active_jovem");
+          element.className = classes.join(" ");
+      }
     }
 
   }
 
-/* Verificar se esta função pode ir para dentro do export */
-$(document).ready(function() {
-  $("#sidebarCollapse").on("click", function() {
-    $("#sidebar").toggleClass("active_jovem");
-    $(this).toggleClass("active_jovem");
-  });
-});
 
 

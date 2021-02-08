@@ -29,6 +29,7 @@ export class HubComponent implements OnInit, AfterViewInit {
   public identity;
   public todaySchedule: Schedule[];
   public todayEvents: Lecture[] = [];
+  public svgTooltip: string = "";
 
   options = {
     zoomEnabled: true,
@@ -47,7 +48,7 @@ export class HubComponent implements OnInit, AfterViewInit {
     private zone: NgZone,
     private _epicService: EpicService,
     private _userService: UserService,
-    private _lectureService: LectureService
+    private _lectureService: LectureService,
   ) {}
 
   ngOnInit(): void {
@@ -60,64 +61,59 @@ export class HubComponent implements OnInit, AfterViewInit {
     this.svgMap = <HTMLObjectElement>(
       this.elementRef.nativeElement.querySelector("#svgMap")
     );
+    
     this.svgMap.addEventListener("load", this.loadSvgMapEvents.bind(this));
   }
 
   loadSvgMapEvents() {
     let eventType = "click";
     let svgDoc = this.svgMap.contentDocument;
-    svgDoc
-      .getElementById("PALESTRAS")
-      .addEventListener(eventType, this.eventClickSvg.bind(this, "PALESTRAS"));
-    svgDoc.getElementById("PALESTRAS").addEventListener("mouseover", () => {});
 
-    svgDoc.getElementById("PALESTRAS").addEventListener("mouseleave", () => {});
+    let palestrasContainer = svgDoc.getElementById("PALESTRAS");
 
-    svgDoc
-      .getElementById("ndc")
-      .addEventListener(eventType, this.eventClickSvg.bind(this, "ndc"));
-    svgDoc
-      .getElementById("livros")
-      .addEventListener(eventType, this.eventClickSvg.bind(this, "livros"));
-    svgDoc
-      .getElementById("ccex")
-      .addEventListener(eventType, this.eventClickSvg.bind(this, "ccex"));
-    svgDoc
-      .getElementById("cfas")
-      .addEventListener(eventType, this.eventClickSvg.bind(this, "cfas"));
-    svgDoc
-      .getElementById("stand_voluntario")
-      .addEventListener(
-        eventType,
-        this.eventClickSvg.bind(this, "stand_voluntario")
-      );
-    svgDoc
-      .getElementById("jovem")
-      .addEventListener(eventType, this.eventClickSvg.bind(this, "jovem"));
-    svgDoc
-      .getElementById("stand_editora")
-      .addEventListener(
-        eventType,
-        this.eventClickSvg.bind(this, "stand_editora")
-      );
-    svgDoc
-      .getElementById("EVENTO_AO_VIVO")
-      .addEventListener(
-        eventType,
-        this.eventClickSvg.bind(this, "EVENTO_AO_VIVO")
-      );
-    svgDoc
-      .getElementById("clube_do_livro")
-      .addEventListener(
-        eventType,
-        this.eventClickSvg.bind(this, "clube_do_livro")
-      );
-    svgDoc
-      .getElementById("concafrinhas")
-      .addEventListener(
-        eventType,
-        this.eventClickSvg.bind(this, "concafrinhas")
-      );
+    palestrasContainer.addEventListener(eventType, this.eventClickSvg.bind(this, "PALESTRAS"));
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseenter", () => {this.setSvgInfo('Palestras')});
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("ndc").addEventListener(eventType, this.eventClickSvg.bind(this, "ndc"));
+    svgDoc.getElementById("ndc").addEventListener("mouseenter", () => {this.setSvgInfo("Novas Dimensões do Conhecimento")});
+    svgDoc.getElementById("ndc").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("livros").addEventListener(eventType, this.eventClickSvg.bind(this, "livros"));
+    svgDoc.getElementById("livros").addEventListener("mouseenter", (ev) => {this.setSvgInfo("Livraria")});
+    svgDoc.getElementById("livros").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("ccex").addEventListener(eventType, this.eventClickSvg.bind(this, "ccex"));
+    svgDoc.getElementById("ccex").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CECX")});
+    svgDoc.getElementById("ccex").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("cfas").addEventListener(eventType, this.eventClickSvg.bind(this, "cfas"));
+    svgDoc.getElementById("cfas").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CFAS")});
+    svgDoc.getElementById("cfas").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("stand_voluntario").addEventListener(eventType, this.eventClickSvg.bind(this, "stand_voluntario"));
+    svgDoc.getElementById("stand_voluntario").addEventListener("mouseenter", () => {this.setSvgInfo("Clube do Livro")});
+    svgDoc.getElementById("stand_voluntario").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("jovem").addEventListener(eventType, this.eventClickSvg.bind(this, "jovem"));
+    svgDoc.getElementById("jovem").addEventListener("mouseenter", () => {this.setSvgInfo("Concafras - Jovem")});
+    svgDoc.getElementById("jovem").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("stand_editora").addEventListener(eventType, this.eventClickSvg.bind(this, "stand_editora"));
+    svgDoc.getElementById("stand_editora").addEventListener("mouseenter", () => {this.setSvgInfo("Editora Auta de Souza")});
+    svgDoc.getElementById("stand_editora").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("EVENTO_AO_VIVO").addEventListener(eventType, this.eventClickSvg.bind(this, "EVENTO_AO_VIVO"));
+    svgDoc.getElementById("EVENTO_AO_VIVO").addEventListener("mouseenter", () => {this.setSvgInfo("Evento ao Vivo (Palco)")});
+    svgDoc.getElementById("EVENTO_AO_VIVO").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("clube_do_livro").addEventListener(eventType, this.eventClickSvg.bind(this, "clube_do_livro"));
+    svgDoc.getElementById("clube_do_livro").addEventListener("mouseenter", () => {this.setSvgInfo("Formação de Trabalhadores Espíritas")});
+    svgDoc.getElementById("clube_do_livro").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+
+    svgDoc.getElementById("concafrinhas").addEventListener(eventType, this.eventClickSvg.bind(this, "concafrinhas"));
+    svgDoc.getElementById("concafrinhas").addEventListener("mouseenter", () => {this.setSvgInfo("Concafrinhas")});
+    svgDoc.getElementById("concafrinhas").addEventListener("mouseleave", () => {this.setSvgInfo("")});
   }
 
   loadScheduleEpic() {
@@ -279,6 +275,10 @@ export class HubComponent implements OnInit, AfterViewInit {
         this.redirectToFromSvg("/concafrinhas/home");
         break;
     }
+  }
+
+  setSvgInfo(info: string){
+    this.zone.run(() => this.svgTooltip=info);
   }
 
   //Redireciona para uma url interna saindo do contexto do svg

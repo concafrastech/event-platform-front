@@ -39,6 +39,19 @@
   padding: 5px;
 }
 
+.svgInfo {
+  background-color: #1ea6ec;
+  color: white;
+  width: 25%;
+  margin: 0 auto;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  z-index: 5000;
+  text-align: center;
+  border: 1px solid #1ea6ec;
+  border-radius: 25px;
+}
+
 #svgMap {
   position: relative;
   width: 100%;

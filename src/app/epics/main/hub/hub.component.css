@@ -40,12 +40,13 @@
 }
 
 .svgInfo {
+  position: relative;
+  left: 2rem;
   background-color: #1ea6ec;
   color: white;
   width: 25%;
   margin: 0 auto;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem;
   z-index: 5000;
   text-align: center;
   border: 1px solid #1ea6ec;
@@ -64,11 +65,21 @@
   #svgMap {
     top: -4rem;
   }
+
+  .svgInfo {
+    left: 3rem;
+    top: 5.5rem;
+  }
 }
 
 @media only screen and (max-width: 1400px) {
   #svgMap {
     height: 30rem;
     right: -4rem;
+  }
+
+  .svgInfo {
+    left: 4rem;
+    top: 4rem;
   }
 }

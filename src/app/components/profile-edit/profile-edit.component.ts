@@ -61,7 +61,7 @@ export class ProfileEditComponent implements OnInit {
     setTimeout(() => {
       this.userInfoLevel = this._userGamificationService.getInfoLevel();
     }, 2000);
-    
+
   }
 
   loadUserImage() {

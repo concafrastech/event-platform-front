@@ -43,7 +43,14 @@
               <span *ngIf="!surname.value && surname.touched">O sobrenome é obrigatório!</span>
             </p>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-3">
+            <p>
+              <label>Crachá</label>
+              <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required />
+              <span *ngIf="!nick.value && nick.touched">O apelido é obrigatório!</span>
+            </p>
+          </div>
+          <div class="col-lg-3">
             <p>
               <label>Endereço</label>
               <input type="text" name="address" #address="ngModel" [(ngModel)]="user.address" class="form-control"

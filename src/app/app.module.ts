@@ -185,6 +185,7 @@ import { UserTrailsComponent } from './epics/main/user-trails/user-trails.compon
 import { AllContentComponent } from './epics/main/all-content/all-content.component';
 import { AudioPlayerComponent } from './components/channels/audio-player/audio-player.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+import { HistoryMissionsComponent } from './components/profile-edit/history-missions/history-missions.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -353,6 +354,7 @@ const GamificationConfig = {
     AllContentComponent,
     AudioPlayerComponent,
     ConfirmPasswordComponent,
+    HistoryMissionsComponent,
   ],
   imports: [
     BrowserModule,

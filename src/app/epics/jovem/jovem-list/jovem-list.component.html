@@ -1,4 +1,4 @@
-<section id="lecture-header" class="lecture-container">
+<section id="lecture-header" class="lecture-container fundo-header">
    <div class="lecture-header-card lecture-header-img">
       <img *ngIf="!stage.thumbnail && type === 'ilha casa do escritor'" class="img-size" src="/assets/jovem/img/icone_ilha_escritor.png">
       <img *ngIf="!stage.thumbnail && type === 'ilha casa do caminho'" class="img-size" src="/assets/jovem/img/icone_ilha_caminho.png">
@@ -10,8 +10,10 @@
       <img *ngIf="stage.thumbnail && !type" class="img-size" src="stage.thumbnail.fileLink" alt="">
    </div>
    <div class="lecture-header-card lecture-header-item">
-       <h3 class="lecture-header-title">{{stage.type}}</h3>
-       <span class="lecture-header-text">{{stage.name}}</span>
+      <div class="lecture-header-text">
+        <h3 class="lecture-header-title">{{stage.type}}</h3>
+        <p class="lecture-header-subtitle">{{stage.name}}</p>
+      </div>
    </div>
 </section>
 <section id="ndc-content" class="ndc-container" *ngIf="activityList.length > 0">

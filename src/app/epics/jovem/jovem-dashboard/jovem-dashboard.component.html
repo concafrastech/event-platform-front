@@ -6,7 +6,8 @@
         <a class="nav-link text-center" [routerLink]="['/jovem/meus-dados']">
           <img *ngIf="user.image" [src]="user.image.fileLink" class="img-fluid rounded-circle px-4" />
           <fa-icon *ngIf="!user.image" [icon]="faUserCircle" class="sidebar-icon" size="4x"></fa-icon>
-          <p >Bem vindo(a),<br/>{{identity.name}}!</p>
+          <p *ngIf="user.nick">Bem vindo(a),<br/>{{identity.nick}}!</p>
+          <p *ngIf="!user.nick">Bem vindo(a),<br/>{{identity.name}}!</p>
         </a>
       </li>
 

@@ -107,7 +107,6 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.lectures = response.lectures;
-          console.log(response);
 
           // transform lectures in schedules
           for(let i = 0; i < this.lectures.length; i++){

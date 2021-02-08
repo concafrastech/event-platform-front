@@ -1,6 +1,6 @@
 /* copiado de ndc-activities.component.css */
 #lecture-header {
-   background-image: linear-gradient(to right, rgb(21, 121, 172, .7), rgba(53, 116, 150, 0.4), rgb(21, 121, 172, .7));
+   /*background-image: linear-gradient(to right, rgb(21, 121, 172, .7), rgba(53, 116, 150, 0.4), rgb(21, 121, 172, .7));*/
    padding: 0.2rem 6rem;
    width: 100%;
    border-radius: 0.3rem;
@@ -13,30 +13,47 @@
 }
 
 #lecture-header .lecture-header-card.lecture-header-item {
-   width: 60%;
+   width: 40%;
 }
 
 #lecture-header .lecture-header-card.lecture-header-img {
-   width: 40%;
+   width: 30%;
    text-align: right;
 }
 
-.lecture-header-title {
-   font-size: 24px;
-   color: #fff;
-   font-weight: bold;
+#lecture-header .lecture-header-card.lecture-header-text {
+   display: inline-block;
+   vertical-align: middle;
+   text-align: center;
 }
 
-.lecture-header-text {
-   font-size: 14px;
+.lecture-header-title {
+   font-size: 3rem;
    color: #fff;
-   font-weight: 300;
+   font-weight: bold;
+   text-align: center;
+}
+
+.lecture-header-subtitle {
+   font-size: 1.8rem;
+   font-style: italic;
+   color: #fff;
+   font-weight: normal;
+   text-align: center;
+}
+
+.fundo-header {
+   background-image: url(/assets/jovem/img/fundo_header_list.jpeg);
+   background-position: right top;  
+   background-size: cover;  
+   background-repeat: no-repeat;
+   z-index: 0;
 }
 
 /* ==== IMG ==== */
 .img-size {
-   width: 150px;
-   height: 150px;
+   width: 200px;
+   height: 200px;
    margin: .5rem 2rem .5rem 0;
    object-fit: contain;
 }

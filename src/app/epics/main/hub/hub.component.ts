@@ -192,7 +192,6 @@ export class HubComponent implements OnInit, AfterViewInit {
     this.todaySchedule.map((schedule) => {
       this._lectureService.getLecture(schedule.id).subscribe((response) => {
         if (
-          response.lecture.type == "workshop" ||
           response.lecture.type == "momento_coletivo"
         ) {
           this.todayEvents.push(response.lecture);

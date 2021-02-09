@@ -11,47 +11,51 @@
 <div class="modal-body" style="padding: 1.5rem">
   <ul class="nav nav-tabs">
     <li class="nav-item" *ngFor="let epic of epics; let i=index">
-      <a *ngIf="epic.name == 'Concafras'" class="nav-link" [ngClass]="epic._id == currentEpic._id ? 'active' : ''" aria-current="page"
-        (click)="changeEpic(epic)">{{epic.name}}</a>
-      <a *ngIf="epic.name != 'Concafras'" class="nav-link" [ngClass]="epic._id == currentEpic._id ? 'active' : ''" aria-current="page"
-        (click)="changeEpic(epic)">{{epic.name + " ( " + epic.start_age + " à " + epic.end_age + " anos)"}}</a>
+      <a *ngIf="epic.name == 'Concafras'" class="nav-link" [ngClass]="epic._id == currentEpic._id ? 'active' : ''"
+        aria-current="page" (click)="changeEpic(epic)">{{epic.name}}</a>
+      <a *ngIf="epic.name != 'Concafras'" class="nav-link" [ngClass]="epic._id == currentEpic._id ? 'active' : ''"
+        aria-current="page" (click)="changeEpic(epic)">{{epic.name + " ( " + epic.start_age + " à " + epic.end_age + "
+        anos)"}}</a>
     </li>
   </ul>
-  <div *ngFor="let group of groupSchedules; let i = index">
-    <div class="card" style="width: 100%">
-      <div class="card-header" style="
+  <div *ngIf="!isLoading">
+    <div *ngFor="let group of groupSchedules; let i = index">
+      <div class="card" style="width: 100%">
+        <div class="card-header" style="
           text-align: center;
           background-color: #273b87;
           text-align: center;
           color: white;
           font-weight: 500;
         ">
-        Dia {{ i + 1 }} - {{ group.group }}
+          Dia {{ i + 1 }} - {{ group.group }}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule">
+            <div style="float: left">
+              <div [tooltip]="schedule.description" placement="left">
+                {{ schedule.name }}
+              </div>
+              <div style="display: block">
+                <div style="float: left">
+                  <span style="font-size: 0.8rem; color: #a2a2a2">{{
+                    schedule.description
+                    }} - localização: {{ schedule.place }}</span>
+                </div>
+                <div style="float: right">
+                  <img style="margin-left: 5rem"
+                    src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg" />
+                  <img style="margin-left: 0.5rem" src="assets/concafras2021/concafronas/icones/libras.svg" />
+                </div>
+              </div>
+            </div>
+            <div style="float: right; font-weight: 500">
+              {{ schedule.start_time | date: "HH:mm" }} -
+              {{ schedule.end_time | date: "HH:mm" }}
+            </div>
+          </li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush">
-        <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule">
-          <div style="float: left">
-            <div [tooltip]="schedule.description" placement="left">
-              {{ schedule.name }}
-            </div>
-            <div style="display: block">
-              <div style="float: left">
-                <span style="font-size: 0.8rem; color: #a2a2a2">{{
-                  schedule.description
-                  }}</span>
-              </div>
-              <div style="float: right">
-                <img style="margin-left: 5rem" src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg" />
-                <img style="margin-left: 0.5rem" src="assets/concafras2021/concafronas/icones/libras.svg" />
-              </div>
-            </div>
-          </div>
-          <div style="float: right; font-weight: 500">
-            {{ schedule.start_time | date: "HH:mm" }} -
-            {{ schedule.end_time | date: "HH:mm" }}
-          </div>
-        </li>
-      </ul>
     </div>
   </div>
 </div>

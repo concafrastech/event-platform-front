@@ -1,0 +1,25 @@
+<div class="modal-header" style="text-align: center; width: 100%">
+    <div style="width: 100%">
+        <h4 class="modal-title">Histórico de missões concluídas</h4>
+    </div>
+    <div style="width: 0px; z-index: 120">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+
+<div class="modal-body" style="padding: 2rem" *ngIf="!isLoading">
+    <div class="mission-container" *ngFor="let xp of xpList; let i=index">
+        <div class="mission-icon"><img src="assets/concafras2021/concafronas/icones/checked_icon.svg" /></div>
+        <div class="mission-description">
+            <span class="mission-title">Missão: {{xp.mission.name}}</span><br>
+            <span class="mission-caption">{{xp.mission.amount * xp.qty}} passos</span>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">
+        Fechar
+    </button>
+</div>

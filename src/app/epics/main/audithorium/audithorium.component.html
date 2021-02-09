@@ -1,10 +1,6 @@
 <div *ngIf="actualContent" style="height: inherit">
   <div *ngIf="actualContent.type == 'img'" style="height: inherit">
-    <img
-      [src]="actualContent.file.fileLink"
-      alt="image slide"
-      style="display: block; width: 100%; max-height: 650px"
-    />
+    <img [src]="actualContent.file.fileLink" alt="image slide" style="display: block; width: 100%; max-height: 650px" />
   </div>
 
   <div *ngIf="actualContent.type == 'youtube'" style="height: inherit">
@@ -23,37 +19,42 @@
     <app-zoomus [vContent]="actualContent"></app-zoomus>
   </div>
 
-  <h4 *ngIf="contents.length > 1">
+  <div *ngIf="actualContent.type == 'audio'">
+    <h2 class="lecture-header-title margin-top"><strong>Conteúdo de áudio, não será exibido.</strong></h2>
+  </div>
+
+  <!-- <h4 *ngIf="contents.length > 1">
     Conteúdo {{ index + 1 }} de {{ contents.length }}
-  </h4>
-  <p>{{ actualContent.name }}</p>
+  </h4> -->
+  <div class="audithorium-container">
+    <h4 class="lecture-header-text margin-top">Conteúdo: {{ actualContent.name }}</h4>
+  </div>
 </div>
 <div>
-  <div
-    style="display: flex; place-content: space-between"
-    *ngIf="contents.length > 1"
-  >
-    <button
-      [disabled]="index <= 0"
-      class="btn btn-success"
-      (click)="previousContent()"
-      type="button"
-    >
+  <div style="display: flex; place-content: space-between" *ngIf="contents.length > 1">
+    <button [disabled]="index <= 0" class="btn btn-success btn-hinario" (click)="previousContent()" type="button">
       Anterior
     </button>
-    <button
-      [disabled]="index >= contents.length - 1 || !canMoveForward"
-      class="btn btn-success"
-      (click)="nextContent()"
-      type="button"
-    >
+    <button [disabled]="index >= contents.length - 1 || !canMoveForward" class="btn btn-success btn-hinario" (click)="nextContent()"
+      type="button">
       Próximo
     </button>
   </div>
 </div>
 <div>
-  <p>Tipo: {{ type }}</p>
-  <p>Qtde: {{ contents.length }}</p>
+  <!-- <p>Tipo: {{ type }}</p>
+  <p>Qtde: {{ contents.length }}</p> -->
 
-  <div *ngIf="lecture">Tema: {{ lecture.name }}</div>
+  <div *ngIf="lecture" class="audithorium-container">
+    <h2 class="lecture-header-title">
+      Tema: {{ lecture.name }}
+    </h2>
+  </div>
+  <div class="audithorium-container">
+    <span class="hinario-header-text">Cante com a gente:</span>
+    <a href="/assets/hinario/HINÁRIO ADULTO CONCAFRAS 2021.pdf" class="btn btn-primary btn-hinario" target="_blank"><i
+        class="fas fa-download"></i> Hinário Adulto</a>
+    <a href="/assets/hinario/HINÁRIO INFANTIL CONCAFRAS 2021.pdf" class="btn btn-primary btn-hinario"
+      target="_blank"><i class="fas fa-download"></i> Hinário Infantil</a>
+  </div>
 </div>

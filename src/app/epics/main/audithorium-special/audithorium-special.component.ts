@@ -41,23 +41,32 @@ export class AudithoriumSpecialComponent implements OnInit {
         this.title = "Campanha de Fraternidade Auta de Souza";
         this.pageTarget = "https://forms.gle/5VfA4iy2nk7EHjk36";
         this.actualContent = this.temporaryContent(
-          "https://youtu.be/OaVJTAvHSXk"
+          "https://youtu.be/zBDt4QWO3qU"
         );
         break;
 
       case "cecx":
         this.title = "Campanha de Esclarecimento Chico Xavier";
         this.pageTarget = "https://forms.gle/2RPsHWcfDistBuFX8";
+        this.actualContent = this.temporaryContent(
+          "https://youtu.be/dJhAMJuYb84"
+        );
         break;
 
       case "clube":
         this.title = "Clube do Livro Espírita";
         this.pageTarget = "https://forms.gle/ztEy9xRVLKCiBA6Z6";
+        this.actualContent = this.temporaryContent(
+          "https://youtu.be/gjmqitynnm4"
+        );
         break;
 
       case "editora":
         this.title = "Editora Auta de Souza";
         this.pageTarget = "https://forms.gle/QPFkjtDedsrnen5A9";
+        this.actualContent = this.temporaryContent(
+          "https://youtu.be/JT-r5vuLwjA"
+        );
         break;
 
       case "workshop":

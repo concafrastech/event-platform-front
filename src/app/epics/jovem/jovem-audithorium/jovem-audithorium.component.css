@@ -1,0 +1,19 @@
+.fundo {
+    background-color: rgb(0, 26, 44);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+h4 {
+    font-size: 2rem;
+    color: #FFF;
+}
+
+p {
+    color: #FFF;
+    font-weight: normal;
+}

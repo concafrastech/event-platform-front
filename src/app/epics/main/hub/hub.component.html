@@ -1,9 +1,13 @@
 <div class="hub-main ">
     <div class="welcome">
-        <div class="welcome1 pisca">Bem Vindos à</div>
+        <div class="welcome1 pisca">Bem-vindos à</div>
         <div class="welcome2">Concafras 2021!</div>
         <div class="welcome3">Clique nos círculos do desenho interativo para acessar as plataformas virtuais.</div>
     </div>
 
+
+    <div *ngIf="svgTooltip" class="svgInfo">
+        <strong>{{svgTooltip}}</strong>
+    </div>
     <object id="svgMap" type="image/svg+xml" data="assets/concafras2021/concafronas/tenda.svg"></object>
 </div>

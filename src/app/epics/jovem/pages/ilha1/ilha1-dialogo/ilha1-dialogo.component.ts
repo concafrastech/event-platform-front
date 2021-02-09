@@ -12,6 +12,7 @@ import { ClassroomService } from 'src/app/services/classroom.service';
 //import { LectureService } from 'src/app/services/lecture.service';
 import { StageService } from 'src/app/services/stage.service';
 import { TrailService } from 'src/app/services/trail.service';
+import { Schedule } from 'src/app/models/schedule';
 import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
 
@@ -29,11 +30,16 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   public epic: Epic;
   public status: String;
   //public lectures: Lecture[] = []; 
-  //public trails: Trail[] = [];
   public stages: Stage[] = [];
-  public trail: Trail;
+  public trails: Trail[] = [];
   public classroomList: Classroom[] = [];
   public time: String;
+  public groupSchedules: any[] = [];
+  public schedules: Schedule[] = [];
+  public strMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+  /* baseado em schedule.component.ts - fim */
+  public schedule: Schedule;
+
 
   options = { 
     zoomEnabled: true,
@@ -66,9 +72,12 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
       //this.getLectures(1, epic._id);
       //this.getTrails(1,  epic._id);
       this.getStages(1,  epic._id);
-      this._trailService.getTrail(this.subscription.trails[0]._id).subscribe((response) => {
-        this.trail = response.trail;
-        this.classroomList = response.trail.classrooms;
+      if(this.subscription){
+        this.trails = this.subscription.trails;
+      }
+      this.schedules = [];
+      this.trails.forEach((trail, index) => {
+        this.getClassrooms(trail, index);
       });
     });
   }
@@ -132,30 +141,59 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   }
   */
 
-  /*
-  getClassrooms(page, trail, index) {
-    this._classroomService.getClassrooms(page, trail._id).subscribe(
-      (response) => {
-        if (!response.classrooms) {
-          this.status = "error";
-        } else {
-          this.trails[index].classrooms = response.classrooms;
-        }
-      },
-      (error) => {
-        var errorMessage = <any>error;
-        console.log(errorMessage);
+  
+ getClassrooms(trail, index) {
+  if(trail.classrooms){
+    trail.classrooms.forEach((classroom, index) => {
+      this._classroomService.getClassroom(classroom).subscribe(
+        (response) => {
+          let classroomaux = response.classroom;
+          classroomaux.start_time = new Date(classroomaux.start_time);
+          classroomaux.end_time = new Date(classroomaux.end_time);
+          trail.classrooms[index] = classroomaux;
 
-        if (errorMessage != null) {
-          this.status = "error";
+          // transform classrooms in schedules (only teóricas - index 0 e 1)
+          if(index<=1){
+            this.schedule = new Schedule(
+              trail.classrooms[index]._id,
+              trail.classrooms[index].type,
+              trail.classrooms[index].name,
+              trail.classrooms[index].description,
+              trail.classrooms[index].start_time,
+              trail.classrooms[index].end_time
+            );
+            this.schedules.push(this.schedule);
+          }
+          this.schedules.sort(this.sortSchedules);
+          this.groupSchedules = [];
+          for(let i = 0; i < this.schedules.length; i++) {
+            let day = new Date(this.schedules[i].start_time).getDate();
+            let month = this.strMonths[new Date(this.schedules[i].start_time).getMonth()];
+            let dayMonth = ("00" + day).slice(-2) + ' de ' + month;
+            if(!this.findDayGroupSchedule(dayMonth)){
+              this.groupSchedules.push({group: dayMonth, schedule: [this.schedules[i]]});
+            }else{
+              this.findDayGroupSchedule(dayMonth).schedule.push(this.schedules[i])
+            }
+          }
+        },
+        (error) => {
+          var errorMessage = <any>error;
+          console.log(errorMessage);
+  
+          if (errorMessage != null) {
+            this.status = "error";
+          }
         }
-      }
-    );
+      );
+    });
+    
   }
-  */
+}
+  
 
   getStages(page, epicId) {
-    this._stageService.getStages(page, epicId).subscribe(
+    this._stageService.getFullStages(page, epicId).subscribe(
       (response) => {
         if (!response.stages) {
           this.status = "error";
@@ -200,6 +238,27 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
       }
     );
   }
+
+  /* baseado em schedule.component.ts - início */
+    
+  findDayGroupSchedule(group: string){
+    return this.groupSchedules.find((item, index, arr)=>{
+      if(item.group == group){
+        return true
+      }
+    })
+  }
+
+  sortSchedules(obj1:Schedule, obj2:Schedule){
+    if(obj1.start_time < obj2.start_time){
+      return -1;
+    }
+    if(obj1.start_time > obj2.start_time){
+      return 1;
+    }
+    return 0;
+  }
+
 
   getTime(addValue) : string {
     var today = new Date();

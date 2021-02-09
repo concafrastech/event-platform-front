@@ -83,7 +83,6 @@ export class JovemAudithoriumComponent implements OnInit {
     if(this.actualContent.type == 'doc'){
       this.actualContent.url = this.actualContent.file.fileLink
     }
-    console.log(this.contents);
     
     this.index = 0;
     this.timeToMoveForward();

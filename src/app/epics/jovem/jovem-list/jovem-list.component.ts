@@ -18,7 +18,6 @@
     @Input() public id: string;
     public activityList: Activity[] = [];
     public stage: Stage;
-    public title: String;
     public type: String;
   
     constructor(
@@ -37,10 +36,16 @@
         this.id = id;
         this._stageService.getStage(id).subscribe((response) => {
           this.stage = response.stage;
-          this.title = response.stage.name;
           this.type = response.stage.type.toLowerCase();
           this.activityList = response.stage.activities;
           this.loadThumbnails();
+          if (this.stage.thumbnail) {
+            this._documentService
+              .getDocument(this.stage.thumbnail)
+              .subscribe((response) => {
+                this.stage.thumbnail = response.document;
+              });
+          }
         });
       });
     }

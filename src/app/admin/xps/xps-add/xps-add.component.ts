@@ -71,8 +71,8 @@ export class XpsAddComponent implements OnInit {
       null,
       null
     );
-    this.missionXp = new Mission("", null, null, "", "", null, null, null);
-    this.xps = new Xps("", null, null);
+    this.missionXp = new Mission("", null, null, "", "", 0, 0, null, null);
+    this.xps = new Xps("", 0, null, null);
     this.loadPage();
   }
 

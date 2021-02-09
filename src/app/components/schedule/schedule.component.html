@@ -11,8 +11,10 @@
 <div class="modal-body" style="padding: 1.5rem">
   <ul class="nav nav-tabs">
     <li class="nav-item" *ngFor="let epic of epics; let i=index">
-      <a class="nav-link" [ngClass]="epic._id == currentEpic._id ? 'active' : ''" aria-current="page"
+      <a *ngIf="epic.name == 'Concafras'" class="nav-link" [ngClass]="epic._id == currentEpic._id ? 'active' : ''" aria-current="page"
         (click)="changeEpic(epic)">{{epic.name}}</a>
+      <a *ngIf="epic.name != 'Concafras'" class="nav-link" [ngClass]="epic._id == currentEpic._id ? 'active' : ''" aria-current="page"
+        (click)="changeEpic(epic)">{{epic.name + " ( " + epic.start_age + " à " + epic.end_age + " anos)"}}</a>
     </li>
   </ul>
   <div *ngFor="let group of groupSchedules; let i = index">

@@ -10,15 +10,15 @@
   </div>
 
   <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
-    <div class="row">
+    <div class="row" style="text-align: center; display: flex; align-items: center;">
       <div class="col-lg-2">
         <div class="user-image-for-edit" *ngIf="user.image">
-          <img [src]="user.image.fileLink" style="width: 98%; height: 98%; border-radius: 50px;" />
+          <img [src]="user.image.fileLink" class="img-user" />
         </div>
         <div class="user-image-for-edit" *ngIf="!user.image">
           <fa-icon [icon]="faUserCircle" size="5x"></fa-icon>
         </div>
-        <div>
+        <div class="user-container">
           <button type="button" (click)="selectFile()" class="btn-main">
             Alterar foto
             <input id="select-img" type="file" accept="image/x-png,image/gif,image/jpeg" placeholder="Upload image"
@@ -43,7 +43,14 @@
               <span *ngIf="!surname.value && surname.touched">O sobrenome é obrigatório!</span>
             </p>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-3">
+            <p>
+              <label>Crachá</label>
+              <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required />
+              <span *ngIf="!nick.value && nick.touched">O apelido é obrigatório!</span>
+            </p>
+          </div>
+          <div class="col-lg-3">
             <p>
               <label>Endereço</label>
               <input type="text" name="address" #address="ngModel" [(ngModel)]="user.address" class="form-control"
@@ -56,16 +63,16 @@
           <div class="col-lg-3">
             <p>
               <label>Cidade</label>
-              <input type="text" name="city" #nick="ngModel" [(ngModel)]="user.city" class="form-control" />
+              <input type="text" name="city" #nick="ngModel" [(ngModel)]="user.city" class="form-control" disabled />
             </p>
           </div>
-          <div class="col-lg-1">
+          <div class="col-lg-3">
             <p>
               <label>Estado</label>
-              <input type="text" name="state" #nick="ngModel" [(ngModel)]="user.state" class="form-control" />
+              <input type="text" name="state" #nick="ngModel" [(ngModel)]="user.state" class="form-control" disabled />
             </p>
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-3">
             <p>
               <label>Pais</label>
               <input type="text" name="country" #nick="ngModel" [(ngModel)]="user.country" class="form-control" />
@@ -79,14 +86,14 @@
                 bsDatuserker />
             </p>
           </div>
+        </div>
+        <div class="row row-container">
           <div class="col-lg-3">
             <p>
               <label>Telefone</label>
               <input type="text" name="whatsapp" #nick="ngModel" [(ngModel)]="user.whatsapp" class="form-control" />
             </p>
           </div>
-        </div>
-        <div class="row">
           <div class="col-lg-3">
             <p>
               <label>Centro Espírita</label>
@@ -95,18 +102,13 @@
           </div>
           <div class="col-lg-3">
             <p>
-              <label>E-mail (Esse é seu login)</label>
+              <label>E-mail</label>
               <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel"
                 [(ngModel)]="user.email" class="form-control" required />
               <span *ngIf="!email.value && email.touched">Email inválido!</span>
             </p>
           </div>
-        </div>
-        <div class="row justify-content-between">
-          <div class="col-lg-2">
-            <input type="button" value="voltar" class="btn-main" [disabled]="!userEditForm.form.valid" />
-          </div>
-          <div class="col-lg-2" style="text-align: right">
+          <div class="col-lg-3">
             <input type="submit" value="Salvar Alterações" class="btn-main" />
             <!-- [disabled]="!userEditForm.form.valid" -->
           </div>
@@ -121,30 +123,31 @@
   </div>
   <div class="banner-card banner-item">
     <span>Ajude a CONCAFRAS respondendo nossa pesquisa e
-      <strong>ganhe 200 pontos!</strong></span>
+      <strong>ganhe 50 passos!</strong></span>
   </div>
   <div class="banner-card banner-button">
-    <input type="button" value="Fazer Pesquisa" class="secondary-button" />
+    <a href="https://forms.gle/9FHc1PEfWGFipJpBA" class="btn btn-primary secondary-button">Fazer Pesquisa</a>
   </div>
+</section>
+<section id="cracha" class="my-profile-container">
+  <h2 class="title">Crachá</h2>
+  <embed src="https://concafras.com/cracha/index.html" style="width: 100%; height: 50rem;">
 </section>
 <section id="levels" class="my-profile-container">
   <div class="row">
     <div class="col-lg-6">
-      <span class="title">Meus níveis e pontos</span>
-      <div class="container-level">
-        <div class="container-level-card">
+      <span class="title">Meus níveis e passos</span>
+      <div *ngIf="userInfoLevel" class="container-level">
+        <div class="container-level-card" *ngIf="userInfoLevel.nextLevel">
           <p class="container-level-basic container-level-card-points">
-            {{this._userGamificationService.getPoints()}} pontos
-          </p>
-          <p class="container-level-basic container-level-card-text">
-            5º lugar no ranking
+            {{this._userGamificationService.getPoints()}} passos
           </p>
           <div>
-            <img class="badge-main" src="assets/concafras2021/concafronas/badges/sol.svg" alt="Badge" />
+            <img class="badge-main" [src]="userInfoLevel.nextLevel.icon" alt="Badge" />
           </div>
           <p class="container-level-basic container-level-card-text">
-            Faltam 100 pontos<br />para alcançar o
-            <strong class="container-level-card-text-strong">nível do sol</strong>
+            Faltam {{userInfoLevel.pointsToNextLevel}} passos<br />para alcançar o
+            <strong class="container-level-card-text-strong">nível {{userInfoLevel.nextLevel.badge}}</strong>
           </p>
         </div>
         <hr class="divider" />
@@ -153,63 +156,37 @@
             Níveis alcançados
           </p>
           <div class="badge-level-row">
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/terra off.svg"
-                alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/terra.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Terra</figcaption>
+            <div class="badge-level-container" *ngFor="let level of userInfoLevel.achievedLevels">
+              <img class="badge-level-img" [src]="level.icon" alt="Badge" />
+              <figcaption class="badge-level-img-text">{{level.badge}}</figcaption>
             </div>
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/marte off.svg"
-                alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/marte.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Marte</figcaption>
+            <div class="badge-level-container" *ngFor="let level of userInfoLevel.notAchievedLevels">
+              <img class="badge-level-img-off" [src]="_userGamificationService.getIconOffByLevel(level)" alt="Badge" />
+              <figcaption class="badge-level-img-text">{{level.badge}}</figcaption>
             </div>
           </div>
+
           <div class="badge-level-row">
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/venus off.svg"
-                alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/venus.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Vênus</figcaption>
-            </div>
-            <div class="badge-level-container">
-              <img *ngIf="false" class="badge-level-img-off"
-                src="assets/concafras2021/concafronas/badges/jupiter off.svg" alt="Badge" />
-              <img *ngIf="true" class="badge-level-img" src="assets/concafras2021/concafronas/badges/jupiter.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Júpiter</figcaption>
-            </div>
+            <a (click)="openHistoryMissionsComponent()"class="btn btn-primary btn-progress">Ver progresso</a>
           </div>
-          <div class="badge-level-row">
-            <div class="badge-level-container">
-              <img *ngIf="true" class="badge-level-img-off" src="assets/concafras2021/concafronas/badges/sol off.svg"
-                alt="Badge" />
-              <img *ngIf="false" class="badge-level-img" src="assets/concafras2021/concafronas/badges/sol.svg"
-                alt="Badge" />
-              <figcaption class="badge-level-img-text">Sol</figcaption>
-            </div>
-          </div>
-          <div class="badge-level-row">
-            <a href="" class="btn btn-primary btn-progress">Ver progresso</a>
-          </div>
+
         </div>
       </div>
     </div>
     <div class="col-lg-6">
-      <span class="title">Ranking</span>
-      <app-card-ranking></app-card-ranking>
+      <span class="title">Tabela de passos</span>
+      <div class="container-points-table">
+        <img class="points-table" src="assets/concafras2021/concafronas/tabela_pontos.jpeg" alt="Tabela_de_pontos">
+      </div>
+      <!-- <app-card-ranking></app-card-ranking>
       <div style="text-align: center; margin-top: 2rem;">
         <input type="button" value="Ver ranking completo" class="btn-main" />
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
 <section id="change-my-points" class="my-profile-container">
-  <h2 class="title">Trocar meus pontos</h2>
+  <h2 class="title">Trocar meus passos</h2>
   <div id="carouselChangeMyPoints" class="carousel slide caravan-carousel-recent" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselChangeMyPoints" data-slide-to="0" class="active"></li>

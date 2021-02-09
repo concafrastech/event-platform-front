@@ -49,12 +49,12 @@ export class InfanciaCircoConcafrinhasComponent implements OnInit {
       this.modalRef = this.modalService.show(template);
     }
     else {
-      alert("Atividade fechada! Por favor, retorne para atividade da programação do evento.");
+      this.openAlert("Atividade fechada! Por favor, retorne para atividade da programação do evento.");
     }
   }
-
-  openAlert() {
-    alert("Sala Virtual fechada! Por favor, agurade até 17:30 conforme a programação do evento.");
+  
+  openAlert(message:string) {
+    alert(message);
   }
 
   verifyMuralTime() {

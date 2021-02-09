@@ -14,9 +14,9 @@
                 <div class="carousel-inner">
                   <div class="carousel-item card-height active " [ngClass]="now ? 'now' : ''">
                     <div class="card">
-                      <img style="width: 100%; height: 100%" (click)="goToAudithorium()" *ngIf="currentItem?.thumbnail"
+                      <img style="width: 90%; height: 100%; margin: 0px auto;" (click)="goToAudithorium()" *ngIf="currentItem?.thumbnail"
                         [src]="currentItem.thumbnail.fileLink" alt="">
-                      <img style="width: 100%; height: 100%" (click)="goToAudithorium()" *ngIf="!currentItem?.thumbnail"
+                      <img style="width: 90%; height: 100%; margin: 0px auto;" (click)="goToAudithorium()" *ngIf="!currentItem?.thumbnail"
                         src="assets/concafras2021/concafronas/paisagem.jpg" alt="">
                       <span style="color: black">{{
                         todaySchedule[currentCarouselSchedule].name

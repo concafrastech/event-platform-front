@@ -65,7 +65,7 @@ export class AllContentComponent implements OnInit {
   }
 
   getTrails(page, epicId) {
-    this._trailService.getTrails(page, epicId).subscribe(
+    this._trailService.getFullTrails(page, epicId).subscribe(
       (response) => {
         if (!response.trails) {
           this.status = "error";
@@ -112,7 +112,7 @@ export class AllContentComponent implements OnInit {
   }
 
   getStages(page, epicId) {
-    this._stageService.getStages(page, epicId).subscribe(
+    this._stageService.getFullStages(page, epicId).subscribe(
       (response) => {
         if (!response.stages) {
           this.status = "error";

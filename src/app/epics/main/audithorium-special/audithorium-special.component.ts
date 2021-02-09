@@ -48,6 +48,9 @@ export class AudithoriumSpecialComponent implements OnInit {
       case "cecx":
         this.title = "Campanha de Esclarecimento Chico Xavier";
         this.pageTarget = "https://forms.gle/2RPsHWcfDistBuFX8";
+        this.actualContent = this.temporaryContent(
+          "https://youtu.be/dJhAMJuYb84"
+        );
         break;
 
       case "clube":

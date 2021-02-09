@@ -79,7 +79,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this._userGamificationService.setMissionComplete("edit-profile");
+    this._userGamificationService.setMissionComplete("Perfil do Caravaneiro");
     if (this.fileToUpload) {
       this._contentService.uploadFile(this.fileToUpload).subscribe({
         next: (response) => {

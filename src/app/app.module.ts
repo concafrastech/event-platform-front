@@ -183,6 +183,7 @@ import { XpsEditComponent } from './admin/xps/xps-edit/xps-edit.component';
 import { SubscriptionListComponent } from './admin/subscription/subscription-list/subscription-list.component';
 import { UserTrailsComponent } from './epics/main/user-trails/user-trails.component';
 import { AllContentComponent } from './epics/main/all-content/all-content.component';
+import { SubscriptionEditComponent } from './admin/subscription/subscription-edit/subscription-edit.component';
 import { AudioPlayerComponent } from './components/channels/audio-player/audio-player.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 import { HistoryMissionsComponent } from './components/profile-edit/history-missions/history-missions.component';
@@ -350,6 +351,7 @@ const GamificationConfig = {
     XpsAddComponent,
     XpsEditComponent,
     SubscriptionListComponent,
+    SubscriptionEditComponent,
     UserTrailsComponent,
     AllContentComponent,
     AudioPlayerComponent,

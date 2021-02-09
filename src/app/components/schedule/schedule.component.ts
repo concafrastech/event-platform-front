@@ -10,6 +10,7 @@ import { UserService } from "src/app/services/user.service";
 import { Observable } from "rxjs/Observable";
 import { concat } from "rxjs";
 import { concatMap, map } from "rxjs/operators";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-schedule",
@@ -51,7 +52,8 @@ export class ScheduleComponent implements OnInit {
     private _epicService: EpicService,
     private _lectureService: LectureService,
     public bsModalRef: BsModalRef,
-    private cRef: ChangeDetectorRef
+    private cRef: ChangeDetectorRef,
+    private _spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -89,7 +91,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   loadScheduleEpic() {
-    this.isLoading = true;
+    this._spinner.show();
     this.schedules = [];
     this.groupSchedules = [];
     this._epicService
@@ -124,7 +126,7 @@ export class ScheduleComponent implements OnInit {
               next: (response) => {},
               error: null,
               complete: () => {
-                this.isLoading = false;
+                this._spinner.hide();
               },
             });
           }

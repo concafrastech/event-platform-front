@@ -187,6 +187,7 @@ import { SubscriptionEditComponent } from './admin/subscription/subscription-edi
 import { AudioPlayerComponent } from './components/channels/audio-player/audio-player.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 import { HistoryMissionsComponent } from './components/profile-edit/history-missions/history-missions.component';
+import { ResetPassComponent } from './components/login/reset-pass/reset-pass.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -357,6 +358,7 @@ const GamificationConfig = {
     AudioPlayerComponent,
     ConfirmPasswordComponent,
     HistoryMissionsComponent,
+    ResetPassComponent,
   ],
   imports: [
     BrowserModule,

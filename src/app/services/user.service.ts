@@ -112,7 +112,7 @@ export class UserService {
     }
 
     getUsers(page = null, search = null): Observable<any> {
-        let params = { 
+        let params = {
             page : page,
             search : search != null ? search : ''
          };
@@ -129,5 +129,16 @@ export class UserService {
             .set('Authorization', this.getToken());
 
         return this._http.get(this.url + 'user/' + id, {headers: headers});
+    }
+
+    setResetPassword(email) {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        let params = {
+            email: email,
+            redirectUrl: "https://event-platform-concafras.web.app/"
+        }
+
+        return this._http.post(this.url + 'recover-password', params, {headers: headers});
     }
 }

@@ -1,0 +1,23 @@
+<div class="modal-header" style="text-align: center; width: 100%">
+    <div style="width: 100%">
+        <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div style="width: 0px; z-index: 120">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<div class="modal-body" style="padding: 1.5rem">
+    <div style="margin: 0px auto; width: 70%; text-align: center">
+        <p style="font-size: 1rem; color: #a2a2a2; margin: 1rem">
+            Digite no campo o email cadastrado no sistema da secretária da CONCAFRAS.
+        </p>
+        <div style="margin: 0 auto;">
+            <input class="form-control" name="email_resetpass" [(ngModel)]="email" placeholder="Digite seu email" />
+        </div>
+        <button type="button" class="btn-resetpass" style="margin: 1rem" (click)="resetPass()">
+            Recuperar senha
+        </button>
+    </div>
+</div>

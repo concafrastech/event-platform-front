@@ -282,7 +282,11 @@ export class HubComponent implements OnInit, AfterViewInit {
 
   //Redireciona para uma url interna saindo do contexto do svg
   redirectToFromSvg(path: string) {
-    this.zone.run(() => this._router.navigate([path]));
+    if(path == "") {
+      alert("Atividade fechada! Retorne mais tarde e fique atento a programação")
+    } else {
+      this.zone.run(() => this._router.navigate([path]));
+    }
   }
 
   //Modal

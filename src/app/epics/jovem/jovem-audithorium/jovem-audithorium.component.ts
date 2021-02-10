@@ -7,12 +7,13 @@ import { Content } from "src/app/models/content";
 import { LectureService } from "src/app/services/lecture.service";
 import { ClassroomService } from "src/app/services/classroom.service";
 import { ActivityService } from "src/app/services/activity.service";
+import { ContentService } from "src/app/services/content.service";
 
 @Component({
   selector: 'app-jovem-audithorium',
   templateUrl: './jovem-audithorium.component.html',
   styleUrls: ['./jovem-audithorium.component.css'],
-  providers: [LectureService, ClassroomService, ActivityService],
+  providers: [ContentService, LectureService, ClassroomService, ActivityService],
 })
 
 export class JovemAudithoriumComponent implements OnInit {
@@ -34,7 +35,8 @@ export class JovemAudithoriumComponent implements OnInit {
     private _router: Router,
     private _lectureService: LectureService,
     private _classroomService: ClassroomService,
-    private _activityService: ActivityService
+    private _activityService: ActivityService,
+    private _contentService: ContentService
   ) { }
 
   ngOnInit() {
@@ -69,6 +71,27 @@ export class JovemAudithoriumComponent implements OnInit {
           this._activityService.getActivity(id).subscribe((response) => {
             this.lecture = response.activity;
             this.handleDisplay(this.lecture.contents);
+          });
+          break;
+        }
+        case "content": {
+          this._contentService.getContent(id).subscribe((response) => {
+            this.lecture = new Lecture(
+              "",
+              "",
+              "",
+              "",
+              "",
+              new Date(),
+              new Date(),
+              null,
+              [],
+              new Date(),
+              new Date(),
+              null
+            );
+            this.lecture.contents.push(response.content);
+            this.handleDisplay(this.contents);
           });
           break;
         }

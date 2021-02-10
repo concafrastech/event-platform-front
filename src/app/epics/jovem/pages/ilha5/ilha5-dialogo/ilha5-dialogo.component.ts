@@ -14,7 +14,6 @@ import { TrailService } from 'src/app/services/trail.service';
 import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
-import { BookClubComponent } from 'src/app/epics/main/book-club/book-club.component';
 import { Schedule } from 'src/app/models/schedule';
 import { EpicService } from 'src/app/services/epic.service';
 import { RightSidebarComponent } from 'src/app/epics/main/right-sidebar/right-sidebar.component';
@@ -53,6 +52,11 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
   public todaySchedule: Schedule[];
   public todayEvents: Lecture[] = [];
   public userName: String;
+  public lecture: Lecture;
+  public showSelect: Boolean = false;
+  public zoomId: String;
+  public videoId: String;
+  public audioId: String;
 
   options = { 
     zoomEnabled: true,
@@ -243,18 +247,6 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     );
   }
 
-  openBookClubComponent() {
-    const initialState = {
-      title: "Escolha como deseja acessar o nosso curso:",
-    };
-    this.bsModalRef = this._modalService.show(BookClubComponent, {
-      initialState,
-      class: "modal-lg",
-    });
-    this.bsModalRef.content.closeBtnName = "Fechar";
-  }
-
-
   getTime(addValue) : string {
     var today = new Date();
     var hours = today.getHours();
@@ -438,6 +430,44 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
       }
     }
     return '';
+  }
+  
+  SelectContent(i) {
+    let today = new Date();
+    let start = new Date(this.schedules[i].start_time);
+    let end = new Date(this.schedules[i].end_time);
+    //Ainda não acabou e já começou
+    if (
+      today.getTime() < end.getTime() &&
+      today.getTime() >= start.getTime()
+    ) {
+      this._lectureService.getLecture(this.schedules[i].id).subscribe((response) => {
+        if(response.lecture) {
+          this.zoomId = "";
+          this.videoId = "";
+          this.audioId = "";
+          for (let j = 0; j < response.lecture.contents.length; j++) {
+            if(response.lecture.contents[j].type == "youtube") {
+              this.videoId = response.lecture.contents[j]._id;
+            }
+            if(response.lecture.contents[j].type == "zoom") {
+              this.zoomId = response.lecture.contents[j]._id;
+            }
+            if(response.lecture.contents[j].type == "audio") {
+              this.audioId = response.lecture.contents[j]._id;
+            }
+          }
+          this.showSelect = !this.showSelect;
+          window.scrollTo(0,document.body.scrollHeight);
+        }
+        
+      });
+    } else {
+      //mensagem que não começou ou já acabou
+      alert("Selecione uma palestra que esteja ocorrendo neste momento!")
+    }
+    
+    
   }
 
 }

@@ -1,0 +1,31 @@
+<div class="modal-header" style="text-align: center; width: 100%">
+    <div style="width: 100%">
+        <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div style="width: 0px; z-index: 120">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<div class="modal-body" style="padding: 1.5rem">
+    <div style="margin: 0px auto; width: 70%; text-align: left">
+        <span style="font-size: 0.8rem; color: #a2a2a2; margin: 1rem">
+            Solicite o EFAS para sua cidade clicando neste link => <a href="http://oefas.com/wefas" target="_blank" >http://oefas.com/wefas</a>
+        </span><br>
+        <span style="font-size: 0.8rem; color: #a2a2a2; margin: 1rem">
+            Link de acesso ao Manual de realização EFAS Online => <a href="https://abre.ai/manualefasonline" target="_blank" >https://abre.ai/manualefasonline</a>
+        </span><br>
+        <span style="font-size: 0.8rem; color: #a2a2a2; margin: 1rem">
+            Link de acesso às opções de cursos doutrinários para o seu EFAS => <a href="https://abre.ai/materialdoutrinarioefas" target="_blank" >https://abre.ai/materialdoutrinarioefas</a>
+        </span><br>
+        <span style="font-size: 0.8rem; color: #a2a2a2; margin: 1rem">
+            Maiores informações sobre os Encontros Fraternos Auta de Souza podem ser obtidas pelo email:
+            efas@concafras.com.
+            Stand do EFAS
+        </span><br>
+        <div *ngIf="actualContent" style="margin: 0 auto;">
+            <app-videojs *ngIf="!isLoading" [vContent]="actualContent"></app-videojs>
+        </div>
+    </div>
+</div>

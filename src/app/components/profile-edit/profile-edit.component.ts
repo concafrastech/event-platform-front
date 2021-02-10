@@ -60,7 +60,6 @@ export class ProfileEditComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-
     //TODO: Melhorar para emissão de eventos no serviço de gamificação quando terminar de carregar as informações do usuário
     setTimeout(() => {
       this.userInfoLevel = this._userGamificationService.getInfoLevel();
@@ -78,8 +77,7 @@ export class ProfileEditComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    this._userGamificationService.setMissionComplete("Perfil do Caravaneiro");
+  saveImage(){
     if (this.fileToUpload) {
       this._contentService.uploadFile(this.fileToUpload).subscribe({
         next: (response) => {
@@ -98,7 +96,12 @@ export class ProfileEditComponent implements OnInit {
     }
   }
 
+  onSubmit() {
+    this.updateUser();
+  }
+
   updateUser() {
+    this._userGamificationService.setMissionComplete("Perfil do Caravaneiro");
     this._userService.updateUser(this.user).subscribe(
       (response) => {
         if (!response.user) {
@@ -107,12 +110,7 @@ export class ProfileEditComponent implements OnInit {
           this.status = "success";
           localStorage.setItem("identity", JSON.stringify(this.user));
           this.identity = this.user;
-          /*this._uploadService
-                        .makeFileRequest(this.url + 'upload-image-user/' + this.user._id, [], this.filesToUpload, this.token, 'image')
-                        .then((result: any) => {
-                            this.user.image = result.user.image;
-                            localStorage.setItem('identity', JSON.stringify(this.user));
-                        });*/
+          this.user = this.identity;
         }
       },
       (error) => {
@@ -142,6 +140,7 @@ export class ProfileEditComponent implements OnInit {
 
   fileChangeEvent(fileInput: any) {
     this.fileToUpload = <File>fileInput.target.files[0];
+    this.saveImage();
   }
 
   setPointsSearch() {

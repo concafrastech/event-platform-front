@@ -1,3 +1,4 @@
+import { EfasComponent } from './../efas/efas.component';
 import { ActivityService } from "./../../../services/activity.service";
 import { LectureService } from "./../../../services/lecture.service";
 import { Activity } from "./../../../models/activity";
@@ -10,6 +11,7 @@ import { UserService } from "src/app/services/user.service";
 import { Lecture } from "src/app/models/lecture";
 import { DocumentService } from "src/app/services/document.service";
 import { Router } from "@angular/router";
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: "app-right-sidebar",
@@ -32,8 +34,11 @@ export class RightSidebarComponent implements OnInit {
     private _lectureService: LectureService,
     private _activityService: ActivityService,
     private _shareMessageService: ShareMessageService,
-    private _documentService: DocumentService
+    private _documentService: DocumentService,
+    private _modalService: BsModalService,
   ) {}
+
+  public bsModalRef: BsModalRef;
 
   public messages: ShareMessage[] = [];
   public currentCarouselShareMessage: number = 0;
@@ -240,5 +245,16 @@ export class RightSidebarComponent implements OnInit {
         this.todaySchedule[this.currentCarouselSchedule].id,
       ]);
     }
+  }
+
+  openEFASComponent() {
+    const initialState = {
+      title: "Encontro Fraterno Auta de Souza",
+    };
+    this.bsModalRef = this._modalService.show(EfasComponent, {
+      initialState,
+      class: "modal-lg",
+    });
+    this.bsModalRef.content.closeBtnName = "Fechar";
   }
 }

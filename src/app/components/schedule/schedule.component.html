@@ -40,7 +40,8 @@
                 <div style="float: left">
                   <span style="font-size: 0.8rem; color: #a2a2a2">{{
                     schedule.description
-                    }} - <strong style="color: black;">localização: {{ schedule.place }}</strong></span>
+                    }} - <strong style="color: black;">localização: {{ schedule.place }}</strong>
+                    <img style="margin-left: 10px; height: 2.5rem; width: 2.5rem;" [src]="placeIcon[schedule.iconIndex]"/></span>
                 </div>
                 <div style="float: right">
                   <img style="margin-left: 5rem"

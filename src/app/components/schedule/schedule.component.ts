@@ -42,10 +42,11 @@ export class ScheduleComponent implements OnInit {
     "Dezembro",
   ];
   public isLoading: boolean;
-  // palco
-  // ndc
-  // palestras
-  // espaço do caravaneiro
+  public placeIcon = ['assets/concafras2021/concafronas/palco.png',
+                      'assets/concafras2021/concafronas/ndc.png',
+                      'assets/concafras2021/concafronas/palestras.png',
+                      'assets/concafras2021/concafronas/formacao_trabalhadores.png',
+                      'assets/concafras2021/concafronas/icones/mosaico.svg'];
 
   constructor(
     private _userService: UserService,
@@ -102,7 +103,6 @@ export class ScheduleComponent implements OnInit {
             this.schedules = response;
 
             this.schedules.sort(this.sortSchedules);
-            //this.loadlocation
             for (let i = 0; i < this.schedules.length; i++) {
               let day = new Date(this.schedules[i].start_time).getDate();
               let month = this.strMonths[
@@ -146,8 +146,10 @@ export class ScheduleComponent implements OnInit {
     let obs$: Observable<any>[] = [];
     this.schedules.map((schedule: any, index) => {
       if (schedule.type == "activity" || schedule.type == "classroom") {
+        schedule.iconIndex = 1;
         schedule.place = "Ndc";
         if (schedule.type == "classroom") {
+          schedule.iconIndex = 3;
           schedule.place = "Formação de Trabalhadores Espirítas";
         }
       } else {
@@ -155,14 +157,17 @@ export class ScheduleComponent implements OnInit {
           this._lectureService.getLecture(schedule.id).pipe(
             map((response) => {
               if (response.lecture.type == "momento_coletivo") {
+                schedule.iconIndex = 0;
                 schedule.place = "Palco";
               } else if (
                 response.lecture.type == "workshop" ||
                 response.lecture.type == "alegria" ||
                 response.lecture.type == "alegria_music"
               ) {
+                schedule.iconIndex = 4;
                 schedule.place = "Espaço do Caravaneiro";
               } else {
+                schedule.iconIndex = 2;
                 schedule.place = "Palestras";
               }
             })

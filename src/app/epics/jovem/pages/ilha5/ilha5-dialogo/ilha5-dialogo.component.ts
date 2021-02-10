@@ -14,7 +14,6 @@ import { TrailService } from 'src/app/services/trail.service';
 import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
-import { BookClubComponent } from 'src/app/epics/main/book-club/book-club.component';
 import { Schedule } from 'src/app/models/schedule';
 import { EpicService } from 'src/app/services/epic.service';
 import { RightSidebarComponent } from 'src/app/epics/main/right-sidebar/right-sidebar.component';
@@ -52,6 +51,12 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
   //=false; falta implementar quando seleciona um evento para mudar este status para true//
   public todaySchedule: Schedule[];
   public todayEvents: Lecture[] = [];
+  public userName: String;
+  public lecture: Lecture;
+  public showSelect: Boolean = false;
+  public zoomId: String;
+  public videoId: String;
+  public audioId: String;
 
   options = { 
     zoomEnabled: true,
@@ -83,6 +88,11 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     let epic = JSON.parse(localStorage.getItem('currentEpic'));
     this.epic = epic;
     this.identity = this._userService.getIdentity();
+    if(!this.identity.nick) {
+      this.userName = this.identity.name;
+    } else {
+      this.userName = this.identity.nick;
+    }
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
     this.getLectures(1, epic._id);
     //this.getTrails(1,  epic._id);
@@ -154,12 +164,6 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.trails = response.trails;
-
-          //incluido filtro das trilhas da ilha
-          // forcei um id 600757276f6f1200bda3c426 para funcionar pois o cadastro de teste chamava um curso inexistente
-          this.trails = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
-          // this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
-
           this.trails.forEach((trail, index) => {
             this.getClassrooms(page, trail, index);
           });
@@ -242,18 +246,6 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
       }
     );
   }
-
-  openBookClubComponent() {
-    const initialState = {
-      title: "Escolha como deseja acessar o nosso curso:",
-    };
-    this.bsModalRef = this._modalService.show(BookClubComponent, {
-      initialState,
-      class: "modal-lg",
-    });
-    this.bsModalRef.content.closeBtnName = "Fechar";
-  }
-
 
   getTime(addValue) : string {
     var today = new Date();
@@ -438,6 +430,44 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
       }
     }
     return '';
+  }
+  
+  SelectContent(i) {
+    let today = new Date();
+    let start = new Date(this.schedules[i].start_time);
+    let end = new Date(this.schedules[i].end_time);
+    //Ainda não acabou e já começou
+    if (
+      today.getTime() < end.getTime() &&
+      today.getTime() >= start.getTime()
+    ) {
+      this._lectureService.getLecture(this.schedules[i].id).subscribe((response) => {
+        if(response.lecture) {
+          this.zoomId = "";
+          this.videoId = "";
+          this.audioId = "";
+          for (let j = 0; j < response.lecture.contents.length; j++) {
+            if(response.lecture.contents[j].type == "youtube") {
+              this.videoId = response.lecture.contents[j]._id;
+            }
+            if(response.lecture.contents[j].type == "zoom") {
+              this.zoomId = response.lecture.contents[j]._id;
+            }
+            if(response.lecture.contents[j].type == "audio") {
+              this.audioId = response.lecture.contents[j]._id;
+            }
+          }
+          this.showSelect = !this.showSelect;
+          window.scrollTo(0,document.body.scrollHeight);
+        }
+        
+      });
+    } else {
+      //mensagem que não começou ou já acabou
+      alert("Selecione uma palestra que esteja ocorrendo neste momento!")
+    }
+    
+    
   }
 
 }

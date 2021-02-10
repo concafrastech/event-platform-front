@@ -39,6 +39,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   public strMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
   /* baseado em schedule.component.ts - fim */
   public schedule: Schedule;
+  public userName: String;
 
 
   options = { 
@@ -68,6 +69,11 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
 
       let epic = JSON.parse(localStorage.getItem('currentEpic'));
       this.identity = this._userService.getIdentity();
+      if(!this.identity.nick) {
+        this.userName = this.identity.name;
+      } else {
+        this.userName = this.identity.nick;
+      }
       this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
       //this.getLectures(1, epic._id);
       //this.getTrails(1,  epic._id);

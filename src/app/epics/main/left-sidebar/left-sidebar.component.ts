@@ -1,16 +1,11 @@
 import { DocumentService } from "src/app/services/document.service";
 import { MagneticPassDistanceComponent } from "./../magnetic-pass-distance/magnetic-pass-distance.component";
-import { Component, ElementRef, OnInit, Renderer2 } from "@angular/core";
+import { Component, ElementRef, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { NgBootstrapAlertService } from "ng-bootstrap-alert";
 import { UserService } from "src/app/services/user.service";
 
-import {
-  faHeart,
-  faLifeRing,
-  faQuestionCircle,
-  faUserCircle,
-} from "@fortawesome/free-regular-svg-icons";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { ScheduleComponent } from "src/app/components/schedule/schedule.component";
 import { FraternalSupportComponent } from "../fraternal-support/fraternal-support.component";
@@ -39,8 +34,7 @@ export class LeftSidebarComponent implements OnInit {
     public _bootstrapAlertService: NgBootstrapAlertService,
     private _modalService: BsModalService,
     private _documentService: DocumentService,
-    public _userGamification: UserGamificationService,
-    private renderer: Renderer2
+    public _userGamification: UserGamificationService
   ) {
     this.progress = {
       max: 0,
@@ -48,20 +42,15 @@ export class LeftSidebarComponent implements OnInit {
     };
     this.user = this._userService.getIdentity();
     this.initGamefication();
-    
   }
 
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
     console.log("[OK] left sidebar");
 
-    //this.initJivoChat();
-
-    this._documentService
-      .getDocument(this.user.image)
-      .subscribe((response) => {
-        this.user.image = response.document;
-      });
+    this._documentService.getDocument(this.user.image).subscribe((response) => {
+      this.user.image = response.document;
+    });
   }
 
   openProgramacaoComponent() {
@@ -99,29 +88,6 @@ export class LeftSidebarComponent implements OnInit {
 
   openCloseFraternalSupportChat() {
     this.showChat = !this.showChat;
-    //this._tawkService.ExpandChatWindow(true);
-  }
-
-  initJivoChat(){
-    const tag = this.renderer.createElement("script");
-    this.renderer.setProperty(tag, 'src', "//code.jivosite.com/widget/aClpHxTFlf")
-    this.jivoChat = new ElementRef(tag);
-    this.renderer.appendChild(document.body, tag);
-    console.log(this.jivoChat);
-  }
-
-  closeJivoChat(){
-    //Recupera referências ao JivoChat
-    const tag = <HTMLScriptElement>this.jivoChat.nativeElement;
-    const divJivo = document.getElementsByTagName('jdiv')[0];
-    const iframeJivo = document.getElementById('jivo-iframe-container');
-
-    //Remove Jivo
-    divJivo.parentNode.removeChild(divJivo);
-    iframeJivo.remove();
-    tag.remove();
-
-    this.jivoChat = null;
   }
 
   logout() {
@@ -133,9 +99,5 @@ export class LeftSidebarComponent implements OnInit {
   initGamefication() {
     this.user.level = this._userGamification.getLevel();
     this.user.points = this._userGamification.getPoints();
-  }
-
-  ngOnDestroy(): void {
-    //this.closeJivoChat();
   }
 }

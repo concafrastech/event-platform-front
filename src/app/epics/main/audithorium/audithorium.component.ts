@@ -8,12 +8,14 @@ import { LectureService } from "src/app/services/lecture.service";
 import { ClassroomService } from "./../../../services/classroom.service";
 import { ActivityService } from "src/app/services/activity.service";
 import { NavbarService } from "src/app/services/navbar.service";
+import { ContentService } from "src/app/services/content.service";
+import { DocumentService } from "src/app/services/document.service";
 
 @Component({
   selector: "app-audithorium",
   templateUrl: "./audithorium.component.html",
   styleUrls: ["./audithorium.component.css"],
-  providers: [LectureService, ClassroomService, ActivityService],
+  providers: [LectureService, ClassroomService, ActivityService, ContentService, DocumentService],
 })
 export class AudithoriumComponent implements OnInit {
   public lecture: Lecture;
@@ -35,6 +37,8 @@ export class AudithoriumComponent implements OnInit {
     private _lectureService: LectureService,
     private _classroomService: ClassroomService,
     private _activityService: ActivityService,
+    private _contentService: ContentService,
+    private _documentService: DocumentService,
     private _navbarService: NavbarService
   ) {}
 
@@ -62,8 +66,22 @@ export class AudithoriumComponent implements OnInit {
         }
         case "classroom": {
           this._classroomService.getClassroom(id).subscribe((response) => {
+            
             this.classroom = response.classroom;
-            this.handleDisplay(this.classroom.contents);
+            this.classroom.contents.forEach((content, index) =>{
+              this._contentService.getContent(content).subscribe((response)=>{
+                let contentAux = response.content;
+                this.classroom.contents[index] = contentAux;
+                this.handleDisplay(this.classroom.contents);
+                if(contentAux.file){
+                  this._documentService.getDocument(contentAux.file).subscribe((response)=>{
+                    this.classroom.contents[index].file = response.document;
+                  })
+                }
+                
+              })
+            })
+            
           });
           break;
         }
@@ -85,7 +103,6 @@ export class AudithoriumComponent implements OnInit {
     if(this.actualContent.type == 'doc'){
       this.actualContent.url = this.actualContent.file.fileLink
     }
-    console.log(this.contents);
 
     this.index = 0;
     this.timeToMoveForward();

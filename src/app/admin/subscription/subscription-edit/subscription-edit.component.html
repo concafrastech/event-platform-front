@@ -1,0 +1,63 @@
+<div class="col-lg-5">
+    <h1 class="h1-strong">{{title}}</h1>
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        Dados atualizados com sucesso!
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Erro ao atualizar os dados.
+    </div>
+    <form #subscriptionEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Código</label>
+                <input type="text" name="subscription_id" #subscription_id="ngModel" [(ngModel)]="subscription.subscription_id" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Status Pagamento</label>
+                    <select [compareWith]="compareByOptionId" name="payment_status" #payment_status="ngModel" [(ngModel)]="subscription.payment_status" class="form-control" readonly>
+                        <option value="">-- Selecione --</option>
+                        <option value="CONFIRMADO">CONFIRMADO</option>
+                        <option value="REFAZER">REFAZER</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Evento</label>
+                    <select [compareWith]="compareByOptionId" name="conference" #conference="ngModel" [(ngModel)]="subscription.conference" class="form-control" readonly>
+                        <option value="">-- Selecione --</option>
+                        <option *ngFor="let conference of conferences" [ngValue]="conference">{{conference.name}}</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <fieldset class="form-group">
+                    <label>Tema</label>
+                    <select [compareWith]="compareByOptionId" name="trails[]" #trails="ngModel" [(ngModel)]="subscription.trails[0]" class="form-control" readonly>
+                        <option value="">-- Selecione --</option>
+                        <option *ngFor="let trail of trailsList" [ngValue]="trail">{{trail.name}} {{trail.epic.type == 'infancia' ? trail.description : ''}} ({{trail.epic.type}})</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!subscriptionEditForm.form.valid" />
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </form>
+</div>
+
+<!-- Spinner -->
+<ngx-spinner></ngx-spinner>

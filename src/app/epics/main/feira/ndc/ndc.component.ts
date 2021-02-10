@@ -49,7 +49,7 @@ export class NdcComponent implements OnInit {
   }
 
   showActivities(item: Stage) {
-    this._userGamificationService.setMissionComplete("ndc");
+    this._userGamificationService.setMissionComplete("Painéis das Novas Dimensões do Conhecimento Espírita");
     this._router.navigate(["/ndc-activities"], {
       queryParams: { id: item._id },
     });

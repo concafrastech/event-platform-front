@@ -61,7 +61,7 @@ export class HubComponent implements OnInit, AfterViewInit {
     this.svgMap = <HTMLObjectElement>(
       this.elementRef.nativeElement.querySelector("#svgMap")
     );
-    
+
     this.svgMap.addEventListener("load", this.loadSvgMapEvents.bind(this));
   }
 
@@ -84,11 +84,11 @@ export class HubComponent implements OnInit, AfterViewInit {
     svgDoc.getElementById("livros").addEventListener("mouseleave", () => {this.setSvgInfo("")});
 
     svgDoc.getElementById("ccex").addEventListener(eventType, this.eventClickSvg.bind(this, "ccex"));
-    svgDoc.getElementById("ccex").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CECX")});
+    svgDoc.getElementById("ccex").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CAMPANHA DE ESCLARECIMENTO CHICO XAVIER")});
     svgDoc.getElementById("ccex").addEventListener("mouseleave", () => {this.setSvgInfo("")});
 
     svgDoc.getElementById("cfas").addEventListener(eventType, this.eventClickSvg.bind(this, "cfas"));
-    svgDoc.getElementById("cfas").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CFAS")});
+    svgDoc.getElementById("cfas").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CAMPANHA DE FRATERNIDADE AUTA DE SOUZA")});
     svgDoc.getElementById("cfas").addEventListener("mouseleave", () => {this.setSvgInfo("")});
 
     svgDoc.getElementById("stand_voluntario").addEventListener(eventType, this.eventClickSvg.bind(this, "stand_voluntario"));
@@ -192,7 +192,6 @@ export class HubComponent implements OnInit, AfterViewInit {
     this.todaySchedule.map((schedule) => {
       this._lectureService.getLecture(schedule.id).subscribe((response) => {
         if (
-          response.lecture.type == "workshop" ||
           response.lecture.type == "momento_coletivo"
         ) {
           this.todayEvents.push(response.lecture);
@@ -283,7 +282,11 @@ export class HubComponent implements OnInit, AfterViewInit {
 
   //Redireciona para uma url interna saindo do contexto do svg
   redirectToFromSvg(path: string) {
-    this.zone.run(() => this._router.navigate([path]));
+    if(path == "" || path == "/ndc" || path == "/palestras") {
+      alert("Atividade fechada! Retorne mais tarde e fique atento a programação")
+    } else {
+      this.zone.run(() => this._router.navigate([path]));
+    }
   }
 
   //Modal

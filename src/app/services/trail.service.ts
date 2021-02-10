@@ -34,7 +34,20 @@ export class TrailService {
         let params = { 
             page : page,
             epic : epicId != null ? epicId : '',
-            search : search != null ? search : ''
+            search : search != null ? search : '',
+         };
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Authorization', getToken());
+
+        return this._http.get(this.url + 'trails/', {headers: headers, params: params});
+    }
+
+    getFullTrails(page = null, epicId = null): Observable<any> {
+        let params = { 
+            full : '1',
+            page : page,
+            epic : epicId != null ? epicId : ''
          };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

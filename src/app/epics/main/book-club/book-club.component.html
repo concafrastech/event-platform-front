@@ -4,7 +4,7 @@
             <h4 class="modal-title">{{ title }}</h4>
         </div>
         <div style="width: 0px; z-index: 120">
-            <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -16,10 +16,10 @@
             <a [href]="urlZoom" target="_blank" role="button" class="btn-main btn btn-primary">Zoom</a>
         </div>
         <div class="col-lg-4">
-            <input type="button" value="Vídeo" class="btn-main btn btn-primary" />
+            <input type="button" (click)="openVideo()" value="Vídeo" class="btn-main btn btn-primary" />
         </div>
         <div class="col-lg-4">
-            <input type="button" value="Áudio" class="btn-main btn btn-primary" />
+            <input type="button" (click)="openAudio()" value="Áudio" class="btn-main btn btn-primary" />
         </div>
     </div>
 </section>

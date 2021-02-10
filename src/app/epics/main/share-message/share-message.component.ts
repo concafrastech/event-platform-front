@@ -36,7 +36,7 @@ export class ShareMessageComponent implements OnInit {
   }
 
   onSubmit(){
-    this._userGamificationService.setMissionComplete('deixe-seu-recado')
+    this._userGamificationService.setMissionComplete('Compartilhe com a gente seu momento CONCAFRAS')
     this.shareMessage.created_at = new Date();
     this._shareMessageService.addShareMessage(this.shareMessage).subscribe((resposta)=>{
       console.log(resposta);

@@ -34,6 +34,7 @@
     public showChat: boolean = false;
   
     public faUserCircle = faUserCircle;
+    public userName: String;
   
     constructor(
       private _router: Router,
@@ -57,7 +58,11 @@
   
     ngOnInit(): void {
       this.identity = this._userService.getIdentity();
-    
+      if(!this.identity.nick) {
+        this.userName = this.identity.name;
+      } else {
+        this.userName = this.identity.nick;
+      }
       this._documentService
       .getDocument(this.user.image)
       .subscribe((response) => {

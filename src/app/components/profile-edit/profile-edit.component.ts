@@ -1,3 +1,4 @@
+import { HistoryMissionsComponent } from './history-missions/history-missions.component';
 import { UserGamificationService } from 'src/app/services/user-gamification.service';
 import { DocumentService } from "./../../services/document.service";
 import { ContentService } from "src/app/services/content.service";
@@ -12,6 +13,7 @@ import { defineLocale } from "ngx-bootstrap/chronos";
 import { ptBrLocale } from "ngx-bootstrap/locale";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { HttpEventType } from "@angular/common/http";
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 defineLocale("pt-br", ptBrLocale);
 
 @Component({
@@ -30,6 +32,7 @@ export class ProfileEditComponent implements OnInit {
   public url: string;
   public fileToUpload: File;
   public userInfoLevel;
+  public bsModalRef: BsModalRef;
 
   constructor(
     private _route: ActivatedRoute,
@@ -39,6 +42,7 @@ export class ProfileEditComponent implements OnInit {
     private _contentService: ContentService,
     private _documentService: DocumentService,
     private _bsLocaleService: BsLocaleService,
+    private _modalService: BsModalService,
     public _userGamificationService: UserGamificationService
   ) {
     this.title = "Meu Perfil";
@@ -75,7 +79,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this._userGamificationService.setMissionComplete("edit-profile");
+    this._userGamificationService.setMissionComplete("Perfil do Caravaneiro");
     if (this.fileToUpload) {
       this._contentService.uploadFile(this.fileToUpload).subscribe({
         next: (response) => {
@@ -121,11 +125,26 @@ export class ProfileEditComponent implements OnInit {
     );
   }
 
+  openHistoryMissionsComponent(){
+    const initialState = {
+      title: "Programação",
+    };
+    this.bsModalRef = this._modalService.show(HistoryMissionsComponent, {
+      initialState,
+      class: "modal-lg",
+    });
+    this.bsModalRef.content.closeBtnName = "Fechar";
+  }
+
   selectFile() {
     document.getElementById("select-img").click();
   }
 
   fileChangeEvent(fileInput: any) {
     this.fileToUpload = <File>fileInput.target.files[0];
+  }
+
+  setPointsSearch() {
+    this._userGamificationService.setMissionComplete("Fazer Pesquisa");
   }
 }

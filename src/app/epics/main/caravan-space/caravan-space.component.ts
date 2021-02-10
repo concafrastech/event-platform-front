@@ -16,6 +16,7 @@ import { concat, Subscription } from "rxjs";
 import { SocialFeedService } from "src/app/services/social-feed.service";
 import { Content } from "src/app/models/content";
 import { Observable } from "rxjs";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-caravan-space",
@@ -74,7 +75,8 @@ export class CaravanSpaceComponent implements OnInit {
     private _lectureService: LectureService,
     private _contentService: ContentService,
     private _documentService: DocumentService,
-    private _socialFeedService: SocialFeedService
+    private _socialFeedService: SocialFeedService,
+    private _spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -82,7 +84,7 @@ export class CaravanSpaceComponent implements OnInit {
       this.loadCarouselShareMessages();
     });
 
-    this.isVideoLoading = true;
+    this._spinner.show();
     this.loadCarouselShareMessages();
     this.loadCarouselSingWithUs();
     this.loadCarouselMusic();
@@ -234,6 +236,8 @@ export class CaravanSpaceComponent implements OnInit {
           if (!this.currentSongVideo) {
             this.currentSongVideo = this.songs[0].contents[0];
           }
+
+          this._spinner.hide();
         },
       });
   }

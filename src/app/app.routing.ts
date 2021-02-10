@@ -121,6 +121,7 @@ import { AudithoriumSpecialComponent } from './epics/main/audithorium-special/au
 import { SubscriptionListComponent } from './admin/subscription/subscription-list/subscription-list.component';
 import { UserTrailsComponent } from './epics/main/user-trails/user-trails.component';
 import { AllContentComponent } from './epics/main/all-content/all-content.component';
+import { SubscriptionEditComponent } from './admin/subscription/subscription-edit/subscription-edit.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -180,6 +181,7 @@ const appRoutes: Routes = [
             {path: 'xps/list/:page', component: XpsListComponent},
             {path: 'subscription/list', component: SubscriptionListComponent},
             {path: 'subscription/list/:page', component: SubscriptionListComponent},
+            {path: 'subscription/edit/:id', component: SubscriptionEditComponent},
         ],
     },
     {

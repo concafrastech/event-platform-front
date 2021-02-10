@@ -3,7 +3,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
-      <div class="MessageText">Olá {{identity.nick}}, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Escolha uma opção a seguir.</div>
+      <div class="MessageText">Olá {{userName}}, eu sou a Auta de Souza! Você acaba de chegar na Estação Jovem, a ilha mais movimentada de toda a CONCAFRAS!<br/>Escolha uma opção a seguir.</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -11,7 +11,7 @@
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Estação Jovem AO VIVO</a></li>
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/programacao']" [routerLinkActive]="['active']">Programação AO VIVO</a></li>
@@ -28,7 +28,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
-      <div class="MessageText">{{identity.nick}}, selecione um evento que esteja ocorrendo neste momento para assistí-lo.
+      <div class="MessageText">{{userName}}, selecione um evento que esteja ocorrendo neste momento para assistí-lo.
       </div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
@@ -37,7 +37,7 @@
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <div *ngFor="let group of groupSchedules; let i = index">
         <div class="card" style="width: 100%">
           <div class="card-header" style="
@@ -50,8 +50,9 @@
             Dia {{ i + 1 }} - {{ group.group }}
           </div>
           <ul class="list-group list-group-flush">
-            <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule">
-              <a [routerLink]="['/jovem/audithorium/', 'lecture', schedule.id]" [routerLinkActive]="['active']">
+            <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule; let i = index">
+              <a href="#" data-toggle="modal" (click)="SelectContent(i)">
+              <!--<a href='#' onclick='openLancamentosComponent(schedule.id)' [routerLinkActive]="['active']">-->
               <div style="float: left">
                 <div [tooltip]="schedule.description" placement="left">
                   {{ schedule.name }}
@@ -78,10 +79,32 @@
         </div>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
+        <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>      
       </ul>
       
       <div class="MessageDate">{{getTime(3)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
+  <div *ngIf="showSelect" class="Space"></div>
+  <div *ngIf="showSelect" class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">Auta de Souza</div>
+      <div class="MessageText">{{userName}}, escolha como você quer assistir:</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div *ngIf="showSelect" class="Space"></div>
+  <div *ngIf="showSelect" class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{userName}}</div>
+      <ul class="list-group list-group-flush">
+        <li *ngIf="zoomId" class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'content', zoomId]">Zoom</a></li>
+        <li *ngIf="videoId" class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'content', videoId]">Vídeo</a></li>
+        <li *ngIf="audioId" class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'content', audioId]">Áudio</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(0)}}</div>
       <div class="MyBubbleArrow"></div>
     </div>
   </div>
@@ -110,7 +133,7 @@ Domingo
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
-      <div class="MessageText">Olá {{identity.nick}}, você já me conhece, né? Eu me chamo Auta de Souza!<br/>
+      <div class="MessageText">Olá {{userName}}, você já me conhece, né? Eu me chamo Auta de Souza!<br/>
         A Estação Jovem AO VIVO foi criada para lembrarmos dos momentos de interação e confraternização coletiva na CONCAFRAS!
       </div>
       <div class="MessageDate">{{getTime(0)}}</div>
@@ -161,7 +184,7 @@ Domingo
     <div class="YourMessageItem">
       <div class="MessageAuthor">Auta de Souza</div>
       <div class="MessageText">
-        E aí, {{identity.nick}}, já deu saudade de abraçar os amigos ao som da Canção da Alegria Cristã?<br/>
+        E aí, {{userName}}, já deu saudade de abraçar os amigos ao som da Canção da Alegria Cristã?<br/>
         Então não perca nem um segundo das nossas lives interativas aqui na Estação!
       </div>
       <div class="MessageDate">{{getTime(0)}}</div>
@@ -191,7 +214,7 @@ Domingo
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-vivo/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
       </ul>

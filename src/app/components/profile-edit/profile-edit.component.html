@@ -126,8 +126,12 @@
       <strong>ganhe 50 passos!</strong></span>
   </div>
   <div class="banner-card banner-button">
-    <input type="button" value="Fazer Pesquisa" class="secondary-button" />
+    <a href="https://forms.gle/9FHc1PEfWGFipJpBA" (click)="setPointsSearch()" class="btn btn-primary secondary-button">Fazer Pesquisa</a>
   </div>
+</section>
+<section id="cracha" class="my-profile-container">
+  <h2 class="title">Crachá</h2>
+  <embed src="https://concafras.com/cracha/index.html" style="width: 100%; height: 50rem;">
 </section>
 <section id="levels" class="my-profile-container">
   <div class="row">
@@ -163,7 +167,7 @@
           </div>
 
           <div class="badge-level-row">
-            <a href="" class="btn btn-primary btn-progress">Ver progresso</a>
+            <a (click)="openHistoryMissionsComponent()"class="btn btn-primary btn-progress">Ver progresso</a>
           </div>
 
         </div>

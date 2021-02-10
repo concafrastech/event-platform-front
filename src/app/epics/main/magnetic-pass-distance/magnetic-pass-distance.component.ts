@@ -24,7 +24,7 @@ export class MagneticPassDistanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.actualContent = this.temporaryContent(
-      "https://youtu.be/g8bbxd1Gws4"
+      "https://youtu.be/pDOQzJD67iQ"
     );
   }
 

@@ -98,6 +98,10 @@
   cursor: pointer;
 }
 
+.resetPass {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 425px) {
   #bg {
     display: none;

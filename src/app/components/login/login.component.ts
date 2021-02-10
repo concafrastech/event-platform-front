@@ -4,6 +4,8 @@ import { Subscription } from 'src/app/models/subscription';
 import { SubscriptionService } from 'src/app/services/subscription.service';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
 
 @Component({
     selector: 'login',
@@ -18,11 +20,13 @@ export class LoginComponent implements OnInit {
     public identity;
     public token;
     public subscriptions: Subscription[] = [];
+    public bsModalRef: BsModalRef;
 
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
-        private _userService: UserService
+        private _userService: UserService,
+        private _modalService: BsModalService,
     ) {
         this.title = 'Seja bem vindo';
         this.user = new User("", "", false, "", "", "", "", "", new Date(), "", "", "", "", "", "", false, "", "ROLE_USER", null, 0, false, [], {});
@@ -119,5 +123,16 @@ export class LoginComponent implements OnInit {
                 input.setAttribute('type', 'password');
             }
         });
+    }
+
+    openResetPassComponent() {
+        const initialState = {
+          title: "Esqueceu sua senha?",
+        };
+        this.bsModalRef = this._modalService.show(ResetPassComponent, {
+          initialState,
+          class: "modal-lg",
+        });
+        this.bsModalRef.content.closeBtnName = "Fechar";
     }
 }

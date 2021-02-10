@@ -3,7 +3,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">João Marcos</div>
-      <div class="MessageText">Olá {{identity.nick}}, eu sou o João Marcos. Bem vindo(a) à Casa do Caminho! Aqui vamos por em prática tudo que temos aprendido na CONCAFRAS! Você também pode conferir como acontecem as atividades práticas nas Mocidades Espíritas:</div>
+      <div class="MessageText">Olá {{userName}}, eu sou o João Marcos. Bem vindo(a) à Casa do Caminho! Aqui vamos por em prática tudo que temos aprendido na CONCAFRAS! Você também pode conferir como acontecem as atividades práticas nas Mocidades Espíritas:</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -11,7 +11,7 @@
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/conhecendo']" [routerLinkActive]="['active']">Conhecendo a Casa do Caminho</a></li>
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/pratica']" [routerLinkActive]="['active']">Minha Prática na CONCAFRAS</a></li>
@@ -34,7 +34,7 @@
     <div class="YourMessageItem">
       <div class="MessageAuthor">João Marcos</div>
       <div class="MessageText">
-        Olá {{identity.nick}}, meu nome é João Marcos, sobrinho do discípulo de Jesus, Barnabé.
+        Olá {{userName}}, meu nome é João Marcos, sobrinho do discípulo de Jesus, Barnabé.
       </div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
@@ -63,7 +63,7 @@
       <div class="MessageAuthor">João Marcos</div>
       <div class="MessageText">
         É claro que eu fiquei bem empolgado no começo, e que houveram vezes em que eu pensei em desistir... maaaaas, com o tempo, entendi que a caridade é o exercício do amor que o Cristo nos ensinou, e que, quando fazemos de coração a alegria que sentimos compensa toda renúncia que fazemos em benefício do nosso próximo.<br/>
-        Para saber um pouco mais sobre a história dos apóstolos, Paulo de Tarso e sobre a Casa do Caminho, leia o livro Paulo e Estevão, ditado pelo espírito Emmanuel, pela psicografia de Chico Xavier. Tenho certeza que você vai se emocionar muuuito, {{identity.nick}}, assim como eu.
+        Para saber um pouco mais sobre a história dos apóstolos, Paulo de Tarso e sobre a Casa do Caminho, leia o livro Paulo e Estevão, ditado pelo espírito Emmanuel, pela psicografia de Chico Xavier. Tenho certeza que você vai se emocionar muuuito, {{userName}}, assim como eu.
       </div>
       <div class="MessageDate">{{getTime(5)}}</div>
       <div class="YourBubbleArrow"></div>
@@ -81,7 +81,7 @@
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
       </ul>
@@ -96,7 +96,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">João Marcos</div>
-      <div class="MessageText">{{identity.nick}}, no momento da inscrição você escolheu um Curso, se lembra?</div>
+      <div class="MessageText">{{userName}}, no momento da inscrição você escolheu um Curso, se lembra?</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -133,14 +133,14 @@
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">{{identity.nick}}, confira a programação das práticas do seu Tema Específico abaixo! A programação dos momentos teóricos pode ser encontrada na Ilha Casa do Escritor.</div>
+      <div class="MessageText">{{userName}}, confira a programação das práticas do seu Tema Específico abaixo! A programação dos momentos teóricos pode ser encontrada na Ilha Casa do Escritor.</div>
       <div class="MessageDate">{{getTime(8)}}</div>
     </div>
   </div>
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <div *ngFor="let group of groupSchedules; let i = index">
         <div class="card" style="width: 100%">
           <div class="card-header" style="

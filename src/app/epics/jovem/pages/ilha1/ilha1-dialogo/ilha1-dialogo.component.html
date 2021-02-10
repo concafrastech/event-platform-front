@@ -4,7 +4,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
-      <div class="MessageText">Olá {{identity.nick}}, eu sou a Patrícia.🥰❤️❤️</div>
+      <div class="MessageText">Olá {{userName}}, eu sou a Patrícia.🥰❤️❤️</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -24,7 +24,7 @@
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/conhecendo']" [routerLinkActive]="['active']">🎉Conhecendo a Casa do Escritor📚</a></li>
         <!--
@@ -52,7 +52,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
-      <div class="MessageText">Olá {{identity.nick}}! Meu nome é Patrícia.🥰❤️❤️</div>
+      <div class="MessageText">Olá {{userName}}! Meu nome é Patrícia.🥰❤️❤️</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -95,7 +95,7 @@
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">Ahh, você pode conhecer mais sobre a minha história e o sobre o mundo espiritual nos livros📚: "Violetas na janela", "Vivendo no mundo dos espíritos", "A casa do escritor" e "O vôo da gaivota", todos psicografados pela Vera. Te garanto que você vai adorar, {{identity.nick}}!</div>
+      <div class="MessageText">Ahh, você pode conhecer mais sobre a minha história e o sobre o mundo espiritual nos livros📚: "Violetas na janela", "Vivendo no mundo dos espíritos", "A casa do escritor" e "O vôo da gaivota", todos psicografados pela Vera. Te garanto que você vai adorar, {{userName}}!</div>
       <div class="MessageDate">{{getTime(11)}}</div>
     </div>
   </div>
@@ -113,7 +113,7 @@
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-escritor/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
       </ul>
@@ -129,7 +129,7 @@
   <div class="YourMessageLine">
     <div class="YourMessageItem">
       <div class="MessageAuthor">Patrícia</div>
-      <div class="MessageText">{{identity.nick}}, no momento da inscrição você escolheu um Curso, se lembra?</div>
+      <div class="MessageText">{{userName}}, no momento da inscrição você escolheu um Curso, se lembra?</div>
       <div class="MessageDate">{{getTime(0)}}</div>
       <div class="YourBubbleArrow"></div>
     </div>
@@ -165,14 +165,14 @@
   </div>
   <div class="YourMessageLine">
     <div class="YourMessageItem">
-      <div class="MessageText">{{identity.nick}}, confira a programação dos momentos teóricos do seu Tema Específico abaixo! A programação dos momentos práticos pode ser encontrada na Ilha Casa do Caminho.</div>
+      <div class="MessageText">{{userName}}, confira a programação dos momentos teóricos do seu Tema Específico abaixo! A programação dos momentos práticos pode ser encontrada na Ilha Casa do Caminho.</div>
       <div class="MessageDate">{{getTime(8)}}</div>
     </div>
   </div>
   <div class="Space"></div>
   <div class="MyMessageLine">
     <div class="MyMessageItem">
-      <div class="MessageAuthor">{{identity.nick}}</div>
+      <div class="MessageAuthor">{{userName}}</div>
       <div *ngFor="let group of groupSchedules; let i = index">
         <div class="card" style="width: 100%">
           <div class="card-header" style="

@@ -89,9 +89,14 @@ export class UserListComponent implements OnInit {
                   this._spinner.hide();
                   this.total = response.total;
                   this.users = response.users;
-                  this.pages = response.pages;
-                  if (page > this.pages) {
-                      this._router.navigate(['/admin/user/list', 1]);
+                  for (let i = 1; i <= response.pages; i++) {
+                    this.pages.push(i);
+                  }
+                  
+                  if (this.pages && page > this.pages.length) {
+                    this._router.navigate(["/admin/user/list", 1]);
+                  } else {
+                    this._router.navigate(["/admin/user/list", page]);
                   }
               }
           },

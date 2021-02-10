@@ -52,6 +52,7 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
   //=false; falta implementar quando seleciona um evento para mudar este status para true//
   public todaySchedule: Schedule[];
   public todayEvents: Lecture[] = [];
+  public userName: String;
 
   options = { 
     zoomEnabled: true,
@@ -83,6 +84,11 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     let epic = JSON.parse(localStorage.getItem('currentEpic'));
     this.epic = epic;
     this.identity = this._userService.getIdentity();
+    if(!this.identity.nick) {
+      this.userName = this.identity.name;
+    } else {
+      this.userName = this.identity.nick;
+    }
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
     this.getLectures(1, epic._id);
     //this.getTrails(1,  epic._id);
@@ -154,12 +160,6 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
           this.status = "error";
         } else {
           this.trails = response.trails;
-
-          //incluido filtro das trilhas da ilha
-          // forcei um id 600757276f6f1200bda3c426 para funcionar pois o cadastro de teste chamava um curso inexistente
-          this.trails = this.trails.filter((trail: Trail) => trail._id === "600757276f6f1200bda3c426");
-          // this.trails = this.trails.filter((trail: Trail) => trail._id === this.subscription.trails[0]._id);
-
           this.trails.forEach((trail, index) => {
             this.getClassrooms(page, trail, index);
           });

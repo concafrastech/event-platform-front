@@ -47,7 +47,7 @@
   width: 25%;
   margin: 0 auto;
   padding: 0.5rem;
-  z-index: 5000;
+  z-index: 1000;
   text-align: center;
   border: 1px solid #1ea6ec;
   border-radius: 25px;
@@ -68,7 +68,7 @@
 
   .svgInfo {
     left: 3rem;
-    top: 5.5rem;
+    top: 4rem;
   }
 }
 

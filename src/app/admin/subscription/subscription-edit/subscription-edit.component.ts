@@ -76,7 +76,7 @@ export class SubscriptionEditComponent implements OnInit {
             this.subscriptionId = params["id"];
             this.getSubscription(this.subscriptionId);
           });
-        } 
+        }
       },
       (error) => {
         this._spinner.hide();

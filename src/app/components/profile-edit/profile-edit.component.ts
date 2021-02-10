@@ -143,4 +143,8 @@ export class ProfileEditComponent implements OnInit {
   fileChangeEvent(fileInput: any) {
     this.fileToUpload = <File>fileInput.target.files[0];
   }
+
+  setPointsSearch() {
+    this._userGamificationService.setMissionComplete("Fazer Pesquisa");
+  }
 }

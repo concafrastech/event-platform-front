@@ -31,10 +31,11 @@ export class SubscriptionService {
         return this._http.put(this.url + 'subscriptions/' + subscription._id, params, {headers: headers});
     }
 
-    getSubscriptions(page = null, userId = null): Observable<any> {
+    getSubscriptions(page = null, userId = null, search = null): Observable<any> {
         let params = { 
             page : page,
-            user : userId != null ? userId : ''
+            user : userId != null ? userId : '',
+            search : search != null ? search : '',
          };
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')

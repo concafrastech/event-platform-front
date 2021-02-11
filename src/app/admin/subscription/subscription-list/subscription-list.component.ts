@@ -18,6 +18,7 @@ export class SubscriptionListComponent implements OnInit {
   @Input() conferenceId: string = null;
   public title: string;
   public url: string;
+  public search: string;
   public identity;
   public token;
   public page;
@@ -70,12 +71,16 @@ export class SubscriptionListComponent implements OnInit {
           this.prev_page = 1;
         }
       }
-      this.getSubscriptions(page, this.conferenceId);
+      this.getSubscriptions(page, this.conferenceId, this.search);
     });
   }
 
-  getSubscriptions(page, conferenceId) {
-    this._subscriptionService.getSubscriptions(page, conferenceId).subscribe(
+  searchTrails(){
+    this.getSubscriptions(this.page, this.conferenceId, this.search);
+  }
+
+  getSubscriptions(page, conferenceId, search) {
+    this._subscriptionService.getSubscriptions(page, conferenceId, search).subscribe(
       (response) => {
         if (!response.subscriptions) {
           this.status = "error";

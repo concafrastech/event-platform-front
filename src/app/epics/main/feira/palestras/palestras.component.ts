@@ -28,10 +28,8 @@ export class PalestrasComponent implements OnInit {
     this._lectureService.getLectures(null, epic._id).subscribe((response) => {
       response.lectures.forEach(lecture => {
         if (
-          lecture.type != "workshop" ||
-          lecture.type != "momento_coletivo" ||
-          lecture.type != "alegria" ||
-          lecture.type != "alegria_music"
+          lecture.type =="palestra" ||
+          lecture.type =="especial"
         ) {
           this.lectureList.push(lecture);
         }

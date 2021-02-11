@@ -39,6 +39,7 @@ export class ResetPassComponent implements OnInit {
         },
         complete: () => {
           this._router.navigate(['/login']);
+          this.bsModalRef.hide();
         }
       });
     } else {

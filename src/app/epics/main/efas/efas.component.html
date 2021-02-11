@@ -8,8 +8,8 @@
         </button>
     </div>
 </div>
-<div class="modal-body" style="padding: 1.5rem">
-    <div style="margin: 0px auto; width: 70%; text-align: left">
+<div class="modal-body" style="padding: 1.5rem;">
+    <div style="margin: 0px auto; width: 70%; text-align: center">
         <span style="font-size: 0.8rem; color: #a2a2a2; margin: 1rem">
             Solicite o EFAS para sua cidade clicando neste link => <a href="http://oefas.com/wefas" target="_blank" >http://oefas.com/wefas</a>
         </span><br>
@@ -21,10 +21,10 @@
         </span><br>
         <span style="font-size: 0.8rem; color: #a2a2a2; margin: 1rem">
             Maiores informações sobre os Encontros Fraternos Auta de Souza podem ser obtidas pelo email:
-            efas@concafras.com.
+            <strong>efas@concafras.com</strong>.
             Stand do EFAS
         </span><br>
-        <div *ngIf="actualContent" style="margin: 0 auto;">
+        <div *ngIf="actualContent" style="margin: 1.2rem auto;">
             <app-videojs *ngIf="!isLoading" [vContent]="actualContent"></app-videojs>
         </div>
     </div>

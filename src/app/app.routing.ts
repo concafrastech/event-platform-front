@@ -122,6 +122,7 @@ import { SubscriptionListComponent } from './admin/subscription/subscription-lis
 import { UserTrailsComponent } from './epics/main/user-trails/user-trails.component';
 import { AllContentComponent } from './epics/main/all-content/all-content.component';
 import { SubscriptionEditComponent } from './admin/subscription/subscription-edit/subscription-edit.component';
+import { DiferenceComponent } from './epics/main/diference/diference.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -288,7 +289,7 @@ const appRoutes: Routes = [
             { path: 'parquinho/brincadeiras', component: BrincadeirasComponent, canActivate: [UserGuard] },
             { path: 'parquinho/jogos-digitais', component: JogosDigitaisComponent, canActivate: [UserGuard] },
 
-            
+
             { path: 'atividades', component: InfanciaAtividadesComponent, canActivate: [UserGuard], },
             { path: 'atividades/laborterapias', component: LaborterapiasComponent, canActivate: [UserGuard] },
             { path: 'atividades/desenhos-imprimir', component: DesenhosImprimirComponent, canActivate: [UserGuard] },
@@ -335,6 +336,7 @@ const appRoutes: Routes = [
             {path: 'audithorium-special/:type/:contentId', component: AudithoriumSpecialComponent, canActivate:[UserGuard]},
             {path: 'me-trails', component: UserTrailsComponent, canActivate:[UserGuard]},
             {path: 'all-content', component: AllContentComponent, canActivate:[UserGuard]},
+            {path: 'diference', component: DiferenceComponent, canActivate:[UserGuard]},
         ],
     },
     {

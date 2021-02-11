@@ -163,7 +163,7 @@ export class BookClubComponent implements OnInit {
 
   getAvaliableContent(trail: Trail) {
     this.practical = [];
-    
+
     for (let i = 0; i < trail.classrooms.length; i++) {
       if (trail.classrooms[i].type == "teorico") {
         if (!this.momentOne || this.momentOne._id == "") {
@@ -220,5 +220,10 @@ export class BookClubComponent implements OnInit {
 
   errorMessage() {
     alert("Não há conteúdo disponível neste momento");
+  }
+
+  redirectTo() {
+    this._zone.run(() => this._router.navigate(["/diference"]));
+    this.modalRef.hide();
   }
 }

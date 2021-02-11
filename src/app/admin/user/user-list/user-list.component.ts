@@ -24,7 +24,7 @@ export class UserListComponent implements OnInit {
   public next_page;
   public prev_page;
   public total;
-  public pages;
+  public pages: number[] = [];
   public users: User[];
   public follows;
   public follow_me;
@@ -89,6 +89,7 @@ export class UserListComponent implements OnInit {
                   this._spinner.hide();
                   this.total = response.total;
                   this.users = response.users;
+                  this.pages = [];
                   for (let i = 1; i <= response.pages; i++) {
                     this.pages.push(i);
                   }

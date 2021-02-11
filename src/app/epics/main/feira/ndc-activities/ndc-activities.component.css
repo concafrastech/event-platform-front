@@ -48,6 +48,7 @@
     display: block;
     color: #273B87;
     text-align: center;
+    font-size: 14px;
 }
 
 .row .card-content-ndc {
@@ -75,5 +76,9 @@
 @media only screen and (max-width: 1400px) {
     .card-content-ndc.card-content-background {
         padding: 2rem;
+    }
+
+    .card .card-div-text .card-div-text-content {
+        font-size: 12px;
     }
 }

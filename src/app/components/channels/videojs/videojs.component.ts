@@ -8,6 +8,7 @@ import {
   ViewEncapsulation,
 } from "@angular/core";
 import { Content } from "src/app/models/content";
+import { YoutubeLiveService } from "src/app/services/youtubelive.service";
 
 // Declara a lib do videojs como externa ao angular
 declare let videojs: any;
@@ -26,7 +27,10 @@ export class VideojsComponent implements OnInit {
   option: any;
   isLoading: boolean;
 
-  constructor(private renderer: Renderer2) {
+  constructor(
+    private renderer: Renderer2,
+    private _youtubeLiveService: YoutubeLiveService
+  ) {
     this.isLoading = true;
   }
 
@@ -98,6 +102,15 @@ export class VideojsComponent implements OnInit {
         videojs.log("Your player is ready!");
       }
     );
+
+    var split = this.vContent.url.split("https://www.youtube.com/watch?v=");
+    if(split.length == 2) {
+      this._youtubeLiveService.youtubelive.next(split[1]);
+    } else {
+      var url = this.vContent.url.split('/');
+      var code = url[url.length - 1];
+      this._youtubeLiveService.youtubelive.next(code);
+    }
   }
 
   //função para destruir o video

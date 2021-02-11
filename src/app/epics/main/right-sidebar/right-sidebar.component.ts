@@ -12,6 +12,7 @@ import { Lecture } from "src/app/models/lecture";
 import { DocumentService } from "src/app/services/document.service";
 import { Router } from "@angular/router";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { YoutubeLiveService } from 'src/app/services/youtubelive.service';
 
 @Component({
   selector: "app-right-sidebar",
@@ -23,7 +24,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     EpicService,
     LectureService,
     ActivityService,
-    DocumentService,
+    DocumentService
   ],
 })
 export class RightSidebarComponent implements OnInit {
@@ -36,6 +37,7 @@ export class RightSidebarComponent implements OnInit {
     private _shareMessageService: ShareMessageService,
     private _documentService: DocumentService,
     private _modalService: BsModalService,
+    private _youtubeLiveService:YoutubeLiveService
   ) {}
 
   public bsModalRef: BsModalRef;
@@ -52,9 +54,18 @@ export class RightSidebarComponent implements OnInit {
   public now: boolean;
   public strTime: string;
 
+  public youtubeliveid: string;
+  public sourceUrl: string;
+  
   ngOnInit(): void {
     this.loadCarouselSchedule();
     this.loadCarouselShareMessage();
+    this._youtubeLiveService.youtubelive.subscribe((data) => {
+      console.log("Recebi:");
+      console.log(data);
+      this.youtubeliveid = data;
+      this.sourceUrl = "https://www.youtube.com/live_chat?v="+ this.youtubeliveid + "&embed_domain=event-platform-concafras.web.app";
+    });
   }
 
   loadCarouselSchedule() {

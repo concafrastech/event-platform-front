@@ -3,6 +3,13 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="collapse navbar-collapse" id="navbarNavRight">
         <ul class="navbar-nav flex-column">
+          <li class="nav-item" *ngIf="youtubeliveid">
+            <h3 class="nav-header">Chat ao vivo</h3>
+            <iframe class="embed-responsive-item" 
+              [src]="sourceUrl | safe" 
+              width="250" height="400" allowfullscreen="">
+            </iframe>
+          </li>
           <li class="nav-item">
             <h3 class="nav-header">{{now ? 'Acontecendo agora' : 'Fique Atento!'}}</h3>
             <div id="carouselControlsNow" class="carousel slide">

@@ -22,10 +22,11 @@ export class LeftSidebarComponent implements OnInit {
   public identity;
   public user;
   public progress;
-  public bsModalRef: BsModalRef;
-  public showChat: boolean = false;
-
+  public linkStaff: string;
   public faUserCircle = faUserCircle;
+  public bsModalRef: BsModalRef;
+
+  public showChat: boolean = false;
   public jivoChat: ElementRef;
 
   constructor(
@@ -51,6 +52,18 @@ export class LeftSidebarComponent implements OnInit {
     this._documentService.getDocument(this.user.image).subscribe((response) => {
       this.user.image = response.document;
     });
+
+    let date = new Date();
+    
+    if(date.getDate() == 13 && date.getMonth() == 1){
+      this.linkStaff = "https://us02web.zoom.us/j/87434397148?pwd=S1RwQTZ3UGN0bmhTbWZxSWRyOUNQZz09"
+    }else{
+      if(date.getDate() == 14 && date.getMonth() == 1){
+        this.linkStaff = "https://us02web.zoom.us/j/88987519443?pwd=R2tlUGpEaU1yMm5NZ3k3VkJqUnpEQT09"
+      }
+    }
+    
+ 
   }
 
   openProgramacaoComponent() {

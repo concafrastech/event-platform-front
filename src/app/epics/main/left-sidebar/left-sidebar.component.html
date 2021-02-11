@@ -32,6 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/about']" ><svg-icon src="assets/concafras2021/concafronas/icones/como-navegar-menu-item.svg" class="sidebar-icon"></svg-icon>  Como Navegar</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="linkStaff" [href]="linkStaff" target="_blank" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Conselho CONCAFRAS</a>
+                </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" (click)="openCloseFraternalSupportChat()" ><svg-icon src="assets/concafras2021/concafronas/icones/duvidas-menu-item.svg" class="sidebar-icon"></svg-icon>  Dúvidas?</a>
                 </li> -->

@@ -51,6 +51,13 @@ export class SubscriptionService {
         return this._http.get(this.url + 'subscriptions/' + id, {headers: headers});
     }
 
+    updateFirstLogin(id){
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                       .set('Authorization', getToken());
+
+        return this._http.patch(this.url + 'subscriptions/' + id + '/firstLogin', null, {headers: headers});
+    }
+
     deleteSubscription(id): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                        .set('Authorization', getToken());

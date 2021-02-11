@@ -97,11 +97,6 @@ export class UserService {
         return this._http.get(this.url + 'mocks/subscription/' + userId, {headers: headers});
     }
 
-    setFirstLogin(){
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'firstLogin', {headers: headers});
-    }
-
     updateUser(user: User): Observable<any> {
         let params = JSON.stringify(user);
         let headers = new HttpHeaders()

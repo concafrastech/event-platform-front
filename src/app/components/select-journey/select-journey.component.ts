@@ -17,6 +17,7 @@ export class SelectJourneyComponent implements OnInit {
   public page;
   public conference: Conference;
   public userAge: number;
+  public subscription;
 
   constructor(
     private _route: ActivatedRoute,
@@ -26,17 +27,16 @@ export class SelectJourneyComponent implements OnInit {
 
   ngOnInit(): void {
     this.conference = JSON.parse(localStorage.getItem('currentConference'));
-    let subscription = JSON.parse(localStorage.getItem('currentSubscription'));
+    this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
     
-    if(subscription){
-      if(subscription.user){
-        this.calculateAge(new Date(subscription.user?.birthday))
+    if(this.subscription){
+      if(this.subscription.user){
+        this.calculateAge(new Date(this.subscription.user?.birthday))
       }
       if(this.conference == null){
-        this.conference = subscription.conference;
+        this.conference = this.subscription.conference;
       }
     }
-    
     this.getEpics(1, this.conference._id);
   }
 
@@ -73,7 +73,20 @@ export class SelectJourneyComponent implements OnInit {
     }else{
       localStorage.setItem('epic', epic.type);
     }
-    this._router.navigate(['/termos'])
+
+    if(this.subscription.firstLogin)
+    {
+      if (epic.type == "adulto") {
+        this._router.navigate(["/hub"]);
+      } else if (epic.type == "jovem") {
+        this._router.navigate(["/jovem/home"]);
+      } else {
+        this._router.navigate(["/concafrinhas/home"]);
+      }
+    }else{
+      this._router.navigate(['/termos'])
+    }
+    
   }
 
   // gotoInfancia(epic){

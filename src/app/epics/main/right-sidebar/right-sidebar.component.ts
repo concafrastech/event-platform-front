@@ -12,6 +12,7 @@ import { Lecture } from "src/app/models/lecture";
 import { DocumentService } from "src/app/services/document.service";
 import { Router } from "@angular/router";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { YoutubeLiveService } from 'src/app/services/youtubelive.service';
 
 @Component({
   selector: "app-right-sidebar",
@@ -24,6 +25,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     LectureService,
     ActivityService,
     DocumentService,
+    YoutubeLiveService,
   ],
 })
 export class RightSidebarComponent implements OnInit {
@@ -36,6 +38,7 @@ export class RightSidebarComponent implements OnInit {
     private _shareMessageService: ShareMessageService,
     private _documentService: DocumentService,
     private _modalService: BsModalService,
+    private _youtubeLiveService:YoutubeLiveService
   ) {}
 
   public bsModalRef: BsModalRef;
@@ -52,9 +55,14 @@ export class RightSidebarComponent implements OnInit {
   public now: boolean;
   public strTime: string;
 
+  public youtubeliveid: string;
+  
   ngOnInit(): void {
     this.loadCarouselSchedule();
     this.loadCarouselShareMessage();
+    this._youtubeLiveService.youtubelive.subscribe((data) => {
+      this.youtubeliveid = data;
+    });
   }
 
   loadCarouselSchedule() {

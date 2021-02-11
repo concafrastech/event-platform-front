@@ -5,8 +5,8 @@
         <ul class="navbar-nav flex-column">
           <li class="nav-item" *ngIf="youtubeliveid">
             <h3 class="nav-header">Chat ao vivo</h3>
-            <iframe class="embed-responsive-item" 
-              [src]="sourceUrl | safe" 
+            <iframe class="embed-responsive-item"
+              [src]="sourceUrl | safe"
               width="250" height="400" allowfullscreen="">
             </iframe>
           </li>
@@ -107,16 +107,14 @@
             <div class="marg20">
               Faça um post usnado a hashtag <br />
               <span class="strong-hash">#concafras</span> nas redes sociais
-              <br />
-              e apareça por aqui.
             </div>
-            <div class="marg20 share-div">
+            <!-- <div class="marg20 share-div">
               Compartilhe:
               <img class="img-size-share" src="assets/concafras2021/concafronas/icones/awesome-facebook.svg"
                 alt="First slide" />
               <img class="img-size-share" src="assets/concafras2021/concafronas/icones/simple-instagram.svg"
                 alt="First slide" />
-            </div>
+            </div> -->
             <a (click)="openEFASComponent()" class="btn btn-primary btn-right-sidebar">Marque o Encontro Fraterno Auta de Souza na sua Cidade!</a>
           </li>
         </ul>

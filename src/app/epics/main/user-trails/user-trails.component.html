@@ -10,8 +10,23 @@
         <div *ngFor="let trail of trails">
             Tema: {{trail.name}}<br />
             Tipo: {{trail.type}}
-        
-            <div *ngFor="let classroom of trail.classrooms; let i = index">
+
+            {{splitClassrooms(trail)}}
+
+            <div *ngIf="momentOne">
+                1º - Momento
+                <div>- Título: {{momentOne.name}}</div>
+            </div>
+            <div *ngIf="momentTwo">
+                2º - Momento
+                <div>- Título: {{momentTwo.name}}</div>
+            </div>
+            <div *ngIf="practical">
+                Prática
+                <div>- Título: {{practical.name}}</div>
+            </div>
+
+            <!-- <div *ngFor="let classroom of trail.classrooms; let i = index">
                 <div *ngIf="i == 0">
                     1º - Momento
                 </div>
@@ -22,7 +37,7 @@
                     Práticas
                 </div>
                  - Título: {{classroom.name}}
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

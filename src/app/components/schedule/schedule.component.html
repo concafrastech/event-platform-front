@@ -45,13 +45,12 @@
               <div>
                 <span style="font-size: 0.8rem; color: #a2a2a2">{{
                   schedule.description
-                  }} - <strong style="color: black;">localização: {{ schedule.place }}</strong>
+                  }} <br> <strong style="color: black;">localização: {{ schedule.place }}</strong>
                   <img style="margin-left: 10px; height: 2.5rem; width: 2.5rem;" [src]="placeIcon[schedule.iconIndex]"/></span>
               </div>
-              <div>
-                <img style="margin-left: 5rem"
-                  src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg" />
-                <img style="margin-left: 0.5rem" src="assets/concafras2021/concafronas/icones/libras.svg" />
+              <div class="img-acessibilidade">
+                <img src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg" />
+                <img src="assets/concafras2021/concafronas/icones/libras.svg" />
               </div>
             </div>
           </li>

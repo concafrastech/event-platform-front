@@ -31,6 +31,7 @@ export class ResetPassComponent implements OnInit {
         next: (response) => {
           console.log("NEXT");
           console.log(response);
+          alert("Foi enviado um email de recuperação ao email fornecido.")
         },
         error: (response) => {
           if(response.status == 500) {
@@ -39,6 +40,7 @@ export class ResetPassComponent implements OnInit {
         },
         complete: () => {
           this._router.navigate(['/login']);
+          this.bsModalRef.hide();
         }
       });
     } else {

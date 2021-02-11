@@ -55,6 +55,7 @@ export class RightSidebarComponent implements OnInit {
   public strTime: string;
 
   public youtubeliveid: string;
+  public sourceUrl: string;
   
   ngOnInit(): void {
     this.loadCarouselSchedule();
@@ -63,6 +64,7 @@ export class RightSidebarComponent implements OnInit {
       console.log("Recebi:");
       console.log(data);
       this.youtubeliveid = data;
+      this.sourceUrl = "https://www.youtube.com/live_chat?v="+ this.youtubeliveid + "&embed_domain=event-platform-concafras.web.app";
     });
   }
 

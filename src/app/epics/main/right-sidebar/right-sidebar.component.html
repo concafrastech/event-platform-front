@@ -6,7 +6,7 @@
           <li class="nav-item" *ngIf="youtubeliveid">
             <h3 class="nav-header">Chat ao vivo</h3>
             <iframe class="embed-responsive-item" 
-              src="https://www.youtube.com/live_chat?v={{youtubeliveid}}&embed_domain=event-platform-concafras.web.app" 
+              [src]="sourceUrl | safe" 
               width="250" height="400" allowfullscreen="">
             </iframe>
           </li>

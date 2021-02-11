@@ -17,7 +17,6 @@ declare let videojs: any;
   selector: "app-videojs",
   templateUrl: "./videojs.component.html",
   styleUrls: ["./videojs.component.css"],
-  providers: [ YoutubeLiveService ],
   encapsulation: ViewEncapsulation.None,
 })
 export class VideojsComponent implements OnInit {
@@ -104,11 +103,14 @@ export class VideojsComponent implements OnInit {
       }
     );
 
-    var url = this.vContent.url.split('/');
-
-    var code = url[url.length - 1];
-
-    this._youtubeLiveService.youtubelive.next(code);
+    var split = this.vContent.url.split("https://www.youtube.com/watch?v=");
+    if(split.length == 2) {
+      this._youtubeLiveService.youtubelive.next(split[1]);
+    } else {
+      var url = this.vContent.url.split('/');
+      var code = url[url.length - 1];
+      this._youtubeLiveService.youtubelive.next(code);
+    }
   }
 
   //função para destruir o video

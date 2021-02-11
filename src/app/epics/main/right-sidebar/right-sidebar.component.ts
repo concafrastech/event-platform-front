@@ -24,8 +24,7 @@ import { YoutubeLiveService } from 'src/app/services/youtubelive.service';
     EpicService,
     LectureService,
     ActivityService,
-    DocumentService,
-    YoutubeLiveService,
+    DocumentService
   ],
 })
 export class RightSidebarComponent implements OnInit {
@@ -61,6 +60,8 @@ export class RightSidebarComponent implements OnInit {
     this.loadCarouselSchedule();
     this.loadCarouselShareMessage();
     this._youtubeLiveService.youtubelive.subscribe((data) => {
+      console.log("Recebi:");
+      console.log(data);
       this.youtubeliveid = data;
     });
   }

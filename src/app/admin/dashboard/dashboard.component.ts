@@ -30,6 +30,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.identity = this._userService.getIdentity();
+    if(this.identity.role != 'ROLE_ADMIN'){
+      this._router.navigate(["/"]);
+    }
   }
 
   ngDoCheck() {

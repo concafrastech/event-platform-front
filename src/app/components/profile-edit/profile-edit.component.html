@@ -104,7 +104,7 @@
             <p>
               <label>E-mail</label>
               <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel"
-                [(ngModel)]="user.email" class="form-control" required />
+                [(ngModel)]="user.email" class="form-control" disabled/>
               <span *ngIf="!email.value && email.touched">Email inválido!</span>
             </p>
           </div>

@@ -39,6 +39,12 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
+        let exp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+        
+        if(!exp.test(this.user.email)){
+            this.user.email += '-fake@concafras.com'
+        }
+        
         this._userService.signup(this.user, 'true').subscribe(
             response => {
                 this.token = response.idToken;

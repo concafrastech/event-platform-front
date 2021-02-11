@@ -16,6 +16,7 @@ export class SelectJourneyComponent implements OnInit {
   public epics: Epic[] = [];
   public page;
   public conference: Conference;
+  public userAge: number;
 
   constructor(
     private _route: ActivatedRoute,
@@ -25,13 +26,24 @@ export class SelectJourneyComponent implements OnInit {
 
   ngOnInit(): void {
     this.conference = JSON.parse(localStorage.getItem('currentConference'));
-    if(this.conference == null){
-      var subscription = JSON.parse(localStorage.getItem('currentSubscription'));
-      if(subscription){
+    let subscription = JSON.parse(localStorage.getItem('currentSubscription'));
+    
+    if(subscription){
+      if(subscription.user){
+        this.calculateAge(new Date(subscription.user?.birthday))
+      }
+      if(this.conference == null){
         this.conference = subscription.conference;
       }
     }
+    
     this.getEpics(1, this.conference._id);
+  }
+
+  calculateAge(birthday: Date){
+    let ageDifMs = new Date().getTime() - birthday.getTime();
+    let ageDate = new Date(ageDifMs);
+    this.userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
   getEpics(page, conferenceId) {

@@ -107,6 +107,7 @@ export class AudithoriumSpecialComponent implements OnInit {
       null,
       null,
       null,
+      null,
       null
     );
   }

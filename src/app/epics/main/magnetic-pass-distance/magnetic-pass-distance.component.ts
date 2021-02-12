@@ -62,6 +62,7 @@ export class MagneticPassDistanceComponent implements OnInit {
       null,
       null,
       null,
+      null,
       null
     );
   }

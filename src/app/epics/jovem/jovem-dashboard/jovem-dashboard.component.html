@@ -14,7 +14,7 @@
       <li class="text-center">
         <a class="nav-link text-center disabled" [routerLink]="">
           <img class="img-fluid" src="{{user.level.icon}}">
-          <p>Nível {{user.level.badge}}<br/>{{this._gamificationService.getPoints() ? this._gamificationService.getPoints() : 0}} pontos</p>
+          <p>Nível {{user.level.badge}}<br/>{{this._userGamificationService.getPoints() ? this._userGamificationService.getPoints() : 0}} pontos</p>
         </a>
       </li>
       <li class="text-center">

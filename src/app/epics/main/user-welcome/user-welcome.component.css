@@ -6,7 +6,7 @@
     height: 200%;
     z-index: -1;
   }
-
+  
   #bg img {
     position: absolute;
     top: 0;
@@ -17,7 +17,7 @@
     min-width: 50%;
     min-height: 50%;
   }
-
+  
   .retangulo-2 {
     top: 40px;
     left: 25%;
@@ -30,20 +30,20 @@
     text-align: center;
     border-radius: 2px;
   }
-
+  
   .text-center {
     text-align: center;
     font-weight: bold;
     color: #474747;
   }
-
+  
   .text-about {
     margin: 10px 0px;
     text-align: center;
     color: #4b4b4bb3;
     font-size: 12px;
   }
-
+  
   .btn-about {
     margin: 0px;
     width: 150px;
@@ -56,19 +56,19 @@
     cursor: pointer;
     opacity: 1;
   }
-
+  
   .btn-about:hover {
     background: #273b87;
     color: #ffffff;
   }
-
+  
   .icon-close {
     cursor: pointer;
     position: relative;
     left: 9%;
     top: -25px;
   }
-
+  
   /* ==== RESPONSIVE ==== */
   @media only screen and (max-width:1400px) {
     .icon-close {
@@ -76,3 +76,4 @@
       top: -25px;
     }
   }
+  

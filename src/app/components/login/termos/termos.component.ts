@@ -28,7 +28,7 @@ export class TermosComponent implements OnInit {
         this._subscriptionService.updateFirstLogin(subscription._id).subscribe((response)=>{})
       }
 
-      this._router.navigate(['/about'])
+      this._router.navigate(['/welcome'])
 
     }else{
       this.errorMsg = true;

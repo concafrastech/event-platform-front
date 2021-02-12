@@ -18,6 +18,7 @@ import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
 import { Content } from 'src/app/models/content';
 import { ContentService} from 'src/app/services/content.service';
+import { UserGamificationService } from "src/app/services/user-gamification.service";
 
 @Component({
   selector: 'app-ilha3-dialogo',
@@ -72,7 +73,8 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit, OnDestroy {
     private _stageService: StageService,
     private _activityService: ActivityService,
     private _classroomService: ClassroomService,
-    private _contentService: ContentService
+    private _contentService: ContentService,
+    public _userGamificationService: UserGamificationService
   ) { }
 
   ngOnInit(): void {
@@ -386,6 +388,7 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit, OnDestroy {
             });
             this.showSelect = !this.showSelect;
             setTimeout(function(){ window.scrollTo(1000,document.body.scrollHeight); }, 300);
+            this._userGamificationService.setMissionComplete("Vivência Prática de Voluntariado Espírita");
           }
         }
       });

@@ -17,6 +17,7 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { Schedule } from 'src/app/models/schedule';
 import { EpicService } from 'src/app/services/epic.service';
 import { RightSidebarComponent } from 'src/app/epics/main/right-sidebar/right-sidebar.component';
+import { UserGamificationService } from "src/app/services/user-gamification.service";
 
 @Component({
   selector: 'app-ilha5-dialogo',
@@ -77,7 +78,8 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     private _activityService: ActivityService,
     private _classroomService: ClassroomService,
     private _modalService: BsModalService,
-    private _epicService: EpicService
+    private _epicService: EpicService,
+    public _userGamificationService: UserGamificationService
   ) { }
 
   ngOnInit(): void {
@@ -459,6 +461,8 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
           }
           this.showSelect = !this.showSelect;
           setTimeout(function(){ window.scrollTo(500,document.body.scrollHeight); }, 300);
+          this._userGamificationService.setMissionComplete("Interatividade");
+          this._userGamificationService.setMissionComplete("Momento Coletivo");
         }
         
       });

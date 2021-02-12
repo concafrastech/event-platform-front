@@ -48,3 +48,6 @@ package.json
 
 # Firebase
 .firebase/*
+
+# VSCode
+.vscode/*

@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Epic } from 'src/app/models/epic';
+import { Subscription } from 'src/app/models/subscription';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
   selector: 'app-infancia-home',
   templateUrl: './infancia-home.component.html',
-  styleUrls: ['./infancia-home.component.css']
+  styleUrls: ['./infancia-home.component.css'],
+  providers: [UserService]
 })
 export class InfanciaHomeComponent implements OnInit {
 
@@ -26,27 +30,44 @@ export class InfanciaHomeComponent implements OnInit {
   public accessAllowed = true;
   public portrait = false;
 
-  
+
   screenWidth: number = window.innerWidth;
   screenHeight: number = window.innerHeight;
-  
+
+  public userAge: number;
+  public identity;
+  public subscription: Subscription;
+  public epic: Epic;
+
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
+    private _userService: UserService,
   ) { }
 
   ngOnInit(): void {
-    localStorage.setItem('epic', 'infancia');
+    this.identity = this._userService.getIdentity();
+    this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
+    this.epic = JSON.parse(localStorage.getItem('currentEpic'));
+
+    // localStorage.setItem('epic', 'infancia');
 
     this.verifyEntrance();
 
-    this.verifyPortrait();   
-    
+    this.verifyPortrait();
+
     window.addEventListener('orientationchange', (e) => {
       // console.log(e);
       this.portrait = !this.portrait;
       this._router.navigate(['/concafrinhas/home']);
     });
+    
+    // Calcula a idade do usuário para permitir ou não usar o botão de 'ir para concafras adulto'
+    if (this.subscription){
+      if (this.subscription.user) {
+        this.calculateAge(new Date(this.subscription.user?.birthday));
+      }
+    }
   }
 
   verifyEntrance() {
@@ -61,14 +82,31 @@ export class InfanciaHomeComponent implements OnInit {
     }
   }
 
+  logout() {
+    localStorage.clear();
+    this.identity = null;
+    this._router.navigate(['/login']);
+  }
+
   openAlert() {
     alert('Ambiente fechado! Por favor, retorne para atividade da programação do evento.')
   }
 
   gotoPrincipal(epic) {
-    localStorage.setItem('currentEpic', JSON.stringify(epic));
-    localStorage.setItem('epic', null);
-    this._router.navigate(['/home']);
+    if (this.userAge >= 12) {
+      localStorage.setItem('currentEpic', JSON.stringify(epic));
+      localStorage.setItem('epic', null);
+      this._router.navigate(['/home']);
+    } else {
+      alert('Sem permissão para acessar! Por favor, retorne para as atividades do evento.')
+    }
+  }
+
+  calculateAge(birthday: Date){
+    let ageDifMs = new Date().getTime() - birthday.getTime();
+    let ageDate = new Date(ageDifMs);
+    this.userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
 }
+

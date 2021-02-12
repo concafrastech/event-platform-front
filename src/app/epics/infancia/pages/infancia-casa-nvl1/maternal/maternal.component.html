@@ -66,17 +66,6 @@
                                     title="Baixar Cartilha">
                             </a>
                         </div>
-
-                        <div class="options-item" *ngIf="allowSalaVirtual">
-                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-practice btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
-                            </a>
-                        </div>
-                        <div class="options-item" *ngIf="!allowSalaVirtual">
-                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
-                                title="Realizar prática" (click)="openAlert()">
-                        </div>
                     </div>
                 </div>
 
@@ -143,7 +132,7 @@
                             </div>
     
                             <div class="options-item" *ngIf="allowSalaVirtual">
-                                <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <a href="https://us02web.zoom.us/j/81249604212?pwd=am5HWWtxM3ZtRFlhUTdiZnlOTko4UT09" target="_blank" rel="noopener noreferrer">
                                     <img class="btn-practice btns-opts"
                                         src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
                                 </a>
@@ -196,7 +185,7 @@
                             </div>
     
                             <div class="options-item" *ngIf="allowSalaVirtual">
-                                <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <a href="https://us02web.zoom.us/j/82799860668?pwd=eURwdFlUdWtTeTkyWHZ0V2pHZm1IQT09" target="_blank" rel="noopener noreferrer">
                                     <img class="btn-practice btns-opts"
                                         src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
                                 </a>
@@ -248,7 +237,7 @@
                             </div>
     
                             <div class="options-item" *ngIf="allowSalaVirtual">
-                                <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <a href="https://us02web.zoom.us/j/84836067782?pwd=ODNsbkRNSC9WVVQzenUzVlpKOGJpZz09" target="_blank" rel="noopener noreferrer">
                                     <img class="btn-practice btns-opts"
                                         src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
                                 </a>
@@ -257,183 +246,6 @@
                                 <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
                                     title="Realizar prática" (click)="openAlert()">
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-
-
-<ng-template #templateListaTE>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title pull-left" style="color: white;">Selecione abaixo o tema escolhido na inscrição:</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body-list">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" (click)="openModal(templateTE1)">Lar de Idosos</li>
-                <li class="list-group-item" (click)="openModal(templateTE2)">Amor à natureza</li>
-                <li class="list-group-item" (click)="openModal(templateTE3)">Jesus no Lar</li>
-            </ul>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #templateTE1>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Tema: Lar de Idosos</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-xs-12 col-12 col-md-11 form-group">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/rhJXO9tuzXg" frameborder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
-                    <div class="options">
-                        <div class="options-item">
-                            <a href="/concafrinhas/flipsnack/x9eo80apma" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-cartilha btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Lar de idosos.pdf"
-                                download>
-                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
-                                    title="Baixar Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item" *ngIf="allowSalaVirtual">
-                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-practice btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
-                            </a>
-                        </div>
-                        <div class="options-item" *ngIf="!allowSalaVirtual">
-                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
-                                title="Realizar prática" (click)="openAlert()">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #templateTE2>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Tema: Amor à Natureza</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-xs-12 col-12 col-md-11 form-group">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/R7mBtNTUfCY" frameborder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
-                    <div class="options">
-                        <div class="options-item">
-                            <a href="/concafrinhas/flipsnack/vc30c9jd1j" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-cartilha btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Amor à Natureza.pdf"
-                                download>
-                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
-                                    title="Baixar Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item" *ngIf="allowSalaVirtual">
-                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-practice btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
-                            </a>
-                        </div>
-                        <div class="options-item" *ngIf="!allowSalaVirtual">
-                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
-                                title="Realizar prática" (click)="openAlert()">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #templateTE3>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Tema: Jesus no lar</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-xs-12 col-12 col-md-11 form-group">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/lUJ0fGcio9A" frameborder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
-                    <div class="options">
-                        <div class="options-item">
-                            <a href="/concafrinhas/flipsnack/tn0xe645s4" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-cartilha btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item">
-                            <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Maternal - Jesus no lar.pdf"
-                                download>
-                                <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
-                                    title="Baixar Cartilha">
-                            </a>
-                        </div>
-
-                        <div class="options-item" *ngIf="allowSalaVirtual">
-                            <a href="linksala/home" target="_blank" rel="noopener noreferrer">
-                                <img class="btn-practice btns-opts"
-                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
-                            </a>
-                        </div>
-                        <div class="options-item" *ngIf="!allowSalaVirtual">
-                            <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
-                                title="Realizar prática" (click)="openAlert()">
                         </div>
                     </div>
                 </div>

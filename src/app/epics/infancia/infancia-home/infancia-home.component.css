@@ -77,12 +77,13 @@ img {
     height: auto;
 }
 
-.btn-adulto {
+.outros {
     border-radius: 50px;
-    top: 2%;
-    left: 1%;
 }
 
+.outros:hover {
+    filter: drop-shadow(0px 0px 25px #FFF82E);
+}
 
 
 

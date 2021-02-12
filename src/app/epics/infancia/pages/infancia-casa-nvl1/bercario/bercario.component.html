@@ -12,8 +12,8 @@
         </a>
 
         <a href="/concafrinhas/nosso-mural" target="_blank" rel="noopener noreferrer">
-            <img class="btn-upload buttons botao" src="assets/concafras2021/concafrinhas/btn-upload.png" alt="Enviar arquivos"
-                title="Enviar arquivos">
+            <img class="btn-upload buttons botao" src="assets/concafras2021/concafrinhas/btn-upload.png"
+                alt="Enviar arquivos" title="Enviar arquivos">
         </a>
 
 
@@ -118,7 +118,7 @@
                                 allowfullscreen></iframe>
                         </div>
                     </div>
-    
+
                     <div class="col-xs-12 col-12 col-md-1 form-group" style="padding: 5px;">
                         <div class="options">
                             <div class="options-item">
@@ -127,30 +127,39 @@
                                         src="assets/concafras2021/concafrinhas/btn-cartilha.png" title="Ver Cartilha">
                                 </a>
                             </div>
-    
+
                             <div class="options-item">
                                 <a href="assets/concafras2021/concafrinhas/Downloads/Cartilhas/Cartilha Tema Especifico - Berçário - Caridade no lar.pdf"
                                     download>
-                                    <img class="btn-print btns-opts" src="assets/concafras2021/concafrinhas/btn-print.png"
-                                        title="Baixar Cartilha">
+                                    <img class="btn-print btns-opts"
+                                        src="assets/concafras2021/concafrinhas/btn-print.png" title="Baixar Cartilha">
                                 </a>
                             </div>
-    
+
                             <div class="options-item" *ngIf="allowSalaVirtual">
-                                <a href="linksala/home" target="_blank" rel="noopener noreferrer">
+                                <a href="https://us02web.zoom.us/j/82235318747?pwd=VG82Zys3anpuR09TeUczMVBqQ21xZz09" target="_blank" rel="noopener noreferrer">
                                     <img class="btn-practice btns-opts"
                                         src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática">
                                 </a>
                             </div>
                             <div class="options-item" *ngIf="!allowSalaVirtual">
-                                <img class="btn-practice btns-opts" src="assets/concafras2021/concafrinhas/btn-practice.png"
-                                    title="Realizar prática" (click)="openAlert()">
+                                <img class="btn-practice btns-opts"
+                                    src="assets/concafras2021/concafrinhas/btn-practice.png" title="Realizar prática"
+                                    (click)="openAlert('Sala Virtual fechada! Por favor, aguarde até 17:30 conforme a programação do evento.')">
                             </div>
                         </div>
                     </div>
-    
+
                 </div>
             </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateSalaVirtual>
+    <div *ngIf="actualContent" style="height: inherit">
+        <div *ngIf="actualContent.type == 'zoom'">
+            <app-zoomus [vContent]="actualContent"></app-zoomus>
         </div>
     </div>
 </ng-template>

@@ -15,19 +15,24 @@
 
     <div class="container-total">
 
-        <div>
-            <a class="btn btn-primary btn-adulto botoes" (click)="gotoPrincipal('infancia')" role="button">Ir para a
-                plataforma do Adulto</a>
+        <div class="position-absolute">
+            <a class="btn btn-primary outros" (click)="logout()" role="button">Sair</a>
+            <a class="btn btn-primary outros" (click)="gotoPrincipal(epic)" role="button">Ir para plataforma do Adulto</a>
         </div>
+
+        <div>
+        </div>
+
 
         <div *ngIf="accessAllowed">
 
-            <a href="/concafrinhas/roda-alegria" class="alegria botoes" title="Roda da Alegria Cristã" style="z-index: 100;">
+            <a href="/concafrinhas/roda-alegria" class="alegria botoes" title="Roda da Alegria Cristã"
+                style="z-index: 100;">
                 <img src="assets/concafras2021/concafrinhas/Home/alegria.png" />
             </a>
 
             <a href="/concafrinhas/parquinho" class="playground botoes" title="Parquinho" style="z-index: 50;">
-                <img src="assets/concafras2021/concafrinhas/Home/playground.png" usemap="#parquinhoFree"/>
+                <img src="assets/concafras2021/concafrinhas/Home/playground.png" usemap="#parquinhoFree" />
             </a>
 
             <a href="/concafrinhas/bom-samaritano" class="escola botoes" title="Bom Samaritano Infantil">
@@ -46,7 +51,7 @@
                 <img src="assets/concafras2021/concafrinhas/Home/rio.png" />
             </a>
         </div>
-        
+
         <div *ngIf="!accessAllowed">
 
             <div class="alegria botoes" title="Roda da Alegria Cristã" style="z-index: 100;">
@@ -94,4 +99,3 @@
 
     </div>
 </div>
-

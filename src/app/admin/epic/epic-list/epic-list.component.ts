@@ -46,7 +46,6 @@ export class EpicListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: epics.");
     this._spinner.show();
     this.actualPage();
   }
@@ -134,10 +133,8 @@ export class EpicListComponent implements OnInit {
   }
 
   deleteEpic(id) {
-    console.log(id);
     this._epicService.deleteEpic(id).subscribe(
       (response) => {
-        console.log(response);
         this.actualPage();
       },
       (error) => {

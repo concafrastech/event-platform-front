@@ -47,7 +47,6 @@ export class ActivityListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: activities.");
     this._spinner.show();
     this.actualPage();
   }
@@ -156,10 +155,8 @@ export class ActivityListComponent implements OnInit {
   }
 
   deleteActivity(id) {
-    console.log(id);
     this._activityService.deleteActivity(id).subscribe(
       (response) => {
-        console.log(response);
         this.actualPage();
       },
       (error) => {

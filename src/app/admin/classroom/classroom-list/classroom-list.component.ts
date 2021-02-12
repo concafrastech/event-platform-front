@@ -47,7 +47,6 @@ export class ClassroomListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: classrooms.");
     this._spinner.show();
     this.actualPage();
   }
@@ -155,10 +154,8 @@ export class ClassroomListComponent implements OnInit {
   }
 
   deleteClassroom(id) {
-    console.log(id);
     this._classroomService.deleteClassroom(id).subscribe(
       (response) => {
-        console.log(response);
         this.actualPage();
       },
       (error) => {

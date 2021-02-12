@@ -54,7 +54,6 @@ export class LectureAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: lecture-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.lecture = new Lecture(

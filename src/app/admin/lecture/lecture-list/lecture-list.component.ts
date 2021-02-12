@@ -47,7 +47,6 @@ export class LectureListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: lectures.");
     this._spinner.show();
     this.actualPage();
   }

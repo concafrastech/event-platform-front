@@ -37,7 +37,6 @@ export class DocumentEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: document-edit.");
     this.identity = this._userService.getIdentity();
     this.document = new Document('', 0, '', "", 0, '', '', new Date(), new Date());
   }
@@ -67,7 +66,6 @@ export class DocumentEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.document);
     this._documentService
       .updateDocument(this.document)
       .subscribe(

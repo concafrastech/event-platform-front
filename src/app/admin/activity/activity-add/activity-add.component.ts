@@ -55,7 +55,6 @@ export class ActivityAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: activity-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.activity = new Activity(

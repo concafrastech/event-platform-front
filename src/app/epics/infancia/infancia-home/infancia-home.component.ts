@@ -26,7 +26,6 @@ export class InfanciaHomeComponent implements OnInit {
   private eventEndingEnds = new Date('02/14/2021 17:00:00 GMT-0300').toLocaleString();
 
   private now = new Date().toLocaleString();
-  // private now = new Date('02/13/2021 11:30:00 GMT-0300').toLocaleString();
   public accessAllowed = true;
   public portrait = false;
 

@@ -61,7 +61,6 @@ export class JardimComponent implements OnInit {
   private allOpenedEnds = new Date('02/14/2021 16:00:00 GMT-0300').toLocaleString();
 
   private now = new Date().toLocaleString();
-  // private now = new Date('02/14/2021 11:40:00 GMT-0300').toLocaleString();
 
   modalRef: BsModalRef;
 

@@ -507,6 +507,7 @@ export class CaravanSpaceComponent implements OnInit {
       "",
       "",
       "",
+      "",
       false,
       "",
       false,

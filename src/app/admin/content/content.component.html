@@ -245,6 +245,20 @@
               >
             </div>
           </div>
+
+          <div class="div-content">
+            <label class="col-sm-3 col-form-label">URL da Sala</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                name="zoom_url{{ i }}"
+                type="text"
+                [(ngModel)]="content.zoom_url"
+                placeholder="Insira aqui a URL da sala do Zoom"
+                #url_room="ngModel"
+              />
+            </div>
+          </div>
         </div>
 
         <div *ngIf="content.type == 'youtube'">

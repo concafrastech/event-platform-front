@@ -196,6 +196,10 @@ export class ScheduleComponent implements OnInit {
           case "ilha casa do escritor":
             schedule.iconIndex = 6;
             schedule.place = "Casa do Escritor";
+            if(schedule.name.toLowerCase() == "tira dúvidas mocidade espírita") {
+              schedule.iconIndex = 8;
+              schedule.place = "Instituto Almas Irmãs";
+            }
             break;
           case "classroom":
           case "ilha casa do caminho":

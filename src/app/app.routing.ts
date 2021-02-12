@@ -178,6 +178,7 @@ const appRoutes: Routes = [
             {path: 'mission/list/:page', component: MissionListComponent},
             {path: 'user/edit/:id', component: UserEditComponent},
             {path: 'user/list', component: UserListComponent},
+            {path: 'user/list/:page', component: UserListComponent},
             {path: 'content', component: ContentComponent},
             {path: 'xps/add', component: XpsAddComponent},
             {path: 'xps/edit/:id', component: XpsEditComponent},

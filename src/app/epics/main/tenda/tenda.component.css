@@ -96,14 +96,29 @@ body {
 
 /* Small Devices, Tablets */
 @media only screen and (max-width:768px) {
+    .dashboard-main-wrapper {
+        background-image: none !important;
+    }
     .dashboard-content {
-        padding: 20px 20px 60px 20px;
+        padding: 25px 0 0;
     }
     .dashboard-wrapper {
-        margin-left: 0px;
+        width: 100%;
+        margin: unset;
+        position: static;
     }
     .dashboard-footer {
         margin-left: 0px;
+    }
+    .dashboard-header .navbar {
+        min-height: 85px;
+    }
+
+    .background-navbar {
+        background-image: url("../../../../assets/concafras2021/concafronas/navbar_mobile.png");
+        background-size: unset;
+        background-position-x: 50%;
+        background-position-y: 30%;
     }
 }
 
@@ -111,10 +126,6 @@ body {
 /* Extra Small Devices, Phones */
 
 @media only screen and (max-width:480px) {
-    .dashboard-content {
-        padding: 20px 20px 60px 20px;
-    }
-
     .dashboard-wrapper {
         margin-left: 0px;
     }
@@ -131,5 +142,17 @@ body {
     }
 }
 
-/* Custom, iPhone Retina */
-@media only screen and (max-width:320px) {}
+@media (max-width: 425px) {
+    .background-navbar {
+        background-size: 110%;
+        background-position-x: 64%;
+    }
+}
+
+@media (max-width: 375px) {
+    .background-navbar {
+        background-size: 120%;
+        background-position-y: 14%;
+    }
+
+}

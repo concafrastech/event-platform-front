@@ -17,6 +17,7 @@ export class Content {
     public zoom_api_secret: string,
     public zoom_room: string,
     public zoom_password: string,
+    public zoom_url: string,
     public use_alternative: boolean,
     public url_alternative: string,
     public active_alternative: boolean,

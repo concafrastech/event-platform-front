@@ -19,6 +19,7 @@ import { NavbarService } from "src/app/services/navbar.service";
 import { Content } from 'src/app/models/content';
 import { ContentService } from 'src/app/services/content.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { UserGamificationService } from "src/app/services/user-gamification.service";
 
 @Component({
   selector: 'app-ilha1-dialogo',
@@ -71,7 +72,8 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
     private _activityService: ActivityService,
     private _classroomService: ClassroomService,
     private _contentService: ContentService,
-    public _navbarService: NavbarService
+    public _navbarService: NavbarService,
+    public _userGamificationService: UserGamificationService
   ) { }
 
   ngOnInit(): void {
@@ -99,6 +101,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
       });
     });
     //this._navbarService.setButtonBack(true);
+    this._userGamificationService.setMissionComplete("Painéis das Novas Dimensões do Conhecimento Espírita");
   }
 
   ngAfterViewInit() {
@@ -333,6 +336,11 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
             });
             this.showSelect = !this.showSelect;
             setTimeout(function(){ window.scrollTo(1000,document.body.scrollHeight); }, 300);
+            this._userGamificationService.setMissionComplete("Momento Doutrinário Ciclo 1");
+            let startCiclo2 = new Date('02/14/2021 00:01');
+            if (today.getTime() > startCiclo2.getTime()) {
+              this._userGamificationService.setMissionComplete("Momento Doutrinário Ciclo 2");
+            }
           }
         }
       });

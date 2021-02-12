@@ -117,11 +117,18 @@ a {
 @media only screen and (max-width:1400px) {
    /* ==== GERAL ==== */
    .lecture-header-title {
-       font-size: 18px;
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
    }
-
-   .lecture-header-text {
-       font-size: 10px;
+   
+   .lecture-header-subtitle {
+      font-size: .9rem;
+      font-style: italic;
+      color: #fff;
+      font-weight: normal;
+      text-align: center;
    }
 
    /* ==== IMG ==== */

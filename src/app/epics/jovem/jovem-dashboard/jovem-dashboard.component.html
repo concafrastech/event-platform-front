@@ -73,57 +73,40 @@
 
   <!-- Page Content Holder -->
   <div id="content">
-
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-
-        <div class="navbar-header">
-
-          <div id="webapp_cover">
-            <div id="menu_button">
-                <input type="checkbox" id="sidebarCollapse" (click)="toggleClass()">
-                <label for="sidebarCollapse" id="menu_label">
-                  <div id="menu_text_bar"></div>
-                </label>
+        <div class="navbar-header w-100">
+          <div id="webapp_cover" class="d-flex row justify-content-between align-items-center">
+            <div class="row justify-content-between no-wrap">
+              <div id="menu_button" class="mx-2">
+                  <input type="checkbox" id="sidebarCollapse" (click)="toggleClass()">
+                  <label for="sidebarCollapse" id="menu_label">
+                    <div id="menu_text_bar"></div>
+                  </label>
+              </div>
+              <div id="back_button" class="mx-1">
+                <button *ngIf="showBack" class="btn-sm btn-primary" onclick="window.history.back()">&lt;Voltar</button>
+              </div>
             </div>
+            <div class="navbar-brand CONCAFRASVIRTUAL2021">
+              <img src="/assets/jovem/img/logoauta.svg" class="" alt="">
+              <span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
+            </div>
+            <div></div>
           </div>
-
-
-     <!-- <a type="" id="sidebarCollapse" >
-          <i class="glyphicon glyphicon-align-left"></i>
-          <span>Menu Lateral</span>
-        </a>  -->
-      </div>
+        </div>
       <!--
       <nav class="navbar background-navbar" role="navigation">
         <a [routerLink]="" class="back" *ngIf="this._navbarService.ButtonBackIsVisible()" (click)="back()">&lt;Voltar</a>
       </nav>
-    -->
-
-      <div class="navbar-brand CONCAFRASVIRTUAL2021">
-        <img src="/assets/jovem/img/logoauta.svg" class="" alt="">
-        <span>CONCAFRAS<span class="text-style-1">VIRTUAL</span>2021</span> 
-      </div> 
-
-
-    
-
-    </div>
+    -->  
+      </div>
   </nav>
-  <!-- início do conteúdoi -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-md-10 pl-md-0 pr-md-5 h-100"><router-outlet></router-outlet></div>
-      <div class="col-6 col-md-4">
-
-        <app-right-sidebar></app-right-sidebar>
-
-
-      </div><!-- final Menu Direito -->
+      <div class="col-6 col-md-4"><app-right-sidebar></app-right-sidebar></div>
     </div>
-
-
-    <!-- final do conteúdo -->
   </div>
 </div>
 

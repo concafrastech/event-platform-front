@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'src/app/models/subscription';
+import { User } from "src/app/models/user";
 import { UserService } from 'src/app/services/user.service';
 import { Epic } from 'src/app/models/epic';
 //import { Lecture } from 'src/app/models/lecture';
@@ -15,14 +16,16 @@ import { TrailService } from 'src/app/services/trail.service';
 import { Schedule } from 'src/app/models/schedule';
 import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
+import { Content } from 'src/app/models/content';
+import { ContentService} from 'src/app/services/content.service';
 
 @Component({
   selector: 'app-ilha3-dialogo',
   templateUrl: './ilha3-dialogo.component.html',
   styleUrls: ['./ilha3-dialogo.component.css'],
-  providers: [TrailService, StageService, ActivityService, ClassroomService]
+  providers: [TrailService, StageService, ActivityService, ClassroomService, ContentService]
 })
-export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
+export class Ilha3DialogoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() public dialog: String;
   public identity;
@@ -41,6 +44,15 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
   /* baseado em schedule.component.ts - fim */
   public schedule: Schedule;
   public userName: String;
+  public showSelect: Boolean = false;
+  public zoomId: String;
+  public videoId: String;
+  public audioId: String;
+  public classroom: Classroom;
+  public contentList: Content[] = [];
+  public user: User;
+  public defaultPratical: Classroom;
+  public userPratical: Classroom;
 
   options = { 
     zoomEnabled: true,
@@ -59,7 +71,8 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
     private _trailService: TrailService,
     private _stageService: StageService,
     private _activityService: ActivityService,
-    private _classroomService: ClassroomService
+    private _classroomService: ClassroomService,
+    private _contentService: ContentService
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +88,7 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
         this.userName = this.identity.nick;
       }
       this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
+      this.user = this.subscription.user;
       //this.getLectures(1, epic._id);
       //this.getTrails(1,  epic._id);
       this.getStages(1,  epic._id);
@@ -94,6 +108,10 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
       let svgPanZoom: SvgPanZoom.Instance = SvgPanZoom('#svgMap', this.options);
       svgPanZoom.zoom(0.6);
     });*/
+  }
+
+  ngOnDestroy() {
+    this.showSelect = false;
   }
 
   /*
@@ -157,8 +175,10 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
             classroomaux.end_time = new Date(classroomaux.end_time);
             trail.classrooms[index] = classroomaux;
 
-            // transform classrooms in schedules (only práticas - index > 1)
-            if(index>1){
+            // transform classrooms in schedules (only teóricas)
+            if ((!trail.classrooms[index].type ||
+              !trail.classrooms[index].type == null) &&
+              trail.classrooms[index].tags.map(tag => tag.toUpperCase()).includes(this.user.state.toUpperCase())) {
               this.schedule = new Schedule(
                 trail.classrooms[index]._id,
                 trail.classrooms[index].type,
@@ -192,7 +212,56 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
           }
         );
       });
+      if (!this.schedules || this.schedules == null || this.schedules.length == 0) {
+        trail.classrooms.forEach((classroom, index) => {
+          this._classroomService.getClassroom(classroom).subscribe(
+            (response) => {
+              let classroomaux = response.classroom;
+              classroomaux.start_time = new Date(classroomaux.start_time);
+              classroomaux.end_time = new Date(classroomaux.end_time);
+              trail.classrooms[index] = classroomaux;
+    
+              // transform classrooms in schedules (only teóricas)
+              if ((!trail.classrooms[index].type ||
+                !trail.classrooms[index].type == null) &&
+                (!trail.classrooms[index].tags ||
+                trail.classrooms[index].tags == null ||
+                trail.classrooms[index].tags.length == 0)) {
+
+                this.schedule = new Schedule(
+                  trail.classrooms[index]._id,
+                  trail.classrooms[index].type,
+                  trail.classrooms[index].name,
+                  trail.classrooms[index].description,
+                  trail.classrooms[index].start_time,
+                  trail.classrooms[index].end_time
+                );
+                this.schedules.push(this.schedule);
+              }
+              this.schedules.sort(this.sortSchedules);
+              this.groupSchedules = [];
+              for(let i = 0; i < this.schedules.length; i++) {
+                let day = new Date(this.schedules[i].start_time).getDate();
+                let month = this.strMonths[new Date(this.schedules[i].start_time).getMonth()];
+                let dayMonth = ("00" + day).slice(-2) + ' de ' + month;
+                if(!this.findDayGroupSchedule(dayMonth)){
+                  this.groupSchedules.push({group: dayMonth, schedule: [this.schedules[i]]});
+                }else{
+                  this.findDayGroupSchedule(dayMonth).schedule.push(this.schedules[i])
+                }
+              }
+            },
+            (error) => {
+              var errorMessage = <any>error;
+              console.log(errorMessage);
       
+              if (errorMessage != null) {
+                this.status = "error";
+              }
+            }
+          );
+        });
+      }
     }
   }
 
@@ -284,4 +353,47 @@ export class Ilha3DialogoComponent implements OnInit, AfterViewInit {
     return time;
   }
 
+  SelectContent(i) {
+    let today = new Date();
+    let start = new Date(this.schedules[i].start_time);
+    let end = new Date(this.schedules[i].end_time);
+    //Ainda não acabou e já começou
+    if (
+      today.getTime() < end.getTime() &&
+      today.getTime() >= (start.getTime() - 3000000)
+    ) {
+      this._classroomService.getClassroom(this.schedules[i].id).subscribe((response) => {
+        if(response.classroom) {
+          this.classroom = response.classroom;
+          if (this.classroom.contents) {
+            this.zoomId = "";
+            this.videoId = "";
+            this.audioId = "";
+            this.classroom.contents.forEach((content, index) => {
+              this._contentService.getContent(content).subscribe((response) => {
+                let content = response.content;
+                this.classroom.contents[index] = content;
+                if(this.classroom.contents[index].type == "youtube") {
+                  this.videoId = this.classroom.contents[index]._id;
+                }
+                if(this.classroom.contents[index].type == "zoom") {
+                  this.zoomId = this.classroom.contents[index]._id;
+                }
+                if(this.classroom.contents[index].type == "audio") {
+                  this.audioId = this.classroom.contents[index]._id;
+                }
+              });
+            });
+            this.showSelect = !this.showSelect;
+            setTimeout(function(){ window.scrollTo(1000,document.body.scrollHeight); }, 300);
+          }
+        }
+      });
+    } else {
+      //mensagem que não começou ou já acabou
+      alert("Selecione um tema específico que esteja ocorrendo neste momento!")
+    }
+    
+    
+  }
 }

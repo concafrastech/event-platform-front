@@ -1,6 +1,6 @@
   import { DocumentService } from "src/app/services/document.service";
   import { MagneticPassDistanceComponent } from 'src/app/epics/main/magnetic-pass-distance/magnetic-pass-distance.component';
-  import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit, AfterViewInit } from '@angular/core';
   import { Router } from '@angular/router';
   import { GamificationService } from 'angular-gamification';
   import { NgBootstrapAlert, NgBootstrapAlertService } from 'ng-bootstrap-alert';
@@ -18,14 +18,13 @@
   import { Location } from '@angular/common';
   import { NavbarService } from "src/app/services/navbar.service";
 
-  
   @Component({
     selector: 'app-jovem-dashboard',
     templateUrl: './jovem-dashboard.component.html',
     styleUrls: ['./jovem-dashboard.component.css'],
     providers: [UserService, DocumentService, TawkService, NavbarService]
   })
-  export class JovemDashboardComponent implements OnInit {
+  export class JovemDashboardComponent implements OnInit, AfterViewInit {
   
     public identity;
     public user;
@@ -35,6 +34,7 @@
   
     public faUserCircle = faUserCircle;
     public userName: String;
+    public showBack: Boolean = true;
   
     constructor(
       private _router: Router,
@@ -53,7 +53,7 @@
       };
       this.user = this._userService.getIdentity();
       this.initGamefication();
-  
+ 
     }
   
     ngOnInit(): void {
@@ -68,6 +68,11 @@
       .subscribe((response) => {
         this.user.image = response.document;
       });
+      //this._navbarService.setButtonBack(false);
+    }
+
+    ngAfterViewInit() {
+      //this.showBack = this._navbarService.ButtonBackIsVisible();
     }
   
     logout() {
@@ -254,8 +259,6 @@
         }
       );
   
-      console.log(this.user.level);
-      console.log(this.identity);
   
     }
   

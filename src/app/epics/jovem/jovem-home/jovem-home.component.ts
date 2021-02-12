@@ -6,12 +6,13 @@ import { WelcomeComponent } from 'src/app/components/welcome/welcome.component';
 import { Epic } from 'src/app/models/epic';
 import { Subscription } from 'src/app/models/subscription';
 import { UserService } from 'src/app/services/user.service';
+import { NavbarService } from "src/app/services/navbar.service";
 
 @Component({
   selector: 'app-jovem-home',
   templateUrl: './jovem-home.component.html',
   styleUrls: ['./jovem-home.component.css'],
-  providers: [UserService]
+  providers: [UserService, NavbarService]
 })
 export class JovemHomeComponent implements OnInit, AfterViewInit {
   public title: string;
@@ -25,7 +26,8 @@ export class JovemHomeComponent implements OnInit, AfterViewInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _userService: UserService,
-        private modalService: BsModalService
+        private modalService: BsModalService,
+        public _navbarService: NavbarService
     ) {
         this.title = 'Bem Vindos!';
     }
@@ -40,6 +42,7 @@ export class JovemHomeComponent implements OnInit, AfterViewInit {
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
     // Como pegar o epico atual
     this.epic = JSON.parse(localStorage.getItem('currentEpic'));
+    //this._navbarService.setButtonBack(false);
   }
 
   ngAfterViewInit(){

@@ -123,6 +123,7 @@ import { UserTrailsComponent } from './epics/main/user-trails/user-trails.compon
 import { AllContentComponent } from './epics/main/all-content/all-content.component';
 import { SubscriptionEditComponent } from './admin/subscription/subscription-edit/subscription-edit.component';
 import { DiferenceComponent } from './epics/main/diference/diference.component';
+import { JovemRightSidebarComponent } from './epics/jovem/jovem-right-sidebar/jovem-right-sidebar.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -271,6 +272,7 @@ const appRoutes: Routes = [
             {path: 'jovem-classroom/:type/:id', component: JovemClassroomComponent, canActivate:[UserGuard]},
             {path: 'meus-dados', component: ProfileEditComponent, canActivate:[UserGuard]},
             {path: 'caravan-space', component: CaravanSpaceComponent, canActivate:[UserGuard]},
+            {path: 'sidebar', component: JovemRightSidebarComponent, canActivate:[UserGuard]}
         ],
     },
 

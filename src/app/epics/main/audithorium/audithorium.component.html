@@ -4,7 +4,7 @@
   </div>
 
   <div *ngIf="actualContent.type == 'youtube'" style="height: inherit">
-    <app-videojs [vContent]="actualContent"></app-videojs>
+    <app-videojs [vContent]="actualContent" [type]="lectureType"></app-videojs>
   </div>
 
   <div *ngIf="actualContent.type == 'externo'" style="height: inherit">

@@ -22,6 +22,7 @@ declare let videojs: any;
 export class VideojsComponent implements OnInit {
   vidObj: any;
   @Input() public vContent: Content = null;
+  @Input() public type: string = null;
   @ViewChild("myvid") vid: ElementRef;
   @ViewChild("vidContainer") container: ElementRef;
   option: any;
@@ -103,13 +104,15 @@ export class VideojsComponent implements OnInit {
       }
     );
 
-    var split = this.vContent.url.split("https://www.youtube.com/watch?v=");
-    if(split.length == 2) {
-      this._youtubeLiveService.youtubelive.next(split[1]);
-    } else {
-      var url = this.vContent.url.split('/');
-      var code = url[url.length - 1];
-      this._youtubeLiveService.youtubelive.next(code);
+    if (this.type == 'momento_coletivo') { 
+      var split = this.vContent.url.split("https://www.youtube.com/watch?v=");
+      if(split.length == 2) {
+        this._youtubeLiveService.youtubelive.next(split[1]);
+      } else {
+        var url = this.vContent.url.split('/');
+        var code = url[url.length - 1];
+        this._youtubeLiveService.youtubelive.next(code);
+      }
     }
   }
 

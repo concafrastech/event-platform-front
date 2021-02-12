@@ -24,6 +24,7 @@ export class AudithoriumComponent implements OnInit {
 
   public type: string;
   public contents: Content[] = [];
+  public lectureType: string;
   //public activeSlideIndex = 0;
   public actualContent: Content;
 
@@ -60,6 +61,7 @@ export class AudithoriumComponent implements OnInit {
         case "lecture": {
           this._lectureService.getLecture(id).subscribe((response) => {
             this.lecture = response.lecture;
+            this.lectureType = this.lecture.type;
             this.handleDisplay(this.lecture.contents);
           });
           break;

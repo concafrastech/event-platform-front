@@ -1,68 +1,63 @@
 <div id="bg">
   <img src="../../../assets/concafras2021/concafronas/acesso/Retangulo_1.png" alt="" />
 </div>
-<div class="retangulo-2">
-  <div class="text-center">
-    <span>Conheça nossa plataforma!</span>
-    <svg-icon class="close icon-close" [svgStyle]="{ 'width.px':20 }"
-      src="assets/concafras2021/concafronas/icones/fechar.svg" (click)="back()"></svg-icon>
-  </div>
-  <!-- <div class="text-about">
-    <span>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-    </span> 
-    </div> -->
-  <!-- <iframe
-      width="480"
-      height="315"
-      src=""
-      style="background-color: black;"
-    >
-    </iframe> -->
 
-  <div style="margin: 10px 0px;" *ngIf="contentCaravanSpace">
-    <div class="text-center">
-      <span>Tutorial - Espaço do caravaneiro</span>
+<div class="container">
+  <div class="retangulo-2">
+    <div class="titulo">
+      <span>Conheça nossa plataforma!</span>
+      <button type="button" class="close icon-close position-relative" (click)="back()" aria-label="Close">
+        <span aria-hidden="true">
+          <svg-icon class="close icon-close" [svgStyle]="{ 'width.px':25 }"
+            src="assets/concafras2021/concafronas/icones/fechar.svg"></svg-icon>
+        </span>
+      </button>
     </div>
-    <app-videojs [vContent]="contentCaravanSpace"></app-videojs>
-  </div>
 
-  <div style="margin: 10px 0px;" *ngIf="contentSupportIcons">
-    <div class="text-center">
-      <span>Tutorial - Ícones de apoio</span>
+    <div class="video" *ngIf="contentCaravanSpace">
+      <div class="titulo">
+        <span>Tutorial - Espaço do caravaneiro</span>
+      </div>
+      <app-videojs [vContent]="contentCaravanSpace"></app-videojs>
     </div>
-    <app-videojs [vContent]="contentSupportIcons"></app-videojs>
-  </div>
 
-  <div style="margin: 10px 0px;" *ngIf="contentHome">
-    <div class="text-center">
-      <span>Tutorial - Página inicial</span>
+    <div class="video" *ngIf="contentSupportIcons">
+      <div class="titulo">
+        <span>Tutorial - Ícones de apoio</span>
+      </div>
+      <app-videojs [vContent]="contentSupportIcons"></app-videojs>
     </div>
-    <app-videojs [vContent]="contentHome"></app-videojs>
-  </div>
 
-  <div style="margin: 10px 0px;" *ngIf="contentProfile">
-    <div class="text-center">
-      <span>Tutorial - Perfil do caravaneiro</span>
+    <div class="video" *ngIf="contentHome">
+      <div class="titulo">
+        <span>Tutorial - Página inicial</span>
+      </div>
+      <app-videojs [vContent]="contentHome"></app-videojs>
     </div>
-    <app-videojs [vContent]="contentProfile"></app-videojs>
-  </div>
 
-  <div style="margin: 10px 0px;" *ngIf="contentSchedule">
-    <div class="text-center">
-      <span>Tutorial - Programação</span>
+    <div class="video" *ngIf="contentProfile">
+      <div class="titulo">
+        <span>Tutorial - Perfil do caravaneiro</span>
+      </div>
+      <app-videojs [vContent]="contentProfile"></app-videojs>
     </div>
-    <app-videojs [vContent]="contentSchedule"></app-videojs>
-  </div>
 
-  <div style="margin: 10px 0px;" *ngIf="contentEpicJovem">
-    <div class="text-center">
-      <span>Tutorial - Plataforma Jovem</span>
+    <div class="video" *ngIf="contentSchedule">
+      <div class="titulo">
+        <span>Tutorial - Programação</span>
+      </div>
+      <app-videojs [vContent]="contentSchedule"></app-videojs>
     </div>
-    <app-videojs [vContent]="contentEpicJovem"></app-videojs>
-  </div>
 
-  <div>
-    <input type="button" (click)="goToEvent()" value="Ir para o evento" class="btn btn-primary btn-sm btn-about" />
+    <div class="video" *ngIf="contentEpicJovem">
+      <div class="titulo">
+        <span>Tutorial - Plataforma Jovem</span>
+      </div>
+      <app-videojs [vContent]="contentEpicJovem"></app-videojs>
+    </div>
+
+    <div>
+      <input type="button" (click)="goToEvent()" value="Ir para o evento" class="btn btn-primary btn-sm btn-about" />
+    </div>
   </div>
 </div>

@@ -258,6 +258,16 @@ export class RightSidebarComponent implements OnInit {
     }
   }
 
+  // Footer mobile
+  toggleRightSidebar() {
+    const navRightSidebarClasses = document.querySelector('.nav-right-sidebar').classList;
+    const rightSidebarClasses = document.getElementById('navbarNavRight').classList;
+
+    navRightSidebarClasses.toggle('zindex-positive');
+    navRightSidebarClasses.toggle('zindex-negative');
+    rightSidebarClasses.toggle('show');
+  }
+
   openEFASComponent() {
     const initialState = {
       title: "Encontro Fraterno Auta de Souza",

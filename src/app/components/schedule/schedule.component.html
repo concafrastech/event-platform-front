@@ -31,27 +31,33 @@
           Dia {{ i + 1 }} - {{ group.group }}
         </div>
         <ul class="list-group list-group-flush">
-          <li style="display: block; width: 100%; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule">
+          <li style="display: block; width: 100%; padding: 1rem; color: #474747"
+            *ngFor="let schedule of group.schedule">
             <div class="div-header">
-              <div [tooltip]="schedule.description" placement="left">
-                {{ schedule.name }}
+              <div class="schedule__block-title" [tooltip]="schedule.description" placement="left">{{ schedule.name }}
               </div>
-              <div style="font-weight: 500">
-                {{ schedule.start_time | date: "HH:mm" }} -
-                {{ schedule.end_time | date: "HH:mm" }}
-              </div>
+              <div class="schedule__block-time">{{ schedule.start_time | date: "HH:mm" }} - {{ schedule.end_time |
+                date: "HH:mm" }}</div>
             </div>
-            <div class="div-header">
-              <div>
+            <div class="schedule__block-description">
+              <div class="schedule__block-description-text">{{ schedule.description }}<br> <strong style="color: black;">localização: {{ schedule.place }}</strong><img style="margin-left: 10px; height: 2.5rem; width: 2.5rem;"
+                [src]="placeIcon[schedule.iconIndex]" /></div>
+              <div class="schedule__block-description-icons">
+                <img src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg"
+                  alt="&Iacute;cone - Closed Caption" />
+                <img src="assets/concafras2021/concafronas/icones/libras.svg" alt="&Iacute;cone - Libras" />
+              </div>
+              <!-- <div>
                 <span style="font-size: 0.8rem; color: #a2a2a2">{{
                   schedule.description
                   }} <br> <strong style="color: black;">localização: {{ schedule.place }}</strong>
-                  <img style="margin-left: 10px; height: 2.5rem; width: 2.5rem;" [src]="placeIcon[schedule.iconIndex]"/></span>
-              </div>
-              <div class="img-acessibilidade">
+                  <img style="margin-left: 10px; height: 2.5rem; width: 2.5rem;"
+                    [src]="placeIcon[schedule.iconIndex]" /></span>
+              </div> -->
+              <!-- <div class="img-acessibilidade">
                 <img src="assets/concafras2021/concafronas/icones/icone-closed-caption.svg" />
                 <img src="assets/concafras2021/concafronas/icones/libras.svg" />
-              </div>
+              </div> -->
             </div>
           </li>
         </ul>

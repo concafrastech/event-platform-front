@@ -1,4 +1,4 @@
-<div class="nav-right-sidebar">
+<div class="nav-right-sidebar zindex-negative">
   <div class="menu-list">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="collapse navbar-collapse" id="navbarNavRight">
@@ -12,6 +12,7 @@
           </li>
           <li class="nav-item">
             <h3 class="nav-header">{{now ? 'Acontecendo agora' : 'Fique Atento!'}}</h3>
+            <svg-icon id="closeRightSidebar" (click)="toggleRightSidebar()" [svgStyle]="{ 'width.px':25 }" src="assets/concafras2021/concafronas/icones/fechar.svg"></svg-icon>
             <div id="carouselControlsNow" class="carousel slide">
               <div *ngIf="todaySchedule.length > 0">
                 <!-- <ol class="carousel-indicators">

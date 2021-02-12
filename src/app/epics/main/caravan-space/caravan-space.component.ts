@@ -17,6 +17,7 @@ import { SocialFeedService } from "src/app/services/social-feed.service";
 import { Content } from "src/app/models/content";
 import { Observable } from "rxjs";
 import { NgxSpinnerService } from "ngx-spinner";
+import { UserGamificationService } from 'src/app/services/user-gamification.service';
 
 @Component({
   selector: "app-caravan-space",
@@ -76,7 +77,8 @@ export class CaravanSpaceComponent implements OnInit {
     private _contentService: ContentService,
     private _documentService: DocumentService,
     private _socialFeedService: SocialFeedService,
-    private _spinner: NgxSpinnerService
+    private _spinner: NgxSpinnerService,
+    private _userGamificationService: UserGamificationService
   ) {}
 
   ngOnInit(): void {
@@ -526,6 +528,7 @@ export class CaravanSpaceComponent implements OnInit {
   }
 
   goToAudithorium(item: Lecture) {
+    this._userGamificationService.setMissionComplete("Interatividade");
     this._router.navigate(["/audithorium", "lecture", item._id]);
   }
 

@@ -1,3 +1,4 @@
+import { UserGamificationService } from './../../../services/user-gamification.service';
 import { UserService } from "src/app/services/user.service";
 import { EpicService } from "./../../../services/epic.service";
 import { Epic } from "src/app/models/epic";
@@ -31,6 +32,20 @@ export class HubComponent implements OnInit, AfterViewInit {
   public todayEvents: Lecture[] = [];
   public svgTooltip: string = "";
 
+  //Data/Hora dos momentos tira dúvidas
+  public startAskQuestions = new Date("2021-02-13 17:00:00");
+  public endAskQuestions = new Date("2021-02-13 17:30:00");
+
+  //Links sala zoom tira dúvidas
+  public linkCfasZoom: string =
+    "https://us02web.zoom.us/j/83486418907?pwd=NE5qRGNlQ2lRMHVtSnd0Ulk4dmJaQT09";
+  public linkCecxZoom: string =
+    "https://us02web.zoom.us/j/87689309836?pwd=RVlsbG5aWjBTeEJ6TW1oMjZzK0ZLQT09";
+  public linkClubZoom: string =
+    "https://us02web.zoom.us/j/86034908996?pwd=V2grRVdzMzhDUFdXTDhXc3A4ZzY4QT09";
+  public linkEditoraZoom: string =
+    "https://us02web.zoom.us/j/87852650772?pwd=VHJZdUJFdGtIV0FrQ2h6WHpvcWdKQT09";
+
   options = {
     zoomEnabled: true,
     controlIconsEnabled: true,
@@ -49,6 +64,7 @@ export class HubComponent implements OnInit, AfterViewInit {
     private _epicService: EpicService,
     private _userService: UserService,
     private _lectureService: LectureService,
+    private _userGamificationService: UserGamificationService
   ) {}
 
   ngOnInit(): void {
@@ -71,49 +87,147 @@ export class HubComponent implements OnInit, AfterViewInit {
 
     let palestrasContainer = svgDoc.getElementById("PALESTRAS");
 
-    palestrasContainer.addEventListener(eventType, this.eventClickSvg.bind(this, "PALESTRAS"));
-    svgDoc.getElementById("PALESTRAS").addEventListener("mouseenter", () => {this.setSvgInfo('Palestras')});
-    svgDoc.getElementById("PALESTRAS").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    palestrasContainer.addEventListener(
+      eventType,
+      this.eventClickSvg.bind(this, "PALESTRAS")
+    );
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseenter", () => {
+      this.setSvgInfo("Palestras");
+    });
+    svgDoc.getElementById("PALESTRAS").addEventListener("mouseleave", () => {
+      this.setSvgInfo("");
+    });
 
-    svgDoc.getElementById("ndc").addEventListener(eventType, this.eventClickSvg.bind(this, "ndc"));
-    svgDoc.getElementById("ndc").addEventListener("mouseenter", () => {this.setSvgInfo("Novas Dimensões do Conhecimento")});
-    svgDoc.getElementById("ndc").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("ndc")
+      .addEventListener(eventType, this.eventClickSvg.bind(this, "ndc"));
+    svgDoc.getElementById("ndc").addEventListener("mouseenter", () => {
+      this.setSvgInfo("Novas Dimensões do Conhecimento");
+    });
+    svgDoc.getElementById("ndc").addEventListener("mouseleave", () => {
+      this.setSvgInfo("");
+    });
 
-    svgDoc.getElementById("livros").addEventListener(eventType, this.eventClickSvg.bind(this, "livros"));
-    svgDoc.getElementById("livros").addEventListener("mouseenter", (ev) => {this.setSvgInfo("Livraria")});
-    svgDoc.getElementById("livros").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("livros")
+      .addEventListener(eventType, this.eventClickSvg.bind(this, "livros"));
+    svgDoc.getElementById("livros").addEventListener("mouseenter", (ev) => {
+      this.setSvgInfo("Livraria");
+    });
+    svgDoc.getElementById("livros").addEventListener("mouseleave", () => {
+      this.setSvgInfo("");
+    });
 
-    svgDoc.getElementById("ccex").addEventListener(eventType, this.eventClickSvg.bind(this, "ccex"));
-    svgDoc.getElementById("ccex").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CAMPANHA DE ESCLARECIMENTO CHICO XAVIER")});
-    svgDoc.getElementById("ccex").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("ccex")
+      .addEventListener(eventType, this.eventClickSvg.bind(this, "ccex"));
+    svgDoc.getElementById("ccex").addEventListener("mouseenter", (ev) => {
+      this.setSvgInfo("CAMPANHA DE ESCLARECIMENTO CHICO XAVIER");
+    });
+    svgDoc.getElementById("ccex").addEventListener("mouseleave", () => {
+      this.setSvgInfo("");
+    });
 
-    svgDoc.getElementById("cfas").addEventListener(eventType, this.eventClickSvg.bind(this, "cfas"));
-    svgDoc.getElementById("cfas").addEventListener("mouseenter", (ev) => {this.setSvgInfo("CAMPANHA DE FRATERNIDADE AUTA DE SOUZA")});
-    svgDoc.getElementById("cfas").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("cfas")
+      .addEventListener(eventType, this.eventClickSvg.bind(this, "cfas"));
+    svgDoc.getElementById("cfas").addEventListener("mouseenter", (ev) => {
+      this.setSvgInfo("CAMPANHA DE FRATERNIDADE AUTA DE SOUZA");
+    });
+    svgDoc.getElementById("cfas").addEventListener("mouseleave", () => {
+      this.setSvgInfo("");
+    });
 
-    svgDoc.getElementById("stand_voluntario").addEventListener(eventType, this.eventClickSvg.bind(this, "stand_voluntario"));
-    svgDoc.getElementById("stand_voluntario").addEventListener("mouseenter", () => {this.setSvgInfo("Clube do Livro")});
-    svgDoc.getElementById("stand_voluntario").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("stand_voluntario")
+      .addEventListener(
+        eventType,
+        this.eventClickSvg.bind(this, "stand_voluntario")
+      );
+    svgDoc
+      .getElementById("stand_voluntario")
+      .addEventListener("mouseenter", () => {
+        this.setSvgInfo("Clube do Livro");
+      });
+    svgDoc
+      .getElementById("stand_voluntario")
+      .addEventListener("mouseleave", () => {
+        this.setSvgInfo("");
+      });
 
-    svgDoc.getElementById("jovem").addEventListener(eventType, this.eventClickSvg.bind(this, "jovem"));
-    svgDoc.getElementById("jovem").addEventListener("mouseenter", () => {this.setSvgInfo("Concafras - Jovem")});
-    svgDoc.getElementById("jovem").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("jovem")
+      .addEventListener(eventType, this.eventClickSvg.bind(this, "jovem"));
+    svgDoc.getElementById("jovem").addEventListener("mouseenter", () => {
+      this.setSvgInfo("Concafras - Jovem");
+    });
+    svgDoc.getElementById("jovem").addEventListener("mouseleave", () => {
+      this.setSvgInfo("");
+    });
 
-    svgDoc.getElementById("stand_editora").addEventListener(eventType, this.eventClickSvg.bind(this, "stand_editora"));
-    svgDoc.getElementById("stand_editora").addEventListener("mouseenter", () => {this.setSvgInfo("Editora Auta de Souza")});
-    svgDoc.getElementById("stand_editora").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("stand_editora")
+      .addEventListener(
+        eventType,
+        this.eventClickSvg.bind(this, "stand_editora")
+      );
+    svgDoc
+      .getElementById("stand_editora")
+      .addEventListener("mouseenter", () => {
+        this.setSvgInfo("Editora Auta de Souza");
+      });
+    svgDoc
+      .getElementById("stand_editora")
+      .addEventListener("mouseleave", () => {
+        this.setSvgInfo("");
+      });
 
-    svgDoc.getElementById("EVENTO_AO_VIVO").addEventListener(eventType, this.eventClickSvg.bind(this, "EVENTO_AO_VIVO"));
-    svgDoc.getElementById("EVENTO_AO_VIVO").addEventListener("mouseenter", () => {this.setSvgInfo("Evento ao Vivo (Palco)")});
-    svgDoc.getElementById("EVENTO_AO_VIVO").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("EVENTO_AO_VIVO")
+      .addEventListener(
+        eventType,
+        this.eventClickSvg.bind(this, "EVENTO_AO_VIVO")
+      );
+    svgDoc
+      .getElementById("EVENTO_AO_VIVO")
+      .addEventListener("mouseenter", () => {
+        this.setSvgInfo("Evento ao Vivo (Palco)");
+      });
+    svgDoc
+      .getElementById("EVENTO_AO_VIVO")
+      .addEventListener("mouseleave", () => {
+        this.setSvgInfo("");
+      });
 
-    svgDoc.getElementById("clube_do_livro").addEventListener(eventType, this.eventClickSvg.bind(this, "clube_do_livro"));
-    svgDoc.getElementById("clube_do_livro").addEventListener("mouseenter", () => {this.setSvgInfo("Formação de Trabalhadores Espíritas")});
-    svgDoc.getElementById("clube_do_livro").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("clube_do_livro")
+      .addEventListener(
+        eventType,
+        this.eventClickSvg.bind(this, "clube_do_livro")
+      );
+    svgDoc
+      .getElementById("clube_do_livro")
+      .addEventListener("mouseenter", () => {
+        this.setSvgInfo("Formação de Trabalhadores Espíritas");
+      });
+    svgDoc
+      .getElementById("clube_do_livro")
+      .addEventListener("mouseleave", () => {
+        this.setSvgInfo("");
+      });
 
-    svgDoc.getElementById("concafrinhas").addEventListener(eventType, this.eventClickSvg.bind(this, "concafrinhas"));
-    svgDoc.getElementById("concafrinhas").addEventListener("mouseenter", () => {this.setSvgInfo("Concafrinhas")});
-    svgDoc.getElementById("concafrinhas").addEventListener("mouseleave", () => {this.setSvgInfo("")});
+    svgDoc
+      .getElementById("concafrinhas")
+      .addEventListener(
+        eventType,
+        this.eventClickSvg.bind(this, "concafrinhas")
+      );
+    svgDoc.getElementById("concafrinhas").addEventListener("mouseenter", () => {
+      this.setSvgInfo("Concafrinhas");
+    });
+    svgDoc.getElementById("concafrinhas").addEventListener("mouseleave", () => {
+      this.setSvgInfo("");
+    });
   }
 
   loadScheduleEpic() {
@@ -122,7 +236,6 @@ export class HubComponent implements OnInit, AfterViewInit {
       .getSchedules(this.currentEpic._id, this.identity._id)
       .subscribe(
         (response) => {
-
           if (response) {
             let schedules = response;
             schedules.sort(this.sortSchedules);
@@ -191,9 +304,7 @@ export class HubComponent implements OnInit, AfterViewInit {
   getTodayEvents() {
     this.todaySchedule.map((schedule) => {
       this._lectureService.getLecture(schedule.id).subscribe((response) => {
-        if (
-          response.lecture.type == "momento_coletivo"
-        ) {
+        if (response.lecture.type == "momento_coletivo") {
           this.todayEvents.push(response.lecture);
         }
       });
@@ -203,8 +314,9 @@ export class HubComponent implements OnInit, AfterViewInit {
   //Busca evento que esteja acontecendo agora.
   eventIsHappening(): string {
     let today = new Date();
+    this._userGamificationService.setMissionComplete("Momento Coletivo");
 
-    for (let i = 0; this.todayEvents.length; i++) {
+    for (let i = 0; i < this.todayEvents.length; i++) {
       let start = new Date(this.todayEvents[i].start_time);
       let end = new Date(this.todayEvents[i].end_time);
 
@@ -216,7 +328,39 @@ export class HubComponent implements OnInit, AfterViewInit {
         return `/audithorium/lecture/${this.todayEvents[i]._id}`;
       }
     }
-    return '';
+    alert("Atividade fechada! Retorne mais tarde e fique atento a programação");
+    return null;
+  }
+
+  askQuestionsTime(stand: string) {
+    let today = new Date();
+    if (
+      today.getTime() >= this.startAskQuestions.getTime() &&
+      today.getTime() <= this.endAskQuestions.getTime()
+    ) {
+      this._userGamificationService.setMissionComplete("Tira Dúvidas");
+      setTimeout(() => {
+        switch (stand) {
+          case "cfas":
+            window.location.href = this.linkCfasZoom;
+            break;
+          case "cecx":
+            window.location.href = this.linkCecxZoom;
+            break;
+          case "club":
+            window.location.href = this.linkClubZoom;
+            break;
+          case "editora":
+            window.location.href = this.linkEditoraZoom;
+            break;
+        }
+      }, 2000);
+      alert('Aguarde, você está sendo redirecionado...');
+      
+    } else {
+      return true;
+    }
+    return false;
   }
 
   //Trata evento click no svg do hub
@@ -238,17 +382,24 @@ export class HubComponent implements OnInit, AfterViewInit {
 
       case "ccex":
         console.log("ccex");
-        this.redirectToFromSvg("/audithorium-special/cecx");
+        if (this.askQuestionsTime("cecx")) {
+          this.redirectToFromSvg("/audithorium-special/cecx");
+        }
         break;
 
       case "cfas":
         console.log("cfas");
-        this.redirectToFromSvg("/audithorium-special/cfas");
+        if (this.askQuestionsTime("cfas")) {
+          this.redirectToFromSvg("/audithorium-special/cfas");
+        }
         break;
 
       case "stand_voluntario":
         console.log("stand_voluntario");
-        this.redirectToFromSvg("/audithorium-special/clube");
+        if (this.askQuestionsTime("club")) {
+          this.redirectToFromSvg("/audithorium-special/clube");
+        }
+
         break;
 
       case "jovem":
@@ -257,12 +408,17 @@ export class HubComponent implements OnInit, AfterViewInit {
 
       case "stand_editora":
         console.log("stand_editora");
-        this.redirectToFromSvg("/audithorium-special/editora");
+        if (this.askQuestionsTime("editora")) {
+          this.redirectToFromSvg("/audithorium-special/editora");
+        }
         break;
 
       case "EVENTO_AO_VIVO":
         console.log("EVENTO_AO_VIVO");
-        this.redirectToFromSvg(this.eventIsHappening());
+        let url = this.eventIsHappening();
+        if (url) {
+          this.redirectToFromSvg(url);
+        }
         break;
 
       case "clube_do_livro":
@@ -276,14 +432,16 @@ export class HubComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setSvgInfo(info: string){
-    this.zone.run(() => this.svgTooltip=info);
+  setSvgInfo(info: string) {
+    this.zone.run(() => (this.svgTooltip = info));
   }
 
   //Redireciona para uma url interna saindo do contexto do svg
   redirectToFromSvg(path: string) {
-    if(path == "/ndc" || path == "/palestras") {
-      alert("Atividade fechada! Retorne mais tarde e fique atento a programação")
+    if (path == "/ndc" || path == "/palestras") {
+      alert(
+        "Atividade fechada! Retorne mais tarde e fique atento a programação"
+      );
     } else {
       this.zone.run(() => this._router.navigate([path]));
     }

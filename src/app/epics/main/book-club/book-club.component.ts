@@ -1,3 +1,4 @@
+import { UserGamificationService } from 'src/app/services/user-gamification.service';
 import { DocumentService } from "./../../../services/document.service";
 import { ClassroomService } from "./../../../services/classroom.service";
 import { Trail } from "./../../../models/trail";
@@ -27,26 +28,22 @@ export class BookClubComponent implements OnInit {
   public practical: Classroom[];
 
   //Data/Hora dos momentos e curso prático
-  // public startMomentOne = new Date("2021-02-13 15:00:00");
-  // public endMomentOne = new Date("2021-02-13 17:00:00");
-  // public startMomentTwo = new Date("2021-02-14 08:30:00");
-  // public endMomentTwo = new Date("2021-02-14 10:00:00");
-  // public startPratical = new Date("2021-02-14 10:00:00");
-  // public endPratical = new Date("2021-02-14 12:00:00");
-  public startMomentOne = new Date("2021-02-10 00:30:00");
-  public endMomentOne = new Date("2021-02-10 00:32:00");
-  public startMomentTwo = new Date("2021-02-10 00:32:00");
-  public endMomentTwo = new Date("2021-02-10 00:34:00");
-  public startPratical = new Date("2021-02-10 00:34:00");
-  public endPratical = new Date("2021-02-10 00:50:00");
+  public startMomentOne = new Date("2021-02-13 15:00:00");
+  public endMomentOne = new Date("2021-02-13 17:00:00");
+  public startMomentTwo = new Date("2021-02-14 08:30:00");
+  public endMomentTwo = new Date("2021-02-14 10:00:00");
+  public startPratical = new Date("2021-02-14 10:00:00");
+  public endPratical = new Date("2021-02-14 12:00:00");
 
+  
   constructor(
     private _classroomService: ClassroomService,
     private _contentService: ContentService,
     private _serverTime: ServerTimeService,
     public modalRef: BsModalRef,
     private _zone: NgZone,
-    private _router: Router
+    private _router: Router,
+    private _userGamificationService: UserGamificationService
   ) {}
 
   ngOnInit() {
@@ -180,16 +177,19 @@ export class BookClubComponent implements OnInit {
       this.now.getTime() >= this.startMomentOne.getTime() &&
       this.now.getTime() <= this.endMomentOne.getTime()
     ) {
+      this._userGamificationService.setMissionComplete("Momento Doutrinário Ciclo 1");
       return this.momentOne;
     } else if (
       this.now.getTime() >= this.startMomentTwo.getTime() &&
       this.now.getTime() <= this.endMomentTwo.getTime()
     ) {
+      this._userGamificationService.setMissionComplete("Momento Doutrinário Ciclo 2");
       return this.momentTwo;
     } else if (
       this.now.getTime() >= this.startPratical.getTime() &&
       this.now.getTime() <= this.endPratical.getTime()
     ) {
+      this._userGamificationService.setMissionComplete("Vivência Prática de Voluntariado Espírita");
       let defaultPratical: Classroom;
       let userPratical: Classroom;
 

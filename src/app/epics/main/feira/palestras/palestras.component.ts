@@ -25,7 +25,7 @@ export class PalestrasComponent implements OnInit {
 
   ngOnInit(): void {
     let epic = JSON.parse(localStorage.getItem("currentEpic"));
-    this._lectureService.getLectures(null, epic._id).subscribe((response) => {
+    this._lectureService.getFullLectures(epic._id).subscribe((response) => {
       response.lectures.forEach(lecture => {
         if (
           lecture.type =="palestra" ||

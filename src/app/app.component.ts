@@ -1,4 +1,4 @@
-import { UserGamificationService } from 'src/app/services/user-gamification.service';
+import { UserGamificationService } from "src/app/services/user-gamification.service";
 import { Component, OnInit, DoCheck } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UserService } from "./services/user.service";
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, DoCheck {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _userGamificationService: UserGamificationService,
+    private _userGamificationService: UserGamificationService
   ) {
     this.title = "EVENTO";
     this.url = GLOBAL.url;
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.identity = this._userService.getIdentity();
   }
-/*
+  /*
   initJivoChat(){
     const tag = this.renderer.createElement("script");
     this.renderer.setProperty(tag, 'id', "jivo_chat_id_angular")
@@ -60,7 +60,10 @@ export class AppComponent implements OnInit, DoCheck {
 
   newInterval() {
     this.interval = setInterval(() => {
-      console.log("%c PONTUANDO APÓS UMA HORA DO USÁRIO LOGADO", 'font-size: 15px; color: orange');
+      console.log(
+        "%c PONTUANDO APÓS UMA HORA DO USÁRIO LOGADO",
+        "font-size: 15px; color: orange"
+      );
       this._userGamificationService.setMissionComplete("Bônus Hora");
     }, 3600000);
   }
@@ -73,7 +76,29 @@ export class AppComponent implements OnInit, DoCheck {
     } else {
       if (this.interval == null) {
         this.newInterval();
+        this.dailyMission();
       }
+    }
+  }
+
+  dailyMission() {
+    let now = new Date();
+    if (now.getDate() == 12) {
+      setTimeout(() => {
+        this._userGamificationService.setMissionComplete("Bônus Sexta");
+      }, 3000);
+    }
+
+    if (now.getDate() == 13) {
+      setTimeout(() => {
+        this._userGamificationService.setMissionComplete("Bônus Sábado");
+      }, 3000);
+    }
+
+    if (now.getDate() == 14) {
+      setTimeout(() => {
+        this._userGamificationService.setMissionComplete("Bônus Domingo");
+      }, 3000);
     }
   }
 

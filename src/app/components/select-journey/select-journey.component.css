@@ -20,36 +20,37 @@
 
 .row-logotipo {
     padding-top: 15%;
-    padding-left: 33%;
+    text-align: center;
+    display: block;
 }
 
 .Logotipo-horizontal {
-  width: 740px;
-  height: 100px;
+  width: 382px;
+  height: 88px;
   background: transparent
     url("../../../assets/concafras2021/concafronas/acesso/Logotipo_horizontal.png")
     0% 0% no-repeat padding-box;
+    background-size: cover;
+    display: inline-block;
 }
 
 .text-welcome {
-  width: 415.5px;
-  height: 18px;
+  text-align: center;
   margin: 40px auto;
   font-family: "Poppins", sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.5;
   letter-spacing: normal;
-  text-align: left;
   color: #fbfbfb;
 }
 
 .btn-epics {
   top: 708px;
   left: 484px;
-  width: 288px;
+  width: 100%;
   opacity: 1;
   background: transparent;
   border-radius: 50px;
@@ -61,4 +62,16 @@
 .btn-epics:hover {
   background: #007bff;
   border-color: #007bff;
+}
+
+
+@media only screen and (max-width: 768px) {
+	.Logotipo-horizontal {
+		width: 230px;
+		height: 50px;
+	}
+	
+	.top-right {right: 0 !important;}
+	
+	.btn-epics {width: 100%;}
 }

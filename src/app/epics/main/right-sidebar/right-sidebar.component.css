@@ -2,7 +2,7 @@
 Right Navigation Sidebar
 ------------------------- */
 #closeRightSidebar {
-    display: none;
+    display: none !important;
 }
 
 .nav-right-sidebar {
@@ -263,14 +263,16 @@ ol.carousel-indicators li.active {
     #navbarNavRight {
         border-radius: 0;
         padding: 20px;
-        height: 100vh;
+        height: auto;
+        display: block !important;
     }
 
     .nav-right-sidebar {
         z-index: unset;
         top: 0;
         width: 100%;
-        height: 100vh;
+        height: auto;
+        position: initial !important;
     }
 
     .nav-right-sidebar .navbar {

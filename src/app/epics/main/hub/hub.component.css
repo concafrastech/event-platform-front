@@ -60,7 +60,9 @@
   top: -11rem;
 }
 
+
 /* ==== RESPONSIVE ==== */
+/*
 @media only screen and (max-width: 1680px) {
   #svgMap {
     top: -4rem;
@@ -82,4 +84,30 @@
     left: 4rem;
     top: 4rem;
   }
+}*/
+
+
+@media only screen and (max-width: 768px) {
+
+	.welcome {
+		width: 100%;
+		float: initial;
+	}
+	
+	#svgMap {
+		position: initial;
+		left: initial;
+		right: initial;
+		max-width: 100%;
+	}
+		
+	.welcome1,
+	.welcome3 {
+		color: #fff;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+	}
+	
+	.hub-main {
+		padding: 10px 5px 30px;
+	}
 }

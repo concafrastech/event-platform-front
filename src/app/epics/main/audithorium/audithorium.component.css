@@ -47,3 +47,26 @@
     color: #fff;
     font-weight: 300;
 }
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width:768px) {
+    
+	.audithorium-container {
+		margin: 10px 0 0;
+	}
+	
+	.lecture-header-text {font-size: 14px;}
+	
+	.lecture-header-title {font-size: 20px;}
+	
+	.hinario-header-text {
+		display: block;
+		padding-top: 10px;
+	}
+	
+	.btn-hinario {
+		margin: 10px 10px 0 0;
+		padding: 6px 20px;
+	}
+}

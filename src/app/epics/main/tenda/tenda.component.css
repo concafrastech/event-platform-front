@@ -11,7 +11,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.dashboard-header {}
+.dashboard-header {z-index: 99 !important;}
 
 .dashboard-header .navbar {
     padding: 0px;
@@ -124,7 +124,7 @@ body {
 
 
 /* Extra Small Devices, Phones */
-
+/*
 @media only screen and (max-width:480px) {
     .dashboard-wrapper {
         margin-left: 0px;
@@ -155,4 +155,17 @@ body {
         background-position-y: 14%;
     }
 
+}
+*/
+
+@media only screen and (max-width: 768px) {
+	.dashboard-main-wrapper {
+		padding-top: 0;
+	}
+	
+	.dashboard-content {padding: 0;}
+	
+	.dashboard-wrapper {min-height: initial !important;}
+	
+	#closeRightSidebar {display: none !important;}
 }

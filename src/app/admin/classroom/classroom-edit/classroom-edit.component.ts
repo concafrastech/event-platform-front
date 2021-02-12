@@ -52,7 +52,6 @@ export class ClassroomEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: classroom-edit.");
     this.identity = this._userService.getIdentity();
     if (!this.classroom) {
       this.classroom = new Classroom(

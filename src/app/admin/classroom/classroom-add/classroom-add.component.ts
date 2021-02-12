@@ -52,7 +52,6 @@ export class ClassroomAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: classroom-add.");
     this._spinner.show();
     this.identity = this._userService.getIdentity();
     if(!this.classroom) {
@@ -99,84 +98,6 @@ export class ClassroomAddComponent implements OnInit {
   contentFormIsValid(event: boolean) {
     return (this.contentIsValid = event);
   }
-
-  /*onSubmit() {
-    console.log("oi submit classroom add");
-    
-    this._spinner.show();
-    this.saveDocuments();
-  }
-
-  //Realiza upload e salva os documentos
-  saveDocuments() {
-    let index = 0;
-    this._contentService.uploadContents(this.classroom.contents).subscribe({
-      next: (response) => {
-        //Final do upload
-        if (response.type == HttpEventType.Response) {
-          this.classroom.contents[index].file = response.body.document;
-          this.classroom.contents[index].fileToUpload = null;
-          index += 1;
-        }
-      },
-      error: (error) => {
-        this._spinner.hide();
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      },
-      complete: () => this.saveContents(),
-    });
-  }
-
-  //Salva os conteúdos
-  saveContents() {
-    let index = 0;
-    this._contentService.saveContents(this.classroom.contents).subscribe({
-      next: (content) => {
-        this.classroom.contents[index]._id = content.content._id;
-        index += 1;
-      },
-      error: (error) => {
-        this._spinner.hide();
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      },
-      complete: () => this.saveClassroom(),
-    });
-  }
-
-  saveClassroom() {
-    this._classroomService.addClassroom(this.classroom).subscribe(
-      (response) => {
-        this._spinner.hide();
-        if (!response.classroom) {
-          this.status = "error";
-        } else {
-          this.status = "success";
-          this._router.navigate([
-            "/admin/classroom/edit",
-            response.classroom._id,
-          ]);
-        }
-      },
-      (error) => {
-        this.deleteDocuments();
-        this.deleteContents();
-        this._spinner.hide();
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-        if (errorMessage != null) {
-          this.status = "error";
-        }
-      }
-    );
-  }*/
 
   //Apaga documentos dos conteúdos
   deleteDocuments() {

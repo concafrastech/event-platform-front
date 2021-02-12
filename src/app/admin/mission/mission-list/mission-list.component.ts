@@ -50,7 +50,6 @@ export class MissionListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: missions.");
     this._spinner.show();
     this.loadEpics();
     this.actualPage();
@@ -166,10 +165,8 @@ export class MissionListComponent implements OnInit {
   }
 
   deleteMission(id) {
-    console.log(id);
     this._missionService.deleteMission(id).subscribe(
       (response) => {
-        console.log(response);
         this.actualPage();
       },
       (error) => {

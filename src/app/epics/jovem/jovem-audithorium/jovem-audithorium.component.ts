@@ -91,7 +91,7 @@ export class JovemAudithoriumComponent implements OnInit {
               null
             );
             this.lecture.contents.push(response.content);
-            this.handleDisplay(this.contents);
+            this.handleDisplay(this.lecture.contents);
           });
           break;
         }

@@ -15,12 +15,16 @@ import { TrailService } from 'src/app/services/trail.service';
 import { Schedule } from 'src/app/models/schedule';
 import * as SvgPanZoom from 'svg-pan-zoom';
 import * as $ from 'jquery';
+import { NavbarService } from "src/app/services/navbar.service";
+import { Content } from 'src/app/models/content';
+import { ContentService } from 'src/app/services/content.service';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-ilha1-dialogo',
   templateUrl: './ilha1-dialogo.component.html',
   styleUrls: ['./ilha1-dialogo.component.css'],
-  providers: [TrailService, StageService, ActivityService, ClassroomService]
+  providers: [TrailService, StageService, ActivityService, ClassroomService, NavbarService, ContentService]
 })
 export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
 
@@ -40,6 +44,12 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   /* baseado em schedule.component.ts - fim */
   public schedule: Schedule;
   public userName: String;
+  public showSelect: Boolean = false;
+  public zoomId: String;
+  public videoId: String;
+  public audioId: String;
+  public contentList: Content[] = [];
+  public classroom: Classroom;
 
 
   options = { 
@@ -59,7 +69,9 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
     private _trailService: TrailService,
     private _stageService: StageService,
     private _activityService: ActivityService,
-    private _classroomService: ClassroomService
+    private _classroomService: ClassroomService,
+    private _contentService: ContentService,
+    public _navbarService: NavbarService
   ) { }
 
   ngOnInit(): void {
@@ -86,6 +98,7 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
         this.getClassrooms(trail, index);
       });
     });
+    //this._navbarService.setButtonBack(true);
   }
 
   ngAfterViewInit() {
@@ -148,55 +161,55 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
   */
 
   
- getClassrooms(trail, index) {
-  if(trail.classrooms){
-    trail.classrooms.forEach((classroom, index) => {
-      this._classroomService.getClassroom(classroom).subscribe(
-        (response) => {
-          let classroomaux = response.classroom;
-          classroomaux.start_time = new Date(classroomaux.start_time);
-          classroomaux.end_time = new Date(classroomaux.end_time);
-          trail.classrooms[index] = classroomaux;
+  getClassrooms(trail, index) {
+    if(trail.classrooms){
+      trail.classrooms.forEach((classroom, index) => {
+        this._classroomService.getClassroom(classroom).subscribe(
+          (response) => {
+            let classroomaux = response.classroom;
+            classroomaux.start_time = new Date(classroomaux.start_time);
+            classroomaux.end_time = new Date(classroomaux.end_time);
+            trail.classrooms[index] = classroomaux;
 
-          // transform classrooms in schedules (only teóricas - index 0 e 1)
-          if(index<=1){
-            this.schedule = new Schedule(
-              trail.classrooms[index]._id,
-              trail.classrooms[index].type,
-              trail.classrooms[index].name,
-              trail.classrooms[index].description,
-              trail.classrooms[index].start_time,
-              trail.classrooms[index].end_time
-            );
-            this.schedules.push(this.schedule);
-          }
-          this.schedules.sort(this.sortSchedules);
-          this.groupSchedules = [];
-          for(let i = 0; i < this.schedules.length; i++) {
-            let day = new Date(this.schedules[i].start_time).getDate();
-            let month = this.strMonths[new Date(this.schedules[i].start_time).getMonth()];
-            let dayMonth = ("00" + day).slice(-2) + ' de ' + month;
-            if(!this.findDayGroupSchedule(dayMonth)){
-              this.groupSchedules.push({group: dayMonth, schedule: [this.schedules[i]]});
-            }else{
-              this.findDayGroupSchedule(dayMonth).schedule.push(this.schedules[i])
+            // transform classrooms in schedules (only teóricas)
+            if(trail.classrooms[index].type == "teorico"){
+              this.schedule = new Schedule(
+                trail.classrooms[index]._id,
+                trail.classrooms[index].type,
+                trail.classrooms[index].name,
+                trail.classrooms[index].description,
+                trail.classrooms[index].start_time,
+                trail.classrooms[index].end_time
+              );
+              this.schedules.push(this.schedule);
+            }
+            this.schedules.sort(this.sortSchedules);
+            this.groupSchedules = [];
+            for(let i = 0; i < this.schedules.length; i++) {
+              let day = new Date(this.schedules[i].start_time).getDate();
+              let month = this.strMonths[new Date(this.schedules[i].start_time).getMonth()];
+              let dayMonth = ("00" + day).slice(-2) + ' de ' + month;
+              if(!this.findDayGroupSchedule(dayMonth)){
+                this.groupSchedules.push({group: dayMonth, schedule: [this.schedules[i]]});
+              }else{
+                this.findDayGroupSchedule(dayMonth).schedule.push(this.schedules[i])
+              }
+            }
+          },
+          (error) => {
+            var errorMessage = <any>error;
+            console.log(errorMessage);
+    
+            if (errorMessage != null) {
+              this.status = "error";
             }
           }
-        },
-        (error) => {
-          var errorMessage = <any>error;
-          console.log(errorMessage);
-  
-          if (errorMessage != null) {
-            this.status = "error";
-          }
-        }
-      );
-    });
-    
+        );
+      });
+      
+    }
   }
-}
-  
+    
 
   getStages(page, epicId) {
     this._stageService.getFullStages(page, epicId).subscribe(
@@ -287,4 +300,47 @@ export class Ilha1DialogoComponent implements OnInit, AfterViewInit {
     return time;
   }
 
+  SelectContent(i) {
+    let today = new Date();
+    let start = new Date(this.schedules[i].start_time);
+    let end = new Date(this.schedules[i].end_time);
+    //Ainda não acabou e já começou
+    if (
+      today.getTime() < end.getTime() &&
+      today.getTime() >= (start.getTime() - 3000000)
+    ) {
+      this._classroomService.getClassroom(this.schedules[i].id).subscribe((response) => {
+        if(response.classroom) {
+          this.classroom = response.classroom;
+          if (this.classroom.contents) {
+            this.zoomId = "";
+            this.videoId = "";
+            this.audioId = "";
+            this.classroom.contents.forEach((content, index) => {
+              this._contentService.getContent(content).subscribe((response) => {
+                let content = response.content;
+                this.classroom.contents[index] = content;
+                if(this.classroom.contents[index].type == "youtube") {
+                  this.videoId = this.classroom.contents[index]._id;
+                }
+                if(this.classroom.contents[index].type == "zoom") {
+                  this.zoomId = this.classroom.contents[index]._id;
+                }
+                if(this.classroom.contents[index].type == "audio") {
+                  this.audioId = this.classroom.contents[index]._id;
+                }
+              });
+            });
+            this.showSelect = !this.showSelect;
+            setTimeout(function(){ window.scrollTo(1000,document.body.scrollHeight); }, 300);
+          }
+        }
+      });
+    } else {
+      //mensagem que não começou ou já acabou
+      alert("Selecione um tema específico que esteja ocorrendo neste momento!")
+    }
+    
+    
+  }
 }

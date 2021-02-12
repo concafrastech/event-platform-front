@@ -46,7 +46,6 @@ export class ConferenceListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: conferences.");
     this._spinner.show();
     this.actualPage();
   }
@@ -134,10 +133,8 @@ export class ConferenceListComponent implements OnInit {
   }
 
   deleteConference(id) {
-    console.log(id);
     this._conferenceService.deleteConference(id).subscribe(
       (response) => {
-        console.log(response);
         this.actualPage();
       },
       (error) => {

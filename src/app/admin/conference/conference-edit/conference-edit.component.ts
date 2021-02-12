@@ -37,7 +37,6 @@ export class ConferenceEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('[OK] Component: conference-edit.');
     this._spinner.show();
     this.identity = this._userService.getIdentity();
     this.conference = new Conference(null,'',false, '','',new Date(), new Date(),false,'',false,'', false, false, false, false, false, new Date(), new Date());

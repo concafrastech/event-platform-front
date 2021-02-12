@@ -60,10 +60,6 @@ export class AppComponent implements OnInit, DoCheck {
 
   newInterval() {
     this.interval = setInterval(() => {
-      console.log(
-        "%c PONTUANDO APÓS UMA HORA DO USÁRIO LOGADO",
-        "font-size: 15px; color: orange"
-      );
       this._userGamificationService.setMissionComplete("Bônus Hora");
     }, 3600000);
   }

@@ -153,8 +153,8 @@
             Dia {{ i + 1 }} - {{ group.group }}
           </div>
           <ul class="list-group list-group-flush">
-            <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule">
-              <a [routerLink]="['/jovem/audithorium/', 'classroom', schedule.id]" [routerLinkActive]="['active']">
+            <li style="display: block; padding: 1rem; color: #474747" *ngFor="let schedule of group.schedule, let i = index">
+              <a href="#" data-toggle="modal" (click)="SelectContent(i)">
                 <div style="float: left">
                   <div [tooltip]="schedule.description" placement="left">
                     {{ schedule.name }}
@@ -184,6 +184,28 @@
         <li class="list-group-item"><a [routerLink]="['/jovem/ilha-caminho/dialogo/inicial']" [routerLinkActive]="['active']">Voltar</a></li>
       </ul>
       <div class="MessageDate">{{getTime(9)}}</div>
+      <div class="MyBubbleArrow"></div>
+    </div>
+  </div>
+  <div *ngIf="showSelect" class="Space"></div>
+  <div *ngIf="showSelect" class="YourMessageLine">
+    <div class="YourMessageItem">
+      <div class="MessageAuthor">João Marcos</div>
+      <div class="MessageText">{{userName}}, escolha abaixo como você quer assistir o curso selecionado.</div>
+      <div class="MessageDate">{{getTime(0)}}</div>
+      <div class="YourBubbleArrow"></div>
+    </div>
+  </div>
+  <div *ngIf="showSelect" class="Space"></div>
+  <div *ngIf="showSelect" class="MyMessageLine">
+    <div class="MyMessageItem">
+      <div class="MessageAuthor">{{userName}}</div>
+      <ul class="list-group list-group-flush">
+        <li *ngIf="zoomId" class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'content', zoomId]">Zoom</a></li>
+        <li *ngIf="videoId" class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'content', videoId]">Vídeo</a></li>
+        <li *ngIf="audioId" class="list-group-item"><a [routerLink]="['/jovem/audithorium/', 'content', audioId]">Áudio</a></li>
+      </ul>
+      <div class="MessageDate">{{getTime(0)}}</div>
       <div class="MyBubbleArrow"></div>
     </div>
   </div>

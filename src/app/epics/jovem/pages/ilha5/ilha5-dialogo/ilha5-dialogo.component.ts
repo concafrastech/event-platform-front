@@ -439,7 +439,7 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
     //Ainda não acabou e já começou
     if (
       today.getTime() < end.getTime() &&
-      today.getTime() >= start.getTime()
+      today.getTime() >= (start.getTime() - 3000000)
     ) {
       this._lectureService.getLecture(this.schedules[i].id).subscribe((response) => {
         if(response.lecture) {
@@ -458,7 +458,7 @@ export class Ilha5DialogoComponent implements OnInit, AfterViewInit {
             }
           }
           this.showSelect = !this.showSelect;
-          window.scrollTo(0,document.body.scrollHeight);
+          setTimeout(function(){ window.scrollTo(500,document.body.scrollHeight); }, 300);
         }
         
       });

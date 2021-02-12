@@ -44,7 +44,6 @@ export class DocumentListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("[OK] Component: documents.");
     this.actualPage();
   }
 

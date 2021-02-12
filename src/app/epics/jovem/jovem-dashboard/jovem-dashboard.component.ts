@@ -554,7 +554,7 @@
     goToAudithorium() {
       if (this.now) {
         this._router.navigate([
-          "/audithorium",
+          "/jovem/audithorium",
           this.todaySchedule[this.currentCarouselSchedule].type,
           this.todaySchedule[this.currentCarouselSchedule].id,
         ]);

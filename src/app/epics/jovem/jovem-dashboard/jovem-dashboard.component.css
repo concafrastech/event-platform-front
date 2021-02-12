@@ -2,7 +2,13 @@
   background-color: transparent;
 }
 
+#back-button {
+  background-color: #273B87 !important;
+}
 
+#back-button:hover {
+  background-color: #5665A0 !important;
+}
 
 /*hamburguer menu*/
 *

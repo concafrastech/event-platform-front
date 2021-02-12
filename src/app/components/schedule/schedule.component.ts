@@ -46,8 +46,13 @@ export class ScheduleComponent implements OnInit {
                       'assets/concafras2021/concafronas/ndc.png',
                       'assets/concafras2021/concafronas/palestras.png',
                       'assets/concafras2021/concafronas/formacao_trabalhadores.png',
-                      'assets/concafras2021/concafronas/icones/mosaico.svg'];
-
+                      'assets/concafras2021/concafronas/icones/mosaico.svg',
+                      'assets/jovem/img/icone_ilha_vivo.png',
+                      'assets/jovem/img/icone_ilha_escritor.png',
+                      'assets/jovem/img/icone_ilha_caminho.png',
+                      'assets/jovem/img/icone_ilha_irmas.png',
+                      'assets/jovem/img/icone_ilha_som.png',
+                    ];
   constructor(
     private _userService: UserService,
     private _epicService: EpicService,
@@ -143,43 +148,101 @@ export class ScheduleComponent implements OnInit {
   }
 
   loadPlaceSchedule() {
-    let obs$: Observable<any>[] = [];
-    this.schedules.map((schedule: any, index) => {
-      if (schedule.type == "activity" || schedule.type == "classroom") {
-        schedule.iconIndex = 1;
-        schedule.place = "Ndc";
-        if (schedule.type == "classroom") {
-          schedule.iconIndex = 3;
-          schedule.place = "Formação de Trabalhadores Espirítas";
+    if (this.currentEpic.type != "jovem") {
+      let obs$: Observable<any>[] = [];
+      this.schedules.map((schedule: any, index) => {
+        if (schedule.type == "activity" || schedule.type == "classroom") {
+          schedule.iconIndex = 1;
+          schedule.place = "Ndc";
+          if (schedule.type == "classroom") {
+            schedule.iconIndex = 3;
+            schedule.place = "Formação de Trabalhadores Espirítas";
+          }
+        } else {
+          obs$.push(
+            this._lectureService.getLecture(schedule.id).pipe(
+              map((response) => {
+                if (response.lecture.type == "momento_coletivo") {
+                  schedule.iconIndex = 0;
+                  schedule.place = "Palco";
+                } else if (
+                  response.lecture.type == "workshop" ||
+                  response.lecture.type == "alegria" ||
+                  response.lecture.type == "alegria_music"
+                ) {
+                  schedule.iconIndex = 4;
+                  schedule.place = "Espaço do Caravaneiro";
+                } else {
+                  schedule.iconIndex = 2;
+                  schedule.place = "Palestras";
+                }
+              })
+            )
+          );
         }
-      } else {
-        obs$.push(
-          this._lectureService.getLecture(schedule.id).pipe(
-            map((response) => {
-              if (response.lecture.type == "momento_coletivo") {
-                schedule.iconIndex = 0;
-                schedule.place = "Palco";
-              } else if (
-                response.lecture.type == "workshop" ||
-                response.lecture.type == "alegria" ||
-                response.lecture.type == "alegria_music"
-              ) {
-                schedule.iconIndex = 4;
-                schedule.place = "Espaço do Caravaneiro";
-              } else {
-                schedule.iconIndex = 2;
-                schedule.place = "Palestras";
-              }
-            })
-          )
-        );
-      }
-    });
+      });
 
-    return concat(obs$).pipe(
-      concatMap((observableContent) => {
-        return observableContent;
-      })
-    );
+      return concat(obs$).pipe(
+        concatMap((observableContent) => {
+          return observableContent;
+        })
+      );
+    } else {
+      // epic Jovem
+      let obs$: Observable<any>[] = [];
+      this.schedules.map((schedule: any, index) => {
+        switch(schedule.type.toLowerCase()) {
+          case "activity":
+          case "ilha casa do escritor":
+            schedule.iconIndex = 6;
+            schedule.place = "Casa do Escritor";
+            break;
+          case "classroom":
+          case "ilha casa do caminho":
+          case "ilha casa do escritor":
+            let start = new Date(schedule.start_time);
+            let startPratica = new Date('02/14/2021 09:30');
+            if (start.getTime() < startPratica.getTime()) {
+              schedule.iconIndex = 6;
+              schedule.place = "Casa do Escritor";
+            } else {
+              schedule.iconIndex = 7;
+              schedule.place = "Casa do Caminho";
+            }
+            break;
+          default:
+          obs$.push(
+            this._lectureService.getLecture(schedule.id).pipe(
+              map((response) => {
+                switch(response.lecture.type.toLowerCase()) {
+                  case "momento_coletivo":
+                  case "ilha estação jovem ao vivo":
+                    schedule.iconIndex = 5;
+                    schedule.place = "Estação Jovem AO VIVO";
+                    break;
+                  case "workshop":
+                  case "alegria":
+                  case "alegria_music":
+                  case "ilha catedral do som":
+                    schedule.iconIndex = 9;
+                    schedule.place = "Catedral do Som";
+                    break;
+                  case "ilha instituto almas irmãs":
+                    schedule.iconIndex = 8;
+                    schedule.place = "Instituto Almas Irmãs";
+                    break;
+                }
+              })
+            )
+          );
+        }
+      });
+
+      return concat(obs$).pipe(
+        concatMap((observableContent) => {
+          return observableContent;
+        })
+      )
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { UserWelcomeComponent } from './epics/main/user-welcome/user-welcome.component';
 import { XpsListComponent } from './admin/xps/xps-list/xps-list.component';
 import { XpsEditComponent } from './admin/xps/xps-edit/xps-edit.component';
 import { XpsAddComponent } from './admin/xps/xps-add/xps-add.component';
@@ -130,6 +131,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'termos', component: TermosComponent },
     { path: 'about', component: AboutComponent },
+    { path: 'welcome', component: UserWelcomeComponent },
     { path: 'chat', component: ChatComponent },
     { path: 'select-journey', component: SelectJourneyComponent, canActivate: [UserGuard] },
     { path: 'select-conference', component: SelectConferenceComponent, canActivate: [UserGuard] },

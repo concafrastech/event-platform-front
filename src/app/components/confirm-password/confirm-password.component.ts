@@ -18,7 +18,7 @@ export class ConfirmPasswordComponent implements OnInit {
 
   onConfirm(){
     if(this.password == "ConcafrasVirtual@2021"){
-      window.open("https://sites.google.com/view/concafras-2021-reunioes/inicio", "_blank");
+      window.open("https://sites.google.com/view/comissoes-concafras-2021", "_blank");
       this.bsModalRef.hide();
     }else{
       this.passwordError = true;

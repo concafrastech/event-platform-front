@@ -191,6 +191,7 @@ import { EfasComponent } from './epics/main/efas/efas.component';
 import { ResetPassComponent } from './components/login/reset-pass/reset-pass.component';
 import { DiferenceComponent } from './epics/main/diference/diference.component';
 import { JovemRightSidebarComponent } from './epics/jovem/jovem-right-sidebar/jovem-right-sidebar.component';
+import { UserWelcomeComponent } from './epics/main/user-welcome/user-welcome.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -365,6 +366,7 @@ const GamificationConfig = {
     ResetPassComponent,
     DiferenceComponent,
     JovemRightSidebarComponent,
+    UserWelcomeComponent,
   ],
   imports: [
     BrowserModule,

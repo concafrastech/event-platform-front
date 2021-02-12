@@ -1,0 +1,21 @@
+<div id="bg">
+    <img src="assets/concafras2021/concafronas/acesso/Retangulo_1.png" alt="" />
+</div>
+<div class="retangulo-2">
+    <div class="text-center">
+        <span>Seja Bem-vindo!</span>
+        <svg-icon class="close icon-close" [svgStyle]="{ 'width.px':20 }"
+            src="assets/concafras2021/concafronas/icones/fechar.svg" (click)="back()"></svg-icon>
+    </div>
+    <div style="margin: 10px auto;">
+        <div class="text-center">
+            <span>Vídeo de Boas Vindas</span>
+        </div>
+
+        <app-videojs [vContent]="actualContent"></app-videojs>
+    </div>
+
+    <div>
+        <input type="button" (click)="goToEvent()" value="Ir para o evento" class="btn btn-primary btn-sm btn-about" />
+    </div>
+</div>

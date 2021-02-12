@@ -55,6 +55,7 @@ export class UserWelcomeComponent implements OnInit {
       null,
       null,
       null,
+      null,
       null
     );
   }

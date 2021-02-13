@@ -54,8 +54,9 @@ export class LeftSidebarComponent implements OnInit {
     });
 
     let date = new Date();
-    
-    if(date.getDate() == 13 && date.getMonth() == 1){
+    if(date.getDate() == 12 && date.getMonth() == 1){
+      this.linkStaff = "https://us02web.zoom.us/j/87434397148?pwd=S1RwQTZ3UGN0bmhTbWZxSWRyOUNQZz09"
+    }else if(date.getDate() == 13 && date.getMonth() == 1){
       this.linkStaff = "https://us02web.zoom.us/j/87434397148?pwd=S1RwQTZ3UGN0bmhTbWZxSWRyOUNQZz09"
     }else{
       if(date.getDate() == 14 && date.getMonth() == 1){

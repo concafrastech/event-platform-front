@@ -154,6 +154,22 @@ export class BookClubComponent implements OnInit {
     });
   }
 
+  openZoom(){
+    this._serverTime.getServerTime().subscribe((response) => {
+      this.now = new Date(response.message.time * 1000);
+      let classroom = this.getAvaliableContent(this.trails[0]);
+      if (classroom) {
+        classroom.contents.forEach((content) => {
+          if (content.type == "zoom") {
+            this.goToAudithorium(`audithorium/classroom/${classroom._id}`);
+          }
+        });
+      } else {
+        this.errorMessage();
+      }
+    });
+  }
+
   goToAudithorium(url) {
     this._zone.run(() => this._router.navigate([url]));
   }

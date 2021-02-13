@@ -35,7 +35,7 @@ export class BookClubComponent implements OnInit {
   public startPratical = new Date("2021-02-14 10:00:00");
   public endPratical = new Date("2021-02-14 12:00:00");
 
-  
+  //Colocar link zoom das classrooms
   constructor(
     private _classroomService: ClassroomService,
     private _contentService: ContentService,
@@ -154,6 +154,22 @@ export class BookClubComponent implements OnInit {
     });
   }
 
+  openZoom(){
+    this._serverTime.getServerTime().subscribe((response) => {
+      this.now = new Date(response.message.time * 1000);
+      let classroom = this.getAvaliableContent(this.trails[0]);
+      if (classroom) {
+        classroom.contents.forEach((content) => {
+          if (content.type == "zoom") {
+            this.goToAudithorium(`audithorium/classroom/${classroom._id}`);
+          }
+        });
+      } else {
+        this.errorMessage();
+      }
+    });
+  }
+
   goToAudithorium(url) {
     this._zone.run(() => this._router.navigate([url]));
   }
@@ -199,6 +215,10 @@ export class BookClubComponent implements OnInit {
           return true;
         }
       });
+
+      if(!defaultPratical){
+        defaultPratical = this.practical[0];
+      }
 
       //Curso usuário
       userPratical = this.practical.find((classroom, index) => {

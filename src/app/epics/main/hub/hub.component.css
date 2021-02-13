@@ -59,6 +59,9 @@
   right: -2rem;
   top: -11rem;
 }
+#mobile {
+  display: none;
+}
 
 
 /* ==== RESPONSIVE ==== */
@@ -88,6 +91,10 @@
 
 
 @media only screen and (max-width: 768px) {
+
+  #mobile{
+    display: block;
+  }
 
 	.welcome {
 		width: 100%;

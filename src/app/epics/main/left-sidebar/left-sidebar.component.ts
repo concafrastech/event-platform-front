@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { DocumentService } from "src/app/services/document.service";
 import { MagneticPassDistanceComponent } from "./../magnetic-pass-distance/magnetic-pass-distance.component";
 import { Component, ElementRef, OnInit } from "@angular/core";
@@ -35,7 +36,8 @@ export class LeftSidebarComponent implements OnInit {
     public _bootstrapAlertService: NgBootstrapAlertService,
     private _modalService: BsModalService,
     private _documentService: DocumentService,
-    public _userGamification: UserGamificationService
+    public _userGamification: UserGamificationService,
+    private location: Location
   ) {
     this.progress = {
       max: 0,
@@ -107,6 +109,10 @@ export class LeftSidebarComponent implements OnInit {
     localStorage.clear();
     this.identity = null;
     this._router.navigate(["/login"]);
+  }
+
+  back(){
+    this.location.back();
   }
 
   initGamefication() {

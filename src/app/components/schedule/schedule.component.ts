@@ -68,6 +68,7 @@ export class ScheduleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     let epic = JSON.parse(localStorage.getItem("currentEpic"));
     this.identity = this._userService.getIdentity();
     let subscription = JSON.parse(localStorage.getItem("currentSubscription"));
@@ -113,34 +114,39 @@ export class ScheduleComponent implements OnInit {
         (response) => {
           if (response) {
             this.schedules = response;
-            console.log(response);
 
-            this.loadClassroomUser();
             this.schedules.sort(this.sortSchedules);
-            for (let i = 0; i < this.schedules.length; i++) {
-              let day = new Date(this.schedules[i].start_time).getDate();
-              let month = this.strMonths[
-                new Date(this.schedules[i].start_time).getMonth()
-              ];
-              let dayMonth = ("00" + day).slice(-2) + " de " + month;
-
-              if (!this.findDayGroupSchedule(dayMonth)) {
-                this.groupSchedules.push({
-                  group: dayMonth,
-                  schedule: [this.schedules[i]],
-                });
-              } else {
-                this.findDayGroupSchedule(dayMonth).schedule.push(
-                  this.schedules[i]
-                );
-              }
-            }
-
-            this.loadPlaceSchedule().subscribe({
+            this.loadClassroomUser().subscribe({
               next: (response) => {},
               error: null,
               complete: () => {
-                this._spinner.hide();
+                for (let i = 0; i < this.schedules.length; i++) {
+                  let day = new Date(this.schedules[i].start_time).getDate();
+                  let month = this.strMonths[
+                    new Date(this.schedules[i].start_time).getMonth()
+                  ];
+                  let dayMonth = ("00" + day).slice(-2) + " de " + month;
+
+                  if (!this.findDayGroupSchedule(dayMonth)) {
+                    this.groupSchedules.push({
+                      group: dayMonth,
+                      schedule: [this.schedules[i]],
+                    });
+                  } else {
+                    this.findDayGroupSchedule(dayMonth).schedule.push(
+                      this.schedules[i]
+                    );
+                  }
+                }
+
+                this.loadPlaceSchedule().subscribe({
+                  next: (response) => {},
+                  error: null,
+                  complete: () => {
+                    this.isLoading = false;
+                    this._spinner.hide();
+                  },
+                });
               },
             });
           }
@@ -174,33 +180,57 @@ export class ScheduleComponent implements OnInit {
       });
     }
 
-    this.schedules.forEach((schedule, index) => {
+    let vClassrooms = [];
+    this.schedules.map((schedule, i) => {
       if (schedule.type == "classroom") {
-        if (schedule.tags && schedule.tags.length > 0) {
-          let tagUser = schedule.tags.find((tag) => {
-            if (tag.toUpperCase() == this.user.state.toUpperCase()) {
-              return true;
-            }
-          });
-
-          if (!tagUser) {
-            this.schedules.splice(index, 1);
-          }
-        } else {
-          this.schedules.splice(index, 1);
-          //schedule.hide = true;
-        }
+        vClassrooms.push(schedule.id);
       }
     });
+
+    let obs$: Observable<any>[] = [];
+
+    for (let i = 0; i < vClassrooms.length; i++) {
+      let classroom = vClassrooms[i];
+      obs$.push(
+        this._classroomService.getClassroom(classroom).pipe(
+          map((response) => {
+            if (response.classroom.type != "teorico") {
+              if (
+                response.classroom.tags == null ||
+                !response.classroom.tags ||
+                response.classroom.tags.length == 0
+              ) {
+                // defaultClassroom = null;
+              } else {
+                let tagUser = response.classroom.tags.find((tag) => {
+                  if (tag.toUpperCase() == this.user.state.toUpperCase()) {
+                    return true;
+                  }
+                });
+
+                if (!tagUser) {
+                  let index = this.schedules.findIndex((schedule) => {
+                    if (schedule.id == classroom) {
+                      return true;
+                    }
+                  });
+                  this.schedules.splice(index, 1);
+                  i -= 1;
+                }
+              }
+            }
+          })
+        )
+      );
+    }
+    return concat(obs$).pipe(
+      concatMap((observableContent) => {
+        return observableContent;
+      })
+    );
   }
 
   loadPlaceSchedule() {
-    let defaultClassroom = this.schedules.find((schedule) => {
-      if (schedule.type == "classroom") {
-        return true;
-      }
-    });
-
     if (this.currentEpic.type != "jovem") {
       let obs$: Observable<any>[] = [];
       this.schedules.map((schedule: any, index) => {
@@ -210,32 +240,6 @@ export class ScheduleComponent implements OnInit {
           if (schedule.type == "classroom") {
             schedule.iconIndex = 3;
             schedule.place = "Formação de Trabalhadores Espirítas";
-
-            // //Curso geral
-            // let defaultPratical = schedule.tags.find((classroom, index) => {
-            //   if (classroom.tags == null || !classroom.tags || classroom.tags.length == 0) {
-            //     return true;
-            //   }
-            // });
-
-            // if(defaultPratical){
-            //   defaultClassroom = defaultPratical;
-            // }
-
-            // if(schedule.tags && schedule.tags.length > 0){
-            //   let tagUser = schedule.tags.find((tag)=>{
-            //       if (tag.toUpperCase() == this.user.state.toUpperCase()) {
-            //         return true;
-            //       }
-            //     });
-
-            //     if (!tagUser) {
-            //       this.schedules.splice(index, 1);
-            //     }
-            // }else{
-            //   this.schedules.splice(index, 1);
-            //   //schedule.hide = true;
-            // }
           }
         } else {
           if (schedule.lectureType == "momento_coletivo") {
@@ -252,26 +256,6 @@ export class ScheduleComponent implements OnInit {
             schedule.iconIndex = 2;
             schedule.place = "Palestras";
           }
-          // obs$.push(
-          //   this._lectureService.getLecture(schedule.id).pipe(
-          //     map((response) => {
-          //       if (response.lecture.type == "momento_coletivo") {
-          //         schedule.iconIndex = 0;
-          //         schedule.place = "Palco";
-          //       } else if (
-          //         response.lecture.type == "workshop" ||
-          //         response.lecture.type == "alegria" ||
-          //         response.lecture.type == "alegria_music"
-          //       ) {
-          //         schedule.iconIndex = 4;
-          //         schedule.place = "Espaço do Caravaneiro";
-          //       } else {
-          //         schedule.iconIndex = 2;
-          //         schedule.place = "Palestras";
-          //       }
-          //     })
-          //   )
-          // );
         }
       });
 

@@ -169,6 +169,7 @@ Left Navigation Sidebar
     }
 
     .nav-left-sidebar {
+        width: 180px;
         top: 60px;
     }
 }

@@ -11,81 +11,63 @@
     <object id="svgMap" type="image/svg+xml" data="assets/concafras2021/concafronas/tenda.svg"></object>
     
     <div id="mobile">
-        <div class="row">
-            <a class="icon" [routerLink]="['/palestras']">
-                <img src="/assets/concafras2021/concafronas/tenda/evento-ao-vivo.png" alt="&Iacute;cone - Evento ao vivo">
-            </a>
-            <a class="title" [routerLink]="['/palestras']">Eventos Coletivos</a>
-        </div>
+	    
+	    <div class="geral-icones">			    
+	        <a class="icon-item" [routerLink]="['/palestras']">
+	            <img src="/assets/concafras2021/concafronas/tenda/evento-ao-vivo.png" alt="&Iacute;cone - Evento ao vivo">
+	            <span>Eventos Coletivos</span>
+	        </a>
+	            
+	        <a class="icon-item" [routerLink]="['/concafrinhas']">
+	            <img src="/assets/concafras2021/concafronas/tenda/concafrinhas.png" alt="&Iacute;cone - CONCAFRINHAS">
+				<span>CONCAFRINHAS</span>
+			</a>
+
+	        <a class="icon-item" [routerLink]="['/jovem']">
+	            <img src="/assets/concafras2021/concafronas/tenda/jovem.png" alt="&Iacute;cone - CONCAFRAS Jovem">
+				<span>CONCAFRAS Jovem</span>
+	        </a>
         
-        <div class="row">
-            <a class="icon" [routerLink]="['/concafrinhas']">
-                <img src="/assets/concafras2021/concafronas/tenda/concafrinhas.png" alt="&Iacute;cone - CONCAFRINHAS">
-            </a>
-            <a class="title" [routerLink]="['/concafrinhas']">CONCAFRINHAS</a>
-        </div>
-
-        <div class="row">
-            <a class="icon" [routerLink]="['/jovem']">
-                <img src="/assets/concafras2021/concafronas/tenda/jovem.png" alt="&Iacute;cone - CONCAFRAS Jovem">
-            </a>
-            <a class="title" [routerLink]="['/jovem']">CONCAFRAS Jovem</a>
-        </div>
-
-        <div class="row">
-            <a class="icon" [routerLink]="['/palestras']">
+            <a class="icon-item" [routerLink]="['/palestras']">
                 <img src="/assets/concafras2021/concafronas/tenda/palestras.png" alt="&Iacute;cone - Palestras Agendadas">
+				<span>Palestras Agendadas</span>
             </a>
-            <a class="title" [routerLink]="['/palestras']">Palestras Agendadas</a>
-        </div>
 
-        <div class="row">
-            <a class="icon" [routerLink]="['/ndc']">
+            <a class="icon-item" [routerLink]="['/ndc']">
                 <img src="/assets/concafras2021/concafronas/tenda/ndc.png" alt="&Iacute;cone - Novas Dimens&otilde;es do Conhecimento">
+				<span>Novas Dimensões do Conhecimento</span>
             </a>
-            <a class="title" [routerLink]="['/ndc']">Novas Dimensões do Conhecimento</a>
-        </div>
 
-        <div class="row">
-            <a class="icon" (click)="openBookClubComponent()">
+            <a class="icon-item" (click)="openBookClubComponent()">
                 <img src="/assets/concafras2021/concafronas/tenda/stand-voluntario.png" alt="&Iacute;cone - Forma&ccedil;&atilde;o de Trabalhadores Esp&iacute;ritas">
+				<span>Formação de Trabalhadores Espíritas</span>
             </a>
-            <a class="title" (click)="openBookClubComponent()">Formação de Trabalhadores Espíritas</a>
-        </div>
-
-        <div class="row">
-            <a href="http://www.editoraautadesouza.com.br/" class="icon" target="_blank">
+    
+            <a href="http://www.editoraautadesouza.com.br/" class="icon-item" target="_blank">
                 <img src="/assets/concafras2021/concafronas/tenda/livros.png" alt="&Iacute;cone - Livraria">
+				<span>Livraria</span>
             </a>
-            <a href="http://www.editoraautadesouza.com.br/" class="title" target="_blank">Livraria</a>
-        </div>
 
-        <div class="row">
-            <a class="icon" [routerLink]="['/audithorium-special/clube']">
+            <a class="icon-item" [routerLink]="['/audithorium-special/clube']">
                 <img src="/assets/concafras2021/concafronas/tenda/clube-do-livro.png" alt="&Iacute;cone - Clube do Livro">
+				<span>Clube do Livro</span>
             </a>
-            <a class="title" [routerLink]="['/audithorium-special/clube']">Clube do Livro</a>
-        </div>
         
-        <div class="row">
-            <a class="icon" [routerLink]="['/audithorium-special/editora']">
+            <a class="icon-item" [routerLink]="['/audithorium-special/editora']">
                 <img src="/assets/concafras2021/concafronas/tenda/stand-editora.png" alt="&Iacute;cone - Editora Auta de Souza">
+				<span>Editora Auta de Souza</span>
             </a>
-            <a class="title" [routerLink]="['/audithorium-special/editora']">Editora Auta de Souza</a>
-        </div>
         
-        <div class="row">
-            <a class="icon" [routerLink]="['/audithorium-special/cfas']">
+            <a class="icon-item" [routerLink]="['/audithorium-special/cfas']">
                 <img src="/assets/concafras2021/concafronas/tenda/cfas.png" alt="&Iacute;cone - CFAS">
+				<span>CFAS</span>
             </a>
-            <a class="title" [routerLink]="['/audithorium-special/cfas']">CFAS</a>
-        </div>
-        
-        <div class="row">
-            <a class="icon" [routerLink]="['/audithorium-special/cecx']">
+
+            <a class="icon-item" [routerLink]="['/audithorium-special/cecx']">
                 <img src="/assets/concafras2021/concafronas/tenda/ccex.png" alt="&Iacute;cone - CCEX">
+				<span>CCEX</span>
             </a>
-            <a class="title" [routerLink]="['/audithorium-special/cecx']">CCEX</a>
-        </div>
+                
+	    </div><!— fim geral-icones—->
     </div>
 </div>

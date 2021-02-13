@@ -24,7 +24,7 @@
             </div>
             <div class="row login-row send-row">
                 <a [routerLink]="" class="resetPass" (click)="openResetPassComponent()" class="send-login text-link-login"><small>Esqueceu a senha?</small></a>
-                <input type="submit" value="Entrar" class="btn btn-primary btn-login send-login" [disabled]="!loginForm.form.valid || disableButton">
+                <input type="submit" value="Entrar" class="btn btn-primary btn-login send-login" [disabled]="!loginForm.form.valid">
                 <a href="https://jivo.chat/Fka6yoYfYr" target="_blank" class="send-login text-link-login"><small>Precisa de ajuda?</small></a>
             </div>
         </form>

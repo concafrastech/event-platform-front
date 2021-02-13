@@ -21,6 +21,8 @@ export class UserGamificationService {
     private _missionService: MissionService,
     private _xpsService: XpsService
   ) {
+    console.log("oi");
+    
     this.loadGamification();
 
     //Inicializa badges off

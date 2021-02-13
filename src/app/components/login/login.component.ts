@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     public token;
     public subscriptions: Subscription[] = [];
     public bsModalRef: BsModalRef;
-    public disableButton: boolean = false;
 
     constructor(
         private _route: ActivatedRoute,
@@ -40,7 +39,6 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        this.disableButton = true;
         let exp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
         
         if(!exp.test(this.user.email)){
@@ -56,10 +54,8 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem('token', JSON.stringify(this.token));
                     this.getUser();
                 }
-                this.disableButton = false;
             },
             error => {
-                this.disableButton = false;
                 console.log(<any> error);
                 var errorMessage = <any> error;
                 if (errorMessage != null) {

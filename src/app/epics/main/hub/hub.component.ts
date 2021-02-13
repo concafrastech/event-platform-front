@@ -431,14 +431,6 @@ export class HubComponent implements OnInit, AfterViewInit {
         break;
     }
   }
-  
-  liveEvent(){
-    console.log("EVENTO_AO_VIVO");
-    let url = this.eventIsHappening();
-    if (url) {
-      this.redirectToFromSvg(url);
-    }
-  }
 
   setSvgInfo(info: string) {
     this.zone.run(() => (this.svgTooltip = info));

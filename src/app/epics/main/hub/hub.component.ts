@@ -335,7 +335,7 @@ export class HubComponent implements OnInit, AfterViewInit {
       }
       alert("Atividade fechada! Retorne mais tarde e fique atento a programação");
     } else {
-      alert("Estamos carregando seus eventos. Aguarde alguns segundos e clique novamente!");
+      alert("Caro caravaneiro de Auta de Souza, se apareceu atividade fechada aguarde pois a pagina esta em processo de carregamento. Caso não funcionar, pode voltar aqui que eu te ajudo!");
     }
     return null;
   }

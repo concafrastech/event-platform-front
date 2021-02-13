@@ -79,7 +79,7 @@ import { Ilha3Component } from './epics/jovem/pages/ilha3/ilha3.component';
 import { Ilha4Component } from './epics/jovem/pages/ilha4/ilha4.component';
 import { Ilha5Component } from './epics/jovem/pages/ilha5/ilha5.component';
 import { Ilha1DialogoComponent } from './epics/jovem/pages/ilha1/ilha1-dialogo/ilha1-dialogo.component';
-import { ChatComponent } from './components/chat/chat.component';
+//import { ChatComponent } from './components/chat/chat.component';
 import { Ilha2DialogoComponent } from './epics/jovem/pages/ilha2/ilha2-dialogo/ilha2-dialogo.component';
 import { Ilha3DialogoComponent } from './epics/jovem/pages/ilha3/ilha3-dialogo/ilha3-dialogo.component';
 import { Ilha4DialogoComponent } from './epics/jovem/pages/ilha4/ilha4-dialogo/ilha4-dialogo.component';
@@ -132,7 +132,7 @@ const appRoutes: Routes = [
     { path: 'termos', component: TermosComponent },
     { path: 'about', component: AboutComponent },
     { path: 'welcome', component: UserWelcomeComponent },
-    { path: 'chat', component: ChatComponent },
+    //{ path: 'chat', component: ChatComponent },
     { path: 'select-journey', component: SelectJourneyComponent, canActivate: [UserGuard] },
     { path: 'select-conference', component: SelectConferenceComponent, canActivate: [UserGuard] },
     {

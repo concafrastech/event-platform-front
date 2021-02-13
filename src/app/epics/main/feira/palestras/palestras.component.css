@@ -99,3 +99,57 @@
         height: 80px;
     }
 }
+
+
+@media only screen and (max-width:979px) {
+	#lecture-header {
+		padding: 25px;
+		text-align: center;
+	}
+	
+	.img-size {
+		display: inline-block;
+	}
+	
+	#lecture-header .lecture-header-card.lecture-header-item {
+		width: 100%;
+		display: block;
+		margin: 15px 0 0 0;
+	}
+	
+	.lecture-header-text {
+		font-size: 14px;
+		display: block;
+		line-height: 1.5em;
+		margin-top: 15px;
+	}
+	
+	.card .card-div-img {height: auto;}
+	
+	.card .card-div-text .lecture-div-text-content strong {
+		display: block;
+		padding: 5px 10px;
+		font-size: 14px;
+		line-height: 1.3em;
+	}
+	
+	.card .card-div-text {height: 9rem;padding: 12px;}
+		
+	#lecture-header .ndc-header-lecture.ndc-header-img {
+	    width: 100%;
+	    text-align: center;
+	}
+	
+	.card .card-div-text .card-div-text-content strong {
+		font-size: 14px;
+		line-height: 1.3em;
+		display: block;
+	}
+	
+	.card .card-div-text .card-div-text-content {
+		font-size: 14px;
+		display: block;
+		margin: 0 0 5px;
+	}
+	
+}

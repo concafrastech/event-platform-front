@@ -180,6 +180,7 @@ Left Navigation Sidebar
 /* Medium Devices, Desktops */
 
 @media only screen and (max-width:992px) {
+
 }
 
 /* Small Devices, Tablets */
@@ -205,7 +206,7 @@ Left Navigation Sidebar
 
 /* Extra Small Devices, Phones */
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:979px) {
     .nav-left-sidebar .navbar a {
         color: #fff;
     }
@@ -226,8 +227,7 @@ Left Navigation Sidebar
     }
 }
 
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 979px) {
 	.nav-left-sidebar {
 		margin-top: 85px;
 		background: #273b87;
@@ -285,5 +285,4 @@ Left Navigation Sidebar
 		width: 100%;
 		clear: both;
 	}
-
 }

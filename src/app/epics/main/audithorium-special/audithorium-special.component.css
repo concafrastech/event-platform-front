@@ -54,3 +54,7 @@ a.link-externo {
 
 @media (max-width: 1400px) {
 }
+	
+iframe {max-width: 100% !important;}
+
+#audithorium-special-header .audithorium-special-header-item.audithorium-special-header-div-info {display: block;}

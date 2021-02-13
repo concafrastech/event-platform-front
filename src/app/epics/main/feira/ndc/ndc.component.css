@@ -113,7 +113,7 @@
 }
 
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:979px) {
 	#ndc-header {
 		padding: 25px;
 		text-align: center;
@@ -134,5 +134,21 @@
 		display: block;
 		line-height: 1.5em;
 		margin-top: 15px;
+	}
+	
+	.card .card-div-img {height: auto;}
+	
+	.card .card-div-text .card-div-text-content strong {
+		display: block;
+		padding: 5px 10px;
+		font-size: 14px;
+		line-height: 1.3em;
+	}
+	
+	.card .card-div-text {height: 10rem;}
+		
+	#ndc-header .ndc-header-card.ndc-header-img {
+	    width: 100%;
+	    text-align: center;
 	}
 }

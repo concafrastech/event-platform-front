@@ -327,3 +327,89 @@ ol.carousel-indicators li.active {
         height: 115px;
     }
 }
+
+
+
+@media only screen and (max-width:979px) {
+	#caravan-header {
+		padding: 15px 25px 25px;
+		text-align: center;
+	}
+	
+	.img-size {
+		display: inline-block;
+	}
+	
+	#caravan-header .caravan-header-card.ndc-header-item {
+		width: 100%;
+		display: block;
+		margin: 15px 0 0 0;
+	}
+	
+	
+	.ndc-header-text {
+		font-size: 14px;
+		display: block;
+		line-height: 1.5em;
+		margin-top: 15px;
+	}
+	
+	.card .card-div-img {height: auto;}
+	
+	.card .card-div-text .card-div-text-content strong {
+		display: block;
+		padding: 5px 10px;
+		font-size: 14px;
+		line-height: 1.3em;
+	}
+	
+	.card .card-div-text {height: 10rem;}
+		
+	#caravan-header .caravan-header-card.caravan-header-img {
+	    width: 100%;
+	    text-align: center;
+	}
+	
+	.caravan-header-text {
+		font-size: 14px;
+	    display: block;
+	    line-height: 1.5em;
+	    margin-top: 15px;
+	}
+	
+	.caravan-header-title {font-size: 18px;}
+	
+	#carousel-recent-messages .row .card {
+		min-height: inherit;
+		padding: 20px;
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+	
+	.carousel-control-next-icon {right: -15px;background: #000;}
+	.carousel-control-prev-icon {left: -15px;background: #000;}
+	
+	.post-content .btn-post {margin-top: 15px;}
+	
+	.btn-hinario {margin: 10px 10px 0 0;}
+	
+	.music-header-title {
+		font-size: 16px;
+		margin: 15px 0 10px;
+	}
+	
+	.caravan-carousel-recent {
+	    margin-top: 10px;
+	}
+	
+	#meeting-header {
+		display: block;
+		margin: 55px ​0 0;
+	}	
+	
+	#meeting-header .btn-meeting {margin: 10px 0 0;}
+	
+	.caravan-container {margin: 60px 0 0;}
+	
+	.music-content {margin: 15px 0 10px;}
+}

@@ -151,7 +151,7 @@ a.back {
 @media only screen and (max-width:320px) {}
 
 /* Small Devices, Tablets */
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:979px) {
     .dashboard-main-wrapper {padding-top: 0;}
     
     .dashboard-wrapper {
@@ -178,4 +178,6 @@ a.back {
     }
     	
 	.dashboard-wrapper {min-height: initial !important;}
+	
+	.dashboard-main-wrapper {background-size: cover;}
 }

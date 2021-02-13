@@ -398,3 +398,72 @@ ol.carousel-indicators li.active {
     font-size: 12px;
   }
 }
+
+@media (max-width: 979px) {
+	.banner {
+		height: auto;
+		padding: 22px 25px 25px 25px;		
+	}
+	
+	.banner .banner-card.banner-img {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.banner .banner-card.banner-item {
+		width: 100%;
+		margin-top: 25px;
+	}
+	
+	.banner .banner-card.banner-button {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.banner .banner-card.banner-button .secondary-button {
+		margin: 25px 0 0;	
+	}
+	
+	#cracha {display: none;}
+	
+	.my-profile-container {
+		margin-top: 50px;
+	}
+	
+	.my-profile-container .title {
+		font-size: 18px;
+		margin: 0 0 15px 0;
+		display: block;
+	}
+	
+	.container-level {
+		display: block;
+		height: auto;
+		padding: 25px;
+		margin: 20px 0 40px 0;
+	}
+	
+	.container-level .container-level-card {
+		width: 100%;
+		margin: 0;
+	}
+	
+	.divider {display: none;}
+	
+	.points-table {width: 100%;}
+	
+	.container-points-table {margin: 0;}
+	
+	.caravan-carousel-recent{margin-top: 5px;}
+	
+	.carousel-control-next-icon {right: 0;background: #000;}
+	.carousel-control-prev-icon {left: 0;background: #000;}
+	
+	.user-container {
+		margin: 0 0 30px;
+	}
+	
+	.ng-untouched p {
+		margin: 0 0 25px;
+	}
+}

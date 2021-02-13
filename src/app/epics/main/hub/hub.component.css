@@ -65,7 +65,7 @@
 
 
 /* ==== RESPONSIVE ==== */
-/*
+
 @media only screen and (max-width: 1680px) {
   #svgMap {
     top: -4rem;
@@ -87,7 +87,7 @@
     left: 4rem;
     top: 4rem;
   }
-}*/
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -101,7 +101,7 @@
 		float: initial;
 		padding: 15px 15px 0 15px;
 	}
-	
+
 	#svgMap {
 		position: initial;
 		left: initial;
@@ -109,19 +109,19 @@
 		max-width: 100%;
 		display: none !important;
 	}
-		
+
 	.welcome1,
 	.welcome3 {
 		color: #fff;
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
 	}
-	
+
 	.hub-main {
 		padding: 10px 5px 50px;
 	}
-	
+
 	#mobile {text-align: center;}
-	
+
 	#mobile .icon-item {
 		display: block;
 		text-align: left;
@@ -132,19 +132,19 @@
 		width: 85px;
 		height: auto;
 	}
-	
+
 	#mobile .icon-item span {
 		display: inline-block;
 		color: #fff;
 		background: #007bff;
 		padding: 5px 10px;
-		border-radius: 5px;	
+		border-radius: 5px;
 		font-size: 14px;
 		margin-left: 20px;
 		max-width: 160px;
 		vertical-align: middle;
 	}
-	
+
 	#mobile .geral-icones {
 		display: inline-block;
 		text-align: center;

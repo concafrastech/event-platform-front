@@ -356,7 +356,7 @@ export class HubComponent implements OnInit, AfterViewInit {
         }
       }, 2000);
       alert('Aguarde, você está sendo redirecionado...');
-      
+
     } else {
       return true;
     }
@@ -438,13 +438,14 @@ export class HubComponent implements OnInit, AfterViewInit {
 
   //Redireciona para uma url interna saindo do contexto do svg
   redirectToFromSvg(path: string) {
-    if (path == "/ndc" || path == "/palestras") {
-      alert(
-        "Atividade fechada! Retorne mais tarde e fique atento a programação"
-      );
-    } else {
-      this.zone.run(() => this._router.navigate([path]));
-    }
+    // if (path == "/ndc" || path == "/palestras") {
+    //   alert(
+    //     "Atividade fechada! Retorne mais tarde e fique atento a programação"
+    //   );
+    // } else {
+    //   this.zone.run(() => this._router.navigate([path]));
+    // }
+    this.zone.run(() => this._router.navigate([path]));
   }
 
   //Modal

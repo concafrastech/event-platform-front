@@ -57,7 +57,7 @@
   position: relative;
   width: 100%;
   right: -2rem;
-  top: -11rem;
+  top: -9rem;
 }
 
 
@@ -85,6 +85,8 @@
     top: 4rem;
   }
 }*/
+
+#mobile .geral-icones {display: none;}
 
 
 @media only screen and (max-width: 768px) {

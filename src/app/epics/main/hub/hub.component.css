@@ -40,18 +40,21 @@
 }
 
 .svgInfo {
-  position: relative;
-  left: 2rem;
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  margin-left: -80px;
   background-color: #1ea6ec;
   color: white;
-  width: 25%;
-  margin: 0 auto;
+  width: 280px;
   padding: 0.5rem;
   z-index: 1000;
   text-align: center;
   border: 1px solid #1ea6ec;
   border-radius: 25px;
 }
+
+.svgInfo strong {display: block;}
 
 #svgMap {
   position: relative;
@@ -70,11 +73,6 @@
   #svgMap {
     top: -4rem;
   }
-
-  .svgInfo {
-    left: 3rem;
-    top: 4rem;
-  }
 }
 
 @media only screen and (max-width: 1400px) {
@@ -82,15 +80,10 @@
     height: 30rem;
     right: -4rem;
   }
-
-  .svgInfo {
-    left: 4rem;
-    top: 4rem;
-  }
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 979px) {
 
   #mobile{
     display: block;
@@ -150,4 +143,21 @@
 		display: inline-block;
 		text-align: center;
 	}
+}
+
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 979px) {
+
+	#mobile .geral-icones {
+		width: 80%;
+	}
+	
+	#mobile .geral-icones .icon-item {
+		width: 50%;
+		float: left;
+		display: block;
+	}
+	
+	#mobile .icon-item:nth-child(2n+3) {content: "";display: block;clear: both;}
 }

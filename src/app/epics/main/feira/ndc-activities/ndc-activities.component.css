@@ -41,7 +41,7 @@
 
 .card .card-div-text {
     height: 6rem;
-    padding: 0.8rem 0;
+    padding: 12px;
 }
 
 .card .card-div-text .card-div-text-content {
@@ -81,4 +81,28 @@
     .card .card-div-text .card-div-text-content {
         font-size: 12px;
     }
+}
+
+
+
+@media only screen and (max-width: 979px) {
+	.row .card-content-ndc {display: block;}
+	
+	.card-content-ndc.card-content-background {
+		padding: 20px;
+		text-align: center;
+		display: block;
+	}
+	
+	.card-content-ndc .card-content-ndc-title {
+		font-size: 16px;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.card .card-div-img {
+		height: auto;
+	}
+	
+	.card .card-div-text {height: 10rem;}
 }

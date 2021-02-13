@@ -1,9 +1,9 @@
 <section id="ndc-content" class="ndc-container" *ngIf="activityList.length > 0">
     <div class="row no-gutters">
-        <div class="col-3 card-content-ndc card-content-background">
+        <div class="col-lg-3 col-12 card-content-ndc card-content-background">
             <h2 class="card-content-ndc-title">{{ title }}</h2>
         </div>
-        <div class="col-3 card-content-ndc" *ngFor="let item of activityList; let i=index"
+        <div class="col-lg-3 col-6 card-content-ndc" *ngFor="let item of activityList; let i=index"
             (click)="goToAudithorium(item)">
             <div class="card margin-card">
                 <div class="card-div-img">

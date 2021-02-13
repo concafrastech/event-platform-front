@@ -317,7 +317,7 @@ export class HubComponent implements OnInit, AfterViewInit {
 
   //Busca evento que esteja acontecendo agora.
   eventIsHappening(): string {
-    if(this.eventsLoaded){ 
+    if(this.eventsLoaded){
       let today = new Date();
       this._userGamificationService.setMissionComplete("Momento Coletivo");
 
@@ -439,7 +439,7 @@ export class HubComponent implements OnInit, AfterViewInit {
         break;
     }
   }
-  
+
   liveEvent(){
     console.log("EVENTO_AO_VIVO");
     let url = this.eventIsHappening();
@@ -454,14 +454,14 @@ export class HubComponent implements OnInit, AfterViewInit {
 
   //Redireciona para uma url interna saindo do contexto do svg
   redirectToFromSvg(path: string) {
-    // if (path == "/ndc" || path == "/palestras") {
-    //   alert(
-    //     "Atividade fechada! Retorne mais tarde e fique atento a programação"
-    //   );
-    // } else {
-    //   this.zone.run(() => this._router.navigate([path]));
-    // }
-    this.zone.run(() => this._router.navigate([path]));
+    if (path == "/ndc" || path == "/palestras") {
+      alert(
+        "Atividade fechada! Retorne mais tarde e fique atento a programação"
+      );
+    } else {
+      this.zone.run(() => this._router.navigate([path]));
+    }
+    // this.zone.run(() => this._router.navigate([path]));
   }
 
   //Modal

@@ -4,11 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://apieventos.contratacaodemetas.com.br/api/',
+  apiUrl: 'http://localhost:3800/api/',
   sockertUrl: 'http://localhost:3800/',
   signatureEndpoint: 'https://apieventos.contratacaodemetas.com.br/zoom/',
   leaveUrl: 'http://localhost:4200',
-  zoomUrl: 'http://localhost:4201'
+  zoomUrl: 'http://localhost:4201',
+  firebase: {}
 };
 
 /*

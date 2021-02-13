@@ -103,7 +103,7 @@ import { AboutComponent } from './components/login/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
-import { ChatComponent } from './components/chat/chat.component';
+//import { ChatComponent } from './components/chat/chat.component';
 import { JovemDashboardComponent } from './epics/jovem/jovem-dashboard/jovem-dashboard.component';
 import { JovemHomeComponent } from './epics/jovem/jovem-home/jovem-home.component';
 import { Ilha1Component } from './epics/jovem/pages/ilha1/ilha1.component';
@@ -192,6 +192,9 @@ import { ResetPassComponent } from './components/login/reset-pass/reset-pass.com
 import { DiferenceComponent } from './epics/main/diference/diference.component';
 import { JovemRightSidebarComponent } from './epics/jovem/jovem-right-sidebar/jovem-right-sidebar.component';
 import { UserWelcomeComponent } from './epics/main/user-welcome/user-welcome.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule, UserTrackingService } from '@angular/fire/analytics';
+import { environment } from 'src/environments/environment';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -296,7 +299,7 @@ const GamificationConfig = {
     TermosComponent,
     AboutComponent,
     Ilha1DialogoComponent,
-    ChatComponent,
+    //ChatComponent,
     JogosTematicosComponent,
     Ilha2Component,
     Ilha3Component,
@@ -392,8 +395,10 @@ const GamificationConfig = {
     ChartsModule,
     FontAwesomeModule,
     AngularSvgIconModule.forRoot(),
-    SocketIoModule.forRoot(config),
-    TooltipModule.forRoot()
+    //SocketIoModule.forRoot(config),
+    TooltipModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -404,7 +409,8 @@ const GamificationConfig = {
   providers: [
       appRoutingProviders,
       UserService,
-      UserGuard
+      UserGuard,
+      UserTrackingService
   ],
   bootstrap: [AppComponent]
 })

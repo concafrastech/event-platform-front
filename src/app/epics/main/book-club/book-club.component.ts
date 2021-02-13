@@ -35,7 +35,7 @@ export class BookClubComponent implements OnInit {
   public startPratical = new Date("2021-02-14 10:00:00");
   public endPratical = new Date("2021-02-14 12:00:00");
 
-  
+  //Colocar link zoom das classrooms
   constructor(
     private _classroomService: ClassroomService,
     private _contentService: ContentService,
@@ -199,6 +199,10 @@ export class BookClubComponent implements OnInit {
           return true;
         }
       });
+
+      if(!defaultPratical){
+        defaultPratical = this.practical[0];
+      }
 
       //Curso usuário
       userPratical = this.practical.find((classroom, index) => {

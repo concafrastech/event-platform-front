@@ -111,3 +111,28 @@
         height: 8rem;
     }
 }
+
+
+@media only screen and (max-width:768px) {
+	#ndc-header {
+		padding: 25px;
+		text-align: center;
+	}
+	
+	.img-size {
+		display: inline-block;
+	}
+	
+	#ndc-header .ndc-header-card.ndc-header-item {
+		width: 100%;
+		display: block;
+		margin: 15px 0 0 0;
+	}
+	
+	.ndc-header-text {
+		font-size: 14px;
+		display: block;
+		line-height: 1.5em;
+		margin-top: 15px;
+	}
+}

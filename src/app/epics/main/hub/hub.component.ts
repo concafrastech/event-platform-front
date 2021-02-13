@@ -31,6 +31,7 @@ export class HubComponent implements OnInit, AfterViewInit {
   public todaySchedule: Schedule[];
   public todayEvents: Lecture[] = [];
   public svgTooltip: string = "";
+  public eventsLoaded: boolean = false;
 
   //Data/Hora dos momentos tira dúvidas
   public startAskQuestions = new Date("2021-02-13 17:00:00");
@@ -70,6 +71,7 @@ export class HubComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.currentEpic = JSON.parse(localStorage.getItem("currentEpic"));
     this.identity = this._userService.getIdentity();
+    this.eventsLoaded = false;
     this.loadScheduleEpic();
   }
 
@@ -306,6 +308,8 @@ export class HubComponent implements OnInit, AfterViewInit {
       this._lectureService.getLecture(schedule.id).subscribe((response) => {
         if (response.lecture.type == "momento_coletivo") {
           this.todayEvents.push(response.lecture);
+          this.eventsLoaded = true;
+
         }
       });
     });
@@ -313,22 +317,26 @@ export class HubComponent implements OnInit, AfterViewInit {
 
   //Busca evento que esteja acontecendo agora.
   eventIsHappening(): string {
-    let today = new Date();
-    this._userGamificationService.setMissionComplete("Momento Coletivo");
+    if(this.eventsLoaded){ 
+      let today = new Date();
+      this._userGamificationService.setMissionComplete("Momento Coletivo");
 
-    for (let i = 0; i < this.todayEvents.length; i++) {
-      let start = new Date(this.todayEvents[i].start_time);
-      let end = new Date(this.todayEvents[i].end_time);
+      for (let i = 0; i < this.todayEvents.length; i++) {
+        let start = new Date(this.todayEvents[i].start_time);
+        let end = new Date(this.todayEvents[i].end_time);
 
-      //Ainda não acabou e já começou
-      if (
-        today.getTime() < end.getTime() &&
-        today.getTime() >= start.getTime()
-      ) {
-        return `/audithorium/lecture/${this.todayEvents[i]._id}`;
+        //Ainda não acabou e já começou
+        if (
+          today.getTime() < end.getTime() &&
+          today.getTime() >= start.getTime()
+        ) {
+          return `/audithorium/lecture/${this.todayEvents[i]._id}`;
+        }
       }
+      alert("Atividade fechada! Retorne mais tarde e fique atento a programação");
+    } else {
+      alert("Estamos carregando seus eventos. Aguarde alguns segundos e clique novamente!");
     }
-    alert("Atividade fechada! Retorne mais tarde e fique atento a programação");
     return null;
   }
 

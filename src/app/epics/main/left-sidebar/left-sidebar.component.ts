@@ -62,7 +62,7 @@ export class LeftSidebarComponent implements OnInit {
       this.linkStaff = "https://us02web.zoom.us/j/84680949981?pwd=ekVGdDkvZGVDeGtKajRiNWNZUkVFQT09"
     }else{
       if(date.getDate() == 14 && date.getMonth() == 1){
-        this.linkStaff = "https://us02web.zoom.us/j/84507662749?pwd=L3pwb3FzM3hMRm04TzA0YXJnWU9Idz09"
+        this.linkStaff = "https://us02web.zoom.us/j/81274589055?pwd=YTNHL3E2RFlyNHJYcmxYVWlITnRuQT09"
       }
     }
 

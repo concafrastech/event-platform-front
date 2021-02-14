@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://apieventos.contratacaodemetas.com.br/api/',
-  sockertUrl: 'https://apieventos.contratacaodemetas.com.br/api/',
-  signatureEndpoint: 'https://apieventos.contratacaodemetas.com.br/zoom',
+  apiUrl: 'https://event-platform-back-6aehl.ondigitalocean.app/api/',
+  sockertUrl: 'https://event-platform-back-6aehl.ondigitalocean.app/api/',
+  signatureEndpoint: 'https://event-platform-back-6aehl.ondigitalocean.app/zoom',
   leaveUrl: 'https://event-platform-concafras.web.app',
   zoomUrl: 'https://event-platform-concafras-zoom.web.app/home',
   firebase: {

@@ -161,7 +161,7 @@ export class BookClubComponent implements OnInit {
       if (classroom) {
         classroom.contents.forEach((content) => {
           if (content.type == "zoom") {
-            this.goToAudithorium(`audithorium/classroom/${classroom._id}`);
+            this.goToAudithorium(`audithorium/zoom/${classroom._id}`);
           }
         });
       } else {

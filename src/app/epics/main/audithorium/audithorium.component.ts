@@ -94,6 +94,27 @@ export class AudithoriumComponent implements OnInit {
           });
           break;
         }
+        //Para exibir somente zoom
+        case "zoom": {
+          this._classroomService.getClassroom(id).subscribe((responseClassroom) => {
+            //this.classroom = response.classroom;
+            //this.classroom.contents = [];
+            responseClassroom.classroom.contents.forEach((content, index) =>{
+              this._contentService.getContent(content).subscribe((response)=>{
+                let contentAux = response.content;
+                if(contentAux.type == 'zoom'){
+                  this.classroom = responseClassroom.classroom;
+                  this.classroom.contents = [];
+                  this.classroom.contents[0] = contentAux;
+                  this.handleDisplay(this.classroom.contents);
+                }
+                
+              })
+            })
+            
+          });
+          break;
+        }
       }
     });
   }

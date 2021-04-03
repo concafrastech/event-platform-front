@@ -26,28 +26,28 @@
 
         <div *ngIf="accessAllowed">
 
-            <a href="/concafrinhas/roda-alegria" class="alegria botoes" title="Roda da Alegria Cristã"
+            <a [routerLink]="'/concafrinhas/roda-alegria'" class="alegria botoes" title="Roda da Alegria Cristã"
                 style="z-index: 100;">
                 <img src="assets/concafras2021/concafrinhas/Home/alegria.png" />
             </a>
 
-            <a href="/concafrinhas/parquinho" class="playground botoes" title="Parquinho" style="z-index: 50;">
+            <a [routerLink]="'/concafrinhas/parquinho'" class="playground botoes" title="Parquinho" style="z-index: 50;">
                 <img src="assets/concafras2021/concafrinhas/Home/playground.png" usemap="#parquinhoFree" />
             </a>
 
-            <a href="/concafrinhas/bom-samaritano" class="escola botoes" title="Bom Samaritano Infantil">
+            <a [routerLink]="'/concafrinhas/bom-samaritano'" class="escola botoes" title="Bom Samaritano Infantil">
                 <img src="assets/concafras2021/concafrinhas/Home/escola.png" />
             </a>
 
-            <a href="/concafrinhas/atividades" class="laborterapia botoes" title="Atividades">
+            <a [routerLink]="'/concafrinhas/atividades'" class="laborterapia botoes" title="Atividades">
                 <img src="assets/concafras2021/concafrinhas/Home/laborterapia.png" />
             </a>
 
-            <a href="/concafrinhas/cantinho-historia" class="arvore botoes" title="Cantinho da História">
+            <a [routerLink]="'/concafrinhas/cantinho-historia'" class="arvore botoes" title="Cantinho da História">
                 <img src="assets/concafras2021/concafrinhas/Home/arvore.png" />
             </a>
 
-            <a href="/concafrinhas/casa-oracao" class="rio botoes" title="Casa da Oração">
+            <a [routerLink]="'/concafrinhas/casa-oracao'" class="rio botoes" title="Casa da Oração">
                 <img src="assets/concafras2021/concafrinhas/Home/rio.png" />
             </a>
         </div>
@@ -82,20 +82,21 @@
 
 
 
-        <a href="/concafrinhas/circo-concafrinhas" class="circo botoes" title="Circo Concafrinhas">
+        <a [routerLink]="'/concafrinhas/circo-concafrinhas'" class="circo botoes" title="Circo Concafrinhas">
             <img src="assets/concafras2021/concafrinhas/Home/circo.png" />
         </a>
 
-        <a href="/concafrinhas/casa-nvl-1" class="nivel1 botoes" title="Casa Nível 1">
+        <a [routerLink]="'/concafrinhas/casa-nvl-1'" class="nivel1 botoes" title="Casa Nível 1">
             <img src="assets/concafras2021/concafrinhas/Home/nivel-1.png" />
         </a>
 
-        <a href="/concafrinhas/casa-nvl-2" class="nivel2 botoes" title="Casa Nível 2">
+        <a [routerLink]="'/concafrinhas/casa-nvl-2'" class="nivel2 botoes" title="Casa Nível 2">
             <img src="assets/concafras2021/concafrinhas/Home/nivel-2.png" />
         </a>
 
-
-        <img src="assets/concafras2021/concafrinhas/Home/completo-2.png" class="principal" />
+        <div>
+          <img src="assets/concafras2021/concafrinhas/Home/completo-2.png" />
+        </div>
 
     </div>
 </div>

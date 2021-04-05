@@ -104,7 +104,7 @@ export class VideojsComponent implements OnInit {
       }
     );
 
-    if (this.type == 'momento_coletivo') { 
+    if (this.type == 'momento_coletivo') {
       var split = this.vContent.url.split("https://www.youtube.com/watch?v=");
       if(split.length == 2) {
         this._youtubeLiveService.youtubelive.next(split[1]);

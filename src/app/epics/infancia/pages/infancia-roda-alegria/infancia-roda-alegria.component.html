@@ -1,767 +1,743 @@
 <div class="roda-alegria">
+  <div class="container-total">
+    <a [routerLink]="'/concafrinhas/home'">
+      <img class="btn-voltar buttons botao" src="assets/concafras2021/concafrinhas/btn-voltar.png" alt="Voltar"
+        title="Voltar">
+    </a>
+    <div class="lista-opcoes">
+      <div class="item botao" *ngFor="let lecture of lectures; let i = index ">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv01.png" (click)="openModal(modalVideo, i)">
+      </div>
+      <!-- <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv01.png" (click)="openModal(template01)">
+      </div>
 
-    <div class="container-total">
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv02.png" (click)="openModal(template02)">
+      </div>
 
-        <a href="/concafrinhas/home">
-            <img class="btn-voltar buttons botao" src="assets/concafras2021/concafrinhas/btn-voltar.png" alt="Voltar"
-                title="Voltar">
-        </a>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv03.png" (click)="openModal(template03)">
+      </div>
 
-        <div class="lista-opcoes">
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv04.png" (click)="openModal(template04)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv01.png" (click)="openModal(template01)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv05.png" (click)="openModal(template05)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv02.png" (click)="openModal(template02)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv06.png" (click)="openModal(template06)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv03.png" (click)="openModal(template03)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv07.png" (click)="openModal(template07)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv04.png" (click)="openModal(template04)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv08.png" (click)="openModal(template08)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv05.png" (click)="openModal(template05)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv09.png" (click)="openModal(template09)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv06.png" (click)="openModal(template06)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv10.png" (click)="openModal(template10)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv07.png" (click)="openModal(template07)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv11.png" (click)="openModal(template11)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv08.png" (click)="openModal(template08)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv12.png" (click)="openModal(template12)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv09.png" (click)="openModal(template09)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv13.png" (click)="openModal(template13)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv10.png" (click)="openModal(template10)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv14.png" (click)="openModal(template14)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv11.png" (click)="openModal(template11)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv15.png" (click)="openModal(template15)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv12.png" (click)="openModal(template12)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv16.png" (click)="openModal(template16)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv13.png" (click)="openModal(template13)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv17.png" (click)="openModal(template17)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv14.png" (click)="openModal(template14)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv18.png" (click)="openModal(template18)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv15.png" (click)="openModal(template15)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv19.png" (click)="openModal(template19)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv16.png" (click)="openModal(template16)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv20.png" (click)="openModal(template20)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv17.png" (click)="openModal(template17)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv21.png" (click)="openModal(template21)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv18.png" (click)="openModal(template18)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv22.png" (click)="openModal(template22)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv19.png" (click)="openModal(template19)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv23.png" (click)="openModal(template23)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv20.png" (click)="openModal(template20)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv24.png" (click)="openModal(template24)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv21.png" (click)="openModal(template21)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv25.png" (click)="openModal(template25)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv22.png" (click)="openModal(template22)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv26.png" (click)="openModal(template26)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv23.png" (click)="openModal(template23)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv27.png" (click)="openModal(template27)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv24.png" (click)="openModal(template24)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv28.png" (click)="openModal(template28)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv25.png" (click)="openModal(template25)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv29.png" (click)="openModal(template29)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv26.png" (click)="openModal(template26)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv30.png" (click)="openModal(template30)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv27.png" (click)="openModal(template27)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv31.png" (click)="openModal(template31)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv28.png" (click)="openModal(template28)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv32.png" (click)="openModal(template32)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv29.png" (click)="openModal(template29)">
-            </div>
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv33.png" (click)="openModal(template33)">
+      </div>
 
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv30.png" (click)="openModal(template30)">
-            </div>
-
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv31.png" (click)="openModal(template31)">
-            </div>
-
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv32.png" (click)="openModal(template32)">
-            </div>
-
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv33.png" (click)="openModal(template33)">
-            </div>
-
-            <div class="item botao">
-                <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv34.png" (click)="openModal(template34)">
-            </div>
-
-        </div>
-
-        <img class="principal" src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegriaInterior.jpg">
-
+      <div class="item botao">
+        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv34.png" (click)="openModal(template34)">
+      </div> -->
     </div>
-
+    <img class="principal" src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegriaInterior.jpg">
+  </div>
 </div>
 
-
-<ng-template #template01>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Amizade Infantil</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/v19vnAksOLc" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+<ng-template #modalVideo>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: {{ titleVideo }}</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <app-videojs [vContent]="contentVideo"></app-videojs>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- <ng-template #template01>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Amizade Infantil</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/v19vnAksOLc" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template02>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Insetos Úteis</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/6EWJAhCOJj8" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Insetos Úteis</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/6EWJAhCOJj8" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template03>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Grão de Areia</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/_nvwvjX6L0I" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Grão de Areia</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/_nvwvjX6L0I" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template04>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Deus</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/tT_Hhf5CBAA" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Deus</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/tT_Hhf5CBAA" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template05>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Com as mãos eu faço</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/5ANk7GV0oF4" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Com as mãos eu faço</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/5ANk7GV0oF4" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template06>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Canção do amor</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/NSypHPARBLs" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Canção do amor</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/NSypHPARBLs" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template07>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Árvore Feliz</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/tpb8htrwMkA" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Árvore Feliz</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/tpb8htrwMkA" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template08>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: A Formiguinha</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/Yl5Xpl_sqT4" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: A Formiguinha</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Yl5Xpl_sqT4" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template09>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: João Batista</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/MWA2TpIp0vw" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: João Batista</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/MWA2TpIp0vw" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template10>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Deus criou</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/KqnFImuRers" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Deus criou</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/KqnFImuRers" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template11>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: A bicharada</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/CTmx2L1gYV0" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: A bicharada</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/CTmx2L1gYV0" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template12>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: A Casinha</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dt-s7KvDFLw" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: A Casinha</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/dt-s7KvDFLw" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template13>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Penso em Jesus</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/51Z9aFP7uIs" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Penso em Jesus</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/51Z9aFP7uIs" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template14>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Salve, Kardec!</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/imzm8nAoFrc" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Salve, Kardec!</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/imzm8nAoFrc" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template15>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Prece da Criança</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/UQJ9InkLCv4" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Prece da Criança</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/UQJ9InkLCv4" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template16>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Viver é tão bom</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/9nNPgcLzQRI" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Viver é tão bom</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/9nNPgcLzQRI" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template17>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Máquina de Viver</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/wMyZqdgK194" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Máquina de Viver</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/wMyZqdgK194" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template18>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: A Força</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/M-cXf8NNVVo" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: A Força</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/M-cXf8NNVVo" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template19>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: O Bom Deus</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/ZSr2ieBE9Rs" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: O Bom Deus</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ZSr2ieBE9Rs" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template20>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Na Batida da Campanha</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/M29MEFGv5wQ" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Na Batida da Campanha</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/M29MEFGv5wQ" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template21>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Pingo de Gente</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/GQsrZjCTqNQ" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Pingo de Gente</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/GQsrZjCTqNQ" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template22>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Meimei</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/WfNx_YpZTmo" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Meimei</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/WfNx_YpZTmo" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template23>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Evangelho no Lar</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/V8jn8yju2Ng" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Evangelho no Lar</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/V8jn8yju2Ng" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template24>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Menino Jesus</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/YNMOE0D0e27" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Menino Jesus</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/YNMOE0D0e27" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template25>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: José da Galileia</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/Ao77wF5oa4o" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: José da Galileia</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Ao77wF5oa4o" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template26>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Irmão Sol, Irmã Lua</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/abzkfrltOAk" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Irmão Sol, Irmã Lua</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/abzkfrltOAk" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template27>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Com Jesus</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/MaJAI4JG6j0" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Com Jesus</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/MaJAI4JG6j0" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template28>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Noite igual</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/tGstR_8Oo4w" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Noite igual</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/tGstR_8Oo4w" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template29>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Maria menina</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/thhYcA-5xuQ" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Maria menina</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/thhYcA-5xuQ" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template30>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: O Jumentinho</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/Kq2yuc-xxjo" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: O Jumentinho</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Kq2yuc-xxjo" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template31>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Numa Estrada</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/zlH6DcOSUp8" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Numa Estrada</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/zlH6DcOSUp8" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template32>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Ser criança com Jesus</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/HtXRRNO1dN4" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Ser criança com Jesus</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/HtXRRNO1dN4" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template33>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Onde vejo Deus</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/RsCVy-5Cvcw" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Onde vejo Deus</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/RsCVy-5Cvcw" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #template34>
-    <div class="modal-content-video">
-        <div class="modal-header">
-            <h4 style="color: white;">Música: Pra melhorar</h4>
-            <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/kch0D-Al6UY" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
+  <div class="modal-content-video">
+    <div class="modal-header">
+      <h4 style="color: white;">Música: Pra melhorar</h4>
+      <button class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-</ng-template>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/kch0D-Al6UY" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</ng-template> -->

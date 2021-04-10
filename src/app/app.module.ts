@@ -89,7 +89,6 @@ import { ActivityListComponent } from './admin/activity/activity-list/activity-l
 import { ActivityEditComponent } from './admin/activity/activity-edit/activity-edit.component';
 import { ActivityAddComponent } from './admin/activity/activity-add/activity-add.component';
 // import { InfanciaLevelComponent } from './epics/infancia/infancia-level/infancia-level.component';
-import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 import { InfanciaGeralComponent } from './epics/infancia/infancia-geral/infancia-geral.component';
 import { SelectConferenceComponent } from './components/select-conference/select-conference.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
@@ -195,6 +194,7 @@ import { UserWelcomeComponent } from './epics/main/user-welcome/user-welcome.com
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule, UserTrackingService } from '@angular/fire/analytics';
 import { environment } from 'src/environments/environment';
+import { InfanciaAudithoriumComponent } from './epics/infancia/infancia-audithorium/infancia-audithorium.component';
 
 const levels = [
   { badge: 'BEGINNER', icon: './../assets/badges/BEGINNER.svg', range: { min: 1, max: 99 } },
@@ -285,7 +285,6 @@ const GamificationConfig = {
     InfanciaDashboardComponent,
     ContentTimeDirective,
     // InfanciaLevelComponent,
-    InfanciaAudithoriumComponent,
     InfanciaGeralComponent,
     SelectConferenceComponent,
     ConfirmComponent,
@@ -370,6 +369,7 @@ const GamificationConfig = {
     DiferenceComponent,
     JovemRightSidebarComponent,
     UserWelcomeComponent,
+    InfanciaAudithoriumComponent,
   ],
   imports: [
     BrowserModule,

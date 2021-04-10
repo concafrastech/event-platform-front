@@ -294,7 +294,6 @@ const appRoutes: Routes = [
             { path: 'parquinho/brincadeiras', component: BrincadeirasComponent, canActivate: [UserGuard] },
             { path: 'parquinho/jogos-digitais', component: JogosDigitaisComponent, canActivate: [UserGuard] },
 
-
             { path: 'atividades', component: InfanciaAtividadesComponent, canActivate: [UserGuard], },
             { path: 'atividades/laborterapias', component: LaborterapiasComponent, canActivate: [UserGuard] },
             { path: 'atividades/desenhos-imprimir', component: DesenhosImprimirComponent, canActivate: [UserGuard] },
@@ -311,7 +310,6 @@ const appRoutes: Routes = [
             { path: 'circo-concafrinhas', component: InfanciaCircoConcafrinhasComponent, canActivate: [UserGuard] },
             { path: 'nosso-mural', component: PadletComponent, canActivate: [UserGuard] },
             { path: 'flipsnack/:hash', component: FlipsnackComponent, canActivate: [UserGuard] },
-
 
             // {path: 'nivel', component: InfanciaLevelComponent, canActivate:[UserGuard]},
             // {path: 'nivel/:level', component: InfanciaLevelComponent, canActivate:[UserGuard]},

@@ -1,0 +1,73 @@
+<div id="bg">
+  <img src="../../../../assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegriaInterior.jpg" alt="" />
+</div>
+
+<div class="container-content">
+  <div *ngIf="actualContent" style="height: inherit">
+    <div *ngIf="actualContent.type == 'img'" style="height: inherit">
+      <img [src]="actualContent.file.fileLink" alt="image slide"
+        style="display: block; width: 100%; max-height: 650px" />
+    </div>
+
+    <div *ngIf="actualContent.type == 'youtube'">
+      <app-videojs [vContent]="actualContent" [type]="lectureType"></app-videojs>
+    </div>
+
+    <div *ngIf="actualContent.type == 'externo'">
+      <app-iframe [sourceUrl]="actualContent.url"></app-iframe>
+    </div>
+
+    <div *ngIf="actualContent.type == 'doc'">
+      <app-iframe [sourceUrl]="actualContent.file.fileLink"></app-iframe>
+    </div>
+
+    <div *ngIf="actualContent.type == 'zoom'">
+      <app-zoomus [vContent]="actualContent"></app-zoomus>
+    </div>
+
+    <div *ngIf="actualContent.type == 'audio'">
+      <h2 class="lecture-header-title margin-top"><strong>Conteúdo de áudio, não será exibido.</strong></h2>
+    </div>
+
+    <!-- <h4 *ngIf="contents.length > 1">
+      Conteúdo {{ index + 1 }} de {{ contents.length }}
+    </h4> -->
+    <div class="audithorium-container">
+      <h4 class="lecture-header-text margin-top">Conteúdo: {{ actualContent.name }}</h4>
+    </div>
+  </div>
+  <div>
+    <div style="display: flex; place-content: space-between" *ngIf="contents.length > 1">
+      <button [disabled]="index <= 0" class="btn btn-success btn-hinario" (click)="previousContent()" type="button">
+        Anterior
+      </button>
+      <button [disabled]="index >= contents.length - 1 || !canMoveForward" class="btn btn-success btn-hinario"
+        (click)="nextContent()" type="button">
+        Próximo
+      </button>
+    </div>
+  </div>
+  <div>
+    <!-- <p>Tipo: {{ type }}</p>
+    <p>Qtde: {{ contents.length }}</p> -->
+
+    <div *ngIf="lecture" class="audithorium-container">
+      <h2 class="lecture-header-title">
+        Tema: {{ lecture.name }}
+      </h2>
+    </div>
+    <div class="audithorium-container">
+      <span class="hinario-header-text">Cante com a gente:</span>
+      <a href="https://firebasestorage.googleapis.com/v0/b/event-platform-concafras.appspot.com/o/HINARIO_ADULTO_CONCAFRAS_2021.pdf?alt=media&token=d5a42f1b-9be1-47c0-8efe-b6f9140a933e"
+        class="btn btn-primary btn-hinario" target="_blank"><i class="fas fa-download"></i> Hinário Adulto</a>
+      <a href="https://firebasestorage.googleapis.com/v0/b/event-platform-concafras.appspot.com/o/HINARIO_INFANTIL_CONCAFRAS_2021.pdf?alt=media&token=a22fb0c3-3c41-46dd-9059-5ea577a37e53"
+        class="btn btn-primary btn-hinario" target="_blank"><i class="fas fa-download"></i> Hinário Infantil</a>
+      <a [routerLink]="'/concafrinhas/home'">
+        <img class="btn-home buttons botao" src="assets/concafras2021/concafrinhas/btn-home.png" alt="Voltar"
+          title="Voltar">
+      </a>
+    </div>
+  </div>
+
+  <!-- <img class="principal" src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegriaInterior.jpg"> -->
+</div>

@@ -6,7 +6,8 @@
     </a>
     <div class="lista-opcoes">
       <div class="item botao" *ngFor="let lecture of lectures; let i = index ">
-        <img src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv0{{ i + 1 }}.png" (click)="goToAudithorium(i)">
+        <img *ngIf="lecture.thumbnail" [src]="lecture.thumbnail.fileLink" (click)="goToAudithorium(i)">
+        <img *ngIf="!lecture.thumbnail" src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegria-atv0{{ i + 1 }}.png" (click)="goToAudithorium(i)">
       </div>
     </div>
     <img class="principal" src="assets/concafras2021/concafrinhas/RodaAlegria/RodaAlegriaInterior.jpg">

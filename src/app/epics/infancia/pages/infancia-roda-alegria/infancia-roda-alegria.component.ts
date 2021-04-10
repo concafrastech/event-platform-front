@@ -2,23 +2,25 @@ import { Component, TemplateRef } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { Lecture } from "src/app/models/lecture";
+import { DocumentService } from "src/app/services/document.service";
 import { LectureService } from "src/app/services/lecture.service";
 
 @Component({
   selector: "app-infancia-roda-alegria",
   templateUrl: "./infancia-roda-alegria.component.html",
   styleUrls: ["./infancia-roda-alegria.component.css"],
-  providers: [BsModalService, LectureService],
+  providers: [BsModalService, LectureService, DocumentService],
 })
 export class InfanciaRodaAlegriaComponent {
   modalRef: BsModalRef;
-  lectures: Lecture[];
+  lectures: Lecture[] = [];
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _modalService: BsModalService,
-    private _lectureService: LectureService
+    private _lectureService: LectureService,
+    private _documentService: DocumentService
   ) {}
 
   ngOnInit(): void {
@@ -28,21 +30,31 @@ export class InfanciaRodaAlegriaComponent {
 
   getLectures(epicId): void {
     this._lectureService.getFullLectures(epicId).subscribe((response) => {
-      this.lectures = response.lectures;
+      let resLectures = response.lectures;
+      resLectures.map((lecture) => {
+        if (lecture.type == "concafrinhas_alegria") {
+          this.lectures.push(lecture);
+          console.log(this.lectures);
+        }
+      });
+      this.loadThumbnail();
     });
   }
 
-  openModal(template: TemplateRef<any>, index) {
-    if (this.modalRef) {
-      this.modalRef.hide();
-    }
-    console.log(this.lectures[index].name);
-    // this._router.navigate(["/concafrinhas/audithorium", "lecture", "1"]);
-    // this.modalRef = this._modalService.show(template);
+  loadThumbnail(): void {
+    this.lectures.map((lecture) => {
+      if (lecture.thumbnail) {
+        this._documentService
+          .getDocument(lecture.thumbnail)
+          .subscribe((response) => {
+            console.log(response);
+            lecture.thumbnail = response.document;
+          });
+      }
+    });
   }
 
   goToAudithorium(index) {
-    console.log(this.lectures[index]._id);
     this._router.navigate([
       "/concafrinhas/audithorium",
       "lecture",

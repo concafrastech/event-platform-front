@@ -1,6 +1,5 @@
 import { Component, TemplateRef } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { Lecture } from "src/app/models/lecture";
 import { DocumentService } from "src/app/services/document.service";
 import { LectureService } from "src/app/services/lecture.service";
@@ -9,16 +8,14 @@ import { LectureService } from "src/app/services/lecture.service";
   selector: "app-infancia-roda-alegria",
   templateUrl: "./infancia-roda-alegria.component.html",
   styleUrls: ["./infancia-roda-alegria.component.css"],
-  providers: [BsModalService, LectureService, DocumentService],
+  providers: [LectureService, DocumentService],
 })
 export class InfanciaRodaAlegriaComponent {
-  modalRef: BsModalRef;
   lectures: Lecture[] = [];
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _modalService: BsModalService,
     private _lectureService: LectureService,
     private _documentService: DocumentService
   ) {}

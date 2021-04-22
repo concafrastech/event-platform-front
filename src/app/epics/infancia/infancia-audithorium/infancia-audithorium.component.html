@@ -66,6 +66,10 @@
         <img class="btn-home buttons botao" src="assets/concafras2021/concafrinhas/btn-home.png" alt="Voltar"
           title="Voltar">
       </a>
+      <a [routerLink]="" class="back" *ngIf="getNavBarService().ButtonBackIsVisible()" (click)="back()">
+        <img class="btn-voltar buttons botao" src="assets/concafras2021/concafrinhas/btn-voltar.png" alt="Voltar"
+          title="Voltar">
+      </a>
     </div>
   </div>
 

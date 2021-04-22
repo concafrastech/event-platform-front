@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Activity } from "src/app/models/activity";
 import { Classroom } from "src/app/models/classroom";
@@ -47,7 +48,8 @@ export class InfanciaAudithoriumComponent implements OnInit {
     private _activityService: ActivityService,
     private _contentService: ContentService,
     private _documentService: DocumentService,
-    private _navbarService: NavbarService
+    private _navbarService: NavbarService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -169,5 +171,13 @@ export class InfanciaAudithoriumComponent implements OnInit {
     setTimeout(() => {
       this.canMoveForward = true;
     }, this.secondsToNext * 1000);
+  }
+
+  getNavBarService() {
+    return this._navbarService;
+  }
+
+  back(){
+    this.location.back();
   }
 }

@@ -92,6 +92,11 @@ export class LoginComponent implements OnInit {
     }
 
     getSubscription(){
+        // this._userService.getMockSubscription(this.identity._id).subscribe(response =>{
+        //     this.identity.subscriptions = response.subscriptions;
+        //         localStorage.setItem('subscriptions', JSON.stringify(response.subscriptions));
+        //         this.getCounters();
+        // })
         this._userService.getSubscriptions(this.identity._id).subscribe(
             response => {
                 this.identity.subscriptions = response.subscriptions;
@@ -106,7 +111,7 @@ export class LoginComponent implements OnInit {
             response => {
                 localStorage.setItem('stats', JSON.stringify(response));
                 this.status = "success";
-                console.log(response);
+                console.log(this.identity);
                 if(this.identity.subscriptions.length == 1){
                     console.log(this.identity.subscriptions[0]);
                     localStorage.setItem('subscriptions', JSON.stringify(this.identity.subscriptions));

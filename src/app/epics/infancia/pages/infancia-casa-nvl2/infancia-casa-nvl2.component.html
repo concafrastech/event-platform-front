@@ -13,7 +13,7 @@
 
     <!-- TODO: Começando aqui a arrumar o código, Tema Central -->
     <img *ngFor="let img of srcImgs; let i = index" class="porta{{ i + 1 }} buttons" [src]="img"
-      (click)="openModalTemaCentral(templateTC)" title="Tema Central">
+      (click)="goToAudithorium(i)">
 
     <!-- <img class="porta1 buttons" src="assets/concafras2021/concafrinhas/CasaNivel2/CasaNivel2TemaCentral.png"
       (click)="openModalTemaCentral(templateTC)" title="Tema Central">

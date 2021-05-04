@@ -31,7 +31,6 @@ export class InfanciaRodaAlegriaComponent {
       resLectures.map((lecture) => {
         if (lecture.type == "concafrinhas_alegria") {
           this.lectures.push(lecture);
-          console.log(this.lectures);
         }
       });
       this.loadThumbnail();
@@ -44,7 +43,6 @@ export class InfanciaRodaAlegriaComponent {
         this._documentService
           .getDocument(lecture.thumbnail)
           .subscribe((response) => {
-            console.log(response);
             lecture.thumbnail = response.document;
           });
       }

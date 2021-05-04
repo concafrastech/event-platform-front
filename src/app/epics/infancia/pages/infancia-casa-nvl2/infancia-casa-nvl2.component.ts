@@ -70,7 +70,7 @@ export class InfanciaCasaNvl2Component implements OnInit {
   getLectures(epicId: any): void {
     this._lectureService.getFullLectures(epicId).subscribe((response) => {
       let resLectures = response.lectures;
-      resLectures.map((lecture) => {
+      resLectures.map((lecture: Lecture) => {
         if (lecture.type == 'concafrinhas_alegria') {
           this.lectures.push(lecture);
           console.log(this.lectures);

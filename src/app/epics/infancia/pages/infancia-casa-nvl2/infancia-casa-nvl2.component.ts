@@ -59,6 +59,7 @@ export class InfanciaCasaNvl2Component implements OnInit {
         this.openModal(template);
         break;
       case 2:
+        this.modalRef.hide();
         this._router.navigate([
           '/concafrinhas/audithorium',
           'lecture',

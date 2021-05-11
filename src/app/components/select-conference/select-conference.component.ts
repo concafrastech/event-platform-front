@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Conference } from "src/app/models/conference";
-import { Subscription } from "src/app/models/subscription";
-import { ConferenceService } from "src/app/services/conference.service";
-import { UserService } from "src/app/services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { Conference } from 'src/app/models/conference';
+import { Subscription } from 'src/app/models/subscription';
+import { ConferenceService } from 'src/app/services/conference.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: "app-select-conference",
-  templateUrl: "./select-conference.component.html",
-  styleUrls: ["./select-conference.component.css"],
+  selector: 'app-select-conference',
+  templateUrl: './select-conference.component.html',
+  styleUrls: ['./select-conference.component.css'],
   providers: [UserService, ConferenceService],
 })
 export class SelectConferenceComponent implements OnInit {
@@ -23,12 +23,12 @@ export class SelectConferenceComponent implements OnInit {
 
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
-    this.subscriptions = JSON.parse(localStorage.getItem("subscriptions"));
+    this.subscriptions = JSON.parse(localStorage.getItem('subscriptions'));
     this.currentSubscription = JSON.parse(
-      localStorage.getItem("currentSubscription")
+      localStorage.getItem('currentSubscription')
     );
-    this.conferenceService.getConferences().subscribe((response)=>{
-      this.conferences = response.conferences
+    this.conferenceService.getConferences().subscribe((response) => {
+      this.conferences = response.conferences;
     });
     // if(this.subscriptions == null || this.subscriptions.length == 0){
     //
@@ -43,18 +43,18 @@ export class SelectConferenceComponent implements OnInit {
         this.subscriptions = [response];
         this.identity.subscriptions = this.subscriptions;
         localStorage.setItem(
-          "subscriptions",
+          'subscriptions',
           JSON.stringify(this.subscriptions)
         );
         localStorage.setItem(
-          "currentSubscription",
+          'currentSubscription',
           JSON.stringify(this.subscriptions[0])
         );
         localStorage.setItem(
-          "currentConference",
+          'currentConference',
           JSON.stringify(this.subscriptions[0].conference)
         );
-        localStorage.setItem("mocked", "true");
+        localStorage.setItem('mocked', 'true');
       },
       (error) => {
         var errorMessage = <any>error;
@@ -68,6 +68,6 @@ export class SelectConferenceComponent implements OnInit {
   }
 
   selectConference(conference: Conference) {
-    localStorage.setItem("currentConference", JSON.stringify(conference));
+    localStorage.setItem('currentConference', JSON.stringify(conference));
   }
 }

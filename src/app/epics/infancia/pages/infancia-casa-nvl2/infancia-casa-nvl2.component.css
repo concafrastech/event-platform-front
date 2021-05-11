@@ -6,7 +6,7 @@
     overflow: hidden;
     position: relative;
     padding: 0;
-} 
+}
 
 .casa-nvl2 .porta1 {
     width: 29.9%;
@@ -30,9 +30,10 @@
     position: absolute;
     z-index: 1;
     display: block;
+    cursor: pointer;
 }
 
-.botao:hover {
+.buttons:hover {
     filter: drop-shadow(0px 0px 25px #FFF82E);
 }
 
@@ -78,8 +79,9 @@ img {
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    background-color: transparent;
     background-clip: padding-box;
+    background-color: #ffc107;
+    border: 1px solid #ffc107;
 }
 
 .modal-content-video {
@@ -96,6 +98,10 @@ img {
     transform: translate(-50% , 0);
 }
 
+.modal-title {
+  color: #fff;
+}
+
 button.close {
     position: absolute;
     height: 35px;
@@ -108,14 +114,14 @@ button.close {
     top: 0px;
     opacity: 1;
     outline: none;
-    
+
     display: flex;
     align-items: center;
 }
 
 button.close span {
-    position: absolute; 
-    top: 5px; 
+    position: absolute;
+    top: 5px;
     right: 10px;
 }
 
@@ -126,7 +132,7 @@ button.close span {
 }
 
 /* Large Devices */
-@media only screen and (max-width:1000px) { 
+@media only screen and (max-width:1000px) {
     .modal-body iframe {
         width: 690px;
         height: 420px;
@@ -147,11 +153,11 @@ button.close span {
         width: 560px;
         height: 250px;
     }
-    
+
     h4 {
         font-size: 17px;
     }
-    
+
     .modal-header {
         padding: 10px 10px 5px 10px;
     }
@@ -192,7 +198,7 @@ ul.list-group > li:hover:before {
 		color:#fff;
 		font-size: 1.2rem;
 	}
-	
+
 	.list-group-item{
 		background-color: #fff0 !important;
 		color:#fff;

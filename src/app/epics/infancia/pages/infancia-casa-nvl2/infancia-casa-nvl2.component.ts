@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Epic } from 'src/app/models/epic';
@@ -17,6 +17,7 @@ export class InfanciaCasaNvl2Component implements OnInit {
   public epic: Epic;
   public status: string;
   public lectures: Lecture[] = [];
+  public workshops: Lecture[] = [];
   public srcImgs: string[] = [];
 
   modalRef: BsModalRef;
@@ -45,10 +46,9 @@ export class InfanciaCasaNvl2Component implements OnInit {
     );
   }
 
-  goToAudithorium(index: number) {
-    switch (index) {
+  doSomething(switchCase: number, index: number, template: TemplateRef<any>) {
+    switch (switchCase) {
       case 0:
-        console.log('Case 0');
         this._router.navigate([
           '/concafrinhas/audithorium',
           'lecture',
@@ -56,10 +56,14 @@ export class InfanciaCasaNvl2Component implements OnInit {
         ]);
         break;
       case 1:
-        console.log('Case 1');
+        this.openModal(template);
         break;
       case 2:
-        console.log('Case 2');
+        this._router.navigate([
+          '/concafrinhas/audithorium',
+          'lecture',
+          this.workshops[index]._id,
+        ]);
         break;
       default:
         console.log('Case Default');
@@ -71,9 +75,10 @@ export class InfanciaCasaNvl2Component implements OnInit {
     this._lectureService.getFullLectures(epicId).subscribe((response) => {
       let resLectures = response.lectures;
       resLectures.map((lecture: Lecture) => {
-        if (lecture.type == 'concafrinhas_alegria') {
+        if (lecture.type == 'concafrinhas_temacentral') {
           this.lectures.push(lecture);
-          console.log(this.lectures);
+        } else if (lecture.type == 'concafrinhas_workshop') {
+          this.workshops.push(lecture);
         }
       });
       this.loadThumbnail();
@@ -90,5 +95,12 @@ export class InfanciaCasaNvl2Component implements OnInit {
           });
       }
     });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+    this.modalRef = this.modalService.show(template);
   }
 }

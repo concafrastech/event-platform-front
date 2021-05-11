@@ -76,6 +76,8 @@ export class EpicListComponent implements OnInit {
   getEpics(page, conferenceId) {
     this._epicService.getEpics(page, conferenceId).subscribe(
       (response) => {
+        console.log(response);
+        
         if (!response.epics) {
           this.status = "error";
           this._spinner.hide();

@@ -5,16 +5,26 @@
   />
 </div>
 <div class="retangulo-2">
-    <p>Você tem {{ subscriptions.length }} inscrições!</p>
-    <a
+  <p>Você tem {{ subscriptions.length }} inscrições!</p>
+  <!-- <a
       class="btn btn-primary btn-sm btn-conference"
       role="button"
       [routerLink]="['/select-journey']"
-      [routerLinkActive]="['active']">Acessar Evento<br>(Link Temporário)</a>
-    <a
-      class="btn btn-primary btn-sm btn-conference"
-      role="button"
-      [routerLink]="['/admin']"
-      [routerLinkActive]="['active']">Accessar Admin</a>
+      [routerLinkActive]="['active']">Acessar Evento<br>(Link Temporário)</a> -->
+  <a
+    class="btn btn-primary btn-sm btn-conference"
+    role="button"
+    [routerLink]="['/admin']"
+    [routerLinkActive]="['active']"
+    >Accessar Admin</a
+  ><br />
+  <a
+    *ngFor="let conference of conferences"
+    class="btn btn-primary btn-sm btn-conference"
+    role="button"
+    (click)="selectConference(conference)"
+    [routerLink]="['/select-journey']"
+    [routerLinkActive]="['active']"
+    >{{ conference.name }}</a
+  >
 </div>
-

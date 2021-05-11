@@ -29,6 +29,9 @@ export class SelectJourneyComponent implements OnInit {
     this.conference = JSON.parse(localStorage.getItem('currentConference'));
     this.subscription = JSON.parse(localStorage.getItem('currentSubscription'));
     
+    console.log(this.subscription);
+    
+    
     if(this.subscription){
       if(this.subscription.user){
         this.calculateAge(new Date(this.subscription.user?.birthday))
@@ -49,6 +52,8 @@ export class SelectJourneyComponent implements OnInit {
   getEpics(page, conferenceId) {
     this._epicService.getEpics(page, conferenceId).subscribe(
       (response) => {
+        console.log(response.epics);
+        
         if (!response.epics) {
           this.status = "error";
         } else {
